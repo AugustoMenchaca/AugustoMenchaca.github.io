@@ -492,10 +492,18 @@ a{
     #eu-descrição{
         margin-right: 0rem;
     }
+    .principal{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .principal::before{
+        left: -0.3rem;
+    }
     .h2-especifico{
         display: inline;
         font-size: 5rem;
         text-align: center;
+        color: #692c2c;
     }
     .experiência{
         display: flex;
@@ -516,7 +524,7 @@ a{
         justify-self: center;
         display: flex;
         flex-direction: column;
-        min-height: 100%;
+        height: 100%;
         margin-top: 1rem;
         margin-right: auto;
         margin-left: auto;
