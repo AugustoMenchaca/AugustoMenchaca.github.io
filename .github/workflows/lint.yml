@@ -29,9 +29,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
+      # Os dois pacotes precisam estar no MESMO ambiente npx, senao o
+      # stylelint nao resolve o custom syntax. `npx --yes a b` trata b como
+      # argumento, nao como dependencia: usar -p para cada pacote.
       - name: stylelint no CSS embutido
         run: >
-          npx --yes stylelint@16 postcss-html@1
+          npx --yes -p stylelint@16 -p postcss-html@1 stylelint
           "index.html" "wireframes/*.html" "Css/*.css"
           --custom-syntax postcss-html
 
@@ -45,64 +48,57 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Todo link precisa de destino real. Ja houve 10 href="#" na pagina.
-      - name: proibir link morto
+      # Um passo unico que ACUMULA as falhas em vez de parar na primeira.
+      # Passos separados fazem o job morrer no primeiro erro e pular o resto,
+      # entao voce descobre um problema por rodada de CI. Aqui sai tudo junto.
+      - name: cinco regras de conteudo
         run: |
+          falhas=0
+
           for f in $PUBLICADOS; do
             [ -f "$f" ] || continue
+
+            # 1. Todo link precisa de destino real.
             if grep -n 'href="#"' "$f"; then
               echo "::error file=$f::href=\"#\" encontrado. Todo link precisa de destino real."
-              exit 1
+              falhas=$((falhas+1))
             fi
-          done
 
-      # Numero sem fonte sai. Nao existe terceira opcao.
-      - name: proibir metrica nao verificada
-        run: |
-          for f in $PUBLICADOS; do
-            [ -f "$f" ] || continue
+            # 2. Numero sem fonte sai. Nao existe terceira opcao.
             if grep -niE 'M[EÉ]TRICA A VERIFICAR|VERIFIED METRIC REQUIRED' "$f"; then
               echo "::error file=$f::Metrica nao verificada. Confirme com fonte ou remova."
-              exit 1
+              falhas=$((falhas+1))
             fi
-          done
 
-      # Ausencia declarada ainda parece ausencia: moldura vazia nao entra.
-      # O padrao e o rotulo em caixa alta entre colchetes, convencao deste projeto.
-      - name: proibir moldura de asset vazia
-        run: |
-          for f in $PUBLICADOS; do
-            [ -f "$f" ] || continue
+            # 3. Ausencia declarada ainda parece ausencia.
+            #    Convencao deste projeto: rotulo em caixa alta entre colchetes.
             if grep -noE '\[ [A-Z][A-Z0-9 /—·-]+ \]' "$f"; then
               echo "::error file=$f::Moldura de asset vazia encontrada."
-              exit 1
+              falhas=$((falhas+1))
             fi
-          done
 
-      # id duplicado DENTRO de um arquivo. Um id="rail-pause-btn" repetido
-      # deixou o botao em ingles morto e sobrescreveu o rotulo em portugues.
-      - name: proibir id duplicado
-        run: |
-          for f in $PUBLICADOS; do
-            [ -f "$f" ] || continue
-            dup=$(grep -ohE 'id="[^"]+"' "$f" | sort | uniq -d)
+            # 4. id duplicado DENTRO de um arquivo. Um id="rail-pause-btn"
+            #    repetido deixou o botao em ingles morto e sobrescreveu o
+            #    rotulo em portugues.
+            dup=$(grep -ohE 'id="[^"]+"' "$f" | sort | uniq -d || true)
             if [ -n "$dup" ]; then
-              echo "::error file=$f::id duplicado no mesmo documento:"
-              echo "$dup"
-              exit 1
+              echo "::error file=$f::id duplicado no mesmo documento: $dup"
+              falhas=$((falhas+1))
             fi
-          done
 
-      # Movimento novo precisa respeitar quem pediu para nao ter movimento.
-      - name: exigir prefers-reduced-motion onde houver animacao
-        run: |
-          for f in $PUBLICADOS; do
-            [ -f "$f" ] || continue
+            # 5. Movimento novo respeita quem pediu para nao ter movimento.
             if grep -q '@keyframes' "$f" && ! grep -q 'prefers-reduced-motion' "$f"; then
               echo "::error file=$f::Declara @keyframes sem tratar prefers-reduced-motion."
-              exit 1
+              falhas=$((falhas+1))
             fi
           done
+
+          echo "---"
+          if [ "$falhas" -gt 0 ]; then
+            echo "$falhas regra(s) de conteudo violada(s)."
+            exit 1
+          fi
+          echo "Nenhuma regra de conteudo violada."
 
   i18n:
     name: Paridade PT/EN
