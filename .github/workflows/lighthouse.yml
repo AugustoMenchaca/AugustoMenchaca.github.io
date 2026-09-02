@@ -1,0 +1,37 @@
+name: lighthouse
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+permissions:
+  contents: read
+
+jobs:
+  budget:
+    name: Orçamento de qualidade
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: servir a página
+        run: npx --yes http-server . -p 8777 --silent &
+
+      - name: esperar o servidor
+        run: npx --yes wait-on http://127.0.0.1:8777 --timeout 30000
+
+      - name: Lighthouse CI
+        run: npx --yes @lhci/cli@0.14 autorun
+        env:
+          LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.head_ref }}
+
+      - name: guardar o relatório
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: .lighthouseci/
+          retention-days: 14

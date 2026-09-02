@@ -1,0 +1,208 @@
+% =====================================================================
+%  Currículo — Augusto de Castro Menchaca
+%  Estrutura seguindo o CV de Amanda Vieira (Product Designer).
+%
+%  Compilar com pdfLaTeX. Nada além de pacotes padrão do TeX Live/MiKTeX.
+%  Sem LaTeX instalado? Suba este arquivo no overleaf.com e compile lá.
+%
+%  ATENÇÃO: tudo marcado com \pend{...} sai em VERMELHO no PDF.
+%  São dados que eu não tinha e que NÃO inventei. Preencha e apague a macro.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+% ---------- cores ----------
+\definecolor{tinta}{HTML}{1A1A1A}
+\definecolor{cinza}{HTML}{5A5A5A}
+\definecolor{falta}{HTML}{B3261E}
+\AtBeginDocument{\color{tinta}}   % \color solto no preâmbulo não compila
+
+% ---------- marcador de dado pendente ----------
+\newcommand{\pend}[1]{\textcolor{falta}{\textbf{[#1]}}}
+
+% ---------- seções com régua, como no CV de referência ----------
+\titleformat{\section}
+  {\large\bfseries}{}{0pt}{}[\vspace{2pt}\titlerule\vspace{-2pt}]
+\titlespacing*{\section}{0pt}{11pt}{6pt}
+
+% ---------- entrada de experiência ----------
+% \entrada{Organização, Cargo}{período}
+\newcommand{\entrada}[2]{%
+  \vspace{4pt}%
+  \noindent\textbf{#1}\\[1pt]%
+  {\small\itshape\color{cinza} #2}\par\vspace{2pt}%
+}
+
+\setlist[itemize]{leftmargin=14pt,itemsep=1.5pt,topsep=2pt,parsep=0pt}
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% =====================================================================
+\begin{document}
+
+% ------------------------------- CABEÇALHO
+{\LARGE\bfseries Augusto de Castro Menchaca}\\[3pt]
+{\large\bfseries Desenvolvimento de Software \textbar{} Computação Científica \textbar{} Gestão de Projetos}\\[4pt]
+{\small\color{cinza}%
+Pelotas, RS, Brasil \textbar{}
+(53) 99901-1310 \textbar{}
+\href{mailto:adcmenchaca@inf.ufpel.edu.br}{adcmenchaca@inf.ufpel.edu.br}\\
+\href{https://linkedin.com/in/augusto-menchaca-078469330}{linkedin.com/in/augusto-menchaca-078469330} \textbar{}
+\href{https://github.com/AugustoMenchaca}{github.com/AugustoMenchaca} \textbar{}
+\href{https://augustomenchaca.github.io/}{augustomenchaca.github.io}%
+}
+
+% ------------------------------- PERFIL
+\section*{Perfil Profissional}
+Graduando em Ciência da Computação na UFPel, atuando entre desenvolvimento de
+software, computação científica e condução de projetos de tecnologia. No Núcleo
+Integrado de Previsão (NIP/UFPel), como bolsista, respondo pela camada de
+software de ferramentas científicas e trabalho na aplicação de machine learning
+a recursos hídricos. Na Hut 8, empresa júnior de computação da UFPel, sou
+Diretor de Projetos: conduzo projetos de clientes do discovery à entrega,
+coordenando requisitos, escopo, squads, QA e infraestrutura. Meu interesse está
+no trecho entre um problema pouco definido e uma solução que continua
+funcionando depois que eu saio.
+
+% ------------------------------- EXPERIÊNCIA
+\section*{Experiência}
+
+\entrada{Núcleo Integrado de Previsão (NIP) --- UFPel, Pesquisador de Graduação (Bolsista)}
+        {set. 2025 --- Presente \textbar{} Pelotas, RS}
+\begin{itemize}
+  \item \textbf{Camada de software do IDF-BR:} responsável pela escolha de
+        ferramentas, decisões técnicas, arquitetura, estrutura da aplicação,
+        fluxo, UI/UX, implementação e deploy da plataforma
+        \href{https://www.idf-br.com.br/home/index.html}{idf-br.com.br}. O time
+        científico definiu dados, equações e outputs; a camada de software foi
+        minha responsabilidade.
+  \item \textbf{Estruturação de dados científicos:} transformação do acervo de
+        planilhas do grupo de pesquisa em JSON estruturado, tornando os dados
+        consumíveis por uma aplicação web.
+  \item \textbf{IA aplicada a recursos hídricos:} escola de verão \textbf{HydroUAI},
+        na UFMG, em janeiro de 2026, a partir da qual o foco do trabalho passou
+        a se aproximar de machine learning, experimentação e escrita
+        acadêmica.
+  \item \textbf{Pesquisa aplicada:} experimentação em machine learning voltada a
+        recursos hídricos, com o objetivo de transformar pesquisa complexa em
+        ferramentas acessíveis fora da universidade.
+\end{itemize}
+
+\entrada{Hut 8 --- Empresa Júnior de Computação da UFPel, Diretor de Projetos}
+        {nov. 2024 --- Presente \textbar{} Diretoria desde jun. 2025 \textbar{} Pelotas, RS}
+\begin{itemize}
+  \item \textbf{Condução de projetos de cliente:} atuação do discovery à
+        entrega, incluindo levantamento de requisitos, definição de escopo,
+        precificação e elaboração de proposta comercial.
+  \item \textbf{Coordenação de squads:} formação de times, acompanhamento de
+        execução, apoio ao gerente de projeto e ponte entre design e
+        desenvolvimento.
+  \item \textbf{QA e infraestrutura:} condução de QA com o cliente, configuração
+        de banco de dados, bucket/armazenamento e deploy de API e frontend.
+  \item \textbf{Responsabilidade organizacional:} assumi a diretoria em um
+        período de baixa atividade da empresa júnior, quando a continuidade da
+        operação estava ameaçada, aprendendo gestão na prática.
+  \item \textbf{DVO --- Prefeitura de Pelotas}
+        (\href{https://dvopelotas.com.br/}{dvopelotas.com.br}): coordenação do
+        projeto dos requisitos à produção. O sistema foi construído pelo squad;
+        meu papel foi coordenação, escopo e apoio à entrega, além da
+        configuração de banco, armazenamento e dos deploys.
+  \item \textbf{Ciere da Rosa --- Advocacia de Família e Sucessões}
+        (\href{https://advocaciacieredarosa.com.br/}{advocaciacieredarosa.com.br}):
+        atuação comercial, discovery, requisitos e escopo, sendo a ponte entre
+        cliente, design e desenvolvimento. Havia liderança de design própria no
+        projeto. Responsável também por QA, SEO e pela atenção a GEO --- como o
+        escritório é descrito e recuperado por modelos de linguagem, não só por
+        buscadores.
+\end{itemize}
+
+% ------------------------------- EDUCAÇÃO
+\section*{Educação}
+
+\entrada{Bacharelado em Ciência da Computação, Universidade Federal de Pelotas (UFPel)}
+        {2024/1 --- previsão de conclusão entre 2027/2 e 2028/1}
+
+% ------------------------------- PROJETOS
+\section*{Projetos}
+
+\entrada{Quantum Machine Learning --- Pesquisa Experimental}
+        {jul. --- ago. 2026 \textbar{} Disciplina da graduação \textbar{} Projeto acadêmico, sem publicação}
+\begin{itemize}
+  \item \textbf{Pergunta central:} o QML tem desempenho melhor simplesmente por
+        usar representações quânticas, ou o desempenho depende do alinhamento
+        entre dados, feature maps e kernels?
+  \item \textbf{Desenho experimental:} comparação controlada entre SVM clássico,
+        QSVC e métodos de kernel quântico, sobre dados reais (Breast Cancer
+        Wisconsin) e sintéticos (Qiskit \texttt{ad\_hoc\_data}).
+  \item \textbf{Resultado:} nos dados reais, o SVM clássico e a configuração
+        quântica alcançaram resultados comparáveis na representação controlada,
+        sem vantagem quântica clara. No benchmark sintético o modelo quântico
+        teve desempenho excelente, mas o conjunto de dados havia sido desenhado
+        em torno de uma representação quântica compatível. A conclusão é que o
+        resultado depende da combinação entre dados, representação, feature map
+        e kernel --- não do uso de computação quântica em si.
+\end{itemize}
+
+\entrada{Inteligência Artificial aplicada à Engenharia Hídrica --- Predição de Fluxo}
+        {Projeto acadêmico em andamento --- NIP/UFPel}
+\begin{itemize}
+  \item \textbf{Objetivo:} aplicar métodos de machine learning à predição de
+        fluxo em sistemas hídricos, dentro da linha de pesquisa do Núcleo
+        Integrado de Previsão.
+  \item \textbf{Relevância:} previsão de fluxo é insumo direto para alerta e
+        planejamento em bacias hidrográficas. É pesquisa acadêmica com aplicação
+        social clara, na direção de tornar previsão hidrológica acessível fora
+        da universidade.
+\end{itemize}
+
+% ------------------------------- CERTIFICAÇÕES
+\section*{Certificações \& Cursos}
+\begin{itemize}
+  \item \textbf{HydroUAI --- Escola de Verão em Inteligência Artificial aplicada a
+        Recursos Hídricos:} Universidade Federal de Minas Gerais (UFMG),
+        19 a 23 de janeiro de 2026. Previsão de vazão afluente com redes
+        neurais (MLP, LSTM, GRU e mecanismos de atenção), preenchimento de
+        falhas em séries hidrológicas, seleção de atributos, construção de
+        defasagens e busca de hiperparâmetros.
+\end{itemize}
+
+% ------------------------------- COMPETÊNCIAS
+\section*{Competências}
+
+\textbf{Linguagens:} Python, C, C++, Go, JavaScript, HTML, CSS --- experiência
+de uso em contexto acadêmico e em projetos próprios
+
+\vspace{3pt}
+\textbf{Frameworks \& Bibliotecas:} PyTorch, scikit-learn, pandas, NumPy, SciPy,
+Matplotlib e Seaborn; GeoPandas, Rasterio, Shapely, PyProj, Folium e Google Earth
+Engine para dados geoespaciais
+
+\vspace{3pt}
+\textbf{Dados \& Infraestrutura:} estruturação de dados científicos
+(planilha $\rightarrow$ JSON), configuração de banco de dados,
+bucket/armazenamento, deploy de API e de frontend
+
+\vspace{3pt}
+\textbf{Gestão de Projetos:} levantamento de requisitos, definição de escopo,
+precificação, proposta comercial, formação e coordenação de squad, QA com
+cliente, ponte design--desenvolvimento, acompanhamento de entrega
+
+\vspace{3pt}
+\textbf{Pesquisa:} computação científica, machine learning aplicado, recursos
+hídricos, experimentação controlada, escrita acadêmica
+
+\vspace{3pt}
+\textbf{Idiomas:} Português --- nativo; Inglês --- intermediário
+
+\end{document}

@@ -1,0 +1,132 @@
+name: lint
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop]
+
+permissions:
+  contents: read
+
+jobs:
+  html:
+    name: HTML válido
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: html-validate
+        run: npx --yes html-validate@9 "index.html" "wireframes/*.html"
+
+  css:
+    name: CSS lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: stylelint no CSS embutido
+        run: >
+          npx --yes stylelint@16 postcss-html@1
+          "index.html" "wireframes/*.html" "Css/*.css"
+          --custom-syntax postcss-html
+
+  content-rules:
+    name: Nada inventado entra
+    runs-on: ubuntu-latest
+    # Escopo: so o que e publicado. wireframes/prototipo-c.html e registro
+    # historico da direcao visual aprovada e nao vai ao ar.
+    env:
+      PUBLICADOS: "index.html wireframes/lp-final.html"
+    steps:
+      - uses: actions/checkout@v4
+
+      # Todo link precisa de destino real. Ja houve 10 href="#" na pagina.
+      - name: proibir link morto
+        run: |
+          for f in $PUBLICADOS; do
+            [ -f "$f" ] || continue
+            if grep -n 'href="#"' "$f"; then
+              echo "::error file=$f::href=\"#\" encontrado. Todo link precisa de destino real."
+              exit 1
+            fi
+          done
+
+      # Numero sem fonte sai. Nao existe terceira opcao.
+      - name: proibir metrica nao verificada
+        run: |
+          for f in $PUBLICADOS; do
+            [ -f "$f" ] || continue
+            if grep -niE 'M[EÉ]TRICA A VERIFICAR|VERIFIED METRIC REQUIRED' "$f"; then
+              echo "::error file=$f::Metrica nao verificada. Confirme com fonte ou remova."
+              exit 1
+            fi
+          done
+
+      # Ausencia declarada ainda parece ausencia: moldura vazia nao entra.
+      # O padrao e o rotulo em caixa alta entre colchetes, convencao deste projeto.
+      - name: proibir moldura de asset vazia
+        run: |
+          for f in $PUBLICADOS; do
+            [ -f "$f" ] || continue
+            if grep -noE '\[ [A-Z][A-Z0-9 /—·-]+ \]' "$f"; then
+              echo "::error file=$f::Moldura de asset vazia encontrada."
+              exit 1
+            fi
+          done
+
+      # id duplicado DENTRO de um arquivo. Um id="rail-pause-btn" repetido
+      # deixou o botao em ingles morto e sobrescreveu o rotulo em portugues.
+      - name: proibir id duplicado
+        run: |
+          for f in $PUBLICADOS; do
+            [ -f "$f" ] || continue
+            dup=$(grep -ohE 'id="[^"]+"' "$f" | sort | uniq -d)
+            if [ -n "$dup" ]; then
+              echo "::error file=$f::id duplicado no mesmo documento:"
+              echo "$dup"
+              exit 1
+            fi
+          done
+
+      # Movimento novo precisa respeitar quem pediu para nao ter movimento.
+      - name: exigir prefers-reduced-motion onde houver animacao
+        run: |
+          for f in $PUBLICADOS; do
+            [ -f "$f" ] || continue
+            if grep -q '@keyframes' "$f" && ! grep -q 'prefers-reduced-motion' "$f"; then
+              echo "::error file=$f::Declara @keyframes sem tratar prefers-reduced-motion."
+              exit 1
+            fi
+          done
+
+  i18n:
+    name: Paridade PT/EN
+    runs-on: ubuntu-latest
+    env:
+      PUBLICADOS: "index.html wireframes/lp-final.html"
+    steps:
+      - uses: actions/checkout@v4
+      # Conta lang= APENAS nas tags que carregam a classe i18n, em qualquer
+      # ordem de atributo. Contar 'lang="pt"' solto e errado: pega a tag <html
+      # lang="pt-BR"> e os seletores [data-lang="pt"] .i18n[lang="en"] do CSS,
+      # e acusa desequilibrio numa pagina saudavel. Verificado: 310 tags,
+      # 155 pt e 155 en em lp-final.html.
+      - name: contar pares de idioma
+        run: |
+          for f in $PUBLICADOS; do
+            [ -f "$f" ] || continue
+            tags=$(grep -o '<[^>]*i18n[^>]*>' "$f" || true)
+            [ -n "$tags" ] || continue
+            pt=$(printf '%s\n' "$tags" | grep -c 'lang="pt"' || true)
+            en=$(printf '%s\n' "$tags" | grep -c 'lang="en"' || true)
+            echo "$f: tags=$(printf '%s\n' "$tags" | wc -l) pt=$pt en=$en"
+            if [ "$pt" -ne "$en" ]; then
+              echo "::error file=$f::Desequilibrio PT/EN: $pt contra $en. Alguma string ficou sem par."
+              exit 1
+            fi
+          done

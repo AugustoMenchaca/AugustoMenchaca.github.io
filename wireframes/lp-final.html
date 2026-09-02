@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Augusto Menchaca — estudante de Ciencia da Computacao na UFPel. Software cientifico, coordenacao de projetos de cliente e pesquisa em IA aplicada a recursos hidricos.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Superficies */
+    --paper:        #F7F5EF;
+    --stone:        #E8E3D9;
+    --white:        #FFFFFF;
+    --subtle:       #F1EEE6;
+
+    /* Tipografia e neutros */
+    --charcoal:     #111213;
+    /* --slab-inner removido: quatro escuros colapsados em tres */
+    --body:         #343739;
+    --muted:        #626569;
+    --light:        #8A8E93;
+    --on-dark:      #9A9DA1;
+
+    /* Acentos */
+    --acid:         #E6F835;
+    --oxblood:      #5A2232;
+    --wine:         #F1E6E8;
+
+    /* Sistema Hut 8 (manual de marca v1.0) */
+    --h8-black:     #0B0B0B;
+    --h8-purple:    #6B0F9C;
+    --h8-gray:      #8A8A8A;
+    --h8-photo:     #2A2A28;
+
+    /* Hairlines */
+    --hair:         rgba(17, 18, 19, 0.13);
+    --hair-strong:  rgba(17, 18, 19, 0.28);
+
+    /* Tipografia */
+    --f-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --f-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --f-mono:    'IBM Plex Mono', monospace;
+
+    /* Layout */
+    --container:   1240px;
+    --pad:         clamp(20px, 4vw, 48px);
+    --slab-radius: 0;
+    --slab-pad:    clamp(20px, 3.6vw, 44px);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    margin: 0; background: var(--paper); color: var(--body);
+    font-family: var(--f-body); font-weight: 400; font-size: 1rem; line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  *:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 3px; }
+  .slab-dark *:focus-visible, .slab-hut8 *:focus-visible, .slab-oxblood *:focus-visible { outline-color: var(--acid); }
+
+  .container { max-width: var(--container); margin: 0 auto; padding-inline: var(--pad); }
+
+  /* Etiquetas tecnicas */
+  .meta-label {
+    font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .meta-label.on-dark { color: var(--on-dark); }
+  .meta-label.acid { color: var(--on-dark); }
+
+  /* Pill tags */
+  .pill {
+    display: inline-block; font-family: var(--f-mono); font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 9px;
+    border-radius: 3px; border: 1px solid var(--hair-strong); background: var(--subtle); color: var(--charcoal);
+  }
+  .pill.on-dark { background: transparent; border-color: rgba(247, 245, 239, .28); color: var(--on-dark); }
+
+  /* NAV */
+  .site-nav { border-bottom: 1px solid var(--hair); }
+  .nav-row-1 { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+  .wordmark {
+    font-family: var(--f-display); font-weight: 700; font-size: 1.05rem;
+    letter-spacing: -0.01em; color: var(--charcoal); text-decoration: none;
+  }
+  .nav-row-2 { border-top: 1px solid var(--hair); overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .nav-links { display: flex; gap: 28px; padding: 14px 0; white-space: nowrap; }
+  .nav-links a {
+    font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color .18s ease;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+    padding: 13px 22px; border-radius: 3px; border: 1px solid var(--charcoal);
+    background: var(--acid); color: var(--charcoal); transition: transform .18s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; }
+
+  /* HERO */
+  .hero { padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 44px); }
+  .hero-statement { margin-top: 28px; }
+  .hero-statement .hero-lede { max-width: 54ch; }
+  .hero-headline { max-width: 22ch;
+    font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 7.4vw, 4.4rem);
+    line-height: 1.04; letter-spacing: -0.03em; text-transform: uppercase; color: var(--charcoal); margin: 0 0 20px;
+  }
+  .hero-lede { font-size: 0.98rem; line-height: 1.6; color: var(--muted); max-width: 46ch; margin: 0 0 32px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  
+  .meta-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.5vw, 36px);
+    margin-top: clamp(30px, 4vw, 46px); padding-top: 24px; border-top: 1px solid var(--hair);
+  }
+  .meta-strip-item { display: flex; flex-direction: column; gap: 7px; }
+  .meta-strip-value { font-family: var(--f-body); font-weight: 500; font-size: 0.86rem; color: var(--charcoal); line-height: 1.4; }
+
+  /* EDITORIAL RAIL */
+  .rail-section { padding-bottom: clamp(30px, 4vw, 46px); }
+  .rail-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+  .rail-btn-wrap { display: flex; gap: 12px; align-items: baseline; }
+  .rail-pause { font-size: 0.6rem; padding: 4px 8px; border: 1px solid var(--hair-strong); background: transparent; cursor: pointer; border-radius: 3px; font-family: var(--f-mono); font-weight: 600; text-transform: uppercase; }
+  
+  /* enquadra os 7 cards como UM evento visual, nao seis */
+  .rail-viewport { overflow: hidden; border-block: 1px solid var(--hair); padding-block: 12px; }
+  .rail-track { display: flex; gap: 12px; width: max-content; animation: rail-scroll 46s linear infinite; }
+  .rail-viewport:hover .rail-track, .rail-viewport:focus-within .rail-track { animation-play-state: paused; }
+  .rail-track.is-paused { animation-play-state: paused !important; }
+  @keyframes rail-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
+  
+  /* menor, sem borda: a superficie sozinha define o card */
+  .rail-item {
+    flex: 0 0 186px; min-height: 82px; border: 0; border-radius: 10px;
+    padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; text-decoration: none;
+    background: var(--white); transition: transform .2s ease;
+  }
+  a.rail-item:hover { transform: translateY(-3px); }
+  a.rail-item { cursor: pointer; }
+  .rail-num { font-family: var(--f-mono); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.11em; color: var(--muted); }
+  .rail-title { font-family: var(--f-display); font-weight: 700; font-size: 0.82rem; letter-spacing: -0.005em; color: var(--charcoal); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .rail-sub { font-size: 0.68rem; line-height: 1.3; color: var(--muted); margin-top: auto; }
+  .rail-badge { font-family: var(--f-mono); font-size: 0.52rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; background: var(--subtle); color: var(--charcoal); }
+
+  .rail-item.paper { background: var(--subtle); }
+  .rail-item.charcoal { background: var(--charcoal); }
+  .rail-item.charcoal .rail-title { color: var(--paper); }
+  .rail-item.charcoal .rail-num { color: var(--on-dark); }
+  .rail-item.charcoal .rail-sub { color: rgba(247, 245, 239, .72); }
+  .rail-item.charcoal .rail-badge { background: rgba(247,245,239,.14); color: var(--paper); }
+  .rail-item.acid { background: var(--acid); }
+  .rail-item.acid .rail-num { color: #383E00; }
+  .rail-item.acid .rail-badge { background: var(--charcoal); color: var(--acid); }
+  .rail-item.oxblood { background: var(--wine); }
+  .rail-item.oxblood .rail-title { color: var(--oxblood); }
+  .rail-item.oxblood .rail-num { color: var(--oxblood); }
+  .rail-item.oxblood .rail-sub { color: #7A4351; }
+  .rail-item.oxblood .rail-badge { background: var(--oxblood); color: var(--wine); }
+
+  /* SLAB SYSTEM */
+  /* Faixa, nao bloco: largura total, sem canto e sem margem entre secoes.
+     O .container interno cuida da coluna de conteudo. */
+  .slab {
+    padding: clamp(34px, 4.4vw, 60px) 0;
+    border-radius: 0;
+    margin: 0;
+  }
+  .slab-dark  { background: var(--charcoal); color: var(--on-dark); }
+  .slab-hut8  { background: var(--h8-black); }
+  .slab-stone { background: var(--stone); }
+  .slab-oxblood { background: var(--oxblood); color: var(--wine); }
+
+  .slab-headline {
+    font-family: var(--f-display); font-weight: 600; font-size: clamp(1.3rem, 4vw, 2.15rem);
+    line-height: 1.18; letter-spacing: -0.025em; margin: 14px 0 0; max-width: 24ch;
+  }
+  .slab-dark .slab-headline { color: var(--paper); }
+  .slab-hut8 .slab-headline { color: #FFFFFF; }
+  .slab-stone .slab-headline { color: var(--charcoal); max-width: 20ch; }
+  .slab-oxblood .slab-headline { color: #FFFFFF; }
+
+  /* WORK INTRO */
+  .work-intro { padding-block: 40px 16px; }
+
+  /* PLACEHOLDERS GEOMETRY */
+  .ph {
+    margin: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 1px dashed var(--muted); text-align: center; padding: 20px;
+    background: transparent; position: relative; overflow: hidden; gap: 8px;
+  }
+  .ph img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: inherit; }
+  .ph-chip {
+    display: inline-block; font-family: var(--f-mono); font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; background: var(--stone); color: var(--charcoal);
+    padding: 6px 12px; border-radius: 4px; z-index: 2; line-height: 1.3;
+  }
+  .ph-note { font-size: 0.75rem; color: var(--muted); z-index: 2; line-height: 1.4; max-width: 40ch; }
+  
+  .slab-dark .ph, .slab-hut8 .ph, .slab-oxblood .ph { border-color: rgba(255,255,255,0.25); }
+  .slab-hut8 .ph-chip { background: var(--h8-purple); color: #FFF; }
+  .slab-oxblood .ph-chip { background: var(--wine); color: var(--charcoal); }
+  .slab-oxblood .ph-note { color: var(--wine); opacity: 0.8; }
+  .slab-dark .ph-note { color: var(--on-dark); }
+  .slab-dark .ph-chip { background: var(--paper); color: var(--charcoal); }
+  .slab-hut8 .ph-note { color: var(--h8-gray); }
+
+  .ph-idf-main { aspect-ratio: 16/9; border-radius: 12px; }
+  .ph-idf-det  { aspect-ratio: 16/10; border-radius: 12px; }
+  .ph-dvo      { aspect-ratio: 16/10; border-radius: 16px; }
+  .ph-ciere    { aspect-ratio: 16/10; border-radius: 16px; }
+  .ph-ciere-m  { aspect-ratio: 9/16; border-radius: 14px; }
+  .ph-qml      { aspect-ratio: 16/9; border-radius: 16px; }
+  .ph-nip-1    { aspect-ratio: 4/3; border-radius: 18px; }
+  .ph-nip-2    { aspect-ratio: 1/1; border-radius: 14px; }
+  .ph-h8-1     { aspect-ratio: 16/9; border-radius: 20px; }
+  .ph-h8-2     { aspect-ratio: 4/3; border-radius: 12px; }
+  .ph-about    { aspect-ratio: 4/3; border-radius: 18px; }
+
+  /* IDF-BR */
+  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+  .data-grid-wide { grid-template-columns: 2fr 1fr; }
+  /* colapsa --slab-inner: o IDF passa a ler como superficie unica */
+  .data-card { background: var(--charcoal); border: 1px solid rgba(247,245,239,.12); border-radius: 12px; padding: 16px; }
+  .data-card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .data-card svg { display: block; width: 100%; height: auto; }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 34px); margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(247, 245, 239, .14); }
+  .metric::before { content: ''; display: block; width: 28px; height: 3px; background: var(--on-dark); margin-bottom: 11px; }
+  .metric-value { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.2rem, 2vw, 1.6rem); letter-spacing: -0.02em; color: var(--paper); line-height: 1.1; display: block; }
+  .metric-label { font-size: 0.78rem; color: var(--on-dark); margin-top: 5px; display: block; }
+  
+  .idf-flow { margin: 32px 0; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 600; color: var(--paper); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
+  .idf-flow li { display: flex; align-items: center; gap: 12px; }
+  .idf-flow li:not(:last-child)::after { content: '→'; color: var(--on-dark); }
+
+  /* DVO */   /* secundario: menor que a do IDF */
+
+  /* DVO — ficha tecnica. Sem caixa: filetes + coluna de rotulos em mono.
+     Diferenca de altura entre imagem e ficha nao lê como defeito porque
+     a ficha simplesmente termina, em vez de sobrar caixa vazia. */
+  .dvo-grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(24px,3.4vw,52px); align-items: start; margin-top: 28px; }
+  .spec { padding-top: 2px; }
+  .spec-head {
+    display: block; font-family: var(--f-mono); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--charcoal);
+    padding-bottom: 12px; border-bottom: 2px solid var(--charcoal);
+  }
+  .spec-list { list-style: none; margin: 0; padding: 0; }
+  .spec-list li {
+    display: grid; grid-template-columns: 30px 1fr; column-gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid var(--hair);
+  }
+  .spec-list li:last-child { border-bottom: 0; }
+  .spec-n {
+    grid-row: span 2; font-family: var(--f-mono); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.06em; color: var(--muted); padding-top: 2px;
+  }
+  .spec-term {
+    font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--charcoal);
+  }
+  .spec-act { font-size: 0.84rem; line-height: 1.4; color: var(--muted); }
+
+  /* deixa de ser laje disfarcada: stone em largura total, container interno */
+  .section-dvo {
+    padding: clamp(34px, 4.4vw, 60px) 0;
+    background: var(--stone); margin-bottom: 0; border-radius: 0;
+    margin-inline: 0;
+  }
+  /* container aninhado: zera o padding duplicado */
+  .section-dvo > .container { padding-inline: var(--pad); max-width: var(--container); margin-inline: auto; }
+  .dvo-disclaimer { font-size: 0.9rem; color: var(--muted); border-left: 2px solid var(--charcoal); padding-left: 12px; margin: 20px 0 32px; }
+  .flow-dvo-wrap { margin-bottom: 40px; border-top: 1px solid var(--hair-strong); padding-top: 24px; }
+  .flow-dvo { display: flex; gap: 10px; flex-wrap: wrap; list-style: none; padding: 0; font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500; }
+  .flow-dvo li { display: flex; align-items: center; gap: 10px; color: var(--charcoal); }
+  .flow-dvo li:not(:last-child)::after { content: '→'; color: var(--muted); }
+  
+
+
+
+  /* CIERE */
+  .section-ciere { padding: clamp(34px, 4.4vw, 60px) 0; background: var(--paper); margin-bottom: 18px; }
+  .ciere-flow-wrap { margin: 24px 0; font-family: var(--f-mono); font-weight: 600; font-size: 1.1rem; color: var(--charcoal); letter-spacing: 0.05em; }
+  .desk-only { list-style: none; padding: 0; margin: 0; }
+  .mob-only { display: none; }
+  .ciere-responsibilities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+  .ciere-grid { align-items: end; display: grid; grid-template-columns: 3fr 1fr; gap: 24px; }
+
+  /* QUANTUM ML */
+  .qml-quote { position: relative; margin: 32px 0; padding-left: 20px; }
+  .qml-quote-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--wine); }
+  .qml-quote-label { display: inline-block; background: var(--acid); color: var(--charcoal); font-family: var(--f-mono); font-size: 0.6rem; font-weight: 600; padding: 3px 8px; margin-bottom: 8px; border-radius: 2px; }
+  .qml-quote p { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; color: #FFF; line-height: 1.4; margin: 0; }
+  .qml-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; border-top: 1px solid rgba(241,230,232,0.2); padding-top: 32px; margin-bottom: 40px;}
+  .qml-col-title { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 600; color: #FFF; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 12px; }
+  .qml-col-body { font-size: 0.9rem; margin: 0; }
+  .qml-conclusion { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500; text-align: center; color: var(--wine); margin: 0 0 40px 0; border: 1px dashed rgba(241,230,232,0.28); padding: 16px; }
+
+  /* NIP */
+  .section-nip { padding: clamp(34px, 4.4vw, 60px) 0; background: var(--paper); }
+  .nip-grid { display: block; margin-top: 40px; }
+  .nip-grid > div:first-child { max-width: 62ch; }
+  .flow-nip { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; font-family: var(--f-mono); font-size: 0.65rem; font-weight: 600; color: var(--charcoal); margin-bottom: 24px; border-left: 1px solid var(--hair-strong); padding-left: 16px; }
+  .flow-nip li::before { content: '↓'; margin-right: 8px; color: var(--muted); }
+  .flow-nip li:first-child::before { content: '•'; }
+  .nip-body { font-size: 0.95rem; line-height: 1.6; color: var(--body); margin: 0; }
+  .nip-photos { display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px;
+                align-items: end; margin-top: clamp(28px,4vw,44px); }
+
+  /* HUT 8 */
+  .h8-tag { display: inline-block; font-family: var(--f-mono); font-size: 0.63rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--h8-purple); color: #FFFFFF; padding: 5px 11px; border-radius: 2px; }
+  .h8-photos { position: relative; margin-top: 28px; padding-bottom: clamp(30px, 5vw, 64px); }
+  .h8-shot { margin: 0; min-width: 0; }
+  .h8-shot.main { width: 84%; }
+  .h8-shot.overlap { position: absolute; right: 0; top: 46%; width: 33%; background: var(--h8-black); border-radius: 18px; padding: 9px; box-shadow: 0 20px 44px rgba(0, 0, 0, .6); }
+  
+  .h8-figcap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; width: 62%; margin-top: 14px; padding-top: 13px; border-top: 1px solid rgba(255, 255, 255, .12); font-family: var(--f-mono); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--h8-gray); }
+  .h8-text { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.6vw, 36px); margin-top: 30px; align-items: start; }
+  .h8-body { color: #D6D6D4; font-size: 0.9rem; line-height: 1.62; margin: 0 0 18px; }
+  .h8-quote-wrap { display: flex; flex-direction: column; align-items: flex-start; margin: 0 0 12px; }
+  .h8-quote-label { background: var(--h8-purple); color: #FFF; font-family: var(--f-mono); font-size: 0.6rem; font-weight: 600; padding: 4px 8px; border-radius: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .h8-quote { font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; line-height: 1.45; color: #FFFFFF; border-left: 4px solid var(--h8-purple); padding-left: 16px; margin: 0; }
+
+  /* RESEARCH */
+  .section-research { padding: clamp(34px, 4.4vw, 60px) 0; background: var(--paper); margin-bottom: 0; }
+  .research-lede { font-size: 1.05rem; color: var(--muted); margin: 16px 0 40px; }
+  .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .research-card { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px; border: 1px solid var(--hair-strong); border-radius: 12px; }
+  .research-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--body); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 64px); margin-top: 40px; align-items: center; }
+  .about-copy p { margin: 0 0 16px; font-size: 0.95rem; line-height: 1.6; }
+
+  /* CONTACT */
+  .section-contact { padding: clamp(40px, 8vw, 80px) 0; }
+  .contact-inner { display: flex; justify-content: space-between; align-items: flex-end; gap: 28px; flex-wrap: wrap; }
+  .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* FOOTER */
+  .site-footer { border-top: 1px solid var(--hair); padding: 40px 0; font-size: 0.8rem; line-height: 1.5; }
+  .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .site-footer a { color: var(--charcoal); text-decoration: none; font-weight: 500; transition: opacity .2s; }
+  .site-footer a:hover { opacity: 0.7; }
+
+  /* MOTION CLASSES */
+  .will-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .is-revealed { opacity: 1; transform: translateY(0); }
+
+
+  /* I18N */
+  [data-lang="pt"] .i18n[lang="en"] { display: none !important; }
+  [data-lang="en"] .i18n[lang="pt"] { display: none !important; }
+  
+  .lang-btn {
+    background: transparent; border: none; cursor: pointer; padding: 4px;
+    font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600; color: var(--muted); transition: color .2s;
+  }
+  .lang-btn[aria-pressed="true"] { color: var(--charcoal); }
+  .lang-btn:focus-visible { outline: 2px solid var(--charcoal); border-radius: 2px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 1023px) {
+    .flow-dvo { flex-direction: column; align-items: flex-start; }
+    .flow-dvo li:not(:last-child)::after { content: '↓'; margin-left: 20px; }
+  }
+
+  /* Alvos de toque: minimo de 40px de altura em telas de dedo */
+
+  /* Passo intermediario: a razao dos pares cai gradualmente em vez de saltar 2.0 -> 1.0 */
+  @media (max-width: 1024px) {
+    .data-grid-wide { grid-template-columns: 1.5fr 1fr; }
+    .nip-photos     { grid-template-columns: 1.3fr 1fr; }
+    .ciere-grid     { grid-template-columns: 1.6fr 1fr; }   /* IDF encolhe nesta faixa; DVO acompanha */
+  }
+  @media (max-width: 900px) {
+    .nav-links a, .footer-col a {
+      display: inline-flex; align-items: center; min-height: 40px;
+    }
+    .lang-btn, .rail-pause { min-height: 40px; padding-inline: 14px; }
+    .live-link { min-height: 40px; padding-block: 10px; }
+    .wordmark { display: inline-flex; align-items: center; min-height: 44px; }
+  }
+
+  @media (max-width: 860px) {
+    .hero-headline { max-width: none; }
+    .portrait   { max-width: 260px; }
+    .meta-strip { grid-template-columns: 1fr; gap: 18px; }
+    .data-grid, .data-grid-wide { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: 1fr; gap: 22px; }
+    .dvo-grid { grid-template-columns: 1fr; gap: 26px; }
+    .ciere-grid { grid-template-columns: 1fr; }
+    .qml-cols   { grid-template-columns: 1fr; }
+    .nip-photos { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    
+    .desk-only { display: none; }
+    .mob-only { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; font-family: var(--f-mono); font-size: 0.8rem; }
+    .mob-only li:not(:last-child)::after { content: '↓'; display: block; color: var(--muted); margin-top: 4px; }
+    
+    .h8-photos { padding-bottom: 0; }
+    .h8-shot.main { width: 100%; }
+    .h8-shot.overlap { position: static; width: 74%; margin: 14px 0 0 auto; box-shadow: 0 14px 30px rgba(0, 0, 0, .45); }
+    .h8-photos .ph-chip { font-size: 0.56rem; padding: 5px 9px; }
+    .h8-figcap { flex-direction: column; gap: 4px; width: 100%; }
+    .h8-figcap { width: 100%; }
+    .h8-text { grid-template-columns: 1fr; gap: 20px; }
+    .ph-ciere-m { max-width: 260px; margin: 0 auto; }
+    
+    .slab-headline, .slab-stone .slab-headline { max-width: none; }
+    .ph-idf-main { aspect-ratio: 4/3; }
+    .ph-ciere { aspect-ratio: 4/3; }
+    .ph-ciere-m { aspect-ratio: 3/4; }
+    .ph-qml { aspect-ratio: 4/3; }
+    .ph-nip-2 { aspect-ratio: 4/3; }
+    .ph-h8-1 { aspect-ratio: 16/10; }
+  }
+
+  @media (max-width: 860px), (prefers-reduced-motion: reduce) {
+    .rail-track { animation: none !important; transform: none !important; }
+    .rail-viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
+    .rail-item { scroll-snap-align: start; }
+    .rail-track > [aria-hidden="true"] { display: none !important; }
+  }
+
+
+  /* Telas muito estreitas: a primeira linha da nav quebra em vez de estourar */
+  @media (max-width: 380px) {
+    .nav-row-1 { flex-wrap: wrap; row-gap: 10px; }
+    .lang-toggle { order: 3; }
+    .btn { padding-inline: 14px; }
+  }
+  @media (max-width: 560px) {
+    .nav-links a  { font-size: 0.6rem; letter-spacing: 0.06em; }
+    .nav-links    { gap: 12px; }
+    .hero-lede    { font-size: 0.92rem; }
+    .rail-item    { flex: 0 0 168px; }
+    .contact-inner { align-items: flex-start; }
+    .btn { padding: 12px 16px; font-size: 0.66rem; }
+    .footer-inner { flex-direction: column; }
+    .footer-col { text-align: left !important; }
+  }
+
+  /* Link para o produto no ar — charcoal em superficie clara, acid dentro da laje escura */
+  .live-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--f-mono); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
+    padding: 5px 10px; border-radius: 3px; margin-left: 12px;
+    border: 1px solid var(--hair-strong); color: var(--charcoal);
+    transition: background .18s ease, color .18s ease;
+  }
+  .live-link:hover { background: var(--charcoal); color: var(--paper); }
+  .slab-dark .live-link { border-color: rgba(247,245,239,.32); color: var(--paper); }
+  .slab-dark .live-link:hover { background: var(--paper); color: var(--charcoal); }
+
+
+  /* Superficie do rail codifica a CATEGORIA, nao um ritmo arbitrario:
+     charcoal=flagship · acid=lideranca · oxblood/wine=pesquisa · white=producao · paper=formacao */
+  .rail-item.wine { background: var(--subtle); box-shadow: inset 2px 0 0 var(--oxblood); }
+  .rail-item.wine .rail-title { color: var(--charcoal); }
+  .rail-item.wine .rail-num   { color: var(--muted); }
+  .rail-item.wine .rail-sub   { color: var(--muted); }
+  .rail-item.wine .rail-badge { background: var(--wine); color: var(--oxblood); }
+
+
+
+
+
+  /* ===================== HERO — chamada com grafismo ===================== */
+  /* Devices: pilula overline + cartoes flutuantes (Darwin) + nome em escala
+     enorme sangrando nas bordas (Dominic). Sem foto: ela vive so no About. */
+  .hero { padding-block: clamp(30px,4.5vw,52px) clamp(34px,5vw,64px); overflow: hidden; }
+
+
+  .hero-top {
+    display: grid; grid-template-columns: 1.25fr 0.75fr;
+    gap: clamp(24px,4vw,56px); align-items: start; margin-top: 26px;
+  }
+  .hero-headline { font-size: clamp(1.7rem, 4.4vw, 2.9rem); max-width: 18ch; }
+  .hero-lede { max-width: 46ch; }
+
+  /* CTA em pilula com icone circular (device do Dominic) */
+  .btn.round { border-radius: 999px; padding-left: 8px; gap: 10px; }
+  .btn.round .ico {
+    width: 26px; height: 26px; border-radius: 50%;
+    display: inline-grid; place-items: center;
+    background: var(--charcoal); color: var(--acid);
+    font-size: 0.78rem; flex: none;
+  }
+  .btn.ghost.round .ico { background: var(--charcoal); color: var(--paper); }
+
+  /* Cartoes flutuantes — substituem a fila plana de 3 colunas */
+  .hero-cards { display: grid; grid-template-rows: repeat(3, 1fr); gap: 12px; }
+  .hero-card {
+    justify-content: center;
+    background: var(--white); border: 1px solid var(--hair);
+    border-radius: 16px; padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 5px;
+    box-shadow: 0 8px 22px rgba(17,18,19,.06);
+  }
+  .hero-card-role {
+    font-family: var(--f-mono); font-size: 0.6rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
+  }
+  .hero-card-where {
+    font-family: var(--f-display); font-weight: 700; font-size: 0.95rem;
+    color: var(--charcoal); letter-spacing: -0.01em;
+  }
+  .hero-card-note { font-size: 0.76rem; line-height: 1.4; color: var(--muted); }
+  .hero-card.is-acid { background: var(--white); border-color: var(--hair-strong); }
+  .hero-card.is-acid .hero-card-role { color: var(--muted); }
+  .hero-card.is-acid .hero-card-note { color: var(--muted); }
+
+  /* Nome em escala enorme, sangrando nas bordas */
+
+
+  /* --- entrada animada: mascara por linha, contida --- */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-anim {
+      --d: 0ms; opacity: 0; transform: translateY(14px);
+      animation: heroUp .72s cubic-bezier(.22,.68,.36,1) forwards;
+      animation-delay: var(--d);
+    }
+    .hero-mask { overflow: hidden; display: block; }
+    .hero-mask > span {
+      display: block; transform: translateY(105%);
+      animation: heroLine .82s cubic-bezier(.22,.68,.36,1) forwards;
+      animation-delay: var(--d);
+    }
+    @keyframes heroUp   { to { opacity: 1; transform: none; } }
+    @keyframes heroLine { to { transform: none; } }
+  }
+
+  @media (max-width: 860px) {
+    .hero-top { grid-template-columns: 1fr; gap: 26px; }
+    .hero-headline { max-width: none; }
+    .hero-cards { grid-template-rows: none; }
+  }
+
+  .ciere-visibility {
+    margin-top: 22px; padding: 18px 20px;
+    background: var(--white); border: 1px solid var(--hair-strong);
+    border-left: 3px solid var(--charcoal); border-radius: 4px;
+  }
+  .ciere-visibility p { margin: 8px 0 0; font-size: 0.88rem; line-height: 1.6; color: var(--body); }
+  .ciere-visibility .meta-label { display: block; }
+
+  /* ===================== CONTATO — painel ===================== */
+  /* deixa de ser segunda laje stone logo apos o About stone */
+  .contact-panel {
+    background: transparent; border-radius: 0;
+    padding: clamp(32px,4vw,56px) 0 0;
+    border-top: 1px solid var(--hair);
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(24px,4vw,48px); align-items: start;
+  }
+  .contact-panel .slab-headline { margin-top: 0; max-width: 18ch; }
+  .contact-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .contact-links .btn { justify-content: center; }
+
+  /* ===================== RODAPE ===================== */
+  .site-footer { border-top: 1px solid var(--hair); margin-top: clamp(40px,6vw,72px); padding-top: 40px; }
+  .footer-grid {
+    display: grid; grid-template-columns: 1.4fr 1fr 1fr auto;
+    gap: clamp(20px,3vw,44px); padding-bottom: 34px;
+  }
+  .footer-head { font-family: var(--f-display); font-weight: 700; font-size: 1rem; color: var(--charcoal); }
+  .footer-note { font-size: 0.82rem; line-height: 1.5; color: var(--muted); margin-top: 8px; max-width: 34ch; }
+  .footer-col h3 {
+    margin: 0 0 12px; font-family: var(--f-mono); font-size: 0.6rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  }
+  .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .footer-col a { font-size: 0.85rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid transparent; }
+  .footer-col a:hover { border-bottom-color: var(--charcoal); }
+  .footer-top {
+    display: inline-flex; align-items: center; gap: 8px; align-self: start;
+    font-family: var(--f-mono); font-size: 0.62rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal);
+    text-decoration: none; border: 1px solid var(--hair-strong);
+    border-radius: 999px; padding: 11px 16px; min-height: 40px;
+  }
+  .footer-top:hover { background: var(--charcoal); color: var(--paper); }
+
+  /* wordmark oversized — device de rodape, nao de hero */
+  .footer-wordmark {
+    width: 100%; overflow: hidden; line-height: .92; white-space: nowrap;
+    font-family: var(--f-display); font-weight: 700;
+    font-size: clamp(2rem, 18.6vw, 14.5rem); letter-spacing: -0.05em;
+    color: var(--charcoal); text-align: center; user-select: none;
+    padding-bottom: 0.06em;
+  }
+  .footer-legal {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    padding: 16px 0 44px; border-top: 1px solid var(--hair);
+  }
+
+  @media (max-width: 860px) {
+    .contact-panel { grid-template-columns: 1fr; }
+    .footer-grid   { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .footer-grid   { grid-template-columns: 1fr 1fr; gap: 26px 20px; }
+    .footer-grid > div:first-child { grid-column: 1 / -1; }
+    .footer-col ul { gap: 2px; }
+    .footer-top    { grid-column: 1 / -1; justify-self: start; }
+    .footer-legal  { flex-direction: column; gap: 6px; }
+    .contact-links { grid-template-columns: 1fr; }
+  }
+
+  /* ===== Telas grandes: a RAIZ escala, entao os 64 tamanhos em rem escalam juntos.
+     So aumentar o container deixava a tipografia pequena numa tela de 2560. ===== */
+  @media (min-width: 1500px) {
+    html { font-size: 16.8px; }
+    :root { --container: 1400px; --pad: 52px; }
+  }
+  @media (min-width: 1800px) {
+    html { font-size: 18px; }
+    :root { --container: 1560px; --pad: 60px; }
+    .hero-headline  { font-size: clamp(1.7rem, 4.4vw, 3.5rem); }
+    .slab-headline  { font-size: clamp(1.3rem, 4vw, 2.5rem); }
+    .footer-wordmark { font-size: clamp(2rem, 18.6vw, 290px); }
+  }
+  @media (min-width: 2200px) {
+    html { font-size: 19.5px; }
+    :root { --container: 1720px; --pad: 68px; }
+    .hero-headline  { font-size: clamp(1.7rem, 4.4vw, 3.9rem); }
+    .slab-headline  { font-size: clamp(1.3rem, 4vw, 2.7rem); }
+    .footer-wordmark { font-size: clamp(2rem, 18.6vw, 320px); }
+  }
+
+  /* variante C: Quantum em stone. Foregrounds reassinados; oxblood vira acento. */
+  #quantum { color: var(--body); }
+  #quantum .slab-headline { color: var(--charcoal); }
+  #quantum .meta-label.acid { color: var(--oxblood); }
+  #quantum .qml-quote-bar { background: var(--oxblood); }
+  #quantum .qml-quote-label { background: var(--oxblood); color: var(--wine); }
+  #quantum .qml-quote p { color: var(--charcoal); }
+  #quantum .qml-col-title { color: var(--oxblood); }
+  #quantum .qml-col-body { color: var(--body); }
+  #quantum .qml-conclusion { color: var(--oxblood); border-color: rgba(90,34,50,.3); }
+  #quantum .qml-cols { border-color: var(--hair-strong); }
+  #quantum .ph { border-color: rgba(17,18,19,.25); }
+  #quantum .ph-chip { background: var(--oxblood); color: var(--wine); }
+  #quantum .ph-note { color: var(--muted); opacity: 1; }
+
+  /* ===== Blocos com altura controlada =====
+     A moldura preenche a coluna e a ALTURA e limitada, em vez de encolher a
+     largura para preservar a proporcao. A proporcao na legenda continua sendo
+     a especificacao do asset real; a moldura recorta com object-fit: cover. */
+  .data-card svg { max-height: 190px; }
+  .ph {
+    aspect-ratio: auto;
+    height: clamp(190px, 20vw, 300px);
+    max-height: none;
+  }
+  .ph-ciere-m { height: clamp(240px, 26vw, 360px); }   /* retrato */
+  .ph-idf-det { height: clamp(160px, 16vw, 236px); }   /* detalhe menor que a principal */
+  .ph-h8-2    { height: clamp(150px, 15vw, 220px); }
+  .ph-nip-2   { height: clamp(160px, 17vw, 250px); }
+
+  @media (max-width: 860px) {
+    .data-card svg { max-height: 240px; }
+    .ph { height: clamp(180px, 48vw, 260px); }
+    .ph-ciere-m { height: clamp(220px, 60vw, 320px); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="container">
+    <div class="nav-row-1">
+      <a href="#" class="wordmark">AUGUSTO MENCHACA</a>
+      <div style="display:flex; align-items:center;">
+        <a href="#contact" class="btn"><span class="i18n" lang="pt">VAMOS CONVERSAR ↗</span><span class="i18n" lang="en">LET'S TALK ↗</span></a>
+        <div class="lang-toggle" style="display:inline-flex; align-items:center; gap:4px; margin-left:16px;">
+          <button id="lang-pt" class="lang-btn" aria-pressed="true" aria-label="PT — Português">PT</button>
+          <span style="color:var(--muted); font-size:0.7rem; font-family:var(--f-mono);">/</span>
+          <button id="lang-en" class="lang-btn" aria-pressed="false" aria-label="EN — English">EN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-row-2">
+    <div class="container">
+      <div class="nav-links">
+        <a href="#work" class="i18n" lang="pt">TRABALHOS</a>
+<a href="#work" class="i18n" lang="en">WORK</a>
+        <a href="#experience" class="i18n" lang="pt">EXPERIÊNCIA</a>
+<a href="#experience" class="i18n" lang="en">EXPERIENCE</a>
+        <a href="#about" class="i18n" lang="pt">SOBRE</a>
+<a href="#about" class="i18n" lang="en">ABOUT</a>
+        <a href="#"><!-- URL a confirmar -->CV</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-top">
+      <div>
+        <h1 class="i18n hero-headline hero-mask" lang="pt"><span style="--d:90ms">Construo produtos digitais e lidero projetos de tecnologia.</span></h1>
+        <h1 class="i18n hero-headline hero-mask" lang="en"><span style="--d:90ms">I build digital products and lead tech projects.</span></h1>
+
+        <p class="i18n hero-lede hero-anim" lang="pt" style="--d:260ms">Estudante de Ciência da Computação na UFPel, atuando entre software, computação científica, liderança de projetos e IA aplicada.</p>
+        <p class="i18n hero-lede hero-anim" lang="en" style="--d:260ms">Computer Science student at UFPel working across software, scientific computing, project leadership and applied AI.</p>
+
+        <div class="hero-actions hero-anim" style="--d:340ms">
+          <a href="#work" class="i18n btn round" lang="pt"><span class="ico" aria-hidden="true">↗</span>VER TRABALHOS</a>
+          <a href="#work" class="i18n btn round" lang="en"><span class="ico" aria-hidden="true">↗</span>VIEW WORK</a>
+          <a href="#contact" class="i18n btn ghost round" lang="pt"><span class="ico" aria-hidden="true">✉</span>VAMOS CONVERSAR</a>
+          <a href="#contact" class="i18n btn ghost round" lang="en"><span class="ico" aria-hidden="true">✉</span>LET'S TALK</a>
+        </div>
+      </div>
+
+      <div class="hero-cards">
+        <div class="hero-card hero-anim" style="--d:420ms">
+          <span class="i18n hero-card-role" lang="pt">Pesquisador de Graduação</span>
+          <span class="i18n hero-card-role" lang="en">Undergraduate Researcher</span>
+          <span class="hero-card-where">Núcleo Integrado de Previsão · UFPel</span>
+          <span class="i18n hero-card-note" lang="pt">Software científico, recursos hídricos e IA aplicada.</span>
+          <span class="i18n hero-card-note" lang="en">Scientific software, water resources and applied AI.</span>
+        </div>
+        <div class="hero-card is-acid hero-anim" style="--d:500ms">
+          <span class="i18n hero-card-role" lang="pt">Diretor de Projetos</span>
+          <span class="i18n hero-card-role" lang="en">Director of Projects</span>
+          <span class="hero-card-where">Hut 8 · UFPel</span>
+          <span class="i18n hero-card-note" lang="pt">Conduzindo projetos de clientes do discovery à entrega.</span>
+          <span class="i18n hero-card-note" lang="en">Leading client projects from discovery to delivery.</span>
+        </div>
+        <div class="hero-card hero-anim" style="--d:580ms">
+          <span class="i18n hero-card-role" lang="pt">Graduando em Ciência da Computação</span>
+          <span class="i18n hero-card-role" lang="en">Computer Science Undergraduate</span>
+          <span class="i18n hero-card-where" lang="pt">Universidade Federal de Pelotas</span>
+          <span class="i18n hero-card-where" lang="en">Federal University of Pelotas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- RAIL EDITORIAL -->
+<section class="rail-section" data-reveal>
+  <div class="container rail-head">
+    <div class="rail-btn-wrap">
+      <span class="i18n meta-label" lang="pt">Contextos ativos e entregas reais</span><span class="i18n meta-label" lang="en">Active contexts &amp; real deliverables</span>
+      <button class="i18n rail-pause" aria-pressed="false" aria-label="Toggle marquee pause" class="rail-pause-btn" lang="pt">PAUSAR</button>
+<button class="i18n rail-pause" aria-pressed="false" aria-label="Toggle marquee pause" class="rail-pause-btn" lang="en">PAUSE</button>
+    </div>
+    <span class="i18n meta-label" lang="pt">Rolagem / trilho contínuo →</span>
+<span class="i18n meta-label" lang="en">Scroll / continuous track →</span>
+  </div>
+  <div class="container">
+    <div class="rail-viewport">
+      <div class="rail-track">
+        
+        <a href="#idf" class="rail-item charcoal">
+          <span class="rail-num">01</span>
+          <span class="rail-title">IDF-BR <span class="i18n rail-badge" lang="pt">Plataforma Científica</span>
+<span class="i18n rail-badge" lang="en">Scientific Platform</span></span>
+          <span class="i18n rail-sub" lang="pt">Hidrologia e motor web aberto · idf-br.com.br</span><span class="i18n rail-sub" lang="en">Hydrology &amp; open web engine · idf-br.com.br</span>
+        </a>
+        <a href="#hut8" class="rail-item acid">
+          <span class="rail-num">02</span>
+          <span class="rail-title">HUT 8 JR. <span class="i18n rail-badge" lang="pt">Liderança</span>
+<span class="i18n rail-badge" lang="en">Leadership</span></span>
+          <span class="i18n rail-sub" lang="pt">Diretor de Projetos · operação de squads</span>
+<span class="i18n rail-sub" lang="en">Director of Projects · squad operations</span>
+        </a>
+        <div class="rail-item oxblood">
+          <span class="rail-num">03</span>
+          <span class="rail-title">QUANTUM ML <span class="i18n rail-badge" lang="pt">Pesquisa</span>
+<span class="i18n rail-badge" lang="en">Research</span></span>
+          <span class="i18n rail-sub" lang="pt">Kernels clássicos vs. quânticos · pesquisa experimental</span>
+<span class="i18n rail-sub" lang="en">Classical vs. quantum kernels · experimental research</span>
+        </div>
+        <div class="rail-item wine">
+          <span class="rail-num">04</span>
+          <span class="rail-title">NIP · UFPEL <span class="i18n rail-badge" lang="pt">Laboratório de Pesquisa</span>
+<span class="i18n rail-badge" lang="en">Research Lab</span></span>
+          <span class="i18n rail-sub" lang="pt">Núcleo Integrado de Previsão · IA aplicada</span>
+<span class="i18n rail-sub" lang="en">Núcleo Integrado de Previsão · applied AI</span>
+        </div>
+        <div class="rail-item">
+          <span class="rail-num">05</span>
+          <span class="rail-title">DVO PELOTAS <span class="i18n rail-badge" lang="pt">Produção</span>
+<span class="i18n rail-badge" lang="en">Production</span></span>
+          <span class="i18n rail-sub" lang="pt">Escopo com cliente · QA e deploy</span><span class="i18n rail-sub" lang="en">Client scoping · QA &amp; deployment</span>
+        </div>
+        <div class="rail-item">
+          <span class="rail-num">06</span>
+          <span class="rail-title">CIERE DA ROSA <span class="i18n rail-badge" lang="pt">Produção</span>
+<span class="i18n rail-badge" lang="en">Production</span></span>
+          <span class="i18n rail-sub" lang="pt">Discovery · alinhamento design–dev</span>
+<span class="i18n rail-sub" lang="en">Discovery · design–dev alignment</span>
+        </div>
+        <div class="rail-item paper">
+          <span class="rail-num">07</span>
+          <span class="rail-title">UFPEL <span class="i18n rail-badge" lang="pt">Bacharelado em CC</span>
+<span class="i18n rail-badge" lang="en">B.S. CS</span></span>
+          <span class="i18n rail-sub" lang="pt">Universidade Federal de Pelotas</span>
+<span class="i18n rail-sub" lang="en">Federal University of Pelotas</span>
+        </div>
+
+        <!-- duplicate for continuous loop -->
+        <a href="#idf" class="rail-item charcoal" aria-hidden="true" tabindex="-1">
+          <span class="rail-num">01</span>
+          <span class="rail-title">IDF-BR <span class="i18n rail-badge" lang="pt">Plataforma Científica</span>
+<span class="i18n rail-badge" lang="en">Scientific Platform</span></span>
+          <span class="i18n rail-sub" lang="pt">Hidrologia e motor web aberto · idf-br.com.br</span><span class="i18n rail-sub" lang="en">Hydrology &amp; open web engine · idf-br.com.br</span>
+        </a>
+        <a href="#hut8" class="rail-item acid" aria-hidden="true" tabindex="-1">
+          <span class="rail-num">02</span>
+          <span class="rail-title">HUT 8 JR. <span class="i18n rail-badge" lang="pt">Liderança</span>
+<span class="i18n rail-badge" lang="en">Leadership</span></span>
+          <span class="i18n rail-sub" lang="pt">Diretor de Projetos · operação de squads</span>
+<span class="i18n rail-sub" lang="en">Director of Projects · squad operations</span>
+        </a>
+        <div class="rail-item oxblood" aria-hidden="true">
+          <span class="rail-num">03</span>
+          <span class="rail-title">QUANTUM ML <span class="i18n rail-badge" lang="pt">Pesquisa</span>
+<span class="i18n rail-badge" lang="en">Research</span></span>
+          <span class="i18n rail-sub" lang="pt">Kernels clássicos vs. quânticos · pesquisa experimental</span>
+<span class="i18n rail-sub" lang="en">Classical vs. quantum kernels · experimental research</span>
+        </div>
+        <div class="rail-item wine" aria-hidden="true">
+          <span class="rail-num">04</span>
+          <span class="rail-title">NIP · UFPEL <span class="i18n rail-badge" lang="pt">Laboratório de Pesquisa</span>
+<span class="i18n rail-badge" lang="en">Research Lab</span></span>
+          <span class="i18n rail-sub" lang="pt">Núcleo Integrado de Previsão · IA aplicada</span>
+<span class="i18n rail-sub" lang="en">Núcleo Integrado de Previsão · applied AI</span>
+        </div>
+        <div class="rail-item" aria-hidden="true">
+          <span class="rail-num">05</span>
+          <span class="rail-title">DVO PELOTAS <span class="i18n rail-badge" lang="pt">Produção</span>
+<span class="i18n rail-badge" lang="en">Production</span></span>
+          <span class="i18n rail-sub" lang="pt">Escopo com cliente · QA e deploy</span><span class="i18n rail-sub" lang="en">Client scoping · QA &amp; deployment</span>
+        </div>
+        <div class="rail-item" aria-hidden="true">
+          <span class="rail-num">06</span>
+          <span class="rail-title">CIERE DA ROSA <span class="i18n rail-badge" lang="pt">Produção</span>
+<span class="i18n rail-badge" lang="en">Production</span></span>
+          <span class="i18n rail-sub" lang="pt">Discovery · alinhamento design–dev</span>
+<span class="i18n rail-sub" lang="en">Discovery · design–dev alignment</span>
+        </div>
+        <div class="rail-item paper" aria-hidden="true">
+          <span class="rail-num">07</span>
+          <span class="rail-title">UFPEL <span class="i18n rail-badge" lang="pt">Bacharelado em CC</span>
+<span class="i18n rail-badge" lang="en">B.S. CS</span></span>
+          <span class="i18n rail-sub" lang="pt">Universidade Federal de Pelotas</span>
+<span class="i18n rail-sub" lang="en">Federal University of Pelotas</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK INTRO -->
+<section class="work-intro" id="work" data-reveal>
+  <div class="container">
+      <span class="i18n meta-label" lang="pt">TRABALHOS SELECIONADOS</span>
+<span class="i18n meta-label" lang="en">SELECTED WORK</span>
+  </div>
+</section>
+
+<!-- LAJE 01 — IDF-BR -->
+<section class="slab slab-dark" id="idf">
+  <div class="container">
+    <span class="i18n meta-label acid" lang="pt">01 / Principal</span>
+<span class="i18n meta-label acid" lang="en">01 / Flagship</span><a class="live-link" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br ↗</a>
+    <h2 class="i18n slab-headline" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
+<h2 class="i18n slab-headline" lang="en">Turning nationwide hydrological research into a usable digital tool.</h2>
+
+    <ol class="idf-flow" data-reveal>
+      <li class="i18n" lang="pt">PESQUISA CIENTÍFICA</li>
+<li class="i18n" lang="en">SCIENTIFIC RESEARCH</li>
+      <li class="i18n" lang="pt">DADOS BRUTOS</li>
+<li class="i18n" lang="en">RAW DATA</li>
+      <li class="i18n" lang="pt">DADOS ESTRUTURADOS</li>
+<li class="i18n" lang="en">STRUCTURED DATA</li>
+      <li>SOFTWARE</li>
+      <li class="i18n" lang="pt">PRODUTO UTILIZÁVEL</li>
+<li class="i18n" lang="en">USABLE PRODUCT</li>
+    </ol>
+
+    <div class="data-grid" data-reveal>
+      <div class="data-card">
+        <div class="data-card-head">
+          <span class="i18n meta-label on-dark" lang="pt">Motor de consulta geoespacial</span>
+<span class="i18n meta-label on-dark" lang="en">Geospatial query engine</span>
+          <div>
+            <span class="i18n pill on-dark" lang="pt">Mapa vetorial</span>
+<span class="i18n pill on-dark" lang="en">Vector map</span>
+            <span class="i18n pill on-dark" style="color:var(--paper); border-color:rgba(247,245,239,.4)" lang="pt">ESQUEMÁTICO</span>
+<span class="i18n pill on-dark" style="color:var(--paper); border-color:rgba(247,245,239,.4)" lang="en">SCHEMATIC</span>
+          </div>
+        </div>
+        <svg viewBox="0 0 320 220" aria-label="Mapa do Brasil esquemático">
+          <defs>
+            <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1" fill="#3A3B3C"/>
+            </pattern>
+          </defs>
+          <rect width="320" height="220" fill="url(#dots)" opacity="0.55"/>
+          <path d="M 80,35 Q 150,15 220,40 Q 275,70 260,115 Q 235,160 185,185 Q 145,210 120,195 Q 100,165 75,130 Q 55,90 80,35 Z" fill="#2E3032" stroke="#A9ACB0" stroke-width="1.4"/>
+          <circle cx="175" cy="155" r="3" fill="#8A8E93"/>
+          <circle cx="190" cy="140" r="3.5" fill="#8A8E93"/>
+          <circle cx="210" cy="115" r="3" fill="#8A8E93"/>
+          <circle cx="230" cy="80" r="3" fill="#8A8E93"/>
+          <circle cx="140" cy="95" r="3" fill="#C9CCCF"/>
+          <circle cx="110" cy="65" r="3" fill="#C9CCCF"/>
+          <circle cx="145" cy="180" r="3" fill="#8A8E93"/>
+          <circle cx="160" cy="170" r="4" fill="#E6F835" stroke="#0B0B0B" stroke-width="1"/>
+          <g transform="translate(155, 168)">
+            <line x1="0" y1="0" x2="35" y2="-20" stroke="#8A8E93" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="35" y="-32" width="108" height="24" fill="#F7F5EF" rx="2"/>
+            <text x="43" y="-16" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#111213" font-weight="600" class="i18n" lang="pt">ESTAÇÃO SELECIONADA</text>
+<text x="43" y="-16" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#111213" font-weight="600" class="i18n" lang="en">SELECTED STATION</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="data-card">
+        <div class="data-card-head">
+          <span class="i18n meta-label on-dark" lang="pt">MÉTODO</span>
+<span class="i18n meta-label on-dark" lang="en">METHOD</span>
+          <div>
+            <span class="pill on-dark">Gumbel</span>
+            <span class="i18n pill on-dark" style="color:var(--paper); border-color:rgba(247,245,239,.4)" lang="pt">ESQUEMÁTICO</span>
+<span class="i18n pill on-dark" style="color:var(--paper); border-color:rgba(247,245,239,.4)" lang="en">SCHEMATIC</span>
+          </div>
+        </div>
+        <svg viewBox="0 0 300 145" aria-label="Curvas esquemáticas por período de retorno">
+          <line x1="30" y1="120" x2="275" y2="120" stroke="#6E7174" stroke-width="1.2"/>
+          <line x1="30" y1="10" x2="30" y2="120" stroke="#6E7174" stroke-width="1.2"/>
+          <line x1="30" y1="85" x2="270" y2="85" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
+          <line x1="30" y1="50" x2="270" y2="50" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
+          <line x1="30" y1="15" x2="270" y2="15" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
+          <path d="M 35,22 Q 80,65 150,88 T 265,102" fill="none" stroke="#F7F5EF" stroke-width="2.5"/>
+          <path d="M 35,42 Q 80,80 150,97 T 265,108" fill="none" stroke="#9A9DA1" stroke-width="1.5"/>
+          <path d="M 35,65 Q 80,95 150,105 T 265,114" fill="none" stroke="#616467" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <circle cx="80" cy="65" r="4.5" fill="#E6F835" stroke="#111213" stroke-width="1"/>
+          <text x="216" y="24" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#F7F5EF" font-weight="600">T = 100 yr</text>
+          <text x="216" y="48" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#9A9DA1">T = 50 yr</text>
+          <text x="216" y="70" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#616467">T = 10 yr</text>
+          <text x="12" y="70" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#9A9DA1" transform="rotate(-90 12,70)">i (mm/h)</text>
+          <text x="120" y="138" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#9A9DA1" class="i18n" lang="pt">Duração (min)</text>
+<text x="120" y="138" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#9A9DA1" class="i18n" lang="en">Duration (min)</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="data-grid data-grid-wide" data-reveal>
+       <figure class="ph ph-idf-main">
+         <span class="ph-chip">[ IDF-BR REAL INTERFACE ]</span>
+         <span class="i18n ph-note" lang="pt">Proporção 16:9, interface desktop da aplicação</span>
+<span class="i18n ph-note" lang="en">16:9 aspect ratio, application desktop UI</span>
+       </figure>
+       <figure class="ph ph-idf-det">
+         <span class="ph-chip">[ IDF-BR DETAIL SCREENSHOT ]</span>
+         <span class="i18n ph-note" lang="pt">Proporção 16:10, detalhe ampliado da interface</span>
+<span class="i18n ph-note" lang="en">16:10 aspect ratio, zoomed UI element</span>
+       </figure>
+    </div>
+
+    <div class="metrics" data-reveal>
+      <div class="metric">
+        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
+<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
+        <span class="i18n metric-label" lang="pt">Estações e equações processadas</span><span class="i18n metric-label" lang="en">Gauges &amp; equations processed</span>
+      </div>
+      <div class="metric">
+        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
+<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
+        <span class="i18n metric-label" lang="pt">Resposta de cálculo instantânea</span>
+<span class="i18n metric-label" lang="en">Instant calculation response</span>
+      </div>
+      <div class="metric">
+        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
+<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
+        <span class="i18n metric-label" lang="pt">Unidades federativas cobertas</span>
+<span class="i18n metric-label" lang="en">Federative units covered</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DVO -->
+<section class="section-dvo" id="dvo">
+  <div class="container">
+    <span class="i18n meta-label" lang="pt">02 / Produção</span>
+<span class="i18n meta-label" lang="en">02 / Production</span><a class="live-link" href="https://dvopelotas.com.br/" target="_blank" rel="noopener noreferrer">dvopelotas.com.br ↗</a>
+    <h2 class="i18n slab-headline" style="max-width:24ch" lang="pt">Levando um projeto de cliente dos requisitos à produção.</h2>
+<h2 class="i18n slab-headline" style="max-width:24ch" lang="en">Taking a client project from requirements to production.</h2>
+    <p class="i18n dvo-disclaimer" data-reveal lang="pt">O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.</p>
+<p class="i18n dvo-disclaimer" data-reveal lang="en">The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.</p>
+    
+    <div class="flow-dvo-wrap" data-reveal>
+      <ol class="flow-dvo">
+        <li class="i18n" lang="pt">CLIENTE</li>
+<li class="i18n" lang="en">CLIENT</li><li class="i18n" lang="pt">REQUISITOS</li>
+<li class="i18n" lang="en">REQUIREMENTS</li><li class="i18n" lang="pt">ESCOPO</li>
+<li class="i18n" lang="en">SCOPE</li><li class="i18n" lang="pt">PRECIFICAÇÃO</li>
+<li class="i18n" lang="en">PRICING</li>
+        <li>SQUAD</li><li>QA</li><li class="i18n" lang="pt">INFRAESTRUTURA</li>
+<li class="i18n" lang="en">INFRASTRUCTURE</li><li class="i18n" lang="pt">PRODUÇÃO</li>
+<li class="i18n" lang="en">PRODUCTION</li>
+      </ol>
+    </div>
+
+    <div class="dvo-grid" data-reveal>
+      <figure class="ph ph-dvo">
+        <span class="ph-chip">[ DVO PRODUCT SCREENSHOT ]</span>
+        <span class="i18n ph-note" lang="pt">Proporção 16:10, interface da aplicação</span>
+        <span class="i18n ph-note" lang="en">16:10 aspect ratio, application UI</span>
+      </figure>
+
+      <div class="spec">
+        <span class="i18n spec-head" lang="pt">Coordenação e configuração</span>
+        <span class="i18n spec-head" lang="en">Coordination &amp; configuration</span>
+        <ol class="spec-list">
+          <li>
+            <span class="spec-n">01</span>
+            <span class="spec-term i18n" lang="pt">BANCO DE DADOS</span><span class="spec-term i18n" lang="en">DATABASE</span>
+            <span class="spec-act i18n" lang="pt">configuração</span><span class="spec-act i18n" lang="en">setup</span>
+          </li>
+          <li>
+            <span class="spec-n">02</span>
+            <span class="spec-term i18n" lang="pt">BUCKET</span><span class="spec-term i18n" lang="en">BUCKET</span>
+            <span class="spec-act i18n" lang="pt">armazenamento</span><span class="spec-act i18n" lang="en">storage</span>
+          </li>
+          <li>
+            <span class="spec-n">03</span>
+            <span class="spec-term i18n" lang="pt">API</span><span class="spec-term i18n" lang="en">API</span>
+            <span class="spec-act i18n" lang="pt">deploy</span><span class="spec-act i18n" lang="en">deployment</span>
+          </li>
+          <li>
+            <span class="spec-n">04</span>
+            <span class="spec-term i18n" lang="pt">FRONTEND</span><span class="spec-term i18n" lang="en">FRONTEND</span>
+            <span class="spec-act i18n" lang="pt">deploy</span><span class="spec-act i18n" lang="en">deployment</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERE -->
+<section class="section-ciere" id="ciere">
+  <div class="container">
+    <span class="meta-label">03 / Discovery</span><a class="live-link" href="https://advocaciacieredarosa.com.br/" target="_blank" rel="noopener noreferrer">advocaciacieredarosa.com.br ↗</a>
+    <h2 class="i18n slab-headline" style="max-width:26ch" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
+<h2 class="i18n slab-headline" style="max-width:26ch" lang="en">Connecting client needs, design decisions and development.</h2>
+
+    <div class="ciere-flow-wrap" data-reveal>
+      <ul class="desk-only" aria-hidden="true">
+        <li>CLIENT ↕ AUGUSTO ↙↘ DESIGN / DEV</li>
+      </ul>
+      <ol class="mob-only">
+        <li class="i18n" lang="pt">CLIENTE</li>
+<li class="i18n" lang="en">CLIENT</li><li>AUGUSTO</li><li>DESIGN</li><li>DEV</li>
+      </ol>
+    </div>
+    
+    <div class="ciere-responsibilities" data-reveal>
+       <span class="i18n pill" lang="pt">Requisitos</span>
+<span class="i18n pill" lang="en">Requirements</span> <span class="i18n pill" lang="pt">Escopo</span>
+<span class="i18n pill" lang="en">Scoping</span> <span class="i18n pill" lang="pt">Comunicação com cliente</span>
+<span class="i18n pill" lang="en">Client Comms</span> <span class="i18n pill" lang="pt">Ponte com design</span>
+<span class="i18n pill" lang="en">Design Bridge</span> <span class="i18n pill" lang="pt">QA e deploy</span><span class="i18n pill" lang="en">QA &amp; Deploy</span> <span class="i18n pill" lang="pt">SEO e GEO</span><span class="i18n pill" lang="en">SEO &amp; GEO</span>
+    </div>
+
+    <div class="ciere-visibility" data-reveal>
+      <span class="i18n meta-label" lang="pt">Visibilidade · SEO e GEO</span>
+      <span class="i18n meta-label" lang="en">Visibility · SEO &amp; GEO</span>
+      <p class="i18n" lang="pt">Para um escritório de advocacia, ser encontrado é parte do produto. Além do SEO clássico, o projeto exigiu atenção a GEO: como o escritório é descrito, citado e recuperado por modelos de linguagem, e não só por buscadores. Isso mudou decisões de estrutura de conteúdo, nomenclatura das páginas e dados estruturados.</p>
+      <p class="i18n" lang="en">For a law firm, being found is part of the product. Beyond classic SEO, the project required attention to GEO: how the firm is described, cited and retrieved by language models, not only by search engines. That shaped decisions about content structure, page naming and structured data.</p>
+    </div>
+
+    <div class="ciere-grid" data-reveal>
+       <figure class="ph ph-ciere">
+         <span class="ph-chip">[ CIERE WEBSITE DESKTOP ]</span>
+         <span class="i18n ph-note" lang="pt">Proporção 16:10, cores reais do projeto</span>
+<span class="i18n ph-note" lang="en">16:10 aspect ratio, actual project colors</span>
+       </figure>
+       <figure class="ph ph-ciere-m">
+         <span class="ph-chip">[ CIERE MOBILE DETAIL ]</span>
+         <span class="i18n ph-note" lang="pt">Proporção 9:16, cores reais do projeto</span>
+<span class="i18n ph-note" lang="en">9:16 aspect ratio, actual project colors</span>
+       </figure>
+    </div>
+  </div>
+</section>
+
+<!-- QUANTUM ML -->
+<section class="slab slab-stone" id="quantum">
+<div class="container">
+  <span class="i18n meta-label acid" lang="pt">04 / Pesquisa</span>
+<span class="i18n meta-label acid" lang="en">04 / Research</span>
+  <h2 class="i18n slab-headline" lang="pt">Testando quando machine learning quântico realmente faz diferença.</h2>
+<h2 class="i18n slab-headline" lang="en">Testing when quantum machine learning actually makes a difference.</h2>
+
+  <div class="qml-quote" data-reveal>
+    <div class="qml-quote-bar"></div>
+    <span class="i18n qml-quote-label" lang="pt">PERGUNTA</span>
+<span class="i18n qml-quote-label" lang="en">QUESTION</span>
+    <p class="i18n" lang="pt">O QML tem desempenho melhor simplesmente por usar representações quânticas, ou o desempenho depende do alinhamento entre dados, feature maps e kernels?</p>
+<p class="i18n" lang="en">Does QML perform better simply because it uses quantum representations, or does performance depend on the alignment between data, feature maps and kernels?</p>
+  </div>
+
+  <div class="qml-cols" data-reveal>
+     <div>
+       <h3 class="qml-col-title"><span class="i18n" lang="pt">DADOS REAIS</span><span class="i18n" lang="en">REAL DATA</span><br>Breast Cancer Wisconsin</h3>
+       <p class="i18n qml-col-body" lang="pt">O SVM clássico e a configuração quântica alcançaram resultados comparáveis na representação controlada. Sem vantagem quântica clara.</p>
+<p class="i18n qml-col-body" lang="en">Classical SVM and the quantum configuration achieved comparable results in the controlled representation. No clear quantum advantage.</p>
+     </div>
+     <div>
+       <h3 class="qml-col-title"><span class="i18n" lang="pt">DADOS SINTÉTICOS</span><span class="i18n" lang="en">SYNTHETIC DATA</span><br>Qiskit ad_hoc_data</h3>
+       <p class="i18n qml-col-body" lang="pt">O modelo quântico teve desempenho excelente, mas o conjunto de dados foi desenhado em torno de uma representação quântica compatível.</p>
+<p class="i18n qml-col-body" lang="en">The quantum model performed extremely well, but the dataset was designed around a compatible quantum representation.</p>
+     </div>
+  </div>
+
+  <p class="i18n qml-conclusion" data-reveal lang="pt">DADOS + REPRESENTAÇÃO + FEATURE MAP + KERNEL = RESULTADO</p>
+<p class="i18n qml-conclusion" data-reveal lang="en">DATA + REPRESENTATION + FEATURE MAP + KERNEL = OUTCOME</p>
+  
+  <figure class="ph ph-qml" data-reveal>
+     <span class="ph-chip">[ QUANTUM EXPERIMENT VISUAL ]</span>
+     <span class="i18n ph-note" lang="pt">Proporção 16:9, esquema ou visualização de dados</span>
+<span class="i18n ph-note" lang="en">16:9 aspect ratio, schematic or data visualization</span>
+  </figure>
+</div>
+</section>
+
+<!-- NIP -->
+<section class="section-nip" id="nip"><span id="experience" aria-hidden="true"></span>
+  <div class="container">
+    <span class="i18n meta-label" lang="pt">05 / Laboratório de Pesquisa</span>
+<span class="i18n meta-label" lang="en">05 / Research Lab</span>
+    <h2 class="i18n slab-headline" style="max-width:24ch" lang="pt">De software científico à pesquisa em IA aplicada.</h2>
+<h2 class="i18n slab-headline" style="max-width:24ch" lang="en">From scientific software to applied AI research.</h2>
+    
+    <div class="nip-grid">
+       <div data-reveal>
+          <ol class="flow-nip">
+             <li class="i18n" lang="pt">SOFTWARE CIENTÍFICO</li>
+<li class="i18n" lang="en">SCIENTIFIC SOFTWARE</li><li>IDF-BR</li><li class="i18n" lang="pt">IA APLICADA A RECURSOS HÍDRICOS</li>
+<li class="i18n" lang="en">AI APPLIED TO WATER RESOURCES</li><li class="i18n" lang="pt">EXPERIMENTAÇÃO</li>
+<li class="i18n" lang="en">EXPERIMENTATION</li><li class="i18n" lang="pt">PESQUISA</li>
+<li class="i18n" lang="en">RESEARCH</li><li class="i18n" lang="pt">ESCRITA ACADÊMICA</li>
+<li class="i18n" lang="en">ACADEMIC WRITING</li><li class="i18n" lang="pt">FERRAMENTAS PÚBLICAS NO FUTURO</li>
+<li class="i18n" lang="en">FUTURE PUBLIC-FACING TOOLS</li>
+          </ol>
+          <p class="i18n nip-body" lang="pt">Comecei como pesquisador de graduação, e minha primeira grande entrega foi o software IDF-BR. Depois de uma formação sobre IA aplicada a recursos hídricos, em janeiro de 2026, meu foco passou a se aproximar de machine learning, experimentação e escrita acadêmica. O objetivo de longo prazo é transformar pesquisa complexa em ferramentas acessíveis fora da universidade.</p>
+<p class="i18n nip-body" lang="en">Starting as an undergraduate research fellow, my first major delivery was the IDF-BR software. Following a specialized training on AI for water resources in January 2026, my focus shifted toward machine learning, experimentation, and academic writing. The long-term goal is to turn complex research into accessible tools outside the university.</p>
+       </div>
+       <div class="nip-photos" data-reveal>
+          <figure class="ph ph-nip-1">
+             <span class="ph-chip">[ NIP RESEARCH / TEAM PHOTO ]</span>
+             <span class="i18n ph-note" lang="pt">Proporção 4:3, equipe ou ambiente de pesquisa</span>
+<span class="i18n ph-note" lang="en">4:3 aspect ratio, team or research environment</span>
+          </figure>
+          <figure class="ph ph-nip-2">
+             <span class="ph-chip">[ NIP FIELD / EVENT PHOTO ]</span>
+             <span class="i18n ph-note" lang="pt">Proporção 1:1, trabalho de campo ou evento</span>
+<span class="i18n ph-note" lang="en">1:1 aspect ratio, field work or event</span>
+          </figure>
+       </div>
+    </div>
+  </div>
+</section>
+
+<!-- HUT 8 -->
+<section class="slab slab-hut8" id="hut8" data-reveal>
+<div class="container">
+  <span class="i18n h8-tag" lang="pt">Diretoria de Projetos</span>
+<span class="i18n h8-tag" lang="en">Project Management Board</span>
+  <h2 class="i18n slab-headline" lang="pt">Aprendendo a fazer projetos acontecerem por pessoas, não só por código.</h2>
+<h2 class="i18n slab-headline" lang="en">Learning to make projects happen through people, not just code.</h2>
+
+  <div class="h8-photos">
+    <figure class="h8-shot main">
+      <div class="ph ph-h8-1">
+        <span class="ph-chip">[ HUT 8 TEAM PHOTO ]</span>
+        <span class="i18n ph-note" lang="pt">Proporção 16:9, alinhamento de equipe ou momento de entrega</span>
+<span class="i18n ph-note" lang="en">16:9 aspect ratio, wide team alignment or delivery moment</span>
+      </div>
+    </figure>
+    <figure class="h8-shot overlap">
+      <div class="ph ph-h8-2">
+        <span class="ph-chip">[ HUT 8 EVENT PHOTO ]</span>
+        <span class="i18n ph-note" lang="pt">Proporção 4:3, evento ou workshop</span>
+<span class="i18n ph-note" lang="en">4:3 aspect ratio, event or workshop context</span>
+      </div>
+    </figure>
+
+    <div class="h8-figcap">
+      <span class="i18n" lang="pt">Figura 01 e 02 — equipe e comunidade</span>
+      <span class="i18n" lang="en">Figure 01 &amp; 02 — team &amp; community</span>
+      <span>Hut 8 Jr. · UFPel</span>
+    </div>
+  </div>
+
+  <div class="h8-text" data-reveal>
+    <div>
+      <div class="h8-quote-wrap">
+        <span class="i18n h8-quote-label" lang="pt">RESPONSABILIDADE</span>
+<span class="i18n h8-quote-label" lang="en">RESPONSIBILITY</span>
+        <p class="i18n h8-quote" lang="pt">Assumir responsabilidade antes de me sentir pronto, para garantir a continuidade da organização.</p>
+<p class="i18n h8-quote" lang="en">Taking ownership before feeling ready, to ensure the organization's continuity.</p>
+      </div>
+    </div>
+    <div>
+      <p class="i18n h8-body" lang="pt">Entrei buscando experiência prática, em um período de baixa atividade da empresa júnior. Quando a continuidade ficou ameaçada, assumi a liderança. Tive de aprender a lidar com clientes, definir requisitos, precificar escopos, formar squads, coordenar design e desenvolvimento, conduzir QA, provisionar infraestrutura e, por fim, entregar.</p>
+<p class="i18n h8-body" lang="en">I joined seeking practical experience during a period of low activity at the junior enterprise. When continuity was threatened, I stepped up into leadership. I had to learn how to handle clients, define requirements, price scopes, build squads, coordinate design and development, manage QA, provision infrastructure, and finally deliver.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- RESEARCH -->
+<section class="section-research" id="research">
+  <div class="container">
+    <span class="i18n meta-label" lang="pt">Pesquisa e Exploração</span><span class="i18n meta-label" lang="en">Research &amp; Exploration</span>
+    <h2 class="i18n slab-headline" style="max-width:none" lang="pt">O que quero entender a seguir.</h2>
+<h2 class="i18n slab-headline" style="max-width:none" lang="en">What I'm trying to understand next.</h2>
+    <p class="i18n research-lede" lang="pt">Alguns projetos começam com um produto a construir. Outros começam com uma pergunta que vale investigar.</p>
+<p class="i18n research-lede" lang="en">Some projects start with a product to build. Others start with a question worth investigating.</p>
+
+    <div class="research-grid" data-reveal>
+      <article class="research-card">
+        <span class="i18n pill" lang="pt">IA APLICADA E RECURSOS HÍDRICOS</span><span class="i18n pill" lang="en">APPLIED AI &amp; WATER RESOURCES</span>
+        <p class="i18n" lang="pt">Explorando como machine learning pode apoiar a pesquisa em hidrologia e recursos hídricos, através do meu trabalho no NIP.</p>
+<p class="i18n" lang="en">Exploring how machine learning can support research in hydrology and water resources through my work at NIP.</p>
+      </article>
+      <article class="research-card">
+        <span class="pill">MACHINE LEARNING</span>
+        <p class="i18n" lang="pt">Interessado não só no desempenho do modelo, mas em dados, representação, avaliação e em entender por que uma abordagem funciona.</p>
+<p class="i18n" lang="en">Interested not only in model performance, but in data, representation, evaluation and understanding why an approach works.</p>
+      </article>
+      <article class="research-card">
+        <span class="i18n pill" lang="pt">COMPUTAÇÃO EMERGENTE / EXPERIMENTAL</span>
+<span class="i18n pill" lang="en">EMERGING / EXPERIMENTAL COMPUTING</span>
+        <p class="i18n" lang="pt">Usando experimentos acadêmicos e pessoais para entender onde novas abordagens computacionais realmente fazem sentido.</p>
+<p class="i18n" lang="en">Using academic and personal experiments to understand where new computational approaches actually make sense.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="slab slab-stone" id="about">
+<div class="container">
+  <span class="i18n meta-label" lang="pt">Sobre</span>
+<span class="i18n meta-label" lang="en">About</span>
+  <h2 class="i18n slab-headline" style="max-width:32ch" lang="pt">Me interessa o que acontece entre "temos um problema" e "isso realmente funciona".</h2>
+<h2 class="i18n slab-headline" style="max-width:32ch" lang="en">I'm interested in what happens between "we have a problem" and "this actually works."</h2>
+  
+  <div class="about-grid" data-reveal>
+    <div class="about-copy">
+      <p class="i18n" lang="pt">Sou estudante de Ciência da Computação na UFPel, e a maior parte do que moldou meu jeito de trabalhar aconteceu quando a tecnologia precisou encontrar um problema real.</p>
+<p class="i18n" lang="en">I'm a Computer Science student at UFPel, and most of what has shaped the way I work has happened when technology had to meet a real problem.</p>
+      <p class="i18n" lang="pt">No NIP, isso significa transformar pesquisa em software e estudar IA aplicada. Na Hut 8, significa transformar necessidades de clientes em projetos que times conseguem de fato entregar.</p>
+<p class="i18n" lang="en">At NIP, that means turning research into software and studying applied AI. At Hut 8, it means turning client needs into projects that teams can actually deliver.</p>
+      <p class="i18n" lang="pt">O contexto muda, mas a parte de que gosto continua a mesma: entender um problema pouco claro e, aos poucos, transformá-lo em algo útil.</p>
+<p class="i18n" lang="en">The context changes, but the part I enjoy remains the same: understanding an unclear problem and gradually turning it into something useful.</p>
+      <p class="i18n" lang="pt">Ainda estou no começo da carreira, e quero seguir aprofundando minha base técnica enquanto melhoro em tomar decisões, comunicar com clareza e ajudar pessoas a construir juntas.</p>
+<p class="i18n" lang="en">I'm still early in my career, and I want to keep deepening my technical foundation while becoming better at making decisions, communicating clearly and helping people build together.</p>
+    </div>
+    <figure class="ph ph-about">
+       <span class="ph-chip">[ AUGUSTO — ABOUT PHOTO ]</span>
+       <span class="i18n ph-note" lang="pt">Proporção 4:3, única foto do Augusto na página — contextual, ambiente real</span>
+<span class="i18n ph-note" lang="en">4:3 aspect ratio, unica foto do Augusto na pagina — contextual, ambiente real</span>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section-contact" id="contact">
+  <div class="container">
+    <div class="contact-panel" data-reveal>
+      <div>
+        <span class="i18n meta-label" lang="pt">06 / Contato</span>
+        <span class="i18n meta-label" lang="en">06 / Contact</span>
+        <h2 class="i18n slab-headline" lang="pt">Tem um problema que vale construir em volta?</h2>
+        <h2 class="i18n slab-headline" lang="en">Have a problem worth building around?</h2>
+        <p class="i18n footer-note" style="max-width:46ch" lang="pt">Estou aberto a conversas sobre software, IA aplicada, pesquisa, projetos de tecnologia e novas oportunidades.</p>
+        <p class="i18n footer-note" style="max-width:46ch" lang="en">I'm open to conversations about software, applied AI, research, technology projects and new opportunities.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="i18n btn round" lang="pt"><span class="ico" aria-hidden="true">✉</span>E-MAIL</a>
+        <a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="i18n btn round" lang="en"><span class="ico" aria-hidden="true">✉</span>EMAIL</a>
+        <a href="#" class="btn ghost round"><span class="ico" aria-hidden="true">↗</span>LINKEDIN</a><!-- URL a confirmar -->
+        <a href="#" class="btn ghost round"><span class="ico" aria-hidden="true">↗</span>GITHUB</a><!-- URL a confirmar -->
+        <a href="#" class="btn ghost round"><span class="ico" aria-hidden="true">↗</span>CV</a><!-- URL a confirmar -->
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-head">Augusto Menchaca</span>
+        <p class="i18n footer-note" lang="pt">Ciência da Computação · Pelotas, Brasil. Construindo software, pesquisando IA e aprendendo a liderar projetos melhores.</p>
+        <p class="i18n footer-note" lang="en">Computer Science · Pelotas, Brazil. Building software, researching AI and learning how to lead better projects.</p>
+      </div>
+      <div class="footer-col">
+        <h3 class="i18n" lang="pt">Navegação</h3><h3 class="i18n" lang="en">Navigation</h3>
+        <ul>
+          <li><a href="#work" class="i18n" lang="pt">Trabalhos</a><a href="#work" class="i18n" lang="en">Work</a></li>
+          <li><a href="#hut8" class="i18n" lang="pt">Experiência</a><a href="#hut8" class="i18n" lang="en">Experience</a></li>
+          <li><a href="#about" class="i18n" lang="pt">Sobre</a><a href="#about" class="i18n" lang="en">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="i18n" lang="pt">Contato</h3><h3 class="i18n" lang="en">Contact</h3>
+        <ul>
+          <li><a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="i18n" lang="pt">E-mail</a><a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="i18n" lang="en">Email</a></li>
+          <li><a href="#">LinkedIn</a></li><!-- URL a confirmar -->
+          <li><a href="#">GitHub</a></li><!-- URL a confirmar -->
+          <li><a href="#">CV</a></li><!-- URL a confirmar -->
+        </ul>
+      </div>
+      <a href="#" class="i18n footer-top" lang="pt"><span aria-hidden="true">↑</span>Topo</a>
+      <a href="#" class="i18n footer-top" lang="en"><span aria-hidden="true">↑</span>Top</a>
+    </div>
+
+    <div class="footer-wordmark" aria-hidden="true">AUGUSTO</div>
+
+    <div class="footer-legal">
+      <span class="meta-label">© 2026 Augusto Menchaca</span>
+      <span class="i18n meta-label" lang="pt">Feito em Pelotas, Brasil</span>
+      <span class="i18n meta-label" lang="en">Made in Pelotas, Brazil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const railTrack = document.querySelector('.rail-track');
+  const railBtns = document.querySelectorAll('.rail-pause-btn');
+  if (railTrack && railBtns.length) {
+    const LABEL = {
+      pt: { on: 'RETOMAR', off: 'PAUSAR' },
+      en: { on: 'PLAY',    off: 'PAUSE'  }
+    };
+    const sync = (isPaused) => {
+      railBtns.forEach((b) => {
+        const l = LABEL[b.getAttribute('lang')] || LABEL.en;
+        b.setAttribute('aria-pressed', String(isPaused));
+        b.textContent = isPaused ? l.on : l.off;
+      });
+    };
+    railBtns.forEach((b) => b.addEventListener('click', () => {
+      sync(railTrack.classList.toggle('is-paused'));
+    }));
+  }
+
+  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
+
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      el.classList.add('will-reveal');
+      observer.observe(el);
+    });
+  }
+});
+</script>
+
+<!--
+ASSETS NEEDED:
+2. [ IDF-BR REAL INTERFACE ]
+3. [ IDF-BR DETAIL SCREENSHOT ]
+4. [ DVO PRODUCT SCREENSHOT ]
+5. [ CIERE WEBSITE DESKTOP ]
+6. [ CIERE MOBILE DETAIL ]
+7. [ QUANTUM EXPERIMENT VISUAL ]
+8. [ NIP RESEARCH / TEAM PHOTO ]
+9. [ NIP FIELD / EVENT PHOTO ]
+10. [ HUT 8 TEAM PHOTO ]
+11. [ HUT 8 EVENT PHOTO ]
+12. [ AUGUSTO — ABOUT PHOTO ]
+-->
+
+<script>
+(function(){
+  try {
+    const saved = localStorage.getItem('agy-lang') || 'pt';
+    setLang(saved);
+  } catch(e) {
+    setLang('pt');
+  }
+
+  function setLang(lang) {
+    document.documentElement.dataset.lang = lang;
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+    
+    const titlePt = "Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia";
+    const titleEn = "Augusto Menchaca — Digital Products & Tech Projects";
+    document.title = lang === 'pt' ? titlePt : titleEn;
+
+    const btnPt = document.getElementById('lang-pt');
+    const btnEn = document.getElementById('lang-en');
+    if (btnPt && btnEn) {
+      btnPt.setAttribute('aria-pressed', lang === 'pt');
+      btnEn.setAttribute('aria-pressed', lang === 'en');
+    }
+
+    try {
+      localStorage.setItem('agy-lang', lang);
+    } catch(e){}
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnPt = document.getElementById('lang-pt');
+    const btnEn = document.getElementById('lang-en');
+    if (btnPt && btnEn) {
+      btnPt.addEventListener('click', () => setLang('pt'));
+      btnEn.addEventListener('click', () => setLang('en'));
+    }
+  });
+})();
+</script>
+</body>
+</html>
