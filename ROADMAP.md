@@ -19,12 +19,15 @@ interface e não some da sua vista por engano.
 **Se for fazer só uma coisa, faça a #7.** Ela sozinha destrava #6, #9, #10, #11,
 #12, #13, #14, #15, #18 e #20.
 
+> O painel na issue #29 e atualizado automaticamente pelo workflow `painel`
+> a cada evento de issue. Ele e a fonte viva; este arquivo explica o porque.
+
 ## O grafo
 
 ```mermaid
 graph LR
   subgraph O0["Onda 0 — destrava agora"]
-    I7["#7 arquitetura<br/>11 → 8 seções"]
+    I7["#7 arquitetura<br/>11 → 8 seções<br/>GARGALO: destrava 11"]
     I17["#17 pesquisa<br/>fechar amostra"]
     I1["#1 proteger main"]
     I16["#16 contato"]
