@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Por onde comecar
+    url: https://github.com/AugustoMenchaca/AugustoMenchaca.github.io/issues?q=is%3Aissue+is%3Aopen+label%3Apronto
+    about: As issues sem bloqueio, atualizadas automaticamente pelo workflow painel.
+  - name: Roadmap e dependencias
+    url: https://github.com/AugustoMenchaca/AugustoMenchaca.github.io/blob/develop/ROADMAP.md
+    about: As seis ondas, o grafo e o caminho critico.
+  - name: Padrao de trabalho
+    url: https://github.com/AugustoMenchaca/AugustoMenchaca.github.io/blob/develop/CONTRIBUTING.md
+    about: Branches, CI e definicao de pronto.

@@ -1,0 +1,60 @@
+name: Tarefa
+description: Qualquer outro trabalho — design, pesquisa, conteúdo, movimento, infra ou QA
+body:
+  - type: dropdown
+    id: tipo
+    attributes:
+      label: Tipo
+      options:
+        - design — sistema, tokens, DESIGN.md
+        - pesquisa — coleta e medição de referências
+        - conteudo — texto, dados, assets
+        - movimento — animação e estado de interação
+        - infra — branch, CI, CD
+        - qa — responsivo, acessibilidade, precisão
+        - i18n — bilíngue PT/EN
+    validations:
+      required: true
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qual é o problema
+      description: >
+        O problema, não a solução. Se você já sabe a solução, escreva o
+        problema mesmo assim — neste projeto a solução pedida já se provou
+        errada mais de uma vez, e foi a medição que mostrou.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: Evidência
+      description: >
+        Número medido, linha de arquivo, URL, ou saída do CI. Sem evidência,
+        vira palpite registrado como norma.
+      placeholder: |
+        Medido a 1440x900 em Chrome headless: ...
+        CI apontou nas linhas ...
+        Referência: https://... com valor computado de ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: aceite
+    attributes:
+      label: Critério de aceite
+      description: Como saber que acabou, de forma verificável.
+    validations:
+      required: true
+
+  - type: input
+    id: depende
+    attributes:
+      label: Depende de
+      description: >
+        Números das issues que precisam fechar antes. Depois de abrir, registre
+        a dependência de verdade em Relationships → Blocked by, para o painel
+        enxergar.
+      placeholder: "#7, #5"

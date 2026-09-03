@@ -1,0 +1,138 @@
+name: painel
+
+# Le o grafo de dependencias nativo do GitHub e responde a pergunta
+# "por onde eu comeco?" sem ninguem ter que abrir 26 issues na mao.
+#
+# Faz tres coisas:
+#   1. rotula cada issue aberta como `pronto` ou `bloqueado`
+#   2. reescreve o painel com o que da para comecar agora
+#   3. ordena as prontas por quantas issues cada uma destrava
+
+on:
+  issues:
+    types: [opened, closed, reopened, edited, labeled, unlabeled, milestoned, demilestoned]
+  schedule:
+    - cron: '0 9 * * 1'      # segunda de manha, para o caso de algo escapar
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: painel
+  cancel-in-progress: true
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      TITULO: 'Painel: por onde comecar'
+    steps:
+      - name: garantir que os rotulos existem
+        run: |
+          gh label create pronto    --repo "$REPO" --color 0E8A16 \
+            --description "Sem bloqueio: da para comecar agora" --force
+          gh label create bloqueado --repo "$REPO" --color 000000 \
+            --description "Espera outra issue fechar" --force
+
+      - name: classificar as issues e montar o painel
+        run: |
+          set -euo pipefail
+
+          # Issues abertas, ignorando o proprio painel.
+          gh issue list --repo "$REPO" --state open --limit 200 \
+            --json number,title,labels,milestone \
+            --jq '.[] | select(.title != env.TITULO) | [.number, .title, (.milestone.title // "sem onda")] | @tsv' \
+            > abertas.tsv || true
+
+          : > prontas.tsv
+          : > bloqueadas.tsv
+
+          while IFS=$'\t' read -r num titulo onda; do
+            [ -n "${num:-}" ] || continue
+
+            # Quais bloqueadores AINDA estao abertos.
+            abertos=$(gh api "repos/$REPO/issues/$num/dependencies/blocked_by" \
+                        --jq '[.[] | select(.state == "open") | .number] | join(" ")' 2>/dev/null || echo "")
+
+            if [ -z "$abertos" ]; then
+              # Quantas issues esta aqui destrava: o fan-out.
+              printf '%s\t%s\t%s\n' "$num" "$titulo" "$onda" >> prontas.tsv
+              gh issue edit "$num" --repo "$REPO" --add-label pronto --remove-label bloqueado >/dev/null 2>&1 || true
+            else
+              printf '%s\t%s\t%s\t%s\n' "$num" "$titulo" "$onda" "$abertos" >> bloqueadas.tsv
+              gh issue edit "$num" --repo "$REPO" --add-label bloqueado --remove-label pronto >/dev/null 2>&1 || true
+            fi
+          done < abertas.tsv
+
+          # Fan-out: para cada pronta, contar quantas abertas dependem dela.
+          : > ranking.tsv
+          while IFS=$'\t' read -r num titulo onda; do
+            [ -n "${num:-}" ] || continue
+            destrava=0
+            while IFS=$'\t' read -r bnum btit bonda bloqs; do
+              for b in $bloqs; do
+                [ "$b" = "$num" ] && destrava=$((destrava+1))
+              done
+            done < bloqueadas.tsv
+            printf '%s\t%s\t%s\t%s\n' "$destrava" "$num" "$titulo" "$onda" >> ranking.tsv
+          done < prontas.tsv
+
+          {
+            echo "Atualizado automaticamente pelo workflow \`painel\`. Nao edite na mao."
+            echo
+            echo "## Comece por aqui"
+            echo
+            if [ -s ranking.tsv ]; then
+              echo "| destrava | issue | onda |"
+              echo "|---|---|---|"
+              sort -rn ranking.tsv | while IFS=$'\t' read -r d n t o; do
+                if [ "$d" -gt 0 ]; then marca="**$d**"; else marca="-"; fi
+                echo "| $marca | #$n $t | $o |"
+              done
+            else
+              echo "Nada pronto. Todas as issues abertas esperam alguma outra."
+            fi
+            echo
+            echo "Ordenado por quantas issues cada uma destrava. O topo e o gargalo."
+            echo
+            echo "## Esperando"
+            echo
+            if [ -s bloqueadas.tsv ]; then
+              echo "| issue | espera | onda |"
+              echo "|---|---|---|"
+              sort -n bloqueadas.tsv | while IFS=$'\t' read -r n t o bl; do
+                refs=$(echo "$bl" | tr ' ' '\n' | sed 's/^/#/' | paste -sd ' ' -)
+                echo "| #$n $t | $refs | $o |"
+              done
+            else
+              echo "Nenhuma issue bloqueada."
+            fi
+            echo
+            echo "---"
+            echo
+            echo "Dependencias e ondas explicadas em [ROADMAP.md](../blob/develop/ROADMAP.md)."
+            echo "Padrao de trabalho em [CONTRIBUTING.md](../blob/develop/CONTRIBUTING.md)."
+          } > painel.md
+
+          cat painel.md
+
+      - name: publicar o painel
+        run: |
+          set -euo pipefail
+          existente=$(gh issue list --repo "$REPO" --state all --limit 200 \
+            --search "\"$TITULO\" in:title" --json number,title \
+            --jq "[.[] | select(.title == env.TITULO)][0].number // empty")
+
+          if [ -n "$existente" ]; then
+            gh issue edit "$existente" --repo "$REPO" --body-file painel.md
+            gh issue reopen "$existente" --repo "$REPO" 2>/dev/null || true
+            echo "painel atualizado: #$existente"
+          else
+            url=$(gh issue create --repo "$REPO" --title "$TITULO" --body-file painel.md)
+            echo "painel criado: $url"
+            gh issue pin "${url##*/}" --repo "$REPO" 2>/dev/null || true
+          fi
