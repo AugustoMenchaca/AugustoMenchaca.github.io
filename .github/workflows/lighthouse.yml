@@ -3,6 +3,7 @@ name: lighthouse
 on:
   pull_request:
     branches: [develop, main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -23,15 +24,71 @@ jobs:
       - name: esperar o servidor
         run: npx --yes wait-on http://127.0.0.1:8777 --timeout 30000
 
+      # continue-on-error para o passo seguinte conseguir explicar a falha.
+      # O gate de verdade e o passo "veredito" no fim.
       - name: Lighthouse CI
+        id: lhci
+        continue-on-error: true
         run: npx --yes @lhci/cli@0.14 autorun
-        env:
-          LHCI_BUILD_CONTEXT__CURRENT_BRANCH: ${{ github.head_ref }}
+
+      # Score sozinho nao diz nada acionavel. "best-practices: 0.96" manda a
+      # pessoa baixar artefato para descobrir o que caiu. Aqui sai no log.
+      - name: dizer qual auditoria caiu
+        if: always()
+        run: |
+          node <<'JS'
+          const fs = require('fs');
+          const dir = '.lighthouseci';
+          if (!fs.existsSync(dir)) { console.log('Sem relatorio em .lighthouseci'); process.exit(0); }
+          const arq = fs.readdirSync(dir).filter(f => /^lhr-.*\.json$/.test(f));
+          if (!arq.length) { console.log('Nenhum lhr-*.json gerado'); process.exit(0); }
+
+          const d = JSON.parse(fs.readFileSync(`${dir}/${arq[0]}`, 'utf8'));
+          const cats = ['accessibility', 'best-practices', 'seo', 'performance'];
+
+          console.log('\n=== SCORES ===');
+          for (const c of cats) {
+            const cat = d.categories[c];
+            if (cat) console.log(`  ${c.padEnd(16)} ${(cat.score * 100).toFixed(0)}`);
+          }
+
+          console.log('\n=== AUDITORIAS REPROVADAS ===');
+          let achou = false;
+          for (const c of cats) {
+            const cat = d.categories[c];
+            if (!cat) continue;
+            for (const ref of cat.auditRefs) {
+              const a = d.audits[ref.id];
+              if (!a || a.score === null || a.score >= 1) continue;
+              if (ref.weight === 0 && a.score > 0) continue;   // informativo
+              achou = true;
+              console.log(`\n  [${c}] ${a.id}  score=${a.score}  peso=${ref.weight}`);
+              console.log(`      ${a.title}`);
+              const itens = (a.details && a.details.items) || [];
+              for (const it of itens.slice(0, 4)) {
+                const txt = it.description || it.url || it.source
+                          || (it.node && it.node.snippet) || JSON.stringify(it);
+                console.log(`        - ${String(txt).slice(0, 140)}`);
+              }
+            }
+          }
+          if (!achou) console.log('  Nenhuma. A reprovacao veio de um limite numerico, nao de auditoria.');
+          JS
 
       - name: guardar o relatório
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: lighthouse
-          path: .lighthouseci/
+          name: lighthouse-${{ github.run_id }}
+          path: .lighthouseci/**
+          if-no-files-found: warn
           retention-days: 14
+
+      - name: veredito
+        if: always()
+        run: |
+          if [ "${{ steps.lhci.outcome }}" != "success" ]; then
+            echo "::error::Orcamento de qualidade reprovado. Veja as auditorias acima."
+            exit 1
+          fi
+          echo "Orcamento de qualidade aprovado."
