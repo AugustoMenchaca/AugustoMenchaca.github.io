@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protótipo · Direção C — Lajes Embutidas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     PROTOTIPO — DIRECAO C: LAJES EMBUTIDAS
+     Paper continuo + lajes arredondadas de valor diferente.
+     Paleta: paper + charcoal + acid chartreuse + oxblood.
+     Hut 8 roda no sistema da propria marca: preto + cinza + roxo (sem verde).
+     ========================================================================== */
+  :root {
+    /* Superficies */
+    --paper:        #F7F5EF;
+    --stone:        #E8E3D9;
+    --white:        #FFFFFF;
+    --subtle:       #F1EEE6;
+
+    /* Tipografia e neutros */
+    --charcoal:     #111213;
+    --slab-inner:   #1A1B1C;
+    --body:         #343739;
+    --muted:        #626569;
+    --light:        #8A8E93;
+    --on-dark:      #9A9DA1;
+
+    /* Acentos */
+    --acid:         #E6F835;
+    --oxblood:      #5A2232;
+    --wine:         #F1E6E8;
+
+    /* Sistema Hut 8 (manual de marca v1.0) */
+    --h8-black:     #0B0B0B;
+    --h8-purple:    #6B0F9C;
+    --h8-gray:      #8A8A8A;
+    --h8-photo:     #2A2A28;
+
+    /* Hairlines */
+    --hair:         rgba(17, 18, 19, 0.13);
+    --hair-strong:  rgba(17, 18, 19, 0.28);
+
+    /* Tipografia */
+    --f-display: 'Instrument Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --f-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --f-mono:    'IBM Plex Mono', monospace;
+
+    /* Layout */
+    --container:   1240px;
+    --pad:         clamp(20px, 4vw, 48px);
+    --slab-radius: 28px;
+    --slab-pad:    clamp(26px, 3.6vw, 44px);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--body);
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--pad);
+  }
+
+  /* --- Etiquetas tecnicas: caixa alta preservada --- */
+  .meta-label {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .meta-label.on-dark { color: var(--on-dark); }
+  .meta-label.acid    { color: var(--acid); }
+
+  /* ======================= NAV ======================= */
+  .site-nav { border-bottom: 1px solid var(--hair); }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 22px;
+  }
+  .wordmark {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    color: var(--charcoal);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-family: var(--f-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color .18s ease;
+  }
+  .nav-links a:hover { color: var(--charcoal); }
+
+  /* ======================= HERO ======================= */
+  .hero { padding-block: clamp(40px, 6vw, 72px) clamp(28px, 4vw, 44px); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: clamp(28px, 4vw, 52px);
+    align-items: center;
+    margin-top: 28px;
+  }
+  .hero-headline {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 6.4vw, 3.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin: 0 0 20px;
+  }
+  .hero-lede {
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 46ch;
+    margin: 0;
+  }
+  .portrait {
+    aspect-ratio: 3 / 4;
+    background: var(--stone);
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .portrait::after {
+    content: 'RETRATO';
+    position: absolute;
+    top: 16px; left: 16px;
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .meta-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(16px, 2.5vw, 36px);
+    margin-top: clamp(30px, 4vw, 46px);
+    padding-top: 24px;
+    border-top: 1px solid var(--hair);
+  }
+  .meta-strip-item { display: flex; flex-direction: column; gap: 7px; }
+  .meta-strip-value {
+    font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 0.86rem;
+    color: var(--charcoal);
+    line-height: 1.4;
+  }
+
+  /* ======================= RAIL EDITORIAL ======================= */
+  .rail-section { padding-bottom: clamp(30px, 4vw, 46px); }
+  .rail-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .rail-viewport { overflow: hidden; }
+  .rail-track {
+    display: flex;
+    gap: 12px;
+    width: max-content;
+    animation: rail-scroll 46s linear infinite;
+  }
+  .rail-viewport:hover .rail-track { animation-play-state: paused; }
+  @keyframes rail-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 6px)); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rail-track { animation: none; }
+    .rail-viewport { overflow-x: auto; }
+  }
+  .rail-item {
+    flex: 0 0 226px;
+    min-height: 104px;
+    border: 1px solid var(--charcoal);
+    border-radius: 16px;
+    padding: 15px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    text-decoration: none;
+    background: var(--white);
+    transition: transform .2s ease;
+  }
+  .rail-item:hover { transform: translateY(-3px); }
+  .rail-num {
+    font-family: var(--f-mono);
+    font-size: 0.64rem;
+    font-weight: 500;
+    letter-spacing: 0.11em;
+    color: var(--muted);
+  }
+  .rail-title {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: 0.93rem;
+    letter-spacing: -0.005em;
+    color: var(--charcoal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .rail-sub {
+    font-size: 0.73rem;
+    line-height: 1.35;
+    color: var(--muted);
+    margin-top: auto;
+  }
+  .rail-badge {
+    font-family: var(--f-mono);
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--subtle);
+    color: var(--charcoal);
+  }
+
+  /* Ritmo: charcoal / acid / oxblood / paper / white / paper / white */
+  .rail-item.paper    { background: var(--paper); }
+  .rail-item.charcoal { background: var(--charcoal); border-color: var(--charcoal); }
+  .rail-item.charcoal .rail-title { color: var(--paper); }
+  .rail-item.charcoal .rail-num   { color: var(--acid); }
+  .rail-item.charcoal .rail-sub   { color: rgba(247, 245, 239, .72); }
+  .rail-item.charcoal .rail-badge { background: var(--acid); color: var(--charcoal); }
+  .rail-item.acid     { background: var(--acid); border-color: var(--charcoal); }
+  .rail-item.acid .rail-num   { color: #383E00; }
+  .rail-item.acid .rail-badge { background: var(--charcoal); color: var(--acid); }
+  .rail-item.oxblood  { background: var(--oxblood); border-color: var(--oxblood); }
+  .rail-item.oxblood .rail-title { color: var(--wine); }
+  .rail-item.oxblood .rail-num   { color: var(--acid); }
+  .rail-item.oxblood .rail-sub   { color: rgba(241, 230, 232, .72); }
+  .rail-item.oxblood .rail-badge { background: var(--acid); color: var(--charcoal); }
+
+  /* ======================= LAJE (o movimento da direcao C) ======================= */
+  .slab {
+    border-radius: var(--slab-radius);
+    padding: var(--slab-pad);
+    margin-bottom: 18px;
+  }
+  .slab-dark  { background: var(--charcoal); }
+  .slab-hut8  { background: var(--h8-black); }
+  .slab-stone { background: var(--stone); }
+
+  .slab-headline {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: clamp(1.3rem, 4vw, 2.15rem);
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+    margin: 14px 0 0;
+    max-width: 24ch;
+  }
+  .slab-dark  .slab-headline { color: var(--paper); }
+  .slab-hut8  .slab-headline { color: #FFFFFF; }
+  .slab-stone .slab-headline { color: var(--charcoal); max-width: 20ch; }
+
+  /* --- Cards de dados dentro da laje escura --- */
+  .data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+  .data-card {
+    background: var(--slab-inner);
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .data-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .data-card svg { display: block; width: 100%; height: auto; }
+
+  /* --- Metricas: regua acid acima do numero (resolve o contraste) --- */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 44px);
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(247, 245, 239, .14);
+  }
+  .metric::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: var(--acid);
+    margin-bottom: 11px;
+  }
+  .metric-value {
+    font-family: var(--f-display);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 2.6vw, 1.95rem);
+    letter-spacing: -0.03em;
+    color: var(--paper);
+    line-height: 1.1;
+    display: block;
+  }
+  .metric-label {
+    font-size: 0.78rem;
+    color: var(--on-dark);
+    margin-top: 5px;
+    display: block;
+  }
+
+  .pill {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 3px;
+    border: 1px solid var(--hair-strong);
+    background: var(--subtle);
+    color: var(--charcoal);
+  }
+  .pill.on-dark {
+    background: transparent;
+    border-color: rgba(247, 245, 239, .28);
+    color: var(--on-dark);
+  }
+
+  /* ======================= LAJE HUT 8 — SISTEMA DA MARCA ======================= */
+  /* Manual v1.0: preto/branco dominam, cinza apoia, roxo e a etiqueta.
+     Verde #A4DE02 fica FORA para nao colidir com o acid do portfolio. */
+  .h8-tag {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--h8-purple);
+    color: #FFFFFF;
+    padding: 5px 11px;
+    border-radius: 2px;
+  }
+  /* --- Composicao fotografica editorial: 1 dominante + 2 de apoio --- */
+  /* As fotos entram em CORES REAIS. Sem duotone, sem filtro roxo/verde,
+     sem escurecimento global. A identidade Hut 8 vem das superficies. */
+  /* Composicao com sobreposicao: 1 foto dominante + 1 secundaria deslocada */
+  .h8-photos {
+    position: relative;
+    margin-top: 28px;
+    padding-bottom: clamp(30px, 5vw, 64px);
+  }
+  .h8-shot { margin: 0; min-width: 0; }
+  .h8-shot.main { width: 84%; }
+
+  .h8-shot.overlap {
+    position: absolute;
+    right: 0;
+    top: 46%;
+    width: 33%;
+    background: var(--h8-black);
+    border-radius: 18px;
+    padding: 9px;
+    box-shadow: 0 20px 44px rgba(0, 0, 0, .6);
+  }
+
+  .h8-frame {
+    background: #1C1C1A;
+    border: 1px dashed rgba(255, 255, 255, .22);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    text-align: center;
+  }
+  .h8-shot.main    .h8-frame { aspect-ratio: 16 / 9; border-radius: 20px; }
+  .h8-shot.overlap .h8-frame { aspect-ratio: 4 / 3; border-radius: 12px; padding: 14px; gap: 9px; }
+
+  /* Chip de placeholder: roxo + branco e a combinacao aprovada no manual */
+  .h8-chip {
+    font-family: var(--f-mono);
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--h8-purple);
+    color: #FFFFFF;
+    padding: 6px 12px;
+    border-radius: 3px;
+    line-height: 1.4;
+  }
+  .h8-shot.overlap .h8-chip { font-size: 0.54rem; padding: 5px 9px; letter-spacing: 0.07em; }
+  .h8-hint {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--h8-gray);
+    max-width: 42ch;
+  }
+  .h8-shot.overlap .h8-hint { font-size: 0.68rem; line-height: 1.45; }
+
+  .h8-figcap {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    width: 62%;
+    margin-top: 14px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(255, 255, 255, .12);
+    font-family: var(--f-mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--h8-gray);
+  }
+
+  /* --- Narrativa: divide o protagonismo com a fotografia --- */
+  .h8-text {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(18px, 2.6vw, 36px);
+    margin-top: 30px;
+    align-items: start;
+  }
+  .h8-body {
+    color: #D6D6D4;
+    font-size: 0.9rem;
+    line-height: 1.62;
+    margin: 0 0 18px;
+  }
+  .h8-body strong { font-weight: 500; color: #FFFFFF; }
+  .h8-quote {
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 1.02rem;
+    line-height: 1.45;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    border-left: 2px solid var(--h8-purple);
+    padding-left: 16px;
+    margin: 0 0 12px;
+  }
+  .h8-note {
+    font-family: var(--f-mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--h8-gray);
+  }
+
+  /* ======================= CONTATO ======================= */
+  .contact-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 3px;
+    border: 1px solid var(--charcoal);
+    background: var(--acid);
+    color: var(--charcoal);
+    transition: transform .18s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn.ghost { background: transparent; }
+
+  footer {
+    padding-block: 30px 46px;
+    border-top: 1px solid var(--hair);
+    margin-top: 26px;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ======================= RESPONSIVO ======================= */
+  @media (max-width: 860px) {
+    .hero-grid  { grid-template-columns: 1fr; }
+    .portrait   { max-width: 260px; }
+    .meta-strip { grid-template-columns: 1fr; gap: 18px; }
+    .data-grid  { grid-template-columns: 1fr; }
+    .metrics    { grid-template-columns: 1fr; gap: 22px; }
+    /* Sobreposicao sai; principal continua dominante e a secundaria desce deslocada */
+    .h8-photos      { padding-bottom: 0; }
+    .h8-shot.main   { width: 100%; }
+    .h8-shot.main .h8-frame { aspect-ratio: 16 / 10; }
+    .h8-shot.overlap {
+      position: static;
+      width: 66%;
+      margin: -34px 0 0 auto;   /* mantem o deslocamento e um leve avanco sobre a principal */
+      box-shadow: 0 14px 30px rgba(0, 0, 0, .55);
+    }
+    .h8-figcap  { width: 100%; }
+    .h8-text    { grid-template-columns: 1fr; gap: 20px; }
+    .nav-links  { gap: 16px; }
+    .rail-head  { flex-wrap: wrap; gap: 6px; }
+    .slab-headline,
+    .slab-stone .slab-headline { max-width: none; }
+  }
+
+  @media (max-width: 560px) {
+    .nav-links a  { font-size: 0.6rem; letter-spacing: 0.06em; }
+    .nav-links    { gap: 12px; }
+    .hero-lede    { font-size: 0.92rem; }
+    .rail-item    { flex: 0 0 200px; }
+    .contact-inner { align-items: flex-start; }
+    .btn          { padding: 12px 16px; font-size: 0.66rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<nav class="site-nav">
+  <div class="container nav-inner">
+    <a href="#" class="wordmark">AUGUSTO MENCHACA</a>
+    <div class="nav-links">
+      <a href="#idf">Work</a>
+      <a href="#hut8">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================ HERO ============================ -->
+<header class="hero">
+  <div class="container">
+    <span class="meta-label">01 / Current focus</span>
+    <div class="hero-grid">
+      <div>
+        <h1 class="hero-headline">I build digital products and lead tech projects.</h1>
+        <p class="hero-lede">Computer science student at UFPel, building scientific software and leading client squads at Hut 8 Jr.</p>
+      </div>
+      <div class="portrait" role="img" aria-label="Retrato de Augusto Menchaca"></div>
+    </div>
+
+    <div class="meta-strip">
+      <div class="meta-strip-item">
+        <span class="meta-label">01 / Current focus</span>
+        <span class="meta-strip-value">Scientific software &amp; hydrological AI models</span>
+      </div>
+      <div class="meta-strip-item">
+        <span class="meta-label">02 / Leadership</span>
+        <span class="meta-strip-value">Director of Projects @ Hut 8 Jr. (UFPel)</span>
+      </div>
+      <div class="meta-strip-item">
+        <span class="meta-label">03 / Degree</span>
+        <span class="meta-strip-value">B.S. Computer Science — Federal Univ. of Pelotas</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ RAIL EDITORIAL ============================ -->
+<section class="rail-section">
+  <div class="container rail-head">
+    <span class="meta-label">Active contexts &amp; real deliverables</span>
+    <span class="meta-label">Scroll / continuous track →</span>
+  </div>
+  <div class="container">
+    <div class="rail-viewport">
+      <div class="rail-track">
+
+        <a href="#idf" class="rail-item charcoal">
+          <span class="rail-num">01</span>
+          <span class="rail-title">IDF-BR <span class="rail-badge">Scientific Platform</span></span>
+          <span class="rail-sub">Hydrology &amp; open web engine · idf-br.com.br</span>
+        </a>
+        <a href="#hut8" class="rail-item acid">
+          <span class="rail-num">02</span>
+          <span class="rail-title">HUT 8 JR. <span class="rail-badge">Leadership</span></span>
+          <span class="rail-sub">Director of Projects · squad operations</span>
+        </a>
+        <div class="rail-item oxblood">
+          <span class="rail-num">03</span>
+          <span class="rail-title">QUANTUM ML <span class="rail-badge">Research</span></span>
+          <span class="rail-sub">Classical vs. quantum kernels · experimental research</span>
+        </div>
+        <div class="rail-item paper">
+          <span class="rail-num">04</span>
+          <span class="rail-title">NIP · UFPEL <span class="rail-badge">Research Lab</span></span>
+          <span class="rail-sub">Núcleo Integrado de Previsão · applied AI</span>
+        </div>
+        <div class="rail-item">
+          <span class="rail-num">05</span>
+          <span class="rail-title">DVO PELOTAS <span class="rail-badge">Production</span></span>
+          <span class="rail-sub">Client scoping · QA &amp; deployment</span>
+        </div>
+        <div class="rail-item paper">
+          <span class="rail-num">06</span>
+          <span class="rail-title">CIERE DA ROSA <span class="rail-badge">Production</span></span>
+          <span class="rail-sub">Discovery · design–dev alignment</span>
+        </div>
+        <div class="rail-item">
+          <span class="rail-num">07</span>
+          <span class="rail-title">UFPEL <span class="rail-badge">B.S. CS</span></span>
+          <span class="rail-sub">Federal University of Pelotas</span>
+        </div>
+
+        <!-- duplicata para o loop continuo -->
+        <a href="#idf" class="rail-item charcoal" aria-hidden="true" tabindex="-1">
+          <span class="rail-num">01</span>
+          <span class="rail-title">IDF-BR <span class="rail-badge">Scientific Platform</span></span>
+          <span class="rail-sub">Hydrology &amp; open web engine · idf-br.com.br</span>
+        </a>
+        <a href="#hut8" class="rail-item acid" aria-hidden="true" tabindex="-1">
+          <span class="rail-num">02</span>
+          <span class="rail-title">HUT 8 JR. <span class="rail-badge">Leadership</span></span>
+          <span class="rail-sub">Director of Projects · squad operations</span>
+        </a>
+        <div class="rail-item oxblood" aria-hidden="true">
+          <span class="rail-num">03</span>
+          <span class="rail-title">QUANTUM ML <span class="rail-badge">Research</span></span>
+          <span class="rail-sub">Classical vs. quantum kernels · experimental research</span>
+        </div>
+        <div class="rail-item paper" aria-hidden="true">
+          <span class="rail-num">04</span>
+          <span class="rail-title">NIP · UFPEL <span class="rail-badge">Research Lab</span></span>
+          <span class="rail-sub">Núcleo Integrado de Previsão · applied AI</span>
+        </div>
+        <div class="rail-item" aria-hidden="true">
+          <span class="rail-num">05</span>
+          <span class="rail-title">DVO PELOTAS <span class="rail-badge">Production</span></span>
+          <span class="rail-sub">Client scoping · QA &amp; deployment</span>
+        </div>
+        <div class="rail-item paper" aria-hidden="true">
+          <span class="rail-num">06</span>
+          <span class="rail-title">CIERE DA ROSA <span class="rail-badge">Production</span></span>
+          <span class="rail-sub">Discovery · design–dev alignment</span>
+        </div>
+        <div class="rail-item" aria-hidden="true">
+          <span class="rail-num">07</span>
+          <span class="rail-title">UFPEL <span class="rail-badge">B.S. CS</span></span>
+          <span class="rail-sub">Federal University of Pelotas</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ LAJE 01 — IDF-BR ============================ -->
+<div class="container">
+  <section class="slab slab-dark" id="idf">
+    <span class="meta-label acid">02 / Flagship</span>
+    <h2 class="slab-headline">Turning nationwide hydrological research into a usable digital tool.</h2>
+
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-head">
+          <span class="meta-label on-dark">Geospatial query engine</span>
+          <span class="pill on-dark">Vector map</span>
+        </div>
+        <svg viewBox="0 0 320 220" aria-label="Mapa do Brasil com estações pluviométricas">
+          <defs>
+            <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1" fill="#3A3B3C"/>
+            </pattern>
+          </defs>
+          <rect width="320" height="220" fill="url(#dots)" opacity="0.55"/>
+          <path d="M 80,35 Q 150,15 220,40 Q 275,70 260,115 Q 235,160 185,185 Q 145,210 120,195 Q 100,165 75,130 Q 55,90 80,35 Z"
+                fill="#2E3032" stroke="#A9ACB0" stroke-width="1.4"/>
+          <circle cx="175" cy="155" r="3"   fill="#8A8E93"/>
+          <circle cx="190" cy="140" r="3.5" fill="#8A8E93"/>
+          <circle cx="210" cy="115" r="3"   fill="#8A8E93"/>
+          <circle cx="230" cy="80"  r="3"   fill="#8A8E93"/>
+          <circle cx="140" cy="95"  r="3"   fill="#C9CCCF"/>
+          <circle cx="110" cy="65"  r="3"   fill="#C9CCCF"/>
+          <circle cx="145" cy="180" r="3"   fill="#8A8E93"/>
+          <!-- estacao ativa: unico ponto acid -->
+          <circle cx="160" cy="170" r="4" fill="#E6F835" stroke="#0B0B0B" stroke-width="1"/>
+          <g transform="translate(155, 168)">
+            <line x1="0" y1="0" x2="35" y2="-20" stroke="#8A8E93" stroke-width="1" stroke-dasharray="2,2"/>
+            <rect x="35" y="-32" width="112" height="24" fill="#E6F835" rx="2"/>
+            <text x="43" y="-16" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#111213" font-weight="600">Pelotas #83985</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="data-card">
+        <div class="data-card-head">
+          <span class="meta-label on-dark">Status: active solver</span>
+          <span class="pill on-dark">Gumbel</span>
+        </div>
+        <svg viewBox="0 0 300 145" aria-label="Curvas IDF por período de retorno">
+          <line x1="30" y1="120" x2="275" y2="120" stroke="#6E7174" stroke-width="1.2"/>
+          <line x1="30" y1="10"  x2="30"  y2="120" stroke="#6E7174" stroke-width="1.2"/>
+          <line x1="30" y1="85" x2="270" y2="85" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
+          <line x1="30" y1="50" x2="270" y2="50" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
+          <line x1="30" y1="15" x2="270" y2="15" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
+          <path d="M 35,22 Q 80,65 150,88 T 265,102" fill="none" stroke="#F7F5EF" stroke-width="2.5"/>
+          <path d="M 35,42 Q 80,80 150,97 T 265,108" fill="none" stroke="#9A9DA1" stroke-width="1.5"/>
+          <path d="M 35,65 Q 80,95 150,105 T 265,114" fill="none" stroke="#616467" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <circle cx="80" cy="65" r="4.5" fill="#E6F835" stroke="#111213" stroke-width="1"/>
+          <text x="216" y="24" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#F7F5EF" font-weight="600">T = 100 yr</text>
+          <text x="216" y="48" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#9A9DA1">T = 50 yr</text>
+          <text x="216" y="70" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#616467">T = 10 yr</text>
+          <text x="12" y="70" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#9A9DA1" transform="rotate(-90 12,70)">i (mm/h)</text>
+          <text x="120" y="138" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#9A9DA1">Duration (min)</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric">
+        <span class="metric-value">5,000+</span>
+        <span class="metric-label">Gauges &amp; equations processed</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">&lt;100ms</span>
+        <span class="metric-label">Instant calculation response</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value">27</span>
+        <span class="metric-label">Federative units covered</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ LAJE 02 — HUT 8 ============================ -->
+<div class="container">
+  <section class="slab slab-hut8" id="hut8">
+    <span class="h8-tag">Diretoria de Projetos</span>
+    <h2 class="slab-headline">Learning to make projects happen through people, not just code.</h2>
+
+    <!-- Composicao com sobreposicao: 1 foto dominante + 1 secundaria deslocada.
+         Placeholders ate os assets reais chegarem. Fotos finais em CORES REAIS:
+         sem duotone, sem filtro roxo, sem escurecimento global. -->
+    <div class="h8-photos">
+      <figure class="h8-shot main">
+        <div class="h8-frame">
+          <span class="h8-chip">[ Hut 8 team photo — replace with real photo ]</span>
+          <span class="h8-hint">Formato largo 16:9. Augusto junto do time da Hut 8 em um momento coletivo — reunião de planejamento, alinhamento de squad ou entrega.</span>
+        </div>
+      </figure>
+
+      <figure class="h8-shot overlap">
+        <div class="h8-frame">
+          <span class="h8-chip">[ Event / community photo ]</span>
+          <span class="h8-hint">Evento do MEJ, workshop ou confraternização do time.</span>
+        </div>
+      </figure>
+
+      <div class="h8-figcap">
+        <span>Figure 01 &amp; 02 — team &amp; community</span>
+        <span>Hut 8 Jr. · UFPel</span>
+      </div>
+    </div>
+
+    <div class="h8-text">
+      <p class="h8-body">
+        I didn't step into project leadership because I felt ready for it or because I had formal management training.
+        Hut 8 was navigating a critical low-activity transition, and the organization needed someone to
+        <strong>take ownership of operations</strong>. I stepped up because there was a real need, and I learned by doing.
+      </p>
+      <div>
+        <blockquote class="h8-quote">
+          Writing code solves algorithmic constraints. Empathy, clear scopes and honest communication are what actually ship products.
+        </blockquote>
+        <span class="h8-note">Sistema Hut 8 · preto + cinza + roxo</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ LAJE 03 — CONTATO ============================ -->
+<div class="container">
+  <section class="slab slab-stone" id="contact">
+    <div class="contact-inner">
+      <div>
+        <span class="meta-label">04 / Contact</span>
+        <h2 class="slab-headline">Let's talk about the next project.</h2>
+      </div>
+      <div class="contact-actions">
+        <a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="btn">Send a message</a>
+        <a href="https://idf-br.com.br" target="_blank" rel="noopener noreferrer" class="btn ghost">Live tool ↗</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <footer>
+    <span class="meta-label">Protótipo · Direção C — lajes embutidas</span>
+    <span class="meta-label">Paper · Charcoal · Acid · Oxblood · Hut 8 roxo</span>
+  </footer>
+</div>
+
+</body>
+</html>

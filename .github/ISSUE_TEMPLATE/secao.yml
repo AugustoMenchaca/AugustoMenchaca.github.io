@@ -1,0 +1,67 @@
+name: Seção da página
+description: Uma seção da landing page
+labels: [secao]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Antes de abrir: a arquitetura de seções está definida na #7. Se esta
+        seção não estiver na lista das oito, o lugar de discutir isso é lá.
+
+  - type: textarea
+    id: prova
+    attributes:
+      label: Que evidência esta seção prova
+      description: >
+        Decida isto antes de escolher cor ou animação. As três naturezas de
+        prova do projeto são diferentes e não usam o mesmo componente.
+      placeholder: |
+        Produto publicado — tem interface observável, então prova por screenshot real.
+        Experimento acadêmico — não tem interface, prova por prancha de experimento.
+        Vivência — prova mudança de responsabilidade e repertório, sem mockup e sem stack.
+    validations:
+      required: true
+
+  - type: textarea
+    id: assets
+    attributes:
+      label: Assets reais disponíveis
+      description: >
+        Liste o que existe em `docs/design/assets-reais/`. Se não existe asset,
+        diga o que entra no lugar — moldura vazia não é opção.
+    validations:
+      required: true
+
+  - type: textarea
+    id: papel
+    attributes:
+      label: Papel exato do Augusto
+      description: >
+        Copie da fonte, não de memória. Papel inflado em portfólio é risco real,
+        e já aconteceu neste projeto.
+      placeholder: |
+        Em DVO ele coordenou e NÃO desenvolveu.
+        Na Ciere ele NÃO foi design lead.
+        Quantum ML NÃO foi publicado.
+        No NIP NÃO há IA em produção.
+    validations:
+      required: true
+
+  - type: textarea
+    id: aceite
+    attributes:
+      label: Critério de aceite
+      description: Verificável, não subjetivo.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: regras
+    attributes:
+      label: Regras que esta seção não pode violar
+      options:
+        - label: Nenhuma moldura de asset vazia
+        - label: Nenhuma métrica sem fonte
+        - label: Texto novo existe em PT e EN
+        - label: Movimento novo respeita `prefers-reduced-motion`
+        - label: Cor de projeto confinada ao campo de evidência (regra da #6)
