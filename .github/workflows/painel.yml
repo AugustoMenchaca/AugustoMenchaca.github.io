@@ -1,18 +1,19 @@
 name: painel
 
-# Le o grafo de dependencias nativo do GitHub e responde a pergunta
-# "por onde eu comeco?" sem ninguem ter que abrir 26 issues na mao.
+# Le o grafo de dependencias nativo do GitHub e CALCULA as etapas, em vez de
+# depender de milestone atribuida na mao — que desalinha na primeira issue nova.
 #
-# Faz tres coisas:
-#   1. rotula cada issue aberta como `pronto` ou `bloqueado`
-#   2. reescreve o painel com o que da para comecar agora
-#   3. ordena as prontas por quantas issues cada uma destrava
+# Etapa de uma issue = maior etapa dos bloqueadores + 1. Etapa 0 nao depende de
+# nada. Tudo na mesma etapa e paralelizavel por definicao.
+#
+# Alcance = quantas issues dependem dela, direta OU indiretamente. Contar so
+# dependente direto engana: a #17 tinha 1 direto e 14 transitivos.
 
 on:
   issues:
     types: [opened, closed, reopened, edited, labeled, unlabeled, milestoned, demilestoned]
   schedule:
-    - cron: '0 9 * * 1'      # segunda de manha, para o caso de algo escapar
+    - cron: '0 9 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -31,94 +32,132 @@ jobs:
       REPO: ${{ github.repository }}
       TITULO: 'Painel: por onde comecar'
     steps:
-      - name: garantir que os rotulos existem
+      - name: garantir os rotulos
         run: |
-          gh label create pronto    --repo "$REPO" --color 0E8A16 \
-            --description "Sem bloqueio: da para comecar agora" --force
+          gh label create pronto  --repo "$REPO" --color 0E8A16 \
+            --description "Etapa 0: da para comecar agora" --force
           gh label create bloqueado --repo "$REPO" --color 000000 \
             --description "Espera outra issue fechar" --force
 
-      - name: classificar as issues e montar o painel
+      - name: coletar o grafo
         run: |
           set -euo pipefail
-
-          # Issues abertas, ignorando o proprio painel.
           gh issue list --repo "$REPO" --state open --limit 200 \
             --json number,title,labels,milestone \
-            --jq '.[] | select(.title != env.TITULO) | [.number, .title, (.milestone.title // "sem onda")] | @tsv' \
-            > abertas.tsv || true
+            --jq '.[] | select(.title != env.TITULO)
+                  | {n: .number, t: .title, l: [.labels[].name],
+                     m: (.milestone.title // null)}' > issues.ndjson
 
-          : > prontas.tsv
-          : > bloqueadas.tsv
+          : > grafo.ndjson
+          while read -r linha; do
+            n=$(echo "$linha" | jq -r .n)
+            bl=$(gh api "repos/$REPO/issues/$n/dependencies/blocked_by" \
+                   --jq '[.[] | select(.state == "open") | .number]' 2>/dev/null || echo '[]')
+            echo "$linha" | jq -c --argjson bl "$bl" '. + {bl: $bl}' >> grafo.ndjson
+          done < issues.ndjson
+          echo "coletadas $(wc -l < grafo.ndjson) issues"
 
-          while IFS=$'\t' read -r num titulo onda; do
-            [ -n "${num:-}" ] || continue
+      - name: calcular etapas e montar o painel
+        run: |
+          node <<'JS'
+          const fs = require('fs');
+          const nos = fs.readFileSync('grafo.ndjson', 'utf8')
+            .split('\n').filter(Boolean).map(JSON.parse);
+          const porNum = new Map(nos.map(o => [o.n, o]));
 
-            # Quais bloqueadores AINDA estao abertos.
-            abertos=$(gh api "repos/$REPO/issues/$num/dependencies/blocked_by" \
-                        --jq '[.[] | select(.state == "open") | .number] | join(" ")' 2>/dev/null || echo "")
+          // Etapa: caminho mais longo ate uma issue sem bloqueio.
+          const etapa = new Map();
+          const calc = (n, visto = new Set()) => {
+            if (etapa.has(n)) return etapa.get(n);
+            if (visto.has(n)) return 0;                    // ciclo, nao deveria existir
+            const bls = (porNum.get(n).bl || []).filter(b => porNum.has(b));
+            const v = bls.length ? 1 + Math.max(...bls.map(b => calc(b, new Set([...visto, n])))) : 0;
+            etapa.set(n, v);
+            return v;
+          };
+          nos.forEach(o => calc(o.n));
 
-            if [ -z "$abertos" ]; then
-              # Quantas issues esta aqui destrava: o fan-out.
-              printf '%s\t%s\t%s\n' "$num" "$titulo" "$onda" >> prontas.tsv
-              gh issue edit "$num" --repo "$REPO" --add-label pronto --remove-label bloqueado >/dev/null 2>&1 || true
-            else
-              printf '%s\t%s\t%s\t%s\n' "$num" "$titulo" "$onda" "$abertos" >> bloqueadas.tsv
-              gh issue edit "$num" --repo "$REPO" --add-label bloqueado --remove-label pronto >/dev/null 2>&1 || true
-            fi
-          done < abertas.tsv
+          // Alcance transitivo: quem depende desta, direta ou indiretamente.
+          const dependemDe = new Map();
+          for (const o of nos) {
+            for (const b of o.bl || []) {
+              if (!porNum.has(b)) continue;
+              if (!dependemDe.has(b)) dependemDe.set(b, []);
+              dependemDe.get(b).push(o.n);
+            }
+          }
+          const alcance = (n, visto = new Set()) => {
+            for (const m of dependemDe.get(n) || [])
+              if (!visto.has(m)) { visto.add(m); alcance(m, visto); }
+            return visto.size;
+          };
 
-          # Fan-out: para cada pronta, contar quantas abertas dependem dela.
-          : > ranking.tsv
-          while IFS=$'\t' read -r num titulo onda; do
-            [ -n "${num:-}" ] || continue
-            destrava=0
-            while IFS=$'\t' read -r bnum btit bonda bloqs; do
-              for b in $bloqs; do
-                [ "$b" = "$num" ] && destrava=$((destrava+1))
-              done
-            done < bloqueadas.tsv
-            printf '%s\t%s\t%s\t%s\n' "$destrava" "$num" "$titulo" "$onda" >> ranking.tsv
-          done < prontas.tsv
+          const NOMES = ['comece aqui', 'fundacao', 'sistema', 'secoes', 'fechamento', 'publicacao'];
+          const grupos = new Map();
+          for (const o of nos) {
+            const e = etapa.get(o.n);
+            if (!grupos.has(e)) grupos.set(e, []);
+            grupos.get(e).push(o);
+          }
 
-          {
-            echo "Atualizado automaticamente pelo workflow \`painel\`. Nao edite na mao."
-            echo
-            echo "## Comece por aqui"
-            echo
-            if [ -s ranking.tsv ]; then
-              echo "| destrava | issue | onda |"
-              echo "|---|---|---|"
-              sort -rn ranking.tsv | while IFS=$'\t' read -r d n t o; do
-                if [ "$d" -gt 0 ]; then marca="**$d**"; else marca="-"; fi
-                echo "| $marca | #$n $t | $o |"
-              done
-            else
-              echo "Nada pronto. Todas as issues abertas esperam alguma outra."
-            fi
-            echo
-            echo "Ordenado por quantas issues cada uma destrava. O topo e o gargalo."
-            echo
-            echo "## Esperando"
-            echo
-            if [ -s bloqueadas.tsv ]; then
-              echo "| issue | espera | onda |"
-              echo "|---|---|---|"
-              sort -n bloqueadas.tsv | while IFS=$'\t' read -r n t o bl; do
-                refs=$(echo "$bl" | tr ' ' '\n' | sed 's/^/#/' | paste -sd ' ' -)
-                echo "| #$n $t | $refs | $o |"
-              done
-            else
-              echo "Nenhuma issue bloqueada."
-            fi
-            echo
-            echo "---"
-            echo
-            echo "Dependencias e ondas explicadas em [ROADMAP.md](../blob/develop/ROADMAP.md)."
-            echo "Padrao de trabalho em [CONTRIBUTING.md](../blob/develop/CONTRIBUTING.md)."
-          } > painel.md
+          const L = [];
+          L.push('Calculado do grafo de dependencias pelo workflow `painel`. Nao edite na mao.');
+          L.push('');
+          L.push(`**${grupos.get(0)?.length || 0} issues** podem comecar agora, em paralelo. ` +
+                 `Profundidade total: **${Math.max(...etapa.values()) + 1} etapas**.`);
+          L.push('');
 
-          cat painel.md
+          for (const e of [...grupos.keys()].sort((a, b) => a - b)) {
+            const itens = grupos.get(e).sort((a, b) => alcance(b.n) - alcance(a.n) || a.n - b.n);
+            const nome = NOMES[e] ? ` — ${NOMES[e]}` : '';
+            L.push(`## Etapa ${e}${nome}`);
+            L.push('');
+            L.push(`${itens.length} issue(s) em paralelo.` +
+                   (e === 0 ? ' Nada bloqueia estas.' : ` Espera a etapa ${e - 1} fechar.`));
+            L.push('');
+            L.push('| destrava | issue | categoria | espera |');
+            L.push('|---|---|---|---|');
+            for (const o of itens) {
+              const a = alcance(o.n);
+              const cat = (o.l || []).filter(x => !['pronto', 'bloqueado'].includes(x))[0] || '-';
+              const esp = (o.bl || []).length ? o.bl.map(b => '#' + b).join(' ') : '-';
+              L.push(`| ${a ? '**' + a + '**' : '-'} | #${o.n} ${o.t} | ${cat} | ${esp} |`);
+            }
+            L.push('');
+          }
+
+          L.push('---');
+          L.push('');
+          L.push('`destrava` conta dependentes **transitivos**, nao so diretos — e a diferenca importa: ' +
+                 'contar direto faria a #17 parecer ter alcance 1 quando ela alimenta 14.');
+          L.push('');
+          L.push('Ordenado por alcance dentro de cada etapa. O topo da Etapa 0 e o gargalo do projeto.');
+          L.push('');
+          L.push('Porque de cada dependencia: [ROADMAP.md](../blob/main/ROADMAP.md). ' +
+                 'Padrao de trabalho: [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md).');
+
+          fs.writeFileSync('painel.md', L.join('\n'));
+
+          // Divergencia entre etapa calculada e milestone, para nao desalinhar de novo.
+          const aviso = nos
+            .filter(o => o.m && !o.m.startsWith(`Etapa ${etapa.get(o.n)}`))
+            .map(o => `  #${o.n}: calculada Etapa ${etapa.get(o.n)}, milestone "${o.m}"`);
+          if (aviso.length) {
+            console.log('::warning::Milestone divergindo da etapa calculada:\n' + aviso.join('\n'));
+          }
+
+          // Rotulos, por etapa.
+          fs.writeFileSync('rotular.sh', nos.map(o =>
+            etapa.get(o.n) === 0
+              ? `gh issue edit ${o.n} --repo "$REPO" --add-label pronto --remove-label bloqueado || true`
+              : `gh issue edit ${o.n} --repo "$REPO" --add-label bloqueado --remove-label pronto || true`
+          ).join('\n'));
+
+          console.log(L.join('\n'));
+          JS
+
+      - name: aplicar os rotulos
+        run: bash rotular.sh
 
       - name: publicar o painel
         run: |
@@ -126,13 +165,11 @@ jobs:
           existente=$(gh issue list --repo "$REPO" --state all --limit 200 \
             --search "\"$TITULO\" in:title" --json number,title \
             --jq "[.[] | select(.title == env.TITULO)][0].number // empty")
-
           if [ -n "$existente" ]; then
             gh issue edit "$existente" --repo "$REPO" --body-file painel.md
-            gh issue reopen "$existente" --repo "$REPO" 2>/dev/null || true
             echo "painel atualizado: #$existente"
           else
             url=$(gh issue create --repo "$REPO" --title "$TITULO" --body-file painel.md)
-            echo "painel criado: $url"
             gh issue pin "${url##*/}" --repo "$REPO" 2>/dev/null || true
+            echo "painel criado: $url"
           fi
