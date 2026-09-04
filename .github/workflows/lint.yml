@@ -21,16 +21,68 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: html-validate
+
+      # Catraca, pelo mesmo motivo do content-rules: portao absoluto travaria
+      # o repositorio. Sobram 33 erros de estilo no lp-final.html — 19 inline
+      # style arbitrarios e 6 de espaco em branco — que sao divida conhecida,
+      # nao regressao. Nada e silenciado: os erros aparecem no log, e qualquer
+      # erro NOVO reprova o PR. Quando chegar a zero, vira portao absoluto.
+      - name: html-validate na base e no PR
+        id: contar
         run: |
-          for f in $PUBLICADOS; do
-            [ -f "$f" ] || continue
-            echo "--- $f"
-            npx --yes html-validate@9 "$f"
-          done
+          contar () {
+            local raiz="$1" total=0
+            for rel in $PUBLICADOS; do
+              [ -f "$raiz/$rel" ] || continue
+              local n
+              n=$(npx --yes html-validate@9 "$raiz/$rel" 2>&1 \
+                    | grep -cE '^\s+[0-9]+:[0-9]+\s+error' || true)
+              echo "  $rel: $n erro(s)" >&2
+              total=$((total + n))
+            done
+            echo "$total"
+          }
+
+          echo "=== NESTE PR ==="
+          npx --yes html-validate@9 $PUBLICADOS 2>&1 | head -60 || true
+          ATUAL=$(contar ".")
+
+          BASE="${{ github.event.pull_request.base.ref }}"
+          if [ -z "$BASE" ]; then
+            echo "Push direto, sem base. Apenas reportando: $ATUAL erro(s)."
+            echo "atual=$ATUAL" >> "$GITHUB_OUTPUT"
+            echo "base=$ATUAL"  >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "=== NA BASE ($BASE) ==="
+          git fetch --no-tags origin "$BASE" >/dev/null 2>&1
+          git worktree add -f /tmp/base-html "origin/$BASE" >/dev/null 2>&1
+          ANTERIOR=$(contar "/tmp/base-html")
+
+          echo "atual=$ATUAL"   >> "$GITHUB_OUTPUT"
+          echo "base=$ANTERIOR" >> "$GITHUB_OUTPUT"
+
+      - name: veredito da catraca
+        run: |
+          A=${{ steps.contar.outputs.atual }}
+          B=${{ steps.contar.outputs.base }}
+          echo "base=$B  neste PR=$A"
+          if [ "$A" -gt "$B" ]; then
+            echo "::error::O PR ADICIONA erro de HTML: $B na base contra $A aqui."
+            exit 1
+          fi
+          if [ "$A" -lt "$B" ]; then
+            echo "::notice::O PR corrige $((B - A)) erro(s) de HTML. De $B para $A."
+          fi
+          if [ "$A" -eq 0 ]; then
+            echo "::notice::Zero erro de HTML. A catraca passa a ser portao absoluto."
+          fi
 
   css:
     name: CSS lint

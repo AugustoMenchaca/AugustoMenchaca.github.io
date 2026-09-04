@@ -690,9 +690,9 @@
       <div style="display:flex; align-items:center;">
         <a href="#contact" class="btn"><span class="i18n" lang="pt">VAMOS CONVERSAR ↗</span><span class="i18n" lang="en">LET'S TALK ↗</span></a>
         <div class="lang-toggle" style="display:inline-flex; align-items:center; gap:4px; margin-left:16px;">
-          <button id="lang-pt" class="lang-btn" aria-pressed="true" aria-label="PT — Português">PT</button>
+          <button type="button" id="lang-pt" class="lang-btn" aria-pressed="true" aria-label="PT — Português">PT</button>
           <span style="color:var(--muted); font-size:0.7rem; font-family:var(--f-mono);">/</span>
-          <button id="lang-en" class="lang-btn" aria-pressed="false" aria-label="EN — English">EN</button>
+          <button type="button" id="lang-en" class="lang-btn" aria-pressed="false" aria-label="EN — English">EN</button>
         </div>
       </div>
     </div>
@@ -763,8 +763,8 @@
   <div class="container rail-head">
     <div class="rail-btn-wrap">
       <span class="i18n meta-label" lang="pt">Contextos ativos e entregas reais</span><span class="i18n meta-label" lang="en">Active contexts &amp; real deliverables</span>
-      <button class="i18n rail-pause" aria-pressed="false" aria-label="Toggle marquee pause" class="rail-pause-btn" lang="pt">PAUSAR</button>
-<button class="i18n rail-pause" aria-pressed="false" aria-label="Toggle marquee pause" class="rail-pause-btn" lang="en">PAUSE</button>
+      <button type="button" class="i18n rail-pause rail-pause-btn" aria-pressed="false" aria-label="Toggle marquee pause" lang="pt">PAUSAR</button>
+<button type="button" class="i18n rail-pause rail-pause-btn" aria-pressed="false" aria-label="Toggle marquee pause" lang="en">PAUSE</button>
     </div>
     <span class="i18n meta-label" lang="pt">Rolagem / trilho contínuo →</span>
 <span class="i18n meta-label" lang="en">Scroll / continuous track →</span>
@@ -915,7 +915,7 @@
 <span class="i18n pill on-dark" style="color:var(--paper); border-color:rgba(247,245,239,.4)" lang="en">SCHEMATIC</span>
           </div>
         </div>
-        <svg viewBox="0 0 320 220" aria-label="Mapa do Brasil esquemático">
+        <svg role="img" viewBox="0 0 320 220" aria-label="Mapa do Brasil esquemático">
           <defs>
             <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
               <circle cx="2" cy="2" r="1" fill="#3A3B3C"/>
@@ -950,7 +950,7 @@
 <span class="i18n pill on-dark" style="color:var(--paper); border-color:rgba(247,245,239,.4)" lang="en">SCHEMATIC</span>
           </div>
         </div>
-        <svg viewBox="0 0 300 145" aria-label="Curvas esquemáticas por período de retorno">
+        <svg role="img" viewBox="0 0 300 145" aria-label="Curvas esquemáticas por período de retorno">
           <line x1="30" y1="120" x2="275" y2="120" stroke="#6E7174" stroke-width="1.2"/>
           <line x1="30" y1="10" x2="30" y2="120" stroke="#6E7174" stroke-width="1.2"/>
           <line x1="30" y1="85" x2="270" y2="85" stroke="rgba(247,245,239,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
