@@ -1,5 +1,10 @@
 # Roadmap — etapas, paralelismo e caminho crítico
 
+> **O objetivo é uma LP nova para substituir a que está em produção.**
+> O arquivo em construção é `wireframes/lp-final.html`; a `develop` é onde ele
+> é construído e testado. O `index.html` da raiz é o portfólio de 2024, não é
+> usado, não é mantido e **não deve ser corrigido** — a issue #4 apaga ele.
+
 As etapas **não são atribuídas na mão**. O workflow `painel` calcula do grafo de
 dependências nativo do GitHub, a cada evento de issue:
 
@@ -10,21 +15,21 @@ dependências nativo do GitHub, a cada evento de issue:
 O estado ao vivo está na issue **#29**, fixada no topo do repositório. Este
 arquivo explica o *porquê* de cada dependência; o painel diz *onde estamos*.
 
-**Profundidade: 6 etapas. Largura máxima: 7 issues em paralelo.**
+**Profundidade: 6 etapas.** O painel na #29 tem a largura atual de cada uma.
 
 ---
 
-## Etapa 0 — comece aqui · 7 em paralelo
+## Etapa 0 — comece aqui · 5 em paralelo
 
 | destrava | # | tarefa |
 |---|---|---|
 | **16** | **#7** | **arquitetura de seções: cortar 11 para 8** |
 | **14** | **#17** | **pesquisa: fechar a lacuna da amostra de referências** |
 | 4 | #16 | contato e footer |
-| 1 | #28 | falta favicon, derruba best-practices para 96 |
 | — | #1 | proteger `main` |
 | — | #19 | verificar ou remover as 3 métricas |
-| — | #26 | HTML quebrado no `index.html` em produção |
+
+Fechadas: **#28** (favicon, resolvido com data URI) e **#26**.
 
 **#7 e #17 são as duas raízes, e juntas alimentam quase o projeto inteiro.**
 Fazer as duas em paralelo é a única forma de encurtar o caminho crítico.
@@ -33,8 +38,7 @@ Fazer as duas em paralelo é a única forma de encurtar o caminho crítico.
 dependente direto, a #17 aparentava alcance 1 — ela tem 1 direto (#5) e **14
 transitivos**, porque `#17 → #5 → #6/#21 → todas as seções`.
 
-As três últimas não destravam nada: são folhas, e existem para tirar vermelho do
-CI e consertar o que está no ar.
+A #1 e a #19 não destravam nada: são folhas.
 
 ## Etapa 1 — fundação · 5 em paralelo
 
@@ -44,7 +48,6 @@ CI e consertar o que está no ar.
 | **9** | #20 | remover as 9 molduras vazias | #7 |
 | 5 | #18 | os 4 assets que só o Augusto pode dar | #7 |
 | 4 | #14 | **Vivências — Hut 8 e NIP** | #7 |
-| — | #3 | orçamento Lighthouse | #28 |
 
 **A #14 está aqui, não na etapa das seções.** Ela só depende da arquitetura, e
 por isso pode ser construída muito antes das outras seis. Eu tinha marcado ela
@@ -85,7 +88,7 @@ mais se beneficia de trabalho paralelo.
 
 | # | tarefa | espera |
 |---|---|---|
-| #4 | CD: deploy para o GitHub Pages | #23 · #24 · #25 |
+| #4 | **promover a LP nova para a raiz**, apagando o portfólio de 2024 | #23 · #24 · #25 |
 
 ---
 
@@ -97,10 +100,8 @@ graph LR
     I7["#7 arquitetura<br/>destrava 16"]
     I17["#17 pesquisa<br/>destrava 14"]
     I16["#16 contato"]
-    I28["#28 favicon"]
     I1["#1 proteger main"]
     I19["#19 métricas"]
-    I26["#26 HTML quebrado"]
   end
 
   subgraph E1["Etapa 1 — fundação"]
@@ -108,7 +109,6 @@ graph LR
     I20["#20 molduras<br/>destrava 9"]
     I18["#18 assets"]
     I14["#14 Vivências"]
-    I3["#3 Lighthouse"]
   end
 
   subgraph E2["Etapa 2 — sistema"]
@@ -136,7 +136,6 @@ graph LR
   I4["#4 deploy"]
 
   I17 --> I5
-  I28 --> I3
   I7 --> I20 & I18 & I14
   I5 --> I6 & I21
   I7 --> I6
@@ -173,24 +172,28 @@ uma issue fora dele não atrasa nada, desde que ela feche antes da etapa 4.
 | #10–#13 ← #20 | cada uma tem moldura vazia hoje. A regra de remoção vem antes de reconstruir. |
 | #15 ← #18 | Sobre depende do retrato, e o retrato depende do Augusto. |
 | #22 ← #21, #10 | a curva que se desenha precisa do sistema de movimento e da seção onde mora. |
-| #3 ← #28 | o gate do Lighthouse não fica verde enquanto o favicon der 404. |
 | #23, #24, #25 ← todas as seções | i18n, responsivo e precisão só fazem sentido sobre a página inteira. |
 | #4 ← #23, #24, #25 | publicar é o último passo. Nada vai a produção sem as três verificações. |
 
-## Uma tensão registrada
+## Uma lição registrada
 
-A **#26** — HTML quebrado no site que está no ar — está na Etapa 0 e **sem
-bloqueio de propósito**, embora a lógica dissesse que ela depende da #4.
+A **#26** consertava HTML quebrado no `index.html` em produção. Eu a criei e
+priorizei achando que defeito no ar sempre vale corrigir.
 
-Um `</spaN>` com maiúscula errada quebra a estrutura do documento **agora**, e o
-caminho até a #4 tem seis níveis. Se a substituição demorar, o site fica
-quebrado esse tempo todo. Decisão consciente: corrigir agora custa pouco e pode
-virar trabalho perdido; não corrigir mantém o defeito no ar.
+**Estava errado, e o cliente corrigiu:** aquela página não é usada e vai ser
+apagada pela #4. O conserto foi trabalho descartável, e pior — o CI estava
+validando o arquivo errado, guardando o que não interessa em vez do produto.
+
+O que ficou: o alvo do CI é **`wireframes/lp-final.html`**, e só ele. Antes de
+criar issue sobre um arquivo, a pergunta é se ele sobrevive à #4.
 
 ## Estado da infraestrutura
 
 - `main` — produção. GitHub Pages publica dela em modo `legacy`, direto da raiz.
 - `develop` — integração, com worktree próprio.
-- CI de lint no ar: html-validate, stylelint, content-rules, paridade PT/EN.
-- CI de Lighthouse validado, reprovando por motivo real (#28).
+- CI de lint no ar, com alvo em `wireframes/lp-final.html`: html-validate,
+  stylelint, content-rules, paridade PT/EN. Os dois primeiros são **catracas**:
+  reprovam só se o PR aumentar a contagem, e viram portão absoluto ao chegar a
+  zero.
+- CI de Lighthouse validado e verde.
 - Painel automático calculando as etapas a cada evento de issue.

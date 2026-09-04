@@ -4,10 +4,25 @@ on:
   pull_request:
     branches: [develop, main]
   push:
-    branches: [develop]
+    branches: [develop, main]
 
 permissions:
   contents: read
+
+env:
+  # O ALVO e a LP nova, nao a pagina em producao.
+  #
+  # O index.html da raiz e o portfolio de outubro de 2024. Ele nao e usado, nao
+  # e mantido, e vai ser SUBSTITUIDO pela LP nova (issue #4). Validar ele so
+  # gerava trabalho descartavel: a issue #26 consertou markup de um arquivo que
+  # sera apagado.
+  #
+  # Tambem ficam fora prototipo-c.html, que e registro da direcao visual
+  # aprovada, e "Portfolio Wireframes.dc.html", que e artefato de canvas.
+  #
+  # Quando a issue #4 promover a LP para a raiz, este valor volta a ser
+  # index.html — e a partir dai o CI guarda producao de verdade.
+  PUBLICADOS: "wireframes/lp-final.html"
 
 jobs:
   html:
@@ -15,11 +30,68 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - name: html-validate
-        run: npx --yes html-validate@9 "index.html" "wireframes/*.html"
+
+      # Catraca, pelo mesmo motivo do content-rules: portao absoluto travaria
+      # o repositorio. Sobram 33 erros de estilo no lp-final.html — 19 inline
+      # style arbitrarios e 6 de espaco em branco — que sao divida conhecida,
+      # nao regressao. Nada e silenciado: os erros aparecem no log, e qualquer
+      # erro NOVO reprova o PR. Quando chegar a zero, vira portao absoluto.
+      - name: html-validate na base e no PR
+        id: contar
+        run: |
+          contar () {
+            local raiz="$1" total=0
+            for rel in $PUBLICADOS; do
+              [ -f "$raiz/$rel" ] || continue
+              local n
+              n=$(npx --yes html-validate@9 "$raiz/$rel" 2>&1 \
+                    | grep -cE '^\s+[0-9]+:[0-9]+\s+error' || true)
+              echo "  $rel: $n erro(s)" >&2
+              total=$((total + n))
+            done
+            echo "$total"
+          }
+
+          echo "=== NESTE PR ==="
+          npx --yes html-validate@9 $PUBLICADOS 2>&1 | head -60 || true
+          ATUAL=$(contar ".")
+
+          BASE="${{ github.event.pull_request.base.ref }}"
+          if [ -z "$BASE" ]; then
+            echo "Push direto, sem base. Apenas reportando: $ATUAL erro(s)."
+            echo "atual=$ATUAL" >> "$GITHUB_OUTPUT"
+            echo "base=$ATUAL"  >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "=== NA BASE ($BASE) ==="
+          git fetch --no-tags origin "$BASE" >/dev/null 2>&1
+          git worktree add -f /tmp/base-html "origin/$BASE" >/dev/null 2>&1
+          ANTERIOR=$(contar "/tmp/base-html")
+
+          echo "atual=$ATUAL"   >> "$GITHUB_OUTPUT"
+          echo "base=$ANTERIOR" >> "$GITHUB_OUTPUT"
+
+      - name: veredito da catraca
+        run: |
+          A=${{ steps.contar.outputs.atual }}
+          B=${{ steps.contar.outputs.base }}
+          echo "base=$B  neste PR=$A"
+          if [ "$A" -gt "$B" ]; then
+            echo "::error::O PR ADICIONA erro de HTML: $B na base contra $A aqui."
+            exit 1
+          fi
+          if [ "$A" -lt "$B" ]; then
+            echo "::notice::O PR corrige $((B - A)) erro(s) de HTML. De $B para $A."
+          fi
+          if [ "$A" -eq 0 ]; then
+            echo "::notice::Zero erro de HTML. A catraca passa a ser portao absoluto."
+          fi
 
   css:
     name: CSS lint
@@ -29,89 +101,108 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      # Os dois pacotes precisam estar no MESMO ambiente npx, senao o
-      # stylelint nao resolve o custom syntax. `npx --yes a b` trata b como
-      # argumento, nao como dependencia: usar -p para cada pacote.
       - name: stylelint no CSS embutido
         run: >
           npx --yes -p stylelint@16 -p postcss-html@1 stylelint
-          "index.html" "wireframes/*.html" "Css/*.css"
-          --custom-syntax postcss-html
+          $PUBLICADOS "Css/*.css" --custom-syntax postcss-html
 
   content-rules:
     name: Nada inventado entra
     runs-on: ubuntu-latest
-    # Escopo: so o que e publicado. wireframes/prototipo-c.html e registro
-    # historico da direcao visual aprovada e nao vai ao ar.
-    env:
-      PUBLICADOS: "index.html wireframes/lp-final.html"
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # precisa do historico para comparar com a base
 
-      # Um passo unico que ACUMULA as falhas em vez de parar na primeira.
-      # Passos separados fazem o job morrer no primeiro erro e pular o resto,
-      # entao voce descobre um problema por rodada de CI. Aqui sai tudo junto.
-      - name: cinco regras de conteudo
+      # CATRACA, e nao portao absoluto.
+      #
+      # Um portao absoluto trava o projeto: as violacoes de hoje pertencem as
+      # issues #16, #19 e #20, entao qualquer PR ficaria vermelho ate a ultima
+      # delas fechar — e ninguem conseguiria mergear nem a correcao de outra
+      # coisa. Isso aconteceu de verdade no PR #31.
+      #
+      # A catraca compara com a branch base: reprova se o PR AUMENTAR o numero
+      # de violacoes. Nao da para piorar, e nao e preciso consertar tudo de uma
+      # vez. Quando o total chegar a zero, ela passa a ser portao absoluto de
+      # graca.
+      - name: contar violacoes na base e no PR
+        id: contar
         run: |
-          falhas=0
+          contar () {
+            local raiz="$1" total=0
+            for rel in $PUBLICADOS; do
+              local f="$raiz/$rel"
+              [ -f "$f" ] || continue
+              local n=0
+              n=$((n + $(grep -c 'href="#"' "$f" || true)))
+              n=$((n + $(grep -ciE 'M[EÉ]TRICA A VERIFICAR|VERIFIED METRIC REQUIRED' "$f" || true)))
+              n=$((n + $(grep -coE '\[ [A-Z][A-Z0-9 /—·-]+ \]' "$f" || true)))
+              n=$((n + $(grep -ohE 'id="[^"]+"' "$f" | sort | uniq -d | wc -l)))
+              if grep -q '@keyframes' "$f" && ! grep -q 'prefers-reduced-motion' "$f"; then
+                n=$((n + 1))
+              fi
+              echo "  $rel: $n violacao(oes)" >&2
+              total=$((total + n))
+            done
+            echo "$total"
+          }
 
+          echo "=== NESTE PR ==="
+          ATUAL=$(contar ".")
+
+          BASE="${{ github.event.pull_request.base.ref }}"
+          if [ -z "$BASE" ]; then
+            echo "Push direto, sem base para comparar. Apenas reportando."
+            echo "atual=$ATUAL" >> "$GITHUB_OUTPUT"
+            echo "base=$ATUAL" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "=== NA BASE ($BASE) ==="
+          git fetch --no-tags origin "$BASE" >/dev/null 2>&1
+          git worktree add -f /tmp/base "origin/$BASE" >/dev/null 2>&1
+          ANTERIOR=$(contar "/tmp/base")
+
+          echo "atual=$ATUAL"   >> "$GITHUB_OUTPUT"
+          echo "base=$ANTERIOR" >> "$GITHUB_OUTPUT"
+
+      - name: mostrar as violacoes que existem
+        run: |
           for f in $PUBLICADOS; do
             [ -f "$f" ] || continue
-
-            # 1. Todo link precisa de destino real.
-            if grep -n 'href="#"' "$f"; then
-              echo "::error file=$f::href=\"#\" encontrado. Todo link precisa de destino real."
-              falhas=$((falhas+1))
-            fi
-
-            # 2. Numero sem fonte sai. Nao existe terceira opcao.
-            if grep -niE 'M[EÉ]TRICA A VERIFICAR|VERIFIED METRIC REQUIRED' "$f"; then
-              echo "::error file=$f::Metrica nao verificada. Confirme com fonte ou remova."
-              falhas=$((falhas+1))
-            fi
-
-            # 3. Ausencia declarada ainda parece ausencia.
-            #    Convencao deste projeto: rotulo em caixa alta entre colchetes.
-            if grep -noE '\[ [A-Z][A-Z0-9 /—·-]+ \]' "$f"; then
-              echo "::error file=$f::Moldura de asset vazia encontrada."
-              falhas=$((falhas+1))
-            fi
-
-            # 4. id duplicado DENTRO de um arquivo. Um id="rail-pause-btn"
-            #    repetido deixou o botao em ingles morto e sobrescreveu o
-            #    rotulo em portugues.
-            dup=$(grep -ohE 'id="[^"]+"' "$f" | sort | uniq -d || true)
-            if [ -n "$dup" ]; then
-              echo "::error file=$f::id duplicado no mesmo documento: $dup"
-              falhas=$((falhas+1))
-            fi
-
-            # 5. Movimento novo respeita quem pediu para nao ter movimento.
-            if grep -q '@keyframes' "$f" && ! grep -q 'prefers-reduced-motion' "$f"; then
-              echo "::error file=$f::Declara @keyframes sem tratar prefers-reduced-motion."
-              falhas=$((falhas+1))
-            fi
+            grep -n 'href="#"' "$f" | sed "s|^|  $f href-vazio |" || true
+            grep -niE 'M[EÉ]TRICA A VERIFICAR|VERIFIED METRIC REQUIRED' "$f" | sed "s|^|  $f metrica |" || true
+            grep -noE '\[ [A-Z][A-Z0-9 /—·-]+ \]' "$f" | sed "s|^|  $f moldura |" || true
+            grep -ohE 'id="[^"]+"' "$f" | sort | uniq -d | sed "s|^|  $f id-duplicado |" || true
           done
 
-          echo "---"
-          if [ "$falhas" -gt 0 ]; then
-            echo "$falhas regra(s) de conteudo violada(s)."
+      - name: veredito da catraca
+        run: |
+          A=${{ steps.contar.outputs.atual }}
+          B=${{ steps.contar.outputs.base }}
+          echo "base=$B  neste PR=$A"
+          if [ "$A" -gt "$B" ]; then
+            echo "::error::O PR ADICIONA violacoes de conteudo: $B na base contra $A aqui. Nao da para piorar."
             exit 1
           fi
-          echo "Nenhuma regra de conteudo violada."
+          if [ "$A" -lt "$B" ]; then
+            echo "::notice::O PR REMOVE $((B - A)) violacao(oes). De $B para $A."
+          else
+            echo "::notice::Nenhuma violacao nova. Continua em $A — pertencem as issues #16, #19 e #20."
+          fi
+          if [ "$A" -eq 0 ]; then
+            echo "::notice::Zero violacoes. A catraca passa a ser portao absoluto."
+          fi
 
   i18n:
     name: Paridade PT/EN
     runs-on: ubuntu-latest
-    env:
-      PUBLICADOS: "index.html wireframes/lp-final.html"
     steps:
       - uses: actions/checkout@v4
-      # Conta lang= APENAS nas tags que carregam a classe i18n, em qualquer
-      # ordem de atributo. Contar 'lang="pt"' solto e errado: pega a tag <html
-      # lang="pt-BR"> e os seletores [data-lang="pt"] .i18n[lang="en"] do CSS,
-      # e acusa desequilibrio numa pagina saudavel. Verificado: 310 tags,
-      # 155 pt e 155 en em lp-final.html.
+      # Conta lang= APENAS nas tags com a classe i18n, em qualquer ordem de
+      # atributo. Contar 'lang="pt"' solto pega a tag <html lang="pt-BR"> e os
+      # seletores [data-lang="pt"] .i18n[lang="en"] do CSS, e acusa
+      # desequilibrio numa pagina saudavel.
       - name: contar pares de idioma
         run: |
           for f in $PUBLICADOS; do

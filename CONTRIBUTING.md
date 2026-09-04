@@ -1,9 +1,25 @@
 # Como este repositório funciona
 
-`AugustoMenchaca.github.io` é servido pelo GitHub Pages. **A `main` é produção**:
-o que entra nela vai ao ar no domínio.
+## O objetivo
+
+Construir uma **landing page nova** para substituir a que está em produção.
+
+O arquivo em construção é **`wireframes/lp-final.html`**. Ele é o produto.
+
+O `index.html` da raiz é o portfólio de outubro de 2024. **Ele não é usado, não
+é mantido e não deve ser corrigido** — vai ser apagado quando a LP nova for
+promovida para a raiz (issue #4). Trabalho gasto nele é trabalho descartado, e
+já aconteceu uma vez: a issue #26 consertou markup de um arquivo que vai
+desaparecer.
+
+Por isso o CI valida **só a LP nova**. Quando a issue #4 promover ela para a
+raiz, o alvo volta a ser `index.html` e o CI passa a guardar produção de fato.
 
 ## Branches
+
+`AugustoMenchaca.github.io` é servido pelo GitHub Pages. **A `main` é produção**:
+o que entra nela vai ao ar no domínio. **A `develop` é onde a LP nova é
+construída e testada.**
 
 | branch | papel | quem escreve nela |
 |---|---|---|
@@ -80,10 +96,10 @@ NIP.
 
 Push em `main` dispara o deploy para o GitHub Pages.
 
-Ponto a resolver antes do primeiro deploy: hoje a LP nova vive em
-`wireframes/lp-final.html` e o `index.html` da raiz é o portfólio de outubro de
-2024, que é **o que está no ar**. O workflow precisa decidir o que vai para a
-raiz publicada.
+**A issue #4 é o objetivo do projeto, não uma etapa de infraestrutura.** Ela
+promove `wireframes/lp-final.html` para a raiz, apagando o portfólio de 2024.
+Enquanto ela não acontecer, todo o trabalho está invisível: quem abrir o domínio
+vê o site velho.
 
 ## Definição de pronto
 
