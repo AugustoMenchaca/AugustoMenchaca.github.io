@@ -10,10 +10,19 @@ permissions:
   contents: read
 
 env:
-  # Somente o que e publicado. prototipo-c.html e o registro da direcao visual
-  # aprovada e "Portfolio Wireframes.dc.html" e artefato de canvas de design —
-  # nenhum dos dois vai ao ar, e validar os dois reprovava PR por engano.
-  PUBLICADOS: "index.html wireframes/lp-final.html"
+  # O ALVO e a LP nova, nao a pagina em producao.
+  #
+  # O index.html da raiz e o portfolio de outubro de 2024. Ele nao e usado, nao
+  # e mantido, e vai ser SUBSTITUIDO pela LP nova (issue #4). Validar ele so
+  # gerava trabalho descartavel: a issue #26 consertou markup de um arquivo que
+  # sera apagado.
+  #
+  # Tambem ficam fora prototipo-c.html, que e registro da direcao visual
+  # aprovada, e "Portfolio Wireframes.dc.html", que e artefato de canvas.
+  #
+  # Quando a issue #4 promover a LP para a raiz, este valor volta a ser
+  # index.html — e a partir dai o CI guarda producao de verdade.
+  PUBLICADOS: "wireframes/lp-final.html"
 
 jobs:
   html:
