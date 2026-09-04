@@ -19,17 +19,18 @@ arquivo explica o *porquê* de cada dependência; o painel diz *onde estamos*.
 
 ---
 
-## Etapa 0 — comece aqui · 5 em paralelo
+## Etapa 0 — comece aqui · 4 em paralelo
 
 | destrava | # | tarefa |
 |---|---|---|
 | **16** | **#7** | **arquitetura de seções: cortar 11 para 8** |
 | **14** | **#17** | **pesquisa: fechar a lacuna da amostra de referências** |
-| 4 | #16 | contato e footer |
-| — | #1 | proteger `main` |
+| **4** | #16 | contato e footer |
 | — | #19 | verificar ou remover as 3 métricas |
 
-Fechadas: **#28** (favicon, resolvido com data URI) e **#26**.
+Infraestrutura concluída: **#1** proteção da `main`, **#2** CI de lint,
+**#3** orçamento Lighthouse, **#28** favicon. E **#26**, que não deveria
+ter existido — ver a lição no fim.
 
 **#7 e #17 são as duas raízes, e juntas alimentam quase o projeto inteiro.**
 Fazer as duas em paralelo é a única forma de encurtar o caminho crítico.
@@ -38,7 +39,7 @@ Fazer as duas em paralelo é a única forma de encurtar o caminho crítico.
 dependente direto, a #17 aparentava alcance 1 — ela tem 1 direto (#5) e **14
 transitivos**, porque `#17 → #5 → #6/#21 → todas as seções`.
 
-A #1 e a #19 não destravam nada: são folhas.
+A #19 não destrava nada: é folha.
 
 ## Etapa 1 — fundação · 5 em paralelo
 
@@ -190,7 +191,8 @@ criar issue sobre um arquivo, a pergunta é se ele sobrevive à #4.
 ## Estado da infraestrutura
 
 - `main` — produção. GitHub Pages publica dela em modo `legacy`, direto da raiz.
-- `develop` — integração, com worktree próprio.
+- `develop` — **branch padrão do repositório** e onde a LP nova é construída.
+  Precisa ter os workflows: evento de `issues` só dispara a partir da padrão.
 - CI de lint no ar, com alvo em `wireframes/lp-final.html`: html-validate,
   stylelint, content-rules, paridade PT/EN. Os dois primeiros são **catracas**:
   reprovam só se o PR aumentar a contagem, e viram portão absoluto ao chegar a
