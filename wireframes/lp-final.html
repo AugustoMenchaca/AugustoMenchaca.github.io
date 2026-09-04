@@ -237,6 +237,7 @@
   .metric::before { content: ''; display: block; width: 28px; height: 3px; background: var(--on-dark); margin-bottom: 11px; }
   .metric-value { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.2rem, 2vw, 1.6rem); letter-spacing: -0.02em; color: var(--paper); line-height: 1.1; display: block; }
   .metric-label { font-size: 0.78rem; color: var(--on-dark); margin-top: 5px; display: block; }
+  .metrics-source { grid-column: 1 / -1; margin: 0; font-size: 0.72rem; line-height: 1.45; color: var(--on-dark); }
   
   .idf-flow { margin: 32px 0; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 600; color: var(--paper); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
   .idf-flow li { display: flex; align-items: center; gap: 12px; }
@@ -982,22 +983,25 @@
 
     <div class="metrics" data-reveal>
       <div class="metric">
-        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
-<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
-        <span class="i18n metric-label" lang="pt">Estações e equações processadas</span><span class="i18n metric-label" lang="en">Gauges &amp; equations processed</span>
+        <span class="i18n metric-value" lang="pt">1.543</span>
+<span class="i18n metric-value" lang="en">1,543</span>
+        <span class="i18n metric-label" lang="pt">Usuários ativos</span>
+<span class="i18n metric-label" lang="en">Active users</span>
       </div>
       <div class="metric">
-        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
-<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
-        <span class="i18n metric-label" lang="pt">Resposta de cálculo instantânea</span>
-<span class="i18n metric-label" lang="en">Instant calculation response</span>
+        <span class="i18n metric-value" lang="pt">+2.000</span>
+<span class="i18n metric-value" lang="en">+2,000</span>
+        <span class="i18n metric-label" lang="pt">Acessos, vindos de 16 países</span>
+<span class="i18n metric-label" lang="en">Visits, from 16 countries</span>
       </div>
       <div class="metric">
-        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
-<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
-        <span class="i18n metric-label" lang="pt">Unidades federativas cobertas</span>
-<span class="i18n metric-label" lang="en">Federative units covered</span>
+        <span class="i18n metric-value" lang="pt">+12 mil</span>
+<span class="i18n metric-value" lang="en">+12k</span>
+        <span class="i18n metric-label" lang="pt">Interações na plataforma</span>
+<span class="i18n metric-label" lang="en">Interactions on the platform</span>
       </div>
+      <p class="i18n metrics-source" lang="pt">Primeiro mês no ar (28 dias), conforme divulgado pelo projeto IDF-BR.</p>
+<p class="i18n metrics-source" lang="en">First month live (28 days), as published by the IDF-BR project.</p>
     </div>
   </div>
 </section>
