@@ -236,11 +236,6 @@
   .data-card { background: var(--charcoal); border: 1px solid rgba(247,245,239,.12); border-radius: 12px; padding: 16px; }
   .data-card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
   .data-card svg { display: block; width: 100%; height: auto; }
-  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.4vw, 34px); margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(247, 245, 239, .14); }
-  .metric::before { content: ''; display: block; width: 28px; height: 3px; background: var(--on-dark); margin-bottom: 11px; }
-  .metric-value { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.2rem, 2vw, 1.6rem); letter-spacing: -0.02em; color: var(--paper); line-height: 1.1; display: block; }
-  .metric-label { font-size: 0.78rem; color: var(--on-dark); margin-top: 5px; display: block; }
-  
   .idf-flow { margin: 32px 0; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 600; color: var(--paper); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
   .idf-flow li { display: flex; align-items: center; gap: 12px; }
   .idf-flow li:not(:last-child)::after { content: '→'; color: var(--on-dark); }
@@ -983,25 +978,6 @@
        </figure>
     </div>
 
-    <div class="metrics" data-reveal>
-      <div class="metric">
-        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
-<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
-        <span class="i18n metric-label" lang="pt">Estações e equações processadas</span><span class="i18n metric-label" lang="en">Gauges &amp; equations processed</span>
-      </div>
-      <div class="metric">
-        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
-<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
-        <span class="i18n metric-label" lang="pt">Resposta de cálculo instantânea</span>
-<span class="i18n metric-label" lang="en">Instant calculation response</span>
-      </div>
-      <div class="metric">
-        <span class="i18n metric-value" lang="pt">[ MÉTRICA A VERIFICAR ]</span>
-<span class="i18n metric-value" lang="en">[ VERIFIED METRIC REQUIRED ]</span>
-        <span class="i18n metric-label" lang="pt">Unidades federativas cobertas</span>
-<span class="i18n metric-label" lang="en">Federative units covered</span>
-      </div>
-    </div>
   </div>
 </section>
 
