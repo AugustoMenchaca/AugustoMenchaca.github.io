@@ -281,13 +281,22 @@ as restrições**, e cai dentro da faixa descritiva das peças que o cliente apr
 paleta que respeite R1–R7 serviria igualmente bem ao critério dele — e é
 exatamente esse o achado.
 
-**Uma observação que não é padrão.** O site da Ciere, trabalho do próprio
-cliente, tem a assinatura "campo de neutro tingido + acento minúsculo de croma
-alto" (`rgb(243,236,220)` `C=0,023` em 64,4%, com dourado `C=0,145` em 0,2%) —
-a mesma do Aelixa. Sugere que a gramática já lhe é familiar. É **uma peça só**,
-é trabalho dele e não referência dele, e portanto **não entra como evidência** —
-misturar as duas populações para fechar um padrão já foi erro apontado pelo
-Codex na §3 do board.
+**Uma coincidência que não é evidência.** O site da Ciere tem a assinatura
+"campo de neutro tingido + acento minúsculo de croma alto"
+(`rgb(243,236,220)` `C=0,023` em 64,4%, com dourado `C=0,145` em 0,2%) — a mesma
+do Aelixa.
+
+**E não dá para ler nada disso como gosto dele.** O papel do cliente na Ciere foi
+comercial, discovery, requisitos, escopo, ponte entre cliente, design e dev, QA,
+SEO e GEO — **ele não foi designer nem design lead da peça**. A paleta da Ciere é
+de quem a desenhou, não dele. A versão anterior deste parágrafo dizia que a
+assinatura "sugere que a gramática já lhe é familiar", e isso era exatamente o
+tipo de inferência de autoria que o `CONTRIBUTING.md` proíbe.
+
+Some-se a isso o motivo que já valia: é **uma peça só**, é projeto dele e não
+referência escolhida por ele, e misturar as duas populações para fechar um padrão
+já foi erro apontado pelo Codex na §3 do board. **Não entra como evidência** por
+três razões independentes.
 
 ---
 
