@@ -1,0 +1,19 @@
+{
+  "feature": "landing-page-pessoal — redesign",
+  "trilha": "completa",
+  "faseAtual": "2 — Precedentes (refeita, issue #17)",
+  "approvals": {
+    "problema": false,
+    "ux": false,
+    "design": false,
+    "plano": false,
+    "aceite": false
+  },
+  "research": {
+    "referenceBoard": true,
+    "board": "docs/design/REFERENCE-BOARD-v3.md",
+    "amostra": "5 de 5 referencias escolhidas pelo cliente"
+  },
+  "artifacts": {},
+  "nota": "Fase 2 foi refeita: a amostra do REFERENCE-BOARD-v1/v2 foi escolhida pelo agente, nao pelo cliente (issue #17). Gate A fica em false ate PROBLEMA-v1 ser revalidado — as metricas de sucesso dele foram derrubadas por medicao (ver docs/design/00-ORDEM.md)."
+}
