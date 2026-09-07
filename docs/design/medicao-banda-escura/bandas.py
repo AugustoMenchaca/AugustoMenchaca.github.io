@@ -1,7 +1,24 @@
+# PRESERVADO PARA PROCEDENCIA — NAO FAZ PARTE DO FLUXO. Use bandas-verificado.py.
+#
+# Esta e a regua da rodada delegada, mantida como ela veio, com dois defeitos
+# conhecidos e registrados no RESULTADO.md:
+#   1. conta a M3 em QUALQUER corrida escura, inclusive de 1px (a aelixa saiu
+#      com 32 transicoes tendo 3 bandas);
+#   2. aplica o limiar de 300px sem escalar pela captura, e aelixa e
+#      white-desert sao capturadas a 0,5x.
+#
+# E rodar este arquivo SOBRESCREVE raw/lp-final.json e raw/obspogon.json, que
+# foram remedidos a mao — voltando os numeros errados. O README nao o inclui no
+# fluxo por esse motivo.
+
 import sys, json, os, glob
 import numpy as np
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
+
+# Ancora de caminho: sem isto o script so roda com o CWD na raiz do repositorio,
+# e nada no arquivo dizia isso. Ver README.md desta pasta.
+RAW = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'raw')
 
 def oklch(rgb):
     c = rgb.astype(np.float64) / 255.0
@@ -14,9 +31,9 @@ def oklch(rgb):
     return L
 
 def process_file(base_name):
-    json_path = f"docs/design/medicao-banda-escura/raw/{base_name}_dom.json"
-    img_path = f"docs/design/medicao-banda-escura/raw/{base_name}.png"
-    out_path = f"docs/design/medicao-banda-escura/raw/{base_name}.json"
+    json_path = os.path.join(RAW, f"{base_name}_dom.json")
+    img_path  = os.path.join(RAW, f"{base_name}.png")
+    out_path  = os.path.join(RAW, f"{base_name}.json")
 
     if not os.path.exists(json_path):
         return
@@ -117,7 +134,7 @@ def process_file(base_name):
         json.dump(out_data, f, ensure_ascii=False, indent=2)
 
 print("Processando imagens...")
-for path in glob.glob("docs/design/medicao-banda-escura/raw/*_dom.json"):
+for path in glob.glob(os.path.join(RAW, "*_dom.json")):
     base_name = os.path.basename(path).replace('_dom.json', '')
     process_file(base_name)
 print("Concluído.")

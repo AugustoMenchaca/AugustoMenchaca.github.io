@@ -53,6 +53,38 @@ quatro superfícies escuras do projeto medem `L` 0,150–0,339 e as quatro clara
 0,917–1,000, e 0,50 cai no vazio entre as duas populações. Banda é corrida
 contígua de **≥ 300 CSS px**, medida no pixel e não no `background-color`.
 
+### E o temperamento, que ninguém havia medido nos rejeitados
+
+Depois do review, medi as métricas de cor **por referência** com a sonda
+canônica da §8.2 do board, sobre as capturas de `referencias-v3/`. Dois
+resultados:
+
+**Primeiro, a sonda reproduz a §3 e a §12 em 15 de 15 peças** — mesmas seis
+métricas, mesmo temperamento das cinco aprovadas, mesmo croma de pico. Isso
+valida de uma vez a tabela nova e a canônica.
+
+**Segundo, o temperamento dos 10 rejeitados é dado novo.** A §3 mede
+temperamento só das 5 aprovadas; a §12 mede as seis métricas dos rejeitados mas
+não o temperamento. Medido nos dois lados, ele **também não separa**: as quatro
+famílias que dominam alguma peça aprovada — amarelo, azul, roxo, verde — dominam
+também alguma rejeitada.
+
+| família dominante | aprovada | rejeitada |
+|---|---|---|
+| amarelo | `aelixa` 42,6% | `charityshot` 77,8% |
+| roxo | `illoca` 68,6% | `shelomoh` 98,3% · `thatmlopsguy` 51,9% |
+| verde | `paulkalkbrenner` 55,6% · `lxlcreative` 41,5% | `obspogon` 61,6% · `simonbetton` 78,9% |
+| azul | `white-desert` 63,5% | `nextfive` 92,7% · `cassidoo` 34,2% |
+
+Isso encerra a **última** hipótese de cor que havia sobrevivido à primeira
+reclamação: o *"muito agressivo"* que eu atribuí a "81% da família vinho".
+Nenhuma família de matiz prediz aprovação.
+
+A única métrica pedida pela issue que continua sem medição por referência é
+**área por cor** dos 10 rejeitados — ela exige o DOM, não o pixel. Está apontada
+peça por peça, com seção, na §1 do entregável, e os cinco aprovados têm o
+inventário completo na §3 do board.
+
 ---
 
 ## Achado 2 — a restrição de AA já estava satisfeita
@@ -184,6 +216,43 @@ lxlcreative **0,9451** contra "marrom em 98,6%"; illoca **0,0000** contra
 
 ---
 
+## Achado 8 — os instrumentos não eram reproduzíveis, e o defeito era meu
+
+Apontado no review do PR. Verificado, e pior do que descrito:
+
+- **`probe.js`** resolvia `../../wireframes/lp-final.html` mas escrevia em
+  `docs/design/medicao-banda-escura/raw/` — **as duas metades assumiam CWDs
+  diferentes, e nenhum CWD fazia as duas funcionarem.** É por isso que a rodada
+  delegada precisou de um driver separado só para a LP.
+- **`driver-lp-final.js`** era internamente consistente (tudo relativo à raiz do
+  repositório), mas **o cabeçalho que eu escrevi mandava rodar de dentro da
+  pasta**. A instrução versionada era minha, e quebrava o script.
+- **`bandas.py`** também assumia a raiz, sem nada no arquivo dizendo isso.
+
+Corrigido ancorando os caminhos no próprio arquivo (`__dirname` / `__file__`),
+em vez de documentar "rode da raiz" — que só reintroduz o modo de falha. O fluxo
+completo ficou em `medicao-banda-escura/README.md`, e roda de qualquer
+diretório.
+
+**`bandas.py` saiu do fluxo.** Além dos dois defeitos de régua já registrados,
+rodá-lo **sobrescreve** `raw/lp-final.json` e `raw/obspogon.json`, que foram
+remedidos — devolvendo os números errados. Fica no repositório como procedência
+da rodada delegada, com a guarda escrita no cabeçalho.
+
+### A re-execução, e o que ela mostrou
+
+Rodei o fluxo inteiro de `/tmp`, um diretório sem relação com o repositório.
+Comandos e resultados na **§8 do entregável**. Os quatro passos passaram, e o
+`cor-por-referencia.py` reproduziu a §3 e a §12 do board em 15 de 15 peças.
+
+E apareceu uma confirmação que eu não tinha: a captura fresca da LP pelo fluxo
+documentado mede **1 banda e fração 0,1126**, contra **2 bandas e 0,2170** da
+captura com scroll correto. A rodada delegada havia medido **0,1123**. Ou seja,
+**o defeito da P-012 é determinístico e reproduzível**, não um azar de uma
+execução.
+
+---
+
 ## Os quatro defeitos de instrumento desta rodada
 
 Dois meus, dois da rodada delegada. Tabelados porque o padrão é o mesmo dos três
@@ -234,8 +303,9 @@ não fazer a LP parecer ter dependência de runtime que ela não tem.
 | arquivo | o que é |
 |---|---|
 | `docs/design/PESQUISA-PALETA.md` | **o entregável.** As sete regras R1–R7, os 34 pares medidos, a paleta e o que nela é escolha estética declarada |
-| `docs/design/medicao-contraste/` | sonda, dados brutos e gerador da tabela — a tabela não é digitada |
-| `docs/design/medicao-banda-escura/` | instrumento, 16 capturas, dados brutos, resultado verificado e o original do agy |
+| `docs/design/medicao-contraste/` | sonda de contraste, sonda de cor por referência, dados brutos e os dois geradores — nenhuma tabela é digitada |
+| `docs/design/medicao-banda-escura/` | instrumento, dados brutos, resultado verificado e o original do agy |
+| `docs/design/medicao-banda-escura/README.md` | o fluxo reproduzível, com o comando de cada passo e a ressalva da P-012 |
 | `docs/design/provenance.md` | **P-012** — o defeito do pré-scroll |
 | `CONTRIBUTING.md` | os arquivos novos na tabela de `docs/design/`, e a ressalva da P-012 no board vigente |
 

@@ -11,17 +11,31 @@
 //
 // Dependencia: puppeteer-core, declarada no package.json DESTA pasta — nao na
 // raiz do repositorio, onde um manifesto faria a LP parecer ter dependencia de
-// runtime que ela nao tem. Rodar daqui:  npm install && node driver-lp-final.js
+// runtime que ela nao tem.
+//
+// Os caminhos sao ancorados em __dirname, entao roda de QUALQUER diretorio.
+// A versao anterior deste cabecalho mandava "rodar daqui" enquanto o script
+// resolvia wireframes/lp-final.html relativo ao CWD — instrucao versionada que
+// quebrava o script. Comando canonico no README.md desta pasta.
+//
 // O caminho do Chrome abaixo e absoluto e do Windows; ajuste em outra maquina.
 
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const path = require('path');
 
+// Ancoras de caminho. Sem isto o script so funciona se o CWD for exatamente o
+// que o autor tinha na cabeca — e as duas metades deste arquivo assumiam CWDs
+// diferentes, o que o tornava irreprodutivel de qualquer diretorio.
+const AQUI = __dirname;                                   // docs/design/medicao-banda-escura
+const RAIZ = path.resolve(AQUI, '..', '..', '..');        // raiz do repositorio
+const SAIDA = path.join(AQUI, 'raw');
+const LP = path.join(RAIZ, 'wireframes', 'lp-final.html');
+
 const CHROME_PATH = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 
 const urls = [
-    { url: "file:///" + path.resolve("wireframes/lp-final.html").replace(/\\/g, '/'), name: "lp-final" }
+    { url: "file:///" + LP.replace(/\\/g, '/'), name: "lp-final" }
 ];
 
 async function run() {
@@ -115,9 +129,9 @@ async function run() {
                 scaleFactor = 0.5;
             }
             await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: scaleFactor });
-            await page.screenshot({ path: `docs/design/medicao-banda-escura/raw/${item.name}.png`, fullPage: true });
+            await page.screenshot({ path: path.join(SAIDA, `${item.name}.png`), fullPage: true });
             
-            fs.writeFileSync(`docs/design/medicao-banda-escura/raw/${item.name}_dom.json`, JSON.stringify({
+            fs.writeFileSync(path.join(SAIDA, `${item.name}_dom.json`), JSON.stringify({
                 status: 'OK',
                 nome: item.name,
                 url: item.url,
@@ -128,7 +142,7 @@ async function run() {
             console.log("Sucesso para lp-final");
         } catch (e) {
             console.error(`Falha em ${item.name}: ${e.message}`);
-            fs.writeFileSync(`docs/design/medicao-banda-escura/raw/${item.name}_dom.json`, JSON.stringify({
+            fs.writeFileSync(path.join(SAIDA, `${item.name}_dom.json`), JSON.stringify({
                 status: 'FALHA',
                 nome: item.name,
                 url: item.url,

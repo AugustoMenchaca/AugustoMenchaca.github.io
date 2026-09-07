@@ -18,17 +18,108 @@ por ele — 5 aprovadas, 10 rejeitadas. Teste: o pior aprovado contra o melhor
 rejeitado. Se qualquer aprovado cai dentro da faixa dos rejeitados, a variável
 não separa.
 
-| variável de cor | aprovados | rejeitados | veredito |
-|---|---|---|---|
-| cor perceptível `C≥0,05` | 2,7 – 34,5% | 1,2 – 13,5% | não separa — 3 de 5 aprovados dentro |
-| cor forte `C≥0,12` | 0,0 – 30,2% | 0,3 – 4,3% | não separa — 2 de 5 dentro |
-| croma médio | 0,006 – 0,069 | 0,002 – 0,032 | não separa — 3 de 5 dentro |
-| croma de pico | 0,208 – 0,251 | 0,187 – 0,322 | não separa — **5 de 5 dentro** |
-| quase neutro `C<0,02` | 25,7 – 92,2% | 1,0 – 97,1% | não separa — **5 de 5 dentro** |
-| luminância mediana | 0,251 – 1,000 | 0,000 – 1,000 | não separa — **5 de 5 dentro** |
+### As métricas por referência
 
-Para comparação, as duas variáveis que **classificam 15/15 sem erro** são
-tipográficas: maior título (corte ≈89px) e razão display/corpo (corte ≈5,6×).
+Faixa agregada esconde o caso individual, e a issue pedia **por referência**.
+Medido com a sonda canônica da **§8.2** do `REFERENCE-BOARD-v3`, reusada
+verbatim, sobre as capturas canônicas de `referencias-v3/` — as mesmas
+rastreadas desde a #17. **A sonda reproduz a §3 e a §12 do board em 15 de 15
+peças**, o que valida de uma vez esta tabela e a do board.
+
+Gerada por `medicao-contraste/tabela-cor.py` a partir de
+`medicao-contraste/raw/cor-por-referencia.json`. Não é digitada.
+
+<!-- gerado por tabela-cor.py a partir de raw/cor-por-referencia.json — nao editar a mao -->
+
+| peça | grupo | cor perceptível `C≥0,05` | cor forte `C≥0,12` | quase neutro `C<0,02` | croma médio | croma de pico | L mediana |
+|---|---|---:|---:|---:|---:|---:|---:|
+| `illoca` | **aprovado** | 34,5% | **30,2%** | 25,7% | 0,069 | 0,208 | 0,800 |
+| `paulkalkbrenner` | **aprovado** | 26,8% | **22,0%** | 69,7% | 0,042 | 0,247 | 0,823 |
+| `lxlcreative` | **aprovado** | 5,2% | **2,3%** | 90,9% | 0,020 | 0,251 | 0,251 |
+| `aelixa` | **aprovado** | 4,4% | **0,5%** | 88,8% | 0,008 | 0,219 | 0,989 |
+| `white-desert` | **aprovado** | 2,7% | **0,0%** | 92,2% | 0,006 | 0,239 | 1,000 |
+| `obspogon` | rejeitado | 6,4% | **4,3%** | 93,2% | 0,010 | 0,322 | 0,000 |
+| `paulfragara` | rejeitado | 5,6% | **4,2%** | 65,6% | 0,017 | 0,300 | 1,000 |
+| `shelomoh` | rejeitado | 3,1% | **3,0%** | 96,8% | 0,011 | 0,291 | 0,989 |
+| `thatmlopsguy` | rejeitado | 2,3% | **1,6%** | 1,0% | 0,032 | 0,248 | 0,169 |
+| `charityshot` | rejeitado | 12,7% | **1,4%** | 65,2% | 0,020 | 0,232 | 0,821 |
+| `cassidoo` | rejeitado | 2,7% | **1,2%** | 96,0% | 0,004 | 0,213 | 0,264 |
+| `lowmess` | rejeitado | 2,0% | **0,8%** | 97,1% | 0,012 | 0,187 | 0,275 |
+| `incomescrane` | rejeitado | 2,3% | **0,6%** | 93,1% | 0,005 | 0,210 | 0,889 |
+| `nextfive` | rejeitado | 13,5% | **0,4%** | 85,0% | 0,020 | 0,197 | 0,296 |
+| `simonbetton` | rejeitado | 1,2% | **0,3%** | 97,1% | 0,002 | 0,188 | 1,000 |
+
+### Temperamento — repartição da área **colorida** (`C ≥ 0,05`) por família de matiz
+
+| peça | grupo | quatro famílias principais | eixo amarelo·laranja·verde | eixo azul·roxo |
+|---|---|---|---:|---:|
+| `illoca` | **aprovado** | roxo 68,6% · azul 31,0% · laranja 0,4% · amarelo 0,0% | 0,4% | 99,6% |
+| `paulkalkbrenner` | **aprovado** | verde 55,6% · laranja 39,9% · amarelo 3,4% · azul 0,5% | 98,9% | 0,5% |
+| `lxlcreative` | **aprovado** | verde 41,5% · roxo 32,5% · laranja 19,9% · amarelo 5,1% | 66,5% | 32,5% |
+| `aelixa` | **aprovado** | amarelo 42,6% · laranja 29,9% · verde 12,0% · azul 10,3% | 84,5% | 10,3% |
+| `white-desert` | **aprovado** | azul 63,5% · roxo 19,5% · amarelo 11,2% · laranja 5,6% | 16,8% | 83,0% |
+| `obspogon` | rejeitado | verde 61,6% · azul 25,9% · magenta 5,9% · laranja 2,1% | 63,7% | 25,9% |
+| `paulfragara` | rejeitado | verde 36,7% · roxo 34,8% · amarelo 8,6% · laranja 7,4% | 52,7% | 34,8% |
+| `shelomoh` | rejeitado | roxo 98,3% · amarelo 0,9% · verde 0,6% · magenta 0,1% | 1,5% | 98,3% |
+| `thatmlopsguy` | rejeitado | roxo 51,9% · azul 29,7% · verde 7,3% · amarelo 4,3% | 11,6% | 81,6% |
+| `charityshot` | rejeitado | amarelo 77,8% · verde 10,1% · laranja 8,1% · azul 2,8% | 96,0% | 2,8% |
+| `cassidoo` | rejeitado | azul 34,2% · verde 25,4% · laranja 13,0% · amarelo 11,1% | 49,5% | 34,2% |
+| `lowmess` | rejeitado | verde 31,9% · amarelo 26,6% · azul 21,3% · laranja 10,5% | 69,0% | 21,3% |
+| `incomescrane` | rejeitado | verde 34,3% · amarelo 27,8% · azul 16,0% · laranja 8,0% | 70,1% | 16,0% |
+| `nextfive` | rejeitado | azul 92,7% · verde 3,5% · laranja 1,5% · roxo 1,3% | 5,0% | 94,0% |
+| `simonbetton` | rejeitado | verde 78,9% · azul 16,9% · amarelo 4,0% · laranja 0,2% | 83,1% | 16,9% |
+
+### O teste, sobre esta tabela
+
+| métrica | aprovados | rejeitados | veredito |
+|---|---|---|---|
+| cor perceptível | 2,7% – 34,5% | 1,2% – 13,5% | **não separa** — 3 de 5 aprovados dentro da faixa rejeitada |
+| cor forte | 0,0% – 30,2% | 0,3% – 4,3% | **não separa** — 2 de 5 aprovados dentro da faixa rejeitada |
+| quase neutro | 25,7% – 92,2% | 1,0% – 97,1% | **não separa** — 5 de 5 aprovados dentro da faixa rejeitada |
+| croma médio | 0,006 – 0,069 | 0,002 – 0,032 | **não separa** — 3 de 5 aprovados dentro da faixa rejeitada |
+| croma de pico | 0,208 – 0,251 | 0,187 – 0,322 | **não separa** — 5 de 5 aprovados dentro da faixa rejeitada |
+| luminância mediana | 0,251 – 1,000 | 0,000 – 1,000 | **não separa** — 5 de 5 aprovados dentro da faixa rejeitada |
+| temperamento (família dominante) | amarelo · azul · roxo · verde | amarelo · azul · roxo · verde | **não separa** — as 4 famílias que dominam alguma peça aprovada dominam também alguma rejeitada |
+
+**15 peças** — 5 aprovadas, 10 rejeitadas. Medidas sobre as capturas canônicas de `referencias-v3/`, com a sonda da §8.2 do board.
+
+**O temperamento dos 10 rejeitados é novo.** A §3 do board mede temperamento
+apenas para as 5 aprovadas, e a §12 mede as seis métricas dos rejeitados mas
+**não** o temperamento deles. Medido agora nos dois lados, ele **também não
+separa**: as quatro famílias que dominam alguma peça aprovada — amarelo, azul,
+roxo e verde — dominam também alguma rejeitada. `charityshot` é 77,8% amarelo e
+foi rejeitado; `aelixa` é 42,6% amarelo e foi aprovado. `shelomoh` é 98,3% roxo
+e foi rejeitado; `illoca` é 68,6% roxo e foi aprovado.
+
+Isso encerra a última hipótese de cor que havia sobrevivido à primeira
+reclamação — o *"muito agressivo"* que eu atribuí a "81% da família vinho".
+**Nenhuma família de matiz prediz aprovação.**
+
+### Área por cor — onde ela está, por referência
+
+Esta é a única métrica pedida pela issue que **não** está na tabela acima, e o
+motivo é que ela não se mede no pixel: é o inventário de `background-color`
+opaco com área acima de 900px², que exige o DOM. O que existe, por peça:
+
+| peça | área por cor | fonte |
+|---|---|---|
+| `aelixa` | creme `rgb(253,251,248)` 66,6% `C=0,005` · branco 22,2% · grafite `rgb(36,36,36)` 10,5% · **dourado `rgb(241,186,53)` 0,3% `C=0,153`** | `REFERENCE-BOARD-v3.md` §3, "Área por cor — o inventário completo dos fundos" |
+| `illoca` | areia `rgb(234,223,201)` 71,0% `C=0,032` · branco 18,1% · **azul `rgb(40,63,125)` 10,0% `C=0,109`** | idem |
+| `paulkalkbrenner` | preto 43,7% · branco 38,7% · cinza `rgb(197,197,197)` 9,3% · **verde `rgb(167,255,156)` 5,4% `C=0,156`** · **laranja `rgb(255,104,49)` 2,8% `C=0,196`** | idem |
+| `lxlcreative` | marrom `rgb(39,32,29)` 98,6% `C=0,012` · **azul `rgb(5,93,255)` 0,7% `C=0,251`** · **laranja `rgb(255,81,33)` 0,1% `C=0,218`** | idem |
+| `white-desert` | branco 78,7% · quase-preto `rgb(9,11,16)` 13,7% `C=0,011` · `rgb(233,231,225)` 3,0% `C=0,008` | idem |
+| os 10 rejeitados | **não medido.** Existe deles o inventário de **tons escuros**, por peça, em `medicao-banda-escura/raw/<peça>_dom.json`, campo `M1` | esta issue |
+
+**A lacuna não muda a conclusão**, e vale dizer por quê em vez de só declarar:
+área por cor é uma decomposição da área cromática, que **já está medida nos dois
+lados e já não separa**. Saber como os 4,2% de cor forte do `paulfragara` se
+repartem entre fundos não reverte o fato de que os cinco aprovados vão de 0,0% a
+30,2% e caem dentro da faixa dos rejeitados.
+
+### Para comparação
+
+As duas variáveis que **classificam 15/15 sem erro** são tipográficas: maior
+título (corte ≈89px) e razão display/corpo (corte ≈5,6×), na **#36**.
 
 **O contraexemplo mais direto:** `obspogon.neocities.org`, rejeitado com a
 palavra *"horrível"*, tem o **maior croma de pico de toda a pesquisa — 0,322**,
@@ -434,7 +525,57 @@ não para esta issue.
 
 ---
 
-## 8. Limites declarados
+## 8. Reprodução — o comando e o resultado
+
+Os instrumentos passaram a **ancorar os caminhos no próprio arquivo**
+(`__dirname` / `__file__`). A versão anterior resolvia
+`wireframes/lp-final.html` relativo ao CWD enquanto escrevia a saída relativo à
+raiz do repositório — as duas metades assumiam diretórios diferentes, e **nenhum
+CWD fazia as duas funcionarem**. Foi por isso que a rodada delegada precisou de
+um driver separado só para a LP. Fluxo completo em
+`medicao-banda-escura/README.md`.
+
+Rodado inteiro de `/tmp`, um diretório deliberadamente sem relação com o
+repositório, para provar que a reprodução não depende do CWD:
+
+```sh
+cd /tmp
+R=".../pesquisa-paleta-restricao-nao-diferencial-cor-na"
+
+node   "$R/docs/design/medicao-banda-escura/driver-lp-final.js"
+python "$R/docs/design/medicao-banda-escura/bandas-verificado.py"
+python "$R/docs/design/medicao-contraste/cor-por-referencia.py"        "$R"/docs/design/referencias-v3/*.png        "$R"/docs/design/referencias-v3/rejeitados/*.png
+python "$R/docs/design/medicao-contraste/tabela-cor.py" > .../tabela-cor.md
+python "$R/docs/design/medicao-contraste/tabela.py"     > .../tabela.md
+```
+
+| passo | resultado |
+|---|---|
+| `driver-lp-final.js` | `Sucesso para lp-final` — resolveu a LP pelo caminho absoluto certo a partir de `/tmp`. Antes da correção teria procurado `/tmp/wireframes/lp-final.html` |
+| `bandas-verificado.py` | 17 peças medidas, tabela idêntica à do `RESULTADO.md` |
+| `cor-por-referencia.py` | 15 peças, **reproduz a §3 e a §12 do board em 15 de 15** |
+| `tabela-cor.py` · `tabela.py` | tabelas deste documento regeneradas dos dados brutos |
+
+### O que a re-execução mostrou de novo
+
+A captura fresca da LP, feita pelo fluxo documentado — que usa o pré-scroll da
+§8.1 — mede **1 banda e fração 0,1126**. A captura com scroll de 400px em duas
+passadas mede **2 bandas e 0,2170**.
+
+A rodada delegada havia medido **0,1123**. Ou seja: o defeito da **P-012 é
+determinístico e reproduzível**, não um azar de uma execução. Isso fortalece o
+registro — a diferença de 8350px contra 8374px de altura entre as duas capturas
+é variação normal de layout, e não muda a conclusão.
+
+`bandas.py` **ficou fora do fluxo**, e o README diz por quê: além dos dois
+defeitos de régua já registrados, rodá-lo **sobrescreve** `raw/lp-final.json` e
+`raw/obspogon.json`, que foram remedidos, devolvendo os números errados. Ele
+segue no repositório como procedência da rodada delegada, com a guarda escrita
+no cabeçalho.
+
+---
+
+## 9. Limites declarados
 
 - **A auditoria de contraste cobre uma peça, em um viewport.** `lp-final.html` a
   `1440x900x1`, nos dois idiomas presentes no DOM. Os breakpoints de 320 a
@@ -460,23 +601,28 @@ não para esta issue.
 ---
 
 **FASE:** 1 — Evidência (issue #35)
-**ARTEFATO:** este documento · `medicao-contraste/` (sonda, dados brutos e
-gerador da tabela) · `medicao-banda-escura/` (instrumento, 16 capturas, dados
-brutos, resultado verificado e o original do agy preservado)
+**ARTEFATO:** este documento · `medicao-contraste/` (sonda de contraste, sonda
+de cor por referência, dados brutos e os dois geradores de tabela) ·
+`medicao-banda-escura/` (instrumento, `README.md` com o fluxo reproduzível,
+dados brutos, resultado verificado e o original do agy preservado)
 **INSTRUMENTO:** WCAG 2.1 sobre o par renderizado, com fundo efetivo resolvido
 na árvore e `alpha`/`opacity` acumulados; OKLCH para croma, matiz e luminância.
 Viewport `1440x900x1`. **Pré-scroll de 400px/120ms em duas passadas** — o da
 §8.1 do board é insuficiente, ver `provenance.md` P-012
 **MEDIDO:** 242 elementos com texto próprio · 34 pares distintos · 0 reprovações
-· 4 em margem fina · 0 texto sobre imagem. Banda escura em 16 peças: nulo nas
-quatro métricas, N=15
+· 4 em margem fina · 0 texto sobre imagem. Cor por referência nas 15 peças
+rotuladas, com a sonda da §8.2 — **reproduz a §3 e a §12 em 15 de 15**, e
+acrescenta o temperamento dos 10 rejeitados, que o board não tinha. Banda escura
+em 16 peças: nulo nas quatro métricas, N=15
 **DECISÕES:** cor declarada **restrição, não diferencial**, com fonte nos dois
 lados de uma amostra rotulada de 15 peças; sete regras normativas (R1–R7);
 `--light` e `--h8-photo` removidos por serem tokens mortos, o segundo também por
 procedência de marca falsa; banda escura medida e **declarada nula** nas quatro
-métricas, fechando a última variável de cor que faltava; verde `#A4DE02` mantido
-fora com justificativa medida (`ΔH = 11,2°`, `ΔC = 0,012`) em lugar do comentário
-de protótipo; nenhum matiz novo proposto
+métricas, fechando a última variável de cor que faltava; **temperamento medido
+nos dois lados e também declarado nulo**; verde `#A4DE02` mantido fora com
+justificativa medida (`ΔH = 11,2°`, `ΔC = 0,012`) em lugar do comentário de
+protótipo; nenhum matiz novo proposto; instrumentos ancorados no próprio arquivo
+para o fluxo não depender do CWD
 **O QUE ESTE DOCUMENTO NÃO AUTORIZA:** tratar a paleta como resposta ao *"cara de
 site morto"* — esse defeito está medido e é tipográfico, na #36; presumir que
 satisfazer R1–R7 melhore a aprovação do cliente (satisfazer não atrapalha, e é

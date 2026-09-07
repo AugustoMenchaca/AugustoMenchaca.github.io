@@ -1,0 +1,287 @@
+[
+  {
+    "peca": "aelixa",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/aelixa.png",
+    "grupo": "aprovado",
+    "dim": "712x8748",
+    "corPerceptivelPct": 4.4,
+    "corFortePct": 0.5,
+    "quaseNeutroPct_C002": 88.8,
+    "cromaMedio": 0.008,
+    "cromaP95": 0.047,
+    "cromaPico": 0.219,
+    "luminanciaMediana": 0.989,
+    "familiasDaCor": {
+      "amarelo": 42.6,
+      "laranja": 29.9,
+      "verde": 12.0,
+      "azul": 10.3
+    }
+  },
+  {
+    "peca": "illoca",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/illoca.png",
+    "grupo": "aprovado",
+    "dim": "1440x900",
+    "corPerceptivelPct": 34.5,
+    "corFortePct": 30.2,
+    "quaseNeutroPct_C002": 25.7,
+    "cromaMedio": 0.069,
+    "cromaP95": 0.18,
+    "cromaPico": 0.208,
+    "luminanciaMediana": 0.8,
+    "familiasDaCor": {
+      "roxo": 68.6,
+      "azul": 31.0,
+      "laranja": 0.4,
+      "amarelo": 0.0
+    }
+  },
+  {
+    "peca": "lxlcreative",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/lxlcreative.png",
+    "grupo": "aprovado",
+    "dim": "1440x15300",
+    "corPerceptivelPct": 5.2,
+    "corFortePct": 2.3,
+    "quaseNeutroPct_C002": 90.9,
+    "cromaMedio": 0.02,
+    "cromaP95": 0.055,
+    "cromaPico": 0.251,
+    "luminanciaMediana": 0.251,
+    "familiasDaCor": {
+      "verde": 41.5,
+      "roxo": 32.5,
+      "laranja": 19.9,
+      "amarelo": 5.1
+    }
+  },
+  {
+    "peca": "paulkalkbrenner",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/paulkalkbrenner.png",
+    "grupo": "aprovado",
+    "dim": "1424x10619",
+    "corPerceptivelPct": 26.8,
+    "corFortePct": 22.0,
+    "quaseNeutroPct_C002": 69.7,
+    "cromaMedio": 0.042,
+    "cromaP95": 0.196,
+    "cromaPico": 0.247,
+    "luminanciaMediana": 0.823,
+    "familiasDaCor": {
+      "verde": 55.6,
+      "laranja": 39.9,
+      "amarelo": 3.4,
+      "azul": 0.5
+    }
+  },
+  {
+    "peca": "white-desert",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/white-desert.png",
+    "grupo": "aprovado",
+    "dim": "720x10394",
+    "corPerceptivelPct": 2.7,
+    "corFortePct": 0.0,
+    "quaseNeutroPct_C002": 92.2,
+    "cromaMedio": 0.006,
+    "cromaP95": 0.029,
+    "cromaPico": 0.239,
+    "luminanciaMediana": 1.0,
+    "familiasDaCor": {
+      "azul": 63.5,
+      "roxo": 19.5,
+      "amarelo": 11.2,
+      "laranja": 5.6
+    }
+  },
+  {
+    "peca": "cassidoo",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/cassidoo.png",
+    "grupo": "rejeitado",
+    "dim": "1424x1654",
+    "corPerceptivelPct": 2.7,
+    "corFortePct": 1.2,
+    "quaseNeutroPct_C002": 96.0,
+    "cromaMedio": 0.004,
+    "cromaP95": 0.0,
+    "cromaPico": 0.213,
+    "luminanciaMediana": 0.264,
+    "familiasDaCor": {
+      "azul": 34.2,
+      "verde": 25.4,
+      "laranja": 13.0,
+      "amarelo": 11.1
+    }
+  },
+  {
+    "peca": "charityshot",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/charityshot.png",
+    "grupo": "rejeitado",
+    "dim": "1440x900",
+    "corPerceptivelPct": 12.7,
+    "corFortePct": 1.4,
+    "quaseNeutroPct_C002": 65.2,
+    "cromaMedio": 0.02,
+    "cromaP95": 0.086,
+    "cromaPico": 0.232,
+    "luminanciaMediana": 0.821,
+    "familiasDaCor": {
+      "amarelo": 77.8,
+      "verde": 10.1,
+      "laranja": 8.1,
+      "azul": 2.8
+    }
+  },
+  {
+    "peca": "incomescrane",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/incomescrane.png",
+    "grupo": "rejeitado",
+    "dim": "1424x3719",
+    "corPerceptivelPct": 2.3,
+    "corFortePct": 0.6,
+    "quaseNeutroPct_C002": 93.1,
+    "cromaMedio": 0.005,
+    "cromaP95": 0.028,
+    "cromaPico": 0.21,
+    "luminanciaMediana": 0.889,
+    "familiasDaCor": {
+      "verde": 34.3,
+      "amarelo": 27.8,
+      "azul": 16.0,
+      "laranja": 8.0
+    }
+  },
+  {
+    "peca": "lowmess",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/lowmess.png",
+    "grupo": "rejeitado",
+    "dim": "1440x1234",
+    "corPerceptivelPct": 2.0,
+    "corFortePct": 0.8,
+    "quaseNeutroPct_C002": 97.1,
+    "cromaMedio": 0.012,
+    "cromaP95": 0.011,
+    "cromaPico": 0.187,
+    "luminanciaMediana": 0.275,
+    "familiasDaCor": {
+      "verde": 31.9,
+      "amarelo": 26.6,
+      "azul": 21.3,
+      "laranja": 10.5
+    }
+  },
+  {
+    "peca": "nextfive",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/nextfive.png",
+    "grupo": "rejeitado",
+    "dim": "1424x2908",
+    "corPerceptivelPct": 13.5,
+    "corFortePct": 0.4,
+    "quaseNeutroPct_C002": 85.0,
+    "cromaMedio": 0.02,
+    "cromaP95": 0.052,
+    "cromaPico": 0.197,
+    "luminanciaMediana": 0.296,
+    "familiasDaCor": {
+      "azul": 92.7,
+      "verde": 3.5,
+      "laranja": 1.5,
+      "roxo": 1.3
+    }
+  },
+  {
+    "peca": "obspogon",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/obspogon.png",
+    "grupo": "rejeitado",
+    "dim": "1424x3056",
+    "corPerceptivelPct": 6.4,
+    "corFortePct": 4.3,
+    "quaseNeutroPct_C002": 93.2,
+    "cromaMedio": 0.01,
+    "cromaP95": 0.102,
+    "cromaPico": 0.322,
+    "luminanciaMediana": 0.0,
+    "familiasDaCor": {
+      "verde": 61.6,
+      "azul": 25.9,
+      "magenta": 5.9,
+      "laranja": 2.1
+    }
+  },
+  {
+    "peca": "paulfragara",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/paulfragara.png",
+    "grupo": "rejeitado",
+    "dim": "1424x1429",
+    "corPerceptivelPct": 5.6,
+    "corFortePct": 4.2,
+    "quaseNeutroPct_C002": 65.6,
+    "cromaMedio": 0.017,
+    "cromaP95": 0.081,
+    "cromaPico": 0.3,
+    "luminanciaMediana": 1.0,
+    "familiasDaCor": {
+      "verde": 36.7,
+      "roxo": 34.8,
+      "amarelo": 8.6,
+      "laranja": 7.4
+    }
+  },
+  {
+    "peca": "shelomoh",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/shelomoh.png",
+    "grupo": "rejeitado",
+    "dim": "1440x2364",
+    "corPerceptivelPct": 3.1,
+    "corFortePct": 3.0,
+    "quaseNeutroPct_C002": 96.8,
+    "cromaMedio": 0.011,
+    "cromaP95": 0.003,
+    "cromaPico": 0.291,
+    "luminanciaMediana": 0.989,
+    "familiasDaCor": {
+      "roxo": 98.3,
+      "amarelo": 0.9,
+      "verde": 0.6,
+      "magenta": 0.1
+    }
+  },
+  {
+    "peca": "simonbetton",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/simonbetton.png",
+    "grupo": "rejeitado",
+    "dim": "1424x9278",
+    "corPerceptivelPct": 1.2,
+    "corFortePct": 0.3,
+    "quaseNeutroPct_C002": 97.1,
+    "cromaMedio": 0.002,
+    "cromaP95": 0.0,
+    "cromaPico": 0.188,
+    "luminanciaMediana": 1.0,
+    "familiasDaCor": {
+      "verde": 78.9,
+      "azul": 16.9,
+      "amarelo": 4.0,
+      "laranja": 0.2
+    }
+  },
+  {
+    "peca": "thatmlopsguy",
+    "origem": "C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/docs/design/referencias-v3/rejeitados/thatmlopsguy.png",
+    "grupo": "rejeitado",
+    "dim": "1424x3596",
+    "corPerceptivelPct": 2.3,
+    "corFortePct": 1.6,
+    "quaseNeutroPct_C002": 1.0,
+    "cromaMedio": 0.032,
+    "cromaP95": 0.04,
+    "cromaPico": 0.248,
+    "luminanciaMediana": 0.169,
+    "familiasDaCor": {
+      "roxo": 51.9,
+      "azul": 29.7,
+      "verde": 7.3,
+      "amarelo": 4.3
+    }
+  }
+]

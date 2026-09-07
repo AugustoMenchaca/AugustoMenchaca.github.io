@@ -5,7 +5,7 @@
      32 transicoes tendo 3 bandas — o numero media hairline e linha de texto.
   2. 'fracao escura' declarada como fracao EM BANDA, que e o que ela sempre foi.
 Escuro = L OKLCH < 0,50. Banda = corrida contigua >= 300px."""
-import numpy as np, sys, io, os
+import numpy as np, sys, io, os, json, glob
 from PIL import Image
 Image.MAX_IMAGE_PIXELS = None
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -46,13 +46,34 @@ def medir(png, escala=1.0):
             'M3_entradas': len(bandas) - (1 if comeca_escuro else 0),
             'M3_saidas': len(bandas) - (1 if termina_escuro else 0)}
 
+# A escala vem do *_dom.json de cada peca, nao de palpite: aelixa e white-desert
+# foram capturadas a 0,5x porque passam do limite de altura do Chrome.
+def escala_de(raw, peca):
+    try:
+        d = json.load(io.open(os.path.join(raw, peca + '_dom.json'), encoding='utf-8'))
+        return float(d.get('scaleFactor', 1.0))
+    except Exception:
+        return 1.0
+
 if __name__ == '__main__':
-    # arg: caminho[:escala]
-    for spec in sys.argv[1:]:
-        png, _, esc = spec.rpartition(':')
-        if not png or len(png) < 3: png, esc = spec, '1'
-        r = medir(png, float(esc))
-        print(f"{os.path.basename(png):<26} esc={r['escala']} css_h={r['altura_css']:>6} "
-              f"bandas={r['bandas']} fracao={r['fracao_em_banda']:.4f} "
-              f"M3={r['M3_entradas']}/{r['M3_saidas']} finas={r['barras_50_299']} "
-              f"sub50={r['corridas_sub50']}")
+    RAW = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'raw')
+    # Sem argumento: mede toda peca com PNG em raw/. Com argumentos: caminho[:escala].
+    if len(sys.argv) > 1:
+        alvos = []
+        for spec in sys.argv[1:]:
+            png, _, esc = spec.rpartition(':')
+            if not png or len(png) < 3: png, esc = spec, '1'
+            alvos.append((png, float(esc)))
+    else:
+        alvos = [(p, escala_de(RAW, os.path.basename(p)[:-4]))
+                 for p in sorted(glob.glob(os.path.join(RAW, '*.png')))]
+    if not alvos:
+        print('Nenhum PNG em raw/. Rode primeiro probe.js e driver-lp-final.js — ver README.md.')
+        sys.exit(1)
+    print(f"{'peca':<28}{'esc':>5}{'css_h':>8}{'bandas':>8}{'fracao':>9}{'M3':>7}{'finas':>7}{'sub50':>7}")
+    for png, esc in alvos:
+        r = medir(png, esc)
+        print(f"{os.path.basename(png):<28}{r['escala']:>5}{r['altura_css']:>8}"
+              f"{r['bandas']:>8}{r['fracao_em_banda']:>9.4f}"
+              f"{str(r['M3_entradas'])+'/'+str(r['M3_saidas']):>7}"
+              f"{r['barras_50_299']:>7}{r['corridas_sub50']:>7}")
