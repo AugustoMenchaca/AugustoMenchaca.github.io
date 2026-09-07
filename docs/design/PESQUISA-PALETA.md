@@ -154,7 +154,15 @@ clara, e eu diagnostiquei excesso.
 **"Cor não decide" não é "cor não importa".** Significa que ela não distingue o
 que ele aceita do que ele recusa, e portanto **não deve ser a variável que esta
 issue otimiza**. Ninguém deve reabrir a paleta no futuro esperando que ela
-resolva o *"cara de site morto"* — esse defeito está medido, e é tipográfico.
+resolva o *"cara de site morto"*.
+
+**E o inverso também não vale.** Dizer que cor não separa **não** promove
+tipografia a causa. A `provenance.md` **P-011** foi revisada depois da #37 e é
+explícita: a associação entre o corte tipográfico e o julgamento do cliente
+**não demonstra causalidade**, e tipografia **não substitui o movimento** que ele
+diz valorizar — ele valoriza movimento para dinamismo e sensação de página viva,
+junto com tipografia, composição e conteúdo. O que esta issue estabelece é
+negativo e só isso: **cor não é a variável a otimizar.**
 
 ---
 
@@ -624,7 +632,9 @@ justificativa medida (`ΔH = 11,2°`, `ΔC = 0,012`) em lugar do comentário de
 protótipo; nenhum matiz novo proposto; instrumentos ancorados no próprio arquivo
 para o fluxo não depender do CWD
 **O QUE ESTE DOCUMENTO NÃO AUTORIZA:** tratar a paleta como resposta ao *"cara de
-site morto"* — esse defeito está medido e é tipográfico, na #36; presumir que
+site morto"*; tampouco tratar tipografia como a causa dele — a **P-011** revisada
+diz que a associação não demonstra causalidade e que tipografia não substitui o
+movimento que o cliente valoriza; presumir que
 satisfazer R1–R7 melhore a aprovação do cliente (satisfazer não atrapalha, e é
 só isso que a medição sustenta); travar os pares de display antes da #36; e
 estender a conclusão negativa do gosto do cliente para o julgamento de um

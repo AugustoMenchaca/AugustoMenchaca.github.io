@@ -73,6 +73,11 @@ Vale medir também o site da Ciere, que é trabalho dele: **serifa em display co
 A escolha entre dominância assimétrica e uniformidade está **decidida com argumento medido**, não deixada em aberto.
 
 ===ISSUE=== pesquisa: movimento, derivado de evidencia ||| pesquisa,movimento
+> Registro histórico superado em 2026-09-07. Escopo vigente:
+> [37-movimento.md](37-movimento.md) e
+> [PESQUISA-MOVIMENTO.md](../design/PESQUISA-MOVIMENTO.md).
+> Não reutilizar abaixo as exigências de rotas excludentes ou duração única.
+
 Depende da #17. Movimento é requisito declarado pelo cliente, não enfeite — e a medição já mostrou que era o eixo que faltava.
 
 ## O que já foi medido

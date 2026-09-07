@@ -48,6 +48,12 @@ aprovada `[0 – 0,945]` — não existe corte possível, em nenhuma direção.
 que ele rejeita.** As duas variáveis que separam seguem sendo tipográficas:
 maior título (corte ≈89px) e razão display/corpo (corte ≈5,6×), na #36.
 
+**Ressalva que a #37 tornou obrigatória.** "Separam" é classificação, não causa.
+A `provenance.md` **P-011** foi revisada depois do fechamento da #37: a
+associação **não demonstra causalidade**, e tipografia **não substitui o
+movimento** que o cliente diz valorizar. O achado desta issue é negativo — cor
+não é a variável a otimizar — e não promove nenhuma outra a causa.
+
 Definição usada: escuro é `L OKLCH < 0,50`. O limiar não é arbitrário — as
 quatro superfícies escuras do projeto medem `L` 0,150–0,339 e as quatro claras
 0,917–1,000, e 0,50 cai no vazio entre as duas populações. Banda é corrida
