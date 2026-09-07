@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "nome": "incomescrane",
+  "url": "https://incomescrane.com",
+  "preScrollData": {
+    "altura": 4056,
+    "imgs": 8,
+    "carregadas": 8
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 9451420.28125,
+    "qtdTonsEscurosDistintos": 0,
+    "tonsEscuros": []
+  }
+}
