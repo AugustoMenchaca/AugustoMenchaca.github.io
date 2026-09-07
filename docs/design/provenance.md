@@ -365,3 +365,90 @@ recrutador, e a ligação com o job to be done do `PROBLEMA-v1` não foi medida.
 transferência do corte para o conteúdo da LP — que carrega cargo, formação e
 cinco projetos, contra a frase curta de marca das referências — é a questão
 aberta da #36.
+\n
+## P-012 — Tipografia: Dominância Assimétrica × Uniformidade
+
+**QUESTÃO** Qual abordagem tipográfica de hierarquia usar na página inteira?
+
+**OPÇÕES**
+- Uniformidade tipográfica: tipo quase uniforme, hierarquia por ordem e permanência (referências Brittany Chiang, Sara Soueidan, do v1).
+- Dominância assimétrica: um evento tipográfico enorme, contrastando com uma massa textual de corpo pequena e labels diminutos.
+
+**CRITÉRIOS** O modelo tem que refletir a amostra aprovada pelo cliente, separando do grupo de controle.
+
+**DECISÃO** **Dominância assimétrica.**
+
+**EVIDÊNCIA** As cinco referências aprovadas utilizam display massivo (maior título de 102 a 320px) com o corpo normal (12 a 18px). Razão display/corpo entre 6,0× e 20,0×. Em contrapartida, as referências rejeitadas usam uniformidade (20 a 76px, razão de 1,25× a 5,14×). A uniformidade garante clareza técnica (o que justifica sua escolha inicial pelo agente), mas o cliente percebe essa falta de evento grande como "cara de site morto".
+
+**ETIQUETA** `[R]` — derivada diretamente da amostra 15/15 rotulada.
+
+**ADAPTAÇÃO** Custo: O display de dominância não comporta frases longas sem quebrar. É preciso "criar" eventos textuais curtos (1-3 palavras) a partir da copy original da LP, para ancorar a atenção no viewport.
+
+---
+
+## P-013 — A Escala Proposta de Tipografia (Issue #36)
+
+**QUESTÃO** Quais valores em px e parâmetros adotar para a escala tipográfica que atende a P-012 e cruza a medição sem esmagar o conteúdo?
+
+**OPÇÕES**
+- Piso mínimo seguro: 89px / 5,6×.
+- Escala de dominância franca (proposta): 144px no hero (Step 1), 72px na seção, 32px para cartões, corpo 16px e labels em 12px.
+
+**CRITÉRIOS** Tem que cruzar os cortes de classificador (89px e 5,6×), tem que caber no celular (390px) sem quebrar palavras, e manter o layout real da `lp-final.html`.
+
+**DECISÃO** **Escala com 144px no topo (1440px) e 48px no mobile (390px).** Ratio hero/corpo = 9,0×. Redução de ALL CAPS para displays e títulos.
+
+**EVIDÊNCIA** 144px fica na mediana do gosto do cliente (o paulkalkbrenner.net mede exatos 150px e é aprovado). Uma razão de 9,0× está bem segura acima dos 5,6× mínimos. 
+
+**ETIQUETA** `[N]` — Nova proposta, baseada em limite inferior, que ainda precisa ser validada no Gate C.
+
+**ADAPTAÇÃO — correção pela auditoria.** O "48px no mobile" desta decisão **não é
+degrau projetado**: é o piso do `clamp(3rem, 10vw, 9rem)`. A 390px o `10vw` dá
+39px, cai para o piso de 48px, e **48px é exatamente o que a LP já mede hoje**.
+Medido nas três variantes a 390x844: antes e depois são idênticos, razão 3,69×,
+abaixo dos dois cortes. A escala é, na forma proposta, **desktop-only**. O
+degrau móvel segue por projetar.
+
+---
+
+## P-014 — O "depois" medido: arquivo de protótipo → injeção em tempo de medição
+
+**QUESTÃO** O aceite da #36 exige o "depois" medido, e medir escala tipográfica
+exige renderizar. Onde vive a página que produz esse número?
+
+**OPÇÕES**
+- `docs/design/tipografia/escala-proposta.html` — cópia da `lp-final.html` com a
+  escala aplicada, versionada no repositório. Foi o que o agente delegado criou.
+- Folha de estilo **injetada em tempo de medição** sobre a `lp-final.html` real,
+  com o CSS registrado dentro do próprio documento de pesquisa.
+
+**CRITÉRIOS** Produzir o mesmo número medido, sem violar o gate, e sem perder
+reprodutibilidade — o v2 perdeu o script dele e o board registra isso como
+defeito.
+
+**DECISÃO** **Injeção em tempo de medição.** O arquivo foi apagado.
+
+**EVIDÊNCIA** Três motivos, todos verificados:
+
+1. **O arquivo é código, e o Gate D está fechado.** A tentativa de editá-lo para
+   inserir o aviso de "instrumento" foi barrada pelo hook da `nova-ferramenta`,
+   com a mensagem correta. Ele só entrou porque a delegação rodou com `--yolo`,
+   que passa por cima do hook. O guarda funcionava para o operador e não para o
+   agente delegado.
+2. **Ele carregava decisão de design não declarada.** Não aplicava só a escala:
+   trocava o `h1` do herói para "AUGUSTO MENCHACA" e rebaixava a frase original a
+   subtítulo — mudança de hierarquia e de conteúdo, dentro de um artefato de
+   evidência. Medido depois: essa troca **não contribui nada** para cruzar o
+   corte (144px e 11,08× com ou sem ela).
+3. **A injeção mede a página real.** O arquivo era uma cópia reduzida — 4 seções
+   das 11 — e portanto media outra peça, não a `lp-final.html`.
+
+**ETIQUETA** `[C]` — imposta pelo gate, e confirmada por defeito de construto do
+artefato substituído.
+
+**ADAPTAÇÃO** Reprodutibilidade preservada pelo mesmo padrão do
+`REFERENCE-BOARD-v3` §8: o CSS injetado e a mutação de DOM ficam **na íntegra
+dentro do `PESQUISA-TIPOGRAFIA.md` §8**, não num arquivo solto. As linhas
+`escala-proposta-1440` e `escala-proposta-390` do `medicoes.json` continuam lá
+como registro do que foi medido no arquivo apagado, e estão **superadas** pela
+tabela de três variantes da §8.

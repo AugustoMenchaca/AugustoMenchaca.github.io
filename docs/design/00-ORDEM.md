@@ -83,6 +83,7 @@ Medição não deixa de valer por ter vindo na ordem errada — o número é o n
 | `REFERENCE-BOARD-v3.md` | **é o board vigente.** Passou por crítica independente que derrubou 4 das 10 conclusões — leia a §7 pelos vereditos, não pelas afirmações originais. Depois disso ganhou **amostra rotulada de 15 peças** (5 aprovadas, 10 rejeitadas pelo cliente): a §12 é o resultado que vale, e as seções anteriores são o caminho até ele |
 | `CRITICA-v1.md` | **confiável.** Crítica independente de Codex e Antigravity, com uma afirmação do Antigravity refutada por medição minha |
 | `assets-reais/` | **confiável.** Capturas reais dos três produtos no ar, mais 28 figuras extraídas dos notebooks do experimento |
+| `PESQUISA-TIPOGRAFIA.md` | **etapa 1, issue #36.** A escala derivada da medição, com a decisão dominância × uniformidade. Medição feita por agente delegado e **auditada por medição independente** — leia a §9 antes das tabelas: dois valores da §3 estão marcados como errados, e a escala **não tem efeito a 390px** |
 
 Números que sobrevivem e devem ser reaproveitados pelas issues de pesquisa:
 
