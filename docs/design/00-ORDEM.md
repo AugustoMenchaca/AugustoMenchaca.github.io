@@ -46,6 +46,31 @@ do gosto de quem decide.
 Consequência: seis hipóteses de UX foram construídas e todas as seis foram
 reprovadas pelo cliente. Não por acaso.
 
+**Endereçado pela #17 — não "corrigido".** A distinção importa, e ela veio da
+crítica independente: trocar o curador da amostra melhora a validade para
+*descrever o gosto do cliente*, mas **muda o dono do viés, não a estrutura
+dele**. A amostra segue com `n=5`, escolhida pelo desfecho (só peças que ele
+ama, nenhuma que ele rejeitou) e fora do domínio do job to be done. Um grupo de
+controle de 10 sites sorteados (`REFERENCE-BOARD-v3.md` §10) fechou parte da
+lacuna, e a amostra pareada com casos rejeitados ainda faltava — ver abaixo.
+
+**Fechado depois.** O cliente rotulou os dez sites do grupo de controle e
+rejeitou os dez, o que deu a amostra com os dois lados que faltava. Resultado na
+§12 do board: de dez variáveis medidas, **só duas separam os quinze julgamentos
+sem erro — maior título e razão display/corpo**. Cor não separa em nenhuma das
+seis métricas. A `lp-final.html` classifica do lado rejeitado.
+
+O cliente escolheu quatro referências novas —
+`illoca.unseen.co`, `paulkalkbrenner.net`, `lxlcreative.co.uk` e
+`white-desert.com` — que somadas ao Aelixa fecham uma amostra de **cinco de
+cinco escolhidas por ele**. Medidas em `REFERENCE-BOARD-v3.md`.
+
+O que a amostra corrigida mostrou vai além de trocar o gosto: **o instrumento
+também estava errado**, em duas frentes que só apareceram porque as peças dele
+são diferentes das minhas. A régua de cor contava neutro tingido como cor, e
+media só `background-color` — cega justamente para foto e canvas, que é onde a
+cor vive nas referências dele. Registro em `provenance.md`, P-001 e P-002.
+
 ## O que aqui é confiável
 
 Medição não deixa de valer por ter vindo na ordem errada — o número é o número.
@@ -54,18 +79,24 @@ Medição não deixa de valer por ter vindo na ordem errada — o número é o n
 |---|---|
 | `PROJECT-CONTEXT-v1.md` | **confiável.** Lido do repositório, com linha de origem para cada valor: tokens, seções, dimensões, padrões de interação |
 | `REFERENCE-BOARD-v1.md` | **as medições valem**, a seleção não. Densidade, altura, contagem de seções, paddings computados |
-| `REFERENCE-BOARD-v2.md` | **as medições valem**, a seleção não. Área cromática, contagem de mídia, keyframes e transições por 1000px |
+| `REFERENCE-BOARD-v2.md` | **parcialmente derrubado pela #17.** Contagem de mídia, altura e keyframes valem. **Toda a coluna de área cromática não vale** — a régua era saturação HSV, que conta neutro tingido como cor. Ver `REFERENCE-BOARD-v3.md` §2 |
+| `REFERENCE-BOARD-v3.md` | **é o board vigente.** Passou por crítica independente que derrubou 4 das 10 conclusões — leia a §7 pelos vereditos, não pelas afirmações originais. Depois disso ganhou **amostra rotulada de 15 peças** (5 aprovadas, 10 rejeitadas pelo cliente): a §12 é o resultado que vale, e as seções anteriores são o caminho até ele |
 | `CRITICA-v1.md` | **confiável.** Crítica independente de Codex e Antigravity, com uma afirmação do Antigravity refutada por medição minha |
 | `assets-reais/` | **confiável.** Capturas reais dos três produtos no ar, mais 28 figuras extraídas dos notebooks do experimento |
 
 Números que sobrevivem e devem ser reaproveitados pelas issues de pesquisa:
 
-- Aelixa: 17502px, **0,4% de área cromática**, 81 `<img>`, 91 `<svg>`, 1 vídeo, 1 keyframe, **zero animação ativa**
-- paco.me: 1424px, **zero mídia**, 20 keyframes, 13 elementos em transição, **todos a 0,24s**
-- lp-final.html: 8455px, **1,2 elemento em transição por 1000px** contra 9,1 do paco.me
-- Os três produtos do cliente: **18,4%, 22,8% e 20,1%** de área cromática
-- Folha: 8 tamanhos de título, razão manchete/massa **2,7×**
+- Aelixa: 17495px, 81 `<img>`, 91 `<svg>`, 1 vídeo, 1 keyframe, **zero animação ativa**
+- paco.me: 1424px, **zero mídia**, 20 keyframes, 13 elementos em transição, **todos a 0,24s** — reproduzido exato em 2026-09-06
 - arXiv: 50 entradas em 5385px, densidade **2568 caracteres por 1000px**
+
+Números do v1/v2 que **a #17 derrubou** — não reaproveite:
+
+- ~~Aelixa 0,4% de área cromática~~ · ~~os três produtos do cliente a 18,4%, 22,8% e 20,1%~~ — régua errada. Medido no pixel: cor forte de **0,5%** no Aelixa contra **0,0%, 0,2% e 0,0%** nos três produtos dele. A comparação do v2 se inverte
+- ~~lp-final.html com 1,2 elemento em transição por 1000px~~ — remedido em **8,91**. Mas a contagem de transições é proxy fraco e não sustenta conclusão; o que vale é a **velocidade**: dominante a **0,6s**, contra 0,3s das referências do cliente e 0,18–0,3s dos dez sorteados — outlier nas duas populações
+- ~~Folha, razão manchete/massa 2,7×~~ — domínio errado. As cinco referências do cliente ficam entre **6,0× e 20,0×**
+- ~~"duas rotas excludentes de vitalidade"~~ — nenhuma das cinco fica em uma rota só
+- ~~Aelixa com 18 elementos em transição~~ — não reproduz (remedido em 74), e o v2 não guardou o script
 
 ## O que aqui é provisório
 

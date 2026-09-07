@@ -127,7 +127,11 @@ Pesquisa e decisões de design ficam em `docs/design/`:
 | `PROJECT-CONTEXT-v1.md` | o que a página é hoje, medido |
 | `PROBLEMA-v1.md` | o problema e as métricas de sucesso |
 | `REFERENCE-BOARD-v1.md` | precedentes de densidade e hierarquia |
-| `REFERENCE-BOARD-v2.md` | precedentes de vitalidade — derruba a hipótese de cor |
+| `REFERENCE-BOARD-v2.md` | precedentes de vitalidade — **coluna de área cromática derrubada pela #17** |
+| `REFERENCE-BOARD-v3.md` | **o board vigente.** 15 peças rotuladas pelo cliente, instrumento corrigido e escrito por inteiro |
+| `provenance.md` | as decisões estruturais em QOC — questão, opções, critérios, decisão, evidência |
 | `BREADBOARDS-v1.md` · `BREADBOARDS-v2.md` | as seis hipóteses reprovadas |
 | `CRITICA-v1.md` | crítica independente de Codex e Antigravity |
+| `00-ORDEM.md` | **leia antes dos outros.** O que aqui é medição confiável e o que foi derrubado |
 | `assets-reais/` | os screenshots e figuras reais capturados |
+| `referencias-v3/` | as 15 capturas de página inteira medidas pela #17 |
