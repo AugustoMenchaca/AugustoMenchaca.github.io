@@ -56,6 +56,10 @@ Moldura tracejada escrito o que falta não é honestidade — é o buraco assina
 Nenhuma moldura sem conteúdo real na página.
 
 ===ISSUE=== movimento: sistema de movimento e constante de duracao ||| movimento
+> Registro histórico superado em 2026-09-07. Escopo vigente:
+> [21-movimento.md](21-movimento.md). A base agora é 0,3s com exceções
+> justificadas; a tabela abaixo não é especificação fechada.
+
 Medição comparativa: paco.me tem 9,1 elementos em transição e 14 keyframes por 1000px. A LP tem 1,2 e 0,59 — **7,7 e 24 vezes menos**. E as entradas da LP levam 0,6s, 0,72s e 0,82s, contra a constante única de 0,24s do paco.me.
 
 **Especificação fechada, vinda da crítica**

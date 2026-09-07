@@ -357,11 +357,35 @@ ele traz, acho muito simples em questão de cor, tipografia e UX"*. Título de
 
 **CONSEQUÊNCIA** A `lp-final.html` classifica **do lado rejeitado** nas duas
 variáveis: 46px contra corte de 89, e 3,29× contra corte de 5,6×. É a resposta
-para *"cara de site morto"* sem defeito apontável — e o defeito era o tamanho do
-título.
+para investigar *"cara de site morto"*. A associação não demonstra causalidade
+nem que tipografia substitua o movimento desejado pelo cliente. Ver a revisão
+de escopo abaixo e `PESQUISA-MOVIMENTO.md`.
 
 **Limite:** o corte separa o **gosto do cliente**. Nenhuma peça foi testada com
 recrutador, e a ligação com o job to be done do `PROBLEMA-v1` não foi medida. A
 transferência do corte para o conteúdo da LP — que carrega cargo, formação e
 cinco projetos, contra a frase curta de marca das referências — é a questão
 aberta da #36.
+
+## Revisão da #37 — preferência e inferência, 2026-09-07
+
+**Origem:** conversa com o cliente nesta tarefa; direção explicitamente aprovada.
+O cliente valoriza movimento para dinamismo e sensação de página viva, em
+conjunto com tipografia, composição e conteúdo. Contar transições declaradas
+não avalia a experiência percebida e não invalida sua avaliação do lowmess.
+
+**Decisão:** manter P-005 (0,3s base com dispersão justificada), retirar o aceite
+de duração única e a escolha exclusiva mídia/movimento. Gramática mínima quer
+dizer poucos padrões coerentes, sem meta de quantidade ou orientação para
+reduzir a expressividade. Não animar dimensões; retirar interpolate-size.
+
+**Hipótese:** interações responsivas, entradas seletivas e um momento expressivo
+ligado ao conteúdo. Curva IDF candidata; amplitudes e ritmo detalhados em
+`PESQUISA-MOVIMENTO.md` são propostas a validar, não observações medidas.
+
+**Observação concluída:** `movimento/OBSERVACAO.md` registra carga, ponteiro,
+foco, rolagem e retorno nas cinco referências, com instrumento reproduzível.
+Aelixa e White Desert corroboram resposta cromática a 0,3s; Paul Kalkbrenner
+corrobora exceções assimétricas; as cenas contínuas dependem de mecanismos fora
+das restrições da LP. Síntese na #5; protótipo e crítica visual na #21/#22.
+Não há aprovação antecipada do efeito implementado.
