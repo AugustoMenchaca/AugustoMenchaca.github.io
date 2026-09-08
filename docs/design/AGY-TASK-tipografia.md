@@ -1,229 +1,156 @@
-# TAREFA — issue #36: pesquisa de tipografia, a variável que decide
+# TAREFA — reescrever o PESQUISA-TIPOGRAFIA.md sobre dados regenerados (issue #36)
 
-Você está num worktree do repositório, no branch
-`AugustoMenchaca/pesquisa-tipografia-o-eixo-que-classifica-15-15`.
-Trabalhe **aqui**, neste diretório. Não faça commit, não abra PR, não faça push.
+Segunda rodada. A primeira versão deste documento foi entregue, revisada no PR
+**#42**, e teve **alterações solicitadas**. O instrumento foi consertado e todas
+as medições foram refeitas. Sua tarefa é **reescrever o relatório** sobre os
+dados novos.
 
-## Ler primeiro, por completo, antes de qualquer medição
+Você escreve **um arquivo só**: `docs/design/PESQUISA-TIPOGRAFIA.md`.
+Não toque em mais nada. Não faça commit. Não rode medição — ela já está feita.
 
-1. `docs/design/00-ORDEM.md` — diz o que neste repositório é medição confiável e
-   o que é proposta feita fora de ordem. Leia inteiro.
-2. `docs/design/REFERENCE-BOARD-v3.md` — o board vigente. **Seções obrigatórias:**
-   §6 (tipografia), §8 (o instrumento na íntegra), §9 (questões abertas),
-   §10 (grupo de controle), §12 (amostra rotulada de 15 peças).
-3. `docs/design/provenance.md` — o formato QOC+FSE que você vai ter que seguir.
-4. `wireframes/lp-final.html` — a página medida como "nossa" no board.
+## Leia primeiro, por completo
 
-## O que a issue #36 pede, em uma frase
+1. `docs/design/tipografia/medicoes.json` — **a única fonte de números.** Foi
+   regenerado agora, com o instrumento corrigido, em navegador com janela real.
+2. `docs/design/00-ORDEM.md` — o que neste repositório é confiável.
+3. `docs/design/REFERENCE-BOARD-v3.md` — as seções 6, 9, 10 e 12.
+4. `docs/design/provenance.md` — entradas P-012, P-013 e P-014.
+5. `docs/design/PESQUISA-TIPOGRAFIA.md` — a versão reprovada. Leia para **não
+   repetir os erros dela**, não para copiar.
 
-O REFERENCE-BOARD-v3 provou, com **15 peças rotuladas pelo cliente**
-(5 aprovadas, 10 rejeitadas), que **duas variáveis classificam as 15 sem errar
-uma, e as duas são tipografia**: maior título (corte ≈ **89px**) e razão
-display/corpo (corte ≈ **5,6×**). A `lp-final.html` mede **46px** e **3,29×** —
-sai do lado rejeitado nas duas.
+## REGRA ABSOLUTA — todo número sai do medicoes.json
 
-Esta tarefa **projeta a escala tipográfica que cruza os dois cortes**, com cada
-degrau justificado por uma referência medida, e resolve a incompatibilidade que
-ficou aberta desde o v1: **dominância assimétrica** contra **uniformidade**.
+Nenhum valor pode vir da versão antiga do documento, do REFERENCE-BOARD-v3, da
+sua memória ou de estimativa. Se um número não estiver no `medicoes.json`, ele
+não entra. Números do v3 podem ser **citados como comparação**, sempre rotulados
+como "medido no v3", e sempre ao lado do valor novo.
 
-## REGRA ABSOLUTA — nenhum número sem medição sua
+## A estrutura do JSON
 
-Todo número que entrar no documento tem que vir de uma medição que **você
-executou nesta rodada**, com script salvo e data registrada. É proibido:
+- `_meta` — geração, comando, contagem de sucessos e falhas
+- `referencias.<id>` — com `status`, `dataHora`, `viewport`, `rotulo`, `url`,
+  `passes` e `data`
+- `variantesDaLP` — as chaves `A-lp-atual@1440`, `B-so-escala@1440`,
+  `C-escala-evento-curto@1440`, e as mesmas três em `@390`
 
-- estimar, arredondar de memória ou "inferir" um valor;
-- copiar número do v1 ou do v2 (o `00-ORDEM.md` lista quais foram derrubados);
-- inventar referência, URL, autor ou citação;
-- apresentar como medido algo que falhou ao carregar.
+Dentro de `data`, o que interessa:
 
-Se um site não carregar, **registre a falha com o erro** e siga. Uma peça a
-menos com falha declarada vale mais que uma peça a mais com número inventado.
+- `tamTitulos` — degraus de título **visíveis**, do maior para o menor
+- `titulosDetalhes[]` — por degrau: `caracteres`, `palavras`, `elementos`,
+  `fontFamily`, `familiaEfetiva`, `serifa`, `fontWeight`, `lineHeightPx`,
+  `lineHeightRazao`, `lineHeightOrigem`, `letterSpacing`, `textTransform`,
+  `inFirstViewport`, `largura_ch`, `maiorLarguraCh`
+- `workhorse` e `workhorseDetalhe` — corpo dominante, com `largura_ch` e altura
+  de linha
+- `razaoTituloWorkhorse` — a razão display/corpo
+- `maiorTextoRenderizado` — maior texto em **qualquer** tag, com
+  `profundidadeDeRolagem`
+- `caixaAlta` — contagem de ALL CAPS
+- `telas` — altura em viewports, contra o viewport real
+- `_legado` — os valores **sem filtro**, como o instrumento antigo os via
+- `descartes` — o que foi excluído e **por qual predicado**
 
-Números do v3 **podem** ser citados como linha de base — mas identificados como
-"medido no v3" e, quando você remedir a mesma peça, **reporte os dois lado a
-lado** e explique divergência em vez de escondê-la.
+## As cinco alterações que a revisão exigiu
 
-## Restrição de escopo — não implemente nada no produto
+1. **Sem resíduo do protótipo apagado.** As linhas `escala-proposta-*` sumiram.
+   O "depois" agora está em `variantesDaLP`, medido por injeção de CSS sobre a
+   `wireframes/lp-final.html` real.
+2. **A medição final está nos dados brutos** — é o que `variantesDaLP` é.
+3. **Apresentar largura de coluna em `ch` e altura de linha das referências.**
+   Isso é exigência da issue e faltou na primeira versão. Use `largura_ch` e
+   `lineHeightRazao`. Onde `lineHeightOrigem` for `normal-medida`, diga que o
+   valor foi medido da caixa de linha da fonte, porque `line-height: normal` não
+   tem razão declarada — antes isso virava nulo e sumia da tabela.
+4. **O instrumento foi corrigido**, e o documento tem que dizer o que mudou.
+5. **Existe um comando para repetir a rodada:**
+   `node docs/design/tipografia/medir.mjs --headed`
+   Sem dependência alguma: fala CDP direto pelo WebSocket nativo do Node, sem
+   puppeteer e sem `node_modules` no repositório. Alvos em `alvos.json`.
 
-A política do projeto bloqueia implementação antes do Gate D. Esta issue é
-etapa 1, evidência. Portanto:
+## Os fatos que você NÃO pode errar
 
-- **NÃO** edite `index.html`, `Css/style.css`, `wireframes/lp-final.html`,
-  `wireframes/prototipo-c.html`, `ROADMAP.md`, `00-ORDEM.md`,
-  `REFERENCE-BOARD-v3.md` nem qualquer coisa fora da lista de entregáveis.
-- **NÃO** instale dependência dentro do repositório. Instale em diretório
-  temporário fora dele e aponte o script para lá. O repositório termina sem
-  `node_modules/` e sem `package.json` novo.
-- O único HTML que você cria é **instrumento de medição**, não protótipo de UI, e
-  o documento tem que dizer isso com todas as letras.
+Foram verificados à mão, um por um. Contradizer qualquer um reprova a entrega.
 
-## Ambiente
+- **`incomescrane.com` mede 32px, não 68px.** O cabeçalho de 68px que o v3
+  registrou tem `display: none` — nunca renderizou.
+- **`paulkalkbrenner.net` mede 150px no display.** Uma régua intermediária
+  marcou 641px: é um contador animado de dígitos num span recortado por
+  container, fração contida 0,05. Não é tipografia.
+- **`illoca.unseen.co` mede 111px, e isso só aparece em navegador com janela.**
+  Em headless o herói fica em `opacity: 0`, porque a animação de entrada não
+  dispara sem compositor real. O v3 acertou os 111px **porque não filtrava
+  visibilidade nenhuma** — número certo por motivo errado. Isso é limite
+  declarado do instrumento e precisa constar na seção de limites.
+- **Serifa: leia `titulosDetalhes[0].serifa`, não o resumo antigo.** A versão
+  reprovada afirmava "duas das cinco aprovadas" e incluía o `white-desert.com`.
+  O display dele é **Oswald, sans-serif**. Conte pelo campo, e distinga "serifa
+  no maior título" de "serifa em algum título da página".
+- **B e C são idênticas no classificador.** A troca de conteúdo do herói — nome
+  curto no `h1`, frase rebaixada a subtítulo — **não contribui nada** para
+  cruzar o corte; muda só a altura da página. É decisão de hierarquia sem
+  respaldo de medição, e vai para o Gate B/C.
+- **A 390px a escala tem efeito, mas insuficiente.** Não repita a afirmação
+  anterior de que "não tem efeito nenhum": aquilo saiu de emulação móvel errada.
+  Use os números de `@390`.
+- **A LP tem um `div.footer-wordmark` de 232px a cerca de 96% de rolagem.** O
+  evento de display existe e é decorativo; o que carrega conteúdo para em 46px.
+  E o `aelixa`, aprovado, tem a mesma forma — o gesto do rodapé aparece nos dois
+  lados e **não separa nada**.
 
-- Node **v24.11.0**, npm 11.6.1 disponíveis.
-- Chrome em `C:\Program Files\Google\Chrome\Application\chrome.exe`.
-- Use `puppeteer-core` apontando `executablePath` para esse Chrome, instalado em
-  pasta temporária fora do repositório.
-- Viewport **1440x900x1**, idêntico ao do v3 — é o que torna as medições
-  comparáveis. Antes de medir, role a página inteira para carregar imagem
-  preguiçosa (rotina em `REFERENCE-BOARD-v3.md` §8.1).
+## O que você tem que decidir com os dados novos
 
-## Etapa 1 — estender o instrumento
+**Recalcule os cortes você mesmo**, a partir de `tamTitulos[0]` e
+`razaoTituloWorkhorse` de cada peça, separando por `rotulo`:
 
-Partir da sonda de DOM do `REFERENCE-BOARD-v3.md` §8.1 **sem alterar as métricas
-existentes** (elas precisam continuar reproduzindo os números do board — isso é
-o seu teste de sanidade do instrumento) e **acrescentar** as métricas que a #36
-exige e o v3 não tinha:
+- o menor valor entre os `aprovado` e o maior entre os `rejeitado`;
+- se as faixas ainda não se tocam, a classificação 15/15 sobrevive — diga com
+  qual margem, em px;
+- **se a margem encolheu em relação ao corte de 89px do board, diga isso com
+  todas as letras.** É o achado mais importante desta rodada, se acontecer;
+- `shelomoh.work` não devolve workhorse: dado ausente, não zero.
 
-Para **cada** tamanho distinto de título, e em especial para o maior:
+Peças com `rotulo: "cliente"` — Ciere, IDF-BR, DVO — são contexto e **não entram
+no classificador**.
 
-- `caracteres` e `palavras` do texto renderizado naquele tamanho;
-- quantos **elementos** usam aquele tamanho (1 = evento único; muitos = ritmo);
-- `font-family` computada, e **serifa sim/não** (classifique pela família real,
-  não pelo palpite — registre o nome resolvido);
-- `font-weight`, `line-height` (em px e em razão), `letter-spacing`,
-  `text-transform`;
-- se o elemento está **dentro do primeiro viewport** (topo < 900px);
-- **largura da coluna em `ch`** do bloco de texto (largura em px dividida pela
-  largura do caractere `0` na fonte computada) — para título e para o workhorse.
+## A escala proposta
 
-No nível da página:
+Mantenha os cinco degraus — 144 / 72 / 32 / 16 / 12 — mas **reancore cada um nos
+números novos**. A issue exige **referência medida por degrau**, e a versão
+reprovada deixou três com traço. Use as escadas de `tamTitulos` das aprovadas e
+as medianas que você mesmo calcular.
 
-- contagem de elementos com `text-transform: uppercase` e quantos caracteres
-  visíveis estão em caixa alta, absoluto e por 1000px de altura;
-- inventário de famílias tipográficas efetivamente usadas, com área ou contagem;
-- `line-height` do corpo e largura da coluna de corpo em `ch`.
-
-Salve a sonda em `docs/design/tipografia/sonda-tipografia.mjs`. **Ela é
-entregável.** O v2 perdeu o script dele e o board registra isso como defeito —
-não repita.
-
-## Etapa 2 — o que medir
-
-**Aprovadas pelo cliente (5 de 5):**
-`https://aelixa.webflow.io` · `https://illoca.unseen.co` ·
-`https://paulkalkbrenner.net` · `https://lxlcreative.co.uk` ·
-`https://white-desert.com`
-
-**Rejeitadas pelo cliente (10 de 10, o grupo de controle da §10):**
-`charityshot.co.uk` · `obspogon.neocities.org` · `paul.fragara.com` ·
-`lowmess.com` · `simonbetton.com` · `nextfive.xyz` · `incomescrane.com` ·
-`shelomoh.work` · `thatmlopsguy.github.io` · `cassidoo.co`
-
-As dez precisam das métricas novas também: sem elas você não consegue testar se
-o corte de 89px sobrevive quando se controla por **carga de texto** e **função
-do título** — que é a questão aberta nº 1 da §9 e o coração desta issue.
-
-**Trabalho do próprio cliente (contexto, não julgamento):**
-`https://advocaciacieredarosa.com.br` · `https://idf-br.com.br` ·
-`https://dvopelotas.com.br`
-
-O board diz que o site da Ciere usa **serifa em display com dourado** e é a peça
-mais viva do portfólio dele. Confirme ou derrube isso com medição. Se serifa
-aparecer nos aprovados, é evidência a favor; se não aparecer em nenhum, diga.
-
-**A nossa:** `wireframes/lp-final.html` (via `file://`).
-
-## Etapa 3 — a decisão que a issue exige
-
-Duas formas de hierarquia foram medidas e são incompatíveis:
-
-- **dominância assimétrica** — um evento tipográfico enorme, massa pequena;
-- **uniformidade** — tipo quase uniforme, hierarquia por ordem e permanência
-  (Brittany Chiang, Sara Soueidan; medidas no v1, com a ressalva de que **foram
-  escolhidas pelo agente, não pelo cliente** — ver `00-ORDEM.md`).
-
-Os cortes do cliente empurram forte para dominância. **Decida, com argumento
-medido, e mostre o que a decisão custa.** Deixar em aberto reprova o aceite.
-
-E enfrente a questão aberta nº 1 de frente, porque ela é o risco real:
-
-> As cinco referências aprovadas têm **frase curta de marca** no display. A LP
-> precisa carregar cargo, formação e cinco projetos. O corte de 89px é medição;
-> que ele seja transferível para **este conteúdo** não é.
-
-Sua medição de `caracteres no maior tamanho` responde isso com número. Se as
-cinco aprovadas puserem 1 a 3 palavras a 102–320px, a escala da LP não pode
-simplesmente inflar um título de frase longa — ela precisa **criar** o evento
-curto. Diga onde ele mora: nome? cargo? uma palavra por seção? Justifique com a
-peça que faz isso.
-
-## Etapa 4 — a escala proposta
-
-Cada degrau com: valor em px a 1440, valor a 390, a **referência medida** que o
-justifica, e a função dele na página. Restrições que valem como lei:
-
-- Famílias em uso: **Instrument Sans** (display), **Inter** (corpo),
-  **IBM Plex Mono** (rótulo). Trocar exige justificativa medida — e se a medição
-  justificar serifa em display, apresente como proposta explícita com o número
-  que a sustenta, não como fato consumado.
-- Pesos **800 e 900 foram vetados pelo cliente** no briefing original.
-- **Reduzir ALL CAPS** foi pedido explicitamente. Meça o quanto a LP tem hoje e
-  diga quanto a escala remove.
-- A escala tem que funcionar a **390px** também. Display de 100px+ que quebra no
-  celular não é escala, é captura de tela.
-
-Não mire no mínimo. 89px é **piso** derivado de amostra de 15; a mediana das
-aprovadas é **150px**. Argumente onde entre 89 e 320 a LP deve cair, e por quê.
-
-## Etapa 5 — o "depois", medido e não estimado
-
-O aceite exige antes **e** depois **medidos**. Para isso, e só para isso, crie
-`docs/design/tipografia/escala-proposta.html`:
-
-- é **instrumento de medição**, não protótipo de UI, e o documento precisa
-  afirmar isso — ele não propõe layout, não vale como Gate C e não autoriza
-  implementação;
-- usa o **conteúdo real** da `lp-final.html` (hero completo mais duas seções com
-  o texto que já existe lá) — texto sintético invalida a medição de carga;
-- aplica a escala proposta e nada mais: sem redesenhar seção, sem inventar
-  componente, sem mudar cor, sem mudar movimento;
-- é medido pela **mesma sonda**, a 1440x900x1 **e** a 390x844x2.
-
-Reporte a tabela antes/depois com as duas variáveis do classificador. O aceite é
-`maior título ≥ 89px` **e** `razão display/corpo ≥ 5,6×` a 1440. Se a sua escala
-não cruzar, **não maquie o número** — ajuste a escala e remeça, ou registre que
-não cruzou e por quê.
-
-## Entregáveis, e só estes
-
-| arquivo | o que é |
-|---|---|
-| `docs/design/PESQUISA-TIPOGRAFIA.md` | o documento da issue |
-| `docs/design/tipografia/sonda-tipografia.mjs` | a sonda estendida, reproduzível |
-| `docs/design/tipografia/medicoes.json` | saída bruta de todas as peças, com data e viewport |
-| `docs/design/tipografia/escala-proposta.html` | o instrumento que produz o "depois" |
-| `docs/design/provenance.md` | **acrescentar ao fim**, sem editar o que já existe: uma entrada QOC+FSE para a escolha dominância × uniformidade, e uma para a escala proposta |
+Restrições que valem como lei: famílias Instrument Sans, Inter e IBM Plex Mono
+mantidas; pesos 800 e 900 vetados; ALL CAPS reduzido — reporte a queda medida
+comparando `caixaAlta.elementos` entre as variantes A e B.
 
 ## O documento
 
-`docs/design/PESQUISA-TIPOGRAFIA.md`, em **português do Brasil**, na voz do
-`REFERENCE-BOARD-v3.md`: direta, medida, sem adjetivo de venda, sem "elevar",
-"potencializar" nem "seamless". Estrutura mínima:
+Português do Brasil, na voz do `REFERENCE-BOARD-v3.md`: direta, medida, sem
+adjetivo de venda. Estrutura mínima:
 
-1. o que esta issue decide, e por que ela decide o resultado do projeto;
-2. o instrumento — o que mudou em relação ao v3, e o teste de sanidade que
-   mostra que as métricas antigas ainda reproduzem;
-3. as medições, em tabela, aprovadas contra rejeitadas, com as métricas novas;
-4. carga de texto no display — a questão aberta nº 1, respondida com número;
-5. serifa: aparece nos aprovados? e no trabalho dele?
-6. **a decisão** dominância × uniformidade, com o que ela custa;
-7. a escala proposta, degrau a degrau, com referência e função;
-8. antes e depois medidos, com o veredito do classificador do cliente;
-9. limites declarados desta rodada — o que o instrumento não vê, o que a amostra
-   não sustenta, e o que continua não medido (o `PROBLEMA-v1` fixa job to be done
-   de recrutamento, e **nada aqui foi testado com recrutador**);
+1. o que esta issue decide;
+2. o instrumento — as correções, o comando para repetir, e o teste de sanidade:
+   quais peças reproduzem o v3 e quais divergem, com `_legado` ao lado;
+3. as medições, aprovadas contra rejeitadas, **com `ch` e altura de linha**;
+4. carga de texto no display, respondida com número — e trate o `illoca` como o
+   contraexemplo que ele é;
+5. serifa, contada pelo campo;
+6. a decisão dominância versus uniformidade, e o que ela custa em altura;
+7. a escala, degrau a degrau, cada um com sua referência;
+8. antes e depois: as seis células de `variantesDaLP`, com o veredito do
+   classificador nos dois viewports, e o CSS injetado na íntegra — está na
+   constante `CSS_ESCALA` de `medir.mjs`, copie de lá;
+9. limites declarados, incluindo o do headless, e o que continua não medido —
+   **nada foi testado com recrutador**;
 10. rodapé no formato dos outros boards: FASE, ARTEFATO, REFERÊNCIAS MEDIDAS,
     DECISÕES, QUESTÕES ABERTAS, O QUE ESTE DOCUMENTO NÃO AUTORIZA.
 
-Seja honesto sobre incerteza. Este repositório tem histórico de conclusão
-derrubada por crítica independente, e o board vigente registra os próprios erros
-em vez de apagá-los. Um documento que declara o que não sabe vale mais aqui do
-que um que soa confiante.
+Seja honesto sobre incerteza. Este repositório registra os próprios erros em vez
+de apagá-los, e a primeira versão deste documento foi reprovada justamente por
+soar mais confiante do que os dados permitiam.
 
 ## Ao terminar
 
-Devolva um digest curto: o que mediu, quantas peças falharam e por quê, a
-decisão da etapa 3 em uma frase, a escala em uma tabela, e os números
-antes/depois. **Não** cole os arquivos inteiros de volta. Não declare sucesso
-sem ter rodado a sonda no `escala-proposta.html` e visto os dois números
-cruzarem o corte.
+Digest de no máximo 20 linhas: os cortes recalculados com a margem em px, o que
+mudou em relação à versão reprovada, e as questões abertas que você deixou.
+Não cole o documento de volta.

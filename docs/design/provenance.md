@@ -452,3 +452,75 @@ dentro do `PESQUISA-TIPOGRAFIA.md` §8**, não num arquivo solto. As linhas
 `escala-proposta-1440` e `escala-proposta-390` do `medicoes.json` continuam lá
 como registro do que foi medido no arquivo apagado, e estão **superadas** pela
 tabela de três variantes da §8.
+
+---
+
+## P-015 — O instrumento media texto invisível, e isso entrou no board
+
+**QUESTÃO** O que a sonda deve contar como "um tamanho de título que a página
+usa"?
+
+**OPÇÕES**
+- Todo `h1`–`h6` do DOM, como faziam o v3 e a primeira versão desta issue.
+- Só o que renderiza: com display, visibilidade, cadeia de opacidade, caixa e
+  não recortado por maquinário.
+
+**CRITÉRIOS** A métrica promete "o maior título da peça". Elemento que nunca
+aparece na tela não é título da peça.
+
+**DECISÃO** Só o que renderiza. Os valores antigos ficam expostos em `_legado`,
+e todo descarte registra o predicado que reprovou.
+
+**EVIDÊNCIA** Três casos, os três verificados abrindo a página à mão:
+
+- `incomescrane.com` entrou no board com **68px**. Esse cabeçalho é
+  `display: none` — nunca renderizou. O real é **32px**.
+- `paulkalkbrenner.net` saiu com **641px** numa régua intermediária. É um
+  contador animado de dígitos num `span` de 342x10143px recortado por container,
+  um dígito visível por vez. Fração contida 0,05. O display real é **150px**.
+- A `lp-final.html` renderiza um `div.footer-wordmark` de **232px** a 96% de
+  rolagem, que a sonda do v3 nunca viu porque só consultava cabeçalho.
+
+**ETIQUETA** `[C]` — imposta por defeito de medição comprovado.
+
+**ADAPTAÇÃO** A correção **não derruba o achado do board**: os aprovados seguem
+em 102–320px e os rejeitados em 20–76px, margem de 26px, 15 de 15. O
+`incomescrane` corrigido baixa o teto dos rejeitados e **reforça** a separação.
+
+---
+
+## P-016 — Medição de peça animada: headless e amostra única não servem
+
+**QUESTÃO** Como medir tipografia em peça cuja hierarquia só existe depois de
+uma animação de entrada?
+
+**OPÇÕES**
+- Chrome headless, uma amostra depois de rolar — o método do v3.
+- Navegador com janela real, várias amostras ao longo do tempo, unidas.
+
+**CRITÉRIOS** O número tem que ser reprodutível e tem que descrever o que um
+leitor vê.
+
+**DECISÃO** Janela real, **quatro amostras** espaçadas em 1,5s antes de rolar
+mais uma depois, e a tipografia é a **união** delas. Cada degrau carrega
+`vistoEmAmostras`, e a peça carrega `_instavel` quando algum degrau não aparece
+em todas.
+
+**EVIDÊNCIA** O herói de 111px do `illoca.unseen.co` decide se a margem do
+classificador é de 26px ou de 1px — e ele era instável:
+
+- em **headless** fica em `opacity: 0`: a animação de entrada não completa sem
+  compositor real;
+- em **aba de fundo** idem, por estrangulamento de `rAF`;
+- mesmo com janela e aba em frente, **duas execuções idênticas deram 111px e
+  77px** — corrida pura;
+- com quatro amostras unidas, três execuções seguidas deram **111px**.
+
+Marcadas `_instavel` nesta rodada: `aelixa`, `illoca` e `white-desert`.
+
+**ETIQUETA** `[C]` — imposta por não-determinismo medido.
+
+**ADAPTAÇÃO** O v3 reportou 111px para o illoca **sem filtro de visibilidade
+nenhum** — teria reportado o mesmo com o elemento invisível. Número certo por
+motivo errado. Fica declarado como limite: medição de peça animada não é
+confiável em headless, e a rodada oficial roda com `--headed`.

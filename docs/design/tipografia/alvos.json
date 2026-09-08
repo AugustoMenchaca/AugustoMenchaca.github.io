@@ -1,0 +1,26 @@
+{
+  "_nota": "Lista versionada dos alvos da issue #36. Editar aqui, nao no driver.",
+  "viewportPadrao": { "w": 1440, "h": 900, "dpr": 1 },
+  "viewportMovel":  { "w": 390,  "h": 844, "dpr": 2 },
+  "referencias": [
+    { "id": "aelixa",          "url": "https://aelixa.webflow.io",           "rotulo": "aprovado" },
+    { "id": "illoca",          "url": "https://illoca.unseen.co",            "rotulo": "aprovado" },
+    { "id": "paulkalkbrenner", "url": "https://paulkalkbrenner.net",         "rotulo": "aprovado" },
+    { "id": "lxlcreative",     "url": "https://lxlcreative.co.uk",           "rotulo": "aprovado" },
+    { "id": "white-desert",    "url": "https://white-desert.com",            "rotulo": "aprovado" },
+    { "id": "charityshot",     "url": "https://charityshot.co.uk",           "rotulo": "rejeitado" },
+    { "id": "obspogon",        "url": "https://obspogon.neocities.org",      "rotulo": "rejeitado" },
+    { "id": "paulfragara",     "url": "https://paul.fragara.com",            "rotulo": "rejeitado" },
+    { "id": "lowmess",         "url": "https://lowmess.com",                 "rotulo": "rejeitado" },
+    { "id": "simonbetton",     "url": "https://simonbetton.com",             "rotulo": "rejeitado" },
+    { "id": "nextfive",        "url": "https://nextfive.xyz",                "rotulo": "rejeitado" },
+    { "id": "incomescrane",    "url": "https://incomescrane.com",            "rotulo": "rejeitado" },
+    { "id": "shelomoh",        "url": "https://shelomoh.work",               "rotulo": "rejeitado" },
+    { "id": "thatmlopsguy",    "url": "https://thatmlopsguy.github.io",      "rotulo": "rejeitado" },
+    { "id": "cassidoo",        "url": "https://cassidoo.co",                 "rotulo": "rejeitado" },
+    { "id": "ciere",           "url": "https://advocaciacieredarosa.com.br", "rotulo": "cliente" },
+    { "id": "idf-br",          "url": "https://idf-br.com.br",               "rotulo": "cliente" },
+    { "id": "dvo",             "url": "https://dvopelotas.com.br",           "rotulo": "cliente" }
+  ],
+  "local": { "id": "lp-final", "arquivo": "wireframes/lp-final.html", "rotulo": "nossa" }
+}
