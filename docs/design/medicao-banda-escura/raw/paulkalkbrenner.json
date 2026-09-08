@@ -1,0 +1,59 @@
+{
+  "peca": "paulkalkbrenner",
+  "status": "OK",
+  "url": "https://paulkalkbrenner.net",
+  "carregadas_por_imgs": "67/83",
+  "altura_css": 10667,
+  "M1": {
+    "areaTotalConsiderada": 40194769.47117874,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 17539777.459459994,
+        "pct_area": 43.64
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 7,
+    "altura_total_escura_px": 4628,
+    "fracao_escura": 0.4339,
+    "intervalos_bandas_y": [
+      [
+        198,
+        945
+      ],
+      [
+        1549,
+        2316
+      ],
+      [
+        4885,
+        5338
+      ],
+      [
+        5393,
+        6084
+      ],
+      [
+        7067,
+        8166
+      ],
+      [
+        8372,
+        8892
+      ],
+      [
+        8937,
+        9281
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 1
+  },
+  "M3": {
+    "transicoes_claro_escuro": 34,
+    "transicoes_escuro_claro": 34
+  }
+}

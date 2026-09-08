@@ -1,0 +1,53 @@
+{
+  "peca": "lxlcreative",
+  "status": "OK",
+  "url": "https://lxlcreative.co.uk",
+  "carregadas_por_imgs": "38/39",
+  "altura_css": 15323,
+  "M1": {
+    "areaTotalConsiderada": 59779272.8881824,
+    "qtdTonsEscurosDistintos": 2,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(39, 32, 29)",
+        "L": 0.251,
+        "area_px": 58947862.5,
+        "pct_area": 98.61
+      },
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 243599,
+        "pct_area": 0.41
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 4,
+    "altura_total_escura_px": 14482,
+    "fracao_escura": 0.9451,
+    "intervalos_bandas_y": [
+      [
+        0,
+        10770
+      ],
+      [
+        10843,
+        11398
+      ],
+      [
+        11462,
+        13559
+      ],
+      [
+        14266,
+        15322
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 3,
+    "transicoes_escuro_claro": 3
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "peca": "paulfragara",
+  "status": "OK",
+  "url": "https://paul.fragara.com",
+  "carregadas_por_imgs": "14/14",
+  "altura_css": 1431,
+  "M1": {
+    "areaTotalConsiderada": 3500467.25,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(0, 119, 0)",
+        "L": 0.493,
+        "area_px": 7744,
+        "pct_area": 0.22
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 0,
+    "altura_total_escura_px": 0,
+    "fracao_escura": 0.0,
+    "intervalos_bandas_y": [],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 1,
+    "transicoes_escuro_claro": 1
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "peca": "illoca",
+  "grupo": "aprovado",
+  "url": "https://illoca.unseen.co",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 900,
+    "imgs": 0,
+    "carregadas": 0
+  },
+  "areaTotalFundo": 7304128,
+  "fundosDistintos": 5,
+  "fundos": [
+    {
+      "cor": "rgb(234, 223, 201)",
+      "pct": 71,
+      "L": 0.907,
+      "C": 0.032,
+      "H": 85
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 18.1,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(40, 63, 125)",
+      "pct": 10,
+      "L": 0.385,
+      "C": 0.109,
+      "H": 266
+    },
+    {
+      "cor": "rgb(253, 248, 240)",
+      "pct": 0.9,
+      "L": 0.981,
+      "C": 0.012,
+      "H": 80
+    },
+    {
+      "cor": "rgb(91, 91, 91)",
+      "pct": 0,
+      "L": 0.471,
+      "C": 0,
+      "H": 90
+    }
+  ]
+}

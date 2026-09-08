@@ -1,0 +1,24 @@
+{
+  "status": "OK",
+  "peca": "lowmess",
+  "grupo": "rejeitado",
+  "url": "https://lowmess.com",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 1234,
+    "imgs": 0,
+    "carregadas": 0
+  },
+  "areaTotalFundo": 1681,
+  "fundosDistintos": 1,
+  "fundos": [
+    {
+      "cor": "rgb(59, 59, 59)",
+      "pct": 100,
+      "L": 0.352,
+      "C": 0,
+      "H": 90
+    }
+  ]
+}

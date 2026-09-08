@@ -1,3 +1,9 @@
 .lighthouseci/
 node_modules/
 *.log
+
+# Capturas intermediarias da medicao de banda escura (23M).
+# As mesmas 15 paginas ja estao rastreadas em docs/design/referencias-v3/, e
+# estas sao regeneraveis pelo instrumento em docs/design/medicao-banda-escura/.
+# O que precisa ser auditavel — os numeros — esta nos raw/*.json, que ficam.
+docs/design/medicao-banda-escura/raw/*.png

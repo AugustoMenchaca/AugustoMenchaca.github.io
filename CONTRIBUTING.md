@@ -128,7 +128,10 @@ Pesquisa e decisões de design ficam em `docs/design/`:
 | `PROBLEMA-v1.md` | o problema e as métricas de sucesso |
 | `REFERENCE-BOARD-v1.md` | precedentes de densidade e hierarquia |
 | `REFERENCE-BOARD-v2.md` | precedentes de vitalidade — **coluna de área cromática derrubada pela #17** |
-| `REFERENCE-BOARD-v3.md` | **o board vigente.** 15 peças rotuladas pelo cliente, instrumento corrigido e escrito por inteiro |
+| `REFERENCE-BOARD-v3.md` | **o board vigente.** 15 peças rotuladas pelo cliente, instrumento corrigido e escrito por inteiro. **Ressalva:** o pré-scroll da §8.1 é insuficiente para página com revelação por scroll — ver `provenance.md` P-012 |
+| `PESQUISA-PALETA.md` | **entregável da #35.** Cor é restrição, não diferencial: as sete regras normativas R1–R7, com o contraste de cada par medido |
+| `medicao-contraste/` | a sonda de contraste, os dados brutos e o gerador da tabela |
+| `medicao-banda-escura/` | o instrumento de banda escura, 16 capturas e o resultado verificado |
 | `provenance.md` | as decisões estruturais em QOC — questão, opções, critérios, decisão, evidência |
 | `BREADBOARDS-v1.md` · `BREADBOARDS-v2.md` | as seis hipóteses reprovadas |
 | `CRITICA-v1.md` | crítica independente de Codex e Antigravity |

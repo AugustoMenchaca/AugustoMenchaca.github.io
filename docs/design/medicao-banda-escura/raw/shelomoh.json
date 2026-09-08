@@ -1,0 +1,42 @@
+{
+  "peca": "shelomoh",
+  "status": "OK",
+  "url": "https://shelomoh.work",
+  "carregadas_por_imgs": "4/4",
+  "altura_css": 2364,
+  "M1": {
+    "areaTotalConsiderada": 7557998.375,
+    "qtdTonsEscurosDistintos": 3,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(29, 29, 31)",
+        "L": 0.232,
+        "area_px": 3911040,
+        "pct_area": 51.75
+      },
+      {
+        "rgb": "rgb(0, 39, 247)",
+        "L": 0.463,
+        "area_px": 240400,
+        "pct_area": 3.18
+      },
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 2398.375,
+        "pct_area": 0.03
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 0,
+    "altura_total_escura_px": 0,
+    "fracao_escura": 0.0,
+    "intervalos_bandas_y": [],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 4,
+    "transicoes_escuro_claro": 4
+  }
+}

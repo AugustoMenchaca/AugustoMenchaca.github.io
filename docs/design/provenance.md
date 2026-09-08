@@ -367,6 +367,8 @@ transferência do corte para o conteúdo da LP — que carrega cargo, formação
 cinco projetos, contra a frase curta de marca das referências — é a questão
 aberta da #36.
 
+---
+
 ## Revisão da #37 — preferência e inferência, 2026-09-07
 
 **Origem:** conversa com o cliente nesta tarefa; direção explicitamente aprovada.
@@ -389,3 +391,64 @@ Aelixa e White Desert corroboram resposta cromática a 0,3s; Paul Kalkbrenner
 corrobora exceções assimétricas; as cenas contínuas dependem de mecanismos fora
 das restrições da LP. Síntese na #5; protótipo e crítica visual na #21/#22.
 Não há aprovação antecipada do efeito implementado.
+
+---
+
+## P-012 — Pré-scroll do instrumento: 700px/90ms é rápido demais para revelação
+
+**QUESTÃO** O pré-scroll canônico da §8.1 do `REFERENCE-BOARD-v3` carrega o que
+precisa ser medido, em página que revela conteúdo por scroll?
+
+**OPÇÕES**
+- O da §8.1: passos de 700px, 90ms de espera, volta ao topo, 700ms — escrito
+  para carregar imagem preguiçosa.
+- Passos de 400px, 120ms, **duas passadas**, volta ao topo, 1200ms.
+- Forçar `is-revealed` por script antes de medir — descartada: altera a página
+  para caber na régua, e mascara o defeito em vez de resolvê-lo.
+
+**CRITÉRIOS** Depois do pré-scroll, todo elemento que a página revela por scroll
+tem que estar em `opacity: 1`. Elemento em `opacity: 0` no momento da medição é
+lido como o fundo que está atrás dele, não como ele mesmo.
+
+**DECISÃO** **400px / 120ms / duas passadas.** O da §8.1 fica registrado como
+insuficiente para peça com revelação por scroll — ele resolve imagem preguiçosa,
+que era o problema para o qual foi escrito, e não resolve `IntersectionObserver`.
+
+**EVIDÊNCIA** Medido na `wireframes/lp-final.html`, que tem 25 elementos
+`[data-reveal]`:
+
+| pré-scroll | elementos ainda em `opacity < 0,99` |
+|---|---|
+| §8.1 — 700px / 90ms | **20 de 25** |
+| 400px / 120ms / 2 passadas | **2 de 25** — e os dois são duplicatas de idioma em `display: none`, que o observer nunca vê |
+
+A consequência foi medida, não inferida. A `<section class="slab slab-hut8"
+data-reveal>` — a segunda faixa escura da página, 870px de altura e largura
+cheia, `rgb(11,11,11)` — foi capturada em `opacity: 0`. Na faixa dela, a captura
+devolve `L` mediana de **0,970**, que é exatamente o valor do `--paper
+#F7F5EF`, e **0,0%** de pixels escuros na linha 5600. A peça mediu **1 banda
+escura e fração 0,1123**; o correto é **2 bandas e 0,2170** — quase o dobro.
+
+O mesmo defeito atingiu, de forma independente, a sonda de contraste desta
+issue: ela reportou **12 reprovações de AA**, todas com contraste exatamente
+`1,00:1` e cor de texto **idêntica** à do fundo. Nenhuma era real. Duas sondas
+diferentes, o mesmo erro, na mesma sessão.
+
+**ETIQUETA** `[C]` — imposta por defeito de medição comprovado.
+
+**ADAPTAÇÃO** O cabeçalho de `medicao-contraste/probe-contraste.js` declara o
+pré-scroll como pré-requisito, com o sintoma do erro escrito, para que a sonda
+não seja rodada sem ele.
+
+**CONSEQUÊNCIA, e ela é maior que a #35.** Toda medição de peça com revelação
+por scroll feita com o pré-scroll da §8.1 pode estar subestimando o que mediu —
+inclusive mídia, movimento e cor nas rodadas anteriores do board. Isto **não foi
+verificado** nas referências externas: o teste acima vale para a `lp-final`, que
+é a peça cujo mecanismo de revelação eu conheço. Nas outras 15, a possibilidade
+fica aberta e declarada.
+
+**Limite:** o resultado de banda escura da #35 é **imune** a este defeito, e por
+uma razão estrutural, não por sorte: a direção do erro é sempre subestimar
+escuro, quatro peças rejeitadas já medem fração **1,0000**, e a faixa rejeitada
+cobre `[0, 1]` inteiro. Nenhuma correção para cima produz separação. Isso não se
+transfere para as outras variáveis do board, que não têm essa propriedade.

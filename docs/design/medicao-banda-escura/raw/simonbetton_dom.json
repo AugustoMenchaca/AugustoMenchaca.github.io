@@ -1,0 +1,16 @@
+{
+  "status": "OK",
+  "nome": "simonbetton",
+  "url": "https://simonbetton.com",
+  "preScrollData": {
+    "altura": 9277,
+    "imgs": 14,
+    "carregadas": 5
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 2540.160538330092,
+    "qtdTonsEscurosDistintos": 0,
+    "tonsEscuros": []
+  }
+}

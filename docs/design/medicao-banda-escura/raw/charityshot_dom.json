@@ -1,0 +1,23 @@
+{
+  "status": "OK",
+  "nome": "charityshot",
+  "url": "https://charityshot.co.uk",
+  "preScrollData": {
+    "altura": 900,
+    "imgs": 73,
+    "carregadas": 40
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 5057323.397949219,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 16923.39794921875,
+        "pct_area": 0.33
+      }
+    ]
+  }
+}
