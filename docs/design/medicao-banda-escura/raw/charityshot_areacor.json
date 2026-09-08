@@ -1,0 +1,38 @@
+{
+  "status": "OK",
+  "peca": "charityshot",
+  "grupo": "rejeitado",
+  "url": "https://charityshot.co.uk",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 900,
+    "imgs": 73,
+    "carregadas": 40
+  },
+  "areaTotalFundo": 5057323,
+  "fundosDistintos": 3,
+  "fundos": [
+    {
+      "cor": "rgb(252, 252, 252)",
+      "pct": 51.3,
+      "L": 0.991,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 48.4,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(0, 0, 0)",
+      "pct": 0.3,
+      "L": 0,
+      "C": 0,
+      "H": 0
+    }
+  ]
+}

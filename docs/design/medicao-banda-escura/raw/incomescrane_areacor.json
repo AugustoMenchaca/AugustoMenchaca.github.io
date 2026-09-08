@@ -1,0 +1,38 @@
+{
+  "status": "OK",
+  "peca": "incomescrane",
+  "grupo": "rejeitado",
+  "url": "https://incomescrane.com",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 4056,
+    "imgs": 8,
+    "carregadas": 8
+  },
+  "areaTotalFundo": 9451420,
+  "fundosDistintos": 3,
+  "fundos": [
+    {
+      "cor": "rgb(219, 218, 216)",
+      "pct": 61.8,
+      "L": 0.889,
+      "C": 0.003,
+      "H": 85
+    },
+    {
+      "cor": "rgb(239, 239, 239)",
+      "pct": 38.2,
+      "L": 0.952,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 0,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    }
+  ]
+}

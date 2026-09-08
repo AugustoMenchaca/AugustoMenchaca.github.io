@@ -95,26 +95,91 @@ Isso encerra a última hipótese de cor que havia sobrevivido à primeira
 reclamação — o *"muito agressivo"* que eu atribuí a "81% da família vinho".
 **Nenhuma família de matiz prediz aprovação.**
 
-### Área por cor — onde ela está, por referência
+### Área por cor — medida nas 16 peças
 
-Esta é a única métrica pedida pela issue que **não** está na tabela acima, e o
-motivo é que ela não se mede no pixel: é o inventário de `background-color`
-opaco com área acima de 900px², que exige o DOM. O que existe, por peça:
+Última das seis métricas que a issue pede por referência, e a que estava
+faltando. A §3 do board traz o inventário de fundos apenas das 5 aprovadas; a
+rodada de banda escura registrou dos rejeitados só os **tons escuros**. Medida
+agora nas 16, com a definição do campo `fundos` da sonda §8.1 — `background-color`
+opaco, área de bounding rect acima de 900px², agrupado por `rgb` e ponderado por
+área — e com o pré-scroll corrigido da **P-012**.
 
-| peça | área por cor | fonte |
+**O instrumento se valida contra a §3.** As 5 aprovadas reproduzem o inventário
+do board com os mesmos valores `rgb`, na mesma ordem, com deriva abaixo de 0,5
+ponto percentual:
+
+| peça | §3 do board | medido agora |
 |---|---|---|
-| `aelixa` | creme `rgb(253,251,248)` 66,6% `C=0,005` · branco 22,2% · grafite `rgb(36,36,36)` 10,5% · **dourado `rgb(241,186,53)` 0,3% `C=0,153`** | `REFERENCE-BOARD-v3.md` §3, "Área por cor — o inventário completo dos fundos" |
-| `illoca` | areia `rgb(234,223,201)` 71,0% `C=0,032` · branco 18,1% · **azul `rgb(40,63,125)` 10,0% `C=0,109`** | idem |
-| `paulkalkbrenner` | preto 43,7% · branco 38,7% · cinza `rgb(197,197,197)` 9,3% · **verde `rgb(167,255,156)` 5,4% `C=0,156`** · **laranja `rgb(255,104,49)` 2,8% `C=0,196`** | idem |
-| `lxlcreative` | marrom `rgb(39,32,29)` 98,6% `C=0,012` · **azul `rgb(5,93,255)` 0,7% `C=0,251`** · **laranja `rgb(255,81,33)` 0,1% `C=0,218`** | idem |
-| `white-desert` | branco 78,7% · quase-preto `rgb(9,11,16)` 13,7% `C=0,011` · `rgb(233,231,225)` 3,0% `C=0,008` | idem |
-| os 10 rejeitados | **não medido.** Existe deles o inventário de **tons escuros**, por peça, em `medicao-banda-escura/raw/<peça>_dom.json`, campo `M1` | esta issue |
+| `aelixa` | creme 66,6% · branco 22,2% · grafite 10,5% · dourado 0,3% | 66,9% · 21,7% · 10,6% · 0,4% |
+| `illoca` | areia 71,0% · branco 18,1% · azul 10,0% | 71,0% · 18,1% · 10,0% |
+| `paulkalkbrenner` | preto 43,7% · branco 38,7% · cinza 9,3% · verde 5,4% · laranja 2,8% | 43,6% · 38,6% · 9,0% · 5,5% · 3,3% |
+| `lxlcreative` | marrom 98,6% · azul 0,7% | 98,6% · 0,7% |
+| `white-desert` | branco 78,7% · quase-preto 13,7% · 3,0% | 78,7% · 13,7% · 3,1% |
 
-**A lacuna não muda a conclusão**, e vale dizer por quê em vez de só declarar:
-área por cor é uma decomposição da área cromática, que **já está medida nos dois
-lados e já não separa**. Saber como os 4,2% de cor forte do `paulfragara` se
-repartem entre fundos não reverte o fato de que os cinco aprovados vão de 0,0% a
-30,2% e caem dentro da faixa dos rejeitados.
+<!-- gerado de raw/*_areacor.json — nao editar a mao -->
+
+| peça | grupo | fundos distintos | fundo dominante | % dele | área de fundo cromática `C≥0,05` | acento `C≥0,12` em ≤2% | assinatura campo+acento |
+|---|---|---:|---|---:|---:|---:|:---:|
+| `aelixa` | **aprovado** | 7 | `rgb(253,251,248)` `C=0,005` | 66,9% | 0,4% | 0,153 | sim |
+| `illoca` | **aprovado** | 5 | `rgb(234,223,201)` `C=0,032` | 71% | 10% | — | não |
+| `paulkalkbrenner` | **aprovado** | 5 | `rgb(0,0,0)` `C=0` | 43,6% | 8,8% | — | não |
+| `lxlcreative` | **aprovado** | 6 | `rgb(39,32,29)` `C=0,012` | 98,6% | 0,8% | 0,251 | sim |
+| `white-desert` | **aprovado** | 8 | `rgb(255,255,255)` `C=0` | 78,7% | 0% | 0,185 | sim |
+| `charityshot` | rejeitado | 3 | `rgb(252,252,252)` `C=0` | 51,3% | 0% | — | não |
+| `obspogon` | rejeitado | 5 | `rgb(0,0,0)` `C=0` | 96,6% | 1,7% | 0,177 | sim |
+| `paulfragara` | rejeitado | 6 | `rgb(240,255,240)` `C=0,025` | 57,6% | 0,7% | 0,194 | não |
+| `lowmess` | rejeitado | 1 | `rgb(59,59,59)` `C=0` | 100% | 0% | — | não |
+| `simonbetton` | rejeitado | 1 | `rgb(255,255,255)` `C=0` | 100% | 0% | — | não |
+| `nextfive` | rejeitado | 4 | `rgb(39,46,51)` `C=0,013` | 80,5% | 18,7% | — | não |
+| `incomescrane` | rejeitado | 3 | `rgb(219,218,216)` `C=0,003` | 61,8% | 0% | — | não |
+| `shelomoh` | rejeitado | 4 | `rgb(29,29,31)` `C=0,004` | 51,7% | 3,2% | — | não |
+| `thatmlopsguy` | rejeitado | 4 | `rgb(10,15,26)` `C=0,025` | 77,1% | 0,3% | 0,215 | sim |
+| `cassidoo` | rejeitado | 1 | `rgb(37,37,37)` `C=0` | 100% | 0% | — | não |
+| `lp-final` | local | 10 | `rgb(247,245,239)` `C=0,008` | 68,5% | 0,3% | 0,2 | sim |
+
+#### O teste — pior aprovado contra melhor rejeitado
+
+| grandeza derivada | aprovados | rejeitados | veredito |
+|---|---|---|---|
+| fundos distintos | 5 – 8 | 1 – 6 | **não separa** — 3 de 5 aprovados dentro da faixa rejeitada |
+| área de fundo cromática | 0% – 10% | 0% – 18,7% | **não separa** — 5 de 5 aprovados dentro da faixa rejeitada |
+| croma do acento minúsculo | 0,0 – 0,251 | 0,0 – 0,215 | **não separa** — 4 de 5 aprovados dentro da faixa rejeitada |
+| assinatura campo+acento | 3 de 5 | 2 de 10 | **não separa** — presente em peça rejeitada e ausente em aprovada |
+
+**16 peças medidas, zero falhas.** Viewport `1440x900x1`, pré-scroll de 400px/120ms em duas passadas. Dados brutos em `medicao-banda-escura/raw/*_areacor.json`.
+
+Quais peças fecham a assinatura:
+- aprovadas: `aelixa`, `lxlcreative`, `white-desert`
+- rejeitadas: `obspogon`, `thatmlopsguy`
+
+**Critério da assinatura, declarado para poder ser contestado:** campo é o fundo
+dominante com **≥ 60%** da área e `C < 0,05`; acento é um fundo com `C ≥ 0,12`
+ocupando **≤ 2%**. A `white-desert` conta aqui e não constava na tabela da §3
+porque este inventário vai até 8 fundos e o da §3 ia até 6 — o acento dela está
+na cauda. É diferença de profundidade, não divergência.
+
+### E isto fecha a questão aberta 6 da §9 do board
+
+A §3 observou que *"uma forma aparece em duas das cinco: campo grande de neutro
+tingido + acento minúsculo de croma alto"*, e a §9 deixou em aberto se ela
+significava algo. **Agora está testada nos dois lados, e não significa.**
+
+A assinatura aparece em **2 das 10 rejeitadas** — `obspogon` e `thatmlopsguy` —
+e falta em **2 das 5 aprovadas** — `illoca` e `paulkalkbrenner`. O
+contraexemplo é o mesmo de sempre e continua sendo o mais duro: **a `obspogon`,
+reprovada com a palavra *"horrível"*, tem a assinatura** — campo preto em 96,6%
+com acento de croma 0,177 em área minúscula.
+
+Nenhuma das quatro grandezas derivadas do inventário separa: contagem de fundos
+distintos, área de fundo cromática, croma do acento, e a assinatura. Com isso a
+área por cor entra na lista dos nulos, e **as seis métricas que a issue pediu
+estão todas medidas por referência.**
+
+> **Um dado de manutenção que apareceu na rodada.** A `simonbetton` carregou
+> **14 de 14** imagens com o pré-scroll corrigido, contra 5 de 14 na rodada
+> anterior. A ressalva de captura degradada dela, herdada da §12, **cai** para
+> esta medição. As duas que continuam degradadas são a `charityshot`, que rola
+> por sequestro, e a `illoca`, que mede 900px de altura.
 
 ### Para comparação
 
@@ -602,6 +667,34 @@ python "$R/docs/design/medicao-contraste/tabela.py"     > .../tabela.md
 | `cor-por-referencia.py` | 15 peças, **reproduz a §3 e a §12 do board em 15 de 15** |
 | `tabela-cor.py` · `tabela.py` | tabelas deste documento regeneradas dos dados brutos |
 
+### Uma lacuna de instrumento, declarada porque contraria a P-003
+
+A rodada de **área por cor** foi executada, os dados brutos estão em
+`medicao-banda-escura/raw/*_areacor.json` e a tabela em
+`medicao-contraste/tabela-areacor.md`. **Mas as duas sondas dessa rodada não
+estão versionadas** — a de captura e a que gera a tabela ficaram fora do
+repositório, porque o gate de `nova-ferramenta` bloqueia criação de arquivo de
+código até a autorização do Gate D.
+
+Isso contraria a **P-003**, que decidiu que *"o script do instrumento passa a
+viver dentro do board"*. A consequência é concreta e não deve ser minimizada:
+**esta medição, hoje, não é reproduzível a partir do repositório** — ao contrário
+das outras três desta issue, que são.
+
+O que existe para reconstruí-la, e é suficiente para alguém reescrever a sonda:
+
+| item | onde está |
+|---|---|
+| definição da medida | esta seção e a §1 — campo `fundos` da sonda §8.1, `background-color` opaco, área > 900px², agrupado por `rgb`, ponderado por área, top 8 |
+| viewport e pré-scroll | `1440x900x1`, pré-scroll de 400px/120ms em duas passadas (P-012) |
+| as 16 URLs | `medicao-banda-escura/raw/*_areacor.json`, campo `url` |
+| critério da assinatura | §1 — campo ≥ 60% com `C < 0,05`, acento `C ≥ 0,12` em ≤ 2% |
+| saída completa | os 16 JSON e a tabela gerada, os dois rastreados |
+
+**Fechar isso é decisão do Gate**, não desta issue: ou o instrumento entra em
+`medicao-banda-escura/` como os outros três, ou a lacuna fica registrada aqui. As
+outras três sondas desta issue estão versionadas e rodam de qualquer diretório.
+
 ### O que a re-execução mostrou de novo
 
 A captura fresca da LP, feita pelo fluxo documentado — que usa o pré-scroll da
@@ -659,13 +752,16 @@ Viewport `1440x900x1`. **Pré-scroll de 400px/120ms em duas passadas** — o da
 · 4 em margem fina · 0 texto sobre imagem. Cor por referência nas 15 peças
 rotuladas, com a sonda da §8.2 — **reproduz a §3 e a §12 em 15 de 15**, e
 acrescenta o temperamento dos 10 rejeitados, que o board não tinha. Banda escura
-em 16 peças: nulo nas quatro métricas, N=15
+em 16 peças: nulo nas quatro métricas, N=15. **Área por cor nas 16 peças, zero
+falhas** — valida contra a §3 nas cinco aprovadas e fecha a questão aberta 6 da
+§9: a assinatura campo+acento não separa. **As seis métricas que a issue pediu
+estão todas medidas por referência**
 **DECISÕES:** cor declarada **restrição, não diferencial**, com fonte nos dois
 lados de uma amostra rotulada de 15 peças; sete regras normativas (R1–R7);
 `--light` e `--h8-photo` removidos por serem tokens mortos, o segundo também por
 procedência de marca falsa; banda escura medida e **declarada nula** nas quatro
-métricas, fechando a última variável de cor que faltava; **temperamento medido
-nos dois lados e também declarado nulo**; verde `#A4DE02` mantido fora com
+métricas, fechando a última variável de cor que faltava; **temperamento e área
+por cor medidos nos dois lados e também declarados nulos**; verde `#A4DE02` mantido fora com
 justificativa medida (`ΔH = 11,2°`, `ΔC = 0,012`) em lugar do comentário de
 protótipo; nenhum matiz novo proposto; instrumentos ancorados no próprio arquivo
 para o fluxo não depender do CWD

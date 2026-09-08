@@ -1,0 +1,45 @@
+{
+  "status": "OK",
+  "peca": "shelomoh",
+  "grupo": "rejeitado",
+  "url": "https://shelomoh.work",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 2364,
+    "imgs": 4,
+    "carregadas": 4
+  },
+  "areaTotalFundo": 7557998,
+  "fundosDistintos": 4,
+  "fundos": [
+    {
+      "cor": "rgb(29, 29, 31)",
+      "pct": 51.7,
+      "L": 0.232,
+      "C": 0.004,
+      "H": 286
+    },
+    {
+      "cor": "rgb(251, 251, 253)",
+      "pct": 45,
+      "L": 0.989,
+      "C": 0.003,
+      "H": 286
+    },
+    {
+      "cor": "rgb(0, 39, 247)",
+      "pct": 3.2,
+      "L": 0.463,
+      "C": 0.291,
+      "H": 264
+    },
+    {
+      "cor": "rgb(0, 0, 0)",
+      "pct": 0,
+      "L": 0,
+      "C": 0,
+      "H": 0
+    }
+  ]
+}

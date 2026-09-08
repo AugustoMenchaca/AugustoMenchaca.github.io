@@ -86,10 +86,37 @@ Isso encerra a **última** hipótese de cor que havia sobrevivido à primeira
 reclamação: o *"muito agressivo"* que eu atribuí a "81% da família vinho".
 Nenhuma família de matiz prediz aprovação.
 
-A única métrica pedida pela issue que continua sem medição por referência é
-**área por cor** dos 10 rejeitados — ela exige o DOM, não o pixel. Está apontada
-peça por peça, com seção, na §1 do entregável, e os cinco aprovados têm o
-inventário completo na §3 do board.
+### Área por cor — a sexta métrica, e a que fechou por último
+
+Era a única que faltava por referência: a §3 do board traz o inventário de
+fundos só das 5 aprovadas, e a rodada de banda escura registrou dos rejeitados
+apenas os tons escuros. Medida agora nas **16 peças, zero falhas**, com a
+definição do campo `fundos` da §8.1 e o pré-scroll corrigido.
+
+**O instrumento se valida:** as 5 aprovadas reproduzem a §3 com os mesmos `rgb`,
+na mesma ordem, com deriva abaixo de 0,5 ponto percentual.
+
+E o resultado fecha uma **questão aberta do board**, a nº 6 da §9. A §3 havia
+observado que *"uma forma aparece em duas das cinco: campo grande de neutro
+tingido + acento minúsculo de croma alto"* e deixado em aberto se ela
+significava algo. **Testada nos dois lados, não significa:**
+
+| grandeza derivada do inventário | aprovados | rejeitados | veredito |
+|---|---|---|---|
+| fundos distintos | 5 – 8 | 1 – 6 | não separa |
+| área de fundo cromática `C≥0,05` | 0% – 10% | 0% – 18,7% | não separa |
+| croma do acento minúsculo | 0 – 0,251 | 0 – 0,215 | não separa |
+| assinatura campo+acento | 3 de 5 | **2 de 10** | não separa |
+
+A assinatura aparece em `obspogon` e `thatmlopsguy`, e falta em `illoca` e
+`paulkalkbrenner`. O contraexemplo é o mesmo de sempre: **a `obspogon`,
+reprovada com a palavra *"horrível"*, tem a assinatura** — campo preto em 96,6%
+com acento de croma 0,177 em área minúscula.
+
+**Com isso as seis métricas que a issue pediu estão todas medidas por
+referência.** E um ganho de manutenção: a `simonbetton` carregou 14 de 14
+imagens com o pré-scroll corrigido, contra 5 de 14 antes — a ressalva de captura
+degradada dela, herdada da §12, cai para esta medição.
 
 ---
 

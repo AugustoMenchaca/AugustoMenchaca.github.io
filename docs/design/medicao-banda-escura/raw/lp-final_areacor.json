@@ -1,0 +1,73 @@
+{
+  "status": "OK",
+  "peca": "lp-final",
+  "grupo": "local",
+  "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/wireframes/lp-final.html",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 8350,
+    "imgs": 0,
+    "carregadas": 0
+  },
+  "areaTotalFundo": 22243313,
+  "fundosDistintos": 10,
+  "fundos": [
+    {
+      "cor": "rgb(247, 245, 239)",
+      "pct": 68.5,
+      "L": 0.97,
+      "C": 0.008,
+      "H": 91
+    },
+    {
+      "cor": "rgb(232, 227, 217)",
+      "pct": 15,
+      "L": 0.917,
+      "C": 0.014,
+      "H": 85
+    },
+    {
+      "cor": "rgb(17, 18, 19)",
+      "pct": 7.7,
+      "L": 0.182,
+      "C": 0.003,
+      "H": 248
+    },
+    {
+      "cor": "rgb(11, 11, 11)",
+      "pct": 6,
+      "L": 0.15,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 1.5,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(241, 238, 230)",
+      "pct": 0.6,
+      "L": 0.949,
+      "C": 0.011,
+      "H": 90
+    },
+    {
+      "cor": "rgb(230, 248, 53)",
+      "pct": 0.3,
+      "L": 0.935,
+      "C": 0.2,
+      "H": 115
+    },
+    {
+      "cor": "rgb(241, 230, 232)",
+      "pct": 0.2,
+      "L": 0.934,
+      "C": 0.012,
+      "H": 5
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "status": "OK",
+  "peca": "nextfive",
+  "grupo": "rejeitado",
+  "url": "https://nextfive.xyz",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 2915,
+    "imgs": 8,
+    "carregadas": 8
+  },
+  "areaTotalFundo": 2817588,
+  "fundosDistintos": 4,
+  "fundos": [
+    {
+      "cor": "rgb(39, 46, 51)",
+      "pct": 80.5,
+      "L": 0.296,
+      "C": 0.013,
+      "H": 239
+    },
+    {
+      "cor": "rgb(7, 54, 66)",
+      "pct": 18.7,
+      "L": 0.309,
+      "C": 0.052,
+      "H": 220
+    },
+    {
+      "cor": "rgb(26, 30, 36)",
+      "pct": 0.7,
+      "L": 0.234,
+      "C": 0.013,
+      "H": 258
+    },
+    {
+      "cor": "rgb(45, 51, 59)",
+      "pct": 0.2,
+      "L": 0.319,
+      "C": 0.017,
+      "H": 256
+    }
+  ]
+}
