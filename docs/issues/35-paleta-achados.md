@@ -123,10 +123,37 @@ Dois pares merecem nota, não conserto:
   **2,84:1** sobre subtle — reprova até em texto grande nos dois últimos. Está
   no bloco parecendo disponível, e não é.
 - **`--h8-photo #2A2A28`** — zero usos, e declarado sob o comentário
-  `Sistema Hut 8 (manual de marca v1.0)`. **#2A2A28 não é uma das quatro cores
-  do manual.** O bloco afirma procedência de marca para um valor que não tem.
+  `Sistema Hut 8 (manual de marca v1.0)`. **#2A2A28 não é cor do manual.** O
+  bloco afirma procedência de marca para um valor que não tem.
 
 Os dois saem da paleta.
+
+### O que o review acrescentou, e o vão que ele destapou
+
+O review conferiu o `#2A2A28` contra o manual e trouxe o valor real: o
+preto-tecido de lá é **`#1F1F1D`**. Se o token foi criado para representar esse
+preto, ele está **com o valor errado**, não só sem procedência.
+
+E veio um aviso que protege este achado de ser "corrigido" por engano: **a
+checagem de procedência no manual tem de ser feita pelos RGB, não pelos hex.**
+Um `grep` de hex conclui, errado, que `#0B0B0B`, `#6B0F9C` e `#A4DE02` também não
+estão lá — o OCR do documento mutilou os glifos (`#@BQ@B@B`, `#6BOF9C`,
+`#A4DE@2`). Conferi a aritmética RGB→hex das quatro linhas e ela fecha; a
+mutilação e o valor do preto-tecido **não pude verificar**, porque vêm do review,
+que tinha o manual.
+
+**E é aí que está o vão maior: o manual não está no repositório.** Nenhum arquivo
+rastreado o contém, então os quatro valores da R3 não são reverificáveis daqui. E
+os dois registros internos discordam:
+
+| fonte no repo | o que lista |
+|---|---|
+| corpo da #35 · `docs/issues/lote-pesquisa.md:30` | **quatro**, com o cinza `#8A8A8A` |
+| `docs/design/CRITIQUE-BRIEF.md:22` | **três** — preto, roxo, verde. Sem o cinza |
+
+O `#1F1F1D` não aparece em nenhuma das duas. A autoridade da R3 hoje é a
+**declaração da issue**, não o manual. Versionar o manual fecharia isso — é
+trabalho de outra issue, e está registrado como aberto.
 
 ---
 
@@ -355,6 +382,10 @@ tentativa de otimizar a variável errada.
   auditado.
 - **A generalidade da P-012** nas 15 referências externas — declarada, não
   medida.
+- **O manual da marca Hut 8 não está versionado**, então a R3 não é
+  reverificável a partir do repositório, e os dois registros internos que a
+  declaram discordam sobre o cinza `#8A8A8A`. Fechar isso é versionar o manual —
+  outra issue.
 - **O nulo vale para o gosto do cliente, não para o recrutador.** Os 15 rótulos
   são dele. Que cor não decida a leitura de um recrutador continua não medido, e
   o `PROBLEMA-v1` é sobre recrutador. É o mesmo limite que o board declara para

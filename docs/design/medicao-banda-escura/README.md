@@ -8,7 +8,35 @@ raiz do repositório — **as duas metades assumiam diretórios diferentes, e ne
 CWD fazia as duas funcionarem**. Foi por isso que a rodada delegada precisou de
 um driver separado só para a LP.
 
-Pré-requisitos: Chrome, Node 18+, Python com `numpy` e `Pillow`.
+## O que isto é, e o que não é
+
+**Instrumento de medição pontual. Não faz parte do build da LP, e nada aqui é
+dependência do produto.** O `lint`, o `lighthouse` e o `content-rules` medem
+apenas `wireframes/lp-final.html` — não olham para `docs/`, e portanto **estes
+scripts não têm gate de CI**. Se um deles quebrar, nada avisa: quem mexer aqui
+confere rodando.
+
+Pré-requisitos: **Chrome**, **Node 18+**, Python 3 com `numpy` e `Pillow`.
+
+**Por que existe um `package.json` dentro de `docs/`.** Só um script precisa de
+npm — `puppeteer-core`, para dirigir o Chrome. O manifesto está **nesta pasta**,
+e não na raiz, exatamente para não fazer a LP parecer ter dependência de runtime
+que ela não tem. Rodar `npm ci` na raiz do repositório não instala isto, e é o
+comportamento desejado: instale entrando aqui.
+
+`docs/**/node_modules/` **já está coberto** pelo `.gitignore` — o padrão
+`node_modules/` sem barra inicial casa em qualquer profundidade. Verificado:
+
+```
+$ git check-ignore -v docs/design/medicao-banda-escura/node_modules/teste.txt
+.gitignore:2:node_modules/	docs/design/medicao-banda-escura/node_modules/teste.txt
+```
+
+**Por que `../medicao-contraste/` não tem `package.json`.** A assimetria entre as
+duas pastas é correta, não descuido: lá são três scripts Python e um `.js` que
+roda **no console do DevTools**, sem `require` nem `import`. Zero dependência de
+npm. Adicionar um manifesto vazio ali só criaria um segundo projeto npm sem
+motivo.
 
 ## 1. Capturar e sondar
 
@@ -73,6 +101,22 @@ Sem isso ela reporta **12 reprovações falsas**, todas com contraste exatamente
 `opacity: 0`. O sintoma está escrito no cabeçalho do arquivo.
 
 Depois: `python ../medicao-contraste/tabela.py > ../medicao-contraste/tabela.md`
+
+## Os dois arquivos com o defeito no nome
+
+São **evidência guardada de propósito**, não lixo esquecido. Cada um é a medição
+original ao lado da corrigida, para o erro continuar visível em vez de sumir na
+correção — a mesma prática que o `00-ORDEM.md` aplica aos números derrubados pela
+#17.
+
+| arquivo | o que registra | por que ficou |
+|---|---|---|
+| `raw/lp-final-agy-defeito-revelacao.json` | a rodada delegada medindo **1 banda e fração 0,1123** na LP | a `slab-hut8` foi capturada em `opacity: 0` porque o pré-scroll da §8.1 não dispara revelação. O correto é **2 bandas e 0,2170** — quase o dobro. É o dado que originou a **P-012**, e apagá-lo apagaria a evidência do defeito |
+| `raw/obspogon-agy-falha-timeout.json` | o registro de falha: `Navigation timeout of 30000 ms exceeded` | mostra que o teste rodou com **N=14** antes da remedição, e que a peça foi recuperada em vez de descartada. A falha era transitória — a página carregou com 60s |
+
+Os arquivos corrigidos que os substituem — `raw/lp-final.json` e
+`raw/obspogon.json` — carregam um campo **`PROCEDENCIA`** dizendo o que mudou e
+por quê. O relato completo está na seção "O que mudou" do `RESULTADO.md`.
 
 ## O que fica fora do git
 

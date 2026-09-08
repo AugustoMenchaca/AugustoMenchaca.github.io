@@ -269,8 +269,14 @@ dois últimos. Ele está no bloco de tokens parecendo disponível e não é.
 
 **3. `--h8-photo #2A2A28` também é morto, e está no lugar errado.** Zero usos, e
 declarado sob o comentário `Sistema Hut 8 (manual de marca v1.0)` — mas
-**#2A2A28 não é uma das quatro cores do manual**. O bloco afirma procedência de
-marca para um valor que não tem.
+**#2A2A28 não é cor do manual**. O bloco afirma procedência de marca para um
+valor que não tem.
+
+O review conferiu contra o manual e foi além do que eu tinha: o preto-tecido de
+lá é **`#1F1F1D`**. Ou seja, se `--h8-photo` foi criado para representar esse
+preto, ele está simplesmente **com o valor errado** — não é só um token sem
+procedência. `#1F1F1D` não aparece em nenhum arquivo deste repositório. Ver a
+ressalva de procedência na **R3**.
 
 **4. O verde `#A4DE02` da marca Hut 8 não existe como token, e a razão disso
 estava enterrada em um comentário de protótipo** (`prototipo-c.html:370`:
@@ -322,10 +328,42 @@ da peça. Vale a mesma nota do `muted`/`stone`: não conserte, só não clareie.
 claras. Ele fica fora da paleta da LP — não por gosto, e agora com a medição no
 lugar do comentário de protótipo.
 
-**R3 — a marca Hut 8 é fixa e não se mistura.** Os quatro valores do manual v1.0:
-`#0B0B0B`, `#6B0F9C`, `#8A8A8A`, `#A4DE02`. Nenhum recebe ajuste de matiz,
+**R3 — a marca Hut 8 é fixa e não se mistura.** Os quatro valores tratados como
+fixos: `#0B0B0B`, `#6B0F9C`, `#8A8A8A`, `#A4DE02`. Nenhum recebe ajuste de matiz,
 luminância ou croma. `#2A2A28` **não** pertence a esse conjunto e não deve ser
 declarado como se pertencesse.
+
+> **Confira procedência pelos RGB, nunca pelos hex.** O review levantou isto, e é
+> o tipo de aviso que evita alguém "corrigir" um achado certo. Um `grep` de hex
+> no manual conclui, **errado**, que `#0B0B0B`, `#6B0F9C` e `#A4DE02` não estão
+> lá: o OCR do documento mutilou os glifos — `#@BQ@B@B`, `#6BOF9C`, `#A4DE@2`.
+> Só os RGB declarados confirmam, e a aritmética fecha nos quatro casos:
+>
+> | RGB no manual | hex correspondente |
+> |---|---|
+> | `11 11 11` | `#0B0B0B` |
+> | `107 15 156` | `#6B0F9C` |
+> | `164 222 2` | `#A4DE02` |
+> | `31 31 29` | `#1F1F1D` (preto-tecido) |
+>
+> **O que eu verifiquei e o que não.** A aritmética RGB→hex acima, sim, nas
+> quatro linhas. A mutilação por OCR e o valor do preto-tecido, **não** — vêm do
+> review, que tinha o manual em mãos.
+
+> **E há um vão de procedência maior, que este PR não fecha.** **O manual da Hut 8
+> não está no repositório.** Nenhum arquivo rastreado o contém. Logo os quatro
+> valores desta regra **não são reverificáveis a partir do repositório**, e os
+> dois registros internos que os declaram **discordam entre si**:
+>
+> | fonte no repo | o que lista |
+> |---|---|
+> | corpo da issue #35 · `docs/issues/lote-pesquisa.md:30` | **quatro** — `#0B0B0B`, `#6B0F9C`, `#8A8A8A`, `#A4DE02` |
+> | `docs/design/CRITIQUE-BRIEF.md:22` | **três** — preto, roxo e verde. **Sem o cinza `#8A8A8A`** |
+>
+> E o `#1F1F1D` que o review reporta do manual não aparece em nenhuma das duas
+> listas. Então a autoridade da R3 hoje é **a declaração da issue**, não o manual.
+> Versionar o manual — mesmo como PDF em `docs/design/` — fecharia isso, e é
+> trabalho para outra issue, não para esta.
 
 **R4 — screenshot e figura de dado real nunca são recoloridos.** O navy do
 IDF-BR, o creme e o dourado da Ciere e o azul de oficina do DVO entram como são.
