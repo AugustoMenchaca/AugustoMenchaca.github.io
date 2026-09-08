@@ -25,7 +25,7 @@
 //   A  a LP como está
 //   B  só a escala (CSS), conteúdo intocado
 //   C  a escala mais o "evento curto" no herói
-// nos dois viewports. Não existe arquivo de protótipo: ver provenance.md P-014.
+// nos dois viewports. Não existe arquivo de protótipo: ver provenance.md P-015.
 
 import { spawn } from 'node:child_process';
 import { readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
@@ -298,7 +298,7 @@ const HEADED = flag('--headed');
 if (!HEADED) {
   console.error('');
   console.error('  AVISO: rodando em HEADLESS. Peca com animacao de entrada pode ser');
-  console.error('  medida a menos (ver P-016 em docs/design/provenance.md). A rodada');
+  console.error('  medida a menos (ver P-017 em docs/design/provenance.md). A rodada');
   console.error('  oficial usa --headed; sem ela o resultado sai com rodadaOficial: false.');
   console.error('');
 }
@@ -314,7 +314,7 @@ const saida = {
     sonda: 'docs/design/tipografia/sonda-tipografia.mjs',
     alvos: 'docs/design/tipografia/alvos.json',
     nota: 'Nao ha arquivo de prototipo. O "depois" da escala e medido por injecao ' +
-          'de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-014.'
+          'de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-015.'
   },
   referencias: {},
   variantesDaLP: {}

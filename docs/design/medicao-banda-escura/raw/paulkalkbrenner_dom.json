@@ -1,0 +1,23 @@
+{
+  "status": "OK",
+  "nome": "paulkalkbrenner",
+  "url": "https://paulkalkbrenner.net",
+  "preScrollData": {
+    "altura": 10667,
+    "imgs": 83,
+    "carregadas": 67
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 40194769.47117874,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 17539777.459459994,
+        "pct_area": 43.64
+      }
+    ]
+  }
+}

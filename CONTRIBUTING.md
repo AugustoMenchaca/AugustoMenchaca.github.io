@@ -31,17 +31,44 @@ Fluxo: `feat/algo` → PR para `develop` → PR de `develop` para `main` → dep
 
 Nomear a branch pela issue: `feat/14-vivencias`, `fix/20-molduras-vazias`.
 
-`nova-lp` está no mesmo commit que `main` e não tem nada exclusivo — decidir se
-remove.
-
 ## Proteção da main
 
-A configurar em Settings → Branches:
+**Já configurada.** Estado atual, verificado pela API:
 
-- Exigir pull request antes de merge.
-- Exigir que os checks `lint`, `lighthouse` e `content-rules` passem.
-- Proibir push direto e force-push.
-- Manter histórico linear.
+| regra | valor |
+|---|---|
+| pull request obrigatório | sim |
+| aprovações exigidas | 0 |
+| checks exigidos | os 5: HTML válido · CSS lint · Nada inventado entra · Paridade PT/EN · Orçamento de qualidade |
+| branch atualizada antes do merge (`strict`) | sim |
+| push direto e force-push | proibidos |
+| deleção da branch | proibida |
+| resolução de conversa | exigida |
+| aplica a administradores | sim |
+| **histórico linear** | **desligado, de propósito** |
+
+Push direto é recusado com `GH006`. A porta é o PR com os 5 checks verdes.
+
+### Por que o histórico linear está desligado
+
+Ele estava ligado, e criava um beco sem saída no passo final do fluxo.
+
+A `develop` acumula merge commits — de PR de pesquisa e de sincronização com a
+`main`. Com histórico linear exigido, o PR `develop → main` só teria uma saída:
+
+- `--merge` recusado pela regra de histórico linear
+- `--rebase` recusado pelo GitHub, que não rebaseia branch contendo merge commit
+- **só `--squash`**, colapsando toda a `develop` em um commit
+
+Isso destruiria a granularidade exatamente onde ela tem valor documental: os
+commits da trilha de pesquisa registram medição, refutação e retratação, e o
+`docs/design/00-ORDEM.md` aponta para eles para separar o que é medição
+confiável do que é proposta feita fora de ordem.
+
+**Consequência aceita:** a `main` passa a ter histórico em árvore, não linear.
+É o normal em git-flow, e o preço é menor que perder a trilha.
+
+**Antes de religar**, saiba que isso força squash no `develop → main`.
 
 ## O que o CI verifica
 
@@ -128,7 +155,10 @@ Pesquisa e decisões de design ficam em `docs/design/`:
 | `PROBLEMA-v1.md` | o problema e as métricas de sucesso |
 | `REFERENCE-BOARD-v1.md` | precedentes de densidade e hierarquia |
 | `REFERENCE-BOARD-v2.md` | precedentes de vitalidade — **coluna de área cromática derrubada pela #17** |
-| `REFERENCE-BOARD-v3.md` | **o board vigente.** 15 peças rotuladas pelo cliente, instrumento corrigido e escrito por inteiro |
+| `REFERENCE-BOARD-v3.md` | **o board vigente.** 15 peças rotuladas pelo cliente, instrumento corrigido e escrito por inteiro. **Ressalva:** o pré-scroll da §8.1 é insuficiente para página com revelação por scroll — ver `provenance.md` P-012 |
+| `PESQUISA-PALETA.md` | **entregável da #35.** Cor é restrição, não diferencial: as sete regras normativas R1–R7, com o contraste de cada par medido |
+| `medicao-contraste/` | a sonda de contraste, os dados brutos e o gerador da tabela |
+| `medicao-banda-escura/` | o instrumento de banda escura, 16 capturas e o resultado verificado |
 | `provenance.md` | as decisões estruturais em QOC — questão, opções, critérios, decisão, evidência |
 | `BREADBOARDS-v1.md` · `BREADBOARDS-v2.md` | as seis hipóteses reprovadas |
 | `CRITICA-v1.md` | crítica independente de Codex e Antigravity |

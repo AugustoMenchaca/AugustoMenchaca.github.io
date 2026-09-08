@@ -1,0 +1,35 @@
+{
+  "peca": "cassidoo",
+  "status": "OK",
+  "url": "https://cassidoo.co",
+  "carregadas_por_imgs": "1/1",
+  "altura_css": 1654,
+  "M1": {
+    "areaTotalConsiderada": 2276588.375,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(37, 37, 37)",
+        "L": 0.264,
+        "area_px": 2276588.375,
+        "pct_area": 100
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 1,
+    "altura_total_escura_px": 1654,
+    "fracao_escura": 1.0,
+    "intervalos_bandas_y": [
+      [
+        0,
+        1653
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 0,
+    "transicoes_escuro_claro": 0
+  }
+}

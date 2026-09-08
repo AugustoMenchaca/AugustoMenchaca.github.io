@@ -1,0 +1,45 @@
+{
+  "status": "OK",
+  "peca": "thatmlopsguy",
+  "grupo": "rejeitado",
+  "url": "https://thatmlopsguy.github.io",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 3602,
+    "imgs": 5,
+    "carregadas": 5
+  },
+  "areaTotalFundo": 9029382,
+  "fundosDistintos": 4,
+  "fundos": [
+    {
+      "cor": "rgb(10, 15, 26)",
+      "pct": 77.1,
+      "L": 0.169,
+      "C": 0.025,
+      "H": 265
+    },
+    {
+      "cor": "rgb(15, 23, 42)",
+      "pct": 22.4,
+      "L": 0.208,
+      "C": 0.04,
+      "H": 266
+    },
+    {
+      "cor": "rgb(37, 99, 235)",
+      "pct": 0.3,
+      "L": 0.546,
+      "C": 0.215,
+      "H": 263
+    },
+    {
+      "cor": "rgb(30, 41, 59)",
+      "pct": 0.2,
+      "L": 0.279,
+      "C": 0.037,
+      "H": 260
+    }
+  ]
+}

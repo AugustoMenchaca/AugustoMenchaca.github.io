@@ -1,0 +1,29 @@
+{
+  "status": "OK",
+  "nome": "white-desert",
+  "url": "https://white-desert.com",
+  "preScrollData": {
+    "altura": 20787,
+    "imgs": 29,
+    "carregadas": 27
+  },
+  "scaleFactor": 0.5,
+  "domData": {
+    "areaTotalConsiderada": 48330442.405151844,
+    "qtdTonsEscurosDistintos": 2,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(9, 11, 16)",
+        "L": 0.15,
+        "area_px": 6606652.5,
+        "pct_area": 13.67
+      },
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 1296000,
+        "pct_area": 2.68
+      }
+    ]
+  }
+}

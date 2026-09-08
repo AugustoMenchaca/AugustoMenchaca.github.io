@@ -1,0 +1,48 @@
+{
+  "peca": "obspogon",
+  "status": "OK",
+  "url": "https://obspogon.neocities.org/",
+  "PROCEDENCIA": "Medido nesta sessao. O agy falhou com 'Navigation timeout of 30000 ms exceeded' — registro preservado em obspogon-agy-falha-timeout.json. A falha era transitoria, nao do site: carregou normal com 60s. Fecha o teste em N=15.",
+  "pre_scroll": "400px / 120ms / 2 passadas",
+  "viewport": "1440x900x1",
+  "carregadas_por_imgs": "31/33",
+  "altura_css": 3057,
+  "altura_png": 3056,
+  "escala_captura": 1.0,
+  "M1": {
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(0,0,0)",
+        "L": 0.0
+      }
+    ],
+    "nota": "area por tom nao foi capturada nesta sonda — so a contagem de tons distintos e a lista"
+  },
+  "M2": {
+    "numero_bandas": 3,
+    "altura_total_escura_px": 2439,
+    "fracao_escura": 0.7981,
+    "intervalos_bandas_y": [
+      [
+        530,
+        1154
+      ],
+      [
+        1182,
+        2486
+      ],
+      [
+        2514,
+        3022
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 3,
+    "corridas_escuras_sub_50_px": 6
+  },
+  "M3": {
+    "transicoes_claro_escuro": 3,
+    "transicoes_escuro_claro": 3,
+    "nivel": "banda (>=300px), nao corrida qualquer"
+  }
+}

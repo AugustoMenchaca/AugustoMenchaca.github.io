@@ -1,0 +1,59 @@
+{
+  "status": "OK",
+  "peca": "lxlcreative",
+  "grupo": "aprovado",
+  "url": "https://lxlcreative.co.uk",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 15323,
+    "imgs": 39,
+    "carregadas": 38
+  },
+  "areaTotalFundo": 59779273,
+  "fundosDistintos": 6,
+  "fundos": [
+    {
+      "cor": "rgb(39, 32, 29)",
+      "pct": 98.6,
+      "L": 0.251,
+      "C": 0.012,
+      "H": 45
+    },
+    {
+      "cor": "rgb(5, 93, 255)",
+      "pct": 0.7,
+      "L": 0.547,
+      "C": 0.251,
+      "H": 262
+    },
+    {
+      "cor": "rgb(0, 0, 0)",
+      "pct": 0.4,
+      "L": 0,
+      "C": 0,
+      "H": 0
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 0.2,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(255, 81, 33)",
+      "pct": 0.1,
+      "L": 0.673,
+      "C": 0.218,
+      "H": 35
+    },
+    {
+      "cor": "rgb(252, 242, 189)",
+      "pct": 0,
+      "L": 0.956,
+      "C": 0.069,
+      "H": 99
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "status": "OK",
+  "nome": "lowmess",
+  "url": "https://lowmess.com",
+  "preScrollData": {
+    "altura": 1234,
+    "imgs": 0,
+    "carregadas": 0
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 1681,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(59, 59, 59)",
+        "L": 0.352,
+        "area_px": 1681,
+        "pct_area": 100
+      }
+    ]
+  }
+}

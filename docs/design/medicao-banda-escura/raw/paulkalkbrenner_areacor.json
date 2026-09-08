@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "peca": "paulkalkbrenner",
+  "grupo": "aprovado",
+  "url": "https://paulkalkbrenner.net",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 10711,
+    "imgs": 83,
+    "carregadas": 67
+  },
+  "areaTotalFundo": 40382689,
+  "fundosDistintos": 5,
+  "fundos": [
+    {
+      "cor": "rgb(0, 0, 0)",
+      "pct": 43.6,
+      "L": 0,
+      "C": 0,
+      "H": 0
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 38.6,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(197, 197, 197)",
+      "pct": 9,
+      "L": 0.823,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(167, 255, 156)",
+      "pct": 5.5,
+      "L": 0.921,
+      "C": 0.156,
+      "H": 142
+    },
+    {
+      "cor": "rgb(255, 104, 49)",
+      "pct": 3.3,
+      "L": 0.7,
+      "C": 0.196,
+      "H": 39
+    }
+  ]
+}

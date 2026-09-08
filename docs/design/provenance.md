@@ -357,16 +357,105 @@ ele traz, acho muito simples em questão de cor, tipografia e UX"*. Título de
 
 **CONSEQUÊNCIA** A `lp-final.html` classifica **do lado rejeitado** nas duas
 variáveis: 46px contra corte de 89, e 3,29× contra corte de 5,6×. É a resposta
-para *"cara de site morto"* sem defeito apontável — e o defeito era o tamanho do
-título.
+para investigar *"cara de site morto"*. A associação não demonstra causalidade
+nem que tipografia substitua o movimento desejado pelo cliente. Ver a revisão
+de escopo abaixo e `PESQUISA-MOVIMENTO.md`.
 
 **Limite:** o corte separa o **gosto do cliente**. Nenhuma peça foi testada com
 recrutador, e a ligação com o job to be done do `PROBLEMA-v1` não foi medida. A
 transferência do corte para o conteúdo da LP — que carrega cargo, formação e
 cinco projetos, contra a frase curta de marca das referências — é a questão
 aberta da #36.
+
+
+---
+
+## Revisão da #37 — preferência e inferência, 2026-09-07
+
+**Origem:** conversa com o cliente nesta tarefa; direção explicitamente aprovada.
+O cliente valoriza movimento para dinamismo e sensação de página viva, em
+conjunto com tipografia, composição e conteúdo. Contar transições declaradas
+não avalia a experiência percebida e não invalida sua avaliação do lowmess.
+
+**Decisão:** manter P-005 (0,3s base com dispersão justificada), retirar o aceite
+de duração única e a escolha exclusiva mídia/movimento. Gramática mínima quer
+dizer poucos padrões coerentes, sem meta de quantidade ou orientação para
+reduzir a expressividade. Não animar dimensões; retirar interpolate-size.
+
+**Hipótese:** interações responsivas, entradas seletivas e um momento expressivo
+ligado ao conteúdo. Curva IDF candidata; amplitudes e ritmo detalhados em
+`PESQUISA-MOVIMENTO.md` são propostas a validar, não observações medidas.
+
+**Observação concluída:** `movimento/OBSERVACAO.md` registra carga, ponteiro,
+foco, rolagem e retorno nas cinco referências, com instrumento reproduzível.
+Aelixa e White Desert corroboram resposta cromática a 0,3s; Paul Kalkbrenner
+corrobora exceções assimétricas; as cenas contínuas dependem de mecanismos fora
+das restrições da LP. Síntese na #5; protótipo e crítica visual na #21/#22.
+Não há aprovação antecipada do efeito implementado.
+
+---
+
+## P-012 — Pré-scroll do instrumento: 700px/90ms é rápido demais para revelação
+
+**QUESTÃO** O pré-scroll canônico da §8.1 do `REFERENCE-BOARD-v3` carrega o que
+precisa ser medido, em página que revela conteúdo por scroll?
+
+**OPÇÕES**
+- O da §8.1: passos de 700px, 90ms de espera, volta ao topo, 700ms — escrito
+  para carregar imagem preguiçosa.
+- Passos de 400px, 120ms, **duas passadas**, volta ao topo, 1200ms.
+- Forçar `is-revealed` por script antes de medir — descartada: altera a página
+  para caber na régua, e mascara o defeito em vez de resolvê-lo.
+
+**CRITÉRIOS** Depois do pré-scroll, todo elemento que a página revela por scroll
+tem que estar em `opacity: 1`. Elemento em `opacity: 0` no momento da medição é
+lido como o fundo que está atrás dele, não como ele mesmo.
+
+**DECISÃO** **400px / 120ms / duas passadas.** O da §8.1 fica registrado como
+insuficiente para peça com revelação por scroll — ele resolve imagem preguiçosa,
+que era o problema para o qual foi escrito, e não resolve `IntersectionObserver`.
+
+**EVIDÊNCIA** Medido na `wireframes/lp-final.html`, que tem 25 elementos
+`[data-reveal]`:
+
+| pré-scroll | elementos ainda em `opacity < 0,99` |
+|---|---|
+| §8.1 — 700px / 90ms | **20 de 25** |
+| 400px / 120ms / 2 passadas | **2 de 25** — e os dois são duplicatas de idioma em `display: none`, que o observer nunca vê |
+
+A consequência foi medida, não inferida. A `<section class="slab slab-hut8"
+data-reveal>` — a segunda faixa escura da página, 870px de altura e largura
+cheia, `rgb(11,11,11)` — foi capturada em `opacity: 0`. Na faixa dela, a captura
+devolve `L` mediana de **0,970**, que é exatamente o valor do `--paper
+#F7F5EF`, e **0,0%** de pixels escuros na linha 5600. A peça mediu **1 banda
+escura e fração 0,1123**; o correto é **2 bandas e 0,2170** — quase o dobro.
+
+O mesmo defeito atingiu, de forma independente, a sonda de contraste desta
+issue: ela reportou **12 reprovações de AA**, todas com contraste exatamente
+`1,00:1` e cor de texto **idêntica** à do fundo. Nenhuma era real. Duas sondas
+diferentes, o mesmo erro, na mesma sessão.
+
+**ETIQUETA** `[C]` — imposta por defeito de medição comprovado.
+
+**ADAPTAÇÃO** O cabeçalho de `medicao-contraste/probe-contraste.js` declara o
+pré-scroll como pré-requisito, com o sintoma do erro escrito, para que a sonda
+não seja rodada sem ele.
+
+**CONSEQUÊNCIA, e ela é maior que a #35.** Toda medição de peça com revelação
+por scroll feita com o pré-scroll da §8.1 pode estar subestimando o que mediu —
+inclusive mídia, movimento e cor nas rodadas anteriores do board. Isto **não foi
+verificado** nas referências externas: o teste acima vale para a `lp-final`, que
+é a peça cujo mecanismo de revelação eu conheço. Nas outras 15, a possibilidade
+fica aberta e declarada.
+
+**Limite:** o resultado de banda escura da #35 é **imune** a este defeito, e por
+uma razão estrutural, não por sorte: a direção do erro é sempre subestimar
+escuro, quatro peças rejeitadas já medem fração **1,0000**, e a faixa rejeitada
+cobre `[0, 1]` inteiro. Nenhuma correção para cima produz separação. Isso não se
+transfere para as outras variáveis do board, que não têm essa propriedade.
+
 \n
-## P-012 — Tipografia: Dominância Assimétrica × Uniformidade
+## P-013 — Tipografia: Dominância Assimétrica × Uniformidade
 
 **QUESTÃO** Qual abordagem tipográfica de hierarquia usar na página inteira?
 
@@ -386,9 +475,9 @@ aberta da #36.
 
 ---
 
-## P-013 — A Escala Proposta de Tipografia (Issue #36)
+## P-014 — A Escala Proposta de Tipografia (Issue #36)
 
-**QUESTÃO** Quais valores em px e parâmetros adotar para a escala tipográfica que atende a P-012 e cruza a medição sem esmagar o conteúdo?
+**QUESTÃO** Quais valores em px e parâmetros adotar para a escala tipográfica que atende a P-013 e cruza a medição sem esmagar o conteúdo?
 
 **OPÇÕES**
 - Piso mínimo seguro: 89px / 5,6×.
@@ -411,7 +500,7 @@ degrau móvel segue por projetar.
 
 ---
 
-## P-014 — O "depois" medido: arquivo de protótipo → injeção em tempo de medição
+## P-015 — O "depois" medido: arquivo de protótipo → injeção em tempo de medição
 
 **QUESTÃO** O aceite da #36 exige o "depois" medido, e medir escala tipográfica
 exige renderizar. Onde vive a página que produz esse número?
@@ -455,7 +544,7 @@ tabela de três variantes da §8.
 
 ---
 
-## P-015 — O instrumento media texto invisível, e isso entrou no board
+## P-016 — O instrumento media texto invisível, e isso entrou no board
 
 **QUESTÃO** O que a sonda deve contar como "um tamanho de título que a página
 usa"?
@@ -489,7 +578,7 @@ em 102–320px e os rejeitados em 20–76px, margem de 26px, 15 de 15. O
 
 ---
 
-## P-016 — Medição de peça animada: headless e amostra única não servem
+## P-017 — Medição de peça animada: headless e amostra única não servem
 
 **QUESTÃO** Como medir tipografia em peça cuja hierarquia só existe depois de
 uma animação de entrada?

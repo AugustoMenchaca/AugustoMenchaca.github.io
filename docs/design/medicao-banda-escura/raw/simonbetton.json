@@ -1,0 +1,23 @@
+{
+  "peca": "simonbetton",
+  "status": "OK",
+  "url": "https://simonbetton.com",
+  "carregadas_por_imgs": "5/14",
+  "altura_css": 9277,
+  "M1": {
+    "areaTotalConsiderada": 2540.160538330092,
+    "qtdTonsEscurosDistintos": 0,
+    "tonsEscuros": []
+  },
+  "M2": {
+    "numero_bandas": 0,
+    "altura_total_escura_px": 0,
+    "fracao_escura": 0.0,
+    "intervalos_bandas_y": [],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 0,
+    "transicoes_escuro_claro": 0
+  }
+}

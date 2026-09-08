@@ -73,6 +73,13 @@ cor vive nas referências dele. Registro em `provenance.md`, P-001 e P-002.
 
 ## O que aqui é confiável
 
+**Atualização de movimento — 2026-09-07:** para a #37 e a #21, consultar
+[PESQUISA-MOVIMENTO.md](PESQUISA-MOVIMENTO.md). Registra a preferência explícita
+por dinamismo, base de 0,3s com exceções e limites da inferência: associação
+tipográfica não prova substituição do movimento. A observação comportamental
+está em `movimento/OBSERVACAO.md`; as amplitudes adaptadas seguem identificadas
+como hipóteses para protótipo.
+
 Medição não deixa de valer por ter vindo na ordem errada — o número é o número.
 
 | arquivo | o que vale |
@@ -83,12 +90,12 @@ Medição não deixa de valer por ter vindo na ordem errada — o número é o n
 | `REFERENCE-BOARD-v3.md` | **é o board vigente.** Passou por crítica independente que derrubou 4 das 10 conclusões — leia a §7 pelos vereditos, não pelas afirmações originais. Depois disso ganhou **amostra rotulada de 15 peças** (5 aprovadas, 10 rejeitadas pelo cliente): a §12 é o resultado que vale, e as seções anteriores são o caminho até ele |
 | `CRITICA-v1.md` | **confiável.** Crítica independente de Codex e Antigravity, com uma afirmação do Antigravity refutada por medição minha |
 | `assets-reais/` | **confiável.** Capturas reais dos três produtos no ar, mais 28 figuras extraídas dos notebooks do experimento |
-| `PESQUISA-TIPOGRAFIA.md` | **etapa 1, issue #36.** A escala derivada da medição, com a decisão dominância × uniformidade. Medição feita por agente delegado e **auditada por medição independente** — leia a §9 antes das tabelas: dois valores da §3 estão marcados como errados, e a escala **não tem efeito a 390px** |
+| `PESQUISA-TIPOGRAFIA.md` | **etapa 1, issue #36.** A escala derivada da medição, com a decisão dominância × uniformidade. Instrumento corrigido em sete frentes e dados regenerados com `--headed` — leia a §2 e a §9 antes das tabelas. Os cortes sobrevivem (aprovados 102–320px, rejeitados 20–76px, margem de 26px), mas a escala **não cruza o classificador a 390px** e estica a página em 26,6%. Reprodutível: `node docs/design/tipografia/medir.mjs --headed` |
 
 Números que sobrevivem e devem ser reaproveitados pelas issues de pesquisa:
 
 - Aelixa: 17495px, 81 `<img>`, 91 `<svg>`, 1 vídeo, 1 keyframe, **zero animação ativa**
-- paco.me: 1424px, **zero mídia**, 20 keyframes, 13 elementos em transição, **todos a 0,24s** — reproduzido exato em 2026-09-06
+- paco.me: 1424px, **zero mídia**, 20 keyframes, 13 elementos em transição, **todos a 0,24s** — medição reproduzida, mas não usar como preferência do cliente nem como fonte da duração
 - arXiv: 50 entradas em 5385px, densidade **2568 caracteres por 1000px**
 
 Números do v1/v2 que **a #17 derrubou** — não reaproveite:
@@ -98,6 +105,8 @@ Números do v1/v2 que **a #17 derrubou** — não reaproveite:
 - ~~Folha, razão manchete/massa 2,7×~~ — domínio errado. As cinco referências do cliente ficam entre **6,0× e 20,0×**
 - ~~"duas rotas excludentes de vitalidade"~~ — nenhuma das cinco fica em uma rota só
 - ~~Aelixa com 18 elementos em transição~~ — não reproduz (remedido em 74), e o v2 não guardou o script
+- ~~0,24s único do paco.me como regra da LP~~ — a peça não foi escolhida pelo
+  cliente; a #37 adota 0,3s como base heurística, com exceções funcionais
 
 ## O que aqui é provisório
 

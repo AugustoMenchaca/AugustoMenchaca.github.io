@@ -1,0 +1,66 @@
+{
+  "status": "OK",
+  "peca": "aelixa",
+  "grupo": "aprovado",
+  "url": "https://aelixa.webflow.io",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 17502,
+    "imgs": 81,
+    "carregadas": 58
+  },
+  "areaTotalFundo": 39821440,
+  "fundosDistintos": 7,
+  "fundos": [
+    {
+      "cor": "rgb(253, 251, 248)",
+      "pct": 66.9,
+      "L": 0.989,
+      "C": 0.005,
+      "H": 78
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 21.7,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(36, 36, 36)",
+      "pct": 10.6,
+      "L": 0.26,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(241, 186, 53)",
+      "pct": 0.4,
+      "L": 0.818,
+      "C": 0.153,
+      "H": 85
+    },
+    {
+      "cor": "rgb(51, 51, 51)",
+      "pct": 0.3,
+      "L": 0.321,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(35, 35, 35)",
+      "pct": 0,
+      "L": 0.256,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(243, 243, 243)",
+      "pct": 0,
+      "L": 0.964,
+      "C": 0,
+      "H": 90
+    }
+  ]
+}
