@@ -18,7 +18,7 @@ não converte comportamento observado em causa de aprovação.
 | Paul Kalkbrenner | Título chega de lados opostos; imagem central chega em dois eixos; equalizador continua pulsando; imagens alternam com fade de `0.3s` | Link “Music” desloca letras: `0.5s` na entrada e `0.3s` na saída; cursor customizado acompanha o ponteiro | Navegação se recolhe com `transform 0.35s`; o retorno inverte o estado | Evidência direta para base com exceções assimétricas. Não transferir cursor customizado, equalizador permanente ou navegação que some |
 | White Desert | Vídeo/fotografia ocupa o hero; elementos de cena mantêm movimento visual | Abas passam do azul translúcido ao laranja em `0.3s cubic-bezier(0.5,1,0.89,1)`; foco nativo apareceu | Hero, título e nuvens movem em velocidades diferentes e revertem ao retornar | Resposta cromática a 0,3s. Parallax de texto não é necessário para a LP; reservar movimento ligado à rolagem para gráfico narrativo |
 | LxL Creative | Hero é dominado por imagem e tipografia; SVG gira continuamente | Hover em um link reduz irmãos para `opacity 0.4`; cor declara `0.15s`; painel associado entra com opacidade/transformação; foco recebe contorno | Vídeo se desloca nos dois eixos conforme a rolagem e reverte no retorno | Ênfase por contraste pode servir à navegação. Não manter ornamento rotativo permanente nem reproduzir painel complexo sem necessidade |
-| illoca | Cena central em canvas/SVG e retângulos se movem continuamente | Labels “Features/Pricing” sobem `12px`; sublinhado percorre a largura do rótulo; na ação `hover-1` (Pricing), estado final atingido entre as amostras reais de `+326ms` (−11,1px) e `+514ms` (−12,0px) (duração inferida por snapshots em animação dirigida por JS) | A roda não alterou `scrollY` nesta sessão; a página usa uma superfície de navegação própria, então não se infere ausência de movimento de rolagem | Microinteração direcional é transferível em amplitude menor. Canvas e superfície própria ficam fora por acesso, leitura e dependência de JS |
+| illoca | Cena central em canvas/SVG e retângulos se movem continuamente | Labels “Features” (`hover-0`) e “Pricing” (`hover-1`) sobem `12px`; sublinhado percorre a largura do rótulo; estado final atingido entre `+326ms`/`+368ms` (−11,1px/−11,3px) e `+514ms`/`+523ms` (−12,0px), com ambas as ações corroborando a microinteração e a duração inferida de ~500ms (animação dirigida por JS) | A roda não alterou `scrollY` nesta sessão; a página usa uma superfície de navegação própria, então não se infere ausência de movimento de rolagem | Microinteração direcional é transferível em amplitude menor. Canvas e superfície própria ficam fora por acesso, leitura e dependência de JS |
 
 ## Leitura cruzada
 
@@ -49,11 +49,15 @@ temática no SVG real do IDF. A curva será definida na #22.
   comparar cada amostra contra o `before` pelo identificador único (`uid`) de
   cada elemento (conforme implementado em `summarize.cjs`). O site possui 275
   elementos com transformações estáticas no SVG/canvas decorativo que afogam uma
-  inspeção não diferencial. A ação `hover-1` ("Pricing") registra a progressão
-  completa do controle (`span.relative.inline-block` de −0,7px a −12,0px),
-  enquanto a amostragem do `hover-0` manteve `activeElement: body.` (já que
-  o hover de ponteiro não altera o foco do documento), servindo o `hover-1`
-  como referência unívoca de inferência temporal.
+  inspeção não diferencial. A amostragem diferencial isola a microinteração em
+  ambas as ações de hover (`hover-0` no controle "Features", `uid 44`, e
+  `hover-1` no controle "Pricing", `uid 52`), que progridem identicamente de 0 a
+  −12,0px com tempos concordantes (+143ms/−0,75px vs +131ms/−0,75px; +237ms/−7,37px
+  vs +211ms/−7,30px; +368ms/−11,29px vs +326ms/−11,07px; +523ms/−12,0px vs
+  +514ms/−12,0px). Como o hover de ponteiro não altera o foco do documento,
+  ambas as ações mantêm `activeElement: body.`, servindo as duas como
+  corroboração mútua e independente da amplitude de 12px e da duração inferida
+  de ~500ms.
 - No illoca, a sonda anterior da #17 descrevia uma cena de 900px; a URL atual
   entrega uma página longa, mas a roda não moveu `scrollY` nesta sessão. O site
   mudou ou usa navegação própria; os dois registros ficam datados.
