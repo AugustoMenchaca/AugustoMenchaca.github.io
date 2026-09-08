@@ -31,17 +31,44 @@ Fluxo: `feat/algo` → PR para `develop` → PR de `develop` para `main` → dep
 
 Nomear a branch pela issue: `feat/14-vivencias`, `fix/20-molduras-vazias`.
 
-`nova-lp` está no mesmo commit que `main` e não tem nada exclusivo — decidir se
-remove.
-
 ## Proteção da main
 
-A configurar em Settings → Branches:
+**Já configurada.** Estado atual, verificado pela API:
 
-- Exigir pull request antes de merge.
-- Exigir que os checks `lint`, `lighthouse` e `content-rules` passem.
-- Proibir push direto e force-push.
-- Manter histórico linear.
+| regra | valor |
+|---|---|
+| pull request obrigatório | sim |
+| aprovações exigidas | 0 |
+| checks exigidos | os 5: HTML válido · CSS lint · Nada inventado entra · Paridade PT/EN · Orçamento de qualidade |
+| branch atualizada antes do merge (`strict`) | sim |
+| push direto e force-push | proibidos |
+| deleção da branch | proibida |
+| resolução de conversa | exigida |
+| aplica a administradores | sim |
+| **histórico linear** | **desligado, de propósito** |
+
+Push direto é recusado com `GH006`. A porta é o PR com os 5 checks verdes.
+
+### Por que o histórico linear está desligado
+
+Ele estava ligado, e criava um beco sem saída no passo final do fluxo.
+
+A `develop` acumula merge commits — de PR de pesquisa e de sincronização com a
+`main`. Com histórico linear exigido, o PR `develop → main` só teria uma saída:
+
+- `--merge` recusado pela regra de histórico linear
+- `--rebase` recusado pelo GitHub, que não rebaseia branch contendo merge commit
+- **só `--squash`**, colapsando toda a `develop` em um commit
+
+Isso destruiria a granularidade exatamente onde ela tem valor documental: os
+commits da trilha de pesquisa registram medição, refutação e retratação, e o
+`docs/design/00-ORDEM.md` aponta para eles para separar o que é medição
+confiável do que é proposta feita fora de ordem.
+
+**Consequência aceita:** a `main` passa a ter histórico em árvore, não linear.
+É o normal em git-flow, e o preço é menor que perder a trilha.
+
+**Antes de religar**, saiba que isso força squash no `develop → main`.
 
 ## O que o CI verifica
 
