@@ -67,7 +67,7 @@ lossless e imagens. Todos os cinco sites responderam HTTP 200 em 2026-09-07.
 | Resposta cromática | Aelixa: `color 0.3s`; White Desert: fundo azul→laranja em `0.3s` | Adotar em links e controles com propriedades explícitas |
 | Ênfase no conjunto | LxL reduz irmãos para `opacity 0.4` e revela painel; links declaram `0.15s` | Considerar contraste entre itens, sem esconder informação ou importar o painel complexo |
 | Exceção assimétrica | Paul: letras do link entram em `0.5s` e retornam em `0.3s` | Permitir exceções por função; nenhuma exceção entra no token sem ser nomeada |
-| Resposta direcional | illoca move rótulo `12px` e sublinhado pela largura; estado final inferido por snapshots entre +368ms e +523ms (animação JS sem transição CSS) | Adaptar para amplitude menor em ponteiro fino; manter foco parado |
+| Resposta direcional | illoca move rótulo `12px` e sublinhado pela largura; na ação `hover-1` (Pricing), estado final inferido por snapshots entre `+326ms` (−11,1px) e `+514ms` (−12,0px) (animação JS sem transição CSS) | Adaptar para amplitude menor em ponteiro fino; manter foco parado |
 | Movimento contínuo / cena | Faixa do Aelixa, equalizador do Paul, vídeo do White Desert, SVG do LxL, canvas/SVG do illoca | Não adotar como base. Autorizar uma expressão temática limitada: curva do IDF na #22 |
 | Rolagem reversível | White Desert usa parallax; LxL move vídeo e ambos revertem no retorno | Não usar opacidade reversível em texto/dados; timeline somente em gráfico decorativo/narrativo |
 
