@@ -1,13 +1,13 @@
 {
   "_meta": {
-    "gerado": "2026-09-08T02:04:17.928Z",
+    "gerado": "2026-09-08T02:14:15.248Z",
     "comando": "node docs/design/tipografia/medir.mjs --headed",
     "comandoOficial": "node docs/design/tipografia/medir.mjs --headed",
     "modo": "headed",
     "rodadaOficial": true,
     "sonda": "docs/design/tipografia/sonda-tipografia.mjs",
     "alvos": "docs/design/tipografia/alvos.json",
-    "nota": "Nao ha arquivo de prototipo. O \"depois\" da escala e medido por injecao de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-014.",
+    "nota": "Nao ha arquivo de prototipo. O \"depois\" da escala e medido por injecao de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-015.",
     "total": 24,
     "sucessos": 24,
     "falhas": []
@@ -15,7 +15,7 @@
   "referencias": {
     "aelixa": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:04:32.799Z",
+      "dataHora": "2026-09-08T02:14:30.403Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 17502,
@@ -516,7 +516,7 @@
     },
     "illoca": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:04:46.200Z",
+      "dataHora": "2026-09-08T02:14:43.760Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -653,7 +653,7 @@
             "largura_ch": 14,
             "maiorLarguraCh": 14,
             "fracaoContidaMin": 1,
-            "vistoEmAmostras": "3/5"
+            "vistoEmAmostras": "4/5"
           },
           {
             "px": 77,
@@ -863,12 +863,13 @@
         {
           "quando": "t+5.5s",
           "tamTitulos": [
+            111,
             77,
             72,
             24,
             12
           ],
-          "maiorTexto": 77
+          "maiorTexto": 111
         },
         {
           "quando": "t+7s",
@@ -909,12 +910,12 @@
     },
     "paulkalkbrenner": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:05:11.608Z",
+      "dataHora": "2026-09-08T02:15:03.935Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10711,
         "imgs": 83,
-        "carregadas": 67
+        "carregadas": 66
       },
       "data": {
         "url": "https://www.paulkalkbrenner.net/",
@@ -1297,7 +1298,7 @@
     },
     "lxlcreative": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:05:34.204Z",
+      "dataHora": "2026-09-08T02:15:24.740Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 15323,
@@ -1776,7 +1777,7 @@
     },
     "white-desert": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:05:51.602Z",
+      "dataHora": "2026-09-08T02:15:41.129Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 20787,
@@ -2279,7 +2280,7 @@
     },
     "charityshot": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:06:02.339Z",
+      "dataHora": "2026-09-08T02:15:51.416Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -2495,7 +2496,7 @@
     },
     "obspogon": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:06:19.720Z",
+      "dataHora": "2026-09-08T02:16:06.571Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2986,
@@ -2719,7 +2720,7 @@
     },
     "paulfragara": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:06:30.105Z",
+      "dataHora": "2026-09-08T02:16:16.894Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1431,
@@ -2991,7 +2992,7 @@
     },
     "lowmess": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:06:40.923Z",
+      "dataHora": "2026-09-08T02:16:27.004Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1234,
@@ -3262,7 +3263,7 @@
     },
     "simonbetton": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:06:53.664Z",
+      "dataHora": "2026-09-08T02:16:38.906Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 9277,
@@ -3601,7 +3602,7 @@
     },
     "nextfive": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:07:05.207Z",
+      "dataHora": "2026-09-08T02:16:50.309Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2915,
@@ -3928,7 +3929,7 @@
     },
     "incomescrane": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:07:17.170Z",
+      "dataHora": "2026-09-08T02:17:01.882Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 4056,
@@ -4146,7 +4147,7 @@
     },
     "shelomoh": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:07:29.068Z",
+      "dataHora": "2026-09-08T02:17:13.368Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2364,
@@ -4403,7 +4404,7 @@
     },
     "thatmlopsguy": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:07:39.816Z",
+      "dataHora": "2026-09-08T02:17:23.822Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3602,
@@ -4769,7 +4770,7 @@
     },
     "cassidoo": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:07:51.235Z",
+      "dataHora": "2026-09-08T02:17:34.280Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1654,
@@ -5026,7 +5027,7 @@
     },
     "ciere": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:08:02.548Z",
+      "dataHora": "2026-09-08T02:17:45.640Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 6297,
@@ -5451,7 +5452,7 @@
     },
     "idf-br": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:08:13.110Z",
+      "dataHora": "2026-09-08T02:17:56.217Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 929,
@@ -5734,7 +5735,7 @@
     },
     "dvo": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:08:23.390Z",
+      "dataHora": "2026-09-08T02:18:06.197Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -5973,7 +5974,7 @@
   "variantesDaLP": {
     "A-lp-atual@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:08:34.954Z",
+      "dataHora": "2026-09-08T02:18:17.700Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 8374,
@@ -6305,7 +6306,7 @@
     },
     "B-so-escala@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:08:47.118Z",
+      "dataHora": "2026-09-08T02:18:29.888Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10604,
@@ -6637,7 +6638,7 @@
     },
     "C-escala-evento-curto@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:08:59.283Z",
+      "dataHora": "2026-09-08T02:18:41.972Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10169,
@@ -6969,7 +6970,7 @@
     },
     "A-lp-atual@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:09:10.898Z",
+      "dataHora": "2026-09-08T02:18:53.587Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 11078,
@@ -7301,7 +7302,7 @@
     },
     "B-so-escala@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:09:23.328Z",
+      "dataHora": "2026-09-08T02:19:05.918Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 12444,
@@ -7633,7 +7634,7 @@
     },
     "C-escala-evento-curto@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:09:35.875Z",
+      "dataHora": "2026-09-08T02:19:18.368Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 12399,
