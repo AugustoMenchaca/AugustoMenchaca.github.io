@@ -24,7 +24,8 @@
 //        sans-serif" e "Oswald, Arial Narrow, sans-serif" caíam no mesmo balde.
 //        Agora decide pela primeira família, que é a que de fato renderiza.
 //
-// Rodar com: node docs/design/tipografia/medir.mjs   (ver o cabeçalho de lá)
+// Rodar com: node docs/design/tipografia/medir.mjs --headed
+//            (a flag NAO e opcional — ver o cabecalho daquele arquivo)
 
 export const sonda = () => {
   const P = s => { const m=String(s).match(/rgba?\(([^)]+)\)/); if(!m) return null;
@@ -195,15 +196,49 @@ export const sonda = () => {
     'palatino','cambria','didot','bodoni','minion','pt serif','noto serif','eb garamond','crimson',
     'libre baskerville','fraunces','newsreader','cormorant','spectral','source serif','ibm plex serif',
     'literata','domine','bitter','arvo','rockwell','scribo','freight','tiempos','canela','recoleta'];
-  const primeiraFamilia = (family) =>
-    String(family).split(',')[0].trim().replace(/^["']|["']$/g, '').toLowerCase();
-  const isSerif = (family) => {
-    const p = primeiraFamilia(family);
+  const listaFamilias = (family) => String(family).split(',')
+    .map(f => f.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
+  const primeiraFamilia = (family) => (listaFamilias(family)[0] || '').toLowerCase();
+
+  // C7 — familia REALMENTE renderizada, nao a primeira declarada.
+  // A versao anterior lia `fontFamily` e assumia que a primeira da lista era a
+  // que pintava na tela. Se a webfont nao carrega, o navegador cai para a
+  // proxima — e a conclusao de serifa passa a descrever uma fonte que ninguem
+  // viu. Aqui cada candidata e testada com `document.fonts.check`, na ordem, e
+  // a primeira disponivel e a que vale. Generica (serif, sans-serif, system-ui,
+  // ...) encerra a busca, porque sempre resolve.
+  const GENERICAS = new Set(['serif','sans-serif','monospace','cursive','fantasy',
+    'system-ui','ui-serif','ui-sans-serif','ui-monospace','ui-rounded','math','emoji','fangsong']);
+  const cacheFonte = new Map();
+  const familiaRenderizada = (cs) => {
+    const chave = cs.fontFamily + '|' + cs.fontWeight + '|' + cs.fontStyle + '|' + cs.fontSize;
+    if (cacheFonte.has(chave)) return cacheFonte.get(chave);
+    const lista = listaFamilias(cs.fontFamily);
+    let escolhida = lista[0] || '', verificada = false;
+    if (document.fonts && typeof document.fonts.check === 'function') {
+      for (const f of lista) {
+        if (GENERICAS.has(f.toLowerCase())) { escolhida = f; verificada = true; break; }
+        let ok = false;
+        try { ok = document.fonts.check(`${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} "${f}"`); } catch (e) { ok = false; }
+        if (ok) { escolhida = f; verificada = true; break; }
+      }
+    }
+    const r = { familia: escolhida, verificada,
+                caiuParaFallback: verificada && lista.length > 0 &&
+                  escolhida.toLowerCase() !== (lista[0] || '').toLowerCase() };
+    cacheFonte.set(chave, r);
+    return r;
+  };
+
+  const nomeEhSerif = (nome) => {
+    const p = String(nome).toLowerCase();
     if (!p) return false;
-    if (p === 'serif' || p.endsWith(' serif')) return true;
+    if (p === 'serif' || p.endsWith(' serif') || p === 'ui-serif') return true;
     if (p.includes('sans')) return false;
     return serifNames.some(n => p.includes(n));
   };
+  // Mantido para compatibilidade de leitura; a decisao real usa a renderizada.
+  const isSerif = (family) => nomeEhSerif(primeiraFamilia(family));
 
   // ==========================================================================
   // Títulos
@@ -248,7 +283,13 @@ export const sonda = () => {
       const lh = razaoAlturaLinha(cs, fs);
       titGroups.set(fs, {
         px: fs, elementos: 1, caracteres: chars, palavras: words, textos: [txt.slice(0, 120)],
-        fontFamily: fam, familiaEfetiva: primeiraFamilia(fam), serifa: isSerif(fam),
+        fontFamily: fam,
+        familiaEfetiva: familiaRenderizada(cs).familia,
+        familiaVerificada: familiaRenderizada(cs).verificada,
+        caiuParaFallback: familiaRenderizada(cs).caiuParaFallback,
+        familiaDeclarada: primeiraFamilia(fam),
+        serifa: nomeEhSerif(familiaRenderizada(cs).familia),
+        serifa_pelaDeclarada_legado: isSerif(fam),
         fontWeight: cs.fontWeight,
         lineHeightPx: cs.lineHeight, lineHeightRazao: lh.razao, lineHeightOrigem: lh.origem,
         letterSpacing: cs.letterSpacing, textTransform: cs.textTransform,
@@ -362,8 +403,10 @@ export const sonda = () => {
     maiorTextoRenderizado = {
       px: fs, tag: el.tagName.toLowerCase(), className: cls,
       caracteres: txt.length, palavras: txt.split(/\s+/).filter(Boolean).length,
-      fontFamily: cs.fontFamily, familiaEfetiva: primeiraFamilia(cs.fontFamily),
-      serifa: isSerif(cs.fontFamily),
+      fontFamily: cs.fontFamily,
+      familiaEfetiva: familiaRenderizada(cs).familia,
+      familiaVerificada: familiaRenderizada(cs).verificada,
+      serifa: nomeEhSerif(familiaRenderizada(cs).familia),
       fontWeight: cs.fontWeight, textTransform: cs.textTransform,
       fracaoContida: Math.round(frac * 100) / 100,
       profundidadeDeRolagem: altura > 0 ? Math.round((topoAbs / altura) * 1000) / 10 : 0
@@ -375,6 +418,10 @@ export const sonda = () => {
   return {
     url: location.href,
     altura,
+    fontes: {
+      status: (document.fonts && document.fonts.status) || 'indisponivel',
+      carregadas: (document.fonts && document.fonts.size) || 0
+    },
     // C4 — telas contra o viewport real, não contra 900 fixo
     viewportMedido: { w: window.innerWidth, h: alturaViewport, dpr: window.devicePixelRatio },
     telas: Math.round(altura / alturaViewport * 10) / 10,
@@ -400,7 +447,9 @@ export const sonda = () => {
     razaoTituloWorkhorse: (tit.length && wh) ? Math.round(tit[0]/wh.fs*100)/100 : null,
     titulosDetalhes: titDetalhes,
     workhorseDetalhe: wh ? { px: wh.fs, fontFamily: wh.fontFamily,
-      familiaEfetiva: primeiraFamilia(wh.fontFamily),
+      familiaEfetiva: familiaRenderizada(wh.csSample).familia,
+      familiaVerificada: familiaRenderizada(wh.csSample).verificada,
+      serifa: nomeEhSerif(familiaRenderizada(wh.csSample).familia),
       lineHeightPx: wh.lineHeightPx, lineHeightRazao: wh.lineHeightRazao,
       lineHeightOrigem: wh.lineHeightOrigem, largura_ch: wh.largura_ch } : null,
 

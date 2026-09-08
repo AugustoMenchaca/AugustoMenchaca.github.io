@@ -2,7 +2,13 @@
 //
 // UM comando repete a rodada inteira e regenera os artefatos:
 //
-//     node docs/design/tipografia/medir.mjs
+//     node docs/design/tipografia/medir.mjs --headed
+//
+// A flag --headed NAO e opcional para uma rodada oficial. Sem ela o Chrome roda
+// headless, onde peca com animacao de entrada fica em `opacity: 0` e a sonda a
+// descarta — o heroi de 111px do `illoca.unseen.co` cai para 77px e o corte do
+// classificador se move. O driver AVISA e marca o resultado se for executado
+// sem a flag.
 //
 // Opções:
 //     --so-local          mede apenas a lp-final.html e as variantes de escala
@@ -255,6 +261,13 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
     // maior titulo dele para 77px e moveria o corte do board por artefato.
     // Entao mede-se antes e depois, e a tipografia e a UNIAO dos dois — que e o
     // que um leitor de fato ve ao longo da visita.
+    // C7 — nao amostrar antes das webfonts resolverem: `document.fonts.check`
+    // devolveria falso para fonte ainda em carregamento, e a familia renderizada
+    // sairia como fallback que o leitor nunca ve.
+    try {
+      await aval(`(async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready; return document.fonts ? document.fonts.status : 'indisponivel'; })()`, true);
+    } catch {}
+
     const amostras = [];
     for (let i = 0; i < AMOSTRAS; i++) {
       if (i > 0) await dormir(INTERVALO);
@@ -281,11 +294,23 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
 // ---------------------------------------------------------------------------
 // Rodada
 // ---------------------------------------------------------------------------
+const HEADED = flag('--headed');
+if (!HEADED) {
+  console.error('');
+  console.error('  AVISO: rodando em HEADLESS. Peca com animacao de entrada pode ser');
+  console.error('  medida a menos (ver P-016 em docs/design/provenance.md). A rodada');
+  console.error('  oficial usa --headed; sem ela o resultado sai com rodadaOficial: false.');
+  console.error('');
+}
+
 const { cdp, fechar } = await abrirChrome();
 const saida = {
   _meta: {
     gerado: new Date().toISOString(),
-    comando: 'node docs/design/tipografia/medir.mjs',
+    comando: ['node', 'docs/design/tipografia/medir.mjs', ...process.argv.slice(2)].join(' '),
+    comandoOficial: 'node docs/design/tipografia/medir.mjs --headed',
+    modo: HEADED ? 'headed' : 'headless',
+    rodadaOficial: HEADED,
     sonda: 'docs/design/tipografia/sonda-tipografia.mjs',
     alvos: 'docs/design/tipografia/alvos.json',
     nota: 'Nao ha arquivo de prototipo. O "depois" da escala e medido por injecao ' +

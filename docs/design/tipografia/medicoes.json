@@ -1,7 +1,10 @@
 {
   "_meta": {
-    "gerado": "2026-09-08T00:33:33.388Z",
-    "comando": "node docs/design/tipografia/medir.mjs",
+    "gerado": "2026-09-08T02:04:17.928Z",
+    "comando": "node docs/design/tipografia/medir.mjs --headed",
+    "comandoOficial": "node docs/design/tipografia/medir.mjs --headed",
+    "modo": "headed",
+    "rodadaOficial": true,
     "sonda": "docs/design/tipografia/sonda-tipografia.mjs",
     "alvos": "docs/design/tipografia/alvos.json",
     "nota": "Nao ha arquivo de prototipo. O \"depois\" da escala e medido por injecao de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-014.",
@@ -12,7 +15,7 @@
   "referencias": {
     "aelixa": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:33:47.656Z",
+      "dataHora": "2026-09-08T02:04:32.799Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 17502,
@@ -22,6 +25,10 @@
       "data": {
         "url": "https://aelixa.webflow.io/",
         "altura": 17502,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 116
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -133,8 +140,12 @@
               "aelixa."
             ],
             "fontFamily": "\"Funnel Display\", sans-serif",
-            "familiaEfetiva": "funnel display",
+            "familiaEfetiva": "Funnel Display",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "funnel display",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "240px",
             "lineHeightRazao": 1,
@@ -161,8 +172,12 @@
               "KIND WORDS FROM CLIENTS -"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "120px",
             "lineHeightRazao": 1.2,
@@ -189,8 +204,12 @@
               "GET STARTED TODAY"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "96px",
             "lineHeightRazao": 1.2,
@@ -217,8 +236,12 @@
               "Strategist-Led Built on Data"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "76.8px",
             "lineHeightRazao": 1.2,
@@ -245,8 +268,12 @@
               "$799"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "67.2px",
             "lineHeightRazao": 1.4,
@@ -273,8 +300,12 @@
               "Vanguard — Digital Identity"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "44.8px",
             "lineHeightRazao": 1.4,
@@ -296,8 +327,12 @@
               "Aura Luxe — Scale Strategy"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "42px",
             "lineHeightRazao": 1.5,
@@ -321,8 +356,12 @@
               "Data Clarity"
             ],
             "fontFamily": "\"Inter Tight\", sans-serif",
-            "familiaEfetiva": "inter tight",
+            "familiaEfetiva": "Inter Tight",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter tight",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "36px",
             "lineHeightRazao": 1.5,
@@ -339,7 +378,9 @@
         "workhorseDetalhe": {
           "px": 18,
           "fontFamily": "Inter, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "27px",
           "lineHeightRazao": 1.5,
           "lineHeightOrigem": "declarada",
@@ -393,7 +434,8 @@
           "caracteres": 1,
           "palavras": 1,
           "fontFamily": "\"Funnel Display\", sans-serif",
-          "familiaEfetiva": "funnel display",
+          "familiaEfetiva": "Funnel Display",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -474,7 +516,7 @@
     },
     "illoca": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:33:58.676Z",
+      "dataHora": "2026-09-08T02:04:46.200Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -484,6 +526,10 @@
       "data": {
         "url": "https://illoca.unseen.co/",
         "altura": 900,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 28
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -591,8 +637,12 @@
               "Design at the speed of thought\nDesign at the\nspeed of thought\nDesign at the\nspeed of thought\narchitectural\nK\nnot\nsoftwar"
             ],
             "fontFamily": "\"F37 Analog\", sans-serif",
-            "familiaEfetiva": "f37 analog",
+            "familiaEfetiva": "F37 Analog",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "f37 analog",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "99.9px",
             "lineHeightRazao": 0.9,
@@ -603,7 +653,7 @@
             "largura_ch": 14,
             "maiorLarguraCh": 14,
             "fracaoContidaMin": 1,
-            "vistoEmAmostras": "4/5"
+            "vistoEmAmostras": "3/5"
           },
           {
             "px": 77,
@@ -618,8 +668,12 @@
               "Frequently Asked Questions"
             ],
             "fontFamily": "\"F37 Analog\", sans-serif",
-            "familiaEfetiva": "f37 analog",
+            "familiaEfetiva": "F37 Analog",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "f37 analog",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "76.5px",
             "lineHeightRazao": 0.99,
@@ -641,8 +695,12 @@
               "Agentic Refinement\nAgentic Refinement"
             ],
             "fontFamily": "\"F37 Analog\", sans-serif",
-            "familiaEfetiva": "f37 analog",
+            "familiaEfetiva": "F37 Analog",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "f37 analog",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "72px",
             "lineHeightRazao": 1,
@@ -667,8 +725,12 @@
               "Enterprise"
             ],
             "fontFamily": "\"Graphik Web\", sans-serif",
-            "familiaEfetiva": "graphik web",
+            "familiaEfetiva": "Graphik Web",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "graphik web",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "24px",
             "lineHeightRazao": 1,
@@ -696,7 +758,11 @@
             ],
             "fontFamily": "ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
             "familiaEfetiva": "ui-sans-serif",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ui-sans-serif",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "18px",
             "lineHeightRazao": 1.5,
@@ -713,7 +779,9 @@
         "workhorseDetalhe": {
           "px": 12,
           "fontFamily": "\"Geist Mono\", monospace",
-          "familiaEfetiva": "geist mono",
+          "familiaEfetiva": "Graphik Web",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "12px",
           "lineHeightRazao": 1,
           "lineHeightOrigem": "declarada",
@@ -768,7 +836,8 @@
           "caracteres": 30,
           "palavras": 6,
           "fontFamily": "\"F37 Analog\", sans-serif",
-          "familiaEfetiva": "f37 analog",
+          "familiaEfetiva": "F37 Analog",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "500",
           "textTransform": "none",
@@ -794,13 +863,12 @@
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            111,
             77,
             72,
             24,
             12
           ],
-          "maiorTexto": 111
+          "maiorTexto": 77
         },
         {
           "quando": "t+7s",
@@ -841,16 +909,20 @@
     },
     "paulkalkbrenner": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:34:15.238Z",
+      "dataHora": "2026-09-08T02:05:11.608Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10711,
         "imgs": 83,
-        "carregadas": 65
+        "carregadas": 67
       },
       "data": {
         "url": "https://www.paulkalkbrenner.net/",
         "altura": 10711,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 2
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -976,8 +1048,12 @@
               "Electronic"
             ],
             "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-            "familiaEfetiva": "abc diatype plus variable",
+            "familiaEfetiva": "ABC Diatype Plus Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "abc diatype plus variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "120px",
             "lineHeightRazao": 0.8,
@@ -999,8 +1075,12 @@
               "Join the newsletter for exclusive updates on new music, tours and special content."
             ],
             "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-            "familiaEfetiva": "abc diatype plus variable",
+            "familiaEfetiva": "ABC Diatype Plus Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "abc diatype plus variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "32.4px",
             "lineHeightRazao": 0.9,
@@ -1027,8 +1107,12 @@
               "LIFE WORKS"
             ],
             "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-            "familiaEfetiva": "abc diatype plus variable",
+            "familiaEfetiva": "ABC Diatype Plus Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "abc diatype plus variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "16.2px",
             "lineHeightRazao": 0.9,
@@ -1052,8 +1136,12 @@
               "FOLLOW"
             ],
             "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-            "familiaEfetiva": "abc diatype plus variable",
+            "familiaEfetiva": "ABC Diatype Plus Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "abc diatype plus variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "9.45px",
             "lineHeightRazao": 0.86,
@@ -1070,7 +1158,9 @@
         "workhorseDetalhe": {
           "px": 12,
           "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-          "familiaEfetiva": "abc diatype plus variable",
+          "familiaEfetiva": "ABC Diatype Plus Variable",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "12px",
           "lineHeightRazao": 1,
           "lineHeightOrigem": "declarada",
@@ -1137,7 +1227,8 @@
           "caracteres": 4,
           "palavras": 1,
           "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-          "familiaEfetiva": "abc diatype plus variable",
+          "familiaEfetiva": "ABC Diatype Plus Variable",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -1206,7 +1297,7 @@
     },
     "lxlcreative": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:34:32.897Z",
+      "dataHora": "2026-09-08T02:05:34.204Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 15323,
@@ -1216,6 +1307,10 @@
       "data": {
         "url": "https://www.lxlcreative.co.uk/",
         "altura": 15323,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 6
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -1347,8 +1442,12 @@
               "Studios"
             ],
             "fontFamily": "Scribo, Georgia, sans-serif",
-            "familiaEfetiva": "scribo",
+            "familiaEfetiva": "Scribo",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "scribo",
             "serifa": true,
+            "serifa_pelaDeclarada_legado": true,
             "fontWeight": "400",
             "lineHeightPx": "91.5336px",
             "lineHeightRazao": 0.9,
@@ -1371,8 +1470,12 @@
               "GOT A PRODUCTION COMING UP? LET’S DO SOMETHING great TOGETHER."
             ],
             "fontFamily": "\"Owners Wide\", Impact, sans-serif",
-            "familiaEfetiva": "owners wide",
+            "familiaEfetiva": "Owners Wide",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "owners wide",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "49.3776px",
             "lineHeightRazao": 0.9,
@@ -1394,8 +1497,12 @@
               "WHERE BRANDS, MUSIC AND CULTURE MEET."
             ],
             "fontFamily": "\"Owners Wide\", Impact, sans-serif",
-            "familiaEfetiva": "owners wide",
+            "familiaEfetiva": "Owners Wide",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "owners wide",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "42.296px",
             "lineHeightRazao": 1.01,
@@ -1418,8 +1525,12 @@
               "REAL RESULTS."
             ],
             "fontFamily": "\"Owners Wide\", Impact, sans-serif",
-            "familiaEfetiva": "owners wide",
+            "familiaEfetiva": "Owners Wide",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "owners wide",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "32.568px",
             "lineHeightRazao": 0.99,
@@ -1441,8 +1552,12 @@
               "Discover some of our favourite projects"
             ],
             "fontFamily": "Manrope, Arial, sans-serif",
-            "familiaEfetiva": "manrope",
+            "familiaEfetiva": "Manrope",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "manrope",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "28.568px",
             "lineHeightRazao": 0.99,
@@ -1469,8 +1584,12 @@
               "KEY ART"
             ],
             "fontFamily": "\"Owners Wide\", Impact, sans-serif",
-            "familiaEfetiva": "owners wide",
+            "familiaEfetiva": "Owners Wide",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "owners wide",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "22.864px",
             "lineHeightRazao": 0.99,
@@ -1495,8 +1614,12 @@
               "WE LOVE WHAT WE DO"
             ],
             "fontFamily": "\"Owners Wide\", Impact, sans-serif",
-            "familiaEfetiva": "owners wide",
+            "familiaEfetiva": "Owners Wide",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "owners wide",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "18.5184px",
             "lineHeightRazao": 1.23,
@@ -1513,7 +1636,9 @@
         "workhorseDetalhe": {
           "px": 17,
           "fontFamily": "Manrope, Arial, sans-serif",
-          "familiaEfetiva": "manrope",
+          "familiaEfetiva": "Manrope",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "24.4048px",
           "lineHeightRazao": 1.44,
           "lineHeightOrigem": "declarada",
@@ -1566,7 +1691,8 @@
           "caracteres": 7,
           "palavras": 2,
           "fontFamily": "Scribo, Georgia, sans-serif",
-          "familiaEfetiva": "scribo",
+          "familiaEfetiva": "Scribo",
+          "familiaVerificada": true,
           "serifa": true,
           "fontWeight": "400",
           "textTransform": "none",
@@ -1650,7 +1776,7 @@
     },
     "white-desert": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:34:47.922Z",
+      "dataHora": "2026-09-08T02:05:51.602Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 20787,
@@ -1660,6 +1786,10 @@
       "data": {
         "url": "https://white-desert.com/",
         "altura": 20787,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 11
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -1784,8 +1914,12 @@
               "CPT – WFR"
             ],
             "fontFamily": "Oswald, \"Arial Narrow\", Arial, sans-serif",
-            "familiaEfetiva": "oswald",
+            "familiaEfetiva": "Oswald",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "oswald",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "288px",
             "lineHeightRazao": 0.9,
@@ -1807,8 +1941,12 @@
               "ANTARCTICA"
             ],
             "fontFamily": "Oswald, \"Arial Narrow\", Arial, sans-serif",
-            "familiaEfetiva": "oswald",
+            "familiaEfetiva": "Oswald",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "oswald",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "256px",
             "lineHeightRazao": 1,
@@ -1830,8 +1968,12 @@
               "OUR CAMPS"
             ],
             "fontFamily": "\"Cardinal Classic Long\", ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-            "familiaEfetiva": "cardinal classic long",
+            "familiaEfetiva": "Cardinal Classic Long",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cardinal classic long",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "normal",
             "lineHeightRazao": 1.34,
@@ -1853,8 +1995,12 @@
               "OUR CAMPS"
             ],
             "fontFamily": "\"Cardinal Classic Long\", ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-            "familiaEfetiva": "cardinal classic long",
+            "familiaEfetiva": "Cardinal Classic Long",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cardinal classic long",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "normal",
             "lineHeightRazao": 1.34,
@@ -1876,8 +2022,12 @@
               "OUR TRIPS"
             ],
             "fontFamily": "\"Cardinal Classic Long\", ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-            "familiaEfetiva": "cardinal classic long",
+            "familiaEfetiva": "Cardinal Classic Long",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cardinal classic long",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "59.9999px",
             "lineHeightRazao": 1,
@@ -1904,8 +2054,12 @@
               "TO THE END OF THE EARTH"
             ],
             "fontFamily": "\"Cardinal Classic Long\", ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-            "familiaEfetiva": "cardinal classic long",
+            "familiaEfetiva": "Cardinal Classic Long",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cardinal classic long",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "42px",
             "lineHeightRazao": 1,
@@ -1927,8 +2081,12 @@
               "HOW IT WORKS"
             ],
             "fontFamily": "\"Cardinal Classic Long\", ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-            "familiaEfetiva": "cardinal classic long",
+            "familiaEfetiva": "Cardinal Classic Long",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cardinal classic long",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "38.4px",
             "lineHeightRazao": 1.2,
@@ -1955,8 +2113,12 @@
               "6. Departure"
             ],
             "fontFamily": "\"Cardinal Classic Long\", ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-            "familiaEfetiva": "cardinal classic long",
-            "serifa": false,
+            "familiaEfetiva": "ui-serif",
+            "familiaVerificada": true,
+            "caiuParaFallback": true,
+            "familiaDeclarada": "cardinal classic long",
+            "serifa": true,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "21.6px",
             "lineHeightRazao": 1.2,
@@ -1973,7 +2135,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "\"Inter Tight\", ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
-          "familiaEfetiva": "inter tight",
+          "familiaEfetiva": "Inter Tight",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "normal",
           "lineHeightRazao": 1.25,
           "lineHeightOrigem": "normal-medida",
@@ -2030,7 +2194,8 @@
           "caracteres": 9,
           "palavras": 3,
           "fontFamily": "Oswald, \"Arial Narrow\", Arial, sans-serif",
-          "familiaEfetiva": "oswald",
+          "familiaEfetiva": "Oswald",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "400",
           "textTransform": "uppercase",
@@ -2114,7 +2279,7 @@
     },
     "charityshot": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:34:57.865Z",
+      "dataHora": "2026-09-08T02:06:02.339Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -2124,6 +2289,10 @@
       "data": {
         "url": "https://charityshot.co.uk/",
         "altura": 900,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 0
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -2208,8 +2377,12 @@
               "CHARITY SHOT"
             ],
             "fontFamily": "\"Courier New\", Courier, monospace",
-            "familiaEfetiva": "courier new",
+            "familiaEfetiva": "Courier New",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "courier new",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "800",
             "lineHeightPx": "32.832px",
             "lineHeightRazao": 0.94,
@@ -2226,7 +2399,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "\"Courier New\", Courier, monospace",
-          "familiaEfetiva": "courier new",
+          "familiaEfetiva": "Courier New",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "25.6px",
           "lineHeightRazao": 1.6,
           "lineHeightOrigem": "declarada",
@@ -2265,7 +2440,8 @@
           "caracteres": 12,
           "palavras": 2,
           "fontFamily": "\"Courier New\", Courier, monospace",
-          "familiaEfetiva": "courier new",
+          "familiaEfetiva": "Courier New",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "800",
           "textTransform": "uppercase",
@@ -2319,32 +2495,36 @@
     },
     "obspogon": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:35:12.507Z",
+      "dataHora": "2026-09-08T02:06:19.720Z",
       "viewport": "1440x900x1",
       "rolagem": {
-        "altura": 3061,
-        "imgs": 33,
-        "carregadas": 31
+        "altura": 2986,
+        "imgs": 32,
+        "carregadas": 30
       },
       "data": {
         "url": "https://obspogon.neocities.org/",
-        "altura": 3061,
+        "altura": 2986,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 24
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
           "dpr": 1
         },
-        "telas": 3.4,
-        "telas_base900_legado": 3.4,
-        "metricaV2_hsvS015": 1.7,
-        "corPerceptivel_C005": 1.7,
-        "corForte_C012": 0.7,
-        "cromaMedioPonderado": 0.003,
+        "telas": 3.3,
+        "telas_base900_legado": 3.3,
+        "metricaV2_hsvS015": 0.9,
+        "corPerceptivel_C005": 0.9,
+        "corForte_C012": 0.8,
+        "cromaMedioPonderado": 0.002,
         "cromaPicoOklch": 0.177,
         "fundos": [
           {
             "cor": "rgb(0,0,0)",
-            "pct": 96.6,
+            "pct": 97.3,
             "L": 0,
             "C": 0,
             "H": 0
@@ -2357,15 +2537,8 @@
             "H": 102
           },
           {
-            "cor": "rgb(121,190,242)",
-            "pct": 0.8,
-            "L": 0.78,
-            "C": 0.102,
-            "H": 242
-          },
-          {
             "cor": "rgb(0,128,0)",
-            "pct": 0.7,
+            "pct": 0.8,
             "L": 0.52,
             "C": 0.177,
             "H": 142
@@ -2379,12 +2552,12 @@
           }
         ],
         "midia": {
-          "img": 33,
+          "img": 32,
           "svg": 0,
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 10.78,
+        "midiaTotalPor1000": 10.72,
         "keyframes": 7,
         "nomes": [
           "fa-beat",
@@ -2395,10 +2568,10 @@
           "fa-shake",
           "fa-spin"
         ],
-        "keyframesPor1000": 2.29,
-        "folhasBloqueadas": 1,
+        "keyframesPor1000": 2.34,
+        "folhasBloqueadas": 0,
         "emTransicao": 72,
-        "emTransicaoPor1000": 23.52,
+        "emTransicaoPor1000": 24.11,
         "animacoesAtivas": 2,
         "duracoes": [
           [
@@ -2411,7 +2584,7 @@
         ],
         "workhorse": {
           "px": 16,
-          "ocorrencias": 16
+          "ocorrencias": 15
         },
         "razaoTituloWorkhorse": 2,
         "titulosDetalhes": [
@@ -2424,8 +2597,12 @@
               "Obspogon's Zone"
             ],
             "fontFamily": "Verdana, sans-serif",
-            "familiaEfetiva": "verdana",
+            "familiaEfetiva": "Verdana",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "verdana",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "48px",
             "lineHeightRazao": 1.5,
@@ -2442,7 +2619,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "Verdana, sans-serif",
-          "familiaEfetiva": "verdana",
+          "familiaEfetiva": "Verdana",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "24px",
           "lineHeightRazao": 1.5,
           "lineHeightOrigem": "declarada",
@@ -2454,7 +2633,7 @@
           ],
           "workhorse_semFiltro": {
             "px": 16,
-            "ocorrencias": 16
+            "ocorrencias": 15
           },
           "razao_semFiltro": 2,
           "divergeDoCorrigido": false
@@ -2476,10 +2655,6 @@
           {
             "familia": "monospace",
             "contagem": 1
-          },
-          {
-            "familia": "\"Open Sans\", sans-serif",
-            "contagem": 1
           }
         ],
         "maiorTextoRenderizado": {
@@ -2489,12 +2664,13 @@
           "caracteres": 15,
           "palavras": 2,
           "fontFamily": "Verdana, sans-serif",
-          "familiaEfetiva": "verdana",
+          "familiaEfetiva": "Verdana",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 2.3
+          "profundidadeDeRolagem": 2.4
         },
         "pontoCego": false,
         "diferencaPx": 0,
@@ -2543,7 +2719,7 @@
     },
     "paulfragara": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:35:22.361Z",
+      "dataHora": "2026-09-08T02:06:30.105Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1431,
@@ -2553,6 +2729,10 @@
       "data": {
         "url": "https://paul.fragara.com/",
         "altura": 1431,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 0
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -2643,8 +2823,12 @@
               "¡Hello!"
             ],
             "fontFamily": "\"Times New Roman\"",
-            "familiaEfetiva": "times new roman",
+            "familiaEfetiva": "Times New Roman",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "times new roman",
             "serifa": true,
+            "serifa_pelaDeclarada_legado": true,
             "fontWeight": "700",
             "lineHeightPx": "57.6px",
             "lineHeightRazao": 1.52,
@@ -2671,8 +2855,12 @@
               "📄 Swaraj"
             ],
             "fontFamily": "\"Times New Roman\"",
-            "familiaEfetiva": "times new roman",
+            "familiaEfetiva": "Times New Roman",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "times new roman",
             "serifa": true,
+            "serifa_pelaDeclarada_legado": true,
             "fontWeight": "700",
             "lineHeightPx": "31.2px",
             "lineHeightRazao": 1.3,
@@ -2689,7 +2877,9 @@
         "workhorseDetalhe": {
           "px": 19,
           "fontFamily": "\"Times New Roman\"",
-          "familiaEfetiva": "times new roman",
+          "familiaEfetiva": "Times New Roman",
+          "familiaVerificada": true,
+          "serifa": true,
           "lineHeightPx": "28.8px",
           "lineHeightRazao": 1.52,
           "lineHeightOrigem": "declarada",
@@ -2741,7 +2931,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Times New Roman\"",
-          "familiaEfetiva": "times new roman",
+          "familiaEfetiva": "Times New Roman",
+          "familiaVerificada": true,
           "serifa": true,
           "fontWeight": "700",
           "textTransform": "none",
@@ -2800,7 +2991,7 @@
     },
     "lowmess": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:35:32.334Z",
+      "dataHora": "2026-09-08T02:06:40.923Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1234,
@@ -2810,6 +3001,10 @@
       "data": {
         "url": "https://lowmess.com/",
         "altura": 1234,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 10
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -2875,8 +3070,12 @@
               "My name is Alec Lomas, and I make websites."
             ],
             "fontFamily": "Framboisier-c5b887b96a812672, \"Framboisier-c5b887b96a812672 fallback: Times New Roman\", Georgia, ui-serif, serif",
-            "familiaEfetiva": "framboisier-c5b887b96a812672",
+            "familiaEfetiva": "Framboisier-c5b887b96a812672",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "framboisier-c5b887b96a812672",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "76.2944px",
             "lineHeightRazao": 1,
@@ -2899,8 +3098,12 @@
               "Latest blog post"
             ],
             "fontFamily": "\"Hanken Grotesk-64878f986bd13d12\", \"Hanken Grotesk-64878f986bd13d12 fallback: Arial\", ui-sans-serif, system-ui, sans-serif",
-            "familiaEfetiva": "hanken grotesk-64878f986bd13d12",
+            "familiaEfetiva": "Hanken Grotesk-64878f986bd13d12",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "hanken grotesk-64878f986bd13d12",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "25px",
             "lineHeightRazao": 1.25,
@@ -2925,8 +3128,12 @@
               "Around town"
             ],
             "fontFamily": "\"Hanken Grotesk-64878f986bd13d12\", \"Hanken Grotesk-64878f986bd13d12 fallback: Arial\", ui-sans-serif, system-ui, sans-serif",
-            "familiaEfetiva": "hanken grotesk-64878f986bd13d12",
+            "familiaEfetiva": "Hanken Grotesk-64878f986bd13d12",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "hanken grotesk-64878f986bd13d12",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "20px",
             "lineHeightRazao": 1.25,
@@ -2943,7 +3150,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "\"Hanken Grotesk-64878f986bd13d12\", \"Hanken Grotesk-64878f986bd13d12 fallback: Arial\", ui-sans-serif, system-ui, sans-serif",
-          "familiaEfetiva": "hanken grotesk-64878f986bd13d12",
+          "familiaEfetiva": "Hanken Grotesk-64878f986bd13d12",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "24px",
           "lineHeightRazao": 1.5,
           "lineHeightOrigem": "declarada",
@@ -2988,7 +3197,8 @@
           "caracteres": 43,
           "palavras": 9,
           "fontFamily": "Framboisier-c5b887b96a812672, \"Framboisier-c5b887b96a812672 fallback: Times New Roman\", Georgia, ui-serif, serif",
-          "familiaEfetiva": "framboisier-c5b887b96a812672",
+          "familiaEfetiva": "Framboisier-c5b887b96a812672",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -3052,7 +3262,7 @@
     },
     "simonbetton": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:35:44.019Z",
+      "dataHora": "2026-09-08T02:06:53.664Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 9277,
@@ -3062,6 +3272,10 @@
       "data": {
         "url": "https://www.simonbetton.com/",
         "altura": 9277,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 4
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -3163,8 +3377,12 @@
               "A principal software engineer with over 19 years of experience across backend and frontend. I design architecture that s"
             ],
             "fontFamily": "\"Figtree Variable\", \"Figtree Fallback\", sans-serif",
-            "familiaEfetiva": "figtree variable",
+            "familiaEfetiva": "Figtree Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "figtree variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "32.5px",
             "lineHeightRazao": 1.63,
@@ -3187,8 +3405,12 @@
               "Ðogecoin Block Explorer Platform"
             ],
             "fontFamily": "\"Figtree Variable\", \"Figtree Fallback\", sans-serif",
-            "familiaEfetiva": "figtree variable",
+            "familiaEfetiva": "Figtree Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "figtree variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "29.25px",
             "lineHeightRazao": 1.63,
@@ -3211,8 +3433,12 @@
               "Recent work —"
             ],
             "fontFamily": "\"Figtree Variable\", \"Figtree Fallback\", sans-serif",
-            "familiaEfetiva": "figtree variable",
+            "familiaEfetiva": "Figtree Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "figtree variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "26px",
             "lineHeightRazao": 1.63,
@@ -3239,8 +3465,12 @@
               "connect.onlydoge.io"
             ],
             "fontFamily": "\"Figtree Variable\", \"Figtree Fallback\", sans-serif",
-            "familiaEfetiva": "figtree variable",
+            "familiaEfetiva": "Figtree Variable",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "figtree variable",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "22.75px",
             "lineHeightRazao": 1.63,
@@ -3257,7 +3487,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "\"Figtree Variable\", \"Figtree Fallback\", sans-serif",
-          "familiaEfetiva": "figtree variable",
+          "familiaEfetiva": "Figtree Variable",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "26px",
           "lineHeightRazao": 1.63,
           "lineHeightOrigem": "declarada",
@@ -3299,7 +3531,8 @@
           "caracteres": 269,
           "palavras": 40,
           "fontFamily": "\"Figtree Variable\", \"Figtree Fallback\", sans-serif",
-          "familiaEfetiva": "figtree variable",
+          "familiaEfetiva": "Figtree Variable",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "500",
           "textTransform": "none",
@@ -3368,7 +3601,7 @@
     },
     "nextfive": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:35:55.094Z",
+      "dataHora": "2026-09-08T02:07:05.207Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2915,
@@ -3378,6 +3611,10 @@
       "data": {
         "url": "https://nextfive.xyz/",
         "altura": 2915,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 40
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -3465,8 +3702,12 @@
               "Amit @NextFive"
             ],
             "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
-            "familiaEfetiva": "inter",
+            "familiaEfetiva": "Inter",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "48px",
             "lineHeightRazao": 1.2,
@@ -3488,8 +3729,12 @@
               "Hi, I’m Amit!"
             ],
             "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
-            "familiaEfetiva": "inter",
+            "familiaEfetiva": "Inter",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "38.4px",
             "lineHeightRazao": 1.2,
@@ -3516,8 +3761,12 @@
               "Art"
             ],
             "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
-            "familiaEfetiva": "inter",
+            "familiaEfetiva": "Inter",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "28.8px",
             "lineHeightRazao": 1.2,
@@ -3539,8 +3788,12 @@
               "Recent Posts (see all)"
             ],
             "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
-            "familiaEfetiva": "inter",
+            "familiaEfetiva": "Inter",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "inter",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "21.6px",
             "lineHeightRazao": 1.2,
@@ -3557,7 +3810,9 @@
         "workhorseDetalhe": {
           "px": 18,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "30.6px",
           "lineHeightRazao": 1.7,
           "lineHeightOrigem": "declarada",
@@ -3603,7 +3858,8 @@
           "caracteres": 14,
           "palavras": 2,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -3672,16 +3928,20 @@
     },
     "incomescrane": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:36:06.747Z",
+      "dataHora": "2026-09-08T02:07:17.170Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 4056,
         "imgs": 8,
-        "carregadas": 6
+        "carregadas": 7
       },
       "data": {
         "url": "https://incomescrane.com/",
         "altura": 4056,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 28
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -3761,8 +4021,12 @@
               "CONTACT"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "500",
             "lineHeightPx": "35.2px",
             "lineHeightRazao": 1.1,
@@ -3779,7 +4043,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "\"IBM Plex Mono\", monospace",
-          "familiaEfetiva": "ibm plex mono",
+          "familiaEfetiva": "IBM Plex Mono",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "16px",
           "lineHeightRazao": 1,
           "lineHeightOrigem": "declarada",
@@ -3825,7 +4091,8 @@
           "caracteres": 5,
           "palavras": 1,
           "fontFamily": "\"IBM Plex Mono\", monospace",
-          "familiaEfetiva": "ibm plex mono",
+          "familiaEfetiva": "IBM Plex Mono",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "500",
           "textTransform": "uppercase",
@@ -3879,7 +4146,7 @@
     },
     "shelomoh": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:36:17.587Z",
+      "dataHora": "2026-09-08T02:07:29.068Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2364,
@@ -3889,6 +4156,10 @@
       "data": {
         "url": "https://shelomoh.work/",
         "altura": 2364,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 56
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -3986,8 +4257,12 @@
               "FULL-STACK DEVELOPER AND HOBBYIST DESIGNER"
             ],
             "fontFamily": "Manrope",
-            "familiaEfetiva": "manrope",
+            "familiaEfetiva": "Manrope",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "manrope",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "60px",
             "lineHeightRazao": 1,
@@ -4010,8 +4285,12 @@
               "Come say hello! 👋\nLINKEDIN\nGITHUB\nINSTAGRAM\nor if you feeling old fashioned, send me an email"
             ],
             "fontFamily": "Manrope",
-            "familiaEfetiva": "manrope",
+            "familiaEfetiva": "Manrope",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "manrope",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "48.75px",
             "lineHeightRazao": 1.63,
@@ -4064,7 +4343,8 @@
           "caracteres": 1,
           "palavras": 1,
           "fontFamily": "Inter",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "300",
           "textTransform": "none",
@@ -4123,7 +4403,7 @@
     },
     "thatmlopsguy": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:36:27.747Z",
+      "dataHora": "2026-09-08T02:07:39.816Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3602,
@@ -4133,6 +4413,10 @@
       "data": {
         "url": "https://thatmlopsguy.github.io/",
         "altura": 3602,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 0
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -4225,7 +4509,11 @@
             ],
             "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
             "familiaEfetiva": "system-ui",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "system-ui",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "800",
             "lineHeightPx": "79.2px",
             "lineHeightRazao": 1.1,
@@ -4250,7 +4538,11 @@
             ],
             "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
             "familiaEfetiva": "system-ui",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "system-ui",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "81.6px",
             "lineHeightRazao": 1.7,
@@ -4273,7 +4565,11 @@
             ],
             "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
             "familiaEfetiva": "system-ui",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "system-ui",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "74.8px",
             "lineHeightRazao": 1.7,
@@ -4301,7 +4597,11 @@
             ],
             "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
             "familiaEfetiva": "system-ui",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "system-ui",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "32.64px",
             "lineHeightRazao": 1.72,
@@ -4328,7 +4628,11 @@
             ],
             "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
             "familiaEfetiva": "system-ui",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "system-ui",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "29.92px",
             "lineHeightRazao": 1.66,
@@ -4346,6 +4650,8 @@
           "px": 14,
           "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
           "familiaEfetiva": "system-ui",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "21.6px",
           "lineHeightRazao": 1.54,
           "lineHeightOrigem": "declarada",
@@ -4389,6 +4695,7 @@
           "palavras": 1,
           "fontFamily": "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
           "familiaEfetiva": "system-ui",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "800",
           "textTransform": "none",
@@ -4462,7 +4769,7 @@
     },
     "cassidoo": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:36:37.985Z",
+      "dataHora": "2026-09-08T02:07:51.235Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1654,
@@ -4472,6 +4779,10 @@
       "data": {
         "url": "https://cassidoo.co/",
         "altura": 1654,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 4
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -4530,8 +4841,12 @@
               "Cassidy Williams"
             ],
             "fontFamily": "\"iA Writer Mono\", monospace",
-            "familiaEfetiva": "ia writer mono",
+            "familiaEfetiva": "iA Writer Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ia writer mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "normal",
             "lineHeightRazao": 1.31,
@@ -4553,8 +4868,12 @@
               "Software Engineer in Chicago"
             ],
             "fontFamily": "\"iA Writer Mono\", monospace",
-            "familiaEfetiva": "ia writer mono",
+            "familiaEfetiva": "iA Writer Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ia writer mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "400",
             "lineHeightPx": "26.4px",
             "lineHeightRazao": 1.1,
@@ -4577,8 +4896,12 @@
               "View posts by tag"
             ],
             "fontFamily": "\"iA Writer Mono\", monospace",
-            "familiaEfetiva": "ia writer mono",
+            "familiaEfetiva": "iA Writer Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ia writer mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "20.592px",
             "lineHeightRazao": 1.08,
@@ -4595,7 +4918,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "\"iA Writer Mono\", monospace",
-          "familiaEfetiva": "ia writer mono",
+          "familiaEfetiva": "iA Writer Mono",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "25.6px",
           "lineHeightRazao": 1.6,
           "lineHeightOrigem": "declarada",
@@ -4636,7 +4961,8 @@
           "caracteres": 16,
           "palavras": 2,
           "fontFamily": "\"iA Writer Mono\", monospace",
-          "familiaEfetiva": "ia writer mono",
+          "familiaEfetiva": "iA Writer Mono",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "400",
           "textTransform": "none",
@@ -4700,7 +5026,7 @@
     },
     "ciere": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:36:48.952Z",
+      "dataHora": "2026-09-08T02:08:02.548Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 6297,
@@ -4710,6 +5036,10 @@
       "data": {
         "url": "https://advocaciacieredarosa.com.br/",
         "altura": 6297,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 35
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -4810,8 +5140,12 @@
               "Clareza, acolhimento e\nexperiência para decidir\nos momentos mais\nimportantes da sua vida."
             ],
             "fontFamily": "\"Cormorant Garamond\", serif",
-            "familiaEfetiva": "cormorant garamond",
+            "familiaEfetiva": "Cormorant Garamond",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cormorant garamond",
             "serifa": true,
+            "serifa_pelaDeclarada_legado": true,
             "fontWeight": "600",
             "lineHeightPx": "60px",
             "lineHeightRazao": 1,
@@ -4836,8 +5170,12 @@
               "Perguntas que ouço com frequência"
             ],
             "fontFamily": "\"Cormorant Garamond\", serif",
-            "familiaEfetiva": "cormorant garamond",
+            "familiaEfetiva": "Cormorant Garamond",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cormorant garamond",
             "serifa": true,
+            "serifa_pelaDeclarada_legado": true,
             "fontWeight": "600",
             "lineHeightPx": "53px",
             "lineHeightRazao": 1.15,
@@ -4860,8 +5198,12 @@
               "Dê o primeiro passo com quem entende seu momento"
             ],
             "fontFamily": "\"Cormorant Garamond\", serif",
-            "familiaEfetiva": "cormorant garamond",
+            "familiaEfetiva": "Cormorant Garamond",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "cormorant garamond",
             "serifa": true,
+            "serifa_pelaDeclarada_legado": true,
             "fontWeight": "600",
             "lineHeightPx": "50px",
             "lineHeightRazao": 1.25,
@@ -4888,8 +5230,12 @@
               "Presencial e online"
             ],
             "fontFamily": "Poppins, sans-serif",
-            "familiaEfetiva": "poppins",
+            "familiaEfetiva": "Poppins",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "poppins",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "24px",
             "lineHeightRazao": 1.33,
@@ -4916,8 +5262,12 @@
               "Como funciona o sigilo sobre o meu caso?\n+"
             ],
             "fontFamily": "Poppins, sans-serif",
-            "familiaEfetiva": "poppins",
+            "familiaEfetiva": "Poppins",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "poppins",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "21.76px",
             "lineHeightRazao": 1.36,
@@ -4941,8 +5291,12 @@
               "CONTATO"
             ],
             "fontFamily": "Poppins, sans-serif",
-            "familiaEfetiva": "poppins",
+            "familiaEfetiva": "Poppins",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "poppins",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "16px",
             "lineHeightRazao": 1.33,
@@ -4959,7 +5313,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "Poppins, sans-serif",
-          "familiaEfetiva": "poppins",
+          "familiaEfetiva": "Poppins",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "16px",
           "lineHeightRazao": 1,
           "lineHeightOrigem": "declarada",
@@ -5015,7 +5371,8 @@
           "caracteres": 75,
           "palavras": 10,
           "fontFamily": "\"Cormorant Garamond\", serif",
-          "familiaEfetiva": "cormorant garamond",
+          "familiaEfetiva": "Cormorant Garamond",
+          "familiaVerificada": true,
           "serifa": true,
           "fontWeight": "600",
           "textTransform": "none",
@@ -5094,7 +5451,7 @@
     },
     "idf-br": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:36:59.216Z",
+      "dataHora": "2026-09-08T02:08:13.110Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 929,
@@ -5104,6 +5461,10 @@
       "data": {
         "url": "https://www.idf-br.com.br/home/index.html",
         "altura": 929,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 0
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -5219,8 +5580,12 @@
               "IDF-BR"
             ],
             "fontFamily": "Poppins, sans-serif",
-            "familiaEfetiva": "poppins",
+            "familiaEfetiva": "Poppins",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "poppins",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "normal",
             "lineHeightRazao": 1.14,
@@ -5245,8 +5610,12 @@
               "ENTRE EM CONTATO"
             ],
             "fontFamily": "Poppins, sans-serif",
-            "familiaEfetiva": "poppins",
+            "familiaEfetiva": "Poppins",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "poppins",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "normal",
             "lineHeightRazao": 1.17,
@@ -5263,7 +5632,9 @@
         "workhorseDetalhe": {
           "px": 16,
           "fontFamily": "Poppins, sans-serif",
-          "familiaEfetiva": "poppins",
+          "familiaEfetiva": "Poppins",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "normal",
           "lineHeightRazao": 1.13,
           "lineHeightOrigem": "normal-medida",
@@ -5303,7 +5674,8 @@
           "caracteres": 6,
           "palavras": 1,
           "fontFamily": "Poppins, sans-serif",
-          "familiaEfetiva": "poppins",
+          "familiaEfetiva": "Poppins",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -5362,7 +5734,7 @@
     },
     "dvo": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:37:09.043Z",
+      "dataHora": "2026-09-08T02:08:23.390Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -5372,6 +5744,10 @@
       "data": {
         "url": "https://dvopelotas.com.br/",
         "altura": 900,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 0
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -5444,8 +5820,12 @@
               "DVO"
             ],
             "fontFamily": "Arial, Helvetica, sans-serif",
-            "familiaEfetiva": "arial",
+            "familiaEfetiva": "Arial",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "arial",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "60px",
             "lineHeightRazao": 1,
@@ -5467,8 +5847,12 @@
               "Departamento de Veículos e Oficinas"
             ],
             "fontFamily": "Arial, Helvetica, sans-serif",
-            "familiaEfetiva": "arial",
+            "familiaEfetiva": "Arial",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "arial",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "300",
             "lineHeightPx": "32px",
             "lineHeightRazao": 1.33,
@@ -5485,7 +5869,9 @@
         "workhorseDetalhe": {
           "px": 18,
           "fontFamily": "Arial, Helvetica, sans-serif",
-          "familiaEfetiva": "arial",
+          "familiaEfetiva": "Arial",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "28px",
           "lineHeightRazao": 1.56,
           "lineHeightOrigem": "declarada",
@@ -5525,7 +5911,8 @@
           "caracteres": 3,
           "palavras": 1,
           "fontFamily": "Arial, Helvetica, sans-serif",
-          "familiaEfetiva": "arial",
+          "familiaEfetiva": "Arial",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -5586,7 +5973,7 @@
   "variantesDaLP": {
     "A-lp-atual@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:37:20.111Z",
+      "dataHora": "2026-09-08T02:08:34.954Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 8374,
@@ -5596,6 +5983,10 @@
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
         "altura": 8374,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -5704,8 +6095,12 @@
               "CONSTRUO PRODUTOS DIGITAIS E LIDERO PROJETOS DE TECNOLOGIA."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "48.256px",
             "lineHeightRazao": 1.05,
@@ -5732,8 +6127,12 @@
               "O que quero entender a seguir."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "40.592px",
             "lineHeightRazao": 1.19,
@@ -5756,8 +6155,12 @@
               "CONTATO"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "14.4px",
             "lineHeightRazao": 1.44,
@@ -5774,7 +6177,9 @@
         "workhorseDetalhe": {
           "px": 13,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "19.68px",
           "lineHeightRazao": 1.51,
           "lineHeightOrigem": "declarada",
@@ -5835,7 +6240,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "instrument sans",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -5899,7 +6305,7 @@
     },
     "B-so-escala@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:37:31.919Z",
+      "dataHora": "2026-09-08T02:08:47.118Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10604,
@@ -5909,6 +6315,10 @@
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
         "altura": 10604,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -6017,8 +6427,12 @@
               "Construo produtos digitais e lidero projetos de tecnologia."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "129.6px",
             "lineHeightRazao": 0.9,
@@ -6045,8 +6459,12 @@
               "O que quero entender a seguir."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "75.6px",
             "lineHeightRazao": 1.05,
@@ -6069,8 +6487,12 @@
               "Contato"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "14.4px",
             "lineHeightRazao": 1.44,
@@ -6087,7 +6509,9 @@
         "workhorseDetalhe": {
           "px": 13,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "19.68px",
           "lineHeightRazao": 1.51,
           "lineHeightOrigem": "declarada",
@@ -6148,7 +6572,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "instrument sans",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -6212,7 +6637,7 @@
     },
     "C-escala-evento-curto@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:37:43.574Z",
+      "dataHora": "2026-09-08T02:08:59.283Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10169,
@@ -6222,6 +6647,10 @@
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
         "altura": 10169,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
         "viewportMedido": {
           "w": 1440,
           "h": 900,
@@ -6330,8 +6759,12 @@
               "AUGUSTO\nMENCHACA"
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "129.6px",
             "lineHeightRazao": 0.9,
@@ -6358,8 +6791,12 @@
               "O que quero entender a seguir."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "75.6px",
             "lineHeightRazao": 1.05,
@@ -6382,8 +6819,12 @@
               "Contato"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "14.4px",
             "lineHeightRazao": 1.44,
@@ -6400,7 +6841,9 @@
         "workhorseDetalhe": {
           "px": 13,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "19.68px",
           "lineHeightRazao": 1.51,
           "lineHeightOrigem": "declarada",
@@ -6461,7 +6904,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "instrument sans",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -6525,7 +6969,7 @@
     },
     "A-lp-atual@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:37:54.733Z",
+      "dataHora": "2026-09-08T02:09:10.898Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 11078,
@@ -6535,6 +6979,10 @@
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
         "altura": 11078,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
         "viewportMedido": {
           "w": 390,
           "h": 844,
@@ -6643,8 +7091,12 @@
               "CONSTRUO PRODUTOS DIGITAIS E LIDERO PROJETOS DE TECNOLOGIA."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "28.288px",
             "lineHeightRazao": 1.05,
@@ -6671,8 +7123,12 @@
               "O que quero entender a seguir."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "24.544px",
             "lineHeightRazao": 1.17,
@@ -6695,8 +7151,12 @@
               "CONTATO"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "14.4px",
             "lineHeightRazao": 1.44,
@@ -6713,7 +7173,9 @@
         "workhorseDetalhe": {
           "px": 13,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "19.68px",
           "lineHeightRazao": 1.51,
           "lineHeightOrigem": "declarada",
@@ -6774,7 +7236,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "instrument sans",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -6838,7 +7301,7 @@
     },
     "B-so-escala@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:38:06.575Z",
+      "dataHora": "2026-09-08T02:09:23.328Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 12444,
@@ -6848,6 +7311,10 @@
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
         "altura": 12444,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
         "viewportMedido": {
           "w": 390,
           "h": 844,
@@ -6956,8 +7423,12 @@
               "Construo produtos digitais e lidero projetos de tecnologia."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "43.2px",
             "lineHeightRazao": 0.9,
@@ -6984,8 +7455,12 @@
               "O que quero entender a seguir."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "37.8px",
             "lineHeightRazao": 1.05,
@@ -7008,8 +7483,12 @@
               "Contato"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "14.4px",
             "lineHeightRazao": 1.44,
@@ -7026,7 +7505,9 @@
         "workhorseDetalhe": {
           "px": 13,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "19.68px",
           "lineHeightRazao": 1.51,
           "lineHeightOrigem": "declarada",
@@ -7087,7 +7568,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "instrument sans",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",
@@ -7151,7 +7633,7 @@
     },
     "C-escala-evento-curto@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T00:38:18.501Z",
+      "dataHora": "2026-09-08T02:09:35.875Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 12399,
@@ -7161,6 +7643,10 @@
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
         "altura": 12399,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
         "viewportMedido": {
           "w": 390,
           "h": 844,
@@ -7269,8 +7755,12 @@
               "AUGUSTO\nMENCHACA"
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
             "lineHeightPx": "43.2px",
             "lineHeightRazao": 0.9,
@@ -7297,8 +7787,12 @@
               "O que quero entender a seguir."
             ],
             "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "instrument sans",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "37.8px",
             "lineHeightRazao": 1.05,
@@ -7321,8 +7815,12 @@
               "Contato"
             ],
             "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "ibm plex mono",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
             "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
             "lineHeightPx": "14.4px",
             "lineHeightRazao": 1.44,
@@ -7339,7 +7837,9 @@
         "workhorseDetalhe": {
           "px": 13,
           "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "inter",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
           "lineHeightPx": "19.68px",
           "lineHeightRazao": 1.51,
           "lineHeightOrigem": "declarada",
@@ -7400,7 +7900,8 @@
           "caracteres": 7,
           "palavras": 1,
           "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "instrument sans",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
           "serifa": false,
           "fontWeight": "700",
           "textTransform": "none",

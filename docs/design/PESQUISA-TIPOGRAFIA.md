@@ -38,7 +38,7 @@ O comando oficial para repetir a rodada completa na íntegra é:
 node docs/design/tipografia/medir.mjs --headed
 ```
 
-A flag `--headed` (janela real visível) é um **requisito técnico de medição**, não conveniência visual. Em modo headless, peças com animação de entrada e sequestro de rolagem (como o herói do `illoca.unseen.co`) permanecem com `opacity: 0` devido à ausência de compositor gráfico ativo, fazendo com que a sonda descarte o texto como invisível e derrube seu display de 111px para 77px. Com janela real e união temporal de quatro amostras consecutivas antes do scroll mais uma pós-scroll, o valor converge deterministicamente em 111px. O v3 havia reportado 111px unicamente porque não continha filtro de visibilidade — acertou o número pelo motivo errado.
+A flag `--headed` (janela real visível) é um **requisito técnico de medição**, não conveniência visual. O driver recusa-se a mentir sobre isso: quando executado sem ela, imprime aviso em `stderr` e grava `modo: "headless"` e `rodadaOficial: false` no `_meta` do JSON. O `_meta.comando` registra a invocação realmente usada, não uma string fixa. Em modo headless, peças com animação de entrada e sequestro de rolagem (como o herói do `illoca.unseen.co`) permanecem com `opacity: 0` devido à ausência de compositor gráfico ativo, fazendo com que a sonda descarte o texto como invisível e derrube seu display de 111px para 77px. Com janela real e união temporal de quatro amostras consecutivas antes do scroll mais uma pós-scroll, o valor converge deterministicamente em 111px. O v3 havia reportado 111px unicamente porque não continha filtro de visibilidade — acertou o número pelo motivo errado.
 
 ### 2.2 Correções implementadas contra a versão reprovada
 
@@ -49,6 +49,7 @@ A revisão do PR #42 expôs que o instrumento anterior media elementos invisíve
 - **C3 — Resolução de `line-height: normal` e largura em `ch`:** Quando `line-height` é `normal`, a propriedade computada do CSS não retorna razão numérica. A sonda cria um span invisível offscreen (`Hxg`) com as métricas exatas da fonte para medir a caixa de linha real, registrando `lineHeightOrigem: "normal-medida"`. Onde declarado, anota `"declarada"`. A largura em `ch` é apurada medindo a largura física do glifo `'0'` na fonte computada.
 - **C4 — Razão de telas baseada no viewport real:** O cálculo de telas (`document.documentElement.scrollHeight / window.innerHeight`) utiliza a altura real do viewport configurado (ex.: 900px no desktop, 844px no mobile), abandonando a divisão fixa por 900.
 - **C5 — Serifa avaliada pela primeira família renderizada:** Evita falsos positivos em pilhas de fallback (como `"Oswald, Arial Narrow, sans-serif"`), avaliando apenas a família principal efetivamente renderizada.
+- **C7 — Família renderizada verificada, não apenas declarada:** A versão anterior lia `getComputedStyle().fontFamily` e assumia que a primeira família da lista era a que pintava na tela. Se a webfont não carrega, o navegador cai para a próxima, e a conclusão sobre serifa passa a descrever uma fonte que ninguém viu. Agora o driver aguarda `document.fonts.ready` antes de amostrar, e a sonda testa cada candidata da pilha com `document.fonts.check()`, na ordem, adotando a primeira disponível. Cada degrau registra `familiaEfetiva`, `familiaVerificada`, `caiuParaFallback` e `familiaDeclarada`. **Nesta rodada, as 18 peças externas tiveram a família do maior título verificada e nenhuma caiu para fallback** — a conclusão de serifa da §5 descreve fonte comprovadamente carregada.
 - **C6 — Varredura exaustiva de ALL CAPS:** Avalia `text-transform: uppercase` sobre qualquer nó com texto próprio renderizado visível, gerando contagem fidedigna na página inteira.
 
 ### 2.3 Teste de sanidade: comparativo contra o v3 e o `_legado`
@@ -160,7 +161,7 @@ Os dados de `titulosDetalhes[0]` das aprovadas respondem com precisão:
 
 **O contraexemplo crucial é o `illoca.unseen.co`.** Enquanto três peças adotam frases de marca curtíssimas (1 a 3 palavras), o `illoca` renderiza **22 palavras e 121 caracteres** em tipografia de 111px — e é uma das referências mais apreciadas pelo cliente. Em paralelo, `paulkalkbrenner` acomoda **51 caracteres e 8 palavras** a 150px.
 
-A frase atual do herói da nossa LP possui **59 caracteres e 9 palavras** (*"Engenharia de software, sistemas distribuídos e pesquisa acadêmica"*). Essa carga é virtualmente idêntica à do `paulkalkbrenner` (51 car. / 8 pal.) e fica a menos da metade da densidade suportada pelo `illoca` (121 car. / 22 pal.). 
+A frase atual do herói da nossa LP possui **59 caracteres e 8 palavras** (*"Construo produtos digitais e lidero projetos de tecnologia."*). Essa carga é virtualmente idêntica à do `paulkalkbrenner` (51 car. / 8 pal.) e fica a menos da metade da densidade suportada pelo `illoca` (121 car. / 22 pal.).
 
 Portanto, os dados **não exigem truncar a mensagem do herói para uma única palavra** para cruzar o corte. Display dominante acolhe frase expressiva, desde que tipografada com tracking fechado e altura de linha compacta (0,8 a 0,9).
 
@@ -172,7 +173,7 @@ A contagem precisa do campo `titulosDetalhes[0].serifa` em `medicoes.json` corri
 
 - **Nas 5 referências aprovadas:** Exatamente **1 de 5** utiliza serifa no maior título (`lxlcreative`, que renderiza *Scribo* a 102px). As outras quatro são puramente sans-serif: *Funnel Display* (`aelixa`, 240px), *F37 Analog* (`illoca`, 111px), *ABC Diatype Plus Variable* (`paulkalkbrenner`, 150px) e *Oswald* (`white-desert`, 320px). A versão reprovada erroneamente atribuiu serifa ao `white-desert`, cuja família é Oswald (sans-serif clássica condensada).
 - **Em qualquer título da página:** Permanece **1 de 5** entre as aprovadas. Nenhuma outra peça aprovada introduz serifa em degraus secundários.
-- **Nas 10 rejeitadas:** Apenas **1 de 10** exibe serifa no maior título (`paulfragara`, com *Times New Roman* a 38px).
+- **Nas 10 rejeitadas:** Apenas **1 de 10** exibe serifa no maior título (`paulfragara`, com *Times New Roman* a 38px). **Caso de fronteira declarado:** o `charityshot.co.uk` renderiza *Courier New* a 35px — monoespaçada com serifas de haste. A sonda classifica monoespaçada como categoria própria e não a conta como serifa; sob a convenção oposta, a contagem dos rejeitados seria 2 de 10. A escolha está no código (`serifNames` em `sonda-tipografia.mjs`) e não altera nenhuma conclusão, porque a peça é rejeitada nos dois casos.
 - **Nos trabalhos anteriores do cliente:** **1 de 3** utiliza serifa (*Cormorant Garamond* a 60px no site da `ciere`).
 
 **Veredito:** Serifa no display **não é traço distintivo nem requisito de aprovação**. O gosto do cliente aceita serifa, mas é majoritariamente sans-serif (80% da amostra aprovada). A manutenção das três famílias do projeto — **Instrument Sans**, **Inter** e **IBM Plex Mono** — está plenamente respaldada nos dados. A introdução de uma alternativa com serifa no herói permanece como hipótese conceitual reservada para o Gate C, sem autorização de implementação prematura.
@@ -293,25 +294,25 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 
 ## 10. Rodapé
 
-**FASE:** 1 — Evidência (issue #36)  
-**ARTEFATO:** `docs/design/PESQUISA-TIPOGRAFIA.md`  
-**REFERÊNCIAS MEDIDAS:** 18 peças externas (5 aprovadas, 10 rejeitadas, 3 de clientes) e a `wireframes/lp-final.html` avaliada em 6 variantes (A, B e C a 1440px e 390px). Total de **24 medições completas**, executadas e registradas em `docs/design/tipografia/medicoes.json` em 2026-09-08T00:33:33.388Z.  
-**DECISÕES:**  
-1. Adoção da **dominância assimétrica** sobre a uniformidade, única rota que satisfaz os limiares de 89px e 5,57×;  
-2. Estabelecimento da escala de cinco degraus (**144 / 72 / 32 / 16 / 12px**), ancorando cada valor em precedentes aprovados de `medicoes.json`;  
-3. Serifa no display descartada como requisito obrigatório (apenas 1 de 5 aprovadas utiliza serifa no maior título);  
-4. Redução auditada de ALL CAPS na página inteira (-76,4% a 1440px e -70,3% a 390px);  
-5. Extinção definitiva de arquivos de protótipo de escala (`escala-proposta-*`), adotando-se a injeção em tempo de medição como metodologia de aferição.  
+**FASE:** 1 — Evidência (issue #36)
+**ARTEFATO:** `docs/design/PESQUISA-TIPOGRAFIA.md`
+**REFERÊNCIAS MEDIDAS:** 18 peças externas (5 aprovadas, 10 rejeitadas, 3 de clientes) e a `wireframes/lp-final.html` avaliada em 6 variantes (A, B e C a 1440px e 390px). Total de **24 medições completas**, executadas e registradas em `docs/design/tipografia/medicoes.json` em 2026-09-08T00:33:33.388Z.
+**DECISÕES:**
+1. Adoção da **dominância assimétrica** sobre a uniformidade, única rota que satisfaz os limiares de 89px e 5,57×;
+2. Estabelecimento da escala de cinco degraus (**144 / 72 / 32 / 16 / 12px**), ancorando cada valor em precedentes aprovados de `medicoes.json`;
+3. Serifa no display descartada como requisito obrigatório (apenas 1 de 5 aprovadas utiliza serifa no maior título);
+4. Redução auditada de ALL CAPS na página inteira (-76,4% a 1440px e -70,3% a 390px);
+5. Extinção definitiva de arquivos de protótipo de escala (`escala-proposta-*`), adotando-se a injeção em tempo de medição como metodologia de aferição.
 
-**QUESTÕES ABERTAS:**  
-1. **O degrau móvel da escala segue não resolvido:** A 390px, a escala proposta atinge 48px e razão 3,69×, permanecendo do lado rejeitado pelo classificador. Projetar uma adaptação responsiva viável sem overflow horizontal é questão aberta para o Gate C;  
-2. **Dilatação da página versus tempo até a prova técnica:** O aumento de 26,6% na altura total (para 11,8 telas) tensiona a métrica de ≤ 1,5 tela para exibição de evidências técnicas do `PROBLEMA-v1.md`;  
-3. **Decisão sobre a cópia do herói (Variante C):** A redução para "AUGUSTO MENCHACA" no `h1` e o rebaixamento da frase técnica para subtítulo não afetam as métricas tipográficas. A decisão de hierarquia de mensagem deve ser arbitrada no Gate B/C;  
-4. **Governança do workhorse utilitário:** O CSS da escala governa elementos de corpo (`16px`), mas a página computa `13px` em textos secundários de rodapé.  
+**QUESTÕES ABERTAS:**
+1. **O degrau móvel da escala segue não resolvido:** A 390px, a escala proposta atinge 48px e razão 3,69×, permanecendo do lado rejeitado pelo classificador. Projetar uma adaptação responsiva viável sem overflow horizontal é questão aberta para o Gate C;
+2. **Dilatação da página versus tempo até a prova técnica:** O aumento de 26,6% na altura total (para 11,8 telas) tensiona a métrica de ≤ 1,5 tela para exibição de evidências técnicas do `PROBLEMA-v1.md`;
+3. **Decisão sobre a cópia do herói (Variante C):** A redução para "AUGUSTO MENCHACA" no `h1` e o rebaixamento da frase técnica para subtítulo não afetam as métricas tipográficas. A decisão de hierarquia de mensagem deve ser arbitrada no Gate B/C;
+4. **Governança do workhorse utilitário:** O CSS da escala governa elementos de corpo (`16px`), mas a página computa `13px` em textos secundários de rodapé.
 
-**O QUE ESTE DOCUMENTO NÃO AUTORIZA:**  
-- Modificar qualquer código-fonte de produção ou aplicar o CSS injetado em `wireframes/lp-final.html` antes da abertura do Gate D;  
-- Tratar a variante C como obrigatória para satisfação tipográfica;  
-- Assumir que o corte de 89px atende às demandas ergonômicas de recrutadores técnicos;  
-- Tratar os 48px computados a 390px como escala móvel final e satisfatória;  
+**O QUE ESTE DOCUMENTO NÃO AUTORIZA:**
+- Modificar qualquer código-fonte de produção ou aplicar o CSS injetado em `wireframes/lp-final.html` antes da abertura do Gate D;
+- Tratar a variante C como obrigatória para satisfação tipográfica;
+- Assumir que o corte de 89px atende às demandas ergonômicas de recrutadores técnicos;
+- Tratar os 48px computados a 390px como escala móvel final e satisfatória;
 - Recriar branches, arquivos de protótipo ou artefatos paralelos fora do fluxo estabelecido.

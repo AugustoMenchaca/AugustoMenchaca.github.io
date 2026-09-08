@@ -398,7 +398,7 @@ aberta da #36.
 
 **DECISÃO** **Escala com 144px no topo (1440px) e 48px no mobile (390px).** Ratio hero/corpo = 9,0×. Redução de ALL CAPS para displays e títulos.
 
-**EVIDÊNCIA** 144px fica na mediana do gosto do cliente (o paulkalkbrenner.net mede exatos 150px e é aprovado). Uma razão de 9,0× está bem segura acima dos 5,6× mínimos. 
+**EVIDÊNCIA** 144px fica na mediana do gosto do cliente (o paulkalkbrenner.net mede exatos 150px e é aprovado). Uma razão de 9,0× está bem segura acima dos 5,6× mínimos.
 
 **ETIQUETA** `[N]` — Nova proposta, baseada em limite inferior, que ainda precisa ser validada no Gate C.
 
