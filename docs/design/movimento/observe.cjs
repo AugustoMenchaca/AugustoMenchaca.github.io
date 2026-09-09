@@ -14,7 +14,7 @@ const out = __dirname;
 async function observe(browser, name, url) {
   const context = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, reducedMotion: 'no-preference' });
   const page = await context.newPage();
-  const record = { name, url, timestamp: new Date().toISOString(), viewport: '1440x900x1', browser: browser.version(), actions: [], errors: [] };
+  const record = { name, url, timestamp: new Date().toISOString(), viewport: '1440x900x1', browser: browser.version(), timingModel: 'absolute-v2', sampleScheduleMs: [60, 120, 220, 500], actions: [], errors: [] };
   await page.addInitScript(() => {
     const ids = new WeakMap(); let nextId = 1;
     const uid = el => { if (!ids.has(el)) ids.set(el, nextId++); return ids.get(el); };
@@ -45,12 +45,19 @@ async function observe(browser, name, url) {
   async function action(label, fn) {
     const before = await snap();
     const eventStart = await page.evaluate(() => window.__motion.events.length);
+    const actionStartAt = await page.evaluate(() => performance.now());
     try { await fn(); } catch (error) { record.actions.push({ label, error: String(error) }); return; }
     const samples = [];
-    for (const delay of [60, 120, 220, 500]) { await page.waitForTimeout(delay); samples.push(await snap()); }
+    for (const requestedDelayMs of record.sampleScheduleMs) {
+      const now = await page.evaluate(() => performance.now());
+      const remaining = Math.max(0, requestedDelayMs - (now - actionStartAt));
+      if (remaining) await page.waitForTimeout(remaining);
+      const snapshot = await snap();
+      samples.push({ ...snapshot, requestedDelayMs, actualDelayMs: Math.round(snapshot.at - actionStartAt) });
+    }
     const screenshot = `${name}-${label}.png`;
     await page.screenshot({ path: path.join(out, screenshot) });
-    record.actions.push({ label, before, samples, events: await page.evaluate(start => window.__motion.events.slice(start), eventStart), screenshot });
+    record.actions.push({ label, before, actionStartAt: Math.round(actionStartAt), samples, events: await page.evaluate(start => window.__motion.events.slice(start), eventStart), screenshot });
   }
   try {
     const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
