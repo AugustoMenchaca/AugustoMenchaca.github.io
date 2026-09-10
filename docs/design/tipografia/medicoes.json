@@ -8,6 +8,7 @@
     "sonda": "docs/design/tipografia/sonda-tipografia.mjs",
     "alvos": "docs/design/tipografia/alvos.json",
     "nota": "Nao ha arquivo de prototipo. O \"depois\" da escala e medido por injecao de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-015.",
+    "notaCaixaAlta": "caixaAlta.semNeutralizar NAO e numero citavel: e a contagem sem neutralizar o revelador, ou seja, a propria grandeza nao deterministica que a issue #46 conserta, e varia entre rodadas. Existe so para dimensionar quanto o revelador escondia. O numero valido e caixaAlta.elementos, medido no passe neutralizado.",
     "total": 24,
     "sucessos": 24,
     "falhas": []
