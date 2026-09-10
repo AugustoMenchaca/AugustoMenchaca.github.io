@@ -17,6 +17,8 @@ O `REFERENCE-BOARD-v3` §12 submeteu dez variáveis formais a um teste com **15 
 
 A `wireframes/lp-final.html` original mede **46px** no maior título e razão **3,54×** (com workhorse medido de 13px), classificando-se inequivocamente do lado **rejeitado** nas duas variáveis.
 
+O `REFERENCE-BOARD-v3.md` registra **3,29×** para a mesma página porque usa um workhorse de **14px**; os **3,54×** deste documento usam os **13px** medidos, portanto ambos os resultados estão corretos sob suas respectivas réguas.
+
 Esta issue tem três encargos:
 1. **Validar a sobrevivência dos cortes** após o conserto de três defeitos graves no instrumento de medição;
 2. **Decidir formalmente entre dominância assimétrica e uniformidade**, calculando o custo dessa escolha em altura de página;
@@ -220,8 +222,9 @@ A escala mantém cinco degraus funcionais, reancorados nas medições diretas de
 - **Famílias tipográficas:** Preservadas sem alteração — *Instrument Sans*, *Inter* e *IBM Plex Mono*.
 - **Veto de pesos extremos:** Pesos 800 e 900 permanecem **terminantemente proibidos**. Teto tipográfico fixado em peso 700 (*Bold*).
 - **Redução auditada de ALL CAPS:** A sonda C6 quantificou a queda de caixa alta na página inteira:
-  - A 1440px: queda de **55 para 13 elementos** (redução de 42 elementos, ou **-76,4%**; volume de caracteres reduzido de 854 para 226, **-73,5%**).
-  - A 390px: queda de **48 para 13 elementos** (de 760 para 226 caracteres, **-70,3%**).
+  - A 1440px: queda de **96 para 23 elementos** (**-76,0%**); volume de caracteres reduzido de **1.513 para 467** (**-69,1%**).
+  - A 390px: queda de **89 para 23 elementos** (**-74,2%**); volume de caracteres reduzido de **1.419 para 467** (**-67,1%**).
+  - A versão anterior deste arquivo publicava bases de **55 elementos a 1440px** e **48 elementos a 390px**, subcontadas porque o revelador da página escondia 19 dos 25 blocos; os novos totais vêm de um passe com o revelador neutralizado.
 
 ---
 
@@ -282,6 +285,8 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 ### 9.1 Limites operacionais do instrumento
 
 - **Inviabilidade de medição headless para páginas animadas:** Ficou comprovado que o Chromium em modo headless desativa pipelines essenciais de renderização quando interage com bibliotecas de scroll e WebGL, congelando animações em opacidade zero (`illoca.unseen.co`). A execução em janela real (`--headed`) com janelas temporais espaçadas é mandatória para a reprodutibilidade dos dados.
+- **Caixa alta exige o revelador neutralizado:** A varredura de 700px com pausa de 90ms revela 6 dos 25 blocos `[data-reveal]`; sem neutralizar, a contagem depende de qual bloco a corrida alcançou. O passe neutralizado mede o estado assentado da página, correspondente a “caixa alta na página inteira”. A origem é reproduzível com `SONDA_DIAG=1 node docs/design/tipografia/medir.mjs --so-local --headed`, que imprime `dataReveal` e `revealed` por amostra.
+- **Altura não determinística da Variante A em desktop:** Duas execuções do comando gravado em `_meta.comando` devolveram **8.350px** e **8.374px** para `A-lp-atual@1440`. A oscilação não está resolvida nesta issue; por isso, o custo de altura publicado no §8 (**+2.230px, +26,6%**) carrega incerteza de **±24px** na base.
 - **O wordmark de rodapé não substitui a hierarquia:** O `<div class="footer-wordmark">` de 232px da LP localiza-se a 95,9% de rolagem. O `aelixa.webflow.io` (aprovado) possui idêntica estrutura: um elemento de **240px a 97,8%** de profundidade. A presença de uma palavra gigante no encerramento da página aparece nos dois lados do espectro e **não separa aprovação de rejeição**. O que separa os grupos é a escala que governa os títulos de conteúdo ativo (102–320px vs 20–76px).
 
 ### 9.2 O que continua estritamente não medido
@@ -301,7 +306,7 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 1. Adoção da **dominância assimétrica** sobre a uniformidade, única rota que satisfaz os limiares de 89px e 5,57×;
 2. Estabelecimento da escala de cinco degraus (**144 / 72 / 32 / 16 / 12px**), ancorando cada valor em precedentes aprovados de `medicoes.json`;
 3. Serifa no display descartada como requisito obrigatório (apenas 1 de 5 aprovadas utiliza serifa no maior título);
-4. Redução auditada de ALL CAPS na página inteira (-76,4% a 1440px e -70,3% a 390px);
+4. Redução auditada de ALL CAPS na página inteira: elementos **-76,0% a 1440px** e **-74,2% a 390px**; caracteres **-69,1% a 1440px** e **-67,1% a 390px**;
 5. Extinção definitiva de arquivos de protótipo de escala (`escala-proposta-*`), adotando-se a injeção em tempo de medição como metodologia de aferição.
 
 **QUESTÕES ABERTAS:**

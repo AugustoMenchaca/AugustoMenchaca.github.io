@@ -58,6 +58,37 @@ const AMOSTRAS = Number(arg('--amostras', 4));
 const INTERVALO = Number(arg('--intervalo', 1500));
 const SAIDA = resolve(arg('--saida', join(AQUI, 'medicoes.json')));
 
+// Neutraliza o revelador da própria LP para contar caixa alta (issue #46).
+//
+// Por que existe: a LP aplica `.will-reveal { opacity: 0 }` por JS a todo
+// `[data-reveal]` e só solta `.is-revealed` quando o `IntersectionObserver`
+// dispara. A guarda C1 rejeita, corretamente, o que está a `opacity: 0` — então
+// o que a sonda conta depende de o revelador ter disparado.
+//
+// A varredura de 700px com 90ms de pausa NÃO resolve isso, e isto foi medido,
+// não suposto: com `SONDA_DIAG=1`, dos **25** blocos `[data-reveal]` a passada
+// revela **6**. Os outros 19 ficam em `opacity: 0` em todas as amostras, e o
+// campo `caixaAlta` mudava de 46 para 55 entre rodadas conforme quais blocos a
+// corrida pegava. Unir as amostras — que este commit também faz — estabiliza a
+// origem do número mas não o corrige: o teto continua sendo o que a passada
+// revelou. Medir o estado assentado é o que "caixa alta na página inteira"
+// significa.
+//
+// Entra num PASSE PRÓPRIO, no fim, e só a caixa alta dele é aproveitada — nenhum
+// campo geométrico. O escopo é essencial e foi decidido por medição:
+//
+// - `transform: none !important` junto foi tentado e descartado: derrubou
+//   `A-lp-atual@390` de 48 para 22 nós. A guarda C1 não olha transform, então
+//   ele não era necessário para nada.
+// - Só com `opacity`, aplicado desde o início, a altura de `A-lp-atual@1440`
+//   passou de **8.374px para 8.350px** — reprodutível nos dois modos. Eu não
+//   expliquei o mecanismo, e altura é número publicado (o custo de +26,6% sai
+//   dela). Então a neutralização não pode valer para os passes que medem
+//   geometria. Só para contar caixa alta.
+const CSS_REVELADOR_OFF = `
+  [data-reveal], .will-reveal { opacity: 1 !important; }
+`;
+
 // A escala proposta, como folha injetada. Esta é a fonte da verdade do CSS;
 // a cópia no PESQUISA-TIPOGRAFIA.md §8 tem que bater com ela.
 const CSS_ESCALA = `
@@ -169,7 +200,7 @@ async function abrirChrome() {
 // numero decide se a margem do classificador e de 26px ou de 1px, medir uma vez
 // so nao serve. `vistoEmAmostras` registra em quantas cada degrau apareceu, para
 // a instabilidade ficar no dado em vez de virar sorte.
-function unirAmostras(amostras) {
+function unirAmostras(amostras, amostraCaps) {
   const ultima = amostras[amostras.length - 1];
   const d = { ...ultima };
   const porPx = new Map();
@@ -202,10 +233,44 @@ function unirAmostras(amostras) {
   d.pontoCego = maior ? maior.px > maiorH : false;
   d.diferencaPx = maior ? maior.px - maiorH : 0;
 
+  // C6 — caixa alta se une pelo CONJUNTO DE NÓS, não pela contagem.
+  // Contagem não se une: máximo entre amostras herda o ruído da amostra mais
+  // sortuda, e deixar `caixaAlta` vir de carona no `{ ...ultima }` fazia o campo
+  // depender de a varredura ter revelado cada bloco `[data-reveal]` antes da
+  // amostra pós-rolagem — corrida entre instrumento e página, que é o que fazia
+  // o mesmo arquivo medir 46, 55, 67 ou 70 (issue #46). Aqui vale o princípio já
+  // usado nos títulos: une, e registra em quantas amostras cada nó apareceu,
+  // para a instabilidade ficar no dado em vez de virar sorte.
+  const capsPorCaminho = new Map();
+  for (const a of (amostraCaps ? [...amostras, amostraCaps] : amostras)) {
+    for (const n of (a.caixaAlta?.nos || [])) {
+      if (!capsPorCaminho.has(n.caminho)) capsPorCaminho.set(n.caminho, n);
+    }
+  }
+  const capsChars = [...capsPorCaminho.values()].reduce((s, n) => s + n.caracteres, 0);
+  // Quanto o revelador escondia, no próprio dado: o maior que os passes NÃO
+  // neutralizados conseguiram ver. É o número que este projeto publicou antes
+  // (55 a 1440) e serve para auditar a diferença sem reler o histórico.
+  const capsSemNeutralizar = amostras.reduce(
+    (m, a) => Math.max(m, (a.caixaAlta?.nos || []).length), 0);
+  d.caixaAlta = {
+    elementos: capsPorCaminho.size,
+    caracteresTotais: capsChars,
+    caracteresPor1000px: d.altura > 0 ? Math.round(capsChars / d.altura * 1000 * 100) / 100 : 0,
+    semNeutralizar: capsSemNeutralizar,
+    passeNeutralizado: !!amostraCaps,
+    amostras: amostras.length + (amostraCaps ? 1 : 0)
+  };
+
   d.descartes = {
     titulos: (ultima.descartes?.titulos || []).filter(x => !porPx.has(x.px)),
     porRecorte: ultima.descartes?.porRecorte || []
   };
+  // `_diag` é instrumento de diagnóstico, não medição: `isRevealed` varia entre
+  // rodadas porque a corrida do revelador continua existindo — ela só deixou de
+  // afetar o resultado. Fica fora do JSON para o arquivo ser determinístico;
+  // veja com `SONDA_DIAG=1`.
+  delete d._diag;
   d._amostras = amostras.length;
   d._instavel = d.titulosDetalhes.some(t => t.vistoEmAmostras !== `${amostras.length}/${amostras.length}`);
   return d;
@@ -276,7 +341,31 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
     const rolagem = await aval(`(${ROLAR})()`, true);
     amostras.push(await aval(`(${sonda.toString()})()`));
 
-    const dados = unirAmostras(amostras);
+    // TERCEIRO PASSE, só para caixa alta (issue #46).
+    // A varredura acima revela 6 dos 25 blocos `[data-reveal]` da LP — medido com
+    // `SONDA_DIAG=1`, não suposto. Os outros 19 ficam em `opacity: 0`, a guarda C1
+    // os rejeita corretamente, e o número de caixa alta virava função de quais
+    // blocos a corrida pegou. Aqui o revelador é neutralizado e a página é
+    // amostrada uma última vez; desta amostra aproveita-se **apenas** a caixa
+    // alta, porque a folha injetada altera altura em 24px por motivo que eu não
+    // determinei. Geometria continua vindo dos passes anteriores, intactos.
+    let amostraCaps = null;
+    try {
+      await aval(`(() => { const st = document.createElement('style');
+        st.id = 'revelador-off'; st.textContent = ${JSON.stringify(CSS_REVELADOR_OFF)};
+        document.head.appendChild(st); return true; })()`);
+      await dormir(300);
+      amostraCaps = await aval(`(${sonda.toString()})()`);
+    } catch {}
+
+    if (process.env.SONDA_DIAG) {
+      for (const [i, a] of amostras.entries()) {
+        const g = a._diag || {};
+        console.error(`    DIAG a${i}: caps=${a.caixaAlta?.nos?.length} reduce=${g.reduce}`
+          + ` dataReveal=${g.dataReveal} will=${g.willReveal} revealed=${g.isRevealed}`);
+      }
+    }
+    const dados = unirAmostras(amostras, amostraCaps);
     return { status: 'sucesso', dataHora: new Date().toISOString(),
              viewport: `${vp.w}x${vp.h}x${vp.dpr}`, rolagem, data: dados,
              amostras: amostras.map((a, i) => ({

@@ -109,6 +109,22 @@ export const sonda = () => {
 
   const visivel = (el, cs) => porQueInvisivel(el, cs) === null;
 
+  // Identidade estável de um nó entre amostras da mesma página. Precisa ser
+  // estável porque a união de caixa alta (C6) acontece no driver, comparando
+  // amostra a amostra: o revelador da própria página muda `opacity` e classe,
+  // nunca a estrutura, então caminho por posição serve e não colide.
+  const caminhoDom = (el) => {
+    const partes = [];
+    for (let n = el; n && n.nodeType === 1 && n !== document.body; n = n.parentElement) {
+      let i = 1;
+      for (let s = n.previousElementSibling; s; s = s.previousElementSibling) {
+        if (s.tagName === n.tagName) i++;
+      }
+      partes.unshift(n.tagName.toLowerCase() + (i > 1 ? ':' + i : ''));
+    }
+    return partes.join('>');
+  };
+
   // ==========================================================================
   // C2 — recorte por maquinário, NÃO por posição de rolagem
   // ==========================================================================
@@ -186,7 +202,7 @@ export const sonda = () => {
     return { razao: null, origem: 'indisponivel' };
   };
 
-  let upperCount = 0, upperChars = 0;
+  const caixaAltaNos = [];
   const fontsInUse = new Map();
 
   // ==========================================================================
@@ -362,7 +378,12 @@ export const sonda = () => {
     const txt = direto.trim();
     if (!txt) continue;
     if (!visivel(el, cs)) continue;
-    upperCount++; upperChars += txt.length;
+    const clsCA = typeof el.className === 'string' ? el.className.trim()
+      : (el.className && el.className.baseVal ? el.className.baseVal.trim() : (el.getAttribute('class') || ''));
+    caixaAltaNos.push({
+      caminho: caminhoDom(el), tag: el.tagName.toLowerCase(),
+      className: clsCA, caracteres: txt.length
+    });
   }
 
   const altura = Math.max(document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0);
@@ -462,7 +483,21 @@ export const sonda = () => {
     },
     descartes: { titulos: titDescartados, porRecorte: descartadosPorRecorte },
 
-    caixaAlta: { elementos: upperCount, caracteresTotais: upperChars, caracteresPor1000px: p1000(upperChars) },
+    _diag: {
+      reduce: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      dataReveal: document.querySelectorAll('[data-reveal]').length,
+      willReveal: document.querySelectorAll('.will-reveal').length,
+      isRevealed: document.querySelectorAll('.is-revealed').length
+    },
+
+    // `nos` existe para o driver unir entre amostras; ele não vai para o JSON
+    // final. Os agregados aqui são desta amostra só — a união os substitui.
+    caixaAlta: {
+      elementos: caixaAltaNos.length,
+      caracteresTotais: caixaAltaNos.reduce((s, n) => s + n.caracteres, 0),
+      caracteresPor1000px: p1000(caixaAltaNos.reduce((s, n) => s + n.caracteres, 0)),
+      nos: caixaAltaNos
+    },
     familiasUsadas: [...fontsInUse.entries()].sort((a,b)=>b[1]-a[1]).map(([familia, contagem]) => ({familia, contagem})),
 
     maiorTextoRenderizado,
