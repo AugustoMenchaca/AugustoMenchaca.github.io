@@ -224,7 +224,7 @@ A escala mantém cinco degraus funcionais, reancorados nas medições diretas de
 - **Redução auditada de ALL CAPS:** A sonda C6 quantificou a queda de caixa alta na página inteira:
   - A 1440px: queda de **96 para 23 elementos** (**-76,0%**); volume de caracteres reduzido de **1.513 para 467** (**-69,1%**).
   - A 390px: queda de **89 para 23 elementos** (**-74,2%**); volume de caracteres reduzido de **1.419 para 467** (**-67,1%**).
-  - A versão anterior deste arquivo publicava bases de **96 elementos a 1440px** e **89 elementos a 390px**, subcontadas porque o revelador da página escondia 19 dos 25 blocos; os novos totais vêm de um passe com o revelador neutralizado.
+  - A versão anterior deste arquivo publicava bases de **55 elementos a 1440px** e **48 elementos a 390px**, subcontadas porque o revelador da página escondia 19 dos 25 blocos; os novos totais vêm de um passe com o revelador neutralizado.
 
 ---
 
