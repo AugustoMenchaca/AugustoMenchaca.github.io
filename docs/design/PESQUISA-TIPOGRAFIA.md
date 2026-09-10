@@ -94,7 +94,7 @@ Todas as grandezas desta seção foram extraídas de `medicoes.json` (`referenci
 | `aelixa` | 240px | 6ch | 1,00 (declarada) | 18px | 83ch | 1,50 (declarada) | 13,33× | 7 / 1 | 19 | não |
 | `illoca` | 111px | 14ch | 0,90 (declarada) | 12px | 31ch | 1,00 (declarada) | 9,25× | 121 / 22 | 2 | não |
 | `paulkalkbrenner` | 150px | 13ch | 0,80 (declarada) | 12px | 19ch | 1,00 (declarada) | 12,50× | 51 / 8 | 183 | não |
-| `lxlcreative` | 102px | 9ch | 0,90 (declarada) | 17px | 38ch | 1,44 (declarada) | 6,00× | 14 / 3 | 26 | **sim** |
+| `lxlcreative` | 102px | 9ch | 0,90 (declarada) | 17px | 38ch | 1,44 (declarada) | 6,00× | 14 / 3 | 30 | **sim** |
 | `white-desert` | 320px | 9ch | 0,90 (declarada) | 16px | 36ch | 1,25 (normal-medida) | 20,00× | 9 / 3 | 25 | não |
 
 ### 3.2 Peças rejeitadas pelo cliente — grupo de controle rotulado (n=10)
@@ -224,7 +224,7 @@ A escala mantém cinco degraus funcionais, reancorados nas medições diretas de
 - **Redução auditada de ALL CAPS:** A sonda C6 quantificou a queda de caixa alta na página inteira:
   - A 1440px: queda de **96 para 23 elementos** (**-76,0%**); volume de caracteres reduzido de **1.513 para 467** (**-69,1%**).
   - A 390px: queda de **89 para 23 elementos** (**-74,2%**); volume de caracteres reduzido de **1.419 para 467** (**-67,1%**).
-  - A versão anterior deste arquivo publicava bases de **55 elementos a 1440px** e **48 elementos a 390px**, subcontadas porque o revelador da página escondia 19 dos 25 blocos; os novos totais vêm de um passe com o revelador neutralizado.
+  - A versão anterior deste arquivo publicava bases de **96 elementos a 1440px** e **89 elementos a 390px**, subcontadas porque o revelador da página escondia 19 dos 25 blocos; os novos totais vêm de um passe com o revelador neutralizado.
 
 ---
 
@@ -236,17 +236,17 @@ O "depois" não é uma estimativa nem provém de arquivos de rascunho. Foi medid
 
 | variante / chave | viewport | maior título | razão (wh 13px) | ALL CAPS (nós) | altura | telas | maior texto na página (qualquer tag) | veredito do classificador |
 |---|---|---|---|---|---|---|---|---|
-| **`A-lp-atual@1440`** | 1440×900 | 46px | 3,54× | 55 | 8.374px | 9,3 | 232px (`div.footer-wordmark` @ 95,9%) | **REJEITADO** (46 < 89px; 3,54 < 5,57×) |
-| **`B-so-escala@1440`** | 1440×900 | **144px** | **11,08×** | 13 | 10.604px | 11,8 | 232px (`div.footer-wordmark` @ 96,7%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
-| **`C-escala-evento-curto@1440`** | 1440×900 | **144px** | **11,08×** | 13 | 10.169px | 11,3 | 232px (`div.footer-wordmark` @ 96,6%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
-| **`A-lp-atual@390`** | 390×844 | 27px | 2,08× | 48 | 11.078px | 13,1 | 73px (`div.footer-wordmark` @ 98,1%) | **REJEITADO** (27 < 89px; 2,08 < 5,57×) |
-| **`B-so-escala@390`** | 390×844 | **48px** | **3,69×** | 13 | 12.444px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
-| **`C-escala-evento-curto@390`** | 390×844 | **48px** | **3,69×** | 13 | 12.399px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
+| **`A-lp-atual@1440`** | 1440×900 | 46px | 3,54× | 96 | 8.374px | 9,3 | 232px (`div.footer-wordmark` @ 95,9%) | **REJEITADO** (46 < 89px; 3,54 < 5,57×) |
+| **`B-so-escala@1440`** | 1440×900 | **144px** | **11,08×** | 23 | 10.604px | 11,8 | 232px (`div.footer-wordmark` @ 96,7%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
+| **`C-escala-evento-curto@1440`** | 1440×900 | **144px** | **11,08×** | 23 | 10.169px | 11,3 | 232px (`div.footer-wordmark` @ 96,6%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
+| **`A-lp-atual@390`** | 390×844 | 27px | 2,08× | 89 | 11.078px | 13,1 | 73px (`div.footer-wordmark` @ 98,1%) | **REJEITADO** (27 < 89px; 2,08 < 5,57×) |
+| **`B-so-escala@390`** | 390×844 | **48px** | **3,69×** | 23 | 12.444px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
+| **`C-escala-evento-curto@390`** | 390×844 | **48px** | **3,69×** | 23 | 12.399px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
 
 ### 8.2 Análise dos achados
 
 1. **B e C são perfeitamente idênticas perante o classificador:** A troca de conteúdo do herói na variante C (substituir o texto do `h1` pelo nome curto em duas linhas e rebaixar a frase para subtítulo) **não contribui com um único pixel nem com qualquer fração de razão** para cruzar o corte (144px e 11,08× nas duas variantes a 1440px; 48px e 3,69× nas duas a 390px). O evento curto apenas diminui a altura em 435px no desktop e 45px no mobile. Como a alteração de copy não tem respaldo em necessidade métrica, trata-se de decisão puramente editorial, remetida ao Gate B/C.
-2. **A 390px a escala tem efeito sensível, porém insuficiente:** A versão reprovada afirmava erroneamente que a escala não surtia "nenhum efeito" a 390px. Os dados corrigidos mostram que ela eleva o título de 27px para 48px (+21px, +77,8%), eleva a razão de 2,08× para 3,69× e reduz ALL CAPS de 48 para 13 nós. No entanto, **48px permanece muito abaixo do limiar de 89px e 3,69× fica abaixo de 5,57×**. O piso do `clamp(3rem, 10vw, 9rem)` crava em 48px porque `10vw` a 390px equivale a 39px. O viewport móvel continua classificado do lado rejeitado, constituindo trabalho em aberto.
+2. **A 390px a escala tem efeito sensível, porém insuficiente:** A versão reprovada afirmava erroneamente que a escala não surtia "nenhum efeito" a 390px. Os dados corrigidos mostram que ela eleva o título de 27px para 48px (+21px, +77,8%), eleva a razão de 2,08× para 3,69× e reduz ALL CAPS de 89 para 23 nós. No entanto, **48px permanece muito abaixo do limiar de 89px e 3,69× fica abaixo de 5,57×**. O piso do `clamp(3rem, 10vw, 9rem)` crava em 48px porque `10vw` a 390px equivale a 39px. O viewport móvel continua classificado do lado rejeitado, constituindo trabalho em aberto.
 3. **Ponto cego do rodapé:** Nas três variantes a 1440px, o maior texto físico renderizado na página inteira é o `<div class="footer-wordmark">` com **232px**, localizado a cerca de 96% de profundidade de rolagem.
 
 ### 8.3 O CSS injetado na íntegra
