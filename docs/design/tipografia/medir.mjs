@@ -13,6 +13,7 @@
 // Opções:
 //     --so-local          mede apenas a lp-final.html e as variantes de escala
 //     --so-referencias    mede apenas os 18 sites externos
+//     --refs-moveis       mede as referencias nos tres viewports moveis
 //     --chrome <caminho>  Chrome alternativo
 //     --saida <arquivo>   padrão: docs/design/tipografia/medicoes.json
 //
@@ -415,19 +416,24 @@ const saida = {
 };
 
 const VP = alvos.viewportPadrao, viewportsDaLP = alvos.viewportsDaLP;
+const refsMoveis = flag('--refs-moveis');
+const viewportsDasReferencias = refsMoveis ? alvos.viewportsMoveisDasReferencias : [VP];
 
 if (!flag('--so-local')) {
   for (const a of alvos.referencias) {
     if (SO && a.id !== SO) continue;
-    process.stderr.write(`medindo ${a.id} ... `);
-    const r = await medirPagina(cdp, a.url, VP);
-    r.rotulo = a.rotulo; r.url = a.url;
-    saida.referencias[a.id] = r;
-    const d = r.data;
-    process.stderr.write(r.status === 'sucesso'
-      ? `${d.tamTitulos[0] ?? '?'}px  razao ${d.razaoTituloWorkhorse ?? '?'}` +
-        (d._legado.divergeDoCorrigido ? `  [legado dizia ${d._legado.tamTitulos_semFiltro[0]}px]` : '') + '\n'
-      : `FALHA: ${r.erro}\n`);
+    for (const vp of viewportsDasReferencias) {
+      const chave = refsMoveis ? `${a.id}@${vp.w}` : a.id;
+      process.stderr.write(`medindo ${chave} ... `);
+      const r = await medirPagina(cdp, a.url, vp);
+      r.rotulo = a.rotulo; r.url = a.url;
+      saida.referencias[chave] = r;
+      const d = r.data;
+      process.stderr.write(r.status === 'sucesso'
+        ? `${d.tamTitulos[0] ?? '?'}px  razao ${d.razaoTituloWorkhorse ?? '?'}` +
+          (d._legado.divergeDoCorrigido ? `  [legado dizia ${d._legado.tamTitulos_semFiltro[0]}px]` : '') + '\n'
+        : `FALHA: ${r.erro}\n`);
+    }
   }
 }
 
