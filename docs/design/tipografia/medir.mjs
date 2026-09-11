@@ -414,7 +414,7 @@ const saida = {
   variantesDaLP: {}
 };
 
-const VP = alvos.viewportPadrao, VM = alvos.viewportMovel;
+const VP = alvos.viewportPadrao, viewportsDaLP = alvos.viewportsDaLP;
 
 if (!flag('--so-local')) {
   for (const a of alvos.referencias) {
@@ -438,7 +438,7 @@ if (!flag('--so-referencias')) {
     { id: 'B-so-escala',           css: CSS_ESCALA,  js: null },
     { id: 'C-escala-evento-curto', css: CSS_ESCALA,  js: JS_EVENTO_CURTO }
   ];
-  for (const vp of [VP, VM]) {
+  for (const vp of viewportsDaLP) {
     for (const v of variantes) {
       const chave = `${v.id}@${vp.w}`;
       process.stderr.write(`medindo ${chave} ... `);

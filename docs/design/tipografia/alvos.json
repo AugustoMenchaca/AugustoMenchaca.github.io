@@ -1,7 +1,13 @@
 {
-  "_nota": "Lista versionada dos alvos da issue #36. Editar aqui, nao no driver.",
+  "_nota": "Lista versionada dos alvos da issue #36. Editar aqui, nao no driver. viewportsDaLP serve as variantes da LP; as referencias continuam medidas so no viewportPadrao.",
   "viewportPadrao": { "w": 1440, "h": 900, "dpr": 1 },
-  "viewportMovel":  { "w": 390,  "h": 844, "dpr": 2 },
+  "viewportsDaLP": [
+    { "w": 320,  "h": 568,  "dpr": 2 },
+    { "w": 390,  "h": 844,  "dpr": 2 },
+    { "w": 768,  "h": 1024, "dpr": 2 },
+    { "w": 1024, "h": 768,  "dpr": 1 },
+    { "w": 1440, "h": 900,  "dpr": 1 }
+  ],
   "referencias": [
     { "id": "aelixa",          "url": "https://aelixa.webflow.io",           "rotulo": "aprovado" },
     { "id": "illoca",          "url": "https://illoca.unseen.co",            "rotulo": "aprovado" },
