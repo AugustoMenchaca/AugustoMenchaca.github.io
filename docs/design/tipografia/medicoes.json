@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "gerado": "2026-09-08T02:14:15.248Z",
+    "gerado": "2026-09-10T17:46:17.112Z",
     "comando": "node docs/design/tipografia/medir.mjs --headed",
     "comandoOficial": "node docs/design/tipografia/medir.mjs --headed",
     "modo": "headed",
@@ -8,6 +8,7 @@
     "sonda": "docs/design/tipografia/sonda-tipografia.mjs",
     "alvos": "docs/design/tipografia/alvos.json",
     "nota": "Nao ha arquivo de prototipo. O \"depois\" da escala e medido por injecao de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-015.",
+    "notaCaixaAlta": "caixaAlta.semNeutralizar NAO e numero citavel: e a contagem sem neutralizar o revelador, ou seja, a propria grandeza nao deterministica que a issue #46 conserta, e varia entre rodadas. Existe so para dimensionar quanto o revelador escondia. O numero valido e caixaAlta.elementos, medido no passe neutralizado.",
     "total": 24,
     "sucessos": 24,
     "falhas": []
@@ -15,7 +16,7 @@
   "referencias": {
     "aelixa": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:14:30.403Z",
+      "dataHora": "2026-09-10T17:46:30.942Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 17502,
@@ -411,7 +412,10 @@
         "caixaAlta": {
           "elementos": 19,
           "caracteresTotais": 357,
-          "caracteresPor1000px": 20.4
+          "caracteresPor1000px": 20.4,
+          "semNeutralizar": 19,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -516,7 +520,7 @@
     },
     "illoca": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:14:43.760Z",
+      "dataHora": "2026-09-10T17:46:43.316Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -809,7 +813,10 @@
         "caixaAlta": {
           "elementos": 2,
           "caracteresTotais": 11,
-          "caracteresPor1000px": 12.22
+          "caracteresPor1000px": 12.22,
+          "semNeutralizar": 2,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -910,16 +917,16 @@
     },
     "paulkalkbrenner": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:15:03.935Z",
+      "dataHora": "2026-09-10T17:47:00.915Z",
       "viewport": "1440x900x1",
       "rolagem": {
-        "altura": 10711,
+        "altura": 10709,
         "imgs": 83,
-        "carregadas": 66
+        "carregadas": 67
       },
       "data": {
         "url": "https://www.paulkalkbrenner.net/",
-        "altura": 10711,
+        "altura": 10709,
         "fontes": {
           "status": "loaded",
           "carregadas": 2
@@ -1031,7 +1038,7 @@
         ],
         "workhorse": {
           "px": 12,
-          "ocorrencias": 24
+          "ocorrencias": 23
         },
         "razaoTituloWorkhorse": 12.5,
         "titulosDetalhes": [
@@ -1213,12 +1220,15 @@
         "caixaAlta": {
           "elementos": 183,
           "caracteresTotais": 798,
-          "caracteresPor1000px": 74.5
+          "caracteresPor1000px": 74.52,
+          "semNeutralizar": 183,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
             "familia": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
-            "contagem": 57
+            "contagem": 56
           }
         ],
         "maiorTextoRenderizado": {
@@ -1298,7 +1308,7 @@
     },
     "lxlcreative": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:15:24.740Z",
+      "dataHora": "2026-09-10T17:47:19.585Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 15323,
@@ -1667,9 +1677,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 26,
-          "caracteresTotais": 656,
-          "caracteresPor1000px": 42.81
+          "elementos": 30,
+          "caracteresTotais": 1159,
+          "caracteresPor1000px": 75.64,
+          "semNeutralizar": 26,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -1777,7 +1790,7 @@
     },
     "white-desert": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:15:41.129Z",
+      "dataHora": "2026-09-10T17:47:35.808Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 20787,
@@ -2168,7 +2181,10 @@
         "caixaAlta": {
           "elementos": 25,
           "caracteresTotais": 509,
-          "caracteresPor1000px": 24.49
+          "caracteresPor1000px": 24.49,
+          "semNeutralizar": 25,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -2280,12 +2296,12 @@
     },
     "charityshot": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:15:51.416Z",
+      "dataHora": "2026-09-10T17:47:46.650Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
         "imgs": 73,
-        "carregadas": 44
+        "carregadas": 46
       },
       "data": {
         "url": "https://charityshot.co.uk/",
@@ -2426,7 +2442,10 @@
         "caixaAlta": {
           "elementos": 6,
           "caracteresTotais": 41,
-          "caracteresPor1000px": 45.56
+          "caracteresPor1000px": 45.56,
+          "semNeutralizar": 6,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -2496,16 +2515,16 @@
     },
     "obspogon": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:16:06.571Z",
+      "dataHora": "2026-09-10T17:48:03.196Z",
       "viewport": "1440x900x1",
       "rolagem": {
-        "altura": 2986,
-        "imgs": 32,
-        "carregadas": 30
+        "altura": 3061,
+        "imgs": 33,
+        "carregadas": 31
       },
       "data": {
         "url": "https://obspogon.neocities.org/",
-        "altura": 2986,
+        "altura": 3061,
         "fontes": {
           "status": "loaded",
           "carregadas": 24
@@ -2515,17 +2534,17 @@
           "h": 900,
           "dpr": 1
         },
-        "telas": 3.3,
-        "telas_base900_legado": 3.3,
-        "metricaV2_hsvS015": 0.9,
-        "corPerceptivel_C005": 0.9,
-        "corForte_C012": 0.8,
-        "cromaMedioPonderado": 0.002,
+        "telas": 3.4,
+        "telas_base900_legado": 3.4,
+        "metricaV2_hsvS015": 1.7,
+        "corPerceptivel_C005": 1.7,
+        "corForte_C012": 0.7,
+        "cromaMedioPonderado": 0.003,
         "cromaPicoOklch": 0.177,
         "fundos": [
           {
             "cor": "rgb(0,0,0)",
-            "pct": 97.3,
+            "pct": 96.6,
             "L": 0,
             "C": 0,
             "H": 0
@@ -2538,8 +2557,15 @@
             "H": 102
           },
           {
-            "cor": "rgb(0,128,0)",
+            "cor": "rgb(121,190,242)",
             "pct": 0.8,
+            "L": 0.78,
+            "C": 0.102,
+            "H": 242
+          },
+          {
+            "cor": "rgb(0,128,0)",
+            "pct": 0.7,
             "L": 0.52,
             "C": 0.177,
             "H": 142
@@ -2553,12 +2579,12 @@
           }
         ],
         "midia": {
-          "img": 32,
+          "img": 33,
           "svg": 0,
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 10.72,
+        "midiaTotalPor1000": 10.78,
         "keyframes": 7,
         "nomes": [
           "fa-beat",
@@ -2569,10 +2595,10 @@
           "fa-shake",
           "fa-spin"
         ],
-        "keyframesPor1000": 2.34,
-        "folhasBloqueadas": 0,
+        "keyframesPor1000": 2.29,
+        "folhasBloqueadas": 1,
         "emTransicao": 72,
-        "emTransicaoPor1000": 24.11,
+        "emTransicaoPor1000": 23.52,
         "animacoesAtivas": 2,
         "duracoes": [
           [
@@ -2585,7 +2611,7 @@
         ],
         "workhorse": {
           "px": 16,
-          "ocorrencias": 15
+          "ocorrencias": 16
         },
         "razaoTituloWorkhorse": 2,
         "titulosDetalhes": [
@@ -2634,7 +2660,7 @@
           ],
           "workhorse_semFiltro": {
             "px": 16,
-            "ocorrencias": 15
+            "ocorrencias": 16
           },
           "razao_semFiltro": 2,
           "divergeDoCorrigido": false
@@ -2646,7 +2672,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -2655,6 +2684,10 @@
           },
           {
             "familia": "monospace",
+            "contagem": 1
+          },
+          {
+            "familia": "\"Open Sans\", sans-serif",
             "contagem": 1
           }
         ],
@@ -2671,7 +2704,7 @@
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 2.4
+          "profundidadeDeRolagem": 2.3
         },
         "pontoCego": false,
         "diferencaPx": 0,
@@ -2720,7 +2753,7 @@
     },
     "paulfragara": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:16:16.894Z",
+      "dataHora": "2026-09-10T17:48:13.682Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1431,
@@ -2905,7 +2938,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -2992,7 +3028,7 @@
     },
     "lowmess": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:16:27.004Z",
+      "dataHora": "2026-09-10T17:48:24.814Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1234,
@@ -3179,7 +3215,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -3263,16 +3302,16 @@
     },
     "simonbetton": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:16:38.906Z",
+      "dataHora": "2026-09-10T17:48:37.357Z",
       "viewport": "1440x900x1",
       "rolagem": {
-        "altura": 9277,
+        "altura": 9298,
         "imgs": 14,
         "carregadas": 5
       },
       "data": {
         "url": "https://www.simonbetton.com/",
-        "altura": 9277,
+        "altura": 9298,
         "fontes": {
           "status": "loaded",
           "carregadas": 4
@@ -3300,28 +3339,32 @@
         ],
         "midia": {
           "img": 14,
-          "svg": 20,
+          "svg": 23,
           "video": 0,
           "canvas": 1
         },
-        "midiaTotalPor1000": 3.77,
-        "keyframes": 10,
+        "midiaTotalPor1000": 4.09,
+        "keyframes": 14,
         "nomes": [
+          "aui-pulse",
           "work-card-parallax",
           "spin",
           "pulse",
           "enter",
           "exit",
+          "collapsible-down",
+          "collapsible-up",
+          "tw-shimmer",
           "profile-bounce",
           "profile-fade",
           "mobile-profile-tab-nav-enter",
           "route-content-out",
           "route-content-in"
         ],
-        "keyframesPor1000": 1.08,
+        "keyframesPor1000": 1.51,
         "folhasBloqueadas": 0,
-        "emTransicao": 90,
-        "emTransicaoPor1000": 9.7,
+        "emTransicao": 96,
+        "emTransicaoPor1000": 10.32,
         "animacoesAtivas": 15,
         "duracoes": [
           [
@@ -3338,7 +3381,7 @@
           ],
           [
             "0.15s",
-            8
+            9
           ],
           [
             "0.1s",
@@ -3346,14 +3389,14 @@
           ],
           [
             "0.2s",
+            4
+          ],
+          [
+            "0.125s",
             2
           ],
           [
             "0.3s",
-            1
-          ],
-          [
-            "0.225s",
             1
           ]
         ],
@@ -3517,7 +3560,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -3538,7 +3584,7 @@
           "fontWeight": "500",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 1.6
+          "profundidadeDeRolagem": 1.5
         },
         "pontoCego": false,
         "diferencaPx": 0,
@@ -3602,7 +3648,7 @@
     },
     "nextfive": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:16:50.309Z",
+      "dataHora": "2026-09-10T17:48:49.088Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2915,
@@ -3840,7 +3886,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -3929,7 +3978,7 @@
     },
     "incomescrane": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:17:01.882Z",
+      "dataHora": "2026-09-10T17:49:00.689Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 4056,
@@ -4077,7 +4126,10 @@
         "caixaAlta": {
           "elementos": 4,
           "caracteresTotais": 25,
-          "caracteresPor1000px": 6.16
+          "caracteresPor1000px": 6.16,
+          "semNeutralizar": 4,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -4147,7 +4199,7 @@
     },
     "shelomoh": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:17:13.368Z",
+      "dataHora": "2026-09-10T17:49:12.389Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2364,
@@ -4329,7 +4381,10 @@
         "caixaAlta": {
           "elementos": 34,
           "caracteresTotais": 563,
-          "caracteresPor1000px": 238.16
+          "caracteresPor1000px": 238.16,
+          "semNeutralizar": 34,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -4404,7 +4459,7 @@
     },
     "thatmlopsguy": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:17:23.822Z",
+      "dataHora": "2026-09-10T17:49:23.215Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3602,
@@ -4680,7 +4735,10 @@
         "caixaAlta": {
           "elementos": 8,
           "caracteresTotais": 92,
-          "caracteresPor1000px": 25.54
+          "caracteresPor1000px": 25.54,
+          "semNeutralizar": 8,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -4770,7 +4828,7 @@
     },
     "cassidoo": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:17:34.280Z",
+      "dataHora": "2026-09-10T17:49:37.234Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1654,
@@ -4947,7 +5005,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -5027,7 +5088,7 @@
     },
     "ciere": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:17:45.640Z",
+      "dataHora": "2026-09-10T17:49:48.589Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 6297,
@@ -5345,7 +5406,10 @@
         "caixaAlta": {
           "elementos": 13,
           "caracteresTotais": 259,
-          "caracteresPor1000px": 41.13
+          "caracteresPor1000px": 41.13,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -5452,7 +5516,7 @@
     },
     "idf-br": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:17:56.217Z",
+      "dataHora": "2026-09-10T17:49:59.337Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 929,
@@ -5660,7 +5724,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -5735,7 +5802,7 @@
     },
     "dvo": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:18:06.197Z",
+      "dataHora": "2026-09-10T17:50:09.584Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -5897,7 +5964,10 @@
         "caixaAlta": {
           "elementos": 0,
           "caracteresTotais": 0,
-          "caracteresPor1000px": 0
+          "caracteresPor1000px": 0,
+          "semNeutralizar": 0,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -5974,7 +6044,7 @@
   "variantesDaLP": {
     "A-lp-atual@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:18:17.700Z",
+      "dataHora": "2026-09-10T17:50:21.166Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 8374,
@@ -5982,7 +6052,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
         "altura": 8374,
         "fontes": {
           "status": "loaded",
@@ -6216,9 +6286,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 55,
-          "caracteresTotais": 854,
-          "caracteresPor1000px": 101.98
+          "elementos": 96,
+          "caracteresTotais": 1513,
+          "caracteresPor1000px": 180.68,
+          "semNeutralizar": 55,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -6302,11 +6375,11 @@
         }
       ],
       "variante": "A-lp-atual",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
     },
     "B-so-escala@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:18:29.888Z",
+      "dataHora": "2026-09-10T17:50:33.521Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10604,
@@ -6314,7 +6387,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
         "altura": 10604,
         "fontes": {
           "status": "loaded",
@@ -6548,9 +6621,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 13,
-          "caracteresTotais": 226,
-          "caracteresPor1000px": 21.31
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 44.04,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -6634,11 +6710,11 @@
         }
       ],
       "variante": "B-so-escala",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
     },
     "C-escala-evento-curto@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:18:41.972Z",
+      "dataHora": "2026-09-10T17:50:45.826Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10169,
@@ -6646,7 +6722,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
         "altura": 10169,
         "fontes": {
           "status": "loaded",
@@ -6880,9 +6956,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 13,
-          "caracteresTotais": 226,
-          "caracteresPor1000px": 22.22
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 45.92,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -6966,11 +7045,11 @@
         }
       ],
       "variante": "C-escala-evento-curto",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
     },
     "A-lp-atual@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:18:53.587Z",
+      "dataHora": "2026-09-10T17:50:57.551Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 11078,
@@ -6978,7 +7057,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
         "altura": 11078,
         "fontes": {
           "status": "loaded",
@@ -7212,9 +7291,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 48,
-          "caracteresTotais": 760,
-          "caracteresPor1000px": 68.6
+          "elementos": 89,
+          "caracteresTotais": 1419,
+          "caracteresPor1000px": 128.09,
+          "semNeutralizar": 48,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -7298,11 +7380,11 @@
         }
       ],
       "variante": "A-lp-atual",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
     },
     "B-so-escala@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:19:05.918Z",
+      "dataHora": "2026-09-10T17:51:09.794Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 12444,
@@ -7310,7 +7392,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
         "altura": 12444,
         "fontes": {
           "status": "loaded",
@@ -7544,9 +7626,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 13,
-          "caracteresTotais": 226,
-          "caracteresPor1000px": 18.16
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 37.53,
+          "semNeutralizar": 11,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -7630,11 +7715,11 @@
         }
       ],
       "variante": "B-so-escala",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
     },
     "C-escala-evento-curto@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-08T02:19:18.368Z",
+      "dataHora": "2026-09-10T17:51:22.094Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 12399,
@@ -7642,7 +7727,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
         "altura": 12399,
         "fontes": {
           "status": "loaded",
@@ -7876,9 +7961,12 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 13,
-          "caracteresTotais": 226,
-          "caracteresPor1000px": 18.23
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 37.66,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
         },
         "familiasUsadas": [
           {
@@ -7962,7 +8050,7 @@
         }
       ],
       "variante": "C-escala-evento-curto",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-tipografia-o-eixo-que-classifica-15-15/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
     }
   }
 }

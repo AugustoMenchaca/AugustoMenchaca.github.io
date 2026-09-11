@@ -17,6 +17,8 @@ O `REFERENCE-BOARD-v3` §12 submeteu dez variáveis formais a um teste com **15 
 
 A `wireframes/lp-final.html` original mede **46px** no maior título e razão **3,54×** (com workhorse medido de 13px), classificando-se inequivocamente do lado **rejeitado** nas duas variáveis.
 
+O `REFERENCE-BOARD-v3.md` registra **3,29×** para a mesma página porque usa um workhorse de **14px**; os **3,54×** deste documento usam os **13px** medidos, portanto ambos os resultados estão corretos sob suas respectivas réguas.
+
 Esta issue tem três encargos:
 1. **Validar a sobrevivência dos cortes** após o conserto de três defeitos graves no instrumento de medição;
 2. **Decidir formalmente entre dominância assimétrica e uniformidade**, calculando o custo dessa escolha em altura de página;
@@ -92,7 +94,7 @@ Todas as grandezas desta seção foram extraídas de `medicoes.json` (`referenci
 | `aelixa` | 240px | 6ch | 1,00 (declarada) | 18px | 83ch | 1,50 (declarada) | 13,33× | 7 / 1 | 19 | não |
 | `illoca` | 111px | 14ch | 0,90 (declarada) | 12px | 31ch | 1,00 (declarada) | 9,25× | 121 / 22 | 2 | não |
 | `paulkalkbrenner` | 150px | 13ch | 0,80 (declarada) | 12px | 19ch | 1,00 (declarada) | 12,50× | 51 / 8 | 183 | não |
-| `lxlcreative` | 102px | 9ch | 0,90 (declarada) | 17px | 38ch | 1,44 (declarada) | 6,00× | 14 / 3 | 26 | **sim** |
+| `lxlcreative` | 102px | 9ch | 0,90 (declarada) | 17px | 38ch | 1,44 (declarada) | 6,00× | 14 / 3 | 30 | **sim** |
 | `white-desert` | 320px | 9ch | 0,90 (declarada) | 16px | 36ch | 1,25 (normal-medida) | 20,00× | 9 / 3 | 25 | não |
 
 ### 3.2 Peças rejeitadas pelo cliente — grupo de controle rotulado (n=10)
@@ -220,8 +222,9 @@ A escala mantém cinco degraus funcionais, reancorados nas medições diretas de
 - **Famílias tipográficas:** Preservadas sem alteração — *Instrument Sans*, *Inter* e *IBM Plex Mono*.
 - **Veto de pesos extremos:** Pesos 800 e 900 permanecem **terminantemente proibidos**. Teto tipográfico fixado em peso 700 (*Bold*).
 - **Redução auditada de ALL CAPS:** A sonda C6 quantificou a queda de caixa alta na página inteira:
-  - A 1440px: queda de **55 para 13 elementos** (redução de 42 elementos, ou **-76,4%**; volume de caracteres reduzido de 854 para 226, **-73,5%**).
-  - A 390px: queda de **48 para 13 elementos** (de 760 para 226 caracteres, **-70,3%**).
+  - A 1440px: queda de **96 para 23 elementos** (**-76,0%**); volume de caracteres reduzido de **1.513 para 467** (**-69,1%**).
+  - A 390px: queda de **89 para 23 elementos** (**-74,2%**); volume de caracteres reduzido de **1.419 para 467** (**-67,1%**).
+  - A versão anterior deste arquivo publicava bases de **55 elementos a 1440px** e **48 elementos a 390px**, subcontadas porque o revelador da página escondia 19 dos 25 blocos; os novos totais vêm de um passe com o revelador neutralizado.
 
 ---
 
@@ -233,17 +236,17 @@ O "depois" não é uma estimativa nem provém de arquivos de rascunho. Foi medid
 
 | variante / chave | viewport | maior título | razão (wh 13px) | ALL CAPS (nós) | altura | telas | maior texto na página (qualquer tag) | veredito do classificador |
 |---|---|---|---|---|---|---|---|---|
-| **`A-lp-atual@1440`** | 1440×900 | 46px | 3,54× | 55 | 8.374px | 9,3 | 232px (`div.footer-wordmark` @ 95,9%) | **REJEITADO** (46 < 89px; 3,54 < 5,57×) |
-| **`B-so-escala@1440`** | 1440×900 | **144px** | **11,08×** | 13 | 10.604px | 11,8 | 232px (`div.footer-wordmark` @ 96,7%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
-| **`C-escala-evento-curto@1440`** | 1440×900 | **144px** | **11,08×** | 13 | 10.169px | 11,3 | 232px (`div.footer-wordmark` @ 96,6%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
-| **`A-lp-atual@390`** | 390×844 | 27px | 2,08× | 48 | 11.078px | 13,1 | 73px (`div.footer-wordmark` @ 98,1%) | **REJEITADO** (27 < 89px; 2,08 < 5,57×) |
-| **`B-so-escala@390`** | 390×844 | **48px** | **3,69×** | 13 | 12.444px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
-| **`C-escala-evento-curto@390`** | 390×844 | **48px** | **3,69×** | 13 | 12.399px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
+| **`A-lp-atual@1440`** | 1440×900 | 46px | 3,54× | 96 | 8.374px | 9,3 | 232px (`div.footer-wordmark` @ 95,9%) | **REJEITADO** (46 < 89px; 3,54 < 5,57×) |
+| **`B-so-escala@1440`** | 1440×900 | **144px** | **11,08×** | 23 | 10.604px | 11,8 | 232px (`div.footer-wordmark` @ 96,7%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
+| **`C-escala-evento-curto@1440`** | 1440×900 | **144px** | **11,08×** | 23 | 10.169px | 11,3 | 232px (`div.footer-wordmark` @ 96,6%) | **APROVADO** (144 ≥ 89px; 11,08 ≥ 5,57×) |
+| **`A-lp-atual@390`** | 390×844 | 27px | 2,08× | 89 | 11.078px | 13,1 | 73px (`div.footer-wordmark` @ 98,1%) | **REJEITADO** (27 < 89px; 2,08 < 5,57×) |
+| **`B-so-escala@390`** | 390×844 | **48px** | **3,69×** | 23 | 12.444px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
+| **`C-escala-evento-curto@390`** | 390×844 | **48px** | **3,69×** | 23 | 12.399px | 14,7 | 73px (`div.footer-wordmark` @ 98,3%) | **REJEITADO** (48 < 89px; 3,69 < 5,57×) |
 
 ### 8.2 Análise dos achados
 
 1. **B e C são perfeitamente idênticas perante o classificador:** A troca de conteúdo do herói na variante C (substituir o texto do `h1` pelo nome curto em duas linhas e rebaixar a frase para subtítulo) **não contribui com um único pixel nem com qualquer fração de razão** para cruzar o corte (144px e 11,08× nas duas variantes a 1440px; 48px e 3,69× nas duas a 390px). O evento curto apenas diminui a altura em 435px no desktop e 45px no mobile. Como a alteração de copy não tem respaldo em necessidade métrica, trata-se de decisão puramente editorial, remetida ao Gate B/C.
-2. **A 390px a escala tem efeito sensível, porém insuficiente:** A versão reprovada afirmava erroneamente que a escala não surtia "nenhum efeito" a 390px. Os dados corrigidos mostram que ela eleva o título de 27px para 48px (+21px, +77,8%), eleva a razão de 2,08× para 3,69× e reduz ALL CAPS de 48 para 13 nós. No entanto, **48px permanece muito abaixo do limiar de 89px e 3,69× fica abaixo de 5,57×**. O piso do `clamp(3rem, 10vw, 9rem)` crava em 48px porque `10vw` a 390px equivale a 39px. O viewport móvel continua classificado do lado rejeitado, constituindo trabalho em aberto.
+2. **A 390px a escala tem efeito sensível, porém insuficiente:** A versão reprovada afirmava erroneamente que a escala não surtia "nenhum efeito" a 390px. Os dados corrigidos mostram que ela eleva o título de 27px para 48px (+21px, +77,8%), eleva a razão de 2,08× para 3,69× e reduz ALL CAPS de 89 para 23 nós. No entanto, **48px permanece muito abaixo do limiar de 89px e 3,69× fica abaixo de 5,57×**. O piso do `clamp(3rem, 10vw, 9rem)` crava em 48px porque `10vw` a 390px equivale a 39px. O viewport móvel continua classificado do lado rejeitado, constituindo trabalho em aberto.
 3. **Ponto cego do rodapé:** Nas três variantes a 1440px, o maior texto físico renderizado na página inteira é o `<div class="footer-wordmark">` com **232px**, localizado a cerca de 96% de profundidade de rolagem.
 
 ### 8.3 O CSS injetado na íntegra
@@ -282,6 +285,8 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 ### 9.1 Limites operacionais do instrumento
 
 - **Inviabilidade de medição headless para páginas animadas:** Ficou comprovado que o Chromium em modo headless desativa pipelines essenciais de renderização quando interage com bibliotecas de scroll e WebGL, congelando animações em opacidade zero (`illoca.unseen.co`). A execução em janela real (`--headed`) com janelas temporais espaçadas é mandatória para a reprodutibilidade dos dados.
+- **Caixa alta exige o revelador neutralizado:** A varredura de 700px com pausa de 90ms revela 6 dos 25 blocos `[data-reveal]`; sem neutralizar, a contagem depende de qual bloco a corrida alcançou. O passe neutralizado mede o estado assentado da página, correspondente a “caixa alta na página inteira”. A origem é reproduzível com `SONDA_DIAG=1 node docs/design/tipografia/medir.mjs --so-local --headed`, que imprime `dataReveal` e `revealed` por amostra.
+- **Altura não determinística da Variante A em desktop:** Duas execuções do comando gravado em `_meta.comando` devolveram **8.350px** e **8.374px** para `A-lp-atual@1440`. A oscilação não está resolvida nesta issue; por isso, o custo de altura publicado no §8 (**+2.230px, +26,6%**) carrega incerteza de **±24px** na base.
 - **O wordmark de rodapé não substitui a hierarquia:** O `<div class="footer-wordmark">` de 232px da LP localiza-se a 95,9% de rolagem. O `aelixa.webflow.io` (aprovado) possui idêntica estrutura: um elemento de **240px a 97,8%** de profundidade. A presença de uma palavra gigante no encerramento da página aparece nos dois lados do espectro e **não separa aprovação de rejeição**. O que separa os grupos é a escala que governa os títulos de conteúdo ativo (102–320px vs 20–76px).
 
 ### 9.2 O que continua estritamente não medido
@@ -301,7 +306,7 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 1. Adoção da **dominância assimétrica** sobre a uniformidade, única rota que satisfaz os limiares de 89px e 5,57×;
 2. Estabelecimento da escala de cinco degraus (**144 / 72 / 32 / 16 / 12px**), ancorando cada valor em precedentes aprovados de `medicoes.json`;
 3. Serifa no display descartada como requisito obrigatório (apenas 1 de 5 aprovadas utiliza serifa no maior título);
-4. Redução auditada de ALL CAPS na página inteira (-76,4% a 1440px e -70,3% a 390px);
+4. Redução auditada de ALL CAPS na página inteira: elementos **-76,0% a 1440px** e **-74,2% a 390px**; caracteres **-69,1% a 1440px** e **-67,1% a 390px**;
 5. Extinção definitiva de arquivos de protótipo de escala (`escala-proposta-*`), adotando-se a injeção em tempo de medição como metodologia de aferição.
 
 **QUESTÕES ABERTAS:**
