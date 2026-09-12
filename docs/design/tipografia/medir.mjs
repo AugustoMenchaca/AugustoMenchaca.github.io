@@ -365,7 +365,8 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
       for (const [i, a] of amostras.entries()) {
         const g = a._diag || {};
         console.error(`    DIAG a${i}: caps=${a.caixaAlta?.nos?.length} reduce=${g.reduce}`
-          + ` dataReveal=${g.dataReveal} will=${g.willReveal} revealed=${g.isRevealed}`);
+          + ` dataReveal=${g.dataReveal} will=${g.willReveal} revealed=${g.isRevealed}`
+          + ` altura=${a.altura}`);
       }
     }
     const dados = unirAmostras(amostras, amostraCaps);
