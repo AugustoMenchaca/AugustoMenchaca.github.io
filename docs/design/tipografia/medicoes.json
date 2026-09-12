@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "gerado": "2026-09-11T01:01:44.682Z",
+    "gerado": "2026-09-11T03:03:40.453Z",
     "comando": "node docs/design/tipografia/medir.mjs --headed",
     "comandoOficial": "node docs/design/tipografia/medir.mjs --headed",
     "modo": "headed",
@@ -16,12 +16,12 @@
   "referencias": {
     "aelixa": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:01:58.279Z",
+      "dataHora": "2026-09-11T03:03:55.244Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 17502,
         "imgs": 81,
-        "carregadas": 57
+        "carregadas": 58
       },
       "data": {
         "url": "https://aelixa.webflow.io/",
@@ -520,7 +520,7 @@
     },
     "illoca": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:02:09.897Z",
+      "dataHora": "2026-09-11T03:04:08.193Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -917,12 +917,12 @@
     },
     "paulkalkbrenner": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:02:29.794Z",
+      "dataHora": "2026-09-11T03:04:31.484Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10709,
         "imgs": 83,
-        "carregadas": 67
+        "carregadas": 66
       },
       "data": {
         "url": "https://www.paulkalkbrenner.net/",
@@ -1190,7 +1190,32 @@
         },
         "descartes": {
           "titulos": [],
-          "porRecorte": []
+          "porRecorte": [
+            {
+              "px": 641,
+              "tag": "span",
+              "fracaoContida": 0.05,
+              "texto": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+            },
+            {
+              "px": 641,
+              "tag": "span",
+              "fracaoContida": 0.05,
+              "texto": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+            },
+            {
+              "px": 641,
+              "tag": "span",
+              "fracaoContida": 0.05,
+              "texto": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+            },
+            {
+              "px": 641,
+              "tag": "span",
+              "fracaoContida": 0.05,
+              "texto": "0\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4\n5\n6\n7\n8\n9"
+            }
+          ]
         },
         "caixaAlta": {
           "elementos": 183,
@@ -1207,22 +1232,22 @@
           }
         ],
         "maiorTextoRenderizado": {
-          "px": 641,
+          "px": 150,
           "tag": "span",
-          "className": "",
-          "caracteres": 1,
+          "className": "h-d__span",
+          "caracteres": 4,
           "palavras": 1,
           "fontFamily": "\"ABC Diatype Plus Variable\", Arial, sans-serif",
           "familiaEfetiva": "ABC Diatype Plus Variable",
           "familiaVerificada": true,
           "serifa": false,
-          "fontWeight": "400",
+          "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 83.1
+          "profundidadeDeRolagem": 3.4
         },
-        "pontoCego": true,
-        "diferencaPx": 491,
+        "pontoCego": false,
+        "diferencaPx": 0,
         "_amostras": 5,
         "_instavel": false
       },
@@ -1275,7 +1300,7 @@
             18,
             11
           ],
-          "maiorTexto": 641
+          "maiorTexto": 150
         }
       ],
       "rotulo": "aprovado",
@@ -1283,7 +1308,7 @@
     },
     "lxlcreative": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:02:46.807Z",
+      "dataHora": "2026-09-11T03:04:53.979Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 15323,
@@ -1765,7 +1790,7 @@
     },
     "white-desert": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:03:01.949Z",
+      "dataHora": "2026-09-11T03:05:10.676Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 20787,
@@ -2271,7 +2296,7 @@
     },
     "charityshot": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:03:12.060Z",
+      "dataHora": "2026-09-11T03:05:20.922Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -2490,7 +2515,7 @@
     },
     "obspogon": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:03:28.317Z",
+      "dataHora": "2026-09-11T03:05:37.486Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3061,
@@ -2728,7 +2753,7 @@
     },
     "paulfragara": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:03:39.527Z",
+      "dataHora": "2026-09-11T03:05:48.049Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1431,
@@ -3003,7 +3028,7 @@
     },
     "lowmess": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:03:50.681Z",
+      "dataHora": "2026-09-11T03:05:58.443Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1234,
@@ -3277,12 +3302,12 @@
     },
     "simonbetton": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:04:03.794Z",
+      "dataHora": "2026-09-11T03:06:11.601Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 9298,
         "imgs": 14,
-        "carregadas": 6
+        "carregadas": 5
       },
       "data": {
         "url": "https://www.simonbetton.com/",
@@ -3623,7 +3648,7 @@
     },
     "nextfive": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:04:15.562Z",
+      "dataHora": "2026-09-11T03:06:24.045Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2915,
@@ -3953,7 +3978,7 @@
     },
     "incomescrane": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:04:27.237Z",
+      "dataHora": "2026-09-11T03:06:35.982Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 4056,
@@ -4174,7 +4199,7 @@
     },
     "shelomoh": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:04:38.446Z",
+      "dataHora": "2026-09-11T03:06:47.609Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2364,
@@ -4434,7 +4459,7 @@
     },
     "thatmlopsguy": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:04:49.188Z",
+      "dataHora": "2026-09-11T03:06:58.762Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3602,
@@ -4803,7 +4828,7 @@
     },
     "cassidoo": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:05:00.123Z",
+      "dataHora": "2026-09-11T03:07:09.602Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1654,
@@ -5063,7 +5088,7 @@
     },
     "ciere": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:05:11.358Z",
+      "dataHora": "2026-09-11T03:07:21.462Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 6297,
@@ -5491,7 +5516,7 @@
     },
     "idf-br": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:05:22.039Z",
+      "dataHora": "2026-09-11T03:07:32.584Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 929,
@@ -5777,7 +5802,7 @@
     },
     "dvo": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:05:32.747Z",
+      "dataHora": "2026-09-11T03:07:43.093Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -6019,7 +6044,7 @@
   "variantesDaLP": {
     "A-lp-atual@320": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:05:44.717Z",
+      "dataHora": "2026-09-11T03:07:55.540Z",
       "viewport": "320x568x2",
       "rolagem": {
         "altura": 11644,
@@ -6354,16 +6379,16 @@
     },
     "B-so-escala@320": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:05:57.170Z",
+      "dataHora": "2026-09-11T03:08:08.405Z",
       "viewport": "320x568x2",
       "rolagem": {
-        "altura": 13484,
+        "altura": 13519,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 13484,
+        "altura": 13519,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -6373,7 +6398,7 @@
           "h": 568,
           "dpr": 2
         },
-        "telas": 23.7,
+        "telas": 23.8,
         "telas_base900_legado": 15,
         "metricaV2_hsvS015": 0.9,
         "corPerceptivel_C005": 0.9,
@@ -6390,7 +6415,7 @@
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 16.7,
+            "pct": 16.6,
             "L": 0.92,
             "C": 0.014,
             "H": 85
@@ -6440,7 +6465,7 @@
         "keyframesPor1000": 0.22,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 5.56,
+        "emTransicaoPor1000": 5.55,
         "animacoesAtivas": 8,
         "duracoes": [
           [
@@ -6457,7 +6482,7 @@
           ]
         ],
         "tamTitulos": [
-          48,
+          49,
           36,
           10
         ],
@@ -6465,10 +6490,10 @@
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 3.69,
+        "razaoTituloWorkhorse": 3.77,
         "titulosDetalhes": [
           {
-            "px": 48,
+            "px": 49,
             "elementos": 1,
             "caracteres": 59,
             "palavras": 8,
@@ -6483,10 +6508,10 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "43.2px",
-            "lineHeightRazao": 0.9,
+            "lineHeightPx": "49px",
+            "lineHeightRazao": 1,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.92px",
+            "letterSpacing": "-1.96px",
             "textTransform": "none",
             "inFirstViewport": true,
             "largura_ch": 9,
@@ -6568,7 +6593,7 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            48,
+            49,
             36,
             11,
             10
@@ -6577,7 +6602,7 @@
             "px": 13,
             "ocorrencias": 19
           },
-          "razao_semFiltro": 3.69,
+          "razao_semFiltro": 3.77,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -6598,8 +6623,8 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 34.63,
-          "semNeutralizar": 13,
+          "caracteresPor1000px": 34.54,
+          "semNeutralizar": 11,
           "passeNeutralizado": true,
           "amostras": 6
         },
@@ -6633,7 +6658,7 @@
           "profundidadeDeRolagem": 98.5
         },
         "pontoCego": true,
-        "diferencaPx": 12,
+        "diferencaPx": 11,
         "_amostras": 5,
         "_instavel": false
       },
@@ -6641,7 +6666,7 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6650,7 +6675,7 @@
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6659,7 +6684,7 @@
         {
           "quando": "t+7s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6668,7 +6693,7 @@
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6677,7 +6702,7 @@
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6689,16 +6714,16 @@
     },
     "C-escala-evento-curto@320": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:06:09.719Z",
+      "dataHora": "2026-09-11T03:08:21.318Z",
       "viewport": "320x568x2",
       "rolagem": {
-        "altura": 13395,
+        "altura": 13407,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 13395,
+        "altura": 13407,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -6718,7 +6743,7 @@
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 65.6,
+            "pct": 65.7,
             "L": 0.97,
             "C": 0.008,
             "H": 91
@@ -6775,7 +6800,7 @@
         "keyframesPor1000": 0.22,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 5.6,
+        "emTransicaoPor1000": 5.59,
         "animacoesAtivas": 8,
         "duracoes": [
           [
@@ -6792,7 +6817,7 @@
           ]
         ],
         "tamTitulos": [
-          48,
+          49,
           36,
           10
         ],
@@ -6800,10 +6825,10 @@
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 3.69,
+        "razaoTituloWorkhorse": 3.77,
         "titulosDetalhes": [
           {
-            "px": 48,
+            "px": 49,
             "elementos": 1,
             "caracteres": 16,
             "palavras": 2,
@@ -6818,10 +6843,10 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "43.2px",
-            "lineHeightRazao": 0.9,
+            "lineHeightPx": "49px",
+            "lineHeightRazao": 1,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.92px",
+            "letterSpacing": "-1.96px",
             "textTransform": "none",
             "inFirstViewport": true,
             "largura_ch": 9,
@@ -6903,7 +6928,7 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            48,
+            49,
             36,
             11,
             10
@@ -6912,7 +6937,7 @@
             "px": 13,
             "ocorrencias": 19
           },
-          "razao_semFiltro": 3.69,
+          "razao_semFiltro": 3.77,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -6933,8 +6958,8 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 34.86,
-          "semNeutralizar": 13,
+          "caracteresPor1000px": 34.83,
+          "semNeutralizar": 11,
           "passeNeutralizado": true,
           "amostras": 6
         },
@@ -6968,7 +6993,7 @@
           "profundidadeDeRolagem": 98.5
         },
         "pontoCego": true,
-        "diferencaPx": 12,
+        "diferencaPx": 11,
         "_amostras": 5,
         "_instavel": false
       },
@@ -6976,7 +7001,7 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6985,7 +7010,7 @@
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -6994,7 +7019,7 @@
         {
           "quando": "t+7s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -7003,7 +7028,7 @@
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -7012,7 +7037,7 @@
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            48,
+            49,
             36,
             10
           ],
@@ -7024,7 +7049,7 @@
     },
     "A-lp-atual@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:06:21.187Z",
+      "dataHora": "2026-09-11T03:08:33.186Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 11078,
@@ -7359,16 +7384,351 @@
     },
     "B-so-escala@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:06:33.444Z",
+      "dataHora": "2026-09-11T03:08:45.792Z",
       "viewport": "390x844x2",
       "rolagem": {
-        "altura": 12444,
+        "altura": 12499,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 12444,
+        "altura": 12499,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 390,
+          "h": 844,
+          "dpr": 2
+        },
+        "telas": 14.8,
+        "telas_base900_legado": 13.9,
+        "metricaV2_hsvS015": 0.9,
+        "corPerceptivel_C005": 0.9,
+        "corForte_C012": 0.8,
+        "cromaMedioPonderado": 0.01,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 65.4,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 16.1,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 8.4,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.4,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.6,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 1,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.16,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.24,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 6,
+        "animacoesAtivas": 8,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          54,
+          36,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 4.15,
+        "titulosDetalhes": [
+          {
+            "px": 54,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "Construo produtos digitais e lidero projetos de tecnologia."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "54px",
+            "lineHeightRazao": 1,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-2.16px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 10,
+            "maiorLarguraCh": 10,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 36,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "37.8px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.72px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 15,
+            "maiorLarguraCh": 15,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 28,
+            "maiorLarguraCh": 28,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            54,
+            36,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 13,
+            "ocorrencias": 19
+          },
+          "razao_semFiltro": 4.15,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 37.36,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 73,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 98.3
+        },
+        "pontoCego": true,
+        "diferencaPx": 19,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        }
+      ],
+      "variante": "B-so-escala",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "C-escala-evento-curto@390": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:08:58.541Z",
+      "viewport": "390x844x2",
+      "rolagem": {
+        "altura": 12421,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 12421,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -7445,7 +7805,7 @@
         "keyframesPor1000": 0.24,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 6.03,
+        "emTransicaoPor1000": 6.04,
         "animacoesAtivas": 8,
         "duracoes": [
           [
@@ -7462,7 +7822,7 @@
           ]
         ],
         "tamTitulos": [
-          48,
+          54,
           36,
           10
         ],
@@ -7470,345 +7830,10 @@
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 3.69,
+        "razaoTituloWorkhorse": 4.15,
         "titulosDetalhes": [
           {
-            "px": 48,
-            "elementos": 1,
-            "caracteres": 59,
-            "palavras": 8,
-            "textos": [
-              "Construo produtos digitais e lidero projetos de tecnologia."
-            ],
-            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "Instrument Sans",
-            "familiaVerificada": true,
-            "caiuParaFallback": false,
-            "familiaDeclarada": "instrument sans",
-            "serifa": false,
-            "serifa_pelaDeclarada_legado": false,
-            "fontWeight": "700",
-            "lineHeightPx": "43.2px",
-            "lineHeightRazao": 0.9,
-            "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.92px",
-            "textTransform": "none",
-            "inFirstViewport": true,
-            "largura_ch": 11,
-            "maiorLarguraCh": 11,
-            "fracaoContidaMin": 1,
-            "vistoEmAmostras": "5/5"
-          },
-          {
-            "px": 36,
-            "elementos": 7,
-            "caracteres": 437,
-            "palavras": 62,
-            "textos": [
-              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
-              "Levando um projeto de cliente dos requisitos à produção.",
-              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
-              "Testando quando machine learning quântico realmente faz diferença.",
-              "De software científico à pesquisa em IA aplicada.",
-              "O que quero entender a seguir."
-            ],
-            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "Instrument Sans",
-            "familiaVerificada": true,
-            "caiuParaFallback": false,
-            "familiaDeclarada": "instrument sans",
-            "serifa": false,
-            "serifa_pelaDeclarada_legado": false,
-            "fontWeight": "600",
-            "lineHeightPx": "37.8px",
-            "lineHeightRazao": 1.05,
-            "lineHeightOrigem": "declarada",
-            "letterSpacing": "-0.72px",
-            "textTransform": "none",
-            "inFirstViewport": false,
-            "largura_ch": 15,
-            "maiorLarguraCh": 15,
-            "fracaoContidaMin": 1,
-            "vistoEmAmostras": "5/5"
-          },
-          {
-            "px": 10,
-            "elementos": 2,
-            "caracteres": 16,
-            "palavras": 2,
-            "textos": [
-              "Navegação",
-              "Contato"
-            ],
-            "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "IBM Plex Mono",
-            "familiaVerificada": true,
-            "caiuParaFallback": false,
-            "familiaDeclarada": "ibm plex mono",
-            "serifa": false,
-            "serifa_pelaDeclarada_legado": false,
-            "fontWeight": "600",
-            "lineHeightPx": "14.4px",
-            "lineHeightRazao": 1.44,
-            "lineHeightOrigem": "declarada",
-            "letterSpacing": "0.192px",
-            "textTransform": "none",
-            "inFirstViewport": false,
-            "largura_ch": 28,
-            "maiorLarguraCh": 28,
-            "fracaoContidaMin": 1,
-            "vistoEmAmostras": "5/5"
-          }
-        ],
-        "workhorseDetalhe": {
-          "px": 13,
-          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "Inter",
-          "familiaVerificada": true,
-          "serifa": false,
-          "lineHeightPx": "19.68px",
-          "lineHeightRazao": 1.51,
-          "lineHeightOrigem": "declarada",
-          "largura_ch": 34
-        },
-        "_legado": {
-          "tamTitulos_semFiltro": [
-            48,
-            36,
-            11,
-            10
-          ],
-          "workhorse_semFiltro": {
-            "px": 13,
-            "ocorrencias": 19
-          },
-          "razao_semFiltro": 3.69,
-          "divergeDoCorrigido": false
-        },
-        "descartes": {
-          "titulos": [
-            {
-              "px": 11,
-              "motivo": "opacidade-0",
-              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
-            },
-            {
-              "px": 11,
-              "motivo": "opacidade-0",
-              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
-            }
-          ],
-          "porRecorte": []
-        },
-        "caixaAlta": {
-          "elementos": 23,
-          "caracteresTotais": 467,
-          "caracteresPor1000px": 37.53,
-          "semNeutralizar": 13,
-          "passeNeutralizado": true,
-          "amostras": 6
-        },
-        "familiasUsadas": [
-          {
-            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-            "contagem": 11
-          },
-          {
-            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "contagem": 8
-          },
-          {
-            "familia": "\"IBM Plex Mono\", monospace",
-            "contagem": 7
-          }
-        ],
-        "maiorTextoRenderizado": {
-          "px": 73,
-          "tag": "div",
-          "className": "footer-wordmark",
-          "caracteres": 7,
-          "palavras": 1,
-          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "Instrument Sans",
-          "familiaVerificada": true,
-          "serifa": false,
-          "fontWeight": "700",
-          "textTransform": "none",
-          "fracaoContida": 1,
-          "profundidadeDeRolagem": 98.3
-        },
-        "pontoCego": true,
-        "diferencaPx": 25,
-        "_amostras": 5,
-        "_instavel": false
-      },
-      "amostras": [
-        {
-          "quando": "t+4s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "t+5.5s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "t+7s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "t+8.5s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "pos-rolagem",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        }
-      ],
-      "variante": "B-so-escala",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
-    },
-    "C-escala-evento-curto@390": {
-      "status": "sucesso",
-      "dataHora": "2026-09-11T01:06:45.749Z",
-      "viewport": "390x844x2",
-      "rolagem": {
-        "altura": 12399,
-        "imgs": 0,
-        "carregadas": 0
-      },
-      "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 12399,
-        "fontes": {
-          "status": "loaded",
-          "carregadas": 33
-        },
-        "viewportMedido": {
-          "w": 390,
-          "h": 844,
-          "dpr": 2
-        },
-        "telas": 14.7,
-        "telas_base900_legado": 13.8,
-        "metricaV2_hsvS015": 0.9,
-        "corPerceptivel_C005": 0.9,
-        "corForte_C012": 0.8,
-        "cromaMedioPonderado": 0.01,
-        "cromaPicoOklch": 0.201,
-        "fundos": [
-          {
-            "cor": "rgb(247,245,239)",
-            "pct": 65.2,
-            "L": 0.97,
-            "C": 0.008,
-            "H": 91
-          },
-          {
-            "cor": "rgb(232,227,217)",
-            "pct": 16.2,
-            "L": 0.92,
-            "C": 0.014,
-            "H": 85
-          },
-          {
-            "cor": "rgb(17,18,19)",
-            "pct": 8.4,
-            "L": 0.18,
-            "C": 0.003,
-            "H": 248
-          },
-          {
-            "cor": "rgb(11,11,11)",
-            "pct": 5.4,
-            "L": 0.15,
-            "C": 0,
-            "H": 90
-          },
-          {
-            "cor": "rgb(255,255,255)",
-            "pct": 2.6,
-            "L": 1,
-            "C": 0,
-            "H": 90
-          },
-          {
-            "cor": "rgb(241,238,230)",
-            "pct": 1,
-            "L": 0.95,
-            "C": 0.011,
-            "H": 90
-          }
-        ],
-        "midia": {
-          "img": 0,
-          "svg": 2,
-          "video": 0,
-          "canvas": 0
-        },
-        "midiaTotalPor1000": 0.16,
-        "keyframes": 3,
-        "nomes": [
-          "rail-scroll",
-          "heroUp",
-          "heroLine"
-        ],
-        "keyframesPor1000": 0.24,
-        "folhasBloqueadas": 1,
-        "emTransicao": 75,
-        "emTransicaoPor1000": 6.05,
-        "animacoesAtivas": 8,
-        "duracoes": [
-          [
-            "0.6s",
-            50
-          ],
-          [
-            "0.2s",
-            30
-          ],
-          [
-            "0.18s",
-            23
-          ]
-        ],
-        "tamTitulos": [
-          48,
-          36,
-          10
-        ],
-        "workhorse": {
-          "px": 13,
-          "ocorrencias": 9
-        },
-        "razaoTituloWorkhorse": 3.69,
-        "titulosDetalhes": [
-          {
-            "px": 48,
+            "px": 54,
             "elementos": 1,
             "caracteres": 16,
             "palavras": 2,
@@ -7823,14 +7848,14 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "43.2px",
-            "lineHeightRazao": 0.9,
+            "lineHeightPx": "54px",
+            "lineHeightRazao": 1,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.92px",
+            "letterSpacing": "-2.16px",
             "textTransform": "none",
             "inFirstViewport": true,
-            "largura_ch": 11,
-            "maiorLarguraCh": 11,
+            "largura_ch": 10,
+            "maiorLarguraCh": 10,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -7908,7 +7933,7 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            48,
+            54,
             36,
             11,
             10
@@ -7917,7 +7942,7 @@
             "px": 13,
             "ocorrencias": 19
           },
-          "razao_semFiltro": 3.69,
+          "razao_semFiltro": 4.15,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -7938,7 +7963,7 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 37.66,
+          "caracteresPor1000px": 37.6,
           "semNeutralizar": 13,
           "passeNeutralizado": true,
           "amostras": 6
@@ -7973,7 +7998,7 @@
           "profundidadeDeRolagem": 98.3
         },
         "pontoCego": true,
-        "diferencaPx": 25,
+        "diferencaPx": 19,
         "_amostras": 5,
         "_instavel": false
       },
@@ -7981,7 +8006,7 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -7990,7 +8015,7 @@
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -7999,7 +8024,7 @@
         {
           "quando": "t+7s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8008,7 +8033,7 @@
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8017,7 +8042,7 @@
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8029,7 +8054,7 @@
     },
     "A-lp-atual@768": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:06:57.224Z",
+      "dataHora": "2026-09-11T03:09:10.417Z",
       "viewport": "768x1024x2",
       "rolagem": {
         "altura": 10934,
@@ -8364,7 +8389,7 @@
     },
     "B-so-escala@768": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:07:09.430Z",
+      "dataHora": "2026-09-11T03:09:22.955Z",
       "viewport": "768x1024x2",
       "rolagem": {
         "altura": 11586,
@@ -8699,7 +8724,7 @@
     },
     "C-escala-evento-curto@768": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:07:21.654Z",
+      "dataHora": "2026-09-11T03:09:35.603Z",
       "viewport": "768x1024x2",
       "rolagem": {
         "altura": 11532,
@@ -9034,7 +9059,7 @@
     },
     "A-lp-atual@1024": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:07:32.799Z",
+      "dataHora": "2026-09-11T03:09:47.114Z",
       "viewport": "1024x768x1",
       "rolagem": {
         "altura": 7762,
@@ -9279,18 +9304,18 @@
           "elementos": 96,
           "caracteresTotais": 1513,
           "caracteresPor1000px": 194.92,
-          "semNeutralizar": 61,
+          "semNeutralizar": 55,
           "passeNeutralizado": true,
           "amostras": 6
         },
         "familiasUsadas": [
           {
-            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-            "contagem": 16
-          },
-          {
             "familia": "\"IBM Plex Mono\", monospace",
             "contagem": 15
+          },
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 12
           },
           {
             "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
@@ -9369,7 +9394,7 @@
     },
     "B-so-escala@1024": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:07:44.571Z",
+      "dataHora": "2026-09-11T03:09:59.367Z",
       "viewport": "1024x768x1",
       "rolagem": {
         "altura": 8826,
@@ -9704,16 +9729,16 @@
     },
     "C-escala-evento-curto@1024": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:07:56.345Z",
+      "dataHora": "2026-09-11T03:10:11.558Z",
       "viewport": "1024x768x1",
       "rolagem": {
-        "altura": 8541,
+        "altura": 8633,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 8541,
+        "altura": 8633,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -9723,24 +9748,24 @@
           "h": 768,
           "dpr": 1
         },
-        "telas": 11.1,
-        "telas_base900_legado": 9.5,
-        "metricaV2_hsvS015": 0.7,
-        "corPerceptivel_C005": 0.7,
+        "telas": 11.2,
+        "telas_base900_legado": 9.6,
+        "metricaV2_hsvS015": 0.6,
+        "corPerceptivel_C005": 0.6,
         "corForte_C012": 0.6,
         "cromaMedioPonderado": 0.009,
         "cromaPicoOklch": 0.201,
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 66.4,
+            "pct": 66.6,
             "L": 0.97,
             "C": 0.008,
             "H": 91
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 16.9,
+            "pct": 16.8,
             "L": 0.92,
             "C": 0.014,
             "H": 85
@@ -9754,7 +9779,7 @@
           },
           {
             "cor": "rgb(11,11,11)",
-            "pct": 5.4,
+            "pct": 5.3,
             "L": 0.15,
             "C": 0,
             "H": 90
@@ -9790,7 +9815,7 @@
         "keyframesPor1000": 0.35,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 8.78,
+        "emTransicaoPor1000": 8.69,
         "animacoesAtivas": 9,
         "duracoes": [
           [
@@ -9948,7 +9973,7 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 54.68,
+          "caracteresPor1000px": 54.09,
           "semNeutralizar": 13,
           "passeNeutralizado": true,
           "amostras": 6
@@ -9980,7 +10005,7 @@
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 96.4
+          "profundidadeDeRolagem": 96.5
         },
         "pontoCego": true,
         "diferencaPx": 88,
@@ -10039,7 +10064,7 @@
     },
     "A-lp-atual@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:08:07.351Z",
+      "dataHora": "2026-09-11T03:10:23.121Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 8350,
@@ -10374,16 +10399,16 @@
     },
     "B-so-escala@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:08:19.399Z",
+      "dataHora": "2026-09-11T03:10:35.618Z",
       "viewport": "1440x900x1",
       "rolagem": {
-        "altura": 10604,
+        "altura": 10863,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 10604,
+        "altura": 10863,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -10393,8 +10418,8 @@
           "h": 900,
           "dpr": 1
         },
-        "telas": 11.8,
-        "telas_base900_legado": 11.8,
+        "telas": 12.1,
+        "telas_base900_legado": 12.1,
         "metricaV2_hsvS015": 0.4,
         "corPerceptivel_C005": 0.4,
         "corForte_C012": 0.4,
@@ -10403,28 +10428,28 @@
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 68.1,
+            "pct": 68.6,
             "L": 0.97,
             "C": 0.008,
             "H": 91
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 17.3,
+            "pct": 17,
             "L": 0.92,
             "C": 0.014,
             "H": 85
           },
           {
             "cor": "rgb(17,18,19)",
-            "pct": 6.8,
+            "pct": 6.7,
             "L": 0.18,
             "C": 0.003,
             "H": 248
           },
           {
             "cor": "rgb(11,11,11)",
-            "pct": 5.4,
+            "pct": 5.3,
             "L": 0.15,
             "C": 0,
             "H": 90
@@ -10450,7 +10475,7 @@
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 0.19,
+        "midiaTotalPor1000": 0.18,
         "keyframes": 3,
         "nomes": [
           "rail-scroll",
@@ -10460,7 +10485,7 @@
         "keyframesPor1000": 0.28,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 7.07,
+        "emTransicaoPor1000": 6.9,
         "animacoesAtivas": 9,
         "duracoes": [
           [
@@ -10509,8 +10534,8 @@
             "letterSpacing": "-5.76px",
             "textTransform": "none",
             "inFirstViewport": true,
-            "largura_ch": 8,
-            "maiorLarguraCh": 8,
+            "largura_ch": 7,
+            "maiorLarguraCh": 7,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -10618,8 +10643,8 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 44.04,
-          "semNeutralizar": 13,
+          "caracteresPor1000px": 42.99,
+          "semNeutralizar": 11,
           "passeNeutralizado": true,
           "amostras": 6
         },
@@ -10650,7 +10675,7 @@
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 96.7
+          "profundidadeDeRolagem": 96.8
         },
         "pontoCego": true,
         "diferencaPx": 88,
@@ -10709,16 +10734,16 @@
     },
     "C-escala-evento-curto@1440": {
       "status": "sucesso",
-      "dataHora": "2026-09-11T01:08:31.227Z",
+      "dataHora": "2026-09-11T03:10:47.994Z",
       "viewport": "1440x900x1",
       "rolagem": {
-        "altura": 10169,
+        "altura": 10299,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
         "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
-        "altura": 10169,
+        "altura": 10299,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -10728,8 +10753,8 @@
           "h": 900,
           "dpr": 1
         },
-        "telas": 11.3,
-        "telas_base900_legado": 11.3,
+        "telas": 11.4,
+        "telas_base900_legado": 11.4,
         "metricaV2_hsvS015": 0.4,
         "corPerceptivel_C005": 0.4,
         "corForte_C012": 0.4,
@@ -10738,14 +10763,14 @@
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 67.5,
+            "pct": 67.6,
             "L": 0.97,
             "C": 0.008,
             "H": 91
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 17.7,
+            "pct": 17.5,
             "L": 0.92,
             "C": 0.014,
             "H": 85
@@ -10766,7 +10791,7 @@
           },
           {
             "cor": "rgb(255,255,255)",
-            "pct": 1.2,
+            "pct": 1.3,
             "L": 1,
             "C": 0,
             "H": 90
@@ -10785,17 +10810,17 @@
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 0.2,
+        "midiaTotalPor1000": 0.19,
         "keyframes": 3,
         "nomes": [
           "rail-scroll",
           "heroUp",
           "heroLine"
         ],
-        "keyframesPor1000": 0.3,
+        "keyframesPor1000": 0.29,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 7.38,
+        "emTransicaoPor1000": 7.28,
         "animacoesAtivas": 9,
         "duracoes": [
           [
@@ -10844,8 +10869,8 @@
             "letterSpacing": "-5.76px",
             "textTransform": "none",
             "inFirstViewport": true,
-            "largura_ch": 9,
-            "maiorLarguraCh": 9,
+            "largura_ch": 7,
+            "maiorLarguraCh": 7,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -10953,7 +10978,7 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 45.92,
+          "caracteresPor1000px": 45.34,
           "semNeutralizar": 13,
           "passeNeutralizado": true,
           "amostras": 6

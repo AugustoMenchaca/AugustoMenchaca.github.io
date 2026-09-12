@@ -94,8 +94,10 @@ const CSS_REVELADOR_OFF = `
 // a cópia no PESQUISA-TIPOGRAFIA.md §8 tem que bater com ela.
 const CSS_ESCALA = `
   body { font-size: 1rem; line-height: 1.6; }
-  .hero-headline { font-size: clamp(3rem, 10vw, 9rem) !important; line-height: .9 !important;
-    letter-spacing: -.04em !important; text-transform: none !important; max-width: none !important; }
+  .hero-headline { font-size: clamp(3.0625rem, max(10vw, min(14vw, 3.375rem)), 9rem) !important;
+    line-height: clamp(.9em, 3.375rem, 1em) !important;
+    letter-spacing: -.04em !important; text-transform: none !important; max-width: none !important;
+    overflow-wrap: anywhere !important; }
   .slab-headline { font-size: clamp(2.25rem, 5vw, 4.5rem) !important; line-height: 1.05 !important;
     letter-spacing: -.02em !important; text-transform: none !important; }
   .qml-quote p, .ciere-flow-wrap, .about-copy p { font-size: clamp(1.5rem, 2.22vw, 2rem) !important;
