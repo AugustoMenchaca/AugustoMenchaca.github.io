@@ -13,6 +13,7 @@
 // Opções:
 //     --so-local          mede apenas a lp-final.html e as variantes de escala
 //     --so-referencias    mede apenas os 18 sites externos
+//     --refs-moveis       mede as referencias nos tres viewports moveis
 //     --chrome <caminho>  Chrome alternativo
 //     --saida <arquivo>   padrão: docs/design/tipografia/medicoes.json
 //
@@ -93,8 +94,10 @@ const CSS_REVELADOR_OFF = `
 // a cópia no PESQUISA-TIPOGRAFIA.md §8 tem que bater com ela.
 const CSS_ESCALA = `
   body { font-size: 1rem; line-height: 1.6; }
-  .hero-headline { font-size: clamp(3rem, 10vw, 9rem) !important; line-height: .9 !important;
-    letter-spacing: -.04em !important; text-transform: none !important; max-width: none !important; }
+  .hero-headline { font-size: clamp(3.0625rem, max(10vw, min(14vw, 3.375rem)), 9rem) !important;
+    line-height: clamp(.9em, 3.375rem, 1em) !important;
+    letter-spacing: -.04em !important; text-transform: none !important; max-width: none !important;
+    overflow-wrap: anywhere !important; }
   .slab-headline { font-size: clamp(2.25rem, 5vw, 4.5rem) !important; line-height: 1.05 !important;
     letter-spacing: -.02em !important; text-transform: none !important; }
   .qml-quote p, .ciere-flow-wrap, .about-copy p { font-size: clamp(1.5rem, 2.22vw, 2rem) !important;
@@ -362,7 +365,8 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
       for (const [i, a] of amostras.entries()) {
         const g = a._diag || {};
         console.error(`    DIAG a${i}: caps=${a.caixaAlta?.nos?.length} reduce=${g.reduce}`
-          + ` dataReveal=${g.dataReveal} will=${g.willReveal} revealed=${g.isRevealed}`);
+          + ` dataReveal=${g.dataReveal} will=${g.willReveal} revealed=${g.isRevealed}`
+          + ` altura=${a.altura}`);
       }
     }
     const dados = unirAmostras(amostras, amostraCaps);
@@ -414,20 +418,25 @@ const saida = {
   variantesDaLP: {}
 };
 
-const VP = alvos.viewportPadrao, VM = alvos.viewportMovel;
+const VP = alvos.viewportPadrao, viewportsDaLP = alvos.viewportsDaLP;
+const refsMoveis = flag('--refs-moveis');
+const viewportsDasReferencias = refsMoveis ? alvos.viewportsMoveisDasReferencias : [VP];
 
 if (!flag('--so-local')) {
   for (const a of alvos.referencias) {
     if (SO && a.id !== SO) continue;
-    process.stderr.write(`medindo ${a.id} ... `);
-    const r = await medirPagina(cdp, a.url, VP);
-    r.rotulo = a.rotulo; r.url = a.url;
-    saida.referencias[a.id] = r;
-    const d = r.data;
-    process.stderr.write(r.status === 'sucesso'
-      ? `${d.tamTitulos[0] ?? '?'}px  razao ${d.razaoTituloWorkhorse ?? '?'}` +
-        (d._legado.divergeDoCorrigido ? `  [legado dizia ${d._legado.tamTitulos_semFiltro[0]}px]` : '') + '\n'
-      : `FALHA: ${r.erro}\n`);
+    for (const vp of viewportsDasReferencias) {
+      const chave = refsMoveis ? `${a.id}@${vp.w}` : a.id;
+      process.stderr.write(`medindo ${chave} ... `);
+      const r = await medirPagina(cdp, a.url, vp);
+      r.rotulo = a.rotulo; r.url = a.url;
+      saida.referencias[chave] = r;
+      const d = r.data;
+      process.stderr.write(r.status === 'sucesso'
+        ? `${d.tamTitulos[0] ?? '?'}px  razao ${d.razaoTituloWorkhorse ?? '?'}` +
+          (d._legado.divergeDoCorrigido ? `  [legado dizia ${d._legado.tamTitulos_semFiltro[0]}px]` : '') + '\n'
+        : `FALHA: ${r.erro}\n`);
+    }
   }
 }
 
@@ -438,7 +447,7 @@ if (!flag('--so-referencias')) {
     { id: 'B-so-escala',           css: CSS_ESCALA,  js: null },
     { id: 'C-escala-evento-curto', css: CSS_ESCALA,  js: JS_EVENTO_CURTO }
   ];
-  for (const vp of [VP, VM]) {
+  for (const vp of viewportsDaLP) {
     for (const v of variantes) {
       const chave = `${v.id}@${vp.w}`;
       process.stderr.write(`medindo ${chave} ... `);

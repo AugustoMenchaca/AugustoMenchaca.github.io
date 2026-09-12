@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "gerado": "2026-09-10T17:46:17.112Z",
+    "gerado": "2026-09-11T03:03:40.453Z",
     "comando": "node docs/design/tipografia/medir.mjs --headed",
     "comandoOficial": "node docs/design/tipografia/medir.mjs --headed",
     "modo": "headed",
@@ -9,19 +9,19 @@
     "alvos": "docs/design/tipografia/alvos.json",
     "nota": "Nao ha arquivo de prototipo. O \"depois\" da escala e medido por injecao de CSS sobre a wireframes/lp-final.html real. Ver provenance.md P-015.",
     "notaCaixaAlta": "caixaAlta.semNeutralizar NAO e numero citavel: e a contagem sem neutralizar o revelador, ou seja, a propria grandeza nao deterministica que a issue #46 conserta, e varia entre rodadas. Existe so para dimensionar quanto o revelador escondia. O numero valido e caixaAlta.elementos, medido no passe neutralizado.",
-    "total": 24,
-    "sucessos": 24,
+    "total": 33,
+    "sucessos": 33,
     "falhas": []
   },
   "referencias": {
     "aelixa": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:46:30.942Z",
+      "dataHora": "2026-09-11T03:03:55.244Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 17502,
         "imgs": 81,
-        "carregadas": 57
+        "carregadas": 58
       },
       "data": {
         "url": "https://aelixa.webflow.io/",
@@ -520,7 +520,7 @@
     },
     "illoca": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:46:43.316Z",
+      "dataHora": "2026-09-11T03:04:08.193Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -917,12 +917,12 @@
     },
     "paulkalkbrenner": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:47:00.915Z",
+      "dataHora": "2026-09-11T03:04:31.484Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 10709,
         "imgs": 83,
-        "carregadas": 67
+        "carregadas": 66
       },
       "data": {
         "url": "https://www.paulkalkbrenner.net/",
@@ -1308,7 +1308,7 @@
     },
     "lxlcreative": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:47:19.585Z",
+      "dataHora": "2026-09-11T03:04:53.979Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 15323,
@@ -1790,7 +1790,7 @@
     },
     "white-desert": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:47:35.808Z",
+      "dataHora": "2026-09-11T03:05:10.676Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 20787,
@@ -2296,12 +2296,12 @@
     },
     "charityshot": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:47:46.650Z",
+      "dataHora": "2026-09-11T03:05:20.922Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
         "imgs": 73,
-        "carregadas": 46
+        "carregadas": 45
       },
       "data": {
         "url": "https://charityshot.co.uk/",
@@ -2515,7 +2515,7 @@
     },
     "obspogon": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:48:03.196Z",
+      "dataHora": "2026-09-11T03:05:37.486Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3061,
@@ -2753,7 +2753,7 @@
     },
     "paulfragara": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:48:13.682Z",
+      "dataHora": "2026-09-11T03:05:48.049Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1431,
@@ -3028,7 +3028,7 @@
     },
     "lowmess": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:48:24.814Z",
+      "dataHora": "2026-09-11T03:05:58.443Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1234,
@@ -3302,7 +3302,7 @@
     },
     "simonbetton": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:48:37.357Z",
+      "dataHora": "2026-09-11T03:06:11.601Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 9298,
@@ -3648,7 +3648,7 @@
     },
     "nextfive": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:48:49.088Z",
+      "dataHora": "2026-09-11T03:06:24.045Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2915,
@@ -3978,7 +3978,7 @@
     },
     "incomescrane": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:49:00.689Z",
+      "dataHora": "2026-09-11T03:06:35.982Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 4056,
@@ -4199,7 +4199,7 @@
     },
     "shelomoh": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:49:12.389Z",
+      "dataHora": "2026-09-11T03:06:47.609Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 2364,
@@ -4459,7 +4459,7 @@
     },
     "thatmlopsguy": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:49:23.215Z",
+      "dataHora": "2026-09-11T03:06:58.762Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 3602,
@@ -4828,7 +4828,7 @@
     },
     "cassidoo": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:49:37.234Z",
+      "dataHora": "2026-09-11T03:07:09.602Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 1654,
@@ -5088,7 +5088,7 @@
     },
     "ciere": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:49:48.589Z",
+      "dataHora": "2026-09-11T03:07:21.462Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 6297,
@@ -5516,7 +5516,7 @@
     },
     "idf-br": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:49:59.337Z",
+      "dataHora": "2026-09-11T03:07:32.584Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 929,
@@ -5802,7 +5802,7 @@
     },
     "dvo": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:50:09.584Z",
+      "dataHora": "2026-09-11T03:07:43.093Z",
       "viewport": "1440x900x1",
       "rolagem": {
         "altura": 900,
@@ -6042,73 +6042,73 @@
     }
   },
   "variantesDaLP": {
-    "A-lp-atual@1440": {
+    "A-lp-atual@320": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:50:21.166Z",
-      "viewport": "1440x900x1",
+      "dataHora": "2026-09-11T03:07:55.540Z",
+      "viewport": "320x568x2",
       "rolagem": {
-        "altura": 8374,
+        "altura": 11644,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
-        "altura": 8374,
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 11644,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
         },
         "viewportMedido": {
-          "w": 1440,
-          "h": 900,
-          "dpr": 1
+          "w": 320,
+          "h": 568,
+          "dpr": 2
         },
-        "telas": 9.3,
-        "telas_base900_legado": 9.3,
-        "metricaV2_hsvS015": 0.5,
-        "corPerceptivel_C005": 0.5,
-        "corForte_C012": 0.4,
-        "cromaMedioPonderado": 0.009,
+        "telas": 20.5,
+        "telas_base900_legado": 12.9,
+        "metricaV2_hsvS015": 1,
+        "corPerceptivel_C005": 1,
+        "corForte_C012": 0.9,
+        "cromaMedioPonderado": 0.01,
         "cromaPicoOklch": 0.201,
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 68.6,
+            "pct": 66.6,
             "L": 0.97,
             "C": 0.008,
             "H": 91
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 15,
+            "pct": 14.9,
             "L": 0.92,
             "C": 0.014,
             "H": 85
           },
           {
             "cor": "rgb(17,18,19)",
-            "pct": 7.6,
+            "pct": 7.5,
             "L": 0.18,
             "C": 0.003,
             "H": 248
           },
           {
             "cor": "rgb(11,11,11)",
-            "pct": 6,
+            "pct": 5.3,
             "L": 0.15,
             "C": 0,
             "H": 90
           },
           {
             "cor": "rgb(255,255,255)",
-            "pct": 1.5,
+            "pct": 3.1,
             "L": 1,
             "C": 0,
             "H": 90
           },
           {
             "cor": "rgb(241,238,230)",
-            "pct": 0.6,
+            "pct": 1.2,
             "L": 0.95,
             "C": 0.011,
             "H": 90
@@ -6120,18 +6120,18 @@
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 0.24,
+        "midiaTotalPor1000": 0.17,
         "keyframes": 3,
         "nomes": [
           "rail-scroll",
           "heroUp",
           "heroLine"
         ],
-        "keyframesPor1000": 0.36,
+        "keyframesPor1000": 0.26,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 8.96,
-        "animacoesAtivas": 9,
+        "emTransicaoPor1000": 6.44,
+        "animacoesAtivas": 8,
         "duracoes": [
           [
             "0.6s",
@@ -6147,18 +6147,18 @@
           ]
         ],
         "tamTitulos": [
-          46,
-          34,
+          27,
+          21,
           10
         ],
         "workhorse": {
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 3.54,
+        "razaoTituloWorkhorse": 2.08,
         "titulosDetalhes": [
           {
-            "px": 46,
+            "px": 27,
             "elementos": 1,
             "caracteres": 59,
             "palavras": 8,
@@ -6173,19 +6173,19 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "48.256px",
+            "lineHeightPx": "28.288px",
             "lineHeightRazao": 1.05,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.392px",
+            "letterSpacing": "-0.816px",
             "textTransform": "uppercase",
             "inFirstViewport": true,
-            "largura_ch": 19,
-            "maiorLarguraCh": 19,
+            "largura_ch": 16,
+            "maiorLarguraCh": 16,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
           {
-            "px": 34,
+            "px": 21,
             "elementos": 7,
             "caracteres": 437,
             "palavras": 62,
@@ -6205,14 +6205,14 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
-            "lineHeightPx": "40.592px",
-            "lineHeightRazao": 1.19,
+            "lineHeightPx": "24.544px",
+            "lineHeightRazao": 1.17,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-0.86px",
+            "letterSpacing": "-0.52px",
             "textTransform": "none",
             "inFirstViewport": false,
-            "largura_ch": 25,
-            "maiorLarguraCh": 51,
+            "largura_ch": 21,
+            "maiorLarguraCh": 21,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -6239,8 +6239,8 @@
             "letterSpacing": "1.152px",
             "textTransform": "uppercase",
             "inFirstViewport": false,
-            "largura_ch": 40,
-            "maiorLarguraCh": 40,
+            "largura_ch": 19,
+            "maiorLarguraCh": 19,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           }
@@ -6258,16 +6258,16 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            46,
-            34,
+            27,
+            21,
             11,
             10
           ],
           "workhorse_semFiltro": {
-            "px": 14,
-            "ocorrencias": 16
+            "px": 13,
+            "ocorrencias": 19
           },
-          "razao_semFiltro": 3.29,
+          "razao_semFiltro": 2.08,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -6286,10 +6286,10 @@
           "porRecorte": []
         },
         "caixaAlta": {
-          "elementos": 96,
-          "caracteresTotais": 1513,
-          "caracteresPor1000px": 180.68,
-          "semNeutralizar": 55,
+          "elementos": 89,
+          "caracteresTotais": 1419,
+          "caracteresPor1000px": 121.87,
+          "semNeutralizar": 48,
           "passeNeutralizado": true,
           "amostras": 6
         },
@@ -6308,7 +6308,7 @@
           }
         ],
         "maiorTextoRenderizado": {
-          "px": 232,
+          "px": 60,
           "tag": "div",
           "className": "footer-wordmark",
           "caracteres": 7,
@@ -6320,10 +6320,10 @@
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 95.9
+          "profundidadeDeRolagem": 98.3
         },
         "pontoCego": true,
-        "diferencaPx": 186,
+        "diferencaPx": 33,
         "_amostras": 5,
         "_instavel": false
       },
@@ -6331,119 +6331,119 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            46,
-            34,
+            27,
+            21,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            46,
-            34,
+            27,
+            21,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+7s",
           "tamTitulos": [
-            46,
-            34,
+            27,
+            21,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            46,
-            34,
+            27,
+            21,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            46,
-            34,
+            27,
+            21,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         }
       ],
       "variante": "A-lp-atual",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
     },
-    "B-so-escala@1440": {
+    "B-so-escala@320": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:50:33.521Z",
-      "viewport": "1440x900x1",
+      "dataHora": "2026-09-11T03:08:08.405Z",
+      "viewport": "320x568x2",
       "rolagem": {
-        "altura": 10604,
+        "altura": 13519,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
-        "altura": 10604,
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 13519,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
         },
         "viewportMedido": {
-          "w": 1440,
-          "h": 900,
-          "dpr": 1
+          "w": 320,
+          "h": 568,
+          "dpr": 2
         },
-        "telas": 11.8,
-        "telas_base900_legado": 11.8,
-        "metricaV2_hsvS015": 0.4,
-        "corPerceptivel_C005": 0.4,
-        "corForte_C012": 0.4,
-        "cromaMedioPonderado": 0.009,
+        "telas": 23.8,
+        "telas_base900_legado": 15,
+        "metricaV2_hsvS015": 0.9,
+        "corPerceptivel_C005": 0.9,
+        "corForte_C012": 0.8,
+        "cromaMedioPonderado": 0.01,
         "cromaPicoOklch": 0.201,
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 68.1,
+            "pct": 65.8,
             "L": 0.97,
             "C": 0.008,
             "H": 91
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 17.3,
+            "pct": 16.6,
             "L": 0.92,
             "C": 0.014,
             "H": 85
           },
           {
             "cor": "rgb(17,18,19)",
-            "pct": 6.8,
+            "pct": 7.3,
             "L": 0.18,
             "C": 0.003,
             "H": 248
           },
           {
             "cor": "rgb(11,11,11)",
-            "pct": 5.4,
+            "pct": 5.1,
             "L": 0.15,
             "C": 0,
             "H": 90
           },
           {
             "cor": "rgb(255,255,255)",
-            "pct": 1.3,
+            "pct": 2.8,
             "L": 1,
             "C": 0,
             "H": 90
           },
           {
             "cor": "rgb(241,238,230)",
-            "pct": 0.5,
+            "pct": 1.1,
             "L": 0.95,
             "C": 0.011,
             "H": 90
@@ -6455,18 +6455,18 @@
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 0.19,
+        "midiaTotalPor1000": 0.15,
         "keyframes": 3,
         "nomes": [
           "rail-scroll",
           "heroUp",
           "heroLine"
         ],
-        "keyframesPor1000": 0.28,
+        "keyframesPor1000": 0.22,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 7.07,
-        "animacoesAtivas": 9,
+        "emTransicaoPor1000": 5.55,
+        "animacoesAtivas": 8,
         "duracoes": [
           [
             "0.6s",
@@ -6482,18 +6482,18 @@
           ]
         ],
         "tamTitulos": [
-          144,
-          72,
+          49,
+          36,
           10
         ],
         "workhorse": {
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 11.08,
+        "razaoTituloWorkhorse": 3.77,
         "titulosDetalhes": [
           {
-            "px": 144,
+            "px": 49,
             "elementos": 1,
             "caracteres": 59,
             "palavras": 8,
@@ -6508,19 +6508,19 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "129.6px",
-            "lineHeightRazao": 0.9,
+            "lineHeightPx": "49px",
+            "lineHeightRazao": 1,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-5.76px",
+            "letterSpacing": "-1.96px",
             "textTransform": "none",
             "inFirstViewport": true,
-            "largura_ch": 8,
-            "maiorLarguraCh": 8,
+            "largura_ch": 9,
+            "maiorLarguraCh": 9,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
           {
-            "px": 72,
+            "px": 36,
             "elementos": 7,
             "caracteres": 437,
             "palavras": 62,
@@ -6540,14 +6540,14 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
-            "lineHeightPx": "75.6px",
+            "lineHeightPx": "37.8px",
             "lineHeightRazao": 1.05,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.44px",
+            "letterSpacing": "-0.72px",
             "textTransform": "none",
             "inFirstViewport": false,
-            "largura_ch": 24,
-            "maiorLarguraCh": 24,
+            "largura_ch": 12,
+            "maiorLarguraCh": 12,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -6574,8 +6574,8 @@
             "letterSpacing": "0.192px",
             "textTransform": "none",
             "inFirstViewport": false,
-            "largura_ch": 47,
-            "maiorLarguraCh": 47,
+            "largura_ch": 22,
+            "maiorLarguraCh": 22,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           }
@@ -6593,16 +6593,16 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            144,
-            72,
+            49,
+            36,
             11,
             10
           ],
           "workhorse_semFiltro": {
-            "px": 14,
-            "ocorrencias": 16
+            "px": 13,
+            "ocorrencias": 19
           },
-          "razao_semFiltro": 10.29,
+          "razao_semFiltro": 3.77,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -6623,8 +6623,8 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 44.04,
-          "semNeutralizar": 13,
+          "caracteresPor1000px": 34.54,
+          "semNeutralizar": 11,
           "passeNeutralizado": true,
           "amostras": 6
         },
@@ -6643,7 +6643,7 @@
           }
         ],
         "maiorTextoRenderizado": {
-          "px": 232,
+          "px": 60,
           "tag": "div",
           "className": "footer-wordmark",
           "caracteres": 7,
@@ -6655,10 +6655,10 @@
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 96.7
+          "profundidadeDeRolagem": 98.5
         },
         "pontoCego": true,
-        "diferencaPx": 88,
+        "diferencaPx": 11,
         "_amostras": 5,
         "_instavel": false
       },
@@ -6666,119 +6666,119 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+7s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         }
       ],
       "variante": "B-so-escala",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
     },
-    "C-escala-evento-curto@1440": {
+    "C-escala-evento-curto@320": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:50:45.826Z",
-      "viewport": "1440x900x1",
+      "dataHora": "2026-09-11T03:08:21.318Z",
+      "viewport": "320x568x2",
       "rolagem": {
-        "altura": 10169,
+        "altura": 13407,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
-        "altura": 10169,
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 13407,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
         },
         "viewportMedido": {
-          "w": 1440,
-          "h": 900,
-          "dpr": 1
+          "w": 320,
+          "h": 568,
+          "dpr": 2
         },
-        "telas": 11.3,
-        "telas_base900_legado": 11.3,
-        "metricaV2_hsvS015": 0.4,
-        "corPerceptivel_C005": 0.4,
-        "corForte_C012": 0.4,
-        "cromaMedioPonderado": 0.009,
+        "telas": 23.6,
+        "telas_base900_legado": 14.9,
+        "metricaV2_hsvS015": 0.9,
+        "corPerceptivel_C005": 0.9,
+        "corForte_C012": 0.8,
+        "cromaMedioPonderado": 0.01,
         "cromaPicoOklch": 0.201,
         "fundos": [
           {
             "cor": "rgb(247,245,239)",
-            "pct": 67.5,
+            "pct": 65.7,
             "L": 0.97,
             "C": 0.008,
             "H": 91
           },
           {
             "cor": "rgb(232,227,217)",
-            "pct": 17.7,
+            "pct": 16.7,
             "L": 0.92,
             "C": 0.014,
             "H": 85
           },
           {
             "cor": "rgb(17,18,19)",
-            "pct": 6.9,
+            "pct": 7.3,
             "L": 0.18,
             "C": 0.003,
             "H": 248
           },
           {
             "cor": "rgb(11,11,11)",
-            "pct": 5.5,
+            "pct": 5.1,
             "L": 0.15,
             "C": 0,
             "H": 90
           },
           {
             "cor": "rgb(255,255,255)",
-            "pct": 1.2,
+            "pct": 2.8,
             "L": 1,
             "C": 0,
             "H": 90
           },
           {
             "cor": "rgb(241,238,230)",
-            "pct": 0.5,
+            "pct": 1.1,
             "L": 0.95,
             "C": 0.011,
             "H": 90
@@ -6790,18 +6790,18 @@
           "video": 0,
           "canvas": 0
         },
-        "midiaTotalPor1000": 0.2,
+        "midiaTotalPor1000": 0.15,
         "keyframes": 3,
         "nomes": [
           "rail-scroll",
           "heroUp",
           "heroLine"
         ],
-        "keyframesPor1000": 0.3,
+        "keyframesPor1000": 0.22,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 7.38,
-        "animacoesAtivas": 9,
+        "emTransicaoPor1000": 5.59,
+        "animacoesAtivas": 8,
         "duracoes": [
           [
             "0.6s",
@@ -6817,18 +6817,18 @@
           ]
         ],
         "tamTitulos": [
-          144,
-          72,
+          49,
+          36,
           10
         ],
         "workhorse": {
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 11.08,
+        "razaoTituloWorkhorse": 3.77,
         "titulosDetalhes": [
           {
-            "px": 144,
+            "px": 49,
             "elementos": 1,
             "caracteres": 16,
             "palavras": 2,
@@ -6843,10 +6843,10 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "129.6px",
-            "lineHeightRazao": 0.9,
+            "lineHeightPx": "49px",
+            "lineHeightRazao": 1,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-5.76px",
+            "letterSpacing": "-1.96px",
             "textTransform": "none",
             "inFirstViewport": true,
             "largura_ch": 9,
@@ -6855,7 +6855,7 @@
             "vistoEmAmostras": "5/5"
           },
           {
-            "px": 72,
+            "px": 36,
             "elementos": 7,
             "caracteres": 437,
             "palavras": 62,
@@ -6875,14 +6875,14 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "600",
-            "lineHeightPx": "75.6px",
+            "lineHeightPx": "37.8px",
             "lineHeightRazao": 1.05,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.44px",
+            "letterSpacing": "-0.72px",
             "textTransform": "none",
             "inFirstViewport": false,
-            "largura_ch": 24,
-            "maiorLarguraCh": 24,
+            "largura_ch": 12,
+            "maiorLarguraCh": 12,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -6909,8 +6909,8 @@
             "letterSpacing": "0.192px",
             "textTransform": "none",
             "inFirstViewport": false,
-            "largura_ch": 47,
-            "maiorLarguraCh": 47,
+            "largura_ch": 22,
+            "maiorLarguraCh": 22,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           }
@@ -6928,16 +6928,16 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            144,
-            72,
+            49,
+            36,
             11,
             10
           ],
           "workhorse_semFiltro": {
-            "px": 14,
-            "ocorrencias": 16
+            "px": 13,
+            "ocorrencias": 19
           },
-          "razao_semFiltro": 10.29,
+          "razao_semFiltro": 3.77,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -6958,8 +6958,8 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 45.92,
-          "semNeutralizar": 13,
+          "caracteresPor1000px": 34.83,
+          "semNeutralizar": 11,
           "passeNeutralizado": true,
           "amostras": 6
         },
@@ -6978,7 +6978,7 @@
           }
         ],
         "maiorTextoRenderizado": {
-          "px": 232,
+          "px": 60,
           "tag": "div",
           "className": "footer-wordmark",
           "caracteres": 7,
@@ -6990,10 +6990,10 @@
           "fontWeight": "700",
           "textTransform": "none",
           "fracaoContida": 1,
-          "profundidadeDeRolagem": 96.6
+          "profundidadeDeRolagem": 98.5
         },
         "pontoCego": true,
-        "diferencaPx": 88,
+        "diferencaPx": 11,
         "_amostras": 5,
         "_instavel": false
       },
@@ -7001,55 +7001,55 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+7s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         },
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            144,
-            72,
+            49,
+            36,
             10
           ],
-          "maiorTexto": 232
+          "maiorTexto": 60
         }
       ],
       "variante": "C-escala-evento-curto",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
     },
     "A-lp-atual@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:50:57.551Z",
+      "dataHora": "2026-09-11T03:08:33.186Z",
       "viewport": "390x844x2",
       "rolagem": {
         "altura": 11078,
@@ -7057,7 +7057,7 @@
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
         "altura": 11078,
         "fontes": {
           "status": "loaded",
@@ -7380,20 +7380,355 @@
         }
       ],
       "variante": "A-lp-atual",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
     },
     "B-so-escala@390": {
       "status": "sucesso",
-      "dataHora": "2026-09-10T17:51:09.794Z",
+      "dataHora": "2026-09-11T03:08:45.792Z",
       "viewport": "390x844x2",
       "rolagem": {
-        "altura": 12444,
+        "altura": 12499,
         "imgs": 0,
         "carregadas": 0
       },
       "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
-        "altura": 12444,
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 12499,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 390,
+          "h": 844,
+          "dpr": 2
+        },
+        "telas": 14.8,
+        "telas_base900_legado": 13.9,
+        "metricaV2_hsvS015": 0.9,
+        "corPerceptivel_C005": 0.9,
+        "corForte_C012": 0.8,
+        "cromaMedioPonderado": 0.01,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 65.4,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 16.1,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 8.4,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.4,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.6,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 1,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.16,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.24,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 6,
+        "animacoesAtivas": 8,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          54,
+          36,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 4.15,
+        "titulosDetalhes": [
+          {
+            "px": 54,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "Construo produtos digitais e lidero projetos de tecnologia."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "54px",
+            "lineHeightRazao": 1,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-2.16px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 10,
+            "maiorLarguraCh": 10,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 36,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "37.8px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.72px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 15,
+            "maiorLarguraCh": 15,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 28,
+            "maiorLarguraCh": 28,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            54,
+            36,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 13,
+            "ocorrencias": 19
+          },
+          "razao_semFiltro": 4.15,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 37.36,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 73,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 98.3
+        },
+        "pontoCego": true,
+        "diferencaPx": 19,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            54,
+            36,
+            10
+          ],
+          "maiorTexto": 73
+        }
+      ],
+      "variante": "B-so-escala",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "C-escala-evento-curto@390": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:08:58.541Z",
+      "viewport": "390x844x2",
+      "rolagem": {
+        "altura": 12421,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 12421,
         "fontes": {
           "status": "loaded",
           "carregadas": 33
@@ -7470,7 +7805,7 @@
         "keyframesPor1000": 0.24,
         "folhasBloqueadas": 1,
         "emTransicao": 75,
-        "emTransicaoPor1000": 6.03,
+        "emTransicaoPor1000": 6.04,
         "animacoesAtivas": 8,
         "duracoes": [
           [
@@ -7487,7 +7822,7 @@
           ]
         ],
         "tamTitulos": [
-          48,
+          54,
           36,
           10
         ],
@@ -7495,345 +7830,10 @@
           "px": 13,
           "ocorrencias": 9
         },
-        "razaoTituloWorkhorse": 3.69,
+        "razaoTituloWorkhorse": 4.15,
         "titulosDetalhes": [
           {
-            "px": 48,
-            "elementos": 1,
-            "caracteres": 59,
-            "palavras": 8,
-            "textos": [
-              "Construo produtos digitais e lidero projetos de tecnologia."
-            ],
-            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "Instrument Sans",
-            "familiaVerificada": true,
-            "caiuParaFallback": false,
-            "familiaDeclarada": "instrument sans",
-            "serifa": false,
-            "serifa_pelaDeclarada_legado": false,
-            "fontWeight": "700",
-            "lineHeightPx": "43.2px",
-            "lineHeightRazao": 0.9,
-            "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.92px",
-            "textTransform": "none",
-            "inFirstViewport": true,
-            "largura_ch": 11,
-            "maiorLarguraCh": 11,
-            "fracaoContidaMin": 1,
-            "vistoEmAmostras": "5/5"
-          },
-          {
-            "px": 36,
-            "elementos": 7,
-            "caracteres": 437,
-            "palavras": 62,
-            "textos": [
-              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
-              "Levando um projeto de cliente dos requisitos à produção.",
-              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
-              "Testando quando machine learning quântico realmente faz diferença.",
-              "De software científico à pesquisa em IA aplicada.",
-              "O que quero entender a seguir."
-            ],
-            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "familiaEfetiva": "Instrument Sans",
-            "familiaVerificada": true,
-            "caiuParaFallback": false,
-            "familiaDeclarada": "instrument sans",
-            "serifa": false,
-            "serifa_pelaDeclarada_legado": false,
-            "fontWeight": "600",
-            "lineHeightPx": "37.8px",
-            "lineHeightRazao": 1.05,
-            "lineHeightOrigem": "declarada",
-            "letterSpacing": "-0.72px",
-            "textTransform": "none",
-            "inFirstViewport": false,
-            "largura_ch": 15,
-            "maiorLarguraCh": 15,
-            "fracaoContidaMin": 1,
-            "vistoEmAmostras": "5/5"
-          },
-          {
-            "px": 10,
-            "elementos": 2,
-            "caracteres": 16,
-            "palavras": 2,
-            "textos": [
-              "Navegação",
-              "Contato"
-            ],
-            "fontFamily": "\"IBM Plex Mono\", monospace",
-            "familiaEfetiva": "IBM Plex Mono",
-            "familiaVerificada": true,
-            "caiuParaFallback": false,
-            "familiaDeclarada": "ibm plex mono",
-            "serifa": false,
-            "serifa_pelaDeclarada_legado": false,
-            "fontWeight": "600",
-            "lineHeightPx": "14.4px",
-            "lineHeightRazao": 1.44,
-            "lineHeightOrigem": "declarada",
-            "letterSpacing": "0.192px",
-            "textTransform": "none",
-            "inFirstViewport": false,
-            "largura_ch": 28,
-            "maiorLarguraCh": 28,
-            "fracaoContidaMin": 1,
-            "vistoEmAmostras": "5/5"
-          }
-        ],
-        "workhorseDetalhe": {
-          "px": 13,
-          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "Inter",
-          "familiaVerificada": true,
-          "serifa": false,
-          "lineHeightPx": "19.68px",
-          "lineHeightRazao": 1.51,
-          "lineHeightOrigem": "declarada",
-          "largura_ch": 34
-        },
-        "_legado": {
-          "tamTitulos_semFiltro": [
-            48,
-            36,
-            11,
-            10
-          ],
-          "workhorse_semFiltro": {
-            "px": 13,
-            "ocorrencias": 19
-          },
-          "razao_semFiltro": 3.69,
-          "divergeDoCorrigido": false
-        },
-        "descartes": {
-          "titulos": [
-            {
-              "px": 11,
-              "motivo": "opacidade-0",
-              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
-            },
-            {
-              "px": 11,
-              "motivo": "opacidade-0",
-              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
-            }
-          ],
-          "porRecorte": []
-        },
-        "caixaAlta": {
-          "elementos": 23,
-          "caracteresTotais": 467,
-          "caracteresPor1000px": 37.53,
-          "semNeutralizar": 11,
-          "passeNeutralizado": true,
-          "amostras": 6
-        },
-        "familiasUsadas": [
-          {
-            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
-            "contagem": 11
-          },
-          {
-            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-            "contagem": 8
-          },
-          {
-            "familia": "\"IBM Plex Mono\", monospace",
-            "contagem": 7
-          }
-        ],
-        "maiorTextoRenderizado": {
-          "px": 73,
-          "tag": "div",
-          "className": "footer-wordmark",
-          "caracteres": 7,
-          "palavras": 1,
-          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
-          "familiaEfetiva": "Instrument Sans",
-          "familiaVerificada": true,
-          "serifa": false,
-          "fontWeight": "700",
-          "textTransform": "none",
-          "fracaoContida": 1,
-          "profundidadeDeRolagem": 98.3
-        },
-        "pontoCego": true,
-        "diferencaPx": 25,
-        "_amostras": 5,
-        "_instavel": false
-      },
-      "amostras": [
-        {
-          "quando": "t+4s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "t+5.5s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "t+7s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "t+8.5s",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        },
-        {
-          "quando": "pos-rolagem",
-          "tamTitulos": [
-            48,
-            36,
-            10
-          ],
-          "maiorTexto": 73
-        }
-      ],
-      "variante": "B-so-escala",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
-    },
-    "C-escala-evento-curto@390": {
-      "status": "sucesso",
-      "dataHora": "2026-09-10T17:51:22.094Z",
-      "viewport": "390x844x2",
-      "rolagem": {
-        "altura": 12399,
-        "imgs": 0,
-        "carregadas": 0
-      },
-      "data": {
-        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html",
-        "altura": 12399,
-        "fontes": {
-          "status": "loaded",
-          "carregadas": 33
-        },
-        "viewportMedido": {
-          "w": 390,
-          "h": 844,
-          "dpr": 2
-        },
-        "telas": 14.7,
-        "telas_base900_legado": 13.8,
-        "metricaV2_hsvS015": 0.9,
-        "corPerceptivel_C005": 0.9,
-        "corForte_C012": 0.8,
-        "cromaMedioPonderado": 0.01,
-        "cromaPicoOklch": 0.201,
-        "fundos": [
-          {
-            "cor": "rgb(247,245,239)",
-            "pct": 65.2,
-            "L": 0.97,
-            "C": 0.008,
-            "H": 91
-          },
-          {
-            "cor": "rgb(232,227,217)",
-            "pct": 16.2,
-            "L": 0.92,
-            "C": 0.014,
-            "H": 85
-          },
-          {
-            "cor": "rgb(17,18,19)",
-            "pct": 8.4,
-            "L": 0.18,
-            "C": 0.003,
-            "H": 248
-          },
-          {
-            "cor": "rgb(11,11,11)",
-            "pct": 5.4,
-            "L": 0.15,
-            "C": 0,
-            "H": 90
-          },
-          {
-            "cor": "rgb(255,255,255)",
-            "pct": 2.6,
-            "L": 1,
-            "C": 0,
-            "H": 90
-          },
-          {
-            "cor": "rgb(241,238,230)",
-            "pct": 1,
-            "L": 0.95,
-            "C": 0.011,
-            "H": 90
-          }
-        ],
-        "midia": {
-          "img": 0,
-          "svg": 2,
-          "video": 0,
-          "canvas": 0
-        },
-        "midiaTotalPor1000": 0.16,
-        "keyframes": 3,
-        "nomes": [
-          "rail-scroll",
-          "heroUp",
-          "heroLine"
-        ],
-        "keyframesPor1000": 0.24,
-        "folhasBloqueadas": 1,
-        "emTransicao": 75,
-        "emTransicaoPor1000": 6.05,
-        "animacoesAtivas": 8,
-        "duracoes": [
-          [
-            "0.6s",
-            50
-          ],
-          [
-            "0.2s",
-            30
-          ],
-          [
-            "0.18s",
-            23
-          ]
-        ],
-        "tamTitulos": [
-          48,
-          36,
-          10
-        ],
-        "workhorse": {
-          "px": 13,
-          "ocorrencias": 9
-        },
-        "razaoTituloWorkhorse": 3.69,
-        "titulosDetalhes": [
-          {
-            "px": 48,
+            "px": 54,
             "elementos": 1,
             "caracteres": 16,
             "palavras": 2,
@@ -7848,14 +7848,14 @@
             "serifa": false,
             "serifa_pelaDeclarada_legado": false,
             "fontWeight": "700",
-            "lineHeightPx": "43.2px",
-            "lineHeightRazao": 0.9,
+            "lineHeightPx": "54px",
+            "lineHeightRazao": 1,
             "lineHeightOrigem": "declarada",
-            "letterSpacing": "-1.92px",
+            "letterSpacing": "-2.16px",
             "textTransform": "none",
             "inFirstViewport": true,
-            "largura_ch": 11,
-            "maiorLarguraCh": 11,
+            "largura_ch": 10,
+            "maiorLarguraCh": 10,
             "fracaoContidaMin": 1,
             "vistoEmAmostras": "5/5"
           },
@@ -7933,7 +7933,7 @@
         },
         "_legado": {
           "tamTitulos_semFiltro": [
-            48,
+            54,
             36,
             11,
             10
@@ -7942,7 +7942,7 @@
             "px": 13,
             "ocorrencias": 19
           },
-          "razao_semFiltro": 3.69,
+          "razao_semFiltro": 4.15,
           "divergeDoCorrigido": false
         },
         "descartes": {
@@ -7963,7 +7963,7 @@
         "caixaAlta": {
           "elementos": 23,
           "caracteresTotais": 467,
-          "caracteresPor1000px": 37.66,
+          "caracteresPor1000px": 37.6,
           "semNeutralizar": 13,
           "passeNeutralizado": true,
           "amostras": 6
@@ -7998,7 +7998,7 @@
           "profundidadeDeRolagem": 98.3
         },
         "pontoCego": true,
-        "diferencaPx": 25,
+        "diferencaPx": 19,
         "_amostras": 5,
         "_instavel": false
       },
@@ -8006,7 +8006,7 @@
         {
           "quando": "t+4s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8015,7 +8015,7 @@
         {
           "quando": "t+5.5s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8024,7 +8024,7 @@
         {
           "quando": "t+7s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8033,7 +8033,7 @@
         {
           "quando": "t+8.5s",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8042,7 +8042,7 @@
         {
           "quando": "pos-rolagem",
           "tamTitulos": [
-            48,
+            54,
             36,
             10
           ],
@@ -8050,7 +8050,3022 @@
         }
       ],
       "variante": "C-escala-evento-curto",
-      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-46-caixaAlta-determinista/wireframes/lp-final.html"
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "A-lp-atual@768": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:09:10.417Z",
+      "viewport": "768x1024x2",
+      "rolagem": {
+        "altura": 10934,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 10934,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 768,
+          "h": 1024,
+          "dpr": 2
+        },
+        "telas": 10.7,
+        "telas_base900_legado": 12.1,
+        "metricaV2_hsvS015": 0.5,
+        "corPerceptivel_C005": 0.5,
+        "corForte_C012": 0.5,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 66.7,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 14.1,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 9.9,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 6,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.1,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.5,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.18,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.27,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 6.86,
+        "animacoesAtivas": 8,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          34,
+          31,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 2.62,
+        "titulosDetalhes": [
+          {
+            "px": 34,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "CONSTRUO PRODUTOS DIGITAIS E LIDERO PROJETOS DE TECNOLOGIA."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "35.1437px",
+            "lineHeightRazao": 1.03,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.01376px",
+            "textTransform": "uppercase",
+            "inFirstViewport": true,
+            "largura_ch": 32,
+            "maiorLarguraCh": 32,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 31,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "36.2496px",
+            "lineHeightRazao": 1.17,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.768px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 35,
+            "maiorLarguraCh": 35,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "NAVEGAÇÃO",
+              "CONTATO"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "1.152px",
+            "textTransform": "uppercase",
+            "inFirstViewport": false,
+            "largura_ch": 49,
+            "maiorLarguraCh": 49,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 42
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            34,
+            31,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 13,
+            "ocorrencias": 19
+          },
+          "razao_semFiltro": 2.62,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBREAST CANCER WISCONSIN"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQISKIT AD_HOC_DATA"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 89,
+          "caracteresTotais": 1419,
+          "caracteresPor1000px": 129.78,
+          "semNeutralizar": 48,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 143,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 97.6
+        },
+        "pontoCego": true,
+        "diferencaPx": 109,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            34,
+            31,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            34,
+            31,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            34,
+            31,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            34,
+            31,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            34,
+            31,
+            10
+          ],
+          "maiorTexto": 143
+        }
+      ],
+      "variante": "A-lp-atual",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "B-so-escala@768": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:09:22.955Z",
+      "viewport": "768x1024x2",
+      "rolagem": {
+        "altura": 11586,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 11586,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 768,
+          "h": 1024,
+          "dpr": 2
+        },
+        "telas": 11.3,
+        "telas_base900_legado": 12.9,
+        "metricaV2_hsvS015": 0.5,
+        "corPerceptivel_C005": 0.5,
+        "corForte_C012": 0.4,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 66.3,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 14.7,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 9.8,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 6,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.1,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.5,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.17,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.26,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 6.47,
+        "animacoesAtivas": 8,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          77,
+          38,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 5.92,
+        "titulosDetalhes": [
+          {
+            "px": 77,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "Construo produtos digitais e lidero projetos de tecnologia."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "69.12px",
+            "lineHeightRazao": 0.9,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-3.072px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 14,
+            "maiorLarguraCh": 14,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 38,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "40.32px",
+            "lineHeightRazao": 1.06,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.768px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 28,
+            "maiorLarguraCh": 28,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 57,
+            "maiorLarguraCh": 57,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 42
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            77,
+            38,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 13,
+            "ocorrencias": 19
+          },
+          "razao_semFiltro": 5.92,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 40.31,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 143,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 97.8
+        },
+        "pontoCego": true,
+        "diferencaPx": 66,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        }
+      ],
+      "variante": "B-so-escala",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "C-escala-evento-curto@768": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:09:35.603Z",
+      "viewport": "768x1024x2",
+      "rolagem": {
+        "altura": 11532,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 11532,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 768,
+          "h": 1024,
+          "dpr": 2
+        },
+        "telas": 11.3,
+        "telas_base900_legado": 12.8,
+        "metricaV2_hsvS015": 0.5,
+        "corPerceptivel_C005": 0.5,
+        "corForte_C012": 0.4,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 66.2,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 14.8,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 9.8,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 6,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.1,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.5,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.17,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.26,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 6.5,
+        "animacoesAtivas": 8,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          77,
+          38,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 5.92,
+        "titulosDetalhes": [
+          {
+            "px": 77,
+            "elementos": 1,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "AUGUSTO\nMENCHACA"
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "69.12px",
+            "lineHeightRazao": 0.9,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-3.072px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 14,
+            "maiorLarguraCh": 14,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 38,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "40.32px",
+            "lineHeightRazao": 1.06,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.768px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 28,
+            "maiorLarguraCh": 28,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 57,
+            "maiorLarguraCh": 57,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 42
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            77,
+            38,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 13,
+            "ocorrencias": 19
+          },
+          "razao_semFiltro": 5.92,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 40.5,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 12
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 143,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 97.8
+        },
+        "pontoCego": true,
+        "diferencaPx": 66,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            77,
+            38,
+            10
+          ],
+          "maiorTexto": 143
+        }
+      ],
+      "variante": "C-escala-evento-curto",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "A-lp-atual@1024": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:09:47.114Z",
+      "viewport": "1024x768x1",
+      "rolagem": {
+        "altura": 7762,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 7762,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 1024,
+          "h": 768,
+          "dpr": 1
+        },
+        "telas": 10.1,
+        "telas_base900_legado": 8.6,
+        "metricaV2_hsvS015": 0.7,
+        "corPerceptivel_C005": 0.7,
+        "corForte_C012": 0.6,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 66.9,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 15.4,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 8,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.6,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.2,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.9,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.26,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.39,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 9.66,
+        "animacoesAtivas": 9,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          45,
+          34,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 3.46,
+        "titulosDetalhes": [
+          {
+            "px": 45,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "CONSTRUO PRODUTOS DIGITAIS E LIDERO PROJETOS DE TECNOLOGIA."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "46.8582px",
+            "lineHeightRazao": 1.04,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.35168px",
+            "textTransform": "uppercase",
+            "inFirstViewport": true,
+            "largura_ch": 19,
+            "maiorLarguraCh": 19,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 34,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "40.592px",
+            "lineHeightRazao": 1.19,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.86px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 25,
+            "maiorLarguraCh": 42,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "NAVEGAÇÃO",
+              "CONTATO"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "1.152px",
+            "textTransform": "uppercase",
+            "inFirstViewport": false,
+            "largura_ch": 33,
+            "maiorLarguraCh": 33,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            45,
+            34,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 14,
+            "ocorrencias": 16
+          },
+          "razao_semFiltro": 3.21,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBREAST CANCER WISCONSIN"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQISKIT AD_HOC_DATA"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 96,
+          "caracteresTotais": 1513,
+          "caracteresPor1000px": 194.92,
+          "semNeutralizar": 55,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 15
+          },
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 12
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 190,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 96.1
+        },
+        "pontoCego": true,
+        "diferencaPx": 145,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            45,
+            34,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            45,
+            34,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            45,
+            34,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            45,
+            34,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            45,
+            34,
+            10
+          ],
+          "maiorTexto": 190
+        }
+      ],
+      "variante": "A-lp-atual",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "B-so-escala@1024": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:09:59.367Z",
+      "viewport": "1024x768x1",
+      "rolagem": {
+        "altura": 8826,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 8826,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 1024,
+          "h": 768,
+          "dpr": 1
+        },
+        "telas": 11.5,
+        "telas_base900_legado": 9.8,
+        "metricaV2_hsvS015": 0.6,
+        "corPerceptivel_C005": 0.6,
+        "corForte_C012": 0.6,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 66.9,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 16.6,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 7.2,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.3,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.1,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.9,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.23,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.34,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 8.5,
+        "animacoesAtivas": 9,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          102,
+          51,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 7.85,
+        "titulosDetalhes": [
+          {
+            "px": 102,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "Construo produtos digitais e lidero projetos de tecnologia."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "92.16px",
+            "lineHeightRazao": 0.9,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-4.096px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 9,
+            "maiorLarguraCh": 9,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 51,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "53.76px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.024px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 25,
+            "maiorLarguraCh": 28,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 38,
+            "maiorLarguraCh": 38,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            102,
+            51,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 14,
+            "ocorrencias": 16
+          },
+          "razao_semFiltro": 7.29,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 52.91,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 190,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 96.5
+        },
+        "pontoCego": true,
+        "diferencaPx": 88,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        }
+      ],
+      "variante": "B-so-escala",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "C-escala-evento-curto@1024": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:10:11.558Z",
+      "viewport": "1024x768x1",
+      "rolagem": {
+        "altura": 8633,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 8633,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 1024,
+          "h": 768,
+          "dpr": 1
+        },
+        "telas": 11.2,
+        "telas_base900_legado": 9.6,
+        "metricaV2_hsvS015": 0.6,
+        "corPerceptivel_C005": 0.6,
+        "corForte_C012": 0.6,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 66.6,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 16.8,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 7.3,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.3,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 2.1,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.9,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.23,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.35,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 8.69,
+        "animacoesAtivas": 9,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          102,
+          51,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 7.85,
+        "titulosDetalhes": [
+          {
+            "px": 102,
+            "elementos": 1,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "AUGUSTO\nMENCHACA"
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "92.16px",
+            "lineHeightRazao": 0.9,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-4.096px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 9,
+            "maiorLarguraCh": 9,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 51,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "53.76px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.024px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 25,
+            "maiorLarguraCh": 28,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 38,
+            "maiorLarguraCh": 38,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            102,
+            51,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 14,
+            "ocorrencias": 16
+          },
+          "razao_semFiltro": 7.29,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 54.09,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 12
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 190,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 96.5
+        },
+        "pontoCego": true,
+        "diferencaPx": 88,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            102,
+            51,
+            10
+          ],
+          "maiorTexto": 190
+        }
+      ],
+      "variante": "C-escala-evento-curto",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "A-lp-atual@1440": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:10:23.121Z",
+      "viewport": "1440x900x1",
+      "rolagem": {
+        "altura": 8350,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 8350,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 1440,
+          "h": 900,
+          "dpr": 1
+        },
+        "telas": 9.3,
+        "telas_base900_legado": 9.3,
+        "metricaV2_hsvS015": 0.5,
+        "corPerceptivel_C005": 0.5,
+        "corForte_C012": 0.4,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 68.5,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 15,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 7.7,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 6,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 1.5,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.6,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.24,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.36,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 8.98,
+        "animacoesAtivas": 9,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          46,
+          34,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 3.54,
+        "titulosDetalhes": [
+          {
+            "px": 46,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "CONSTRUO PRODUTOS DIGITAIS E LIDERO PROJETOS DE TECNOLOGIA."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "48.256px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.392px",
+            "textTransform": "uppercase",
+            "inFirstViewport": true,
+            "largura_ch": 19,
+            "maiorLarguraCh": 19,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 34,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "40.592px",
+            "lineHeightRazao": 1.19,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-0.86px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 25,
+            "maiorLarguraCh": 51,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "NAVEGAÇÃO",
+              "CONTATO"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "1.152px",
+            "textTransform": "uppercase",
+            "inFirstViewport": false,
+            "largura_ch": 40,
+            "maiorLarguraCh": 40,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            46,
+            34,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 14,
+            "ocorrencias": 16
+          },
+          "razao_semFiltro": 3.29,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBREAST CANCER WISCONSIN"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQISKIT AD_HOC_DATA"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 96,
+          "caracteresTotais": 1513,
+          "caracteresPor1000px": 181.2,
+          "semNeutralizar": 55,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 232,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 95.9
+        },
+        "pontoCego": true,
+        "diferencaPx": 186,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            46,
+            34,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            46,
+            34,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            46,
+            34,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            46,
+            34,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            46,
+            34,
+            10
+          ],
+          "maiorTexto": 232
+        }
+      ],
+      "variante": "A-lp-atual",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "B-so-escala@1440": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:10:35.618Z",
+      "viewport": "1440x900x1",
+      "rolagem": {
+        "altura": 10863,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 10863,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 1440,
+          "h": 900,
+          "dpr": 1
+        },
+        "telas": 12.1,
+        "telas_base900_legado": 12.1,
+        "metricaV2_hsvS015": 0.4,
+        "corPerceptivel_C005": 0.4,
+        "corForte_C012": 0.4,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 68.6,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 17,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 6.7,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.3,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 1.3,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.5,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.18,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.28,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 6.9,
+        "animacoesAtivas": 9,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          144,
+          72,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 11.08,
+        "titulosDetalhes": [
+          {
+            "px": 144,
+            "elementos": 1,
+            "caracteres": 59,
+            "palavras": 8,
+            "textos": [
+              "Construo produtos digitais e lidero projetos de tecnologia."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "129.6px",
+            "lineHeightRazao": 0.9,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-5.76px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 7,
+            "maiorLarguraCh": 7,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 72,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "75.6px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.44px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 24,
+            "maiorLarguraCh": 24,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 47,
+            "maiorLarguraCh": 47,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            144,
+            72,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 14,
+            "ocorrencias": 16
+          },
+          "razao_semFiltro": 10.29,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 42.99,
+          "semNeutralizar": 11,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 11
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 232,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 96.8
+        },
+        "pontoCego": true,
+        "diferencaPx": 88,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        }
+      ],
+      "variante": "B-so-escala",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
+    },
+    "C-escala-evento-curto@1440": {
+      "status": "sucesso",
+      "dataHora": "2026-09-11T03:10:47.994Z",
+      "viewport": "1440x900x1",
+      "rolagem": {
+        "altura": 10299,
+        "imgs": 0,
+        "carregadas": 0
+      },
+      "data": {
+        "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html",
+        "altura": 10299,
+        "fontes": {
+          "status": "loaded",
+          "carregadas": 33
+        },
+        "viewportMedido": {
+          "w": 1440,
+          "h": 900,
+          "dpr": 1
+        },
+        "telas": 11.4,
+        "telas_base900_legado": 11.4,
+        "metricaV2_hsvS015": 0.4,
+        "corPerceptivel_C005": 0.4,
+        "corForte_C012": 0.4,
+        "cromaMedioPonderado": 0.009,
+        "cromaPicoOklch": 0.201,
+        "fundos": [
+          {
+            "cor": "rgb(247,245,239)",
+            "pct": 67.6,
+            "L": 0.97,
+            "C": 0.008,
+            "H": 91
+          },
+          {
+            "cor": "rgb(232,227,217)",
+            "pct": 17.5,
+            "L": 0.92,
+            "C": 0.014,
+            "H": 85
+          },
+          {
+            "cor": "rgb(17,18,19)",
+            "pct": 6.9,
+            "L": 0.18,
+            "C": 0.003,
+            "H": 248
+          },
+          {
+            "cor": "rgb(11,11,11)",
+            "pct": 5.5,
+            "L": 0.15,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(255,255,255)",
+            "pct": 1.3,
+            "L": 1,
+            "C": 0,
+            "H": 90
+          },
+          {
+            "cor": "rgb(241,238,230)",
+            "pct": 0.5,
+            "L": 0.95,
+            "C": 0.011,
+            "H": 90
+          }
+        ],
+        "midia": {
+          "img": 0,
+          "svg": 2,
+          "video": 0,
+          "canvas": 0
+        },
+        "midiaTotalPor1000": 0.19,
+        "keyframes": 3,
+        "nomes": [
+          "rail-scroll",
+          "heroUp",
+          "heroLine"
+        ],
+        "keyframesPor1000": 0.29,
+        "folhasBloqueadas": 1,
+        "emTransicao": 75,
+        "emTransicaoPor1000": 7.28,
+        "animacoesAtivas": 9,
+        "duracoes": [
+          [
+            "0.6s",
+            50
+          ],
+          [
+            "0.2s",
+            30
+          ],
+          [
+            "0.18s",
+            23
+          ]
+        ],
+        "tamTitulos": [
+          144,
+          72,
+          10
+        ],
+        "workhorse": {
+          "px": 13,
+          "ocorrencias": 9
+        },
+        "razaoTituloWorkhorse": 11.08,
+        "titulosDetalhes": [
+          {
+            "px": 144,
+            "elementos": 1,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "AUGUSTO\nMENCHACA"
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "700",
+            "lineHeightPx": "129.6px",
+            "lineHeightRazao": 0.9,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-5.76px",
+            "textTransform": "none",
+            "inFirstViewport": true,
+            "largura_ch": 7,
+            "maiorLarguraCh": 7,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 72,
+            "elementos": 7,
+            "caracteres": 437,
+            "palavras": 62,
+            "textos": [
+              "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+              "Levando um projeto de cliente dos requisitos à produção.",
+              "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+              "Testando quando machine learning quântico realmente faz diferença.",
+              "De software científico à pesquisa em IA aplicada.",
+              "O que quero entender a seguir."
+            ],
+            "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "familiaEfetiva": "Instrument Sans",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "instrument sans",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "75.6px",
+            "lineHeightRazao": 1.05,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "-1.44px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 24,
+            "maiorLarguraCh": 24,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          },
+          {
+            "px": 10,
+            "elementos": 2,
+            "caracteres": 16,
+            "palavras": 2,
+            "textos": [
+              "Navegação",
+              "Contato"
+            ],
+            "fontFamily": "\"IBM Plex Mono\", monospace",
+            "familiaEfetiva": "IBM Plex Mono",
+            "familiaVerificada": true,
+            "caiuParaFallback": false,
+            "familiaDeclarada": "ibm plex mono",
+            "serifa": false,
+            "serifa_pelaDeclarada_legado": false,
+            "fontWeight": "600",
+            "lineHeightPx": "14.4px",
+            "lineHeightRazao": 1.44,
+            "lineHeightOrigem": "declarada",
+            "letterSpacing": "0.192px",
+            "textTransform": "none",
+            "inFirstViewport": false,
+            "largura_ch": 47,
+            "maiorLarguraCh": 47,
+            "fracaoContidaMin": 1,
+            "vistoEmAmostras": "5/5"
+          }
+        ],
+        "workhorseDetalhe": {
+          "px": 13,
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Inter",
+          "familiaVerificada": true,
+          "serifa": false,
+          "lineHeightPx": "19.68px",
+          "lineHeightRazao": 1.51,
+          "lineHeightOrigem": "declarada",
+          "largura_ch": 34
+        },
+        "_legado": {
+          "tamTitulos_semFiltro": [
+            144,
+            72,
+            11,
+            10
+          ],
+          "workhorse_semFiltro": {
+            "px": 14,
+            "ocorrencias": 16
+          },
+          "razao_semFiltro": 10.29,
+          "divergeDoCorrigido": false
+        },
+        "descartes": {
+          "titulos": [
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS REAIS\nBreast Cancer Wisconsin"
+            },
+            {
+              "px": 11,
+              "motivo": "opacidade-0",
+              "texto": "DADOS SINTÉTICOS\nQiskit ad_hoc_data"
+            }
+          ],
+          "porRecorte": []
+        },
+        "caixaAlta": {
+          "elementos": 23,
+          "caracteresTotais": 467,
+          "caracteresPor1000px": 45.34,
+          "semNeutralizar": 13,
+          "passeNeutralizado": true,
+          "amostras": 6
+        },
+        "familiasUsadas": [
+          {
+            "familia": "Inter, -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 12
+          },
+          {
+            "familia": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+            "contagem": 8
+          },
+          {
+            "familia": "\"IBM Plex Mono\", monospace",
+            "contagem": 7
+          }
+        ],
+        "maiorTextoRenderizado": {
+          "px": 232,
+          "tag": "div",
+          "className": "footer-wordmark",
+          "caracteres": 7,
+          "palavras": 1,
+          "fontFamily": "\"Instrument Sans\", -apple-system, BlinkMacSystemFont, sans-serif",
+          "familiaEfetiva": "Instrument Sans",
+          "familiaVerificada": true,
+          "serifa": false,
+          "fontWeight": "700",
+          "textTransform": "none",
+          "fracaoContida": 1,
+          "profundidadeDeRolagem": 96.6
+        },
+        "pontoCego": true,
+        "diferencaPx": 88,
+        "_amostras": 5,
+        "_instavel": false
+      },
+      "amostras": [
+        {
+          "quando": "t+4s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+5.5s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+7s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "t+8.5s",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        },
+        {
+          "quando": "pos-rolagem",
+          "tamTitulos": [
+            144,
+            72,
+            10
+          ],
+          "maiorTexto": 232
+        }
+      ],
+      "variante": "C-escala-evento-curto",
+      "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/Issue-45-degrau-movel-da-escala-tipografica/wireframes/lp-final.html"
     }
   }
 }

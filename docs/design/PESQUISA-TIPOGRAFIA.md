@@ -280,6 +280,103 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 
 ---
 
+
+### 8.4 O degrau móvel — cinco larguras, e o corte de cada uma (issue #45)
+
+A §8.1 mediu dois viewports e concluiu que a escala ficava do lado rejeitado a
+390px. Aquela conclusão usava o corte de **desktop**. A #45 mediu as 18
+referências em 320, 390 e 768px — 54 medições, em
+`docs/design/tipografia/medicoes-movel.json` — e o corte de desktop **não
+sobrevive ao móvel**.
+
+**A 390px, quatro das cinco peças aprovadas ficam abaixo de 89px:** `aelixa`
+80px, `lxlcreative` 64px, `paulkalkbrenner` 60px e `illoca` 58px. Só
+`white-desert`, com 200px, cruza. Perseguir 89px a 390px deixaria a LP mais
+extrema que quatro quintos da própria referência do cliente.
+
+#### O corte de cada largura, pelo método da §3.4
+
+Pior aprovado contra melhor rejeitado, corte no ponto médio:
+
+| largura | corte de título | corte de razão |
+|---|---|---|
+| 320 | **não existe** — a variável inverte: `illoca` (aprovada) 47px fica **abaixo** de `lowmess` (rejeitada) 48px | **3,73×** |
+| 390 | **54px** (`illoca` 58 · `lowmess` 50) | **3,66×** (`paulkalkbrenner` 3,75 · `lowmess` 3,57) |
+| 768 | **70,5px** (`lxlcreative` 80 · `lowmess` 61) | **4,39×** (`lxlcreative` 4,71 · `lowmess` 4,07) |
+| 1024 e 1440 | 89px | 5,57× |
+
+**A 320px, uma das duas variáveis classificadoras falha.** É a primeira vez neste
+projeto que isso acontece. Ali só a razão separa, e por 0,08.
+
+#### A escala revisada, e o resultado medido
+
+O `PLANO-DEGRAU-MOVEL.md` propôs alterar apenas o primeiro degrau, mantendo o
+segundo, o teto de 144px e as famílias:
+
+```css
+font-size:     clamp(3.0625rem, max(10vw, min(14vw, 3.375rem)), 9rem);
+line-height:   clamp(.9em, 3.375rem, 1em);
+overflow-wrap: anywhere;
+```
+
+A ponte `min(14vw, 3.375rem)` só atua **abaixo de 540px**, onde `10vw` ainda não
+alcançou 54px — de 540 para cima a curva é exatamente a anterior. A entrelinha
+abre para um corpo no móvel e reencontra `0.9em` em 600px.
+
+Medido em `--headed`, 33/33, contra o corte de cada largura:
+
+| largura | maior título | razão | corte de título | corte de razão |
+|---|---|---|---|---|
+| 320 | **49px** | **3,77×** | não existe | 3,73× · **cruza por 0,04** |
+| 390 | **54px** | **4,15×** | 54px · **cruza com margem zero** | 3,66× |
+| 768 | **77px** | **5,92×** | 70,5px | 4,39× |
+| 1024 | **102px** | **7,85×** | 89px | 5,57× |
+| 1440 | **144px** | **11,08×** | 89px | 5,57× |
+
+As cinco larguras cruzam o corte da sua própria largura. O *workhorse* medido
+continua **13px** nas quinze linhas, e a variante `A-lp-atual` não se move em
+largura nenhuma — ela não recebe CSS injetado.
+
+#### O que este resultado não autoriza concluir
+
+- **A classificação no móvel é frágil, e são duas fragilidades distintas.** A
+  primeira é a **separação da amostra**: a distância entre o pior aprovado e o
+  melhor rejeitado em maior título cai de **26px** a 1440px (102 contra 76) para
+  **8px** a 390px (58 contra 50), e a 320px fica **negativa** (47 contra 48). A
+  segunda é a **folga da LP até o corte**: 0,04 em razão a 320px e **zero** em
+  título a 390px. A amostra aprovada tem **N=5**, e as dez rejeitadas vêm de um
+  único agregador (§9.2) — limite que pesa mais justamente onde a separação
+  encolhe.
+- **A 390px o título cai exatamente sobre o corte.** O corte é o ponto médio
+  entre 58px (pior aprovada) e 50px (melhor rejeitada): a LP fica na fronteira,
+  não dentro da faixa aprovada. Foi o alvo escolhido no gate, e é conformidade,
+  não folga.
+- **Nada foi conferido em navegador.** As previsões de quebra de linha do
+  `PLANO-DEGRAU-MOVEL.md` — seis linhas a 320px, cinco a 390px — são previsão de
+  composição, não observação. O `h1` está dentro de `.hero-mask` com
+  `overflow: hidden`, e **ausência de rolagem horizontal não prova que o texto
+  não foi cortado**. A crítica visual é da #21 e do Gate C.
+
+#### Um efeito colateral não previsto, e medido
+
+`overflow-wrap: anywhere` altera o cálculo de tamanho intrínseco, e com ele a
+altura da página. Comparando a mesma variante antes e depois, a 1440px:
+
+| variante @1440 | escala anterior | escala com o degrau móvel |
+|---|---|---|
+| `B-so-escala` | 10.604px | **10.863px** |
+| `C-escala-evento-curto` | 10.169px | **10.299px** |
+
+São **+259px** e **+130px** que não vêm do tamanho do tipo — o título a 1440px
+continua 144px e a razão 11,08×. Vêm da propriedade de quebra.
+
+O custo de altura da escala, discutido na §6, sobe de **+2.230px (+26,6%)** para
+**+2.513px (+30,1%)** a 1440px — de 8.350px para 10.863px. Continua remetido à
+**#7**, agora com o alvo de ≤5.500px do `PROBLEMA-v1` mais distante: o corte de
+11 para 8 seções passa a ter que pagar **5.363px**.
+
+---
+
 ## 9. Limites declarados e o que continua não medido
 
 ### 9.1 Limites operacionais do instrumento
@@ -288,6 +385,8 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 - **Caixa alta exige o revelador neutralizado:** A varredura de 700px com pausa de 90ms revela 6 dos 25 blocos `[data-reveal]`; sem neutralizar, a contagem depende de qual bloco a corrida alcançou. O passe neutralizado mede o estado assentado da página, correspondente a “caixa alta na página inteira”. A origem é reproduzível com `SONDA_DIAG=1 node docs/design/tipografia/medir.mjs --so-local --headed`, que imprime `dataReveal` e `revealed` por amostra.
 - **Altura não determinística da Variante A em desktop:** Duas execuções do comando gravado em `_meta.comando` devolveram **8.350px** e **8.374px** para `A-lp-atual@1440`. A oscilação não está resolvida nesta issue; por isso, o custo de altura publicado no §8 (**+2.230px, +26,6%**) carrega incerteza de **±24px** na base.
 - **O wordmark de rodapé não substitui a hierarquia:** O `<div class="footer-wordmark">` de 232px da LP localiza-se a 95,9% de rolagem. O `aelixa.webflow.io` (aprovado) possui idêntica estrutura: um elemento de **240px a 97,8%** de profundidade. A presença de uma palavra gigante no encerramento da página aparece nos dois lados do espectro e **não separa aprovação de rejeição**. O que separa os grupos é a escala que governa os títulos de conteúdo ativo (102–320px vs 20–76px).
+
+- **A altura da variante `A-lp-atual` oscila cerca de 25px entre rodadas, e a #45 não fechou a causa.** O desvio aparece em **uma largura por rodada**, não sempre na mesma: `A-lp-atual@1440` mediu 8.374px e 8.350px em rodadas diferentes, e `A-lp-atual@768` mediu 10.934px e 10.959px. Nas demais quatorze linhas as três rodadas conferidas batem exatamente. Duas hipóteses foram **refutadas com dado**, não descartadas por opinião: (1) *o revelador* — com `SONDA_DIAG=1` a 320px, `isRevealed` sobe de 0 para 5 entre as amostras e a altura permanece 11.644px nas cinco, logo o `transform` dos blocos `[data-reveal]` não move a altura; (2) *imagem preguiçosa* — a LP não tem elemento `<img>` algum, `rolagem.imgs` é **0**. Consequência a declarar em qualquer citação: toda altura publicada carrega incerteza de **±25px**, e diferenças menores que isso entre duas medições não são sinal.
 
 ### 9.2 O que continua estritamente não medido
 
@@ -310,8 +409,8 @@ A variante C acrescentou a essa folha a execução do script `JS_EVENTO_CURTO`, 
 5. Extinção definitiva de arquivos de protótipo de escala (`escala-proposta-*`), adotando-se a injeção em tempo de medição como metodologia de aferição.
 
 **QUESTÕES ABERTAS:**
-1. **O degrau móvel da escala segue não resolvido:** A 390px, a escala proposta atinge 48px e razão 3,69×, permanecendo do lado rejeitado pelo classificador. Projetar uma adaptação responsiva viável sem overflow horizontal é questão aberta para o Gate C;
-2. **Dilatação da página versus tempo até a prova técnica:** O aumento de 26,6% na altura total (para 11,8 telas) tensiona a métrica de ≤ 1,5 tela para exibição de evidências técnicas do `PROBLEMA-v1.md`;
+1. **O degrau móvel foi resolvido contra o corte de cada largura, não contra o de desktop (#45):** a escala revisada mede 49px a 320, 54px a 390 e 77px a 768, cruzando o corte da própria largura nas cinco medidas — §8.4. O que **permanece aberto** é a folga: a 390px o título cai exatamente sobre o corte, com margem zero, e a 320px a variável de título não separa aprovado de rejeitado. Nada foi conferido em navegador, e a máscara do herói tem `overflow: hidden`, então ausência de rolagem horizontal não prova ausência de texto cortado. Crítica visual é da #21 e do Gate C;
+2. **Dilatação da página versus tempo até a prova técnica:** com o degrau móvel aplicado, o aumento a 1440px passa de 26,6% para **30,1%** (+2.513px), porque `overflow-wrap: anywhere` altera o cálculo de tamanho intrínseco — §8.4. A métrica de ≤ 1,5 tela do `PROBLEMA-v1.md` continua sem nunca ter sido medida, e o alvo de ≤5.500px fica a 5.363px de distância;
 3. **Decisão sobre a cópia do herói (Variante C):** A redução para "AUGUSTO MENCHACA" no `h1` e o rebaixamento da frase técnica para subtítulo não afetam as métricas tipográficas. A decisão de hierarquia de mensagem deve ser arbitrada no Gate B/C;
 4. **Governança do workhorse utilitário:** O CSS da escala governa elementos de corpo (`16px`), mas a página computa `13px` em textos secundários de rodapé.
 
