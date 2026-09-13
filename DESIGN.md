@@ -97,17 +97,26 @@ O sistema distingue categoricamente evidência de preferência: a cor atua estri
 
 ## Colors
 
-A paleta é composta estritamente pelos tokens ativos declarados no bloco `:root` de `wireframes/lp-final.html`, estruturada em superfícies neutras tingidas, neutros escuros para tipografia, acentos pontuais e as cores institucionais da marca Hut 8.
+A paleta é composta estritamente pelos tokens ativos declarados no bloco `:root` de `wireframes/lp-final.html`, estruturada em superfícies neutras tingidas, neutros escuros para tipografia, acentos pontuais e os tokens da marca Hut 8 congelados no projeto.
 
 - **Superfícies:** `paper` (`#F7F5EF`), `stone` (`#E8E3D9`), `white` (`#FFFFFF`) e `subtle` (`#F1EEE6`). Apresentam croma medido em OKLCH de `C <= 0,014`, situando-se rigorosamente na faixa de neutros tingidos observada nas referências aprovadas.
 - **Tipografia e Neutros:** `charcoal` (`#111213`) como elemento principal de contraste e hierarquia escura; `body` (`#343739`) para texto corrido e blocos de leitura; `muted` (`#626569`) como piso de contraste para textos utilitários e metadados; `on-dark` (`#9A9DA1`) restrito exclusivamente a textos sobre superfícies escuras.
 - **Acentos:** `acid` (`#E6F835`) como ativador visual de alto contraste sobre fundos escuros; `oxblood` (`#5A2232`) e `wine` (`#F1E6E8`) para ênfases cromáticas profundas e superfícies editoriais complementares.
-- **Sistema Hut 8:** `h8-black` (`#0B0B0B`), `h8-purple` (`#6B0F9C`) e `h8-gray` (`#8A8A8A`), reproduzindo as especificações do manual de marca da empresa júnior.
+- **Sistema Hut 8:** `h8-black` (`#0B0B0B`), `h8-purple` (`#6B0F9C`) e `h8-gray` (`#8A8A8A`), correspondendo aos tokens ativos do bloco `:root` de `wireframes/lp-final.html` congelados pela declaração da issue #35, e não a especificações verificadas no manual de marca (ausente do repositório).
 - **Hairlines:** Linhas divisórias estruturais finas baseadas em transparência controlada do neutro escuro: `hair` (`rgba(17, 18, 19, 0.13)`) e `hair-strong` (`rgba(17, 18, 19, 0.28)`).
 
 ### Tokens Mortos Fora do Sistema (Decisão D3)
 
-Os tokens `--light` (`#8A8E93`) e `--h8-photo` (`#2A2A28`), embora permaneçam fisicamente no bloco `:root` de `wireframes/lp-final.html` até a deliberação do Gate D, **não fazem parte do sistema de design** e estão expurgados do frontmatter e do uso em produção. A pesquisa #35 comprovou que ambos possuem zero ocorrências na peça atual. O token `--light` reprova os critérios de acessibilidade sobre superfícies claras (2,58:1 sobre stone e 2,84:1 sobre subtle). O token `--h8-photo` possui procedência falsa de marca: o manual institucional da Hut 8 especifica o preto-tecido como `#1F1F1D` (RGB 31 31 29), valor ausente no repositório.
+Os tokens `--light` (`#8A8E93`) e `--h8-photo` (`#2A2A28`), embora permaneçam fisicamente no bloco `:root` de `wireframes/lp-final.html` até a deliberação do Gate D, **não fazem parte do sistema de design** e estão expurgados do frontmatter e do uso em produção. A pesquisa #35 comprovou que ambos possuem zero ocorrências na peça atual. O token `--light` reprova os critérios de acessibilidade sobre superfícies claras (2,58:1 sobre stone e 2,84:1 sobre subtle). O token `--h8-photo` possui procedência falsa de marca: o valor `#1F1F1D` (RGB 31 31 29) para o preto-tecido vem apenas reportado pela revisão que teve o manual em mãos (valor ausente no repositório), mas a exclusão de `--h8-photo` independe de qual seja o preto exato — `#2A2A28` não é ele de um jeito ou de outro.
+
+### Lacuna de Procedência da Marca Hut 8
+
+Registra-se formalmente a lacuna de procedência da marca Hut 8 no sistema:
+
+- **Manual ausente do repositório:** O manual de marca da Hut 8 não está no repositório. Nenhum arquivo rastreado o contém, portanto os valores da marca não são reverificáveis a partir do repositório.
+- **Registros internos divergentes quanto ao cinza:** Os dois registros existentes no repositório discordam entre si — o corpo da issue #35 (`docs/issues/lote-pesquisa.md:30`) lista quatro valores (`#0B0B0B`, `#6B0F9C`, `#8A8A8A`, `#A4DE02`), enquanto `docs/design/CRITIQUE-BRIEF.md:22` lista apenas três (preto, roxo e verde), sem o cinza `#8A8A8A`. Além disso, a tabela reportada do manual contém `#0B0B0B`, `#6B0F9C`, `#A4DE02` e `#1F1F1D`, e não contém `#8A8A8A`.
+- **`#1F1F1D` apenas reportado pela revisão:** O preto-tecido `#1F1F1D` (RGB 31 31 29) foi apenas reportado pela revisão que teve o manual em mãos, não constando em nenhuma das duas listas internas nem no repositório.
+- **Autoridade normativa da R3:** A autoridade da regra R3 hoje é exclusivamente a declaração da issue #35 e os tokens ativos do bloco `:root` de `wireframes/lp-final.html`, e não o manual de marca. Versionar o manual no repositório é trabalho para outra issue.
 
 ### Limiar de Contraste e Tamanho Computado (Decisão D2)
 
@@ -122,7 +131,7 @@ A conformidade com WCAG 2.1 AA é mandatória em todos os pares da interface:
 
 - **R1 — Lei de Contraste do Acid:** O token `--acid` (`#E6F835`) **NUNCA** pode ser utilizado como cor de texto sobre superfícies claras (`paper` 1,08:1; `stone` 1,09:1; `white` 1,18:1; `subtle` 1,02:1). Seu uso é permitido exclusivamente como texto sobre `--charcoal` (15,93:1) ou como plano de fundo contendo texto em `--charcoal` (15,93:1) ou `--muted` (4,98:1).
 - **R2 — Verde da Marca Hut 8 Fora da LP:** O verde `#A4DE02` da marca Hut 8 permanece fora da paleta da landing page. A medição instrumental comprovou proximidade perceptual excessiva com o acid (`ΔH = 11,2°` e `ΔC = 0,012`), pertencendo à mesma família cromática e incorrendo na mesma inviabilidade de contraste sobre superfícies claras (1,26:1 a 1,61:1).
-- **R3 — Marca Hut 8 Congelada:** Os valores institucionais da Hut 8 (`#0B0B0B`, `#6B0F9C`, `#8A8A8A` e externamente `#A4DE02`) são fixos e invioláveis. Não admitem modulação de matiz, saturação ou luminosidade.
+- **R3 — Marca Hut 8 Congelada:** Os valores da marca Hut 8 congelados no projeto (`#0B0B0B`, `#6B0F9C`, `#8A8A8A` e externamente `#A4DE02`) são fixos e invioláveis: não admitem derivação, modulação de matiz, saturação ou luminosidade. A regra preserva sua força distinguindo categoricamente dois sentidos que não se confundem: "congelado" significa rigorosamente **não derivar, não modular e não inventar**; **não** significa que os valores foram verificados contra o manual de marca. A autoridade normativa da regra hoje é a declaração da issue #35 (`docs/issues/lote-pesquisa.md`) e os tokens ativos do bloco `:root` de `wireframes/lp-final.html`, e não o manual de marca (ver a lacuna de procedência declarada acima).
 - **R4 — Confinamento das Paletas de Projetos Reais:** As identidades visuais de projetos reais entram como restrição externa, com os valores medidos nas capturas reais: **IDF-BR** navy `rgb(13,27,42)`; **Ciere** creme `rgb(243,236,220)`, marrom `rgb(77,54,28)` e dourado `rgb(206,145,0)`. O **DVO** não possui token estável: o azul de oficina vem de fotografia e varia por imagem, então nenhum valor é normativo — a peça entra como é e nada se deriva dela. Ficam confinadas ao campo visual de evidência técnica (cartões e ilustrações de produto) e **nunca** viram fundo de seção. Capturas de tela e dados reais jamais são recoloridos; superfícies adjacentes (molduras, legendas e planos de seção) acomodam-se à imagem original.
 - **R5 — Piso de Contraste no Neutro:** Nenhuma cor com luminosidade superior a `--muted` (`L = 0,505` em OKLCH) pode ser empregada como texto sobre fundos claros. Essa restrição veda expressamente o uso de `--light` (`L = 0,645`), `--on-dark` (`L = 0,695`) e `--h8-gray` (`L = 0,633`) sobre `paper`, `stone`, `white` e `subtle`.
 - **R6 — Vedação de Texto Direto sobre Imagem:** Nenhum elemento textual pode assentar diretamente sobre imagens ou capturas sem uma faixa sólida e opaca intermediária, assegurando mensurabilidade determinística de contraste.
@@ -358,7 +367,7 @@ Os componentes da interface operam como átomos funcionais de alta densidade inf
 - **Do:** Garanta conformidade com WCAG AA em todas as larguras de tela (mínimo de 4,5:1 para texto com tamanho computado < 24px e 3:1 para texto computado >= 24px).
 - **Do:** Utilize o degrau 4 da escala (**16px**) como o único denominador normativo oficial para o cálculo da razão display/corpo do sistema.
 - **Do:** Mantenha a duração base de **0,3s** para transições temporais de interface, documentando expressamente qualquer exceção funcional nomeada.
-- **Do:** Trate as cores institucionais da marca Hut 8 (`#0B0B0B`, `#6B0F9C`, `#8A8A8A`) como valores fixos, congelados e imutáveis.
+- **Do:** Trate os valores da marca Hut 8 congelados pela declaração da issue #35 (`#0B0B0B`, `#6B0F9C`, `#8A8A8A`) como fixos e imutáveis, sem derivar variações ou inventar modulações.
 - **Do:** Confine as paletas cromáticas dos projetos de clientes (IDF-BR, Ciere e DVO) exclusivamente ao escopo dos seus cartões e ilustrações de evidência técnica.
 - **Do:** Adote `--muted` (`L = 0,505`) como o piso absoluto de contraste sobre superfícies claras.
 - **Do:** Declare a propriedade `color` explicitamente em todos os elementos interativos para impedir regressão ao `ButtonText` do navegador.
