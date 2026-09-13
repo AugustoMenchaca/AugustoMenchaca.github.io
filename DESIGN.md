@@ -1,11 +1,7 @@
 ---
 name: Augusto Menchaca Personal Landing Page Design System
-omitted:
-  - section: "prefers-color-scheme: dark"
-    reason: "A pesquisa #35 deixou em aberto; nenhuma medição cobre tema escuro e valores não devem ser inventados sem evidência (decisão D4)."
-  - section: "estados de interação"
-    reason: "A pesquisa #35 deixou em aberto; medições cobriram estritamente o estado de repouso (decisão D4)."
 colors:
+  primary: "{colors.charcoal}"
   paper: "#F7F5EF"
   stone: "#E8E3D9"
   white: "#FFFFFF"
@@ -25,9 +21,33 @@ colors:
 typography:
   h1:
     fontFamily: Instrument Sans
-    fontSize: "clamp(3.0625rem, max(10vw, min(14vw, 3.375rem)), 9rem)"
+    fontSize: 144px
     fontWeight: 700
-    lineHeight: "clamp(.9em, 3.375rem, 1em)"
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
+  h1-desktop-sm:
+    fontFamily: Instrument Sans
+    fontSize: 102.4px
+    fontWeight: 700
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
+  h1-tablet:
+    fontFamily: Instrument Sans
+    fontSize: 76.8px
+    fontWeight: 700
+    lineHeight: 0.9
+    letterSpacing: "-0.04em"
+  h1-mobile:
+    fontFamily: Instrument Sans
+    fontSize: 54px
+    fontWeight: 700
+    lineHeight: 1.0
+    letterSpacing: "-0.04em"
+  h1-mobile-min:
+    fontFamily: Instrument Sans
+    fontSize: 49px
+    fontWeight: 700
+    lineHeight: 1.0
     letterSpacing: "-0.04em"
   h2:
     fontFamily: Instrument Sans
@@ -57,8 +77,12 @@ rounded:
   slab-radius: 0px
 spacing:
   container: 1240px
-  pad: "clamp(20px, 4vw, 48px)"
-  slab-pad: "clamp(20px, 3.6vw, 44px)"
+  container-lg: 1400px
+  container-xl: 1560px
+  pad-min: 20px
+  pad-max: 48px
+  slab-pad-min: 20px
+  slab-pad-max: 44px
 ---
 
 ## Overview
@@ -99,10 +123,31 @@ A conformidade com WCAG 2.1 AA é mandatória em todos os pares da interface:
 - **R1 — Lei de Contraste do Acid:** O token `--acid` (`#E6F835`) **NUNCA** pode ser utilizado como cor de texto sobre superfícies claras (`paper` 1,08:1; `stone` 1,09:1; `white` 1,18:1; `subtle` 1,02:1). Seu uso é permitido exclusivamente como texto sobre `--charcoal` (15,93:1) ou como plano de fundo contendo texto em `--charcoal` (15,93:1) ou `--muted` (4,98:1).
 - **R2 — Verde da Marca Hut 8 Fora da LP:** O verde `#A4DE02` da marca Hut 8 permanece fora da paleta da landing page. A medição instrumental comprovou proximidade perceptual excessiva com o acid (`ΔH = 11,2°` e `ΔC = 0,012`), pertencendo à mesma família cromática e incorrendo na mesma inviabilidade de contraste sobre superfícies claras (1,26:1 a 1,61:1).
 - **R3 — Marca Hut 8 Congelada:** Os valores institucionais da Hut 8 (`#0B0B0B`, `#6B0F9C`, `#8A8A8A` e externamente `#A4DE02`) são fixos e invioláveis. Não admitem modulação de matiz, saturação ou luminosidade.
-- **R4 — Confinamento das Paletas de Projetos Reais:** As identidades visuais de projetos reais — o navy do IDF-BR, o creme e dourado da Ciere e o azul do DVO — entram como restrição externa. Ficam confinadas ao campo visual de evidência técnica (cartões e ilustrações de produto) e **nunca** viram fundo de seção. Capturas de tela e dados reais jamais são recoloridos; superfícies adjacentes (molduras, legendas e planos de seção) acomodam-se à imagem original.
+- **R4 — Confinamento das Paletas de Projetos Reais:** As identidades visuais de projetos reais entram como restrição externa, com os valores medidos nas capturas reais: **IDF-BR** navy `rgb(13,27,42)`; **Ciere** creme `rgb(243,236,220)`, marrom `rgb(77,54,28)` e dourado `rgb(206,145,0)`. O **DVO** não possui token estável: o azul de oficina vem de fotografia e varia por imagem, então nenhum valor é normativo — a peça entra como é e nada se deriva dela. Ficam confinadas ao campo visual de evidência técnica (cartões e ilustrações de produto) e **nunca** viram fundo de seção. Capturas de tela e dados reais jamais são recoloridos; superfícies adjacentes (molduras, legendas e planos de seção) acomodam-se à imagem original.
 - **R5 — Piso de Contraste no Neutro:** Nenhuma cor com luminosidade superior a `--muted` (`L = 0,505` em OKLCH) pode ser empregada como texto sobre fundos claros. Essa restrição veda expressamente o uso de `--light` (`L = 0,645`), `--on-dark` (`L = 0,695`) e `--h8-gray` (`L = 0,633`) sobre `paper`, `stone`, `white` e `subtle`.
 - **R6 — Vedação de Texto Direto sobre Imagem:** Nenhum elemento textual pode assentar diretamente sobre imagens ou capturas sem uma faixa sólida e opaca intermediária, assegurando mensurabilidade determinística de contraste.
 - **R7 — Fechamento do Sistema contra Cores Não Tokenizadas:** Todo elemento interativo deve declarar a propriedade `color` explicitamente no CSS, impedindo quedas omissivas em valores nativos do agente de usuário (como o `ButtonText` `#000000` detectado no controle `.rail-pause`).
+
+### Orçamento de Área do Croma Alto (R8)
+
+O contraste diz **onde** uma cor pode aparecer; o orçamento diz **quanto** dela pode
+aparecer. Os dois são necessários, e o segundo foi o que a medição isolou como a
+gramática das peças aprovadas.
+
+- **A regra:** a gramática do sistema é *campo grande de neutro + acento mínimo de
+  croma alto*, e ela pressupõe que o croma alto ocupe **da ordem de 1% da área
+  pintada**. Passar disso não é questão de gosto: descaracteriza a gramática que a
+  amostra aprovada exibe.
+- **Consequência operacional direta:** **nenhum degrau de display carrega croma.**
+  Os degraus 1 e 2 (`h1` e suas variantes por largura, e `h2`) são sempre neutros.
+  Uma headline tingida, em qualquer largura, rompe o orçamento sozinha — um título
+  de 144px colorido é área, não acento.
+- **Como conferir:** medir a fração da área com croma alto por viewport, não por
+  componente. O instrumento da #35 já faz essa leitura; a auditoria por largura é da
+  #24.
+- **O que o orçamento não é:** limite de quantidade de ocorrências. Duas marcas
+  minúsculas de acid e um campo grande tingido têm a mesma contagem e orçamentos
+  opostos.
 
 ### Auditoria da Peça e Margens Críticas
 
@@ -111,6 +156,25 @@ A auditoria de `wireframes/lp-final.html` apurou 242 elementos com texto própri
 - `muted` sobre `acid`: **4,98:1** (limiar 4,5:1, em 2 ocorrências a 11px).
 
 As escolhas específicas de matiz (creme `#F7F5EF`, amarelo-ácido em `H = 115,1°` e vinho em `H = 4,8°`) representam escolhas estéticas herdadas do briefing inicial que satisfazem as restrições medidas, sem constituírem por si variáveis de classificação de aprovação.
+
+### Ausências Declaradas (Decisão D4)
+
+Duas áreas **não estão definidas neste sistema**, e a ausência é deliberada. Elas não
+entram na chave `omitted` do frontmatter porque essa chave nomeia seções do próprio
+esquema (`colors`, `typography`, `spacing`, `rounded`, `components`) e não conceitos;
+declará-las ali produzia `unknown-omission` no linter.
+
+- **`prefers-color-scheme: dark`** — nenhuma medição deste projeto cobre tema escuro.
+  Derivar uma paleta escura a partir da clara seria proposta sem evidência, que é
+  exatamente o que o `docs/design/00-ORDEM.md` proíbe. Quem precisar de tema escuro
+  abre a questão como pesquisa, não como dedução.
+- **Estados de interação** (`:hover`, `:active`, `:focus-visible` além do contraste
+  de foco já normatizado) — as medições cobriram estritamente o estado de repouso. O
+  sistema de movimento da #21 é quem define a resposta à interação, e os pares de cor
+  desses estados nascem lá.
+
+Consumir este arquivo assumindo valores para qualquer das duas é uso indevido: a
+ausência está registrada para que ninguém a preencha por conta.
 
 ## Typography
 
@@ -121,7 +185,30 @@ A tipografia é o eixo primário de conformidade do projeto, sendo o único dom�
 A razão display/corpo normativa do sistema de design é fixada na relação:
 $$\text{Razão} = \frac{\text{Degrau 1}}{\text{Degrau 4}} = \frac{144\text{px}}{16\text{px}} = \mathbf{9,00\times} \quad (\text{a } 1440\text{px})$$
 
-Esse valor cruza o ponto de corte do classificador (5,57×) com margem de segurança de 3,43×. Registra-se que medições automatizadas da página atual reportam 11,08× por capturarem textos utilitários secundários de rodapé e notas de cards computados em 13px — elementos utilitários situados abaixo do degrau 5 (12px) que **a escala normativa não governa**. Toda razão mencionada declara obrigatoriamente o seu denominador de cálculo.
+Esse valor cruza o ponto de corte do classificador (5,57×) com folga de 3,43× **a 1440px**.
+
+**Mas comparar contra um corte exige a régua que o derivou, e ela não é esta.** Os cortes
+do classificador — 89px e 5,57× no desktop, e os cortes por largura da §8.4 da #45 — foram
+obtidos dividindo o maior título de cada peça pelo *workhorse medido daquela peça*. Aplicar
+a eles um denominador normativo que a página ainda não realiza é trocar de régua no meio da
+comparação, que é precisamente o erro que esta decisão existe para encerrar.
+
+Portanto o sistema declara **duas razões, com papéis distintos**:
+
+- **Razão normativa do sistema** = degrau 1 ÷ degrau 4 = `144 ÷ 16` = **9,00×** a 1440px. É
+  a proporção que o sistema *pretende*, e o número a citar ao descrever a escala.
+- **Razão de classificação** = maior título ÷ *workhorse medido*. É a única comparável aos
+  cortes. Hoje a página computa 13px de workhorse, então ela vale **11,08×** a 1440px e
+  **4,15×** a 390px.
+
+**A consequência, declarada porque inverte um veredito:** quando a escala for aplicada ao
+produto e o workhorse medido convergir para os 16px do degrau 4, a razão a 390px passa a ser
+`54 ÷ 16` = **3,38×**, **abaixo** do corte de 3,66× daquela largura. A 1440px nada muda
+(9,00× continua acima de 5,57×). Ou seja, **a conformidade móvel de hoje depende do
+workhorse de 13px**, que a escala não governa. Resolver isso é decisão de Gate C — ou o
+degrau 1 móvel sobe, ou o degrau 4 não converge para 16px no texto utilitário.
+
+Toda razão citada neste sistema declara obrigatoriamente o seu denominador.
 
 ### Escala de Cinco Degraus e Degrau Móvel (Decisão D5 e §8.4)
 
@@ -135,12 +222,18 @@ A escala é constituída por cinco degraus funcionais. O segundo degrau e o teto
 | **4 — corpo** | `body` | **16px** | 16px | Texto corrido e workhorse normativo | 1.60 | `0em` | 400 | Inter |
 | **5 — rótulo** | `label` | **12px** | 12px | Badges, tags técnicas e metadados | 1.00 | `0.02em` | 500 | IBM Plex Mono |
 
-A expressão CSS normativa do token `h1` no frontmatter carrega a formulação móvel:
+O degrau 1 é **uma curva fluida**, e o frontmatter não pode carregá-la: o esquema do `DESIGN.md` aceita apenas dimensões tipadas (`px`, `em`, `rem`) e `clamp()` não é uma delas. A curva normativa é esta, e vive aqui na prosa:
 ```css
 font-size:     clamp(3.0625rem, max(10vw, min(14vw, 3.375rem)), 9rem);
 line-height:   clamp(.9em, 3.375rem, 1em);
 overflow-wrap: anywhere;
 ```
+
+Os cinco tokens de `h1` no frontmatter — `h1`, `h1-desktop-sm`, `h1-tablet`,
+`h1-mobile` e `h1-mobile-min` — **não são cinco decisões**: são os valores medidos da mesma
+curva nas cinco larguras de referência, tipados para o esquema poder serializá-los. Quem
+implementa usa a expressão `clamp()` acima; quem consome tokens lê as âncoras. Se as duas
+divergirem, a expressão manda.
 
 Nas larguras auditadas em janela real (`--headed`), o degrau 1 atinge:
 - **1440px:** 144px (razão 9,00× sobre 16px; corte 89px / 5,57×).
@@ -176,9 +269,16 @@ O modelo espacial organiza a página em faixas horizontais de sangria total arti
 
 ### Tokens de Layout
 
-- `--container: 1240px`: Largura máxima da grade central de conteúdo.
-- `--pad: clamp(20px, 4vw, 48px)`: Margem de recuo lateral fluida da página.
-- `--slab-pad: clamp(20px, 3.6vw, 44px)`: Espaçamento interno das faixas estruturais.
+- `--container: 1240px`: largura máxima da grade central, que sobe para **1400px** e
+  **1560px** nos dois breakpoints largos (tokens `container-lg` e `container-xl`).
+- `--pad: clamp(20px, 4vw, 48px)`: margem de recuo lateral fluida da página.
+- `--slab-pad: clamp(20px, 3.6vw, 44px)`: espaçamento interno das faixas estruturais.
+
+Os dois `clamp()` acima são a forma normativa, e também não cabem no frontmatter tipado.
+O esquema recebe os **extremos** de cada um — `pad-min` 20px e `pad-max` 48px, `slab-pad-min`
+20px e `slab-pad-max` 44px — que são valores reais do sistema, não aproximações. O termo
+fluido do meio (`4vw` e `3,6vw`) vive nesta prosa. Declarar só um dos extremos faria o token
+desaparecer na exportação ou, pior, fixaria um recuo que o sistema nunca usa sozinho.
 
 ### Sistema de Faixas (Slabs)
 
