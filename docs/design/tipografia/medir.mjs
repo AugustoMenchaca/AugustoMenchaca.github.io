@@ -58,6 +58,10 @@ const SO = arg('--so', null);
 const AMOSTRAS = Number(arg('--amostras', 4));
 const INTERVALO = Number(arg('--intervalo', 1500));
 const SAIDA = resolve(arg('--saida', join(AQUI, 'medicoes.json')));
+const DIAG = !!process.env.SONDA_DIAG;
+const DIAG_VIEWPORT = Number(process.env.SONDA_DIAG_VIEWPORT || 0);
+const DIAG_VARIANTE = process.env.SONDA_DIAG_VARIANTE || '';
+const DIAG_PAUSAR_ANIMACOES = process.env.SONDA_DIAG_PAUSAR_ANIMACOES === '1';
 
 // Neutraliza o revelador da própria LP para contar caixa alta (issue #46).
 //
@@ -134,6 +138,34 @@ const ROLAR = `async () => {
 }`;
 
 const dormir = ms => new Promise(r => setTimeout(r, ms));
+
+// Instrumentacao da issue #52. Nao entra no JSON: serve apenas para correlacionar
+// cada altura com o estado de fontes, viewport, animacoes e blocos da pagina.
+const DIAGNOSTICO_ALTURA = `() => {
+  const de = document.documentElement;
+  const body = document.body;
+  const blocos = [...body.children].map((el, i) => {
+    const r = el.getBoundingClientRect();
+    return { i, tag: el.tagName.toLowerCase(), id: el.id || '', classe: el.className || '',
+      topo: Math.round((r.top + scrollY) * 1000) / 1000,
+      altura: Math.round(r.height * 1000) / 1000 };
+  });
+  const animacoes = document.getAnimations().map(a => ({
+    nome: a.animationName || a.effect?.target?.className || '',
+    estado: a.playState,
+    tempo: typeof a.currentTime === 'number' ? Math.round(a.currentTime) : null
+  }));
+  const fontes = document.fonts ? [...document.fonts].map(f => ({
+    familia: f.family, peso: f.weight, estilo: f.style, status: f.status
+  })) : [];
+  return {
+    scrollHeight: de.scrollHeight, bodyScrollHeight: body.scrollHeight,
+    bodyRect: Math.round(body.getBoundingClientRect().height * 1000) / 1000,
+    innerWidth, clientWidth: de.clientWidth, visualWidth: visualViewport?.width ?? null,
+    devicePixelRatio, scrollbar: innerWidth - de.clientWidth,
+    fontsStatus: document.fonts?.status ?? 'indisponivel', fontes, animacoes, blocos
+  };
+}`;
 
 // ---------------------------------------------------------------------------
 // Cliente CDP mínimo sobre o WebSocket nativo
@@ -300,6 +332,7 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
       cdp.ws.addEventListener('message', h);
       setTimeout(ok, 45000);   // segue mesmo se a pagina nunca disparar load
     });
+    await cdp.envia('Page.addScriptToEvaluateOnNewDocument', { source: 'localStorage.clear();' }, s);
     await cdp.envia('Page.navigate', { url }, s);
     await carregou;
     await dormir(ESPERA);
@@ -336,13 +369,20 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
       await aval(`(async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready; return document.fonts ? document.fonts.status : 'indisponivel'; })()`, true);
     } catch {}
 
+    if (DIAG && DIAG_PAUSAR_ANIMACOES) {
+      await aval(`(() => { for (const a of document.getAnimations()) a.pause(); return true; })()`);
+    }
+
     const amostras = [];
+    const diagnosticos = [];
     for (let i = 0; i < AMOSTRAS; i++) {
       if (i > 0) await dormir(INTERVALO);
       amostras.push(await aval(`(${sonda.toString()})()`));
+      if (DIAG) diagnosticos.push(await aval(`(${DIAGNOSTICO_ALTURA})()`));
     }
     const rolagem = await aval(`(${ROLAR})()`, true);
     amostras.push(await aval(`(${sonda.toString()})()`));
+    if (DIAG) diagnosticos.push(await aval(`(${DIAGNOSTICO_ALTURA})()`));
 
     // TERCEIRO PASSE, só para caixa alta (issue #46).
     // A varredura acima revela 6 dos 25 blocos `[data-reveal]` da LP — medido com
@@ -361,12 +401,13 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
       amostraCaps = await aval(`(${sonda.toString()})()`);
     } catch {}
 
-    if (process.env.SONDA_DIAG) {
+    if (DIAG) {
       for (const [i, a] of amostras.entries()) {
         const g = a._diag || {};
         console.error(`    DIAG a${i}: caps=${a.caixaAlta?.nos?.length} reduce=${g.reduce}`
           + ` dataReveal=${g.dataReveal} will=${g.willReveal} revealed=${g.isRevealed}`
           + ` altura=${a.altura}`);
+        console.error(`    ALTURA a${i}: ${JSON.stringify(diagnosticos[i])}`);
       }
     }
     const dados = unirAmostras(amostras, amostraCaps);
@@ -448,7 +489,9 @@ if (!flag('--so-referencias')) {
     { id: 'C-escala-evento-curto', css: CSS_ESCALA,  js: JS_EVENTO_CURTO }
   ];
   for (const vp of viewportsDaLP) {
+    if (DIAG_VIEWPORT && vp.w !== DIAG_VIEWPORT) continue;
     for (const v of variantes) {
+      if (DIAG_VARIANTE && v.id !== DIAG_VARIANTE) continue;
       const chave = `${v.id}@${vp.w}`;
       process.stderr.write(`medindo ${chave} ... `);
       const r = await medirPagina(cdp, lp, vp, { css: v.css, js: v.js });
