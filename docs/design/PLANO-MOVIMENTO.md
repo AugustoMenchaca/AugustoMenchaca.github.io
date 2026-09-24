@@ -41,8 +41,8 @@ o ponteiro eleva; a pressão comprime; o foco permanece parado. Proponho
 deslocamento, sem um intervalo de texto, CTA ou dado invisível. Isso substitui
 deliberadamente os fades candidatos `0 → 1` da pesquisa; não é uma proibição
 deduzida dela — é sustentada por um risco já medido neste repositório, não só
-por preferência. A #46 mediu o revelador atual em produção
-(`.will-reveal { opacity: 0 }` sobre todo `[data-reveal]`): a varredura de
+por preferência. A #46 mediu o revelador atual da `wireframes/lp-final.html`,
+a LP em construção (`.will-reveal { opacity: 0 }` sobre todo `[data-reveal]`): a varredura de
 700px com pausa de 90ms revela apenas **6 dos 25 blocos**; os outros **19
 ficam presos em `opacity: 0`** na amostra inteira (`PESQUISA-TIPOGRAFIA.md`
 §9.1; comentário de `CSS_REVELADOR_OFF` em `docs/design/tipografia/medir.mjs`,
