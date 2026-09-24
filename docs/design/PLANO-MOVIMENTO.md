@@ -40,7 +40,18 @@ o ponteiro eleva; a pressão comprime; o foco permanece parado. Proponho
 **opacidade constante em 1 nos elementos apresentados**: a direção vem do
 deslocamento, sem um intervalo de texto, CTA ou dado invisível. Isso substitui
 deliberadamente os fades candidatos `0 → 1` da pesquisa; não é uma proibição
-deduzida dela. A crítica poderá rejeitar essa opção por ser pouco perceptível.
+deduzida dela — é sustentada por um risco já medido neste repositório, não só
+por preferência. A #46 mediu o revelador atual em produção
+(`.will-reveal { opacity: 0 }` sobre todo `[data-reveal]`): a varredura de
+700px com pausa de 90ms revela apenas **6 dos 25 blocos**; os outros **19
+ficam presos em `opacity: 0`** na amostra inteira (`PESQUISA-TIPOGRAFIA.md`
+§9.1; comentário de `CSS_REVELADOR_OFF` em `docs/design/tipografia/medir.mjs`,
+que precisa neutralizar o revelador para poder medir a página assentada). É
+evidência medida de que fade de entrada a partir de opacidade zero esconde
+conteúdo quando o disparador não alcança o alvo a tempo — exatamente o risco
+que a opacidade constante elimina por construção. A crítica ainda poderá
+rejeitar essa opção por ser pouco perceptível; isso continua sendo decisão de
+gate, não conclusão.
 
 ## 2. Os seis gatilhos
 
@@ -72,11 +83,21 @@ ou intervalo de rolagem para ele.
 - **E3 — pressão/soltura:** `40ms`/`100ms`, especialização da exceção já
   registrada no DESIGN.md. O tempo de retorno de escala não muda para 0,3s ao
   soltar fora do alvo, porque escala e deslocamento têm propriedades separadas.
-- **E4 — inversão de primeiro plano/fundo:** `.live-link` e `.footer-top`
-  conservam seus pares cromáticos de repouso/hover, mas trocam ambos em `0s`.
-  Interpolar simultaneamente duas cores que trocam de papel pode aproximar
-  texto e fundo durante o percurso. A resposta de 0,3s fica no deslocamento,
-  não nessa inversão. É uma precaução de projeto, sem contraste novo medido.
+- **E4 — inversão de primeiro plano/fundo, medida:** `.live-link` e
+  `.footer-top` conservam seus pares cromáticos de repouso/hover, mas trocam
+  ambos em `0s`. Texto `--charcoal` (`#111213`) ↔ `--paper` (`#F7F5EF`) e
+  fundo no sentido oposto; `.slab-dark .live-link` inverte o mesmo par na
+  faixa escura, com o mesmo perfil. Interpolando as duas cores em sRGB e
+  aplicando a fórmula de contraste do WCAG 2.1 ponto a ponto na transição:
+  17,20:1 em t=0; 4,63:1 em t=0,25; 1,85:1 em t=0,40; **1,00:1 em t=0,50** —
+  texto e fundo convergem para a mesma cor intermediária; simétrico de volta
+  a 17,20:1 em t=1. O contraste fica abaixo de 4,5:1 entre t≈0,26 e t≈0,74 —
+  **48% da transição, ~144ms de 0,3s** — se as duas propriedades corressem
+  juntas nesse intervalo. A recomendação de `color 0.3s` da pesquisa
+  (`PESQUISA-MOVIMENTO.md:67` e `:103`) vale para mudança simples de cor, não
+  para essa inversão simultânea de primeiro plano e fundo, em que as duas
+  cores trocam de papel e se cruzam. Por isso a inversão cromática fica em
+  `0s`; a resposta de 0,3s permanece no deslocamento, propriedade separada.
 
 Antes de implementar, registrar no DESIGN.md as escolhas aprovadas, em especial
 E2/E4 e a especialização E3. Esta entrega não altera a norma. A base e E1 já
@@ -516,3 +537,42 @@ discrepância entre o que o documento afirma existir hoje e o que existe. Não
 fabriquei correção onde a checagem não encontrou erro; o valor desta revisão
 está no registro da checagem em si, feita ponto a ponto contra a
 especificação da #21, e na assunção de autoria da versão final.
+
+### Revisão cruzada
+
+Revisor: `gemini-3.1-pro-high`. Reprovou o plano do commit `52f128c` com dois
+defeitos; o coordenador arbitrou os dois contra as fontes primárias. Nenhum
+dos dois se sustenta como defeito de desenho, mas os dois expunham afirmações
+sem medição por trás — corrigidas nesta rodada, sem mudar duração, amplitude
+ou curva nenhuma.
+
+**Defeito 1 — E4, troca cromática em `0s`, chamada de "escolha solta".** O
+revisor citou `PESQUISA-MOVIMENTO.md:67` e `:103`, que recomendam `color
+0.3s` para links. Arbitragem: essa recomendação cobre mudança simples de
+cor, não a inversão simultânea de primeiro plano e fundo que `.live-link` e
+`.footer-top` fazem. Interpolando as duas cores (`--charcoal` ↔ `--paper`)
+em sRGB e aplicando a fórmula de contraste do WCAG, texto e fundo convergem
+para a mesma cor em t=0,50 (contraste 1,00:1) e ficam abaixo de 4,5:1 em 48%
+do percurso — a transição simultânea esconderia o texto no meio do trajeto.
+O E4 já estava certo; faltava a razão, agora registrada com a medição acima.
+**Mudou:** a frase final do E4 e a medição que a substitui, na seção
+"Exceções temporais nomeadas".
+
+**Defeito 2 — opacidade constante e amplitudes trocadas, chamadas de
+"transgressão da especificação".** O revisor apontou a troca dos fades
+`0 → 1` por opacidade constante e as mudanças de amplitude (10px→8px na
+carga; `scale(0.95→1)`→`translateY(4px)` no `details`) como desvio.
+Arbitragem: a própria fonte que o revisor cita diz o oposto —
+`PESQUISA-MOVIMENTO.md:96` chama esses valores de "hipóteses iniciais, a
+confirmar na #21", e a #21 (`docs/issues/21-movimento.md`) chama a tabela de
+"sistema candidato a validar", com coluna "Hipótese inicial". Propor outra
+amplitude é o mandato do plano, não uma violação dele, e a troca já estava
+declarada honestamente na §1 original. O que faltava era sustentação: a #46
+mediu que o revelador atual esconde 19 de 25 blocos em `opacity: 0` quando o
+disparador não os alcança a tempo dentro da amostra — risco real que a
+opacidade constante elimina por construção. **Mudou:** o parágrafo da
+opacidade constante em §1 ganhou essa medição como razão, mantendo a
+ressalva de que a crítica pode rejeitar a opção por ser pouco perceptível.
+
+Nenhuma duração, amplitude ou curva mudou de valor nesta rodada — só a
+justificativa das duas escolhas já propostas.
