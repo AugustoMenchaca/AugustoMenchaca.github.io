@@ -217,3 +217,112 @@ jobs:
               exit 1
             fi
           done
+
+  designmd-changes:
+    name: Filtro do DESIGN.md
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.filter.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: verificar se o PR altera DESIGN.md
+        id: filter
+        run: |
+          if git diff --quiet \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}" \
+            -- DESIGN.md; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  designmd:
+    name: DESIGN.md valido
+    needs: designmd-changes
+    if: needs.designmd-changes.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      # O CLI retorna exit code 0 mesmo quando encontra erros. O veredito vem
+      # obrigatoriamente do JSON. Warnings tambem bloqueiam: missing-primary e
+      # unknown-omission ja sinalizaram perda semantica real neste documento.
+      - name: validar esquema e warnings
+        run: |
+          REPORT="$RUNNER_TEMP/designmd-lint.json"
+          npx --yes -p "@google/design.md" designmd lint DESIGN.md > "$REPORT"
+          cat "$REPORT"
+          REPORT="$REPORT" node <<'NODE'
+          const fs = require('node:fs');
+
+          const report = JSON.parse(fs.readFileSync(process.env.REPORT, 'utf8'));
+          const errors = report.summary?.errors;
+          const warnings = report.summary?.warnings;
+
+          if (!Number.isInteger(errors) || !Number.isInteger(warnings)) {
+            console.error('::error::Saida do designmd lint sem summary valido.');
+            process.exit(1);
+          }
+          if (errors > 0 || warnings > 0) {
+            console.error(`::error::DESIGN.md invalido: ${errors} erro(s), ${warnings} warning(s).`);
+            process.exit(1);
+          }
+          NODE
+
+      - name: conferir serializacao de todos os tokens
+        run: |
+          EXPORT="$RUNNER_TEMP/designmd-dtcg.json"
+          npx --yes -p "@google/design.md" designmd export --format dtcg DESIGN.md > "$EXPORT"
+          DESIGN_FILE=DESIGN.md EXPORT_FILE="$EXPORT" node <<'NODE'
+          const fs = require('node:fs');
+
+          const source = fs.readFileSync(process.env.DESIGN_FILE, 'utf8');
+          const frontmatter = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/)?.[1];
+          if (!frontmatter) {
+            console.error('::error::Frontmatter YAML nao encontrado em DESIGN.md.');
+            process.exit(1);
+          }
+
+          const declared = {};
+          let group = null;
+          for (const line of frontmatter.split(/\r?\n/)) {
+            const groupMatch = /^([A-Za-z][\w-]*):\s*$/.exec(line);
+            if (groupMatch) {
+              group = groupMatch[1];
+              declared[group] = 0;
+              continue;
+            }
+            if (/^\S[^:]*:/.test(line)) {
+              group = null;
+              continue;
+            }
+            if (group && /^  [^\s#][^:]*:/.test(line)) declared[group] += 1;
+          }
+
+          const exported = JSON.parse(fs.readFileSync(process.env.EXPORT_FILE, 'utf8'));
+          const exportNames = { colors: 'color' };
+          let mismatch = false;
+          let total = 0;
+
+          for (const [groupName, declaredCount] of Object.entries(declared)) {
+            const exportName = exportNames[groupName] ?? groupName;
+            const exportedCount = Object.keys(exported[exportName] ?? {})
+              .filter((key) => !key.startsWith('$')).length;
+            total += exportedCount;
+            console.log(`${groupName}: declarados=${declaredCount} exportados=${exportedCount}`);
+            if (declaredCount !== exportedCount) mismatch = true;
+          }
+          console.log(`total exportado=${total}`);
+
+          if (mismatch) {
+            console.error('::error::A exportacao DTCG perdeu tokens declarados no frontmatter.');
+            process.exit(1);
+          }
+          NODE
