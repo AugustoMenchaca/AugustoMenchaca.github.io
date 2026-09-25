@@ -62,6 +62,7 @@ const DIAG = !!process.env.SONDA_DIAG;
 const DIAG_VIEWPORT = Number(process.env.SONDA_DIAG_VIEWPORT || 0);
 const DIAG_VARIANTE = process.env.SONDA_DIAG_VARIANTE || '';
 const DIAG_PAUSAR_ANIMACOES = process.env.SONDA_DIAG_PAUSAR_ANIMACOES === '1';
+const DIAG_PULAR_FONTES_READY = process.env.SONDA_DIAG_PULAR_FONTES_READY === '1';
 
 // Neutraliza o revelador da própria LP para contar caixa alta (issue #46).
 //
@@ -141,7 +142,7 @@ const dormir = ms => new Promise(r => setTimeout(r, ms));
 
 // Instrumentacao da issue #52. Nao entra no JSON: serve apenas para correlacionar
 // cada altura com o estado de fontes, viewport, animacoes e blocos da pagina.
-const DIAGNOSTICO_ALTURA = `() => {
+const DIAGNOSTICO_ALTURA = `(detalhe = false) => {
   const de = document.documentElement;
   const body = document.body;
   const blocos = [...body.children].map((el, i) => {
@@ -158,12 +159,49 @@ const DIAGNOSTICO_ALTURA = `() => {
   const fontes = document.fonts ? [...document.fonts].map(f => ({
     familia: f.family, peso: f.weight, estilo: f.style, status: f.status
   })) : [];
+  const detalhes = detalhe ? [...document.querySelectorAll('main *')].map((el, i) => {
+    const r = el.getBoundingClientRect();
+    const st = getComputedStyle(el);
+    const textual = /^(P|H1|H2|H3|H4|LI|BLOCKQUOTE)$/.test(el.tagName);
+    let linhas = null;
+    let linhasTexto = null;
+    if (textual && r.height) {
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      linhas = [...new Set([...range.getClientRects()]
+        .filter(x => x.height && x.width)
+        .map(x => Math.round((x.top + scrollY) * 1000) / 1000))];
+      const porLinha = new Map();
+      const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+      let no;
+      while ((no = walker.nextNode())) {
+        for (const palavra of no.textContent.matchAll(/\\S+/g)) {
+          range.setStart(no, palavra.index);
+          range.setEnd(no, palavra.index + palavra[0].length);
+          const caixa = range.getBoundingClientRect();
+          if (!caixa.width || !caixa.height) continue;
+          const topo = Math.round((caixa.top + scrollY) * 1000) / 1000;
+          porLinha.set(topo, [...(porLinha.get(topo) || []), palavra[0]]);
+        }
+      }
+      linhasTexto = [...porLinha].map(([topo, palavras]) => ({ topo, texto: palavras.join(' ') }));
+    }
+    return { i, tag: el.tagName.toLowerCase(), id: el.id || '', classe: el.className || '',
+      topo: Math.round((r.top + scrollY) * 1000) / 1000,
+      altura: Math.round(r.height * 1000) / 1000,
+      largura: Math.round(r.width * 1000) / 1000,
+      display: st.display, fonte: st.fontFamily, peso: st.fontWeight,
+      tamanho: st.fontSize, entrelinha: st.lineHeight,
+      texto: textual ? el.innerText?.slice(0, 160) || '' : '', linhas, linhasTexto };
+  }) : undefined;
   return {
     scrollHeight: de.scrollHeight, bodyScrollHeight: body.scrollHeight,
     bodyRect: Math.round(body.getBoundingClientRect().height * 1000) / 1000,
     innerWidth, clientWidth: de.clientWidth, visualWidth: visualViewport?.width ?? null,
     devicePixelRatio, scrollbar: innerWidth - de.clientWidth,
-    fontsStatus: document.fonts?.status ?? 'indisponivel', fontes, animacoes, blocos
+    langStorage: localStorage.getItem('agy-lang'), langDataset: de.dataset.lang || null,
+    fontsStatus: document.fonts?.status ?? 'indisponivel', fontes, animacoes, blocos,
+    ...(detalhe ? { detalhes } : {})
   };
 }`;
 
@@ -332,7 +370,6 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
       cdp.ws.addEventListener('message', h);
       setTimeout(ok, 45000);   // segue mesmo se a pagina nunca disparar load
     });
-    await cdp.envia('Page.addScriptToEvaluateOnNewDocument', { source: 'localStorage.clear();' }, s);
     await cdp.envia('Page.navigate', { url }, s);
     await carregou;
     await dormir(ESPERA);
@@ -365,9 +402,11 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
     // C7 — nao amostrar antes das webfonts resolverem: `document.fonts.check`
     // devolveria falso para fonte ainda em carregamento, e a familia renderizada
     // sairia como fallback que o leitor nunca ve.
-    try {
-      await aval(`(async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready; return document.fonts ? document.fonts.status : 'indisponivel'; })()`, true);
-    } catch {}
+    if (!(DIAG && DIAG_PULAR_FONTES_READY)) {
+      try {
+        await aval(`(async () => { if (document.fonts && document.fonts.ready) await document.fonts.ready; return document.fonts ? document.fonts.status : 'indisponivel'; })()`, true);
+      } catch {}
+    }
 
     if (DIAG && DIAG_PAUSAR_ANIMACOES) {
       await aval(`(() => { for (const a of document.getAnimations()) a.pause(); return true; })()`);
@@ -378,11 +417,11 @@ async function medirPagina(cdp, url, vp, { css, js } = {}) {
     for (let i = 0; i < AMOSTRAS; i++) {
       if (i > 0) await dormir(INTERVALO);
       amostras.push(await aval(`(${sonda.toString()})()`));
-      if (DIAG) diagnosticos.push(await aval(`(${DIAGNOSTICO_ALTURA})()`));
+      if (DIAG) diagnosticos.push(await aval(`(${DIAGNOSTICO_ALTURA})(${process.env.SONDA_DIAG_DETALHE === '1'})`));
     }
     const rolagem = await aval(`(${ROLAR})()`, true);
     amostras.push(await aval(`(${sonda.toString()})()`));
-    if (DIAG) diagnosticos.push(await aval(`(${DIAGNOSTICO_ALTURA})()`));
+    if (DIAG) diagnosticos.push(await aval(`(${DIAGNOSTICO_ALTURA})(${process.env.SONDA_DIAG_DETALHE === '1'})`));
 
     // TERCEIRO PASSE, só para caixa alta (issue #46).
     // A varredura acima revela 6 dos 25 blocos `[data-reveal]` da LP — medido com
