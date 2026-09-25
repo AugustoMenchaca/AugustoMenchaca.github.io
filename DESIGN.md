@@ -107,15 +107,15 @@ A paleta é composta estritamente pelos tokens ativos declarados no bloco `:root
 
 ### Tokens Mortos Fora do Sistema (Decisão D3)
 
-Os tokens `--light` (`#8A8E93`) e `--h8-photo` (`#2A2A28`), embora permaneçam fisicamente no bloco `:root` de `wireframes/lp-final.html` até a deliberação do Gate D, **não fazem parte do sistema de design** e estão expurgados do frontmatter e do uso em produção. A pesquisa #35 comprovou que ambos possuem zero ocorrências na peça atual. O token `--light` reprova os critérios de acessibilidade sobre superfícies claras (2,58:1 sobre stone e 2,84:1 sobre subtle). O token `--h8-photo` possui procedência falsa de marca: o manual declara `Preto tecido` como `#1F1F1D` na página 31, enquanto o token guarda `#2A2A28`; a exclusão permanece.
+Os tokens `--light` (`#8A8E93`) e `--h8-photo` (`#2A2A28`), embora permaneçam fisicamente no bloco `:root` de `wireframes/lp-final.html` até a deliberação do Gate D, **não fazem parte do sistema de design** e estão expurgados do frontmatter e do uso em produção. A pesquisa #35 comprovou que ambos possuem zero ocorrências na peça atual. O token `--light` reprova os critérios de acessibilidade sobre superfícies claras (2,58:1 sobre stone e 2,84:1 sobre subtle). O token `--h8-photo` não tem valor declarado no manual: a página 13 orienta “Foto — escureça antes, sempre”, sem número, e `#2A2A28` não aparece no PDF. O `Preto tecido` (`#1F1F1D`, página 31) é outra cor declarada, sem associação a foto no manual. A exclusão de `--h8-photo` permanece por falta de fonte para seu valor.
 
 ### Procedência Conferida da Marca Hut 8
 
-Fonte primária: `ManualdemarcaHUT8.pdf` (6.796.534 bytes; SHA-256 `2788C2618EB1D3B63424BF5E314846449654773E02A0CB388B2816E81D11CC51`), cópia local em `C:/Users/augus/Projetos/Hut8_Workspace/governanca/`, fora de qualquer repositório público. Por decisão do Augusto em 2026-09-24, o manual não foi publicado neste repositório. As páginas citadas abaixo são índices do PDF começando em 1; nas páginas com numeração impressa, os números coincidem.
+Fonte primária: `ManualdemarcaHUT8.pdf` (6.796.534 bytes; SHA-256 `2788C2618EB1D3B63424BF5E314846449654773E02A0CB388B2816E81D11CC51`), cópia local na pasta `Hut8_Workspace/governanca` do Augusto, fora de qualquer repositório público. Por decisão do Augusto em 2026-09-24, o manual não foi publicado neste repositório. As páginas citadas abaixo são índices do PDF começando em 1; nas páginas com numeração impressa, os números coincidem.
 
 | Valor registrado no projeto | Status contra o PDF | Página do PDF | Evidência impressa |
 | --- | --- | --- | --- |
-| `#0B0B0B` | consta | 16 (impressa 16) | Preto Hut8; HEX `#0B0B0B` |
+| `#0B0B0B` | consta | 10 (impressa 10) e 16 (impressa 16) | Versão preta `#0B0B0B` na p. 10; Preto Hut8, HEX `#0B0B0B` na p. 16 |
 | `#6B0F9C` | consta | 17 (impressa 17) e 31 (impressa 31) | Roxo; HEX `#6B0F9C` na p. 17; Roxo Hut8 `#6B0F9C` na p. 31 |
 | `#8A8A8A` | consta | 16 (impressa 16) | Cinza texto; `#8A8A8A` |
 | `#A4DE02` | consta | 17 (impressa 17) | Verde; HEX `#A4DE02` |
@@ -125,6 +125,8 @@ Inventário de **todos os valores de cor declarados** no PDF (notações transcr
 
 | Página do PDF | Nome no manual | HEX ou valor impresso | RGB | CMYK | Pantone |
 | --- | --- | --- | --- | --- | --- |
+| 10 (impressa 10) | Versão preta | `#0B0B0B` | — | — | — |
+| 10 (impressa 10) | Versão branca | `#FFFFFF` | — | — | — |
 | 16 (impressa 16) | Preto Hut8 | `#0B0B0B` | `11 11 11` | `0 0 0 96` | `Black 6 C` |
 | 16 (impressa 16) | Branco | `#FFFFFF` | `255 255 255` | `0 0 0 0` | — |
 | 16 (impressa 16) | Cinza fundo | `#F4F4F4` | — | — | — |
@@ -138,7 +140,7 @@ Inventário de **todos os valores de cor declarados** no PDF (notações transcr
 | 31 (impressa 31) | Roxo Hut8 | `#6B0F9C` | — | — | — |
 | 31 (impressa 31) | Verde profundo | `#243A0B` | — | — | — |
 
-Na página 31 há ainda uma amostra de verde claro, **amostra sem valor declarado**: não se atribui a ela um valor por medição da imagem. O derivado local `ManualdemarcaHUT8.md`, de autoria desconhecida, foi usado apenas para localizar páginas: sua transcrição corrompe caracteres de valores impressos (por exemplo, o `#1F003A` da p. 31 aparece como `#1FQQ3A` no `.md`); prevalece o PDF.
+Na página 13 (impressa 13), as seis amostras de fundo são **amostras sem valor declarado**: “Branco — versão preta”, “Preto — versão branca”, “Verde — versão preta”, “Roxo — versão branca”, “Cinza médio — só a branca, e evite” e “Foto — escureça antes, sempre”. Na página 31 há ainda uma amostra de verde claro, **amostra sem valor declarado**: não se atribui a ela um valor por medição da imagem. O derivado local `ManualdemarcaHUT8.md`, de autoria desconhecida, foi usado apenas para localizar páginas: sua transcrição corrompe caracteres de valores impressos (por exemplo, o `#1F003A` da p. 31 aparece como `#1FQQ3A` no `.md`); prevalece o PDF.
 
 Os registros internos divergem: `docs/issues/lote-pesquisa.md:30` lista quatro valores (`#0B0B0B`, `#6B0F9C`, `#8A8A8A`, `#A4DE02`), enquanto `docs/design/CRITIQUE-BRIEF.md:22` lista só preto, roxo e verde. O PDF resolve a omissão: `#8A8A8A` é **Cinza texto** na página 16. `#1F1F1D`, ausente das duas listas, é **Preto tecido** na página 31. Os cinco valores acima têm fonte primária identificada; a limitação restante é que a cópia local não está disponível para verificação por leitores do repositório público.
 
