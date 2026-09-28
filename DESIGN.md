@@ -372,14 +372,16 @@ Os componentes da interface operam como átomos funcionais de alta densidade inf
 ### Faixas Estruturais (`.slab`)
 - Seções de sangria total com preenchimento vertical de `clamp(34px, 4.4vw, 60px) 0`, contendo o alinhamento da grade via contêiner central.
 
-### Sistema de Movimento Integrado (Pesquisa #37)
+### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
-- **Duração Base:** **0,3s** como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).
+- **Duração Base:** **0,3s** (`--motion-base`) como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).
+- **Entradas de carga com opacidade constante:** nome do wordmark, headline do herói (`.hero-headline`) e o grupo de CTA (`.hero-actions`) chegam com `translateY(8px → 0)` em 0,3s, sem passar por `opacity: 0`. Razão registrada no `PLANO-MOVIMENTO.md`: a #46 mediu o revelador genérico anterior escondendo 19 de 25 blocos em `opacity: 0` quando o disparo não alcançava o alvo a tempo; a opacidade constante elimina esse risco por construção. Cartões de credenciais e a descrição auxiliar do herói permanecem estáticos, sem entrada.
 - **Exceções Funcionais Nomeadas:**
-  1. *Controles Pressionados (`:active`):* Resposta imediata em 0–50ms com `scale(1 → 0.98)` e retorno em até 0,1s.
-  2. *Links de Navegação:* Transição cromática de 0,18s ease em repouso/hover (conforme `lp-final.html`).
+  1. *Controles Pressionados (`:active`):* pressão em **`--motion-press` (40ms)** com `scale(1 → 0.98)`; soltura em **`--motion-release` (100ms)**, propriedade separada do deslocamento (que continua em 0,3s).
+  2. *Links de Navegação:* transição cromática em **`--motion-nav` (0,18s ease)** em repouso/hover (conforme `lp-final.html`).
   3. *Linhas de Tempo de Rolagem (`animation-timeline: view()`):* Permitida exclusivamente como melhoria progressiva contida em blocos `@supports`, restrita a gráficos e elementos narrativos e **nunca** ocultando texto ou dados em rolagem reversa.
   4. *Momento Expressivo (Curva do IDF):* Transição por `stroke-dashoffset` parametrizada à evidência científica, com especificação reservada para a issue #22.
+  5. *Inversão cromática de primeiro plano/fundo (`.live-link`, `.footer-top`), em 0s:* a troca simultânea de texto e fundo (`--charcoal` ↔ `--paper`) ocorre em 0s, e não nos 0,3s do deslocamento associado. Razão medida no `PLANO-MOVIMENTO.md` (E4): interpolando as duas cores em sRGB e aplicando a fórmula de contraste do WCAG 2.1 ao longo da transição simultânea, o contraste cai abaixo de 4,5:1 entre t≈0,26 e t≈0,74 (mínimo de 1,00:1 em t=0,50) — cerca de 48% do percurso esconderia o texto. A recomendação geral de `color 0.3s` cobre mudança simples de cor, não essa inversão de papéis entre duas cores.
 - **Acessibilidade (`prefers-reduced-motion: reduce`):** Neutralização total de durações temporais, timelines e translações espaciais. O conteúdo essencial permanece imediatamente visível em seu estado renderizado final, caminhos vetoriais estabelecidos em repouso definitivo e `scroll-behavior: auto`. Veda-se a aplicação genérica de `opacity: 1` indiscriminado ou abertura forçada de painéis colapsados.
 - **Proibições Estruturais:**
   - Veto absoluto a `transition: all`. Todas as propriedades em transição devem ser declaradas nominalmente.
