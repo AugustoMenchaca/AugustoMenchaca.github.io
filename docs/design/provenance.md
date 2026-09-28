@@ -613,3 +613,33 @@ Marcadas `_instavel` nesta rodada: `aelixa`, `illoca` e `white-desert`.
 nenhum** — teria reportado o mesmo com o elemento invisível. Número certo por
 motivo errado. Fica declarado como limite: medição de peça animada não é
 confiável em headless, e a rodada oficial roda com `--headed`.
+
+---
+
+## P-018 — Fotos reais da seção Vivências (#14)
+
+**QUESTÃO** Qual a procedência das quatro fotos que substituem as molduras
+vazias de Hut 8 e NIP em `section#vivencias`?
+
+**DECISÃO** Recorte fiel ao aprovado no Gate C (`prototipos14/RELATORIO.md`),
+redução ao teto de 1600px no lado maior e remoção total de metadados —
+sobretudo GPS de foto de celular, por o repositório ser público.
+
+| Arquivo final | Foto original (fornecida por Augusto em 2026-09-28) | Recorte `(x, y, largura, altura)` na imagem original | Metadados |
+| --- | --- | --- | --- |
+| `docs/design/assets-reais/vivencias/hut8-equipe.jpg` | `1782841448423.jpg` (800×1067) | `(0, 380, 800, 450)` | removidos |
+| `docs/design/assets-reais/vivencias/hut8-evento.jpg` | `1782841448380.jpg` (800×1067) | `(0, 355, 800, 600)` | removidos |
+| `docs/design/assets-reais/vivencias/nip-ufmg.jpg` | `1769522993446.jpg` (800×1066) | `(0, 440, 800, 600)` | removidos |
+| `docs/design/assets-reais/vivencias/nip-conabreh.jpg` | `20260924_155710.jpg.jpeg` (4000×2252) | `(0, 0, 2252, 2252)`, depois reduzida de 2252×2252 para 1600×1600 | removidos |
+
+**EVIDÊNCIA** As três primeiras já nasciam abaixo do teto de 1600px e não
+precisaram de reamostragem. A quarta (`nip-conabreh.jpg`), recorte 1:1 de
+2252×2252, foi reamostrada por Lanczos para 1600×1600. Nenhuma foto foi
+recolorida, filtrada ou teve contraste alterado — só corte e redução. Cada
+arquivo final foi reconstruído em um buffer de pixels novo antes de salvar, e
+`Image.open(arquivo).getexif()` volta `{}` nos quatro, incluindo a foto de
+celular que trazia GPS e dados de aparelho (Samsung Galaxy A56 5G) no
+original.
+
+**ETIQUETA** `[E]` — mesmo padrão de procedência de foto já usado no projeto,
+aplicado às quatro entradas desta issue.
