@@ -134,46 +134,6 @@
   .meta-strip-item { display: flex; flex-direction: column; gap: 7px; }
   .meta-strip-value { font-family: var(--f-body); font-weight: 500; font-size: 0.86rem; color: var(--charcoal); line-height: 1.4; }
 
-  /* EDITORIAL RAIL */
-  .rail-section { padding-bottom: clamp(30px, 4vw, 46px); }
-  .rail-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
-  .rail-btn-wrap { display: flex; gap: 12px; align-items: baseline; }
-  .rail-pause { font-size: 0.6rem; padding: 4px 8px; border: 1px solid var(--hair-strong); background: transparent; cursor: pointer; border-radius: 3px; font-family: var(--f-mono); font-weight: 600; text-transform: uppercase; }
-  
-  /* enquadra os 7 cards como UM evento visual, nao seis */
-  .rail-viewport { overflow: hidden; border-block: 1px solid var(--hair); padding-block: 12px; }
-  .rail-track { display: flex; gap: 12px; width: max-content; animation: rail-scroll 46s linear infinite; }
-  .rail-viewport:hover .rail-track, .rail-viewport:focus-within .rail-track { animation-play-state: paused; }
-  .rail-track.is-paused { animation-play-state: paused !important; }
-  @keyframes rail-scroll { from { transform: translateX(0); } to { transform: translateX(calc(-50% - 6px)); } }
-  
-  /* menor, sem borda: a superficie sozinha define o card */
-  .rail-item {
-    flex: 0 0 186px; min-height: 82px; border: 0; border-radius: 10px;
-    padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; text-decoration: none;
-    background: var(--white);
-  }
-  a.rail-item { cursor: pointer; }
-  .rail-num { font-family: var(--f-mono); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.11em; color: var(--muted); }
-  .rail-title { font-family: var(--f-display); font-weight: 700; font-size: 0.82rem; letter-spacing: -0.005em; color: var(--charcoal); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .rail-sub { font-size: 0.68rem; line-height: 1.3; color: var(--muted); margin-top: auto; }
-  .rail-badge { font-family: var(--f-mono); font-size: 0.52rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 6px; border-radius: 3px; background: var(--subtle); color: var(--charcoal); }
-
-  .rail-item.paper { background: var(--subtle); }
-  .rail-item.charcoal { background: var(--charcoal); }
-  .rail-item.charcoal .rail-title { color: var(--paper); }
-  .rail-item.charcoal .rail-num { color: var(--on-dark); }
-  .rail-item.charcoal .rail-sub { color: rgba(247, 245, 239, .72); }
-  .rail-item.charcoal .rail-badge { background: rgba(247,245,239,.14); color: var(--paper); }
-  .rail-item.acid { background: var(--acid); }
-  .rail-item.acid .rail-num { color: #383E00; }
-  .rail-item.acid .rail-badge { background: var(--charcoal); color: var(--acid); }
-  .rail-item.oxblood { background: var(--wine); }
-  .rail-item.oxblood .rail-title { color: var(--oxblood); }
-  .rail-item.oxblood .rail-num { color: var(--oxblood); }
-  .rail-item.oxblood .rail-sub { color: #7A4351; }
-  .rail-item.oxblood .rail-badge { background: var(--oxblood); color: var(--wine); }
-
   /* SLAB SYSTEM */
   /* Faixa, nao bloco: largura total, sem canto e sem margem entre secoes.
      O .container interno cuida da coluna de conteudo. */
@@ -195,9 +155,6 @@
   .slab-hut8 .slab-headline { color: #FFFFFF; }
   .slab-stone .slab-headline { color: var(--charcoal); max-width: 20ch; }
   .slab-oxblood .slab-headline { color: #FFFFFF; }
-
-  /* WORK INTRO */
-  .work-intro { padding-block: 40px 16px; }
 
   /* PLACEHOLDERS GEOMETRY */
   .ph {
@@ -333,13 +290,6 @@
   .h8-quote-label { background: var(--h8-purple); color: #FFF; font-family: var(--f-mono); font-size: 0.6rem; font-weight: 600; padding: 4px 8px; border-radius: 2px; text-transform: uppercase; margin-bottom: 8px; }
   .h8-quote { font-family: var(--f-display); font-weight: 600; font-size: 1.02rem; line-height: 1.45; color: #FFFFFF; border-left: 4px solid var(--h8-purple); padding-left: 16px; margin: 0; }
 
-  /* RESEARCH */
-  .section-research { padding: clamp(34px, 4.4vw, 60px) 0; background: var(--paper); margin-bottom: 0; }
-  .research-lede { font-size: 1.05rem; color: var(--muted); margin: 16px 0 40px; }
-  .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .research-card { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; padding: 24px; border: 1px solid var(--hair-strong); border-radius: 12px; }
-  .research-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--body); }
-
   /* ABOUT */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 64px); margin-top: 40px; align-items: center; }
   .about-copy p { margin: 0 0 16px; font-size: 0.95rem; line-height: 1.6; }
@@ -367,7 +317,7 @@
   }
 
   /* Transform para hover; scale independente para pressao e soltura. */
-  :is(.btn, a.rail-item, .live-link, .footer-top) {
+  :is(.btn, .live-link, .footer-top) {
     transform: none;
     scale: 1;
     transform-origin: center;
@@ -376,7 +326,7 @@
       scale var(--motion-release) var(--motion-enter);
   }
 
-  :is(.rail-pause, details.motion-details > summary) {
+  details.motion-details > summary {
     scale: 1;
     transform-origin: center;
     transition: scale var(--motion-release) var(--motion-enter);
@@ -386,10 +336,6 @@
   @media (hover: hover) and (pointer: fine) {
     :is(.btn, .live-link, .footer-top):hover:not(:focus-visible) {
       transform: translateY(-2px);
-    }
-
-    a.rail-item:hover:not(:focus-visible) {
-      transform: translateY(-3px);
     }
 
     :is(.nav-links a, .lang-btn):hover {
@@ -417,8 +363,8 @@
   }
 
   /* Somente superficies/controles; links textuais corridos nao comprimem. */
-  :is(.btn, a.rail-item, .live-link, .footer-top,
-      .lang-btn, .rail-pause, details.motion-details > summary):active:not(:focus-visible) {
+  :is(.btn, .live-link, .footer-top,
+      .lang-btn, details.motion-details > summary):active:not(:focus-visible) {
     scale: 0.98;
     transition:
       transform var(--motion-base) var(--motion-state),
@@ -427,8 +373,8 @@
   }
 
   /* Foco tem precedencia sobre hover, active e cor interpolada. */
-  :is(.btn, a.rail-item, .live-link, .footer-top,
-      .lang-btn, .rail-pause, details.motion-details > summary):focus-visible {
+  :is(.btn, .live-link, .footer-top,
+      .lang-btn, details.motion-details > summary):focus-visible {
     transform: none;
     scale: 1;
     transition-duration: 0s;
@@ -503,9 +449,9 @@
 
     /* Escopo de movimento HTML; nao apaga transformacoes estruturais de SVG. */
     :is([data-motion="load"], [data-motion="evidence"],
-        .btn, a.rail-item, .live-link, .footer-top, .lang-btn, .rail-pause,
+        .btn, .live-link, .footer-top, .lang-btn,
         details.motion-details > summary,
-        details.motion-details[open] > .motion-details-body, .rail-track) {
+        details.motion-details[open] > .motion-details-body) {
       transform: none !important;
       scale: none !important;
     }
@@ -562,7 +508,7 @@
     .nav-links a, .footer-col a {
       display: inline-flex; align-items: center; min-height: 40px;
     }
-    .lang-btn, .rail-pause { min-height: 40px; padding-inline: 14px; }
+    .lang-btn { min-height: 40px; padding-inline: 14px; }
     .live-link { min-height: 40px; padding-block: 10px; }
     .wordmark { display: inline-flex; align-items: center; min-height: 44px; }
   }
@@ -577,7 +523,6 @@
     .ciere-grid { grid-template-columns: 1fr; }
     .qml-cols   { grid-template-columns: 1fr; }
     .nip-photos { grid-template-columns: 1fr; }
-    .research-grid { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; }
     
     .desk-only { display: none; }
@@ -602,13 +547,6 @@
     .ph-h8-1 { aspect-ratio: 16/10; }
   }
 
-  @media (max-width: 860px), (prefers-reduced-motion: reduce) {
-    .rail-track { animation: none !important; transform: none !important; }
-    .rail-viewport { overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
-    .rail-item { scroll-snap-align: start; }
-    .rail-track > [aria-hidden="true"] { display: none !important; }
-  }
-
 
   /* Telas muito estreitas: a primeira linha da nav quebra em vez de estourar */
   @media (max-width: 380px) {
@@ -620,7 +558,6 @@
     .nav-links a  { font-size: 0.6rem; letter-spacing: 0.06em; }
     .nav-links    { gap: 12px; }
     .hero-lede    { font-size: 0.92rem; }
-    .rail-item    { flex: 0 0 168px; }
     .contact-inner { align-items: flex-start; }
     .btn { padding: 12px 16px; font-size: 0.66rem; }
     .footer-inner { flex-direction: column; }
@@ -637,14 +574,6 @@
   }
   .slab-dark .live-link { border-color: rgba(247,245,239,.32); color: var(--paper); }
 
-
-  /* Superficie do rail codifica a CATEGORIA, nao um ritmo arbitrario:
-     charcoal=flagship · acid=lideranca · oxblood/wine=pesquisa · white=producao · paper=formacao */
-  .rail-item.wine { background: var(--subtle); box-shadow: inset 2px 0 0 var(--oxblood); }
-  .rail-item.wine .rail-title { color: var(--charcoal); }
-  .rail-item.wine .rail-num   { color: var(--muted); }
-  .rail-item.wine .rail-sub   { color: var(--muted); }
-  .rail-item.wine .rail-badge { background: var(--wine); color: var(--oxblood); }
 
 
 
