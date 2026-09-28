@@ -52,6 +52,14 @@
     --pad:         clamp(20px, 4vw, 48px);
     --slab-radius: 0;
     --slab-pad:    clamp(20px, 3.6vw, 44px);
+
+    /* Movimento (#21) */
+    --motion-base:    0.3s;
+    --motion-nav:     0.18s;
+    --motion-press:   40ms;
+    --motion-release: 100ms;
+    --motion-state:   ease;
+    --motion-enter:   ease-out;
   }
 
   * { box-sizing: border-box; }
@@ -62,7 +70,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  *:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 3px; }
+  *:focus-visible { outline: 2px solid var(--charcoal); outline-offset: 3px; transition-duration: 0s; transition-delay: 0s; }
   .slab-dark *:focus-visible, .slab-hut8 *:focus-visible, .slab-oxblood *:focus-visible { outline-color: var(--acid); }
 
   .container { max-width: var(--container); margin: 0 auto; padding-inline: var(--pad); }
@@ -95,9 +103,8 @@
   .nav-links a {
     font-family: var(--f-mono); font-size: 0.7rem; font-weight: 500;
     letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted);
-    text-decoration: none; transition: color .18s ease;
+    text-decoration: none; transition: color var(--motion-nav) var(--motion-state);
   }
-  .nav-links a:hover { color: var(--charcoal); }
 
   /* BUTTONS */
   .btn {
@@ -105,9 +112,8 @@
     font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600;
     letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
     padding: 13px 22px; border-radius: 3px; border: 1px solid var(--charcoal);
-    background: var(--acid); color: var(--charcoal); transition: transform .18s ease;
+    background: var(--acid); color: var(--charcoal);
   }
-  .btn:hover { transform: translateY(-2px); }
   .btn.ghost { background: transparent; }
 
   /* HERO */
@@ -145,9 +151,8 @@
   .rail-item {
     flex: 0 0 186px; min-height: 82px; border: 0; border-radius: 10px;
     padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; text-decoration: none;
-    background: var(--white); transition: transform .2s ease;
+    background: var(--white);
   }
-  a.rail-item:hover { transform: translateY(-3px); }
   a.rail-item { cursor: pointer; }
   .rail-num { font-family: var(--f-mono); font-size: 0.58rem; font-weight: 500; letter-spacing: 0.11em; color: var(--muted); }
   .rail-title { font-family: var(--f-display); font-weight: 700; font-size: 0.82rem; letter-spacing: -0.005em; color: var(--charcoal); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -347,12 +352,175 @@
   /* FOOTER */
   .site-footer { border-top: 1px solid var(--hair); padding: 40px 0; font-size: 0.8rem; line-height: 1.5; }
   .footer-inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-  .site-footer a { color: var(--charcoal); text-decoration: none; font-weight: 500; transition: opacity .2s; }
-  .site-footer a:hover { opacity: 0.7; }
+  .site-footer a { color: var(--charcoal); text-decoration: none; font-weight: 500; }
 
-  /* MOTION CLASSES */
-  .will-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-  .is-revealed { opacity: 1; transform: translateY(0); }
+  /* SISTEMA DE MOVIMENTO (#21) — revelador generico removido; entradas seletivas com opacidade constante */
+  [data-motion="load"],
+  [data-motion="evidence"],
+  details.motion-details[open] > .motion-details-body {
+    opacity: 1;
+    transform: none;
+  }
+
+  .wordmark > [data-motion="load"] {
+    display: inline-block;
+  }
+
+  /* Transform para hover; scale independente para pressao e soltura. */
+  :is(.btn, a.rail-item, .live-link, .footer-top) {
+    transform: none;
+    scale: 1;
+    transform-origin: center;
+    transition:
+      transform var(--motion-base) var(--motion-state),
+      scale var(--motion-release) var(--motion-enter);
+  }
+
+  :is(.rail-pause, details.motion-details > summary) {
+    scale: 1;
+    transform-origin: center;
+    transition: scale var(--motion-release) var(--motion-enter);
+  }
+
+  /* Substitui os antigos :hover sem media query; mantem os pares de cor existentes. */
+  @media (hover: hover) and (pointer: fine) {
+    :is(.btn, .live-link, .footer-top):hover:not(:focus-visible) {
+      transform: translateY(-2px);
+    }
+
+    a.rail-item:hover:not(:focus-visible) {
+      transform: translateY(-3px);
+    }
+
+    :is(.nav-links a, .lang-btn):hover {
+      color: var(--charcoal);
+    }
+
+    .footer-col a:hover {
+      border-bottom-color: var(--charcoal);
+    }
+
+    .live-link:hover {
+      background-color: var(--charcoal);
+      color: var(--paper);
+    }
+
+    .slab-dark .live-link:hover {
+      background-color: var(--paper);
+      color: var(--charcoal);
+    }
+
+    .footer-top:hover {
+      background-color: var(--charcoal);
+      color: var(--paper);
+    }
+  }
+
+  /* Somente superficies/controles; links textuais corridos nao comprimem. */
+  :is(.btn, a.rail-item, .live-link, .footer-top,
+      .lang-btn, .rail-pause, details.motion-details > summary):active:not(:focus-visible) {
+    scale: 0.98;
+    transition:
+      transform var(--motion-base) var(--motion-state),
+      color 0s linear,
+      scale var(--motion-press) var(--motion-enter);
+  }
+
+  /* Foco tem precedencia sobre hover, active e cor interpolada. */
+  :is(.btn, a.rail-item, .live-link, .footer-top,
+      .lang-btn, .rail-pause, details.motion-details > summary):focus-visible {
+    transform: none;
+    scale: 1;
+    transition-duration: 0s;
+    transition-delay: 0s;
+  }
+
+  :is(.nav-links a, .lang-btn):focus-visible {
+    color: var(--charcoal);
+    transition-duration: 0s;
+  }
+
+  .footer-col a:focus-visible {
+    border-bottom-color: var(--charcoal);
+    transition-duration: 0s;
+  }
+
+  @keyframes motion-load {
+    from { transform: translateY(8px); }
+    to { transform: none; }
+  }
+
+  @keyframes motion-evidence {
+    from { transform: translateY(10px); }
+    to { transform: none; }
+  }
+
+  @keyframes motion-details {
+    from { transform: translateY(4px); }
+    to { transform: none; }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-motion="load"].is-motion-entering {
+      animation: motion-load var(--motion-base) var(--motion-enter) 0s 1;
+    }
+
+    [data-motion="evidence"].is-motion-entering {
+      animation: motion-evidence var(--motion-base) var(--motion-enter) 0s 1;
+    }
+
+    details.motion-details[open] > .motion-details-body {
+      animation: motion-details var(--motion-base) var(--motion-enter) 0s 1;
+    }
+  }
+
+  /* Cancelar movimento do involucro tambem fixa o alvo de teclado. */
+  [data-motion]:focus-within,
+  .wordmark:focus-visible > [data-motion="load"],
+  details.motion-details > summary:focus-visible + .motion-details-body,
+  .motion-details-body:focus-within {
+    animation: none;
+    transform: none;
+  }
+
+  /* Repouso de tracos futuros, sem decidir o efeito da #22. */
+  [data-motion-stroke] {
+    stroke-dashoffset: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+      animation-timeline: auto !important;
+      transition-duration: 0s !important;
+      transition-delay: 0s !important;
+      scroll-behavior: auto !important;
+    }
+
+    /* Escopo de movimento HTML; nao apaga transformacoes estruturais de SVG. */
+    :is([data-motion="load"], [data-motion="evidence"],
+        .btn, a.rail-item, .live-link, .footer-top, .lang-btn, .rail-pause,
+        details.motion-details > summary,
+        details.motion-details[open] > .motion-details-body, .rail-track) {
+      transform: none !important;
+      scale: none !important;
+    }
+
+    /* Somente conteudo apresentado; nenhuma abertura de painel ou idioma. */
+    [data-motion="load"],
+    [data-motion="evidence"],
+    details.motion-details[open] > .motion-details-body {
+      opacity: 1 !important;
+    }
+
+    [data-motion-stroke] {
+      stroke-dashoffset: 0 !important;
+    }
+  }
 
 
   /* I18N */
@@ -361,9 +529,19 @@
   
   .lang-btn {
     background: transparent; border: none; cursor: pointer; padding: 4px;
-    font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600; color: var(--muted); transition: color .2s;
+    font-family: var(--f-mono); font-size: 0.72rem; font-weight: 600; color: var(--muted);
+    scale: 1; transform-origin: center;
+    transition:
+      color var(--motion-base) var(--motion-state),
+      scale var(--motion-release) var(--motion-enter);
   }
-  .lang-btn[aria-pressed="true"] { color: var(--charcoal); }
+  .lang-btn[aria-pressed="true"] {
+    color: var(--charcoal);
+    /* A selecao nao espera a transicao cromatica de hover. */
+    transition:
+      color 0s linear,
+      scale var(--motion-release) var(--motion-enter);
+  }
   .lang-btn:focus-visible { outline: 2px solid var(--charcoal); border-radius: 2px; }
 
   /* RESPONSIVE */
@@ -456,11 +634,8 @@
     letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
     padding: 5px 10px; border-radius: 3px; margin-left: 12px;
     border: 1px solid var(--hair-strong); color: var(--charcoal);
-    transition: background .18s ease, color .18s ease;
   }
-  .live-link:hover { background: var(--charcoal); color: var(--paper); }
   .slab-dark .live-link { border-color: rgba(247,245,239,.32); color: var(--paper); }
-  .slab-dark .live-link:hover { background: var(--paper); color: var(--charcoal); }
 
 
   /* Superficie do rail codifica a CATEGORIA, nao um ritmo arbitrario:
@@ -523,23 +698,6 @@
   /* Nome em escala enorme, sangrando nas bordas */
 
 
-  /* --- entrada animada: mascara por linha, contida --- */
-  @media (prefers-reduced-motion: no-preference) {
-    .hero-anim {
-      --d: 0ms; opacity: 0; transform: translateY(14px);
-      animation: heroUp .72s cubic-bezier(.22,.68,.36,1) forwards;
-      animation-delay: var(--d);
-    }
-    .hero-mask { overflow: hidden; display: block; }
-    .hero-mask > span {
-      display: block; transform: translateY(105%);
-      animation: heroLine .82s cubic-bezier(.22,.68,.36,1) forwards;
-      animation-delay: var(--d);
-    }
-    @keyframes heroUp   { to { opacity: 1; transform: none; } }
-    @keyframes heroLine { to { transform: none; } }
-  }
-
   @media (max-width: 860px) {
     .hero-top { grid-template-columns: 1fr; gap: 26px; }
     .hero-headline { max-width: none; }
@@ -580,8 +738,10 @@
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
   }
   .footer-col ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .footer-col a { font-size: 0.85rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid transparent; }
-  .footer-col a:hover { border-bottom-color: var(--charcoal); }
+  .footer-col a {
+    font-size: 0.85rem; color: var(--charcoal); text-decoration: none; border-bottom: 1px solid transparent;
+    transition: border-color var(--motion-base) var(--motion-state);
+  }
   .footer-top {
     display: inline-flex; align-items: center; gap: 8px; align-self: start;
     font-family: var(--f-mono); font-size: 0.62rem; font-weight: 600;
@@ -589,7 +749,6 @@
     text-decoration: none; border: 1px solid var(--hair-strong);
     border-radius: 999px; padding: 11px 16px; min-height: 40px;
   }
-  .footer-top:hover { background: var(--charcoal); color: var(--paper); }
 
   /* wordmark oversized — device de rodape, nao de hero */
   .footer-wordmark {
@@ -681,7 +840,7 @@
 <nav class="site-nav">
   <div class="container">
     <div class="nav-row-1">
-      <a href="#top" class="wordmark">AUGUSTO MENCHACA</a>
+      <a href="#top" class="wordmark"><span data-motion="load">AUGUSTO MENCHACA</span></a>
       <div style="display:flex; align-items:center;">
         <a href="#contact" class="btn"><span class="i18n" lang="pt">VAMOS CONVERSAR ↗</span><span class="i18n" lang="en">LET'S TALK ↗</span></a>
         <div class="lang-toggle" style="display:inline-flex; align-items:center; gap:4px; margin-left:16px;">
@@ -713,13 +872,13 @@
   <div class="container">
     <div class="hero-top">
       <div>
-        <h1 class="i18n hero-headline hero-mask" lang="pt"><span style="--d:90ms">Construo produtos digitais e lidero projetos de tecnologia.</span></h1>
-        <h1 class="i18n hero-headline hero-mask" lang="en"><span style="--d:90ms">I build digital products and lead tech projects.</span></h1>
+        <h1 class="i18n hero-headline" lang="pt" data-motion="load">Construo produtos digitais e lidero projetos de tecnologia.</h1>
+        <h1 class="i18n hero-headline" lang="en" data-motion="load">I build digital products and lead tech projects.</h1>
 
-        <p class="i18n hero-lede hero-anim" lang="pt" style="--d:260ms">Estudante de Ciência da Computação na UFPel, atuando entre software, computação científica, liderança de projetos e IA aplicada.</p>
-        <p class="i18n hero-lede hero-anim" lang="en" style="--d:260ms">Computer Science student at UFPel working across software, scientific computing, project leadership and applied AI.</p>
+        <p class="i18n hero-lede" lang="pt">Estudante de Ciência da Computação na UFPel, atuando entre software, computação científica, liderança de projetos e IA aplicada.</p>
+        <p class="i18n hero-lede" lang="en">Computer Science student at UFPel working across software, scientific computing, project leadership and applied AI.</p>
 
-        <div class="hero-actions hero-anim" style="--d:340ms">
+        <div class="hero-actions" data-motion="load">
           <a href="#idf" class="i18n btn round" lang="pt"><span class="ico" aria-hidden="true">↗</span>VER TRABALHOS</a>
           <a href="#idf" class="i18n btn round" lang="en"><span class="ico" aria-hidden="true">↗</span>VIEW WORK</a>
           <a href="#contact" class="i18n btn ghost round" lang="pt"><span class="ico" aria-hidden="true">✉</span>VAMOS CONVERSAR</a>
@@ -728,21 +887,21 @@
       </div>
 
       <div class="hero-cards">
-        <div class="hero-card hero-anim" style="--d:420ms">
+        <div class="hero-card">
           <span class="i18n hero-card-role" lang="pt">Pesquisador de Graduação</span>
           <span class="i18n hero-card-role" lang="en">Undergraduate Researcher</span>
           <span class="hero-card-where">Núcleo Integrado de Previsão · UFPel</span>
           <span class="i18n hero-card-note" lang="pt">Software científico, recursos hídricos e IA aplicada.</span>
           <span class="i18n hero-card-note" lang="en">Scientific software, water resources and applied AI.</span>
         </div>
-        <div class="hero-card is-acid hero-anim" style="--d:500ms">
+        <div class="hero-card is-acid">
           <span class="i18n hero-card-role" lang="pt">Diretor de Projetos</span>
           <span class="i18n hero-card-role" lang="en">Director of Projects</span>
           <span class="hero-card-where">Hut 8 · UFPel</span>
           <span class="i18n hero-card-note" lang="pt">Conduzindo projetos de clientes do discovery à entrega.</span>
           <span class="i18n hero-card-note" lang="en">Leading client projects from discovery to delivery.</span>
         </div>
-        <div class="hero-card hero-anim" style="--d:580ms">
+        <div class="hero-card">
           <span class="i18n hero-card-role" lang="pt">Graduando em Ciência da Computação</span>
           <span class="i18n hero-card-role" lang="en">Computer Science Undergraduate</span>
           <span class="i18n hero-card-where" lang="pt">Universidade Federal de Pelotas</span>
@@ -761,7 +920,7 @@
     <h2 class="i18n slab-headline" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
 <h2 class="i18n slab-headline" lang="en">Turning nationwide hydrological research into a usable digital tool.</h2>
 
-    <ol class="idf-flow" data-reveal>
+    <ol class="idf-flow">
       <li class="i18n" lang="pt">PESQUISA CIENTÍFICA</li>
 <li class="i18n" lang="en">SCIENTIFIC RESEARCH</li>
       <li class="i18n" lang="pt">DADOS BRUTOS</li>
@@ -773,7 +932,7 @@
 <li class="i18n" lang="en">USABLE PRODUCT</li>
     </ol>
 
-    <div class="data-grid" data-reveal>
+    <div class="data-grid">
       <div class="data-card">
         <div class="data-card-head">
           <span class="i18n meta-label on-dark" lang="pt">Motor de consulta geoespacial</span>
@@ -840,7 +999,7 @@
       </div>
     </div>
 
-    <div class="data-grid data-grid-wide" data-reveal>
+    <div class="data-grid data-grid-wide">
        <figure class="ph ph-idf-main">
          <span class="ph-chip">[ IDF-BR REAL INTERFACE ]</span>
          <span class="i18n ph-note" lang="pt">Proporção 16:9, interface desktop da aplicação</span>
@@ -863,10 +1022,10 @@
 <span class="i18n meta-label" lang="en">02 / Production</span><a class="live-link" href="https://dvopelotas.com.br/" target="_blank" rel="noopener noreferrer">dvopelotas.com.br ↗</a>
     <h2 class="i18n slab-headline" style="max-width:24ch" lang="pt">Levando um projeto de cliente dos requisitos à produção.</h2>
 <h2 class="i18n slab-headline" style="max-width:24ch" lang="en">Taking a client project from requirements to production.</h2>
-    <p class="i18n dvo-disclaimer" data-reveal lang="pt">O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.</p>
-<p class="i18n dvo-disclaimer" data-reveal lang="en">The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.</p>
+    <p class="i18n dvo-disclaimer" lang="pt">O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.</p>
+<p class="i18n dvo-disclaimer" lang="en">The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.</p>
     
-    <div class="flow-dvo-wrap" data-reveal>
+    <div class="flow-dvo-wrap">
       <ol class="flow-dvo">
         <li class="i18n" lang="pt">CLIENTE</li>
 <li class="i18n" lang="en">CLIENT</li><li class="i18n" lang="pt">REQUISITOS</li>
@@ -879,7 +1038,7 @@
       </ol>
     </div>
 
-    <div class="dvo-grid" data-reveal>
+    <div class="dvo-grid">
       <figure class="ph ph-dvo">
         <span class="ph-chip">[ DVO PRODUCT SCREENSHOT ]</span>
         <span class="i18n ph-note" lang="pt">Proporção 16:10, interface da aplicação</span>
@@ -923,7 +1082,7 @@
     <h2 class="i18n slab-headline" style="max-width:26ch" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
 <h2 class="i18n slab-headline" style="max-width:26ch" lang="en">Connecting client needs, design decisions and development.</h2>
 
-    <div class="ciere-flow-wrap" data-reveal>
+    <div class="ciere-flow-wrap">
       <ul class="desk-only" aria-hidden="true">
         <li>CLIENT ↕ AUGUSTO ↙↘ DESIGN / DEV</li>
       </ul>
@@ -933,7 +1092,7 @@
       </ol>
     </div>
     
-    <div class="ciere-responsibilities" data-reveal>
+    <div class="ciere-responsibilities">
        <span class="i18n pill" lang="pt">Requisitos</span>
 <span class="i18n pill" lang="en">Requirements</span> <span class="i18n pill" lang="pt">Escopo</span>
 <span class="i18n pill" lang="en">Scoping</span> <span class="i18n pill" lang="pt">Comunicação com cliente</span>
@@ -941,14 +1100,14 @@
 <span class="i18n pill" lang="en">Design Bridge</span> <span class="i18n pill" lang="pt">QA e deploy</span><span class="i18n pill" lang="en">QA &amp; Deploy</span> <span class="i18n pill" lang="pt">SEO e GEO</span><span class="i18n pill" lang="en">SEO &amp; GEO</span>
     </div>
 
-    <div class="ciere-visibility" data-reveal>
+    <div class="ciere-visibility">
       <span class="i18n meta-label" lang="pt">Visibilidade · SEO e GEO</span>
       <span class="i18n meta-label" lang="en">Visibility · SEO &amp; GEO</span>
       <p class="i18n" lang="pt">Para um escritório de advocacia, ser encontrado é parte do produto. Além do SEO clássico, o projeto exigiu atenção a GEO: como o escritório é descrito, citado e recuperado por modelos de linguagem, e não só por buscadores. Isso mudou decisões de estrutura de conteúdo, nomenclatura das páginas e dados estruturados.</p>
       <p class="i18n" lang="en">For a law firm, being found is part of the product. Beyond classic SEO, the project required attention to GEO: how the firm is described, cited and retrieved by language models, not only by search engines. That shaped decisions about content structure, page naming and structured data.</p>
     </div>
 
-    <div class="ciere-grid" data-reveal>
+    <div class="ciere-grid">
        <figure class="ph ph-ciere">
          <span class="ph-chip">[ CIERE WEBSITE DESKTOP ]</span>
          <span class="i18n ph-note" lang="pt">Proporção 16:10, cores reais do projeto</span>
@@ -971,7 +1130,7 @@
   <h2 class="i18n slab-headline" lang="pt">Testando quando machine learning quântico realmente faz diferença.</h2>
 <h2 class="i18n slab-headline" lang="en">Testing when quantum machine learning actually makes a difference.</h2>
 
-  <div class="qml-quote" data-reveal>
+  <div class="qml-quote">
     <div class="qml-quote-bar"></div>
     <span class="i18n qml-quote-label" lang="pt">PERGUNTA</span>
 <span class="i18n qml-quote-label" lang="en">QUESTION</span>
@@ -979,7 +1138,7 @@
 <p class="i18n" lang="en">Does QML perform better simply because it uses quantum representations, or does performance depend on the alignment between data, feature maps and kernels?</p>
   </div>
 
-  <div class="qml-cols" data-reveal>
+  <div class="qml-cols">
      <div>
        <h3 class="qml-col-title"><span class="i18n" lang="pt">DADOS REAIS</span><span class="i18n" lang="en">REAL DATA</span><br>Breast Cancer Wisconsin</h3>
        <p class="i18n qml-col-body" lang="pt">O SVM clássico e a configuração quântica alcançaram resultados comparáveis na representação controlada. Sem vantagem quântica clara.</p>
@@ -992,10 +1151,10 @@
      </div>
   </div>
 
-  <p class="i18n qml-conclusion" data-reveal lang="pt">DADOS + REPRESENTAÇÃO + FEATURE MAP + KERNEL = RESULTADO</p>
-<p class="i18n qml-conclusion" data-reveal lang="en">DATA + REPRESENTATION + FEATURE MAP + KERNEL = OUTCOME</p>
+  <p class="i18n qml-conclusion" lang="pt">DADOS + REPRESENTAÇÃO + FEATURE MAP + KERNEL = RESULTADO</p>
+<p class="i18n qml-conclusion" lang="en">DATA + REPRESENTATION + FEATURE MAP + KERNEL = OUTCOME</p>
   
-  <figure class="ph ph-qml" data-reveal>
+  <figure class="ph ph-qml">
      <span class="ph-chip">[ QUANTUM EXPERIMENT VISUAL ]</span>
      <span class="i18n ph-note" lang="pt">Proporção 16:9, esquema ou visualização de dados</span>
 <span class="i18n ph-note" lang="en">16:9 aspect ratio, schematic or data visualization</span>
@@ -1006,7 +1165,7 @@
 <!-- VIVENCIAS -->
 <section id="vivencias"><span id="experience" aria-hidden="true"></span>
 <!-- HUT 8 -->
-<div class="slab slab-hut8" id="hut8" data-reveal>
+<div class="slab slab-hut8" id="hut8">
 <div class="container">
   <span class="i18n h8-tag" lang="pt">Diretoria de Projetos</span>
 <span class="i18n h8-tag" lang="en">Project Management Board</span>
@@ -1036,7 +1195,7 @@
     </div>
   </div>
 
-  <div class="h8-text" data-reveal>
+  <div class="h8-text">
     <div>
       <div class="h8-quote-wrap">
         <span class="i18n h8-quote-label" lang="pt">RESPONSABILIDADE</span>
@@ -1062,7 +1221,7 @@
 <h2 class="i18n slab-headline" style="max-width:24ch" lang="en">From scientific software to applied AI research.</h2>
 
     <div class="nip-grid">
-       <div data-reveal>
+       <div>
           <ol class="flow-nip">
              <li class="i18n" lang="pt">SOFTWARE CIENTÍFICO</li>
 <li class="i18n" lang="en">SCIENTIFIC SOFTWARE</li><li>IDF-BR</li><li class="i18n" lang="pt">IA APLICADA A RECURSOS HÍDRICOS</li>
@@ -1075,7 +1234,7 @@
           <p class="i18n nip-body" lang="pt">Comecei como pesquisador de graduação, e minha primeira grande entrega foi o software IDF-BR. Depois de uma formação sobre IA aplicada a recursos hídricos, em janeiro de 2026, meu foco passou a se aproximar de machine learning, experimentação e escrita acadêmica. O objetivo de longo prazo é transformar pesquisa complexa em ferramentas acessíveis fora da universidade.</p>
 <p class="i18n nip-body" lang="en">Starting as an undergraduate research fellow, my first major delivery was the IDF-BR software. Following a specialized training on AI for water resources in January 2026, my focus shifted toward machine learning, experimentation, and academic writing. The long-term goal is to turn complex research into accessible tools outside the university.</p>
        </div>
-       <div class="nip-photos" data-reveal>
+       <div class="nip-photos">
           <figure class="ph ph-nip-1">
              <span class="ph-chip">[ NIP RESEARCH / TEAM PHOTO ]</span>
              <span class="i18n ph-note" lang="pt">Proporção 4:3, equipe ou ambiente de pesquisa</span>
@@ -1101,7 +1260,7 @@
   <h2 class="i18n slab-headline" style="max-width:32ch" lang="pt">Me interessa o que acontece entre "temos um problema" e "isso realmente funciona".</h2>
 <h2 class="i18n slab-headline" style="max-width:32ch" lang="en">I'm interested in what happens between "we have a problem" and "this actually works."</h2>
   
-  <div class="about-grid" data-reveal>
+  <div class="about-grid">
     <div class="about-copy">
       <p class="i18n" lang="pt">Sou estudante de Ciência da Computação na UFPel, e a maior parte do que moldou meu jeito de trabalhar aconteceu quando a tecnologia precisou encontrar um problema real.</p>
 <p class="i18n" lang="en">I'm a Computer Science student at UFPel, and most of what has shaped the way I work has happened when technology had to meet a real problem.</p>
@@ -1124,7 +1283,7 @@
 <!-- CONTACT -->
 <section class="section-contact" id="contact">
   <div class="container">
-    <div class="contact-panel" data-reveal>
+    <div class="contact-panel">
       <div>
         <span class="i18n meta-label" lang="pt">06 / Contato</span>
         <span class="i18n meta-label" lang="en">06 / Contact</span>
@@ -1187,23 +1346,23 @@
 </footer>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.01 });
-
-    document.querySelectorAll('[data-reveal]').forEach(el => {
-      el.classList.add('will-reveal');
-      observer.observe(el);
-    });
-  }
-});
+function motionTriggerLoad() {
+  if (!window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  document.querySelectorAll('[data-motion="load"]').forEach((el) => {
+    if (getComputedStyle(el).display !== 'none') el.classList.add('is-motion-entering');
+  });
+}
+function motionConsumeLoad() {
+  document.querySelectorAll('[data-motion="load"].is-motion-entering').forEach((el) => {
+    el.classList.remove('is-motion-entering');
+  });
+}
+document.addEventListener('DOMContentLoaded', motionTriggerLoad);
+try {
+  window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', (e) => {
+    if (e.matches) motionConsumeLoad();
+  });
+} catch (e) {}
 </script>
 
 <!--
@@ -1254,8 +1413,8 @@ ASSETS NEEDED:
     const btnPt = document.getElementById('lang-pt');
     const btnEn = document.getElementById('lang-en');
     if (btnPt && btnEn) {
-      btnPt.addEventListener('click', () => setLang('pt'));
-      btnEn.addEventListener('click', () => setLang('en'));
+      btnPt.addEventListener('click', () => { motionConsumeLoad(); setLang('pt'); });
+      btnEn.addEventListener('click', () => { motionConsumeLoad(); setLang('en'); });
     }
   });
 })();

@@ -1,13 +1,20 @@
 {
   "feature": "landing-page-pessoal — redesign",
   "trilha": "completa",
-  "faseAtual": "2 — Precedentes (refeita, issue #17)",
+  "faseAtual": "4 — Implementacao (Gate D: #7 corte mergeado no PR #58; #21 movimento autorizado)",
   "approvals": {
-    "problema": false,
-    "ux": false,
-    "design": false,
-    "plano": false,
+    "problema": true,
+    "ux": true,
+    "design": true,
+    "plano": true,
     "aceite": false
+  },
+  "registro": {
+    "problema": "2026-09-28 — Augusto aprovou registrar o Gate A: o problema como a #7 e a #21 o usaram (PROBLEMA-v1, metrica 5: prova tecnica a <= 1,5 tela a 1440px).",
+    "ux": "2026-09-28 — Gate B da #7: arquitetura H1 escolhida (Figma 0NZizUgSb9ZH7ZIDWexxSJ, secao FASE 4 · ARQUITETURA #7).",
+    "design": "2026-09-28 — Gate C da #21: movimento aprovado com a variante A, opacidade constante (Figma, secao FASE 4 · MOVIMENTO #21).",
+    "plano": "2026-09-28 — Gate D: corte da #7 autorizado (research sai) e implementacao do PLANO-MOVIMENTO.md na #21 autorizada, depois do corte.",
+    "aceite": "pendente — Gate E de cada issue, no PR dela."
   },
   "research": {
     "referenceBoard": true,
@@ -15,5 +22,5 @@
     "amostra": "5 de 5 referencias escolhidas pelo cliente"
   },
   "artifacts": {},
-  "nota": "Fase 2 foi refeita: a amostra do REFERENCE-BOARD-v1/v2 foi escolhida pelo agente, nao pelo cliente (issue #17). Gate A fica em false ate PROBLEMA-v1 ser revalidado — as metricas de sucesso dele foram derrubadas por medicao (ver docs/design/00-ORDEM.md)."
+  "nota": "As aprovacoes valem para o redesign como um todo, porque o hook le um estado so. Cada issue continua com os proprios gates no corpo dela (Condicao de parada). A pendencia antiga do Gate A (metricas do PROBLEMA-v1 derrubadas por medicao, 00-ORDEM.md) foi resolvida pela decisao do Augusto de 2026-09-28 de registrar o problema como a #7 e a #21 o usaram."
 }
