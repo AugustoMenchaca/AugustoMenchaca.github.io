@@ -164,6 +164,9 @@
     background: transparent; position: relative; overflow: hidden; gap: 8px;
   }
   .ph img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: inherit; }
+  .real-shot { margin: 0; min-width: 0; }
+  .real-shot img { display: block; width: 100%; height: auto; }
+  .real-shot-mobile { max-width: 260px; margin-inline: auto; }
   .ph-chip {
     display: inline-block; font-family: var(--f-mono); font-size: 0.65rem; font-weight: 600;
     letter-spacing: 0.08em; text-transform: uppercase; background: var(--stone); color: var(--charcoal);
@@ -929,15 +932,11 @@
     </div>
 
     <div class="data-grid data-grid-wide">
-       <figure class="ph ph-idf-main">
-         <span class="ph-chip">[ IDF-BR REAL INTERFACE ]</span>
-         <span class="i18n ph-note" lang="pt">Proporção 16:9, interface desktop da aplicação</span>
-<span class="i18n ph-note" lang="en">16:9 aspect ratio, application desktop UI</span>
+       <figure class="real-shot">
+         <img src="../docs/design/assets-reais/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
        </figure>
-       <figure class="ph ph-idf-det">
-         <span class="ph-chip">[ IDF-BR DETAIL SCREENSHOT ]</span>
-         <span class="i18n ph-note" lang="pt">Proporção 16:10, detalhe ampliado da interface</span>
-<span class="i18n ph-note" lang="en">16:10 aspect ratio, zoomed UI element</span>
+       <figure class="real-shot">
+         <img src="../docs/design/assets-reais/idf-br-futuro-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados">
        </figure>
     </div>
 
@@ -968,10 +967,8 @@
     </div>
 
     <div class="dvo-grid">
-      <figure class="ph ph-dvo">
-        <span class="ph-chip">[ DVO PRODUCT SCREENSHOT ]</span>
-        <span class="i18n ph-note" lang="pt">Proporção 16:10, interface da aplicação</span>
-        <span class="i18n ph-note" lang="en">16:10 aspect ratio, application UI</span>
+      <figure class="real-shot">
+        <img src="../docs/design/assets-reais/dvo-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica">
       </figure>
 
       <div class="spec">
@@ -1037,15 +1034,11 @@
     </div>
 
     <div class="ciere-grid">
-       <figure class="ph ph-ciere">
-         <span class="ph-chip">[ CIERE WEBSITE DESKTOP ]</span>
-         <span class="i18n ph-note" lang="pt">Proporção 16:10, cores reais do projeto</span>
-<span class="i18n ph-note" lang="en">16:10 aspect ratio, actual project colors</span>
+       <figure class="real-shot">
+         <img src="../docs/design/assets-reais/ciere-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança">
        </figure>
-       <figure class="ph ph-ciere-m">
-         <span class="ph-chip">[ CIERE MOBILE DETAIL ]</span>
-         <span class="i18n ph-note" lang="pt">Proporção 9:16, cores reais do projeto</span>
-<span class="i18n ph-note" lang="en">9:16 aspect ratio, actual project colors</span>
+       <figure class="real-shot real-shot-mobile">
+         <img src="../docs/design/assets-reais/ciere-mobile-390.png" width="1170" height="2532" loading="lazy" decoding="async" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp">
        </figure>
     </div>
   </div>
