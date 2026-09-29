@@ -1,23 +1,19 @@
 ---
 name: Augusto Menchaca Personal Landing Page Design System
 colors:
-  primary: "{colors.charcoal}"
-  paper: "#F7F5EF"
-  stone: "#E8E3D9"
-  white: "#FFFFFF"
-  subtle: "#F1EEE6"
-  charcoal: "#111213"
-  body: "#343739"
+  primary: "{colors.ink}"
+  surface: "#FFFFFF"
+  ink: "#111111"
   muted: "#626569"
-  on-dark: "#9A9DA1"
-  acid: "#E6F835"
-  oxblood: "#5A2232"
-  wine: "#F1E6E8"
+  earth: "#4F3D3A"
+  forest: "#2C4C45"
+  leaf: "#B7D692"
+  sun: "#F6ED6C"
   h8-black: "#0B0B0B"
   h8-purple: "#6B0F9C"
   h8-gray: "#8A8A8A"
-  hair: "rgba(17, 18, 19, 0.13)"
-  hair-strong: "rgba(17, 18, 19, 0.28)"
+  hair: "rgba(17, 17, 17, 0.13)"
+  hair-strong: "rgba(17, 17, 17, 0.28)"
 typography:
   h1:
     fontFamily: Instrument Sans
@@ -97,13 +93,49 @@ O sistema distingue categoricamente evidência de preferência: a cor atua estri
 
 ## Colors
 
-A paleta é composta estritamente pelos tokens ativos declarados no bloco `:root` de `wireframes/lp-final.html`, estruturada em superfícies neutras tingidas, neutros escuros para tipografia, acentos pontuais e os tokens da marca Hut 8 congelados no projeto.
+A paleta **Blocos terrosos** (Gate C e Gate D, issue #64) substitui integralmente a
+família creme/stone/acid anterior. Não sobra nenhum bege: as superfícies claras são
+`surface` puro, e os acentos antes cobertos por `acid` viram um amarelo mais quente
+(`sun`), sempre como bloco de fundo — nunca como texto sobre `surface`.
 
-- **Superfícies:** `paper` (`#F7F5EF`), `stone` (`#E8E3D9`), `white` (`#FFFFFF`) e `subtle` (`#F1EEE6`). Apresentam croma medido em OKLCH de `C <= 0,014`, situando-se rigorosamente na faixa de neutros tingidos observada nas referências aprovadas.
-- **Tipografia e Neutros:** `charcoal` (`#111213`) como elemento principal de contraste e hierarquia escura; `body` (`#343739`) para texto corrido e blocos de leitura; `muted` (`#626569`) como piso de contraste para textos utilitários e metadados; `on-dark` (`#9A9DA1`) restrito exclusivamente a textos sobre superfícies escuras.
-- **Acentos:** `acid` (`#E6F835`) como ativador visual de alto contraste sobre fundos escuros; `oxblood` (`#5A2232`) e `wine` (`#F1E6E8`) para ênfases cromáticas profundas e superfícies editoriais complementares.
-- **Sistema Hut 8:** `h8-black` (`#0B0B0B`), `h8-purple` (`#6B0F9C`) e `h8-gray` (`#8A8A8A`) correspondem aos tokens ativos do bloco `:root` de `wireframes/lp-final.html`, congelados pela decisão de projeto da issue #35 e conferidos no manual de marca local (páginas 16–17; procedência abaixo).
-- **Hairlines:** Linhas divisórias estruturais finas baseadas em transparência controlada do neutro escuro: `hair` (`rgba(17, 18, 19, 0.13)`) e `hair-strong` (`rgba(17, 18, 19, 0.28)`).
+- **Superfície:** `surface` (`#FFFFFF`) é o único fundo claro do sistema. Hero, `#dvo`,
+  `#ciere`, `#quantum`, `#about` e `#contact` correm nela.
+- **Tipografia e Neutros:** `ink` (`#111111`) é o neutro escuro único para texto e
+  hierarquia — absorve o antigo par `charcoal`/`body`, que colapsa numa camada só.
+  `muted` (`#626569`) permanece como piso de contraste para textos utilitários e
+  metadados **sobre `surface`**, condicionado a seguir passando no contraste medido a
+  cada largura; não tem par simétrico sobre fundo escuro (texto sobre `earth` ou
+  `forest` é sempre `surface`, sem um nível secundário).
+- **Blocos:** `earth` (`#4F3D3A`, bloco marrom) cobre `#vivencias`; `forest`
+  (`#2C4C45`, bloco verde profundo) cobre `#idf` e o rodapé. `leaf` (`#B7D692`, verde
+  claro) é o verde de cartões e marcadores — substitui `subtle` nos `pill` e chips. `sun`
+  (`#F6ED6C`) é o destaque pontual — substitui `acid` em botões e marcadores, sempre
+  como fundo.
+- **Sistema Hut 8:** `h8-black` (`#0B0B0B`), `h8-purple` (`#6B0F9C`) e `h8-gray`
+  (`#8A8A8A`) seguem intocados, congelados pela decisão de projeto da issue #35 e
+  conferidos no manual de marca local (páginas 16–17; procedência abaixo). A troca de
+  paleta da #64 não altera nenhum valor desta família.
+- **Hairlines:** Linhas divisórias estruturais finas baseadas em transparência
+  controlada do neutro escuro, recalculadas para `ink`: `hair` (`rgba(17, 17, 17,
+  0.13)`) e `hair-strong` (`rgba(17, 17, 17, 0.28)`).
+
+### Pares de Texto Aprovados (Gate C)
+
+A troca de paleta veio com os pares já medidos, e são estes — e só estes — que o
+sistema usa para texto:
+
+| texto | fundo | contraste |
+| --- | --- | --- |
+| `ink` (`#111111`) | `surface` (`#FFFFFF`) | 18,88:1 |
+| `surface` (`#FFFFFF`) | `earth` (`#4F3D3A`) | 10,19:1 |
+| `surface` (`#FFFFFF`) | `forest` (`#2C4C45`) | 9,43:1 |
+| `ink` (`#111111`) | `leaf` (`#B7D692`) | 11,73:1 |
+| `ink` (`#111111`) | `sun` (`#F6ED6C`) | 15,51:1 |
+| `sun` (`#F6ED6C`) | `earth` (`#4F3D3A`) | 8,37:1 |
+| `leaf` (`#B7D692`) | `forest` (`#2C4C45`) | 5,86:1 |
+
+Um par que reprovar troca de combinação — nunca o hex medido (regra operacional da
+#64, não uma decisão nova deste arquivo).
 
 ### Tokens Mortos Fora do Sistema (Decisão D3)
 
@@ -155,42 +187,53 @@ A conformidade com WCAG 2.1 AA é mandatória em todos os pares da interface:
 
 ### Regras Normativas de Cor (R1 a R7)
 
-- **R1 — Lei de Contraste do Acid:** O token `--acid` (`#E6F835`) **NUNCA** pode ser utilizado como cor de texto sobre superfícies claras (`paper` 1,08:1; `stone` 1,09:1; `white` 1,18:1; `subtle` 1,02:1). Seu uso é permitido exclusivamente como texto sobre `--charcoal` (15,93:1) ou como plano de fundo contendo texto em `--charcoal` (15,93:1) ou `--muted` (4,98:1).
+- **R1 — Lei de Contraste do Amarelo (revisada na #64):** O token `--sun` (`#F6ED6C`, sucessor do `--acid`) **NUNCA** pode ser utilizado como cor de texto sobre `--surface` (`#111111` sobre `#F6ED6C` mede 15,51:1, mas o inverso — `sun` como texto sobre branco — não faz parte dos pares aprovados e não deve ser usado). Seu uso normativo é como **fundo** (botões e marcadores, texto em `--ink`) ou, unicamente sobre `--earth`, como texto (`#F6ED6C` sobre `#4F3D3A` mede 8,37:1 — o único par aprovado com `sun` como texto).
 - **R2 — Verde da Marca Hut 8 Fora da LP:** O verde `#A4DE02` da marca Hut 8 permanece fora da paleta da landing page. A medição instrumental comprovou proximidade perceptual excessiva com o acid (`ΔH = 11,2°` e `ΔC = 0,012`), pertencendo à mesma família cromática e incorrendo na mesma inviabilidade de contraste sobre superfícies claras (1,26:1 a 1,61:1).
 - **R3 — Marca Hut 8 Congelada:** Os valores da marca Hut 8 congelados no projeto (`#0B0B0B`, `#6B0F9C`, `#8A8A8A` e externamente `#A4DE02`) são fixos e invioláveis: **não derivar, não modular e não inventar** variações de matiz, saturação ou luminosidade. O manual identificado na seção de procedência confirma esses quatro valores nas páginas 16–17; a decisão de congelá-los no projeto permanece sendo a da issue #35 (`docs/issues/lote-pesquisa.md`) e dos tokens ativos do bloco `:root` de `wireframes/lp-final.html`.
 - **R4 — Confinamento das Paletas de Projetos Reais:** As identidades visuais de projetos reais entram como restrição externa, com os valores medidos nas capturas reais: **IDF-BR** navy `rgb(13,27,42)`; **Ciere** creme `rgb(243,236,220)`, marrom `rgb(77,54,28)` e dourado `rgb(206,145,0)`. O **DVO** não possui token estável: o azul de oficina vem de fotografia e varia por imagem, então nenhum valor é normativo — a peça entra como é e nada se deriva dela. Ficam confinadas ao campo visual de evidência técnica (cartões e ilustrações de produto) e **nunca** viram fundo de seção. Capturas de tela e dados reais jamais são recoloridos; superfícies adjacentes (molduras, legendas e planos de seção) acomodam-se à imagem original.
-- **R5 — Piso de Contraste no Neutro:** Nenhuma cor com luminosidade superior a `--muted` (`L = 0,505` em OKLCH) pode ser empregada como texto sobre fundos claros. Essa restrição veda expressamente o uso de `--light` (`L = 0,645`), `--on-dark` (`L = 0,695`) e `--h8-gray` (`L = 0,633`) sobre `paper`, `stone`, `white` e `subtle`.
+- **R5 — Piso de Contraste no Neutro (revisada na #64):** Nenhuma cor com luminosidade superior a `--muted` (`L = 0,505` em OKLCH) pode ser empregada como texto sobre `--surface`, agora a única superfície clara do sistema (o `paper`/`stone`/`white`/`subtle` de antes colapsaram nela). Essa restrição veda expressamente o uso de `--light` (`L = 0,645`) e `--h8-gray` (`L = 0,633`) sobre `--surface`. Sobre fundo escuro (`--earth` ou `--forest`) o piso não se aplica: o sistema não tem um nível "secundário" ali — todo texto sobre esses dois blocos é `--surface`.
 - **R6 — Vedação de Texto Direto sobre Imagem:** Nenhum elemento textual pode assentar diretamente sobre imagens ou capturas sem uma faixa sólida e opaca intermediária, assegurando mensurabilidade determinística de contraste.
 - **R7 — Fechamento do Sistema contra Cores Não Tokenizadas:** Todo elemento interativo deve declarar a propriedade `color` explicitamente no CSS, impedindo quedas omissivas em valores nativos do agente de usuário (como o `ButtonText` `#000000` detectado no controle `.rail-pause`).
 
-### Orçamento de Área do Croma Alto (R8)
+### Orçamento de Área do Croma Alto (R8, revisada na #64)
 
 O contraste diz **onde** uma cor pode aparecer; o orçamento diz **quanto** dela pode
 aparecer. Os dois são necessários, e o segundo foi o que a medição isolou como a
 gramática das peças aprovadas.
 
 - **A regra:** a gramática do sistema é *campo grande de neutro + acento mínimo de
-  croma alto*, e ela pressupõe que o croma alto ocupe **da ordem de 1% da área
-  pintada**. Passar disso não é questão de gosto: descaracteriza a gramática que a
-  amostra aprovada exibe.
+  croma alto*, e ela pressupõe que o croma alto — hoje `--sun`, sucessor do `--acid`
+  — ocupe **da ordem de 1% da área pintada**. Passar disso não é questão de gosto:
+  descaracteriza a gramática que a amostra aprovada exibe. `--earth`, `--forest` e
+  `--leaf` são blocos de superfície, não acentos, e ficam fora deste orçamento — eles
+  cobrem seção inteira por desenho (mapa de seções acima), o que a gramática de "campo
+  grande de neutro" já não pressupõe para eles.
 - **Consequência operacional direta:** **nenhum degrau de display carrega croma.**
   Os degraus 1 e 2 (`h1` e suas variantes por largura, e `h2`) são sempre neutros.
   Uma headline tingida, em qualquer largura, rompe o orçamento sozinha — um título
   de 144px colorido é área, não acento.
-- **Como conferir:** medir a fração da área com croma alto por viewport, não por
-  componente. O instrumento da #35 já faz essa leitura; a auditoria por largura é da
-  #24.
+- **Como conferir:** medir a fração da área com croma alto (`--sun`) por viewport, não
+  por componente. O instrumento da #35 já faz essa leitura; a auditoria por largura é
+  da #24.
 - **O que o orçamento não é:** limite de quantidade de ocorrências. Duas marcas
-  minúsculas de acid e um campo grande tingido têm a mesma contagem e orçamentos
+  minúsculas de `sun` e um campo grande tingido têm a mesma contagem e orçamentos
   opostos.
 
-### Auditoria da Peça e Margens Críticas
+### Auditoria da Peça e Margens Críticas (reauditada na #64)
 
-A auditoria de `wireframes/lp-final.html` apurou 242 elementos com texto próprio distribuídos em 34 pares distintos, com **zero reprovações de AA** e zero texto sobre imagem. A peça apresenta dois pares em margem fina que exigem preservação rigorosa sem clareamento:
-- `muted` sobre `stone`: **4,58:1** (margem de 0,08 sobre o limiar de 4,5:1, em 14 ocorrências entre 11 e 14px).
-- `muted` sobre `acid`: **4,98:1** (limiar 4,5:1, em 2 ocorrências a 11px).
+A troca para Blocos terrosos reauditou `wireframes/lp-final.html` com um script CDP
+descartável, em janela real (`--headed`), nos dois viewports de referência: **154
+elementos com texto próprio a 1440px e 157 a 390px, com zero reprovações de AA nos
+dois** (limiar de 4,5:1, relaxado a 3:1 para texto >= 24px ou >= 18,66px em negrito
+>= 700). O fundo efetivo de cada elemento foi resolvido subindo a árvore de
+ancestrais e compondo alpha sobre alpha — não presumido do token nominal da seção.
 
-As escolhas específicas de matiz (creme `#F7F5EF`, amarelo-ácido em `H = 115,1°` e vinho em `H = 4,8°`) representam escolhas estéticas herdadas do briefing inicial que satisfazem as restrições medidas, sem constituírem por si variáveis de classificação de aprovação.
+A recontagem trocou a fonte da margem fina: com `--surface` (branco puro)
+substituindo `stone`, o par `muted` sobre superfície clara deixou de ser crítico —
+`stone` (`#E8E3D9`) tinha luminosidade menor que `#FFFFFF`, então o mesmo `muted`
+agora mede mais alto do que os 4,58:1 registrados antes da #64. Nenhum par
+sobrevive perto do piso: a reauditoria não encontrou pares em margem fina
+equivalente à de antes.
 
 ### Ausências Declaradas (Decisão D4)
 
@@ -320,10 +363,10 @@ desaparecer na exportação ou, pior, fixaria um recuo que o sistema nunca usa s
 A página é estruturada pelo sistema de lajes (`.slab`), caracterizado por faixas de largura total contíguas, sem cantos arredondados e sem margens verticais separadoras (`margin: 0; border-radius: 0;`). O recuo horizontal e o alinhamento da leitura são atribuídos exclusivamente ao contêiner interno (`.container`).
 
 As lajes alternam superfícies tonais de alto contraste:
-- `.slab-dark`: Fundo em `--charcoal` com texto em `--on-dark` e títulos em `--paper`.
-- `.slab-hut8`: Fundo em `--h8-black` com títulos em `#FFFFFF`.
-- `.slab-stone`: Fundo em `--stone` com texto e títulos em `--charcoal`.
-- `.slab-oxblood`: Fundo em `--oxblood` com texto e títulos em `--wine` e `#FFFFFF`.
+- `.slab-dark`: Fundo em `--forest` (o bloco de `#idf`) com texto e títulos em `--surface`.
+- `.slab-hut8`: Fundo em `--h8-black` com títulos em `#FFFFFF` (congelado, R3).
+- `.slab-stone`: Fundo em `--surface` com texto e títulos em `--ink` (cobre `#quantum` e `#about`).
+- `.slab-oxblood`: classe sem uso na peça hoje; fundo em `--earth` com texto e títulos em `--surface`.
 
 A medição das 16 referências comprovou que contagem de bandas escuras (0 a 7 em aprovados vs 0 a 3 em rejeitados) e fração de área escura (0 a 0,945 vs 0 a 1,0) constituem variáveis estatisticamente nulas. A alternância de faixas existe para clareza visual e ritmo de leitura, e não como tentativa de satisfação de preferência cromática.
 
@@ -335,9 +378,9 @@ Registra-se que uma escala modular discreta de espaçamento relativo (como patam
 
 A profundidade no sistema é plana e arquitetural, construída por contraste tonal direto e linhas milimétricas, sem recurso a sombras projetadas (*drop shadows*) ou efeitos de translucidez difusa (*glassmorphism*).
 
-- **Camadas Tonais:** A distinção de planos é conferida pela justaposição de blocos maciços de cor (`paper`, `stone`, `charcoal`, `h8-black`, `oxblood`).
-- **Hairlines Estruturais:** Separação entre seções, cabeçalhos de tabelas e contornos de cartões executada por linhas de 1px com transparência calibrada: `--hair` (`rgba(17, 18, 19, 0.13)`) para divisões gerais de baixo peso visual e `--hair-strong` (`rgba(17, 18, 19, 0.28)`) para fronteiras ativas.
-- **Indicador de Foco Acessível:** `outline: 2px solid var(--charcoal); outline-offset: 3px;` sobre planos claros; `outline-color: var(--acid);` sobre superfícies escuras. O indicador é estático e imediato, sem atraso de transição ou deslocamento.
+- **Camadas Tonais:** A distinção de planos é conferida pela justaposição de blocos maciços de cor (`surface`, `ink`, `earth`, `forest`, `h8-black`).
+- **Hairlines Estruturais:** Separação entre seções, cabeçalhos de tabelas e contornos de cartões executada por linhas de 1px com transparência calibrada: `--hair` (`rgba(17, 17, 17, 0.13)`) para divisões gerais de baixo peso visual e `--hair-strong` (`rgba(17, 17, 17, 0.28)`) para fronteiras ativas.
+- **Indicador de Foco Acessível:** `outline: 2px solid var(--ink); outline-offset: 3px;` sobre planos claros; `outline-color: var(--surface);` sobre superfícies escuras. O indicador é estático e imediato, sem atraso de transição ou deslocamento.
 - **Elevação Interativa por Deslocamento:** A resposta ao cursor ocorre via microdeslocamento geométrico vetorial: botões recebem `transform: translateY(-2px)` e cartões do trilho recebem `transform: translateY(-3px)`, comunicando acionamento sem alterar o fluxo do documento.
 
 ## Shapes
@@ -356,18 +399,19 @@ Os componentes da interface operam como átomos funcionais de alta densidade inf
 
 ### Botões (`.btn`)
 - **Tipografia:** `IBM Plex Mono`, tamanho 0.72rem (~11,5px), peso 600, `letter-spacing: 0.1em`, caixa alta.
-- **Estrutura:** `padding: 13px 22px; border-radius: 3px; border: 1px solid var(--charcoal); display: inline-flex; align-items: center; gap: 9px;`.
-- **Cores:** Fundo em `var(--acid)`, texto e ícones em `var(--charcoal)`. Variante Ghost com fundo transparente.
+- **Estrutura:** `padding: 13px 22px; border-radius: 3px; border: 1px solid var(--ink); display: inline-flex; align-items: center; gap: 9px;`.
+- **Cores:** Fundo em `var(--sun)`, texto e ícones em `var(--ink)`. Variante Ghost com fundo transparente.
 - **Estados:** Hover com `transform: translateY(-2px)` e transição de 0,3s ease; estado `:active` com compressão `scale(0.98)` de resposta imediata (0–50ms) e retorno em até 0,1s.
 
 ### Rótulos Técnicos e Pílulas (`.meta-label`, `.pill`)
-- **`.meta-label`:** Tipografia `IBM Plex Mono`, tamanho 0.7rem (~11px), peso 500, `letter-spacing: 0.12em`, caixa alta, cor `var(--muted)`. Variante em fundo escuro com cor `var(--on-dark)`.
-- **`.pill`:** Tipografia `IBM Plex Mono`, tamanho 0.62rem (~10px), peso 600, `letter-spacing: 0.09em`, caixa alta, `padding: 4px 9px; border-radius: 3px; border: 1px solid var(--hair-strong); background: var(--subtle); color: var(--charcoal);`. Variante em fundo escuro com fundo transparente, borda `rgba(247, 245, 239, 0.28)` e texto `var(--on-dark)`.
+- **`.meta-label`:** Tipografia `IBM Plex Mono`, tamanho 0.7rem (~11px), peso 500, `letter-spacing: 0.12em`, caixa alta, cor `var(--muted)`. Variante em fundo escuro com cor `var(--surface)`.
+- **`.pill`:** Tipografia `IBM Plex Mono`, tamanho 0.62rem (~10px), peso 600, `letter-spacing: 0.09em`, caixa alta, `padding: 4px 9px; border-radius: 3px; border: 1px solid var(--hair-strong); background: var(--leaf); color: var(--ink);`. Variante em fundo escuro com fundo transparente, borda `rgba(255, 255, 255, 0.28)` e texto `var(--surface)`.
 
 ### Trilho Editorial (`.rail-section`)
+- **Removido (issue #9):** o trilho editorial saiu da peça; esta subseção descreve um componente que não existe mais em `wireframes/lp-final.html` e fica só como registro histórico até uma limpeza dedicada do `DESIGN.md`.
 - **Mecanismo:** Visualização contínua com rolagem linear automática de 46s (`@keyframes rail-scroll`), com pausa obrigatória ativada por `:hover`, `:focus-within` e controle manual.
-- **Controle de Pausa (`.rail-pause`):** Botão técnico com tipografia `IBM Plex Mono`, peso 600, tamanho 0.6rem, caixa alta, borda em `var(--hair-strong)`. Em estrito cumprimento da regra R7, deve declarar explicitamente `color: var(--charcoal)` para vedar queda no valor nativo `#000000`.
-- **Cartões (`.rail-item`):** Dimensões de 186px de largura e mínimo de 82px de altura, `border-radius: 10px`, `padding: 12px 14px;`, fundo branco ou tonal (`var(--white)`, `var(--subtle)`, `var(--charcoal)`, `var(--acid)`, `var(--wine)`). Hover com `transform: translateY(-3px)`.
+- **Controle de Pausa (`.rail-pause`):** Botão técnico com tipografia `IBM Plex Mono`, peso 600, tamanho 0.6rem, caixa alta, borda em `var(--hair-strong)`. Em estrito cumprimento da regra R7, deve declarar explicitamente `color: var(--ink)` para vedar queda no valor nativo `#000000`.
+- **Cartões (`.rail-item`):** Dimensões de 186px de largura e mínimo de 82px de altura, `border-radius: 10px`, `padding: 12px 14px;`, fundo branco ou tonal (`var(--surface)`, `var(--leaf)`, `var(--ink)`, `var(--sun)`, `var(--earth)`). Hover com `transform: translateY(-3px)`.
 
 ### Faixas Estruturais (`.slab`)
 - Seções de sangria total com preenchimento vertical de `clamp(34px, 4.4vw, 60px) 0`, contendo o alinhamento da grade via contêiner central.
@@ -381,7 +425,7 @@ Os componentes da interface operam como átomos funcionais de alta densidade inf
   2. *Links de Navegação:* transição cromática em **`--motion-nav` (0,18s ease)** em repouso/hover (conforme `lp-final.html`).
   3. *Linhas de Tempo de Rolagem (`animation-timeline: view()`):* Permitida exclusivamente como melhoria progressiva contida em blocos `@supports`, restrita a gráficos e elementos narrativos e **nunca** ocultando texto ou dados em rolagem reversa.
   4. *Momento Expressivo (Curva do IDF):* Transição por `stroke-dashoffset` parametrizada à evidência científica, com especificação reservada para a issue #22.
-  5. *Inversão cromática de primeiro plano/fundo (`.live-link`, `.footer-top`), em 0s:* a troca simultânea de texto e fundo (`--charcoal` ↔ `--paper`) ocorre em 0s, e não nos 0,3s do deslocamento associado. Razão medida no `PLANO-MOVIMENTO.md` (E4): interpolando as duas cores em sRGB e aplicando a fórmula de contraste do WCAG 2.1 ao longo da transição simultânea, o contraste cai abaixo de 4,5:1 entre t≈0,26 e t≈0,74 (mínimo de 1,00:1 em t=0,50) — cerca de 48% do percurso esconderia o texto. A recomendação geral de `color 0.3s` cobre mudança simples de cor, não essa inversão de papéis entre duas cores.
+  5. *Inversão cromática de primeiro plano/fundo (`.live-link`, `.footer-top`), em 0s:* a troca simultânea de texto e fundo (`--ink` ↔ `--surface`) ocorre em 0s, e não nos 0,3s do deslocamento associado. Razão medida no `PLANO-MOVIMENTO.md` (E4): interpolando as duas cores em sRGB e aplicando a fórmula de contraste do WCAG 2.1 ao longo da transição simultânea, o contraste cai abaixo de 4,5:1 entre t≈0,26 e t≈0,74 (mínimo de 1,00:1 em t=0,50) — cerca de 48% do percurso esconderia o texto. A recomendação geral de `color 0.3s` cobre mudança simples de cor, não essa inversão de papéis entre duas cores.
 - **Acessibilidade (`prefers-reduced-motion: reduce`):** Neutralização total de durações temporais, timelines e translações espaciais. O conteúdo essencial permanece imediatamente visível em seu estado renderizado final, caminhos vetoriais estabelecidos em repouso definitivo e `scroll-behavior: auto`. Veda-se a aplicação genérica de `opacity: 1` indiscriminado ou abertura forçada de painéis colapsados.
 - **Proibições Estruturais:**
   - Veto absoluto a `transition: all`. Todas as propriedades em transição devem ser declaradas nominalmente.
@@ -397,13 +441,13 @@ Os componentes da interface operam como átomos funcionais de alta densidade inf
 - **Do:** Mantenha a duração base de **0,3s** para transições temporais de interface, documentando expressamente qualquer exceção funcional nomeada.
 - **Do:** Trate os valores da marca Hut 8 conferidos no manual (páginas 16–17) e congelados no projeto pela issue #35 (`#0B0B0B`, `#6B0F9C`, `#8A8A8A`) como fixos e imutáveis, sem derivar variações ou inventar modulações.
 - **Do:** Confine as paletas cromáticas dos projetos de clientes (IDF-BR, Ciere e DVO) exclusivamente ao escopo dos seus cartões e ilustrações de evidência técnica.
-- **Do:** Adote `--muted` (`L = 0,505`) como o piso absoluto de contraste sobre superfícies claras.
+- **Do:** Adote `--muted` (`L = 0,505`) como o piso absoluto de contraste sobre `--surface`.
 - **Do:** Declare a propriedade `color` explicitamente em todos os elementos interativos para impedir regressão ao `ButtonText` do navegador.
 - **Do:** Respeite rigorosamente `prefers-reduced-motion: reduce`, zerando durações e translações enquanto preserva o conteúdo totalmente legível e acessível.
 
 ### Don'ts (Não Faça)
-- **Don't:** **NUNCA** utilize o token `--acid` (`#E6F835`) como cor de texto sobre superfícies claras (`paper`, `stone`, `white`, `subtle`).
-- **Don't:** **NUNCA** incorpore o verde `#A4DE02` da marca Hut 8 à paleta da landing page, por colisão cromática medida contra o acid e reprovação de contraste.
+- **Don't:** **NUNCA** utilize o token `--sun` (`#F6ED6C`) como cor de texto sobre `--surface`. Sobre `--earth` é o único fundo escuro em que `sun` como texto está aprovado (8,37:1).
+- **Don't:** **NUNCA** incorpore o verde `#A4DE02` da marca Hut 8 à paleta da landing page, por colisão cromática medida contra o antigo acid e reprovação de contraste.
 - **Don't:** **NUNCA** utilize os tokens mortos `--light` (`#8A8E93`) e `--h8-photo` (`#2A2A28`) no código do produto.
 - **Don't:** **NUNCA** recolora capturas de tela, diagramas ou figuras de dados reais de projetos de clientes, e nunca os utilize como planos de fundo de seção.
 - **Don't:** **NUNCA** assente elementos textuais diretamente sobre imagens sem uma faixa sólida e opaca intermediária.
