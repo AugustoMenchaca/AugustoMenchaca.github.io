@@ -298,10 +298,6 @@
   .dvo-role { display: flex; flex-direction: column; gap: 32px; width: 400px; flex: none; }
   .dvo-disclaimer { margin: 0; font-size: 1.375rem; line-height: 1.5; color: var(--ink); }
 
-  .dvo-track-head {
-    display: block; font-family: var(--f-display); font-weight: 600; font-size: 18px;
-    color: var(--ink); margin: 0 0 12px;
-  }
   .dvo-track-list { list-style: none; margin: 0; padding: 0; }
   .dvo-track-list li {
     font-family: var(--f-body); font-weight: 500; font-size: 16px;
@@ -309,7 +305,17 @@
   }
   .dvo-track-item--squad { background: var(--leaf); font-weight: 600; }
 
-  .dvo-shot { width: 760px; flex: none; border-radius: 8px; overflow: hidden; border: 1px solid rgba(17, 17, 17, .1); }
+  .dvo-aside { display: flex; flex-direction: column; gap: 28px; width: 760px; flex: none; }
+  .dvo-shot { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid rgba(17, 17, 17, .1); }
+
+  .dvo-config-head { display: block; font-family: var(--f-display); font-weight: 600; font-size: 18px; color: var(--ink); margin: 0 0 12px; }
+  .dvo-config-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .dvo-config-item {
+    display: flex; align-items: baseline; gap: 8px;
+    padding: 11px 12px; border-top: 1px solid rgba(17, 17, 17, .12);
+  }
+  .dvo-config-term { font-family: var(--f-body); font-weight: 500; font-size: 16px; color: var(--ink); }
+  .dvo-config-act { font-family: var(--f-body); font-weight: 400; font-size: 16px; color: var(--muted); }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     .dvo-shot { transition: transform var(--motion-base) var(--motion-enter); }
@@ -645,7 +651,8 @@
     .dvo-body { flex-direction: column; gap: 32px; margin-top: 32px; }
     .dvo-role { width: 100%; }
     .dvo-disclaimer { font-size: 1.125rem; }
-    .dvo-shot { width: 100%; }
+    .dvo-aside { width: 100%; }
+    .dvo-config-grid { grid-template-columns: 1fr; }
   }
 
 
@@ -984,25 +991,54 @@
         <p class="i18n dvo-disclaimer" lang="pt">O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.</p>
 <p class="i18n dvo-disclaimer" lang="en">The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.</p>
 
-        <div class="dvo-track">
-          <span class="i18n dvo-track-head" lang="pt">Coordenação e configuração</span>
-<span class="i18n dvo-track-head" lang="en">Coordination &amp; configuration</span>
-          <ol class="dvo-track-list">
-            <li class="i18n" lang="pt">Cliente</li>
+        <ol class="dvo-track-list">
+          <li class="i18n" lang="pt">Cliente</li>
 <li class="i18n" lang="en">Client</li><li class="i18n" lang="pt">Requisitos</li>
 <li class="i18n" lang="en">Requirements</li><li class="i18n" lang="pt">Escopo</li>
 <li class="i18n" lang="en">Scope</li><li class="i18n" lang="pt">Precificação</li>
 <li class="i18n" lang="en">Pricing</li>
-            <li class="dvo-track-item--squad">Squad</li><li>QA</li><li class="i18n" lang="pt">Infraestrutura</li>
+          <li class="dvo-track-item--squad">Squad</li><li>QA</li><li class="i18n" lang="pt">Infraestrutura</li>
 <li class="i18n" lang="en">Infrastructure</li><li class="i18n" lang="pt">Produção</li>
 <li class="i18n" lang="en">Production</li>
-          </ol>
-        </div>
+        </ol>
       </div>
 
-      <figure class="real-shot dvo-shot">
-        <img src="../docs/design/assets-reais/dvo-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica">
-      </figure>
+      <div class="dvo-aside">
+        <figure class="real-shot dvo-shot">
+          <img src="../docs/design/assets-reais/dvo-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica">
+        </figure>
+
+        <div class="dvo-config">
+          <span class="i18n dvo-config-head" lang="pt">Coordenação e configuração</span>
+<span class="i18n dvo-config-head" lang="en">Coordination &amp; configuration</span>
+          <div class="dvo-config-grid">
+            <div class="dvo-config-item">
+              <span class="i18n dvo-config-term" lang="pt">Banco de dados</span>
+<span class="i18n dvo-config-term" lang="en">Database</span>
+              <span class="i18n dvo-config-act" lang="pt">· configuração</span>
+<span class="i18n dvo-config-act" lang="en">· setup</span>
+            </div>
+            <div class="dvo-config-item">
+              <span class="i18n dvo-config-term" lang="pt">Bucket</span>
+<span class="i18n dvo-config-term" lang="en">Bucket</span>
+              <span class="i18n dvo-config-act" lang="pt">· armazenamento</span>
+<span class="i18n dvo-config-act" lang="en">· storage</span>
+            </div>
+            <div class="dvo-config-item">
+              <span class="i18n dvo-config-term" lang="pt">API</span>
+<span class="i18n dvo-config-term" lang="en">API</span>
+              <span class="i18n dvo-config-act" lang="pt">· deploy</span>
+<span class="i18n dvo-config-act" lang="en">· deployment</span>
+            </div>
+            <div class="dvo-config-item">
+              <span class="i18n dvo-config-term" lang="pt">Frontend</span>
+<span class="i18n dvo-config-term" lang="en">Frontend</span>
+              <span class="i18n dvo-config-act" lang="pt">· deploy</span>
+<span class="i18n dvo-config-act" lang="en">· deployment</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
