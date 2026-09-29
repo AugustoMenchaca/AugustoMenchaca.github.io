@@ -102,13 +102,21 @@
 
   /* HERO */
   .hero { background: var(--surface); position: relative; overflow: hidden; padding-block: 32px; }
-  .hero .container { position: relative; }
+  .hero .container { position: relative; container-type: inline-size; }
 
   .hero-headline {
     font-family: var(--f-display); font-weight: 700;
     font-size: clamp(3.375rem, 2.0286rem + 5.5238vw, 7rem);
     line-height: 0.9; letter-spacing: -0.04em; text-transform: none;
     color: var(--ink); max-width: none; margin: 0 0 24px;
+  }
+  /* A 1024px+ o tamanho vira funcao da largura real do container (cqw), nao
+     do viewport: "Da pesquisa ao software." (a mais longa das 3 palavras)
+     tem que caber numa linha em qualquer largura, do 1024 ao 2560. Medido no
+     navegador: a essa fonte, a razao largura-do-texto/tamanho e ~10,88; 8,9cqw
+     deixa ~3% de folga em qualquer largura de container. Piso de 96px. */
+  @media (min-width: 1024px) {
+    .hero-headline { font-size: clamp(96px, 8.9cqw, 200px); }
   }
   .hero-word-swap { display: inline-grid; vertical-align: bottom; }
   .hero-word-swap > span:not(:first-child) { display: none; }
@@ -374,7 +382,7 @@
   }
 
   /* Transform para hover; scale independente para pressao e soltura. */
-  :is(.live-link, .footer-top) {
+  .live-link {
     transform: none;
     scale: 1;
     transform-origin: center;
@@ -391,7 +399,7 @@
 
   /* Substitui os antigos :hover sem media query; mantem os pares de cor existentes. */
   @media (hover: hover) and (pointer: fine) {
-    :is(.live-link, .footer-top):hover:not(:focus-visible) {
+    .live-link:hover:not(:focus-visible) {
       transform: translateY(-2px);
     }
 
@@ -411,23 +419,13 @@
       text-decoration-thickness: 2px;
     }
 
-    .footer-top:hover {
-      background-color: var(--ink);
-      color: var(--surface);
-    }
-
-    .site-footer .footer-top:hover {
-      background-color: var(--surface);
-      color: var(--ink);
-    }
-
     .site-footer .footer-col a:hover {
       border-bottom-color: var(--surface);
     }
   }
 
   /* Somente superficies/controles; links textuais corridos nao comprimem. */
-  :is(.live-link, .footer-top,
+  :is(.live-link,
       .lang-btn, details.motion-details > summary):active:not(:focus-visible) {
     scale: 0.98;
     transition:
@@ -437,7 +435,7 @@
   }
 
   /* Foco tem precedencia sobre hover, active e cor interpolada. */
-  :is(.live-link, .footer-top,
+  :is(.live-link,
       .lang-btn, details.motion-details > summary):focus-visible {
     transform: none;
     scale: 1;
@@ -742,11 +740,13 @@
     transition: border-color var(--motion-base) var(--motion-state);
   }
   .footer-top {
-    display: inline-flex; align-items: center; gap: 8px; align-self: start;
-    font-family: var(--f-mono); font-size: 0.62rem; font-weight: 600;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--surface);
-    text-decoration: none; border: 1px solid rgba(255,255,255,.32);
-    border-radius: 999px; padding: 11px 16px; min-height: 40px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--f-body); font-size: 0.875rem; font-weight: 500;
+    color: var(--surface); text-decoration: none;
+  }
+  .footer-top:hover,
+  .footer-top:focus-visible {
+    text-decoration: underline;
   }
   .footer-legal-copy {
     font-family: var(--f-body); font-size: 0.875rem; font-weight: 400; color: rgba(255,255,255,.72);
