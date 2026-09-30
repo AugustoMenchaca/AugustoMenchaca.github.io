@@ -443,6 +443,37 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 ### Faixas Estruturais (`.slab`)
 - Seções de sangria total com preenchimento vertical de `clamp(34px, 4.4vw, 60px) 0`, contendo o alinhamento da grade via contêiner central.
 
+### Molduras de portfólio — issue #85
+
+- **Fonte:** as cinco capturas reais já aprovadas em `assets/img`, sem recoloração,
+  recorte, filtro, deformação ou captura desktop apresentada como celular. Desktop
+  mantém 1440×900 (IDF futuro: 1200×750); o celular da Ciere mantém 460×995.
+- **Navegador:** IDF-BR (duas telas), DVO e Ciere desktop recebem moldura neutra em
+  `ink`/`surface`, barra superior opaca com controles desenhados e o domínio já
+  presente no link do projeto. Chrome decorativo é `aria-hidden="true"`, sem
+  controles focáveis; os textos alternativos das capturas permanecem intactos.
+- **Celular:** apenas a captura móvel real da Ciere recebe corpo em `ink`, cantos
+  arredondados de aparelho, alto-falante e indicador inferior. Esses elementos
+  ficam fora da imagem: nenhuma câmera, barra ou canto mascara seus pixels.
+- **Composição:** conservar a hierarquia e as larguras relativas aprovadas
+  (IDF: 66,13%/48,39%; Ciere: desktop 77,42% e celular 18,55%; no móvel,
+  74,86%/54,86% e 91,43%/40%). A cascata do IDF separa as telas em duas linhas;
+  a Ciere afasta o celular lateralmente no desktop e abaixo da tela no móvel.
+  O afastamento substitui a sobreposição de pixels para tornar ambas as capturas
+  integralmente visíveis, incluindo durante os deslocamentos existentes.
+- **Geometria:** grades em `minmax(0, fr)` e larguras em porcentagem, altura de
+  imagem automática e `max-width: 100%`; moldura cresce com a captura, sem altura
+  fixa, `object-fit: cover` ou ocultação de overflow. `srcset` usa os derivados
+  reais disponíveis; `sizes` acompanha a largura interna, limitada a 1240px de
+  contêiner. A maior resolução disponível continua sendo a captura original.
+- **Profundidade e movimento:** contornos sólidos e hairlines, sem sombra ou
+  vidro difuso. Preservar os deslocamentos da #21 com espaço entre as telas e
+  respeitar `prefers-reduced-motion`, sem nova animação.
+- **Verificação:** nas larguras 390, 768, 1024, 1280, 1366, 1440, 1536, 1920 e
+  2560px, `document.documentElement.scrollWidth === innerWidth`, molduras dentro
+  do contêiner, imagens carregadas e sem interseção entre áreas de captura.
+  Textos PT/EN, links e nomes acessíveis permanecem iguais à base por seção.
+
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
 - **Duração Base:** **0,3s** (`--motion-base`) como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).

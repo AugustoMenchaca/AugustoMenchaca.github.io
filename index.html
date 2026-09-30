@@ -249,6 +249,43 @@
   .real-shot { margin: 0; min-width: 0; }
   .real-shot img { display: block; width: 100%; height: auto; }
 
+  /* Molduras #85: chrome fora da captura; nenhuma tela recortada. */
+  .mock-browser {
+    max-width: 100%; padding: 3px; border: 1px solid var(--ink);
+    border-radius: 10px; background: var(--ink); color: var(--ink);
+  }
+  .mock-browser picture, .mock-phone picture { display: block; max-width: 100%; }
+  .mock-browser-bar {
+    display: grid; grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center; gap: clamp(6px, 1vw, 12px); min-width: 0;
+    padding: 8px; border-radius: 6px 6px 0 0;
+    border-bottom: 1px solid var(--hair); background: var(--surface);
+  }
+  .mock-browser-dots { display: flex; gap: 3px; }
+  .mock-browser-dots span {
+    width: 5px; height: 5px; border: 1px solid var(--muted); border-radius: 50%;
+  }
+  .mock-browser-nav { font: 14px/1 var(--f-body); color: var(--muted); white-space: nowrap; }
+  .mock-browser-address {
+    min-width: 0; padding: 4px 6px; border: 1px solid var(--hair);
+    border-radius: 3px; font: clamp(9px, .8vw, 11px)/1.2 var(--f-mono);
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .mock-phone {
+    position: relative; max-width: 100%; padding: 6px;
+    border: 2px solid var(--ink); border-radius: clamp(18px, 2.5vw, 32px);
+    background: var(--ink); color: var(--surface);
+  }
+  .mock-phone-top, .mock-phone-bottom {
+    display: flex; justify-content: center; align-items: center; height: 18px;
+  }
+  .mock-phone-top::before {
+    content: ""; width: 22%; height: 3px; background: var(--muted); border-radius: 3px;
+  }
+  .mock-phone-bottom::before {
+    content: ""; width: 35%; height: 3px; background: var(--surface); border-radius: 3px;
+  }
+
   /* IDF-BR — papel, numeros com fonte e telas reais (Corte 2, issue #10) */
   #idf { padding: 120px 100px; }
   #idf .container { max-width: 1240px; padding-inline: 0; }
@@ -274,15 +311,15 @@
   }
   .idf-number-label { margin: 0; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
 
-  /* Cascata E2: principal 820/1240 do container, futura 600/1240 sobreposta no canto (Figma 161:2) */
-  .idf-screens { position: relative; width: 100%; aspect-ratio: 1240 / 673; margin-top: 64px; }
-  .idf-screen-main { position: absolute; top: 0; left: 0; width: 66.13%; aspect-ratio: 16 / 10; }
-  .idf-screen-main img { border: 1px solid rgba(255, 255, 255, .12); border-radius: 8px; }
-  .idf-screen-future { position: absolute; top: 43.09%; left: 51.61%; width: 48.39%; aspect-ratio: 16 / 10; }
-  .idf-screen-future img { border: 8px solid var(--forest); border-radius: 12px; }
-  .idf-screens .real-shot img { display: block; width: 100%; height: auto; }
+  /* Cascata E2, mesmas escalas; segunda linha preserva todos os pixels. */
+  .idf-screens {
+    display: grid; grid-template-columns: minmax(0, 51.61fr) minmax(0, 14.52fr) minmax(0, 33.87fr);
+    row-gap: 32px; width: 100%; margin-top: 64px;
+  }
+  .idf-screen-main { grid-column: 1 / 3; grid-row: 1; }
+  .idf-screen-future { grid-column: 2 / 4; grid-row: 2; }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     /* translate, nao transform: o transform fica livre para a linha do
        tempo de rolagem abaixo (#21, Corte 9), sem briga de propriedade. */
     .idf-screen-future { transition: translate var(--motion-base) var(--motion-enter); }
@@ -318,9 +355,7 @@
 
   /* Quadro 390 do Figma (165:2) */
   @media (max-width: 767px) {
-    .idf-screens { aspect-ratio: 350 / 236; }
-    .idf-screen-main { width: 74.86%; }
-    .idf-screen-future { left: 45.14%; top: 46.61%; width: 54.86%; }
+    .idf-screens { grid-template-columns: minmax(0, 45.14fr) minmax(0, 29.72fr) minmax(0, 25.14fr); }
   }
 
   /* DVO — credito ao squad, papel de coordenacao (Corte 3, issue #11) */
@@ -346,7 +381,7 @@
   .dvo-track-item--squad { background: var(--leaf); font-weight: 600; }
 
   .dvo-aside { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
-  .dvo-shot { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid rgba(17, 17, 17, .1); }
+  .dvo-shot { width: 100%; }
 
   .dvo-config-head { display: block; font-family: var(--f-display); font-weight: 600; font-size: 18px; color: var(--ink); margin: 0 0 12px; }
   .dvo-config-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -392,11 +427,11 @@
   }
   .ciere-visibility p { margin: 12px 0 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--ink); max-width: 65ch; }
 
-  .ciere-screens { position: relative; width: 100%; aspect-ratio: 1240 / 656; margin-top: 64px; }
-  .ciere-shot-desktop { position: absolute; top: 0; left: 0; width: 77.42%; }
-  .ciere-shot-desktop img { border-radius: 8px; border: 1px solid rgba(17, 17, 17, .12); }
-  .ciere-shot-mobile { position: absolute; left: 72.58%; top: 22.87%; width: 18.55%; }
-  .ciere-shot-mobile img { border-radius: 26px; border: 8px solid var(--leaf); }
+  .ciere-screens {
+    display: grid; grid-template-columns: minmax(0, 960fr) minmax(0, 230fr);
+    column-gap: 4.03%; align-items: start; width: 100%; margin-top: 64px;
+  }
+  .ciere-shot-mobile { margin-top: clamp(40px, 12vw, 150px); margin-bottom: 24px; }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     .ciere-shot-desktop { transition: transform var(--motion-base) var(--motion-enter); }
@@ -422,9 +457,9 @@
   }
 
   @media (max-width: 767px) {
-    .ciere-screens { aspect-ratio: 350 / 420; }
+    .ciere-screens { grid-template-columns: minmax(0, 1fr); row-gap: 16px; }
     .ciere-shot-desktop { width: 91.43%; }
-    .ciere-shot-mobile { left: 58.29%; top: 26.19%; width: 40%; }
+    .ciere-shot-mobile { width: 40%; justify-self: end; margin-block: 0; }
   }
 
   .ciere-bottom {
@@ -812,8 +847,6 @@
     .idf-number-label { font-size: 13px; }
 
     .idf-screens { margin-top: 32px; }
-    .idf-screen-main img { border-radius: 6px; }
-    .idf-screen-future img { border-width: 6px; border-radius: 8px; }
 
     #dvo { padding: 64px 20px; }
     #dvo .container { max-width: none; }
@@ -1125,15 +1158,25 @@
     </div>
 
     <div class="idf-screens">
-      <figure class="real-shot idf-screen-main">
+      <figure class="real-shot mock-browser idf-screen-main">
+        <div class="mock-browser-bar" aria-hidden="true">
+          <span class="mock-browser-dots"><span></span><span></span><span></span></span>
+          <span class="mock-browser-nav">‹ ›</span>
+          <span class="mock-browser-address">idf-br.com.br</span>
+        </div>
         <picture>
-          <source type="image/webp" srcset="assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="(max-width: 767px) 75vw, (max-width: 1439px) 66vw, 820px">
+          <source type="image/webp" srcset="assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="(max-width: 767px) calc(74.86vw - 37.94px), (max-width: 1439px) calc(66.13vw - 140.26px), 812px">
           <img src="assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
         </picture>
       </figure>
-      <figure class="real-shot idf-screen-future">
+      <figure class="real-shot mock-browser idf-screen-future">
+        <div class="mock-browser-bar" aria-hidden="true">
+          <span class="mock-browser-dots"><span></span><span></span><span></span></span>
+          <span class="mock-browser-nav">‹ ›</span>
+          <span class="mock-browser-address">idf-br.com.br</span>
+        </div>
         <picture>
-          <source type="image/webp" srcset="assets/img/idf-br-futuro-600.webp 600w, assets/img/idf-br-futuro-1200.webp 1200w" sizes="(max-width: 767px) 55vw, (max-width: 1439px) 48vw, 600px">
+          <source type="image/webp" srcset="assets/img/idf-br-futuro-600.webp 600w, assets/img/idf-br-futuro-1200.webp 1200w" sizes="(max-width: 767px) calc(54.86vw - 29.94px), (max-width: 1439px) calc(48.39vw - 104.78px), 592px">
           <img src="assets/img/idf-br-futuro-1200.png" width="1200" height="750" loading="lazy" decoding="async" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados">
         </picture>
       </figure>
@@ -1168,9 +1211,14 @@
       </div>
 
       <div class="dvo-aside">
-        <figure class="real-shot dvo-shot">
+        <figure class="real-shot mock-browser dvo-shot">
+        <div class="mock-browser-bar" aria-hidden="true">
+          <span class="mock-browser-dots"><span></span><span></span><span></span></span>
+          <span class="mock-browser-nav">‹ ›</span>
+          <span class="mock-browser-address">dvopelotas.com.br</span>
+        </div>
           <picture>
-            <source type="image/webp" srcset="assets/img/dvo-480.webp 480w, assets/img/dvo-760.webp 760w, assets/img/dvo-1440.webp 1440w" sizes="(max-width: 899px) 92vw, (max-width: 1439px) 55vw, 773px">
+            <source type="image/webp" srcset="assets/img/dvo-480.webp 480w, assets/img/dvo-760.webp 760w, assets/img/dvo-1440.webp 1440w" sizes="(max-width: 767px) calc(100vw - 48px), (max-width: 900px) calc(100vw - 208px), (max-width: 1439px) calc(62.897vw - 139.03px), (max-width: 1999px) calc(804.41px - 2.621vw), 752px">
             <img src="assets/img/dvo-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica">
           </picture>
         </figure>
@@ -1228,17 +1276,24 @@
     </div>
 
     <div class="ciere-screens">
-      <figure class="real-shot ciere-shot-desktop">
+      <figure class="real-shot mock-browser ciere-shot-desktop">
+        <div class="mock-browser-bar" aria-hidden="true">
+          <span class="mock-browser-dots"><span></span><span></span><span></span></span>
+          <span class="mock-browser-nav">‹ ›</span>
+          <span class="mock-browser-address">advocaciacieredarosa.com.br</span>
+        </div>
         <picture>
-          <source type="image/webp" srcset="assets/img/ciere-960.webp 960w, assets/img/ciere-1440.webp 1440w" sizes="(max-width: 767px) 91vw, (max-width: 1439px) 77vw, 960px">
+          <source type="image/webp" srcset="assets/img/ciere-960.webp 960w, assets/img/ciere-1440.webp 1440w" sizes="(max-width: 767px) calc(91.43vw - 44.57px), (max-width: 1439px) calc(77.42vw - 162.84px), 952px">
           <img src="assets/img/ciere-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança">
         </picture>
       </figure>
-      <figure class="real-shot ciere-shot-mobile">
+      <figure class="real-shot mock-phone ciere-shot-mobile">
+        <div class="mock-phone-top" aria-hidden="true"></div>
         <picture>
-          <source type="image/webp" srcset="assets/img/ciere-mobile-230.webp 230w, assets/img/ciere-mobile-460.webp 460w" sizes="(max-width: 767px) 40vw, (max-width: 1439px) 19vw, 230px">
+          <source type="image/webp" srcset="assets/img/ciere-mobile-230.webp 230w, assets/img/ciere-mobile-460.webp 460w" sizes="(max-width: 767px) calc(40vw - 32px), (max-width: 1439px) calc(18.55vw - 53.1px), 214px">
           <img src="assets/img/ciere-mobile-460.png" width="460" height="995" loading="lazy" decoding="async" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp">
         </picture>
+        <div class="mock-phone-bottom" aria-hidden="true"></div>
       </figure>
     </div>
 
