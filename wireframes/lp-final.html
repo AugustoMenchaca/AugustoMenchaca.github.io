@@ -114,9 +114,11 @@
      do viewport: "Da pesquisa ao software." (a mais longa das 3 palavras)
      tem que caber numa linha em qualquer largura, do 1024 ao 2560. Medido no
      navegador: a essa fonte, a razao largura-do-texto/tamanho e ~10,88; 8,9cqw
-     deixa ~3% de folga em qualquer largura de container. Piso de 96px. */
+     deixa ~3% de folga em qualquer largura de container. Piso de 96px, teto
+     de 112px (Figma) — sem teto o --container cresce nos breakpoints de
+     1500/1800/2200 e o cqw passa de 112px. */
   @media (min-width: 1024px) {
-    .hero-headline { font-size: clamp(96px, 8.9cqw, 200px); }
+    .hero-headline { font-size: clamp(96px, 8.9cqw, 112px); }
   }
   .hero-word-swap { display: inline-grid; vertical-align: bottom; }
   .hero-word-swap > span:not(:first-child) { display: none; }
@@ -160,9 +162,12 @@
 
   .hero-preview { display: none; }
 
-  @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  @media (hover: hover) and (pointer: fine) and (min-width: 1280px) {
     .hero-preview {
-      display: block; position: absolute; right: 0; top: 145px;
+      /* right:6px, nao 0 — rotate(-2deg) alarga o retangulo de colisao do
+         elemento (bounding box do transform) uns 3px alem da borda direita
+         real; sem essa folga a tela estoura o .container em toda largura. */
+      display: block; position: absolute; right: 6px; top: 145px;
       width: 236px; height: 145px; border-radius: 12px; overflow: hidden;
       border: 1px solid var(--hair); background: var(--surface);
       box-shadow: 0 12px 24px rgba(0, 0, 0, .18);
