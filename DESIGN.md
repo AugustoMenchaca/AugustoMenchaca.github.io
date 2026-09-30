@@ -443,36 +443,36 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 ### Faixas Estruturais (`.slab`)
 - Seções de sangria total com preenchimento vertical de `clamp(34px, 4.4vw, 60px) 0`, contendo o alinhamento da grade via contêiner central.
 
-### Molduras de portfólio — issue #85
+### Aparelhos do portfólio — issue #85, rodada 2
 
-- **Fonte:** as cinco capturas reais já aprovadas em `assets/img`, sem recoloração,
-  recorte, filtro, deformação ou captura desktop apresentada como celular. Desktop
-  mantém 1440×900 (IDF futuro: 1200×750); o celular da Ciere mantém 460×995.
-- **Navegador:** IDF-BR (duas telas), DVO e Ciere desktop recebem moldura neutra em
-  `ink`/`surface`, barra superior opaca com controles desenhados e o domínio já
-  presente no link do projeto. Chrome decorativo é `aria-hidden="true"`, sem
-  controles focáveis; os textos alternativos das capturas permanecem intactos.
-- **Celular:** apenas a captura móvel real da Ciere recebe corpo em `ink`, cantos
-  arredondados de aparelho, alto-falante e indicador inferior. Esses elementos
-  ficam fora da imagem: nenhuma câmera, barra ou canto mascara seus pixels.
-- **Composição:** conservar a hierarquia e as larguras relativas aprovadas
-  (IDF: 66,13%/48,39%; Ciere: desktop 77,42% e celular 18,55%; no móvel,
-  74,86%/54,86% e 91,43%/40%). A cascata do IDF separa as telas em duas linhas;
-  a Ciere afasta o celular lateralmente no desktop e abaixo da tela no móvel.
-  O afastamento substitui a sobreposição de pixels para tornar ambas as capturas
-  integralmente visíveis, incluindo durante os deslocamentos existentes.
-- **Geometria:** grades em `minmax(0, fr)` e larguras em porcentagem, altura de
-  imagem automática e `max-width: 100%`; moldura cresce com a captura, sem altura
-  fixa, `object-fit: cover` ou ocultação de overflow. `srcset` usa os derivados
-  reais disponíveis; `sizes` acompanha a largura interna, limitada a 1240px de
-  contêiner. A maior resolução disponível continua sendo a captura original.
-- **Profundidade e movimento:** contornos sólidos e hairlines, sem sombra ou
-  vidro difuso. Preservar os deslocamentos da #21 com espaço entre as telas e
-  respeitar `prefers-reduced-motion`, sem nova animação.
-- **Verificação:** nas larguras 390, 768, 1024, 1280, 1366, 1440, 1536, 1920 e
-  2560px, `document.documentElement.scrollWidth === innerWidth`, molduras dentro
-  do contêiner, imagens carregadas e sem interseção entre áreas de captura.
-  Textos PT/EN, links e nomes acessíveis permanecem iguais à base por seção.
+- **Fonte:** cinco capturas reais, textos alternativos e proporções preservados.
+  Não recolorir nem recortar. Desktop usa tela 16:10; o celular preserva 460×995,
+  com a pequena sobra vertical da abertura do SVG preenchida pelo fundo da tela.
+- **Notebook:** componente reutilizável `.laptop3d`, perspectiva de 2200px,
+  conjunto em `rotateX(14deg) rotateY(-22deg)`, tampa em `rotateX(-12deg)`
+  ancorada na dobradiça, bezel proporcional de alumínio escuro `#1f2022`.
+  Base decorativa `assets/mockups/deck.svg` com teclado, trackpad e alto-falantes;
+  arestas em gradiente `#3a3b3f` → `#2a2b2e` e frente em `#c9cbd0`.
+  A base usa 60°: a conferência a 78° ocultava o teclado após a rotação da cena.
+- **Tela:** captura em `<picture>` 16:10, `object-fit: cover` sem diferença de
+  proporção; câmera decorativa e reflexo diagonal branco de 6%, com vinheta leve.
+  Sombra do conjunto em `drop-shadow(0 40px 40px rgba(0,0,0,.35))`, além da
+  sombra de chão contida na cena. Estes efeitos pertencem aos aparelhos.
+- **Celular:** `assets/mockups/phone.svg` aprovado, sem redesenho. A captura fica
+  atrás, na abertura de tela, com dimensões naturais; aparelho é `aria-hidden`.
+  Máscara CSS limpa a abertura do primeiro plano (incluindo a sombra do SVG),
+  preservando moldura e câmera; assim a sombra não escurece a captura.
+- **Composição:** cascata E2 de notebooks sobrepostos no IDF-BR; notebook e
+  celular sobrepostos na Ciere; notebook na coluna existente do DVO. Só os grupos
+  de aparelhos mudam: não alterar grades de texto, títulos ou estrutura de seção.
+- **Responsividade:** cenas fluidas, contêiner máximo de 1240px, medidas de peças
+  em porcentagens e unidades de container. Abaixo de 900px, conjunto em
+  `rotateX(8deg) rotateY(-8deg)` para preservar leitura da tela.
+- **Movimento:** hovers existentes de 4px (IDF futuro), 3px (Ciere notebook) e
+  6px (celular), só por transform; manter timelines aceitas e desativar todo
+  deslocamento com `prefers-reduced-motion`, preservando a geometria estrutural 3D.
+- **Verificação:** nove larguras sem estouro, linhas e alvos da sonda sem violações,
+  página rolada abaixo de 1,2MB, inspeção das seis capturas em 390 e 1440px.
 
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
