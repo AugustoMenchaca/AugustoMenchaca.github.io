@@ -241,7 +241,6 @@
   .ph-dvo      { aspect-ratio: 16/10; border-radius: 16px; }
   .ph-ciere    { aspect-ratio: 16/10; border-radius: 16px; }
   .ph-ciere-m  { aspect-ratio: 9/16; border-radius: 14px; }
-  .ph-qml      { aspect-ratio: 16/9; border-radius: 16px; }
   .ph-nip-1    { aspect-ratio: 4/3; border-radius: 18px; }
   .ph-nip-2    { aspect-ratio: 1/1; border-radius: 14px; }
   .ph-h8-1     { aspect-ratio: 16/9; border-radius: 20px; }
@@ -398,15 +397,39 @@
     .ciere-bottom { grid-template-columns: 1fr; gap: 24px; }
   }
 
-  /* QUANTUM ML */
-  .qml-quote { position: relative; margin: 32px 0; padding-left: 20px; }
-  .qml-quote-bar { position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--earth); }
-  .qml-quote-label { display: inline-block; background: var(--leaf); color: var(--ink); font-family: var(--f-mono); font-size: 0.6rem; font-weight: 600; padding: 3px 8px; margin-bottom: 8px; border-radius: 2px; }
-  .qml-quote p { font-family: var(--f-display); font-size: 1.2rem; font-weight: 600; color: var(--ink); line-height: 1.4; margin: 0; }
-  .qml-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; border-top: 1px solid var(--hair-strong); padding-top: 32px; margin-bottom: 40px;}
-  .qml-col-title { font-family: var(--f-mono); font-size: 0.7rem; font-weight: 600; color: var(--ink); letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 12px; }
-  .qml-col-body { font-size: 0.9rem; margin: 0; }
-  .qml-conclusion { font-family: var(--f-mono); font-size: 0.8rem; font-weight: 500; text-align: center; color: var(--ink); margin: 0 0 40px 0; border: 1px dashed var(--hair-strong); padding: 16px; }
+  /* QUANTUM ML — formula com fotos reais do experimento (Corte 5, issue #13) */
+  #quantum { padding: 120px 100px; background: var(--surface); color: var(--ink); margin-inline: 0; }
+  #quantum .container { max-width: 1240px; padding-inline: 0; }
+  #quantum .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
+
+  .qml-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 32px; margin-bottom: 56px; }
+  .qml-cols > div { border-top: 2px solid var(--ink); padding-top: 20px; }
+  .qml-col-title { font-family: var(--f-display); font-weight: 600; font-size: 20px; color: var(--ink); margin: 0 0 12px; }
+  .qml-col-body { font-family: var(--f-body); font-size: 17px; line-height: 1.6; margin: 0; }
+
+  @media (max-width: 899px) {
+    .qml-cols { grid-template-columns: 1fr; }
+  }
+
+  .qml-formula { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+  .qml-formula-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .qml-formula-label { font-family: var(--f-display); font-weight: 600; font-size: 18px; color: var(--ink); }
+  .qml-formula-card { margin: 0; background: var(--surface); border: 1px solid rgba(17, 17, 17, .14); border-radius: 8px; padding: 8px; display: flex; }
+  .qml-formula-card img { display: block; height: clamp(96px, 11vw, 154px); width: auto; max-width: 100%; }
+  .qml-formula-op { font-family: var(--f-display); font-weight: 700; font-size: 24px; color: var(--ink); }
+  .qml-formula-caption { font-family: var(--f-body); font-size: 14px; color: var(--muted); margin: 24px 0 0; }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .qml-formula-card { transition: transform var(--motion-base) var(--motion-enter); }
+    .qml-formula-card:hover { transform: translateY(-4px); }
+  }
+
+  @media (max-width: 767px) {
+    .qml-formula { flex-direction: column; }
+    .qml-formula-item { width: 100%; }
+    .qml-formula-card { width: 100%; }
+    .qml-formula-card img { width: 100%; height: auto; }
+  }
 
   /* VIVENCIAS — envolve HUT8 (congelado, R3) e NIP; fundo --earth por baixo dos dois */
   #vivencias { background: var(--earth); color: var(--surface); }
@@ -661,7 +684,6 @@
     .portrait   { max-width: 260px; }
     .meta-strip { grid-template-columns: 1fr; gap: 18px; }
     .metrics { grid-template-columns: 1fr; gap: 22px; }
-    .qml-cols   { grid-template-columns: 1fr; }
     .nip-photos { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; }
 
@@ -678,7 +700,6 @@
     .ph-idf-main { aspect-ratio: 4/3; }
     .ph-ciere { aspect-ratio: 4/3; }
     .ph-ciere-m { aspect-ratio: 3/4; }
-    .ph-qml { aspect-ratio: 4/3; }
     .ph-nip-2 { aspect-ratio: 4/3; }
     .ph-h8-1 { aspect-ratio: 16/10; }
 
@@ -712,6 +733,9 @@
     .ciere-screens { margin-top: 32px; }
     .ciere-bottom { margin-top: 32px; }
     .ciere-bridge { font-size: 20px; }
+
+    #quantum { padding: 64px 20px; }
+    #quantum .container { max-width: none; }
   }
 
 
@@ -876,14 +900,6 @@
     :root { --container: 1720px; --pad: 68px; }
     .slab-headline  { font-size: clamp(1.3rem, 4vw, 2.7rem); }
   }
-
-  /* Quantum em surface: acento oxblood retirado (#64), fica a leitura padrao clara. */
-  #quantum { color: var(--ink); }
-  #quantum .slab-headline { color: var(--ink); }
-  #quantum .qml-quote p { color: var(--ink); }
-  #quantum .qml-col-body { color: var(--ink); }
-  #quantum .ph { border-color: var(--hair-strong); }
-  #quantum .ph-note { color: var(--muted); opacity: 1; }
 
   /* ===== Blocos com altura controlada =====
      A moldura preenche a coluna e a ALTURA e limitada, em vez de encolher a
@@ -1133,35 +1149,52 @@
   <h2 class="i18n slab-headline" lang="pt">Testando quando machine learning quântico realmente faz diferença.</h2>
 <h2 class="i18n slab-headline" lang="en">Testing when quantum machine learning actually makes a difference.</h2>
 
-  <div class="qml-quote">
-    <div class="qml-quote-bar"></div>
-    <span class="i18n qml-quote-label" lang="pt">PERGUNTA</span>
-<span class="i18n qml-quote-label" lang="en">QUESTION</span>
-    <p class="i18n" lang="pt">O QML tem desempenho melhor simplesmente por usar representações quânticas, ou o desempenho depende do alinhamento entre dados, feature maps e kernels?</p>
-<p class="i18n" lang="en">Does QML perform better simply because it uses quantum representations, or does performance depend on the alignment between data, feature maps and kernels?</p>
-  </div>
-
   <div class="qml-cols">
      <div>
-       <h3 class="qml-col-title"><span class="i18n" lang="pt">DADOS REAIS</span><span class="i18n" lang="en">REAL DATA</span><br>Breast Cancer Wisconsin</h3>
+       <h3 class="qml-col-title"><span class="i18n" lang="pt">Pergunta</span><span class="i18n" lang="en">Question</span></h3>
+       <p class="i18n qml-col-body" lang="pt">O QML tem desempenho melhor simplesmente por usar representações quânticas, ou o desempenho depende do alinhamento entre dados, feature maps e kernels?</p>
+<p class="i18n qml-col-body" lang="en">Does QML perform better simply because it uses quantum representations, or does performance depend on the alignment between data, feature maps and kernels?</p>
+     </div>
+     <div>
+       <h3 class="qml-col-title"><span class="i18n" lang="pt">Dados reais</span><span class="i18n" lang="en">Real data</span> (Breast Cancer Wisconsin)</h3>
        <p class="i18n qml-col-body" lang="pt">O SVM clássico e a configuração quântica alcançaram resultados comparáveis na representação controlada. Sem vantagem quântica clara.</p>
 <p class="i18n qml-col-body" lang="en">Classical SVM and the quantum configuration achieved comparable results in the controlled representation. No clear quantum advantage.</p>
      </div>
      <div>
-       <h3 class="qml-col-title"><span class="i18n" lang="pt">DADOS SINTÉTICOS</span><span class="i18n" lang="en">SYNTHETIC DATA</span><br>Qiskit ad_hoc_data</h3>
+       <h3 class="qml-col-title"><span class="i18n" lang="pt">Dados sintéticos</span><span class="i18n" lang="en">Synthetic data</span> (Qiskit ad_hoc_data)</h3>
        <p class="i18n qml-col-body" lang="pt">O modelo quântico teve desempenho excelente, mas o conjunto de dados foi desenhado em torno de uma representação quântica compatível.</p>
 <p class="i18n qml-col-body" lang="en">The quantum model performed extremely well, but the dataset was designed around a compatible quantum representation.</p>
      </div>
   </div>
 
-  <p class="i18n qml-conclusion" lang="pt">DADOS + REPRESENTAÇÃO + FEATURE MAP + KERNEL = RESULTADO</p>
-<p class="i18n qml-conclusion" lang="en">DATA + REPRESENTATION + FEATURE MAP + KERNEL = OUTCOME</p>
-  
-  <figure class="ph ph-qml">
-     <span class="ph-chip">[ QUANTUM EXPERIMENT VISUAL ]</span>
-     <span class="i18n ph-note" lang="pt">Proporção 16:9, esquema ou visualização de dados</span>
-<span class="i18n ph-note" lang="en">16:9 aspect ratio, schematic or data visualization</span>
-  </figure>
+  <div class="qml-formula">
+    <div class="qml-formula-item">
+      <span class="i18n qml-formula-label" lang="pt">Dados</span><span class="i18n qml-formula-label" lang="en">Data</span>
+      <figure class="qml-formula-card"><img src="../docs/design/assets-reais/quantum/qml_classificacao_pca_completo1-01.png" width="630" height="470" loading="lazy" decoding="async" alt="Distribuição das classes maligno e benigno"></figure>
+    </div>
+    <span class="qml-formula-op" aria-hidden="true">+</span>
+    <div class="qml-formula-item">
+      <span class="i18n qml-formula-label" lang="pt">Representação</span><span class="i18n qml-formula-label" lang="en">Representation</span>
+      <figure class="qml-formula-card"><img src="../docs/design/assets-reais/quantum/qml_classificacao_pca_completo1-03.png" width="690" height="490" loading="lazy" decoding="async" alt="Dados de treino depois do PCA"></figure>
+    </div>
+    <span class="qml-formula-op" aria-hidden="true">+</span>
+    <div class="qml-formula-item">
+      <span class="qml-formula-label">Feature map</span>
+      <figure class="qml-formula-card"><img src="../docs/design/assets-reais/quantum/qml_classificacao_pca_completo1-05.png" width="1193" height="303" loading="lazy" decoding="async" alt="Circuito quântico do feature map"></figure>
+    </div>
+    <span class="qml-formula-op" aria-hidden="true">+</span>
+    <div class="qml-formula-item">
+      <span class="qml-formula-label">Kernel</span>
+      <figure class="qml-formula-card"><img src="../docs/design/assets-reais/quantum/qml_classificacao_pca_completo1-07.png" width="1490" height="390" loading="lazy" decoding="async" alt="Matrizes de kernel quântico"></figure>
+    </div>
+    <span class="qml-formula-op" aria-hidden="true">=</span>
+    <div class="qml-formula-item">
+      <span class="i18n qml-formula-label" lang="pt">Resultado</span><span class="i18n qml-formula-label" lang="en">Outcome</span>
+      <figure class="qml-formula-card"><img src="../docs/design/assets-reais/quantum/qml_classificacao_pca_completo1-09.png" width="1180" height="490" loading="lazy" decoding="async" alt="Métricas dos modelos no mesmo conjunto PCA"></figure>
+    </div>
+  </div>
+  <p class="i18n qml-formula-caption" lang="pt">Projeto de disciplina, não publicado.</p>
+<p class="i18n qml-formula-caption" lang="en">Course project, not published.</p>
 </div>
 </section>
 
