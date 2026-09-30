@@ -526,22 +526,22 @@
 
   .viv-cols {
     display: grid;
-    grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr) 180px;
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr);
     gap: clamp(24px, 3vw, 48px);
     align-items: start;
   }
   .viv-col { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
   .viv-label {
-    display: block; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.02em; text-transform: lowercase; color: rgba(255,255,255,.72); line-height: 1.3;
+    display: block; font-family: var(--f-body); font-size: 0.875rem; font-weight: 600;
+    letter-spacing: 0; text-transform: none; color: rgba(255,255,255,.82); line-height: 1.3;
   }
   .viv-body { font-family: var(--f-body); font-size: 1rem; line-height: 1.6; color: var(--surface); margin: 0; max-width: 65ch; }
   .viv-body strong { font-weight: 600; }
   .viv-period { font-weight: 600; color: var(--sun); }
 
-  .viv-photos { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-  .viv-photo { margin: 0; width: 180px; }
-  .viv-photo img { display: block; width: 180px; height: auto; border-radius: 4px; }
+  .viv-photos { grid-column: 1 / -1; display: flex; flex-direction: row; gap: 16px; min-width: 0; margin-top: 8px; }
+  .viv-photo { margin: 0; width: calc(50% - 8px); max-width: 420px; }
+  .viv-photo img { display: block; width: 100%; height: auto; border-radius: 6px; }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     .viv-photo img { transition: transform var(--motion-base) var(--motion-enter); }
@@ -550,8 +550,8 @@
 
   @media (max-width: 1199px) {
     .viv-cols { grid-template-columns: 1fr; }
-    .viv-photos { flex-direction: row; margin-top: 4px; }
-    .viv-photo { width: calc(50% - 5px); }
+    .viv-photos { margin-top: 4px; }
+    .viv-photo { width: calc(50% - 8px); max-width: none; }
     .viv-photo img { width: 100%; }
   }
 
@@ -1312,34 +1312,34 @@
     <h3 class="viv-org-name">Hut 8</h3>
     <div class="viv-cols">
       <div class="viv-col">
-        <span class="i18n viv-label" lang="pt">período, instituição e papel</span>
-<span class="i18n viv-label" lang="en">period, institution and role</span>
+        <span class="i18n viv-label" lang="pt">Período, instituição e papel</span>
+<span class="i18n viv-label" lang="en">Period, institution and role</span>
         <p class="i18n viv-body" lang="pt"><span class="viv-period">nov/2024 até hoje</span> · Hut 8 · Diretor de Projetos desde jun/2025</p>
 <p class="i18n viv-body" lang="en"><span class="viv-period">Nov 2024 – present</span> · Hut 8 · Director of Projects since Jun 2025</p>
       </div>
       <div class="viv-col">
-        <span class="i18n viv-label" lang="pt">contexto e responsabilidade</span>
-<span class="i18n viv-label" lang="en">context and responsibility</span>
+        <span class="i18n viv-label" lang="pt">Contexto e responsabilidade</span>
+<span class="i18n viv-label" lang="en">Context and responsibility</span>
         <p class="i18n viv-body" lang="pt">Assumi a diretoria de projetos num período em que a continuidade da operação estava ameaçada. Coordeno cerca de 20 membros, de designers a desenvolvedores.</p>
 <p class="i18n viv-body" lang="en">I took over as Director of Projects during a period when operational continuity was threatened. I coordinate about 20 members, from designers to developers.</p>
       </div>
       <div class="viv-col">
-        <span class="i18n viv-label" lang="pt">modo de atuação</span>
-<span class="i18n viv-label" lang="en">how I work</span>
+        <span class="i18n viv-label" lang="pt">Modo de atuação</span>
+<span class="i18n viv-label" lang="en">How I work</span>
         <p class="i18n viv-body" lang="pt">Cuido do caminho inteiro de um projeto: entrada do cliente, requisitos, escopo e preço, formação dos squads, coordenação entre design e desenvolvimento, QA, infraestrutura e entrega.</p>
 <p class="i18n viv-body" lang="en">I oversee the entire path of a project: client intake, requirements, scope and pricing, squad formation, coordination between design and development, QA, infrastructure, and delivery.</p>
       </div>
       <div class="viv-photos">
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/hut8-equipe-180.webp 180w, assets/img/vivencias/hut8-equipe-360.webp 360w" sizes="(max-width: 1199px) 50vw, 180px">
-            <img src="assets/img/vivencias/hut8-equipe-360.jpg" width="360" height="202" loading="lazy" decoding="async" alt="Equipe da Hut 8 reunida com a bandeira da empresa júnior, no EGEJ 26">
+            <source type="image/webp" srcset="assets/img/vivencias/hut8-equipe-400.webp 400w, assets/img/vivencias/hut8-equipe-800.webp 800w" sizes="(max-width: 899px) 46vw, 420px">
+            <img src="assets/img/vivencias/hut8-equipe-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="Equipe da Hut 8 reunida com a bandeira da empresa júnior, no EGEJ 26">
           </picture>
         </figure>
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/hut8-evento-180.webp 180w, assets/img/vivencias/hut8-evento-360.webp 360w" sizes="(max-width: 1199px) 50vw, 180px">
-            <img src="assets/img/vivencias/hut8-evento-360.jpg" width="360" height="270" loading="lazy" decoding="async" alt="Cinco integrantes da Hut 8 com a bandeira da empresa júnior em evento">
+            <source type="image/webp" srcset="assets/img/vivencias/hut8-evento-400.webp 400w, assets/img/vivencias/hut8-evento-800.webp 800w" sizes="(max-width: 899px) 46vw, 420px">
+            <img src="assets/img/vivencias/hut8-evento-800.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Cinco integrantes da Hut 8 com a bandeira da empresa júnior em evento">
           </picture>
         </figure>
       </div>
@@ -1352,34 +1352,34 @@
     <h3 class="viv-org-name">NIP</h3>
     <div class="viv-cols">
       <div class="viv-col">
-        <span class="i18n viv-label" lang="pt">período, instituição e papel</span>
-<span class="i18n viv-label" lang="en">period, institution and role</span>
+        <span class="i18n viv-label" lang="pt">Período, instituição e papel</span>
+<span class="i18n viv-label" lang="en">Period, institution and role</span>
         <p class="i18n viv-body" lang="pt"><span class="viv-period">set/2025 até hoje</span> · NIP, Núcleo Integrado de Previsão, UFPel · Bolsista de iniciação científica</p>
 <p class="i18n viv-body" lang="en"><span class="viv-period">Sep 2025 – present</span> · NIP, Núcleo Integrado de Previsão, UFPel · Undergraduate Researcher</p>
       </div>
       <div class="viv-col">
-        <span class="i18n viv-label" lang="pt">contexto e responsabilidade</span>
-<span class="i18n viv-label" lang="en">context and responsibility</span>
+        <span class="i18n viv-label" lang="pt">Contexto e responsabilidade</span>
+<span class="i18n viv-label" lang="en">Context and responsibility</span>
         <p class="i18n viv-body" lang="pt">Pesquisa em recursos hídricos, depois das enchentes que atingiram Pelotas. Uma entrega anterior foi o software do IDF-BR.</p>
 <p class="i18n viv-body" lang="en">Water resources research, following the floods that hit Pelotas. An earlier delivery was the IDF-BR software.</p>
       </div>
       <div class="viv-col">
-        <span class="i18n viv-label" lang="pt">modo de atuação</span>
-<span class="i18n viv-label" lang="en">how I work</span>
+        <span class="i18n viv-label" lang="pt">Modo de atuação</span>
+<span class="i18n viv-label" lang="en">How I work</span>
         <p class="i18n viv-body" lang="pt">Em jan/2026, a escola de verão HydroUAI, na UFMG. Depois dela, a passagem para experimentação em machine learning e escrita acadêmica. Em set/2026, o IDF-BR foi apresentado em pôster no II CONABREH, na UFPel, em coautoria. <strong>A pesquisa segue em andamento.</strong></p>
 <p class="i18n viv-body" lang="en">In Jan 2026, the HydroUAI summer school at UFMG. After that, the transition to experimentation in machine learning and academic writing. In Sep 2026, IDF-BR was presented as a co-authored poster at II CONABREH, at UFPel. <strong>The research is ongoing.</strong></p>
       </div>
       <div class="viv-photos">
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/nip-ufmg-180.webp 180w, assets/img/vivencias/nip-ufmg-360.webp 360w" sizes="(max-width: 1199px) 50vw, 180px">
-            <img src="assets/img/vivencias/nip-ufmg-360.jpg" width="360" height="270" loading="lazy" decoding="async" alt="Equipe do NIP em frente à Escola de Engenharia da UFMG, com a faixa do projeto de previsão">
+            <source type="image/webp" srcset="assets/img/vivencias/nip-ufmg-400.webp 400w, assets/img/vivencias/nip-ufmg-800.webp 800w" sizes="(max-width: 899px) 46vw, 420px">
+            <img src="assets/img/vivencias/nip-ufmg-800.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Equipe do NIP em frente à Escola de Engenharia da UFMG, com a faixa do projeto de previsão">
           </picture>
         </figure>
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/nip-conabreh-inteira-180.webp 180w, assets/img/vivencias/nip-conabreh-inteira-360.webp 360w" sizes="(max-width: 1199px) 50vw, 180px">
-            <img src="assets/img/vivencias/nip-conabreh-inteira-360.jpg" width="360" height="203" loading="lazy" decoding="async" alt="Augusto e Samuel diante do pôster do IDF-BR no II CONABREH, na UFPel">
+            <source type="image/webp" srcset="assets/img/vivencias/nip-conabreh-inteira-400.webp 400w, assets/img/vivencias/nip-conabreh-inteira-800.webp 800w, assets/img/vivencias/nip-conabreh-inteira-1200.webp 1200w" sizes="(max-width: 899px) 46vw, 420px">
+            <img src="assets/img/vivencias/nip-conabreh-inteira-1200.jpg" width="1200" height="676" loading="lazy" decoding="async" alt="Augusto e Samuel diante do pôster do IDF-BR no II CONABREH, na UFPel">
           </picture>
         </figure>
       </div>

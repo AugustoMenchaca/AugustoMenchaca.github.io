@@ -9,7 +9,7 @@ from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 SRC = os.path.join(ROOT, "docs", "design", "assets-reais")
 OUT = os.path.join(ROOT, "assets", "img")
-QUALITY = 80
+QUALITY = 90
 
 # (caminho de origem relativo a SRC, subpasta de saida ("" = raiz de OUT),
 #  nome base de saida, larguras, formato de fallback)
@@ -19,10 +19,10 @@ JOBS = [
     ("dvo-1440.png", "", "dvo", [480, 760, 1440], "png"),
     ("ciere-1440.png", "", "ciere", [960, 1440], "png"),
     ("ciere-mobile-390.png", "", "ciere-mobile", [230, 460], "png"),
-    ("vivencias/hut8-equipe.jpg", "vivencias", "hut8-equipe", [180, 360], "jpg"),
-    ("vivencias/hut8-evento.jpg", "vivencias", "hut8-evento", [180, 360], "jpg"),
-    ("vivencias/nip-ufmg.jpg", "vivencias", "nip-ufmg", [180, 360], "jpg"),
-    ("vivencias/nip-conabreh-inteira.jpg", "vivencias", "nip-conabreh-inteira", [180, 360], "jpg"),
+    ("vivencias/hut8-equipe.jpg", "vivencias", "hut8-equipe", [400, 800], "jpg"),
+    ("vivencias/hut8-evento.jpg", "vivencias", "hut8-evento", [400, 800], "jpg"),
+    ("vivencias/nip-ufmg.jpg", "vivencias", "nip-ufmg", [400, 800], "jpg"),
+    ("vivencias/nip-conabreh-inteira.jpg", "vivencias", "nip-conabreh-inteira", [400, 800, 1200], "jpg"),
     ("sobre/retrato.jpg", "sobre", "retrato", [384], "jpg"),
     ("quantum/qml_classificacao_pca_completo1-01.png", "quantum", "qml-dados", ["natural"], "png"),
     ("quantum/qml_classificacao_pca_completo1-03.png", "quantum", "qml-representacao", ["natural"], "png"),
@@ -65,7 +65,7 @@ def main():
         fallback_path = os.path.join(out_dir, f"{basename}{fallback_suffix}.{fallback_fmt}")
         if fallback_fmt == "jpg":
             fallback_im = fallback_im.convert("RGB")
-            fallback_im.save(fallback_path, "JPEG", quality=90)
+            fallback_im.save(fallback_path, "JPEG", quality=94)
         else:
             fallback_im.save(fallback_path, "PNG", optimize=True)
         manifest.append((fallback_path, fw, fh))
