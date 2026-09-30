@@ -77,14 +77,6 @@
   }
   .meta-label.on-dark { color: var(--surface); }
 
-  /* Pill tags */
-  .pill {
-    display: inline-block; font-family: var(--f-mono); font-size: 0.62rem; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase; padding: 4px 9px;
-    border-radius: 3px; border: 1px solid var(--hair-strong); background: var(--leaf); color: var(--ink);
-  }
-  .pill.on-dark { background: transparent; border-color: rgba(255,255,255, .28); color: var(--surface); }
-
   /* NAV */
   .site-nav { border-bottom: 1px solid var(--hair); }
   .nav-row-1 { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
@@ -229,7 +221,6 @@
   .ph img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; border-radius: inherit; }
   .real-shot { margin: 0; min-width: 0; }
   .real-shot img { display: block; width: 100%; height: auto; }
-  .real-shot-mobile { max-width: 260px; margin-inline: auto; }
   .ph-chip {
     display: inline-block; font-family: var(--f-mono); font-size: 0.65rem; font-weight: 600;
     letter-spacing: 0.08em; text-transform: uppercase; background: var(--surface); color: var(--ink);
@@ -359,13 +350,53 @@
 
 
 
-  /* CIERE */
-  .section-ciere { padding: clamp(34px, 4.4vw, 60px) 0; background: var(--surface); margin-bottom: 18px; }
-  .ciere-flow-wrap { margin: 24px 0; font-family: var(--f-mono); font-weight: 600; font-size: 1.1rem; color: var(--ink); letter-spacing: 0.05em; }
-  .desk-only { list-style: none; padding: 0; margin: 0; }
-  .mob-only { display: none; }
-  .ciere-responsibilities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
-  .ciere-grid { align-items: end; display: grid; grid-template-columns: 3fr 1fr; gap: 24px; }
+  /* CIERE — visibilidade SEO/GEO, telas sobrepostas e ponte (Corte 4, issue #12) */
+  #ciere { padding: 120px 100px; background: var(--leaf); color: var(--ink); margin-inline: 0; }
+  #ciere .container { max-width: 1240px; padding-inline: 0; }
+
+  .ciere-top {
+    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 80px); align-items: start;
+  }
+  .ciere-top-left { min-width: 0; }
+  #ciere .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+
+  .ciere-visibility { min-width: 0; }
+  .ciere-visibility .meta-label {
+    display: block; font-family: var(--f-display); font-weight: 600; font-size: 22px;
+    letter-spacing: normal; text-transform: none; color: var(--ink);
+  }
+  .ciere-visibility p { margin: 12px 0 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--ink); }
+
+  .ciere-screens { position: relative; width: 100%; aspect-ratio: 1240 / 656; margin-top: 64px; }
+  .ciere-shot-desktop { position: absolute; top: 0; left: 0; width: 77.42%; }
+  .ciere-shot-desktop img { border-radius: 8px; border: 1px solid rgba(17, 17, 17, .12); }
+  .ciere-shot-mobile { position: absolute; left: 72.58%; top: 22.87%; width: 18.55%; }
+  .ciere-shot-mobile img { border-radius: 26px; border: 8px solid var(--leaf); }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .ciere-shot-desktop, .ciere-shot-mobile { transition: transform var(--motion-base) var(--motion-enter); }
+    .ciere-shot-mobile:hover { transform: translateY(-6px); }
+    .ciere-shot-desktop:hover { transform: translateY(-3px); }
+  }
+
+  @media (max-width: 767px) {
+    .ciere-screens { aspect-ratio: 350 / 420; }
+    .ciere-shot-desktop { width: 91.43%; }
+    .ciere-shot-mobile { left: 58.29%; top: 26.19%; width: 40%; }
+  }
+
+  .ciere-bottom {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 80px); align-items: start; margin-top: 56px;
+  }
+  .ciere-bridge { margin: 0; min-width: 0; font-family: var(--f-display); font-weight: 600; font-size: 24px; color: var(--ink); }
+  .ciere-activities { margin: 0; min-width: 0; font-family: var(--f-body); font-weight: 500; font-size: 16px; line-height: 1.6; color: var(--ink); }
+
+  @media (max-width: 900px) {
+    .ciere-top { grid-template-columns: 1fr; }
+    .ciere-bottom { grid-template-columns: 1fr; gap: 24px; }
+  }
 
   /* QUANTUM ML */
   .qml-quote { position: relative; margin: 32px 0; padding-left: 20px; }
@@ -616,7 +647,6 @@
   /* Passo intermediario: a razao dos pares cai gradualmente em vez de saltar 2.0 -> 1.0 */
   @media (max-width: 1024px) {
     .nip-photos     { grid-template-columns: 1.3fr 1fr; }
-    .ciere-grid     { grid-template-columns: 1.6fr 1fr; }
   }
   @media (max-width: 900px) {
     .nav-links a, .footer-col a {
@@ -631,15 +661,10 @@
     .portrait   { max-width: 260px; }
     .meta-strip { grid-template-columns: 1fr; gap: 18px; }
     .metrics { grid-template-columns: 1fr; gap: 22px; }
-    .ciere-grid { grid-template-columns: 1fr; }
     .qml-cols   { grid-template-columns: 1fr; }
     .nip-photos { grid-template-columns: 1fr; }
     .about-grid { grid-template-columns: 1fr; }
-    
-    .desk-only { display: none; }
-    .mob-only { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; font-family: var(--f-mono); font-size: 0.8rem; }
-    .mob-only li:not(:last-child)::after { content: '↓'; display: block; color: var(--muted); margin-top: 4px; }
-    
+
     .h8-photos { padding-bottom: 0; }
     .h8-shot.main { width: 100%; }
     .h8-shot.overlap { position: static; width: 74%; margin: 14px 0 0 auto; box-shadow: 0 14px 30px rgba(0, 0, 0, .45); }
@@ -680,6 +705,13 @@
     .dvo-title { max-width: none; }
     .dvo-body { margin-top: 32px; }
     .dvo-disclaimer { font-size: 1.125rem; }
+
+    #ciere { padding: 64px 20px; }
+    #ciere .container { max-width: none; }
+    .ciere-top { gap: 32px; }
+    .ciere-screens { margin-top: 32px; }
+    .ciere-bottom { margin-top: 32px; }
+    .ciere-bridge { font-size: 20px; }
   }
 
 
@@ -758,14 +790,6 @@
   .btn-b3b--escuro:focus-visible .btn-b3b__circulo { background: var(--surface); color: var(--ink); }
   .btn-b3b:focus-visible .btn-b3b__rotulo { transform: translateX(4px); }
   .btn-b3b:not(.btn-b3b--externo):focus-visible .btn-b3b__seta { transform: rotate(-45deg); }
-
-  .ciere-visibility {
-    margin-top: 22px; padding: 18px 20px;
-    background: var(--surface); border: 1px solid var(--hair-strong);
-    border-left: 3px solid var(--ink); border-radius: 4px;
-  }
-  .ciere-visibility p { margin: 8px 0 0; font-size: 0.88rem; line-height: 1.6; color: var(--ink); }
-  .ciere-visibility .meta-label { display: block; }
 
   /* ===================== CONTATO ===================== */
   .section-contact {
@@ -1073,42 +1097,32 @@
 <!-- CIERE -->
 <section class="section-ciere" id="ciere">
   <div class="container">
-    <h2 class="i18n slab-headline" style="max-width:26ch" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
+    <div class="ciere-top">
+      <div class="ciere-top-left">
+        <h2 class="i18n slab-headline" style="max-width:26ch" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
 <h2 class="i18n slab-headline" style="max-width:26ch" lang="en">Connecting client needs, design decisions and development.</h2>
 <a class="live-link" href="https://advocaciacieredarosa.com.br/" target="_blank" rel="noopener noreferrer">advocaciacieredarosa.com.br ↗</a>
-
-    <div class="ciere-flow-wrap">
-      <ul class="desk-only" aria-hidden="true">
-        <li>CLIENT ↕ AUGUSTO ↙↘ DESIGN / DEV</li>
-      </ul>
-      <ol class="mob-only">
-        <li class="i18n" lang="pt">CLIENTE</li>
-<li class="i18n" lang="en">CLIENT</li><li>AUGUSTO</li><li>DESIGN</li><li>DEV</li>
-      </ol>
-    </div>
-    
-    <div class="ciere-responsibilities">
-       <span class="i18n pill" lang="pt">Requisitos</span>
-<span class="i18n pill" lang="en">Requirements</span> <span class="i18n pill" lang="pt">Escopo</span>
-<span class="i18n pill" lang="en">Scoping</span> <span class="i18n pill" lang="pt">Comunicação com cliente</span>
-<span class="i18n pill" lang="en">Client Comms</span> <span class="i18n pill" lang="pt">Ponte com design</span>
-<span class="i18n pill" lang="en">Design Bridge</span> <span class="i18n pill" lang="pt">QA e deploy</span><span class="i18n pill" lang="en">QA &amp; Deploy</span> <span class="i18n pill" lang="pt">SEO e GEO</span><span class="i18n pill" lang="en">SEO &amp; GEO</span>
+      </div>
+      <div class="ciere-visibility">
+        <span class="i18n meta-label" lang="pt">Visibilidade · SEO e GEO</span>
+<span class="i18n meta-label" lang="en">Visibility · SEO &amp; GEO</span>
+        <p class="i18n" lang="pt">Para um escritório de advocacia, ser encontrado é parte do produto. Além do SEO clássico, o projeto exigiu atenção a GEO: como o escritório é descrito, citado e recuperado por modelos de linguagem, e não só por buscadores. Isso mudou decisões de estrutura de conteúdo, nomenclatura das páginas e dados estruturados.</p>
+<p class="i18n" lang="en">For a law firm, being found is part of the product. Beyond classic SEO, the project required attention to GEO: how the firm is described, cited and retrieved by language models, not only by search engines. That shaped decisions about content structure, page naming and structured data.</p>
+      </div>
     </div>
 
-    <div class="ciere-visibility">
-      <span class="i18n meta-label" lang="pt">Visibilidade · SEO e GEO</span>
-      <span class="i18n meta-label" lang="en">Visibility · SEO &amp; GEO</span>
-      <p class="i18n" lang="pt">Para um escritório de advocacia, ser encontrado é parte do produto. Além do SEO clássico, o projeto exigiu atenção a GEO: como o escritório é descrito, citado e recuperado por modelos de linguagem, e não só por buscadores. Isso mudou decisões de estrutura de conteúdo, nomenclatura das páginas e dados estruturados.</p>
-      <p class="i18n" lang="en">For a law firm, being found is part of the product. Beyond classic SEO, the project required attention to GEO: how the firm is described, cited and retrieved by language models, not only by search engines. That shaped decisions about content structure, page naming and structured data.</p>
+    <div class="ciere-screens">
+      <figure class="real-shot ciere-shot-desktop">
+        <img src="../docs/design/assets-reais/ciere-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança">
+      </figure>
+      <figure class="real-shot ciere-shot-mobile">
+        <img src="../docs/design/assets-reais/ciere-mobile-390.png" width="1170" height="2532" loading="lazy" decoding="async" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp">
+      </figure>
     </div>
 
-    <div class="ciere-grid">
-       <figure class="real-shot">
-         <img src="../docs/design/assets-reais/ciere-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança">
-       </figure>
-       <figure class="real-shot real-shot-mobile">
-         <img src="../docs/design/assets-reais/ciere-mobile-390.png" width="1170" height="2532" loading="lazy" decoding="async" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp">
-       </figure>
+    <div class="ciere-bottom">
+      <p class="ciere-bridge"><span class="i18n" lang="pt">Cliente</span><span class="i18n" lang="en">Client</span> ⟷ <span>Augusto</span> ⟷ <span>Design</span> / <span>Dev</span></p>
+      <p class="ciere-activities"><span class="i18n" lang="pt">Requisitos</span><span class="i18n" lang="en">Requirements</span> · <span class="i18n" lang="pt">Escopo</span><span class="i18n" lang="en">Scoping</span> · <span class="i18n" lang="pt">Comunicação com cliente</span><span class="i18n" lang="en">Client Comms</span> · <span class="i18n" lang="pt">Ponte com design</span><span class="i18n" lang="en">Design Bridge</span> · <span class="i18n" lang="pt">QA e deploy</span><span class="i18n" lang="en">QA &amp; Deploy</span> · <span class="i18n" lang="pt">SEO e GEO</span><span class="i18n" lang="en">SEO &amp; GEO</span></p>
     </div>
   </div>
 </section>
