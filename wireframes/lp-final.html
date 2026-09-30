@@ -257,16 +257,58 @@
   .ph-h8-2     { aspect-ratio: 4/3; border-radius: 12px; }
   .ph-about    { aspect-ratio: 4/3; border-radius: 18px; }
 
-  /* IDF-BR */
-  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
-  .data-grid-wide { grid-template-columns: 2fr 1fr; }
-  /* colapsa --slab-inner: o IDF passa a ler como superficie unica */
-  .data-card { background: var(--ink); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 16px; }
-  .data-card-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
-  .data-card svg { display: block; width: 100%; height: auto; }
-  .idf-flow { margin: 32px 0; font-family: var(--f-mono); font-size: 0.75rem; font-weight: 600; color: var(--surface); padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
-  .idf-flow li { display: flex; align-items: center; gap: 12px; }
-  .idf-flow li:not(:last-child)::after { content: '→'; color: var(--surface); }
+  /* IDF-BR — papel, numeros com fonte e telas reais (Corte 2, issue #10) */
+  #idf { padding: 120px 100px; }
+  #idf .container { max-width: 1240px; padding-inline: 0; }
+
+  .idf-top {
+    display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+    gap: clamp(32px, 4vw, 80px); align-items: start;
+  }
+  .idf-title { display: flex; flex-direction: column; gap: 20px; }
+  #idf .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
+  .idf-copy { display: flex; flex-direction: column; gap: 20px; padding-top: 14px; }
+  .idf-lede { margin: 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--surface); }
+  .idf-pipeline { margin: 0; font-family: var(--f-body); font-weight: 500; font-size: 0.875rem; line-height: 1.5; color: var(--leaf); }
+
+  .idf-numbers {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;
+    margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(183, 214, 146, .5);
+  }
+  .idf-number { display: flex; flex-direction: column; gap: 10px; }
+  .idf-number-value {
+    margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 4vw, 4rem);
+    line-height: 1; letter-spacing: -0.03em; color: var(--leaf);
+  }
+  .idf-number-label { margin: 0; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
+
+  /* Cascata E2: principal 820/1240 do container, futura 600/1240 sobreposta no canto (Figma 161:2) */
+  .idf-screens { position: relative; width: 100%; aspect-ratio: 1240 / 673; margin-top: 64px; }
+  .idf-screen-main { position: absolute; top: 0; left: 0; width: 66.13%; aspect-ratio: 16 / 10; }
+  .idf-screen-main img { border: 1px solid rgba(255, 255, 255, .12); border-radius: 8px; }
+  .idf-screen-future { position: absolute; top: 43.09%; left: 51.61%; width: 48.39%; aspect-ratio: 16 / 10; }
+  .idf-screen-future img { border: 8px solid var(--forest); border-radius: 12px; }
+  .idf-screens .real-shot img { display: block; width: 100%; height: auto; }
+
+  @media (hover: hover) and (pointer: fine) {
+    .idf-screen-future { transition: transform var(--motion-base) var(--motion-enter); }
+    .idf-screen-future:hover { transform: translateY(-4px); }
+  }
+
+  @media (max-width: 900px) {
+    .idf-top { grid-template-columns: 1fr; }
+  }
+
+  @media (min-width: 1024px) {
+    .idf-numbers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  /* Quadro 390 do Figma (165:2) */
+  @media (max-width: 767px) {
+    .idf-screens { aspect-ratio: 350 / 236; }
+    .idf-screen-main { width: 74.86%; }
+    .idf-screen-future { left: 45.14%; top: 46.61%; width: 54.86%; }
+  }
 
   /* DVO */   /* secundario: menor que a do IDF */
 
@@ -522,6 +564,7 @@
     :is([data-motion="load"], [data-motion="evidence"],
         .live-link, .footer-top, .lang-btn,
         .btn-b3b, .btn-b3b__circulo, .btn-b3b__rotulo, .btn-b3b__seta,
+        .idf-screen-future,
         details.motion-details > summary,
         details.motion-details[open] > .motion-details-body) {
       transform: none !important;
@@ -572,9 +615,8 @@
 
   /* Passo intermediario: a razao dos pares cai gradualmente em vez de saltar 2.0 -> 1.0 */
   @media (max-width: 1024px) {
-    .data-grid-wide { grid-template-columns: 1.5fr 1fr; }
     .nip-photos     { grid-template-columns: 1.3fr 1fr; }
-    .ciere-grid     { grid-template-columns: 1.6fr 1fr; }   /* IDF encolhe nesta faixa; DVO acompanha */
+    .ciere-grid     { grid-template-columns: 1.6fr 1fr; }
   }
   @media (max-width: 900px) {
     .nav-links a, .footer-col a {
@@ -588,7 +630,6 @@
   @media (max-width: 860px) {
     .portrait   { max-width: 260px; }
     .meta-strip { grid-template-columns: 1fr; gap: 18px; }
-    .data-grid, .data-grid-wide { grid-template-columns: 1fr; }
     .metrics { grid-template-columns: 1fr; gap: 22px; }
     .dvo-grid { grid-template-columns: 1fr; gap: 26px; }
     .ciere-grid { grid-template-columns: 1fr; }
@@ -616,6 +657,24 @@
     .ph-qml { aspect-ratio: 4/3; }
     .ph-nip-2 { aspect-ratio: 4/3; }
     .ph-h8-1 { aspect-ratio: 16/10; }
+
+    #idf { padding: 64px 20px; }
+    #idf .container { max-width: none; }
+    .idf-top { gap: 32px; }
+    .idf-copy { padding-top: 0; gap: 32px; }
+    .idf-lede { font-size: 1rem; }
+    .idf-pipeline { font-size: 0.8125rem; }
+
+    .idf-numbers {
+      column-gap: 20px; row-gap: 24px;
+      margin-top: 32px; padding-top: 20px;
+    }
+    .idf-number-value { font-size: 40px; }
+    .idf-number-label { font-size: 13px; }
+
+    .idf-screens { margin-top: 32px; }
+    .idf-screen-main img { border-radius: 6px; }
+    .idf-screen-future img { border-width: 6px; border-radius: 8px; }
   }
 
 
@@ -801,7 +860,6 @@
      A moldura preenche a coluna e a ALTURA e limitada, em vez de encolher a
      largura para preservar a proporcao. A proporcao na legenda continua sendo
      a especificacao do asset real; a moldura recorta com object-fit: cover. */
-  .data-card svg { max-height: 190px; }
   .ph {
     aspect-ratio: auto;
     height: clamp(190px, 20vw, 300px);
@@ -813,7 +871,6 @@
   .ph-nip-2   { height: clamp(160px, 17vw, 250px); }
 
   @media (max-width: 860px) {
-    .data-card svg { max-height: 240px; }
     .ph { height: clamp(180px, 48vw, 260px); }
     .ph-ciere-m { height: clamp(220px, 60vw, 320px); }
   }
@@ -890,98 +947,55 @@
 <!-- LAJE 01 — IDF-BR -->
 <section class="slab slab-dark" id="idf">
   <div class="container">
-    <h2 class="i18n slab-headline" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
+    <div class="idf-top">
+      <div class="idf-title">
+        <h2 class="i18n slab-headline" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
 <h2 class="i18n slab-headline" lang="en">Turning nationwide hydrological research into a usable digital tool.</h2>
-<a class="live-link" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br ↗</a>
-
-    <ol class="idf-flow">
-      <li class="i18n" lang="pt">PESQUISA CIENTÍFICA</li>
-<li class="i18n" lang="en">SCIENTIFIC RESEARCH</li>
-      <li class="i18n" lang="pt">DADOS BRUTOS</li>
-<li class="i18n" lang="en">RAW DATA</li>
-      <li class="i18n" lang="pt">DADOS ESTRUTURADOS</li>
-<li class="i18n" lang="en">STRUCTURED DATA</li>
-      <li>SOFTWARE</li>
-      <li class="i18n" lang="pt">PRODUTO UTILIZÁVEL</li>
-<li class="i18n" lang="en">USABLE PRODUCT</li>
-    </ol>
-
-    <div class="data-grid">
-      <div class="data-card">
-        <div class="data-card-head">
-          <span class="i18n meta-label on-dark" lang="pt">Motor de consulta geoespacial</span>
-<span class="i18n meta-label on-dark" lang="en">Geospatial query engine</span>
-          <div>
-            <span class="i18n pill on-dark" lang="pt">Mapa vetorial</span>
-<span class="i18n pill on-dark" lang="en">Vector map</span>
-            <span class="i18n pill on-dark" style="color:var(--surface); border-color:rgba(255,255,255,.4)" lang="pt">ESQUEMÁTICO</span>
-<span class="i18n pill on-dark" style="color:var(--surface); border-color:rgba(255,255,255,.4)" lang="en">SCHEMATIC</span>
-          </div>
-        </div>
-        <svg role="img" viewBox="0 0 320 220" aria-label="Mapa do Brasil esquemático">
-          <defs>
-            <pattern id="dots" width="16" height="16" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1" fill="#3A3B3C"/>
-            </pattern>
-          </defs>
-          <rect width="320" height="220" fill="url(#dots)" opacity="0.55"/>
-          <path d="M 80,35 Q 150,15 220,40 Q 275,70 260,115 Q 235,160 185,185 Q 145,210 120,195 Q 100,165 75,130 Q 55,90 80,35 Z" fill="#2E3032" stroke="#A9ACB0" stroke-width="1.4"/>
-          <circle cx="175" cy="155" r="3" fill="#8A8E93"/>
-          <circle cx="190" cy="140" r="3.5" fill="#8A8E93"/>
-          <circle cx="210" cy="115" r="3" fill="#8A8E93"/>
-          <circle cx="230" cy="80" r="3" fill="#8A8E93"/>
-          <circle cx="140" cy="95" r="3" fill="#C9CCCF"/>
-          <circle cx="110" cy="65" r="3" fill="#C9CCCF"/>
-          <circle cx="145" cy="180" r="3" fill="#8A8E93"/>
-          <circle cx="160" cy="170" r="4" fill="#F6ED6C" stroke="#0B0B0B" stroke-width="1"/>
-          <g transform="translate(155, 168)">
-            <line x1="0" y1="0" x2="35" y2="-20" stroke="#8A8E93" stroke-width="1" stroke-dasharray="2,2"/>
-            <rect x="35" y="-32" width="108" height="24" fill="#FFFFFF" rx="2"/>
-            <text x="43" y="-16" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#111111" font-weight="600" class="i18n" lang="pt">ESTAÇÃO SELECIONADA</text>
-<text x="43" y="-16" font-family="'IBM Plex Mono', monospace" font-size="8.5" fill="#111111" font-weight="600" class="i18n" lang="en">SELECTED STATION</text>
-          </g>
-        </svg>
+        <a class="live-link" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br ↗</a>
       </div>
-
-      <div class="data-card">
-        <div class="data-card-head">
-          <span class="i18n meta-label on-dark" lang="pt">MÉTODO</span>
-<span class="i18n meta-label on-dark" lang="en">METHOD</span>
-          <div>
-            <span class="pill on-dark">Gumbel</span>
-            <span class="i18n pill on-dark" style="color:var(--surface); border-color:rgba(255,255,255,.4)" lang="pt">ESQUEMÁTICO</span>
-<span class="i18n pill on-dark" style="color:var(--surface); border-color:rgba(255,255,255,.4)" lang="en">SCHEMATIC</span>
-          </div>
-        </div>
-        <svg role="img" viewBox="0 0 300 145" aria-label="Curvas esquemáticas por período de retorno">
-          <line x1="30" y1="120" x2="275" y2="120" stroke="#6E7174" stroke-width="1.2"/>
-          <line x1="30" y1="10" x2="30" y2="120" stroke="#6E7174" stroke-width="1.2"/>
-          <line x1="30" y1="85" x2="270" y2="85" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
-          <line x1="30" y1="50" x2="270" y2="50" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
-          <line x1="30" y1="15" x2="270" y2="15" stroke="rgba(255,255,255,0.10)" stroke-width="1" stroke-dasharray="2,3"/>
-          <path d="M 35,22 Q 80,65 150,88 T 265,102" fill="none" stroke="#FFFFFF" stroke-width="2.5"/>
-          <path d="M 35,42 Q 80,80 150,97 T 265,108" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
-          <path d="M 35,65 Q 80,95 150,105 T 265,114" fill="none" stroke="#616467" stroke-width="1.5" stroke-dasharray="3,3"/>
-          <circle cx="80" cy="65" r="4.5" fill="#F6ED6C" stroke="#111111" stroke-width="1"/>
-          <text x="216" y="24" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#FFFFFF" font-weight="600">T = 100 yr</text>
-          <text x="216" y="48" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#FFFFFF">T = 50 yr</text>
-          <text x="216" y="70" font-family="'IBM Plex Mono', monospace" font-size="8" fill="#616467">T = 10 yr</text>
-          <text x="12" y="70" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#FFFFFF" transform="rotate(-90 12,70)">i (mm/h)</text>
-          <text x="120" y="138" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#FFFFFF" class="i18n" lang="pt">Duração (min)</text>
-<text x="120" y="138" font-family="'IBM Plex Mono', monospace" font-size="7.5" fill="#FFFFFF" class="i18n" lang="en">Duration (min)</text>
-        </svg>
+      <div class="idf-copy">
+        <p class="i18n idf-lede" lang="pt">O time científico definiu os dados, as equações e os resultados esperados. Eu respondi pela camada de software: escolhi as ferramentas, tomei as decisões técnicas, desenhei a arquitetura, a estrutura da aplicação, o fluxo e a interface, converti o acervo de planilhas em dados estruturados e fiz o deploy.</p>
+<p class="i18n idf-lede" lang="en">The scientific team defined the data, equations, and expected results. I was responsible for the software layer: I chose the tools, made technical decisions, designed the architecture, application structure, flow, and interface, converted the collection of spreadsheets into structured data, and deployed it.</p>
+        <p class="i18n idf-pipeline" lang="pt">Pesquisa científica → dados brutos → dados estruturados → software → produto utilizável</p>
+<p class="i18n idf-pipeline" lang="en">Scientific research → raw data → structured data → software → usable product</p>
       </div>
     </div>
 
-    <div class="data-grid data-grid-wide">
-       <figure class="real-shot">
-         <img src="../docs/design/assets-reais/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
-       </figure>
-       <figure class="real-shot">
-         <img src="../docs/design/assets-reais/idf-br-futuro-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados">
-       </figure>
+    <div class="idf-numbers">
+      <div class="idf-number">
+        <p class="i18n idf-number-value" lang="pt">1.543</p>
+<p class="i18n idf-number-value" lang="en">1,543</p>
+        <p class="i18n idf-number-label" lang="pt">usuários ativos no primeiro mês no ar (28 dias)</p>
+<p class="i18n idf-number-label" lang="en">active users in the first month live (28 days)</p>
+      </div>
+      <div class="idf-number">
+        <p class="i18n idf-number-value" lang="pt">+2.000</p>
+<p class="i18n idf-number-value" lang="en">2,000+</p>
+        <p class="i18n idf-number-label" lang="pt">acessos de 16 países no primeiro mês no ar (28 dias)</p>
+<p class="i18n idf-number-label" lang="en">visits from 16 countries in the first month live (28 days)</p>
+      </div>
+      <div class="idf-number">
+        <p class="i18n idf-number-value" lang="pt">3.225</p>
+<p class="i18n idf-number-value" lang="en">3,225</p>
+        <p class="i18n idf-number-label" lang="pt">estações Hidroweb, em 2.062 municípios das 27 UFs</p>
+<p class="i18n idf-number-label" lang="en">Hidroweb stations, in 2,062 municipalities across all 27 federative units</p>
+      </div>
+      <div class="idf-number">
+        <p class="i18n idf-number-value" lang="pt">475.928</p>
+<p class="i18n idf-number-value" lang="en">475,928</p>
+        <p class="i18n idf-number-label" lang="pt">equações IDF no total</p>
+<p class="i18n idf-number-label" lang="en">IDF equations in total</p>
+      </div>
     </div>
 
+    <div class="idf-screens">
+      <figure class="real-shot idf-screen-main">
+        <img src="../docs/design/assets-reais/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+      </figure>
+      <figure class="real-shot idf-screen-future">
+        <img src="../docs/design/assets-reais/idf-br-futuro-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados">
+      </figure>
+    </div>
   </div>
 </section>
 
