@@ -112,6 +112,29 @@
     letter-spacing: 0.11em; text-transform: uppercase; color: var(--muted);
     text-decoration: none; transition: color var(--motion-nav) var(--motion-state);
   }
+  .nav-links a[aria-current="true"] { color: var(--ink); }
+
+  /* Barra de progresso de leitura (#21, Corte 9) — so existe com suporte a
+     scroll-timeline; sem suporte fica display:none, sem reservar espaco. */
+  .reading-progress { display: none; }
+
+  @supports (animation-timeline: scroll(root)) {
+    .reading-progress {
+      display: block;
+      position: fixed; top: 0; left: 0; width: 100%; height: 2px;
+      background: var(--forest); transform-origin: left; transform: scaleX(0);
+      pointer-events: none; z-index: 500;
+      animation-name: corte9-progresso-leitura;
+      animation-timeline: scroll(root);
+      animation-fill-mode: both;
+      animation-timing-function: linear;
+    }
+  }
+
+  @keyframes corte9-progresso-leitura {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
 
   /* HERO */
   .hero { background: var(--surface); position: relative; overflow: hidden; padding-block: 32px; }
@@ -258,8 +281,29 @@
   .idf-screens .real-shot img { display: block; width: 100%; height: auto; }
 
   @media (hover: hover) and (pointer: fine) {
-    .idf-screen-future { transition: transform var(--motion-base) var(--motion-enter); }
-    .idf-screen-future:hover { transform: translateY(-4px); }
+    /* translate, nao transform: o transform fica livre para a linha do
+       tempo de rolagem abaixo (#21, Corte 9), sem briga de propriedade. */
+    .idf-screen-future { transition: translate var(--motion-base) var(--motion-enter); }
+    .idf-screen-future:hover { translate: 0 -4px; }
+  }
+
+  /* Profundidade na tela sobreposta do IDF-BR (#21, Corte 9): a tela do
+     futuro (de cima) desloca enquanto a composicao atravessa a tela. */
+  @media (min-width: 900px) {
+    @supports (animation-timeline: view()) {
+      .idf-screen-future {
+        animation-name: corte9-profundidade;
+        animation-timeline: view();
+        animation-range: cover;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+      }
+    }
+  }
+
+  @keyframes corte9-profundidade {
+    from { transform: translateY(24px); }
+    to   { transform: translateY(-24px); }
   }
 
   @media (max-width: 900px) {
@@ -353,9 +397,26 @@
   .ciere-shot-mobile img { border-radius: 26px; border: 8px solid var(--leaf); }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .ciere-shot-desktop, .ciere-shot-mobile { transition: transform var(--motion-base) var(--motion-enter); }
-    .ciere-shot-mobile:hover { transform: translateY(-6px); }
+    .ciere-shot-desktop { transition: transform var(--motion-base) var(--motion-enter); }
     .ciere-shot-desktop:hover { transform: translateY(-3px); }
+    /* translate, nao transform: o transform do celular (de cima) fica
+       livre para a linha do tempo de rolagem abaixo (#21, Corte 9). */
+    .ciere-shot-mobile { transition: translate var(--motion-base) var(--motion-enter); }
+    .ciere-shot-mobile:hover { translate: 0 -6px; }
+  }
+
+  /* Profundidade na tela sobreposta da Ciere (#21, Corte 9): o celular (de
+     cima) desloca enquanto a composicao atravessa a tela; o desktop nao. */
+  @media (min-width: 900px) {
+    @supports (animation-timeline: view()) {
+      .ciere-shot-mobile {
+        animation-name: corte9-profundidade;
+        animation-timeline: view();
+        animation-range: cover;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+      }
+    }
   }
 
   @media (max-width: 767px) {
@@ -399,8 +460,46 @@
   .qml-formula-caption { font-family: var(--f-body); font-size: 14px; color: var(--muted); margin: 24px 0 0; }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .qml-formula-card { transition: transform var(--motion-base) var(--motion-enter); }
-    .qml-formula-card:hover { transform: translateY(-4px); }
+    /* translate, nao transform: o transform fica livre para a montagem
+       da formula abaixo (#21, Corte 9), sem briga de propriedade. */
+    .qml-formula-card { transition: translate var(--motion-base) var(--motion-enter); }
+    .qml-formula-card:hover { translate: 0 -4px; }
+  }
+
+  /* Montagem da formula do Quantum (#21, Corte 9): cada cartao e cada
+     operador chega ao entrar na tela; opacidade sempre 1, e' dado. */
+  @supports (animation-timeline: view()) {
+    .qml-formula-card {
+      animation-name: corte9-formula-cartao;
+      animation-timeline: view();
+      animation-fill-mode: both;
+      animation-timing-function: ease-out;
+    }
+    .qml-formula-op {
+      animation-name: corte9-formula-operador;
+      animation-timeline: view();
+      animation-fill-mode: both;
+      animation-timing-function: ease-out;
+    }
+    .qml-formula > :nth-child(1) .qml-formula-card { animation-range: entry 0%  entry 60%; }
+    .qml-formula > :nth-child(2)                   { animation-range: entry 6%  entry 66%; }
+    .qml-formula > :nth-child(3) .qml-formula-card { animation-range: entry 12% entry 72%; }
+    .qml-formula > :nth-child(4)                   { animation-range: entry 18% entry 78%; }
+    .qml-formula > :nth-child(5) .qml-formula-card { animation-range: entry 24% entry 84%; }
+    .qml-formula > :nth-child(6)                   { animation-range: entry 30% entry 90%; }
+    .qml-formula > :nth-child(7) .qml-formula-card { animation-range: entry 36% entry 96%; }
+    .qml-formula > :nth-child(8)                   { animation-range: entry 42% entry 100%; }
+    .qml-formula > :nth-child(9) .qml-formula-card { animation-range: entry 48% entry 100%; }
+  }
+
+  @keyframes corte9-formula-cartao {
+    from { transform: translateY(16px); }
+    to   { transform: translateY(0); }
+  }
+
+  @keyframes corte9-formula-operador {
+    from { transform: scale(0.6); }
+    to   { transform: scale(1); }
   }
 
   @media (max-width: 767px) {
@@ -625,10 +724,12 @@
     :is([data-motion="load"], [data-motion="evidence"],
         .live-link, .footer-top, .lang-btn,
         .btn-b3b, .btn-b3b__circulo, .btn-b3b__rotulo, .btn-b3b__seta,
-        .idf-screen-future,
+        .idf-screen-future, .ciere-shot-mobile,
+        .qml-formula-card, .qml-formula-op,
         details.motion-details > summary,
         details.motion-details[open] > .motion-details-body) {
       transform: none !important;
+      translate: none !important;
       scale: none !important;
     }
 
@@ -900,6 +1001,7 @@
 
 <!-- NAV -->
 <nav class="site-nav">
+  <div class="reading-progress" aria-hidden="true"></div>
   <div class="container">
     <div class="nav-row-1">
       <a href="#top" class="wordmark"><span data-motion="load">AUGUSTO MENCHACA</span></a>
@@ -1433,6 +1535,27 @@ try {
       btnEn.addEventListener('click', () => { motionConsumeLoad(); setLang('en'); });
     }
   });
+})();
+</script>
+
+<!-- Secao ativa na nav (#21, Corte 9): so liga com IntersectionObserver. -->
+<script>
+(function () {
+  var mapa = { idf: '#idf', dvo: '#idf', ciere: '#idf', quantum: '#idf', vivencias: '#experience', about: '#about' };
+  var alvos = document.querySelectorAll('#idf, #dvo, #ciere, #quantum, #vivencias, #about');
+  var links = document.querySelectorAll('.nav-links a[href="#idf"], .nav-links a[href="#experience"], .nav-links a[href="#about"]');
+  if (!('IntersectionObserver' in window) || !alvos.length || !links.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var href = mapa[entry.target.id];
+      links.forEach(function (a) {
+        if (a.getAttribute('href') === href) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    });
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  alvos.forEach(function (el) { io.observe(el); });
 })();
 </script>
 </body>
