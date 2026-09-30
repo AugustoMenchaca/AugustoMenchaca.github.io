@@ -4,6 +4,8 @@ docs/design/assets-reais/. Reprodutivel: rode de novo sempre que as
 originais mudarem. As originais nunca sao alteradas; nenhuma imagem e
 recolorida, so redimensionada e reencodada."""
 import os
+import argparse
+import shutil
 from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
@@ -22,8 +24,8 @@ JOBS = [
     ("vivencias/hut8-equipe.jpg", "vivencias", "hut8-equipe", [400, 800], "jpg"),
     ("vivencias/hut8-evento.jpg", "vivencias", "hut8-evento", [400, 800], "jpg"),
     ("vivencias/nip-ufmg.jpg", "vivencias", "nip-ufmg", [400, 800], "jpg"),
-    ("vivencias/nip-conabreh-inteira.jpg", "vivencias", "nip-conabreh-inteira", [400, 800, 1200], "jpg"),
-    ("sobre/retrato.jpg", "sobre", "retrato", [384], "jpg"),
+    ("vivencias/nip-conabreh-inteira.jpg", "vivencias", "nip-conabreh-inteira", [400, 800, 1200, 1600], "jpg"),
+    ("sobre/retrato.jpg", "sobre", "retrato", [210, 384], "jpg"),
     ("quantum/qml_classificacao_pca_completo1-01.png", "quantum", "qml-dados", ["natural"], "png"),
     ("quantum/qml_classificacao_pca_completo1-03.png", "quantum", "qml-representacao", ["natural"], "png"),
     ("quantum/qml_classificacao_pca_completo1-05.png", "quantum", "qml-featuremap", ["natural"], "png"),
@@ -40,10 +42,18 @@ def resized(im, width):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--photos", action="store_true", help="Gera so fotos de vivencias e sobre.")
+    args = parser.parse_args()
     manifest = []
     for rel_src, subdir, basename, widths, fallback_fmt in JOBS:
+        is_photo = subdir in ("vivencias", "sobre")
+        if args.photos and not is_photo:
+            continue
         src_path = os.path.join(SRC, rel_src)
         im = Image.open(src_path)
+        if is_photo and any(w > im.width for w in widths):
+            raise ValueError(f"{rel_src}: candidato maior que a fonte real ({im.width}px)")
         if im.mode not in ("RGB", "RGBA"):
             im = im.convert("RGBA" if "A" in im.mode else "RGB")
 
@@ -58,6 +68,19 @@ def main():
             save_im = resampled if resampled.mode != "RGBA" or fallback_fmt != "jpg" else resampled.convert("RGB")
             save_im.save(webp_path, "WEBP", quality=QUALITY, method=6)
             manifest.append((webp_path, actual_w, actual_h))
+
+            # JPEG responsivo; na largura nativa preserva o original, sem
+            # uma segunda compressao com perda ou aumento artificial.
+            if is_photo:
+                jpg_path = os.path.join(out_dir, f"{basename}-{w}.jpg")
+                if w == im.width:
+                    shutil.copyfile(src_path, jpg_path)
+                else:
+                    save_im.convert("RGB").save(jpg_path, "JPEG", quality=94)
+                manifest.append((jpg_path, actual_w, actual_h))
+
+        if is_photo:
+            continue
 
         # Fallback no formato original, na maior largura da lista.
         fallback_im, fw, fh = resized(im, max_width if widths != ["natural"] else "natural")
