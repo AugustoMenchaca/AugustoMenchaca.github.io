@@ -235,7 +235,6 @@
   .ph-nip-2    { aspect-ratio: 1/1; border-radius: 14px; }
   .ph-h8-1     { aspect-ratio: 16/9; border-radius: 20px; }
   .ph-h8-2     { aspect-ratio: 4/3; border-radius: 12px; }
-  .ph-about    { aspect-ratio: 4/3; border-radius: 18px; }
 
   /* IDF-BR — papel, numeros com fonte e telas reais (Corte 2, issue #10) */
   #idf { padding: 120px 100px; }
@@ -462,9 +461,24 @@
     .viv-photo img { width: 100%; }
   }
 
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 64px); margin-top: 40px; align-items: center; }
-  .about-copy p { margin: 0 0 16px; font-size: 0.95rem; line-height: 1.6; }
+  /* ABOUT — retrato real e 4 paragrafos, fluido (Corte 7, issue #15) */
+  #about { padding: 120px 100px; background: var(--surface); color: var(--ink); margin-inline: 0; }
+  #about .container { max-width: 1240px; padding-inline: 0; }
+  #about .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
+
+  .about-grid { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 640px); gap: clamp(32px, 6vw, 80px); margin-top: 40px; align-items: start; }
+  .about-photo { margin: 0; min-width: 0; max-width: 300px; }
+  .about-photo img { display: block; width: 100%; height: auto; border-radius: 8px; }
+  .about-copy { min-width: 0; }
+  .about-copy p { margin: 0 0 16px; max-width: 65ch; }
+  .about-copy p:last-child { margin-bottom: 0; }
+  .about-copy p:first-child { font-size: 1.375rem; line-height: 1.5; }
+  .about-copy p:not(:first-child) { font-size: 1.125rem; line-height: 1.6; }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .about-photo img { transition: transform var(--motion-base) var(--motion-enter); }
+    .about-photo img:hover { transform: translateY(-4px); }
+  }
 
   /* CONTACT */
   .section-contact { background: var(--surface); padding: clamp(40px, 8vw, 80px) 0; }
@@ -683,6 +697,9 @@
     .meta-strip { grid-template-columns: 1fr; gap: 18px; }
     .metrics { grid-template-columns: 1fr; gap: 22px; }
     .about-grid { grid-template-columns: 1fr; }
+    .about-photo { max-width: 210px; }
+    .about-copy p:first-child { font-size: 1.1875rem; }
+    .about-copy p:not(:first-child) { font-size: 1rem; }
 
     .ph-ciere-m { max-width: 260px; margin: 0 auto; }
     
@@ -730,6 +747,9 @@
     #vivencias { padding: 64px 20px; }
     #vivencias .container { max-width: none; }
     .viv-divider { margin: 48px 0; }
+
+    #about { padding: 64px 20px; }
+    #about .container { max-width: none; }
   }
 
 
@@ -1268,12 +1288,13 @@
 <!-- ABOUT -->
 <section class="slab slab-stone" id="about">
 <div class="container">
-  <span class="i18n meta-label" lang="pt">Sobre</span>
-<span class="i18n meta-label" lang="en">About</span>
-  <h2 class="i18n slab-headline" style="max-width:32ch" lang="pt">Me interessa o que acontece entre "temos um problema" e "isso realmente funciona".</h2>
-<h2 class="i18n slab-headline" style="max-width:32ch" lang="en">I'm interested in what happens between "we have a problem" and "this actually works."</h2>
-  
+  <h2 class="i18n slab-headline" lang="pt">Me interessa o que acontece entre "temos um problema" e "isso realmente funciona".</h2>
+<h2 class="i18n slab-headline" lang="en">I'm interested in what happens between "we have a problem" and "this actually works."</h2>
+
   <div class="about-grid">
+    <figure class="about-photo">
+      <img src="../docs/design/assets-reais/sobre/retrato.jpg" width="384" height="512" alt="Augusto Menchaca no South Summit" loading="lazy" decoding="async">
+    </figure>
     <div class="about-copy">
       <p class="i18n" lang="pt">Sou estudante de Ciência da Computação na UFPel, e a maior parte do que moldou meu jeito de trabalhar aconteceu quando a tecnologia precisou encontrar um problema real.</p>
 <p class="i18n" lang="en">I'm a Computer Science student at UFPel, and most of what has shaped the way I work has happened when technology had to meet a real problem.</p>
@@ -1284,11 +1305,6 @@
       <p class="i18n" lang="pt">Ainda estou no começo da carreira, e quero seguir aprofundando minha base técnica enquanto melhoro em tomar decisões, comunicar com clareza e ajudar pessoas a construir juntas.</p>
 <p class="i18n" lang="en">I'm still early in my career, and I want to keep deepening my technical foundation while becoming better at making decisions, communicating clearly and helping people build together.</p>
     </div>
-    <figure class="ph ph-about">
-       <span class="ph-chip">[ AUGUSTO — ABOUT PHOTO ]</span>
-       <span class="i18n ph-note" lang="pt">Proporção 4:3, única foto do Augusto na página — contextual, ambiente real</span>
-<span class="i18n ph-note" lang="en">4:3 aspect ratio, unica foto do Augusto na pagina — contextual, ambiente real</span>
-    </figure>
   </div>
 </div>
 </section>
@@ -1397,7 +1413,6 @@ ASSETS NEEDED:
 5. [ CIERE WEBSITE DESKTOP ]
 6. [ CIERE MOBILE DETAIL ]
 7. [ QUANTUM EXPERIMENT VISUAL ]
-12. [ AUGUSTO — ABOUT PHOTO ]
 -->
 
 <script>
