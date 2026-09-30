@@ -266,13 +266,13 @@
     gap: clamp(32px, 4vw, 80px); align-items: start;
   }
   .idf-title { display: flex; flex-direction: column; gap: 20px; }
-  #idf .slab-headline { font-size: 72px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
+  #idf .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
   .idf-copy { display: flex; flex-direction: column; gap: 20px; padding-top: 14px; }
   .idf-lede { margin: 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--surface); }
   .idf-pipeline { margin: 0; font-family: var(--f-body); font-weight: 500; font-size: 0.875rem; line-height: 1.5; color: var(--leaf); }
 
   .idf-numbers {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 40px;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;
     margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(183, 214, 146, .5);
   }
   .idf-number { display: flex; flex-direction: column; gap: 10px; }
@@ -283,10 +283,10 @@
   .idf-number-label { margin: 0; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
 
   /* Cascata E2: principal 820/1240 do container, futura 600/1240 sobreposta no canto (Figma 161:2) */
-  .idf-screens { position: relative; width: 100%; aspect-ratio: 1240 / 512.5; margin-top: 64px; }
+  .idf-screens { position: relative; width: 100%; aspect-ratio: 1240 / 673; margin-top: 64px; }
   .idf-screen-main { position: absolute; top: 0; left: 0; width: 66.13%; aspect-ratio: 16 / 10; }
   .idf-screen-main img { border: 1px solid rgba(255, 255, 255, .12); border-radius: 8px; }
-  .idf-screen-future { position: absolute; top: 56.5%; left: 51.61%; width: 48.39%; aspect-ratio: 16 / 10; }
+  .idf-screen-future { position: absolute; top: 43.09%; left: 51.61%; width: 48.39%; aspect-ratio: 16 / 10; }
   .idf-screen-future img { border: 8px solid var(--forest); border-radius: 12px; }
   .idf-screens .real-shot img { display: block; width: 100%; height: auto; }
 
@@ -297,6 +297,17 @@
 
   @media (max-width: 900px) {
     .idf-top { grid-template-columns: 1fr; }
+  }
+
+  @media (min-width: 1024px) {
+    .idf-numbers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  /* Quadro 390 do Figma (165:2) */
+  @media (max-width: 767px) {
+    .idf-screens { aspect-ratio: 350 / 236; }
+    .idf-screen-main { width: 74.86%; }
+    .idf-screen-future { left: 45.14%; top: 46.61%; width: 54.86%; }
   }
 
   /* DVO */   /* secundario: menor que a do IDF */
@@ -651,21 +662,18 @@
     #idf .container { max-width: none; }
     .idf-top { gap: 32px; }
     .idf-copy { padding-top: 0; gap: 32px; }
-    #idf .slab-headline { font-size: 40px; }
     .idf-lede { font-size: 1rem; }
     .idf-pipeline { font-size: 0.8125rem; }
 
     .idf-numbers {
-      grid-template-columns: repeat(2, 1fr); column-gap: 20px; row-gap: 24px;
+      column-gap: 20px; row-gap: 24px;
       margin-top: 32px; padding-top: 20px;
     }
     .idf-number-value { font-size: 40px; }
     .idf-number-label { font-size: 13px; }
 
-    .idf-screens { aspect-ratio: 32 / 15; margin-top: 32px; }
-    .idf-screen-main { width: 75%; }
+    .idf-screens { margin-top: 32px; }
     .idf-screen-main img { border-radius: 6px; }
-    .idf-screen-future { left: 45%; width: 55%; }
     .idf-screen-future img { border-width: 6px; border-radius: 8px; }
   }
 
