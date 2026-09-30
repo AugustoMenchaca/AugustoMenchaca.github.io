@@ -10,19 +10,15 @@ permissions:
   contents: read
 
 env:
-  # O ALVO e a LP nova, nao a pagina em producao.
+  # O ALVO e a LP em producao.
   #
-  # O index.html da raiz e o portfolio de outubro de 2024. Ele nao e usado, nao
-  # e mantido, e vai ser SUBSTITUIDO pela LP nova (issue #4). Validar ele so
-  # gerava trabalho descartavel: a issue #26 consertou markup de um arquivo que
-  # sera apagado.
+  # A issue #4 promoveu a LP nova para o index.html da raiz. A partir daqui o
+  # CI guarda producao de verdade: e o arquivo que o GitHub Pages serve em
+  # https://augustomenchaca.github.io/.
   #
-  # Tambem ficam fora prototipo-c.html, que e registro da direcao visual
-  # aprovada, e "Portfolio Wireframes.dc.html", que e artefato de canvas.
-  #
-  # Quando a issue #4 promover a LP para a raiz, este valor volta a ser
-  # index.html — e a partir dai o CI guarda producao de verdade.
-  PUBLICADOS: "wireframes/lp-final.html"
+  # Ficam fora prototipo-c.html, que e registro da direcao visual aprovada, e
+  # "Portfolio Wireframes.dc.html", que e artefato de canvas.
+  PUBLICADOS: "index.html"
 
 jobs:
   html:
@@ -104,7 +100,7 @@ jobs:
       - name: stylelint no CSS embutido
         run: >
           npx --yes -p stylelint@16 -p postcss-html@1 stylelint
-          $PUBLICADOS "Css/*.css" --custom-syntax postcss-html
+          $PUBLICADOS --custom-syntax postcss-html
 
   content-rules:
     name: Nada inventado entra

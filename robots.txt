@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://augustomenchaca.github.io/sitemap.xml
