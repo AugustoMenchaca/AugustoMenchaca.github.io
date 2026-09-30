@@ -76,7 +76,6 @@
     letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
   }
   .meta-label.on-dark { color: var(--surface); }
-  .meta-label.acid { color: var(--surface); }
 
   /* Pill tags */
   .pill {
@@ -268,7 +267,6 @@
 
   /* NIP — dentro de #vivencias (Blocos terrosos: fundo --earth, texto claro) */
   .section-nip { padding: clamp(34px, 4.4vw, 60px) 0; background: var(--earth); color: var(--surface); }
-  .section-nip .meta-label { color: var(--surface); }
   .nip-grid { display: block; margin-top: 40px; }
   .nip-grid > div:first-child { max-width: 62ch; }
   .flow-nip { display: flex; flex-direction: column; gap: 8px; list-style: none; padding: 0; font-family: var(--f-mono); font-size: 0.65rem; font-weight: 600; color: var(--surface); margin-bottom: 24px; border-left: 1px solid rgba(255,255,255,.28); padding-left: 16px; }
@@ -350,13 +348,11 @@
     }
 
     .live-link:hover {
-      background-color: var(--ink);
-      color: var(--surface);
+      text-decoration-thickness: 2px;
     }
 
     .slab-dark .live-link:hover {
-      background-color: var(--surface);
-      color: var(--ink);
+      text-decoration-thickness: 2px;
     }
 
     .footer-top:hover {
@@ -580,15 +576,15 @@
     .footer-col { text-align: left !important; }
   }
 
-  /* Link para o produto no ar — charcoal em superficie clara, acid dentro da laje escura */
+  /* Link para o produto no ar — ink em superficie clara, surface dentro da laje escura */
   .live-link {
     display: inline-flex; align-items: center; gap: 6px;
-    font-family: var(--f-mono); font-size: 0.66rem; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase; text-decoration: none;
-    padding: 5px 10px; border-radius: 3px; margin-left: 12px;
-    border: 1px solid var(--hair-strong); color: var(--ink);
+    font-family: var(--f-body); font-size: 1rem; font-weight: 400;
+    text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em;
+    margin-top: 16px; color: var(--ink);
   }
-  .slab-dark .live-link { border-color: rgba(255,255,255,.32); color: var(--surface); }
+  .section-dvo .live-link { font-size: 0.9rem; }
+  .slab-dark .live-link { color: var(--surface); }
 
 
 
@@ -749,7 +745,6 @@
   /* Quantum em surface: acento oxblood retirado (#64), fica a leitura padrao clara. */
   #quantum { color: var(--ink); }
   #quantum .slab-headline { color: var(--ink); }
-  #quantum .meta-label.acid { color: var(--muted); }
   #quantum .qml-quote p { color: var(--ink); }
   #quantum .qml-col-body { color: var(--ink); }
   #quantum .ph { border-color: var(--hair-strong); }
@@ -858,10 +853,9 @@
 <!-- LAJE 01 — IDF-BR -->
 <section class="slab slab-dark" id="idf">
   <div class="container">
-    <span class="i18n meta-label acid" lang="pt">01 / Principal</span>
-<span class="i18n meta-label acid" lang="en">01 / Flagship</span><a class="live-link" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br ↗</a>
     <h2 class="i18n slab-headline" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
 <h2 class="i18n slab-headline" lang="en">Turning nationwide hydrological research into a usable digital tool.</h2>
+<a class="live-link" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br ↗</a>
 
     <ol class="idf-flow">
       <li class="i18n" lang="pt">PESQUISA CIENTÍFICA</li>
@@ -957,10 +951,9 @@
 <!-- DVO -->
 <section class="section-dvo" id="dvo">
   <div class="container">
-    <span class="i18n meta-label" lang="pt">02 / Produção</span>
-<span class="i18n meta-label" lang="en">02 / Production</span><a class="live-link" href="https://dvopelotas.com.br/" target="_blank" rel="noopener noreferrer">dvopelotas.com.br ↗</a>
     <h2 class="i18n slab-headline" style="max-width:24ch" lang="pt">Levando um projeto de cliente dos requisitos à produção.</h2>
 <h2 class="i18n slab-headline" style="max-width:24ch" lang="en">Taking a client project from requirements to production.</h2>
+<a class="live-link" href="https://dvopelotas.com.br/" target="_blank" rel="noopener noreferrer">dvopelotas.com.br ↗</a>
     <p class="i18n dvo-disclaimer" lang="pt">O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.</p>
 <p class="i18n dvo-disclaimer" lang="en">The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.</p>
     
@@ -1015,9 +1008,9 @@
 <!-- CIERE -->
 <section class="section-ciere" id="ciere">
   <div class="container">
-    <span class="meta-label">03 / Discovery</span><a class="live-link" href="https://advocaciacieredarosa.com.br/" target="_blank" rel="noopener noreferrer">advocaciacieredarosa.com.br ↗</a>
     <h2 class="i18n slab-headline" style="max-width:26ch" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
 <h2 class="i18n slab-headline" style="max-width:26ch" lang="en">Connecting client needs, design decisions and development.</h2>
+<a class="live-link" href="https://advocaciacieredarosa.com.br/" target="_blank" rel="noopener noreferrer">advocaciacieredarosa.com.br ↗</a>
 
     <div class="ciere-flow-wrap">
       <ul class="desk-only" aria-hidden="true">
@@ -1058,8 +1051,6 @@
 <!-- QUANTUM ML -->
 <section class="slab slab-stone" id="quantum">
 <div class="container">
-  <span class="i18n meta-label acid" lang="pt">04 / Pesquisa</span>
-<span class="i18n meta-label acid" lang="en">04 / Research</span>
   <h2 class="i18n slab-headline" lang="pt">Testando quando machine learning quântico realmente faz diferença.</h2>
 <h2 class="i18n slab-headline" lang="en">Testing when quantum machine learning actually makes a difference.</h2>
 
@@ -1148,8 +1139,6 @@
 <!-- NIP --><!-- NIP -->
 <div class="section-nip" id="nip">
   <div class="container">
-    <span class="i18n meta-label" lang="pt">05 / Laboratório de Pesquisa</span>
-<span class="i18n meta-label" lang="en">05 / Research Lab</span>
     <h2 class="i18n slab-headline" style="max-width:24ch" lang="pt">De software científico à pesquisa em IA aplicada.</h2>
 <h2 class="i18n slab-headline" style="max-width:24ch" lang="en">From scientific software to applied AI research.</h2>
 
@@ -1218,8 +1207,6 @@
   <div class="container">
     <div class="contact-panel">
       <div>
-        <span class="i18n meta-label" lang="pt">06 / Contato</span>
-        <span class="i18n meta-label" lang="en">06 / Contact</span>
         <h2 class="i18n slab-headline" lang="pt">Tem um problema que vale construir em volta?</h2>
         <h2 class="i18n slab-headline" lang="en">Have a problem worth building around?</h2>
         <p class="i18n footer-note" style="max-width:46ch" lang="pt">Estou aberto a conversas sobre software, IA aplicada, pesquisa, projetos de tecnologia e novas oportunidades.</p>
