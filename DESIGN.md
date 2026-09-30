@@ -397,11 +397,36 @@ A geometria do sistema é austera e disciplinada, priorizando ângulos retos na 
 
 Os componentes da interface operam como átomos funcionais de alta densidade informativa e resposta mecânica previsível.
 
-### Botões (`.btn`)
+### Botões (`.btn`) — Substituído pelo Botão B3b (Corte 1, issues #8 e #68)
+**Removido:** a classe `.btn` (e as variantes `.round`, `.ghost`) saiu da hero, do contato e da nav nesta corte, substituída pelo Botão B3b abaixo. Sem uso na peça atual — grep de prova em `wireframes/lp-final.html`. Esta subseção descreve um componente que não existe mais no arquivo, e fica só como registro histórico, no mesmo padrão do Trilho Editorial mais abaixo.
 - **Tipografia:** `IBM Plex Mono`, tamanho 0.72rem (~11,5px), peso 600, `letter-spacing: 0.1em`, caixa alta.
 - **Estrutura:** `padding: 13px 22px; border-radius: 3px; border: 1px solid var(--ink); display: inline-flex; align-items: center; gap: 9px;`.
 - **Cores:** Fundo em `var(--sun)`, texto e ícones em `var(--ink)`. Variante Ghost com fundo transparente.
 - **Estados:** Hover com `transform: translateY(-2px)` e transição de 0,3s ease; estado `:active` com compressão `scale(0.98)` de resposta imediata (0–50ms) e retorno em até 0,1s.
+
+### Botão B3b (`.btn-b3b`) — issues #8 e #68
+Círculo magnético que substitui o `.btn` na hero e no contato. Referências externas coletadas antes da implementação: dennissnellenberg.com (padrão `btn-click magnetic` + `btn-fill`) e o componente Magnetic da biblioteca Motion Primitives.
+- **Markup:** um `<a class="btn-b3b btn-b3b--<variante>">` por botão, com o rótulo dentro de `.btn-b3b__rotulo` (i18n) e o círculo em `.btn-b3b__circulo > .btn-b3b__seta` (`aria-hidden`):
+  ```html
+  <a class="btn-b3b btn-b3b--primario" href="#contact">
+    <span class="btn-b3b__rotulo"><span class="i18n" lang="pt">Vamos conversar</span><span class="i18n" lang="en">Let's talk</span></span>
+    <span class="btn-b3b__circulo" aria-hidden="true"><span class="btn-b3b__seta">↗</span></span>
+  </a>
+  ```
+- **Tipografia:** rótulo em Instrument Sans SemiBold 22px `var(--ink)`; seta em Instrument Sans Bold 22px. `gap` de 14px entre rótulo e círculo; círculo de 52px de diâmetro.
+- **Variantes:** `--primario` (círculo `var(--sun)`, seta `var(--ink)`); `--secundario` (círculo transparente, borda de 1,5px `var(--ink)`, seta `var(--ink)`); `--escuro` (círculo `var(--ink)`, seta `var(--sun)`, usado sobre o bloco `--sun` do contato); `--externo`, modificador para `target="_blank"` ou `download` cuja seta continua em ↗ no hover (não gira).
+- **Estados de ponteiro e `:focus-visible`:** a cor do círculo e da seta troca em 0s (mesma regra do sistema de movimento, sem interpolação de cor); o círculo desloca para `translate(10px, -4px)` e o rótulo para `translateX(4px)`, em 0,3s `var(--motion-enter)`; nos links internos (sem `--externo`) a seta gira 45° (↗ vira →).
+- **Ímã (JS puro, ≤ 30 linhas):** no `pointermove` sobre o círculo, as variáveis `--mx`/`--my` recebem 25% da distância do ponteiro ao centro do círculo, limitada a ±10px, somando-se ao deslocamento fixo do hover; no `pointerleave` voltam a 0. Só liga com `(hover: hover) and (pointer: fine)` **e** `(prefers-reduced-motion: no-preference)` — sem JS ou fora dessas condições, vale o deslocamento fixo `translate(10px, -4px)`.
+- **Acessibilidade:** `prefers-reduced-motion: reduce` neutraliza toda a translação (só a cor troca); foco com contorno de 2px `var(--ink)` e `outline-offset` de 4px.
+
+### Hero (`header#top`) — Corte 1 (issues #8, #68)
+Título em Instrument Sans Bold, curva fluida de 112px (1440px) a 54px (390px), `line-height: 0.9`, `-0.04em`; a segunda palavra ("produto." → "software." → "usuário.") troca só por CSS, ciclo de 7,5s (2,5s por palavra), rodando apenas em `(min-width: 1024px) and (prefers-reduced-motion: no-preference)` — fora disso só a primeira palavra aparece, e o nome acessível do título permanece "Da pesquisa ao produto." (as duas palavras seguintes ficam `aria-hidden`). Apoio em Inter 18px `var(--muted)`. Duas chamadas Botão B3b (`--primario` para `#contact`, `--secundario` para `#idf`). Abaixo, a linha de papéis (NIP, Hut 8, UFPel) substitui os antigos `.hero-cards`/`.hero-card*` (removidos, grep de prova). Em telas com ponteiro fino e hover a partir de 1024px, passar o ponteiro ou o foco em NIP e Hut 8 revela uma prévia da ferramenta real (`idf-br-ferramenta-1440.png` e `dvo-1440.png`), `aria-hidden` e `alt=""` porque as mesmas imagens já aparecem nas seções correspondentes.
+
+### Contato (`#contact`) — Corte 1 (issues #8, #68)
+Bloco `var(--sun)` de sangria total, título Instrument Sans Bold de 88px (1440px) a 48px (390px), parágrafo Inter de 20px (17px a 390px) com no máximo 640px. Os quatro links usam Botão B3b: E-mail em `--escuro`, e LinkedIn/GitHub/CV em `--secundario --externo`.
+
+### Rodapé (`.site-footer`) — Corte 1 (issues #8, #68)
+Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe para Instrument Sans Bold 28px; os títulos das colunas Navegação e Contato trocam de `IBM Plex Mono` maiúsculo para Instrument Sans SemiBold 14px `var(--leaf)`, sem caixa alta. A base (borda superior `rgba(255,255,255,.15)`) reúne o aviso de direitos autorais e "↑ Topo" na mesma linha. O `footer-wordmark` ("AUGUSTO" em escala gigante) saiu da peça nesta corte — grep de prova em `wireframes/lp-final.html`.
 
 ### Rótulos Técnicos e Pílulas (`.meta-label`, `.pill`)
 - **`.meta-label`:** Tipografia `IBM Plex Mono`, tamanho 0.7rem (~11px), peso 500, `letter-spacing: 0.12em`, caixa alta, cor `var(--muted)`. Variante em fundo escuro com cor `var(--surface)`.
