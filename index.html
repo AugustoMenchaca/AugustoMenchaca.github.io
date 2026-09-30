@@ -539,8 +539,10 @@
   .viv-body strong { font-weight: 600; }
   .viv-period { font-weight: 600; color: var(--sun); }
 
-  .viv-photos { grid-column: 1 / -1; display: flex; flex-direction: row; gap: 16px; min-width: 0; margin-top: 8px; }
-  .viv-photo { margin: 0; width: calc(50% - 8px); max-width: 420px; }
+  /* Larguras proporcionais aos originais: 16:9 + 4:3; 4:3 + 1200:676. */
+  .viv-photos { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 3fr); align-items: start; gap: 16px; min-width: 0; margin-top: 8px; }
+  #nip .viv-photos { grid-template-columns: minmax(0, 169fr) minmax(0, 225fr); }
+  .viv-photo { margin: 0; min-width: 0; }
   .viv-photo img { display: block; width: 100%; height: auto; border-radius: 6px; }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
@@ -551,8 +553,10 @@
   @media (max-width: 1199px) {
     .viv-cols { grid-template-columns: 1fr; }
     .viv-photos { margin-top: 4px; }
-    .viv-photo { width: calc(50% - 8px); max-width: none; }
-    .viv-photo img { width: 100%; }
+  }
+
+  @media (max-width: 480px) {
+    #vivencias .viv-photos { grid-template-columns: minmax(0, 1fr); }
   }
 
   /* ABOUT — retrato real e 4 paragrafos, fluido (Corte 7, issue #15) */
@@ -1332,13 +1336,13 @@
       <div class="viv-photos">
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/hut8-equipe-400.webp 400w, assets/img/vivencias/hut8-equipe-800.webp 800w" sizes="(max-width: 899px) 46vw, 420px">
+            <source type="image/webp" srcset="assets/img/vivencias/hut8-equipe-400.webp 400w, assets/img/vivencias/hut8-equipe-800.webp 800w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 860px) calc((100vw - 56px) * 4 / 7), (max-width: 1440px) calc((100vw - 216px) * 4 / 7), calc(1224px * 4 / 7)">
             <img src="assets/img/vivencias/hut8-equipe-800.jpg" width="800" height="450" loading="lazy" decoding="async" alt="Equipe da Hut 8 reunida com a bandeira da empresa júnior, no EGEJ 26">
           </picture>
         </figure>
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/hut8-evento-400.webp 400w, assets/img/vivencias/hut8-evento-800.webp 800w" sizes="(max-width: 899px) 46vw, 420px">
+            <source type="image/webp" srcset="assets/img/vivencias/hut8-evento-400.webp 400w, assets/img/vivencias/hut8-evento-800.webp 800w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 860px) calc((100vw - 56px) * 3 / 7), (max-width: 1440px) calc((100vw - 216px) * 3 / 7), calc(1224px * 3 / 7)">
             <img src="assets/img/vivencias/hut8-evento-800.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Cinco integrantes da Hut 8 com a bandeira da empresa júnior em evento">
           </picture>
         </figure>
@@ -1372,13 +1376,13 @@
       <div class="viv-photos">
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/nip-ufmg-400.webp 400w, assets/img/vivencias/nip-ufmg-800.webp 800w" sizes="(max-width: 899px) 46vw, 420px">
+            <source type="image/webp" srcset="assets/img/vivencias/nip-ufmg-400.webp 400w, assets/img/vivencias/nip-ufmg-800.webp 800w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 860px) calc((100vw - 56px) * 169 / 394), (max-width: 1440px) calc((100vw - 216px) * 169 / 394), calc(1224px * 169 / 394)">
             <img src="assets/img/vivencias/nip-ufmg-800.jpg" width="800" height="600" loading="lazy" decoding="async" alt="Equipe do NIP em frente à Escola de Engenharia da UFMG, com a faixa do projeto de previsão">
           </picture>
         </figure>
         <figure class="viv-photo">
           <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/nip-conabreh-inteira-400.webp 400w, assets/img/vivencias/nip-conabreh-inteira-800.webp 800w, assets/img/vivencias/nip-conabreh-inteira-1200.webp 1200w" sizes="(max-width: 899px) 46vw, 420px">
+            <source type="image/webp" srcset="assets/img/vivencias/nip-conabreh-inteira-400.webp 400w, assets/img/vivencias/nip-conabreh-inteira-800.webp 800w, assets/img/vivencias/nip-conabreh-inteira-1200.webp 1200w" sizes="(max-width: 480px) calc(100vw - 40px), (max-width: 860px) calc((100vw - 56px) * 225 / 394), (max-width: 1440px) calc((100vw - 216px) * 225 / 394), calc(1224px * 225 / 394)">
             <img src="assets/img/vivencias/nip-conabreh-inteira-1200.jpg" width="1200" height="676" loading="lazy" decoding="async" alt="Augusto e Samuel diante do pôster do IDF-BR no II CONABREH, na UFPel">
           </picture>
         </figure>
