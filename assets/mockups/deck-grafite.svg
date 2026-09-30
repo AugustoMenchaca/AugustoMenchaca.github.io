@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780">
+<defs>
+<linearGradient id="chassis-vert" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#2d3036"/>
+  <stop offset="100%" stop-color="#1b1d21"/>
+</linearGradient>
+<linearGradient id="trackpadGrad" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#2a2d33"/>
+  <stop offset="100%" stop-color="#22252a"/>
+</linearGradient>
+<filter id="noise">
+  <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise"/>
+  <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.04 0" in="noise" result="coloredNoise"/>
+  <feComposite operator="over" in="coloredNoise" in2="SourceGraphic"/>
+</filter>
+<filter id="inset-shadow">
+  <feOffset dx="0" dy="0"/>
+  <feGaussianBlur stdDeviation="4" result="offset-blur"/>
+  <feComposite operator="out" in="SourceGraphic" in2="offset-blur" result="inverse"/>
+  <feFlood flood-color="black" flood-opacity="0.3" result="color"/>
+  <feComposite operator="in" in="color" in2="inverse" result="shadow"/>
+  <feComposite operator="over" in="shadow" in2="SourceGraphic"/>
+</filter>
+<pattern id="hp" x="0" y="0" width="4" height="4" patternUnits="userSpaceOnUse">
+  <circle cx="2" cy="2" r="0.8" fill="#121315"/>
+</pattern>
+
+<g id="kf">
+  <rect width="60" height="32" rx="4" fill="#0f1012"/>
+  <rect width="58" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+<g id="k">
+  <rect width="60" height="50" rx="4" fill="#0f1012"/>
+  <rect width="58" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+<g id="k15">
+  <rect width="94" height="50" rx="4" fill="#0f1012"/>
+  <rect width="92" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+<g id="k175">
+  <rect width="111" height="50" rx="4" fill="#0f1012"/>
+  <rect width="109" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+<g id="k225">
+  <rect width="145" height="50" rx="4" fill="#0f1012"/>
+  <rect width="143" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+<g id="ksp">
+  <rect width="372" height="50" rx="4" fill="#0f1012"/>
+  <rect width="370" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+<g id="kh">
+  <rect width="60" height="22" rx="4" fill="#0f1012"/>
+  <rect width="58" height="1" x="1" y="1" fill="#ffffff" fill-opacity="0.10" rx="0.5"/>
+</g>
+</defs>
+
+<rect x="0" y="0" width="1200" height="780" rx="14" fill="url(#chassis-vert)" stroke="#3a3e45" stroke-width="2" filter="url(#noise)"/>
+<rect x="0" y="0" width="1200" height="780" rx="14" fill="none" filter="url(#inset-shadow)" pointer-events="none"/>
+
+<rect x="36" y="122" width="32" height="264" fill="url(#hp)"/>
+<rect x="1132" y="122" width="32" height="264" fill="url(#hp)"/>
+
+<use href="#kf" x="93" y="122"/>
+<use href="#kf" x="161" y="122"/>
+<use href="#kf" x="229" y="122"/>
+<use href="#kf" x="297" y="122"/>
+<use href="#kf" x="365" y="122"/>
+<use href="#kf" x="433" y="122"/>
+<use href="#kf" x="501" y="122"/>
+<use href="#kf" x="569" y="122"/>
+<use href="#kf" x="637" y="122"/>
+<use href="#kf" x="705" y="122"/>
+<use href="#kf" x="773" y="122"/>
+<use href="#kf" x="841" y="122"/>
+<use href="#kf" x="909" y="122"/>
+<use href="#kf" x="977" y="122"/>
+<use href="#kf" x="1045" y="122"/>
+
+<use href="#k15" x="93" y="162"/>
+<use href="#k" x="195" y="162"/>
+<use href="#k" x="263" y="162"/>
+<use href="#k" x="331" y="162"/>
+<use href="#k" x="399" y="162"/>
+<use href="#k" x="467" y="162"/>
+<use href="#k" x="535" y="162"/>
+<use href="#k" x="603" y="162"/>
+<use href="#k" x="671" y="162"/>
+<use href="#k" x="739" y="162"/>
+<use href="#k" x="807" y="162"/>
+<use href="#k" x="875" y="162"/>
+<use href="#k" x="943" y="162"/>
+<use href="#k15" x="1011" y="162"/>
+
+<use href="#k175" x="93" y="220"/>
+<use href="#k" x="212" y="220"/>
+<use href="#k" x="280" y="220"/>
+<use href="#k" x="348" y="220"/>
+<use href="#k" x="416" y="220"/>
+<use href="#k" x="484" y="220"/>
+<use href="#k" x="552" y="220"/>
+<use href="#k" x="620" y="220"/>
+<use href="#k" x="688" y="220"/>
+<use href="#k" x="756" y="220"/>
+<use href="#k" x="824" y="220"/>
+<use href="#k" x="892" y="220"/>
+<use href="#k225" x="960" y="220"/>
+
+<use href="#k225" x="93" y="278"/>
+<use href="#k" x="246" y="278"/>
+<use href="#k" x="314" y="278"/>
+<use href="#k" x="382" y="278"/>
+<use href="#k" x="450" y="278"/>
+<use href="#k" x="518" y="278"/>
+<use href="#k" x="586" y="278"/>
+<use href="#k" x="654" y="278"/>
+<use href="#k" x="722" y="278"/>
+<use href="#k" x="790" y="278"/>
+<use href="#k" x="858" y="278"/>
+<use href="#k" x="926" y="278"/>
+<use href="#k175" x="994" y="278"/>
+
+<use href="#k15" x="93" y="336"/>
+<use href="#k" x="195" y="336"/>
+<use href="#k15" x="263" y="336"/>
+<use href="#ksp" x="365" y="336"/>
+<use href="#k15" x="745" y="336"/>
+<use href="#k" x="847" y="336"/>
+<use href="#k" x="915" y="336"/>
+<use href="#kh" x="983" y="336"/>
+<use href="#kh" x="983" y="364"/>
+<use href="#k" x="1051" y="336"/>
+
+<circle cx="600" cy="330" r="5" fill="#b3202a"/>
+
+<rect x="380" y="540" width="440" height="200" rx="8" fill="url(#trackpadGrad)" stroke="#3a3e45" stroke-width="1"/>
+
+<rect x="1060" y="520" width="40" height="40" rx="6" fill="#16181b"/>
+
+</svg>

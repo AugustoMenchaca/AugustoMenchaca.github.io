@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex"><title>Notebooks — oito variantes da issue #85</title>
+<style>
+* { box-sizing: border-box; }
+:root { --ink: #111; }
+body { margin: 0; padding: 36px; background: #f5f2ec; color: #111; font: 16px/1.5 system-ui, sans-serif; }
+h1 { margin: 0 0 8px; font-size: 28px; }
+p { margin: 0 0 32px; }
+main { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px 20px; }
+.variant { margin: 0; min-width: 0; }
+figcaption { font-weight: 600; padding-bottom: 12px; }
+.laptop3d img { display: block; }
+/* Reprodução do componente em index.html; manter as duas cópias sincronizadas. */
+  /* #85: notebook aberto; perspectiva fora do conjunto preserve-3d. */
+  .laptop3d {
+    position: relative; width: 100%; max-width: 100%; aspect-ratio: 1.1;
+    container-type: inline-size; perspective: 2200px;
+    --camera-x: 14deg; --camera-y: -22deg; --assembly-left: 20%;
+    --lid-angle: -12deg; --deck-angle: 60deg; --bezel: 1.4cqw; --chin: 1.4cqw;
+    --lid-radius: 1.8cqw; --lid-depth: -.5cqw; --deck-top: 48.55cqw;
+    --frame-color: #1f2022; --edge-color: #c9cbd0; --reflection-angle: 125deg;
+    --deck-image: url("../../assets/mockups/deck.svg");
+    filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .35));
+  }
+  .laptop3d-assembly {
+    position: absolute; left: var(--assembly-left); top: 5%; width: 76%; height: 54%;
+    transform-style: preserve-3d; transform-origin: center bottom;
+    transform: rotateX(var(--camera-x)) rotateY(var(--camera-y));
+  }
+  .laptop3d-lid {
+    position: relative; width: 100%; padding: var(--bezel) var(--bezel) var(--chin);
+    border-radius: var(--lid-radius); background: var(--frame-color);
+    transform-style: preserve-3d; transform: rotateX(var(--lid-angle));
+    transform-origin: center bottom;
+  }
+  .laptop3d-lid::before {
+    content: ""; position: absolute; inset: -.3cqw; border-radius: calc(var(--lid-radius) + .2cqw);
+    background: linear-gradient(90deg, #3a3b3f, #2a2b2e);
+    transform: translateZ(var(--lid-depth));
+  }
+  .laptop3d-lid::after {
+    content: ""; position: absolute; inset: 0 0 auto; height: .4cqw;
+    background: linear-gradient(#3a3b3f, #2a2b2e); border-radius: var(--lid-radius) var(--lid-radius) 0 0;
+    transform: rotateX(90deg); transform-origin: center top;
+  }
+  .laptop3d-screen { position: relative; aspect-ratio: 1.6; background: var(--ink); }
+  .laptop3d-screen picture { display: block; width: 100%; height: 100%; }
+  .laptop3d-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .laptop3d-screen::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(var(--reflection-angle), rgba(255, 255, 255, .06) 0 35%, transparent 35%),
+      radial-gradient(ellipse at center, transparent 65%, rgba(0, 0, 0, .08));
+  }
+  .laptop3d-camera {
+    position: absolute; left: 46%; top: 0; width: 8%; height: 1.8cqw;
+    border-radius: 0 0 .5cqw .5cqw; background: #1f2022;
+  }
+  .laptop3d-camera::after {
+    content: ""; position: absolute; left: 45%; top: 30%; width: .35cqw;
+    aspect-ratio: 1; border-radius: 50%; background: #3a3b3f;
+  }
+  .laptop3d-deck {
+    position: absolute; left: 0; top: var(--deck-top); width: 100%; aspect-ratio: 1200 / 780;
+    background: var(--deck-image) center / 100% 100% no-repeat;
+    border-radius: var(--lid-radius); transform: rotateX(var(--deck-angle)); transform-origin: center top;
+    transform-style: preserve-3d;
+  }
+  .laptop3d-deck::after {
+    content: ""; position: absolute; inset: auto 0 0; height: .6cqw;
+    border-radius: 0 0 var(--lid-radius) var(--lid-radius); background: var(--edge-color);
+    transform: rotateX(-90deg); transform-origin: center bottom;
+  }
+  .laptop3d--tres-quartos-dir { --camera-x: 14deg; --camera-y: -22deg; }
+  .laptop3d--tres-quartos-esq {
+    --camera-x: 14deg; --camera-y: 22deg; --assembly-left: 4%; --reflection-angle: 235deg;
+  }
+  .laptop3d--frontal {
+    --camera-x: 6deg; --camera-y: 0deg; --assembly-left: 12%;
+    --lid-angle: -6deg; --deck-angle: 82deg;
+  }
+  .laptop3d--alto {
+    --camera-x: 32deg; --camera-y: -12deg; --assembly-left: 15%; --deck-angle: 40deg;
+  }
+  .laptop3d--aluminio { --deck-image: url("../../assets/mockups/deck.svg"); }
+  .laptop3d--grafite {
+    --deck-image: url("../../assets/mockups/deck-grafite.svg"); --frame-color: #16181b;
+    --bezel: 1.8cqw; --chin: 3cqw; --lid-radius: .6cqw; --lid-depth: -.9cqw;
+    --deck-top: 50.05cqw; --edge-color: #16181b;
+  }
+  .laptop3d--grafite .laptop3d-camera {
+    left: calc(50% - .225cqw); top: .6cqw; width: .45cqw; height: .45cqw;
+    border-radius: 50%; background: #3a3b3f;
+  }
+  .laptop3d--grafite .laptop3d-camera::after {
+    inset: 25%; width: 50%; background: #111;
+  }
+  .laptop3d--grafite .laptop3d-deck::before {
+    content: ""; position: absolute; left: 7%; top: -.7cqw; width: 86%; height: 1cqw;
+    border-radius: .2cqw; background: linear-gradient(#45484e, #16181b);
+    transform: translateZ(.2cqw);
+  }
+  .laptop3d--frontal .laptop3d-ground { bottom: 31%; transform: none; }
+  .laptop3d--alto .laptop3d-ground { bottom: 10%; }
+  .laptop3d--tres-quartos-esq .laptop3d-ground { transform: rotate(4deg); }
+  .laptop3d-ground {
+    position: absolute; left: 12%; bottom: 20%; width: 76%; height: 7%;
+    border-radius: 50%; background: rgba(0, 0, 0, .25); filter: blur(2cqw);
+    transform: rotate(-4deg);
+  }
+  .phone3d { position: relative; width: 100%; aspect-ratio: 420 / 860; }
+  .phone3d::before {
+    content: ""; position: absolute; left: 6.190476%; top: 3.023256%;
+    width: 87.619048%; height: 93.953488%; border-radius: 13.6% / 6.2%;
+    background: var(--ink);
+  }
+  .phone3d picture {
+    display: block; position: absolute; left: 6.190476%; top: 3.023256%;
+    width: 87.619048%; aspect-ratio: 460 / 995; overflow: hidden;
+    border-radius: 13.6% 13.6% 0 0 / 6.3% 6.3% 0 0;
+  }
+  .phone3d picture img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .phone3d-frame {
+    position: relative; width: 100%; height: auto; pointer-events: none;
+    mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20420%20860%22%3E%3Cdefs%3E%3Cmask%20id%3D%22m%22%3E%3Crect%20width%3D%22420%22%20height%3D%22860%22%20fill%3D%22white%22%2F%3E%3Crect%20x%3D%2226%22%20y%3D%2226%22%20width%3D%22368%22%20height%3D%22808%22%20rx%3D%2250%22%20fill%3D%22black%22%2F%3E%3Crect%20x%3D%22160%22%20y%3D%2244%22%20width%3D%22100%22%20height%3D%2230%22%20rx%3D%2215%22%20fill%3D%22white%22%2F%3E%3C%2Fmask%3E%3C%2Fdefs%3E%3Crect%20width%3D%22420%22%20height%3D%22860%22%20fill%3D%22white%22%20mask%3D%22url%28%23m%29%22%2F%3E%3C%2Fsvg%3E");
+    mask-size: 100% 100%;
+  }
+  @media (max-width: 899px) {
+    .laptop3d { --camera-x: 8deg; --camera-y: -8deg; }
+    .laptop3d--tres-quartos-esq { --camera-y: 8deg; }
+    .laptop3d--frontal { --camera-x: 0deg; --camera-y: 0deg; --lid-angle: 0deg; }
+    .laptop3d--alto { --camera-x: 12deg; --camera-y: -6deg; --deck-angle: 42deg; }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .idf-screen-future .laptop3d, .ciere-shot-desktop .laptop3d, .ciere-shot-mobile .phone3d {
+      transition: transform var(--motion-base) var(--motion-enter);
+    }
+    .idf-screen-future:hover .laptop3d { transform: translateY(-4px); }
+    .ciere-shot-desktop:hover .laptop3d { transform: translateY(-3px); }
+    .ciere-shot-mobile:hover .phone3d { transform: translateY(-6px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .laptop3d, .phone3d, .ciere-shot-desktop { transform: none !important; }
+  }
+
+
+@media (max-width: 899px) { main { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style></head><body><h1>Notebooks — posições e arquiteturas</h1>
+<p>Mesma captura real do IDF-BR nas oito combinações.</p><main>
+<figure class="variant"><figcaption>Alumínio · Três quartos — direita</figcaption>
+<div class="laptop3d laptop3d--aluminio laptop3d--tres-quartos-dir"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Alumínio · Três quartos — esquerda</figcaption>
+<div class="laptop3d laptop3d--aluminio laptop3d--tres-quartos-esq"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Alumínio · Frontal</figcaption>
+<div class="laptop3d laptop3d--aluminio laptop3d--frontal"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Alumínio · Vista alta</figcaption>
+<div class="laptop3d laptop3d--aluminio laptop3d--alto"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Grafite · Três quartos — direita</figcaption>
+<div class="laptop3d laptop3d--grafite laptop3d--tres-quartos-dir"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Grafite · Três quartos — esquerda</figcaption>
+<div class="laptop3d laptop3d--grafite laptop3d--tres-quartos-esq"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Grafite · Frontal</figcaption>
+<div class="laptop3d laptop3d--grafite laptop3d--frontal"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+<figure class="variant"><figcaption>Grafite · Vista alta</figcaption>
+<div class="laptop3d laptop3d--grafite laptop3d--alto"><div class="laptop3d-ground" aria-hidden="true"></div>
+<div class="laptop3d-assembly"><div class="laptop3d-lid"><div class="laptop3d-screen">
+                <picture>
+          <source type="image/webp" srcset="../../assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="260px">
+          <img src="../../assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
+        </picture>
+              </div>
+<div class="laptop3d-camera" aria-hidden="true"></div></div><div class="laptop3d-deck" aria-hidden="true"></div></div></div></figure>
+</main></body></html>

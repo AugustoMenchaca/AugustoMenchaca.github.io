@@ -443,36 +443,34 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 ### Faixas Estruturais (`.slab`)
 - Seções de sangria total com preenchimento vertical de `clamp(34px, 4.4vw, 60px) 0`, contendo o alinhamento da grade via contêiner central.
 
-### Aparelhos do portfólio — issue #85, rodada 2
+### Aparelhos do portfólio — issue #85, rodada 3
 
-- **Fonte:** cinco capturas reais, textos alternativos e proporções preservados.
-  Não recolorir nem recortar. Desktop usa tela 16:10; o celular preserva 460×995,
-  com a pequena sobra vertical da abertura do SVG preenchida pelo fundo da tela.
-- **Notebook:** componente reutilizável `.laptop3d`, perspectiva de 2200px,
-  conjunto em `rotateX(14deg) rotateY(-22deg)`, tampa em `rotateX(-12deg)`
-  ancorada na dobradiça, bezel proporcional de alumínio escuro `#1f2022`.
-  Base decorativa `assets/mockups/deck.svg` com teclado, trackpad e alto-falantes;
-  arestas em gradiente `#3a3b3f` → `#2a2b2e` e frente em `#c9cbd0`.
-  A base usa 60°: a conferência a 78° ocultava o teclado após a rotação da cena.
-- **Tela:** captura em `<picture>` 16:10, `object-fit: cover` sem diferença de
-  proporção; câmera decorativa e reflexo diagonal branco de 6%, com vinheta leve.
-  Sombra do conjunto em `drop-shadow(0 40px 40px rgba(0,0,0,.35))`, além da
-  sombra de chão contida na cena. Estes efeitos pertencem aos aparelhos.
-- **Celular:** `assets/mockups/phone.svg` aprovado, sem redesenho. A captura fica
-  atrás, na abertura de tela, com dimensões naturais; aparelho é `aria-hidden`.
-  Máscara CSS limpa a abertura do primeiro plano (incluindo a sombra do SVG),
-  preservando moldura e câmera; assim a sombra não escurece a captura.
-- **Composição:** cascata E2 de notebooks sobrepostos no IDF-BR; notebook e
-  celular sobrepostos na Ciere; notebook na coluna existente do DVO. Só os grupos
-  de aparelhos mudam: não alterar grades de texto, títulos ou estrutura de seção.
-- **Responsividade:** cenas fluidas, contêiner máximo de 1240px, medidas de peças
-  em porcentagens e unidades de container. Abaixo de 900px, conjunto em
-  `rotateX(8deg) rotateY(-8deg)` para preservar leitura da tela.
-- **Movimento:** hovers existentes de 4px (IDF futuro), 3px (Ciere notebook) e
-  6px (celular), só por transform; manter timelines aceitas e desativar todo
-  deslocamento com `prefers-reduced-motion`, preservando a geometria estrutural 3D.
-- **Verificação:** nove larguras sem estouro, linhas e alvos da sonda sem violações,
-  página rolada abaixo de 1,2MB, inspeção das seis capturas em 390 e 1440px.
+- **Fonte e composição:** cinco capturas reais, textos alternativos, proporções
+  e posições dos grupos preservados; cascata E2 e sobreposições da rodada 2.
+  Desktop usa tela 16:10 e celular mantém 460×995. Não recortar nem recolorir.
+- **Componente:** `.laptop3d`, perspectiva de 2200px, geometria proporcional em
+  unidades de container. Modificadores de câmera e arquitetura combináveis.
+- **Câmeras:** `--tres-quartos-dir` usa X14°/Y−22°; `--tres-quartos-esq`,
+  X14°/Y22° e reflexo espelhado; `--frontal`, X6°/Y0°, tampa compensada em −6°
+  e base em 82° para mostrar a faixa frontal; `--alto`, X32°/Y−12° e base em
+  40° para expor teclado e trackpad. Os ajustes são internos ao aparelho.
+- **Alumínio:** `deck.svg`, bezel proporcional de 14px, tampa arredondada em
+  18px, câmera com notch, moldura `#1f2022`, arestas `#3a3b3f` → `#2a2b2e`.
+- **Grafite:** `deck-grafite.svg`, bezel de 18px e queixo de 30px, cantos em
+  6px, moldura `#16181b`, tampa mais espessa, câmera pontual sem notch e
+  dobradiça aparente. As medidas nominais escalam com o container de 1000px.
+- **Aplicação:** IDF principal alumínio/direita; futuro grafite/esquerda;
+  DVO alumínio/frontal; Ciere grafite/alto. O celular aprovado fica como está.
+- **Tela e sombra:** reflexo branco de 6% e vinheta suave, sem alterar o asset;
+  sombra `drop-shadow(0 40px 40px rgba(0,0,0,.35))` e sombra de chão contida.
+- **Responsividade:** abaixo de 900px, X8°/Y±8° nos três quartos, X12°/Y−6°
+  na vista alta e frontal reto (X0°/Y0°), inclusive a tampa frontal.
+- **Movimento:** hovers aprovados só por transform; timelines preservadas;
+  `prefers-reduced-motion` elimina deslocamentos e mantém a geometria estática.
+- **Referência:** `docs/design/mockups-variantes.html` compara oito combinações
+  com a mesma captura. CSS do componente reproduzido da LP para inspeção.
+- **Verificação:** nove larguras sem estouro, sonda sem violações, página rolada
+  abaixo de 1,2MB, seis capturas em 390/1440px e referência em 1440px.
 
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
