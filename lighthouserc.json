@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "url": [
-        "http://127.0.0.1:8777/wireframes/lp-final.html"
+        "http://127.0.0.1:8777/"
       ],
       "numberOfRuns": 3,
       "settings": {
