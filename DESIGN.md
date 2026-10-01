@@ -472,6 +472,30 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 - **Verificação:** nove larguras sem estouro, sonda sem violações, página rolada
   abaixo de 1,2MB, seis capturas em 390/1440px e referência em 1440px.
 
+### Aparelhos Apple do Figma — issue #85, rodada 4
+
+- **Origem:** exportações fornecidas pelo Augusto dos arquivos Figma Community
+  "Device Mockups (Community)" e "Apple Device Mockups – iPhone, Mac, iPad,
+  Apple Watch (Community)". **A licença precisa ser conferida pelo Augusto antes
+  de publicar.** Esta rodada prepara o PR para develop; não autoriza publicação.
+- **Assets:** `assets/mockups/apple/{air13,pro14,pro16,imac24}.webp`, copiados
+  integralmente, com tela transparente. O Air contém "MacBook Air" no queixo.
+  Não usar `imac27`, que não integra os arquivos desta rodada.
+- **Arquiteturas:** `--apple-air`, `--apple-pro14`, `--apple-pro16`, `--apple-imac`.
+  Imagem decorativa sobre a captura, ambas no mesmo conjunto com perspectiva
+  de 2200px. Frontal em Y0°; três quartos em Y±20°, reduzidos para ±8° abaixo
+  de 900px. Sombra de chão contida, sem mudar composição ou aparelhos restantes.
+- **Aberturas (% left/top/width/height):** Air 12.835/8.696/74.227/78.261;
+  Pro 14 11.663/11.7/76.673/76.599; Pro 16 10.184/10.979/79.631/78.112;
+  iMac 2.941/3.96/94.118/62.376. Capturas originais atrás da abertura, com
+  `object-fit: cover` e `object-position: top left`, sem recolorir o arquivo.
+  A diferença de proporção limita a faixa direita dos Pro (~3–4%) e a faixa
+  inferior do iMac (~10%); conferir conteúdo importante e bordas nas capturas.
+- **Aplicação:** DVO Pro 14 frontal; clima futuro Air à esquerda. Principal do
+  IDF, Ciere grafite e celular continuam iguais. Hovers e reduced-motion iguais.
+- **Referência:** oito combinações Apple (quatro frontais e quatro três quartos)
+  junto das oito da rodada 3, fora do alvo publicado dos checks.
+
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
 - **Duração Base:** **0,3s** (`--motion-base`) como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).

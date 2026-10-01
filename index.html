@@ -345,6 +345,31 @@
     border-radius: 50%; background: rgba(0, 0, 0, .25); filter: blur(2cqw);
     transform: rotate(-4deg);
   }
+  /* #85: imagem Apple transparente sobre a captura, no mesmo plano. */
+  .laptop3d--apple-air { --screen-left: 12.835%; --screen-top: 8.696%; --screen-width: 74.227%; --screen-height: 78.261%; }
+  .laptop3d--apple-pro14 { --screen-left: 11.663%; --screen-top: 11.7%; --screen-width: 76.673%; --screen-height: 76.599%; }
+  .laptop3d--apple-pro16 { --screen-left: 10.184%; --screen-top: 10.979%; --screen-width: 79.631%; --screen-height: 78.112%; }
+  .laptop3d--apple-imac { --screen-left: 2.941%; --screen-top: 3.96%; --screen-width: 94.118%; --screen-height: 62.376%; }
+  .laptop3d--tres-quartos-dir { --apple-y: -20deg; }
+  .laptop3d--tres-quartos-esq { --apple-y: 20deg; }
+  .laptop3d-apple {
+    position: absolute; left: 0; top: 5%; width: 100%;
+    transform: rotateY(var(--apple-y, 0deg)); transform-origin: center;
+  }
+  .laptop3d-apple picture {
+    display: block; position: absolute; left: var(--screen-left); top: var(--screen-top);
+    width: var(--screen-width); height: var(--screen-height); overflow: hidden;
+  }
+  .laptop3d-apple picture img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+  .laptop3d-apple-frame { display: block; position: relative; width: 100%; height: auto; pointer-events: none; }
+  .laptop3d:where(:has(.laptop3d-apple)) .laptop3d-ground { bottom: 23%; transform: none; }
+  .laptop3d--apple-air .laptop3d-ground { bottom: 28%; }
+  .laptop3d--apple-imac .laptop3d-ground { bottom: 1%; }
+  @media (max-width: 899px) {
+    .laptop3d--tres-quartos-dir { --apple-y: -8deg; }
+    .laptop3d--tres-quartos-esq { --apple-y: 8deg; }
+  }
+
   .phone3d { position: relative; width: 100%; aspect-ratio: 420 / 860; }
   .phone3d::before {
     content: ""; position: absolute; left: 6.190476%; top: 3.023256%;
@@ -1251,19 +1276,13 @@
         </div>
       </figure>
       <figure class="real-shot idf-screen-future">
-        <div class="laptop3d laptop3d--grafite laptop3d--tres-quartos-esq">
+        <div class="laptop3d laptop3d--apple-air laptop3d--tres-quartos-esq">
           <div class="laptop3d-ground" aria-hidden="true"></div>
-          <div class="laptop3d-assembly">
-            <div class="laptop3d-lid">
-              <div class="laptop3d-screen">
-                <picture>
+          <div class="laptop3d-apple"><picture>
           <source type="image/webp" srcset="assets/img/idf-br-futuro-600.webp 600w, assets/img/idf-br-futuro-1200.webp 1200w" sizes="(max-width: 767px) 51vw, (max-width: 1439px) 45vw, 590px">
           <img src="assets/img/idf-br-futuro-1200.png" width="1200" height="750" loading="lazy" decoding="async" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados">
         </picture>
-              </div>
-              <div class="laptop3d-camera" aria-hidden="true"></div>
-            </div>
-            <div class="laptop3d-deck" aria-hidden="true"></div>
+            <img class="laptop3d-apple-frame" src="assets/mockups/apple/air13.webp" width="1940" height="1150" loading="lazy" decoding="async" alt="" aria-hidden="true">
           </div>
         </div>
       </figure>
@@ -1299,19 +1318,13 @@
 
       <div class="dvo-aside">
         <figure class="real-shot dvo-shot">
-        <div class="laptop3d laptop3d--aluminio laptop3d--frontal">
+        <div class="laptop3d laptop3d--apple-pro14 laptop3d--frontal">
           <div class="laptop3d-ground" aria-hidden="true"></div>
-          <div class="laptop3d-assembly">
-            <div class="laptop3d-lid">
-              <div class="laptop3d-screen">
-                <picture>
+          <div class="laptop3d-apple"><picture>
             <source type="image/webp" srcset="assets/img/dvo-480.webp 480w, assets/img/dvo-760.webp 760w, assets/img/dvo-1440.webp 1440w" sizes="(max-width: 767px) 70vw, (max-width: 900px) 60vw, (max-width: 1439px) 40vw, 570px">
             <img src="assets/img/dvo-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica">
           </picture>
-              </div>
-              <div class="laptop3d-camera" aria-hidden="true"></div>
-            </div>
-            <div class="laptop3d-deck" aria-hidden="true"></div>
+            <img class="laptop3d-apple-frame" src="assets/mockups/apple/pro14.webp" width="1972" height="1282" loading="lazy" decoding="async" alt="" aria-hidden="true">
           </div>
         </div>
       </figure>
