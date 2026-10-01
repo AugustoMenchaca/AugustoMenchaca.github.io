@@ -437,7 +437,7 @@ Os pares têm geometria normalizada e fluida, com margem para rotação e movime
 Hut 8 usa a equipe maior atrás (+3° CSS) e evento menor à frente (−4°), sobre o
 canto inferior direito; NIP usa UFMG maior atrás (−3°) e CONABREH menor à frente
 (+4°), sobre o canto inferior esquerdo. A moldura branca gira junto da imagem.
-As proporções originais são preservadas, inclusive 800/450 e 1200/676; nenhum
+As proporções originais são preservadas, inclusive 800/450 e 1600/901; nenhum
 recorte é aplicado. A escala dos pares contém os limites rotacionados dentro da
 coluna e do contêiner, em vez de copiar coordenadas absolutas do protótipo.
 `sizes` acompanha a largura real não rotacionada de cada imagem.
