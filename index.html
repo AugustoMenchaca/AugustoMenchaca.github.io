@@ -20,7 +20,7 @@
 <title>Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -514,45 +514,92 @@
     .qml-formula-card img { width: 100%; height: auto; }
   }
 
-  /* VIVENCIAS — Hut 8 e NIP, fluido (Corte 6, issue #14) */
-  #vivencias { padding: 120px 100px; background: var(--earth); color: var(--surface); margin-inline: 0; }
+  /* VIVENCIAS — colagem A aprovada (#86), geometria normalizada por par. */
+  #vivencias { padding: 120px clamp(20px, 6.944444vw, 100px); background: var(--earth); color: var(--surface); margin-inline: 0; }
   #vivencias .container { max-width: 1240px; padding-inline: 0; }
 
   .viv-org-name {
-    font-family: var(--f-display); font-weight: 600; font-size: clamp(36px, 4vw, 48px);
-    line-height: 1.1; letter-spacing: -0.01em; color: var(--surface); margin: 0 0 40px;
+    font-family: var(--f-display); font-weight: 600; font-size: 72px;
+    line-height: 1.1; letter-spacing: -0.01em; color: var(--surface); margin: 0 0 32px;
   }
-  .viv-divider { border-top: 1px solid rgba(255,255,255,.18); margin: 64px 0; }
+  .viv-divider { height: 0; margin: 120px 0; }
 
   .viv-cols {
     display: grid;
-    grid-template-columns: minmax(0, .8fr) minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(24px, 3vw, 48px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 80px;
     align-items: start;
   }
-  .viv-col { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+  .viv-text { min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+  #nip .viv-text { grid-column: 2; grid-row: 1; }
+  .viv-col { min-width: 0; display: flex; flex-direction: column; gap: 8px; }
   .viv-label {
-    display: block; font-family: var(--f-body); font-size: 0.875rem; font-weight: 600;
+    display: block; font-family: var(--f-body); font-size: 14px; font-weight: 600;
     letter-spacing: 0; text-transform: none; color: rgba(255,255,255,.82); line-height: 1.3;
   }
-  .viv-body { font-family: var(--f-body); font-size: 1rem; line-height: 1.6; color: var(--surface); margin: 0; max-width: 65ch; }
+  .viv-body { font-family: var(--f-body); font-size: 16px; line-height: 26px; color: var(--surface); margin: 0; max-width: 65ch; }
   .viv-body strong { font-weight: 600; }
   .viv-period { font-weight: 600; color: var(--sun); }
 
-  .viv-photos { grid-column: 1 / -1; display: flex; flex-direction: row; gap: 16px; min-width: 0; margin-top: 8px; }
-  .viv-photo { margin: 0; width: calc(50% - 8px); max-width: 420px; }
-  .viv-photo img { display: block; width: 100%; height: auto; border-radius: 6px; }
+  /* Bases 620x430 / 580x490: incluem rotação, entrada +12px e hover -4px.
+     Percentuais preservam os cantos de sobreposição; imagens mantêm ratio nativo. */
+  .viv-photos {
+    position: relative; container-type: inline-size; min-width: 0;
+    width: 100%; max-width: 620px; aspect-ratio: 620 / 430; margin-top: 80px;
+    --photo-frame: 2.258065cqw;
+  }
+  #nip .viv-photos {
+    grid-column: 1; grid-row: 1; max-width: 580px; aspect-ratio: 580 / 490;
+    --photo-frame: 2.413793cqw;
+  }
+  .viv-photo { position: absolute; margin: 0; min-width: 0; }
+  .viv-photo--back { width: 75.483871%; left: 3.225806%; top: 5.581395%; --photo-angle: 3deg; }
+  .viv-photo--front { width: 36.774194%; left: 60.806452%; top: 53.488372%; z-index: 1; --photo-angle: -4deg; }
+  #nip .viv-photo--back { width: 77.241379%; left: 16.896552%; top: 9.795918%; --photo-angle: -3deg; }
+  #nip .viv-photo--front { width: 46.206897%; left: 3.965517%; top: 57.142857%; --photo-angle: 4deg; }
+  .viv-photo-motion { opacity: 1; transform: none; translate: none; }
+  .viv-photo-card { padding: var(--photo-frame); background: var(--surface); transform: rotate(var(--photo-angle)); transform-origin: top left; }
+  .viv-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+  #hut8 .viv-photo--back img { aspect-ratio: 16 / 9; }
+  #nip .viv-photo--front img { aspect-ratio: 1600 / 901; }
+
+  @keyframes viv-photo-entry {
+    from { transform: translateY(12px); }
+    to { transform: translateY(0); }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .viv-photo-motion {
+        animation: viv-photo-entry 1s linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 60%;
+      }
+      .viv-photo--front .viv-photo-motion { animation-range: entry 8% entry 68%; }
+    }
+  }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .viv-photo img { transition: transform var(--motion-base) var(--motion-enter); }
-    .viv-photo img:hover { transform: translateY(-4px); }
+    .viv-photo-motion { transition: translate var(--motion-base) var(--motion-enter); }
+    .viv-photo-motion:hover { translate: 0 -4px; }
   }
 
   @media (max-width: 1199px) {
     .viv-cols { grid-template-columns: 1fr; }
-    .viv-photos { margin-top: 4px; }
-    .viv-photo { width: calc(50% - 8px); max-width: none; }
-    .viv-photo img { width: 100%; }
+    #nip .viv-text, #nip .viv-photos { grid-column: auto; grid-row: auto; }
+    .viv-cols { gap: 48px; }
+    .viv-photos { margin-top: 0; justify-self: center; }
+  }
+
+  @media (max-width: 600px) {
+    .viv-org-name { font-size: 40px; margin-bottom: 20px; }
+    .viv-text { gap: 24px; }
+    .viv-photos { max-width: 370px; aspect-ratio: 370 / 285; --photo-frame: 2.702703cqw; }
+    .viv-photo--back { width: 72.972973%; left: 4.864865%; top: 7.017544%; }
+    .viv-photo--front { width: 35.135135%; left: 62.162162%; top: 53.684211%; }
+    #nip .viv-photos { max-width: 350px; aspect-ratio: 350 / 290; --photo-frame: 2.857143cqw; }
+    #nip .viv-photo--back { width: 68.571429%; left: 12.857143%; top: 10.344828%; }
+    #nip .viv-photo--front { width: 42.857143%; left: 5.142857%; top: 56.551724%; }
   }
 
   /* ABOUT — retrato real e 4 paragrafos, fluido (Corte 7, issue #15) */
@@ -731,6 +778,7 @@
         .btn-b3b, .btn-b3b__circulo, .btn-b3b__rotulo, .btn-b3b__seta,
         .idf-screen-future, .ciere-shot-mobile,
         .qml-formula-card, .qml-formula-op,
+        .viv-photo-motion,
         details.motion-details > summary,
         details.motion-details[open] > .motion-details-body) {
       transform: none !important;
@@ -1311,6 +1359,7 @@
   <div id="hut8">
     <h3 class="viv-org-name">Hut 8</h3>
     <div class="viv-cols">
+      <div class="viv-text">
       <div class="viv-col">
         <span class="i18n viv-label" lang="pt">Período, instituição e papel</span>
 <span class="i18n viv-label" lang="en">Period, institution and role</span>
@@ -1329,18 +1378,27 @@
         <p class="i18n viv-body" lang="pt">Cuido do caminho inteiro de um projeto: entrada do cliente, requisitos, escopo e preço, formação dos squads, coordenação entre design e desenvolvimento, QA, infraestrutura e entrega.</p>
 <p class="i18n viv-body" lang="en">I oversee the entire path of a project: client intake, requirements, scope and pricing, squad formation, coordination between design and development, QA, infrastructure, and delivery.</p>
       </div>
+      </div>
       <div class="viv-photos">
-        <figure class="viv-photo">
-          <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/hut8-equipe-400.webp 400w, assets/img/vivencias/hut8-equipe-800.webp 800w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px">
-            <img src="assets/img/vivencias/hut8-equipe-800.jpg" srcset="assets/img/vivencias/hut8-equipe-400.jpg 400w, assets/img/vivencias/hut8-equipe-800.jpg 800w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px" width="800" height="450" loading="lazy" decoding="async" alt="Equipe da Hut 8 reunida com a bandeira da empresa júnior, no EGEJ 26">
+        <figure class="viv-photo viv-photo--back">
+          <div class="viv-photo-motion">
+            <div class="viv-photo-card">
+              <picture>
+            <source type="image/webp" srcset="assets/img/vivencias/hut8-equipe-400.webp 400w, assets/img/vivencias/hut8-equipe-800.webp 800w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 25 / 37), 250px), (max-width: 1199px) min(calc((100vw - 40px) * 22 / 31), 440px), (max-width: 1440px) calc((86.111112vw - 80px) * 11 / 31), calc(580px * 22 / 31)">
+            <img src="assets/img/vivencias/hut8-equipe-800.jpg" srcset="assets/img/vivencias/hut8-equipe-400.jpg 400w, assets/img/vivencias/hut8-equipe-800.jpg 800w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 25 / 37), 250px), (max-width: 1199px) min(calc((100vw - 40px) * 22 / 31), 440px), (max-width: 1440px) calc((86.111112vw - 80px) * 11 / 31), calc(580px * 22 / 31)" width="800" height="450" loading="lazy" decoding="async" alt="Equipe da Hut 8 reunida com a bandeira da empresa júnior, no EGEJ 26">
           </picture>
+            </div>
+          </div>
         </figure>
-        <figure class="viv-photo">
-          <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/hut8-evento-400.webp 400w, assets/img/vivencias/hut8-evento-800.webp 800w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px">
-            <img src="assets/img/vivencias/hut8-evento-800.jpg" srcset="assets/img/vivencias/hut8-evento-400.jpg 400w, assets/img/vivencias/hut8-evento-800.jpg 800w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px" width="800" height="600" loading="lazy" decoding="async" alt="Cinco integrantes da Hut 8 com a bandeira da empresa júnior em evento">
+        <figure class="viv-photo viv-photo--front">
+          <div class="viv-photo-motion">
+            <div class="viv-photo-card">
+              <picture>
+            <source type="image/webp" srcset="assets/img/vivencias/hut8-evento-400.webp 400w, assets/img/vivencias/hut8-evento-800.webp 800w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 11 / 37), 110px), (max-width: 1199px) min(calc((100vw - 40px) * 10 / 31), 200px), (max-width: 1440px) calc((86.111112vw - 80px) * 5 / 31), calc(580px * 10 / 31)">
+            <img src="assets/img/vivencias/hut8-evento-800.jpg" srcset="assets/img/vivencias/hut8-evento-400.jpg 400w, assets/img/vivencias/hut8-evento-800.jpg 800w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 11 / 37), 110px), (max-width: 1199px) min(calc((100vw - 40px) * 10 / 31), 200px), (max-width: 1440px) calc((86.111112vw - 80px) * 5 / 31), calc(580px * 10 / 31)" width="800" height="600" loading="lazy" decoding="async" alt="Cinco integrantes da Hut 8 com a bandeira da empresa júnior em evento">
           </picture>
+            </div>
+          </div>
         </figure>
       </div>
     </div>
@@ -1351,6 +1409,7 @@
   <div id="nip">
     <h3 class="viv-org-name">NIP</h3>
     <div class="viv-cols">
+      <div class="viv-text">
       <div class="viv-col">
         <span class="i18n viv-label" lang="pt">Período, instituição e papel</span>
 <span class="i18n viv-label" lang="en">Period, institution and role</span>
@@ -1369,18 +1428,27 @@
         <p class="i18n viv-body" lang="pt">Em jan/2026, a escola de verão HydroUAI, na UFMG. Depois dela, a passagem para experimentação em machine learning e escrita acadêmica. Em set/2026, o IDF-BR foi apresentado em pôster no II CONABREH, na UFPel, em coautoria. <strong>A pesquisa segue em andamento.</strong></p>
 <p class="i18n viv-body" lang="en">In Jan 2026, the HydroUAI summer school at UFMG. After that, the transition to experimentation in machine learning and academic writing. In Sep 2026, IDF-BR was presented as a co-authored poster at II CONABREH, at UFPel. <strong>The research is ongoing.</strong></p>
       </div>
+      </div>
       <div class="viv-photos">
-        <figure class="viv-photo">
-          <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/nip-ufmg-400.webp 400w, assets/img/vivencias/nip-ufmg-800.webp 800w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px">
-            <img src="assets/img/vivencias/nip-ufmg-800.jpg" srcset="assets/img/vivencias/nip-ufmg-400.jpg 400w, assets/img/vivencias/nip-ufmg-800.jpg 800w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px" width="800" height="600" loading="lazy" decoding="async" alt="Equipe do NIP em frente à Escola de Engenharia da UFMG, com a faixa do projeto de previsão">
+        <figure class="viv-photo viv-photo--back">
+          <div class="viv-photo-motion">
+            <div class="viv-photo-card">
+              <picture>
+            <source type="image/webp" srcset="assets/img/vivencias/nip-ufmg-400.webp 400w, assets/img/vivencias/nip-ufmg-800.webp 800w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 22 / 35), 220px), (max-width: 1199px) min(calc((100vw - 40px) * 21 / 29), 420px), (max-width: 1440px) calc((86.111112vw - 80px) * 21 / 58), 420px">
+            <img src="assets/img/vivencias/nip-ufmg-800.jpg" srcset="assets/img/vivencias/nip-ufmg-400.jpg 400w, assets/img/vivencias/nip-ufmg-800.jpg 800w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 22 / 35), 220px), (max-width: 1199px) min(calc((100vw - 40px) * 21 / 29), 420px), (max-width: 1440px) calc((86.111112vw - 80px) * 21 / 58), 420px" width="800" height="600" loading="lazy" decoding="async" alt="Equipe do NIP em frente à Escola de Engenharia da UFMG, com a faixa do projeto de previsão">
           </picture>
+            </div>
+          </div>
         </figure>
-        <figure class="viv-photo">
-          <picture>
-            <source type="image/webp" srcset="assets/img/vivencias/nip-conabreh-inteira-400.webp 400w, assets/img/vivencias/nip-conabreh-inteira-800.webp 800w, assets/img/vivencias/nip-conabreh-inteira-1200.webp 1200w, assets/img/vivencias/nip-conabreh-inteira-1600.webp 1600w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px">
-            <img src="assets/img/vivencias/nip-conabreh-inteira-1600.jpg" srcset="assets/img/vivencias/nip-conabreh-inteira-400.jpg 400w, assets/img/vivencias/nip-conabreh-inteira-800.jpg 800w, assets/img/vivencias/nip-conabreh-inteira-1200.jpg 1200w, assets/img/vivencias/nip-conabreh-inteira-1600.jpg 1600w" sizes="auto, (max-width: 860px) calc(50vw - 28px), (max-width: 1199px) calc(50vw - 108px), 420px" width="1600" height="901" loading="lazy" decoding="async" alt="Augusto e Samuel diante do pôster do IDF-BR no II CONABREH, na UFPel">
+        <figure class="viv-photo viv-photo--front">
+          <div class="viv-photo-motion">
+            <div class="viv-photo-card">
+              <picture>
+            <source type="image/webp" srcset="assets/img/vivencias/nip-conabreh-inteira-400.webp 400w, assets/img/vivencias/nip-conabreh-inteira-800.webp 800w, assets/img/vivencias/nip-conabreh-inteira-1200.webp 1200w, assets/img/vivencias/nip-conabreh-inteira-1600.webp 1600w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 13 / 35), 130px), (max-width: 1199px) min(calc((100vw - 40px) * 12 / 29), 240px), (max-width: 1440px) calc((86.111112vw - 80px) * 6 / 29), 240px">
+            <img src="assets/img/vivencias/nip-conabreh-inteira-1600.jpg" srcset="assets/img/vivencias/nip-conabreh-inteira-400.jpg 400w, assets/img/vivencias/nip-conabreh-inteira-800.jpg 800w, assets/img/vivencias/nip-conabreh-inteira-1200.jpg 1200w, assets/img/vivencias/nip-conabreh-inteira-1600.jpg 1600w" sizes="auto, (max-width: 600px) min(calc((100vw - 40px) * 13 / 35), 130px), (max-width: 1199px) min(calc((100vw - 40px) * 12 / 29), 240px), (max-width: 1440px) calc((86.111112vw - 80px) * 6 / 29), 240px" width="1600" height="901" loading="lazy" decoding="async" alt="Augusto e Samuel diante do pôster do IDF-BR no II CONABREH, na UFPel">
           </picture>
+            </div>
+          </div>
         </figure>
       </div>
     </div>
