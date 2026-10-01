@@ -422,6 +422,26 @@ Círculo magnético que substitui o `.btn` na hero e no contato. Referências ex
 ### Hero (`header#top`) — Corte 1 (issues #8, #68)
 Título em Instrument Sans Bold, curva fluida de 112px (1440px) a 54px (390px), `line-height: 0.9`, `-0.04em`; a segunda palavra ("produto." → "software." → "usuário.") troca só por CSS, ciclo de 7,5s (2,5s por palavra), rodando apenas em `(min-width: 1024px) and (prefers-reduced-motion: no-preference)` — fora disso só a primeira palavra aparece, e o nome acessível do título permanece "Da pesquisa ao produto." (as duas palavras seguintes ficam `aria-hidden`). Apoio em Inter 18px `var(--muted)`. Duas chamadas Botão B3b (`--primario` para `#contact`, `--secundario` para `#idf`). Abaixo, a linha de papéis (NIP, Hut 8, UFPel) substitui os antigos `.hero-cards`/`.hero-card*` (removidos, grep de prova). Em telas com ponteiro fino e hover a partir de 1024px, passar o ponteiro ou o foco em NIP e Hut 8 revela uma prévia da ferramenta real (`idf-br-ferramenta-1440.png` e `dvo-1440.png`), `aria-hidden` e `alt=""` porque as mesmas imagens já aparecem nas seções correspondentes.
 
+### Vivências (`#vivencias`) — colagem A aprovada (issue #86)
+
+Composição A (`196:4` desktop / `196:6` móvel): títulos no mesmo eixo esquerdo,
+Hut 8 com três grupos de texto à esquerda e colagem à direita; NIP com colagem
+à esquerda e texto à direita. Abaixo de 1200px a ordem é título → três grupos
+de texto → colagem nas duas instituições, inclusive em 768/1024px. As quatro
+fotos permanecem na página, sem carrossel. Instrument Sans 600 nos títulos,
+72px no desktop e 40px até 600px; Inter 16px/26px no corpo e 600/14px nos rótulos.
+Fundo `earth`, texto e molduras `surface`, períodos em `sun` e frase final do
+NIP em 600. O contêiner da seção conserva o limite de 1240px nas telas largas.
+
+Os pares têm geometria normalizada e fluida, com margem para rotação e movimento:
+Hut 8 usa a equipe maior atrás (+3° CSS) e evento menor à frente (−4°), sobre o
+canto inferior direito; NIP usa UFMG maior atrás (−3°) e CONABREH menor à frente
+(+4°), sobre o canto inferior esquerdo. A moldura branca gira junto da imagem.
+As proporções originais são preservadas, inclusive 800/450 e 1200/676; nenhum
+recorte é aplicado. A escala dos pares contém os limites rotacionados dentro da
+coluna e do contêiner, em vez de copiar coordenadas absolutas do protótipo.
+`sizes` acompanha a largura real não rotacionada de cada imagem.
+
 ### Contato (`#contact`) — Corte 1 (issues #8, #68)
 Bloco `var(--sun)` de sangria total, título Instrument Sans Bold de 88px (1440px) a 48px (390px), parágrafo Inter de 20px (17px a 390px) com no máximo 640px. Os quatro links usam Botão B3b: E-mail em `--escuro`, e LinkedIn/GitHub/CV em `--secundario --externo`.
 
@@ -457,6 +477,7 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   7. *Seção Ativa na Nav (Corte 9, issue #21):* um `IntersectionObserver` (≤ 25 linhas de JS) marca `aria-current="true"` no link de Trabalhos (IDF-BR a Quantum), Experiência (Vivências) ou Sobre, conforme a seção visível; a cor usa o par `--ink`/`--muted` já existente, na mesma `--motion-nav` (0,18s). Sem JS, a nav continua como está.
   8. *Profundidade nas Telas Sobrepostas (Corte 9, issue #21):* a partir de 900px, a imagem de cima do IDF-BR (a tela do futuro) e da Ciere (o celular) desloca de `translateY(24px)` a `translateY(-24px)` enquanto a composição atravessa a tela, via `animation-timeline: view()` e `animation-range: cover`. A imagem de baixo não se move por essa timeline. O hover já existente nesses dois elementos passou de `transform` para `translate` — propriedade separada — para não brigar com a linha do tempo de rolagem.
   9. *Montagem da Fórmula do Quantum (Corte 9, issue #21):* ao entrar na tela (`animation-timeline: view()`, `animation-range: entry 0%–60%` por termo, com ~6% de atraso por termo), cada cartão anima `translateY(16px) → 0` e cada operador (+, =) `scale(0.6) → 1`. Opacidade constante em 1: as figuras são dado e nunca somem. O hover já existente no cartão passou de `transform` para `translate` pelo mesmo motivo do item 8.
+  10. *Entrada das Fotos de Vivências (issue #86):* `.viv-photo > .viv-photo-motion > .viv-photo-card > picture > img` separa posição, movimento e pose. Dentro de `@supports (animation-timeline: view())` e `prefers-reduced-motion: no-preference`, o wrapper anima `translateY(12px → 0)` pela rolagem: atrás em `entry 0%–60%`, à frente em `entry 8%–68%`. A defasagem é 8% de progresso, não 100ms; a duração nominal da animação não representa tempo decorrido em `view()`. Foto e moldura movem juntas, com opacidade constante em 1. Hover apenas com ponteiro fino usa `translate: 0 -4px` no mesmo wrapper, em `--motion-base` (0,3s) / `--motion-enter`, separado do `transform` da timeline. Sem suporte ou sem JS, a pose final estática permanece visível; `reduce` neutraliza animação e translação do wrapper, preservando a rotação estrutural do card. Não há loop, escala flutuante ou movimento do texto.
 - **Acessibilidade (`prefers-reduced-motion: reduce`):** Neutralização total de durações temporais, timelines e translações espaciais. O conteúdo essencial permanece imediatamente visível em seu estado renderizado final, caminhos vetoriais estabelecidos em repouso definitivo e `scroll-behavior: auto`. Veda-se a aplicação genérica de `opacity: 1` indiscriminado ou abertura forçada de painéis colapsados.
 - **Proibições Estruturais:**
   - Veto absoluto a `transition: all`. Todas as propriedades em transição devem ser declaradas nominalmente.
