@@ -496,6 +496,40 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 - **Referência:** oito combinações Apple (quatro frontais e quatro três quartos)
   junto das oito da rodada 3, fora do alvo publicado dos checks.
 
+### MacBooks abertos e iPhones reais — issue #85, rodada 5
+
+- **Direção:** montagem 3D aberta aprovada com tampa real dos Pro 14/16 e base
+  de alumínio `deck.svg`. Câmera X12°/Y±44°, perspectiva 2200px; as arquiteturas
+  Apple frontais também aceitam Y±44°. Abaixo de 900px, Y±14° e X8°.
+- **Recorte medido:** a base começa na linha 1192 do Pro 14 e 1334 do Pro 16,
+  onde a largura opaca salta para mais de 90% da imagem. As tampas são recortadas
+  em [202,122,1769,1192] e [193,128,1977,1334], preservando transparência e notch.
+  `docs/design/recortar-tampas.py` reproduz os assets; o CSS registra as aberturas.
+- **Composição:** principal do IDF Pro 16 aberto à direita; futuro Pro 14 aberto
+  à esquerda, na cascata E2; DVO mantém Pro 14 frontal. Ciere mantém grafite/alto.
+  Cada seção ganha um iPhone com a captura real correspondente; no DVO, ele
+  sobrepõe a fotografia de oficina e mantém o formulário de login visível.
+- **iPhone:** `iphone13.webp`, exportação real 800×1543. Abertura em
+  8.143/3.111/83.571/93.769% (left/top/width/height). Capturas móveis IDF e DVO
+  fornecidas em 780×1688; candidatos menores preservam proporção e todo o conteúdo.
+  Ciere mantém sua captura 460×995 inteira, sem cortar, com ajuste subpixel na
+  abertura. Câmeras frontal e X6°/Y±32°; abaixo de 900px, X4°/Y±14°.
+- **Peso:** originais Apple preservados; molduras leves e capturas mobile em
+  230/390/780px, com enquadramento completo. `docs/design/prepare-devices.py`
+  reproduz recortes e variantes a partir dos originais, usando Pillow.
+- **Movimento:** hovers aceitos preservados; reduced-motion mantém geometria
+  estrutural estática, sem translações ou animações. Nenhum texto da LP muda.
+- **Vídeo por aparelho:** `.device-screen` mantém a abertura e aceita picture ou
+  vídeo. `data-device-video="assets/videos/projeto.webm"` ativa só aquele slot;
+  a captura existente permanece como pôster/fallback. O arquivo só carrega perto
+  da viewport; reprodução muda para pôster ao sair ou com reduced-motion.
+  Sem vídeo configurado, permanece a captura sem download de mídia adicional.
+- **Licença:** o iPhone 13 também vem de "Apple Device Mockups – iPhone, Mac,
+  iPad, Apple Watch (Community)". Augusto precisa conferir a licença dos aparelhos
+  antes de publicar; esta rodada prepara a mesma branch e o PR para develop.
+- **Referência:** quatro MacBooks abertos (Pro 14/16, esquerda/direita) e três
+  vistas do iPhone junto das dezesseis combinações anteriores.
+
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
 - **Duração Base:** **0,3s** (`--motion-base`) como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).
