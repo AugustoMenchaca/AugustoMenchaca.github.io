@@ -352,9 +352,12 @@
      0 — folga para o rotate()/translate() de entrada de C (mk-entrada.css)
      sem furar a borda do bloco. */
 
-  .idf-screens { width: 39%; aspect-ratio: 1.214; }
-  .idf-screens .mk[data-mk-papel="notebook"] { left: 3.5%; }
-  .idf-screens .mk[data-mk-papel="celular"] { right: 3.5%; }
+  /* #92 r2: 43% (nao 39%) e centralizada na linha — fechava um vazio grande
+     a direita; celular 30% (nao 34%, -12%) deixa a tela do notebook 100% a
+     mostra, so sobrepondo a base/teclado. */
+  .idf-screens { width: 43%; aspect-ratio: 1.305; margin-inline: auto; }
+  .idf-screens .mk[data-mk-papel="notebook"] { left: 3.5%; width: 80%; }
+  .idf-screens .mk[data-mk-papel="celular"] { right: 3.5%; width: 30%; }
 
   @media (max-width: 1199px) {
     .idf-top { grid-template-columns: 1fr; }
@@ -433,9 +436,10 @@
 
   /* Composicao Mokker (issue #90, rodada 2): MacBook (com video) a esquerda,
      iPhone a direita, levemente sobreposto no canto. */
-  .ciere-screens { width: 39%; aspect-ratio: 1.627; }
-  .ciere-screens .mk[data-mk-papel="notebook"] { left: 3.5%; }
-  .ciere-screens .mk[data-mk-papel="celular"] { right: 3.5%; }
+  /* #92 r2: mesma logica do IDF — 43% centralizado, celular 30% (-12%). */
+  .ciere-screens { width: 43%; aspect-ratio: 1.749; margin-inline: auto; }
+  .ciere-screens .mk[data-mk-papel="notebook"] { left: 3.5%; width: 80%; }
+  .ciere-screens .mk[data-mk-papel="celular"] { right: 3.5%; width: 30%; }
 
   .ciere-bottom {
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
