@@ -574,27 +574,47 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   pôster dentro + `.mk__notch` (o mesmo render, só o notch/ilha, por cima do
   vídeo via `clip-path: polygon()`). `aspect-ratio: var(--w) / var(--h))`
   sem CLS.
-- **4 ângulos fixos:** `macbook-esq`, `macbook-dir`, `iphone-esq`,
-  `iphone-dir`, cada um com `matrix3d`, `raio_pct` (em px, fração da largura
-  da captura — **não** `border-radius: N%` puro, que usaria `%` da largura no
-  raio horizontal e `%` da altura no vertical, cortando demais numa tela não
-  quadrada) e `notch_poligono` medidos em `assets/mokker/angulos.json`. Um
-  ângulo novo nunca nasce de transformação CSS de um render existente —
-  sempre de um render novo do Mokker, validado por uma ferramenta própria
-  (fluxo e script entregues à parte).
-- **Composições:** IDF-BR — MacBook esquerdo (ferramenta, com vídeo) e direito
-  (clima futuro) levemente sobrepostos, iPhone esquerdo à frente no canto; DVO
-  — iPhone direito à esquerda, MacBook direito à direita; Ciere — MacBook
-  esquerdo (com vídeo) à esquerda, iPhone esquerdo à direita. Larguras de
-  referência a 1440: MacBook 46–50%, iPhone 17–20%. Abaixo de 900px, empilha:
-  o MacBook principal em 100%, o iPhone sobreposto no canto, e o MacBook
-  secundário do IDF-BR some (só aparece ≥ 900px, `loading="lazy"`).
+- **5 ângulos fixos (issue #92):** `macbook-cima-esq`, `macbook-cima-dir`,
+  `macbook-baixo-esq`, `iphone-frontal`, `iphone-cima-dir` — ângulos retos, de
+  cima, aparelhos brancos — cada um com `matrix3d`, `raio_pct` (em px, fração
+  da largura da captura — **não** `border-radius: N%` puro, que usaria `%` da
+  largura no raio horizontal e `%` da altura no vertical, cortando demais numa
+  tela não quadrada) e `notch_poligono` medidos em `assets/mokker/angulos.json`.
+  Os dois iPhones também trazem `mascara_pct`: um `border-radius` em `%` da
+  própria caixa do `.mk` (não da captura), que fecha o vazamento de pixel nos
+  cantos do PNG do Mokker — distinto do raio da tela. Um ângulo novo nunca
+  nasce de transformação CSS de um render existente — sempre de um render novo
+  do Mokker, validado por uma ferramenta própria (fluxo e script entregues à
+  parte). Os 4 ângulos anteriores (`macbook-esq`/`-dir`, `iphone-esq`/`-dir`)
+  saíram do `angulos.json` e do `index.html` na #92.
+- **Colagem única por seção (issue #92):** cada case passa a ser **um bloco só**
+  (`.mk-colagem`, com `data-mk-colagem`), não mais 2–3 figuras soltas lado a
+  lado. Notebook atrás (`data-mk-papel="notebook"`, 86% da largura do bloco,
+  ancorado num canto) e celular à frente (`data-mk-papel="celular"`, 34%,
+  ancorado no canto oposto, `z-index` acima), sobrepondo ~58% da própria
+  largura do celular sobre a base do notebook. IDF-BR — `macbook-cima-esq`
+  (com vídeo) + `iphone-frontal` à direita; o MacBook secundário do clima
+  futuro saiu. DVO — `macbook-cima-dir` + `iphone-cima-dir` à esquerda. Ciere
+  — `macbook-baixo-esq` (com vídeo) + `iphone-frontal` à direita. O bloco é
+  fluido (`%`, `aspect-ratio`, nunca px do quadro): ≤ 46% do `.container` e
+  ≤ 420px de altura a 1440px: IDF-BR e DVO usam `aspect-ratio: 1.214` (ângulo
+  "cima", mais quadrado), Ciere `1.627` (ângulo "baixo", mais deitado). Abaixo
+  de 900px, o bloco vira 100% da largura útil mantendo a mesma colagem — não
+  empilha mais em figuras separadas.
 - **Vídeo:** só os dois notebooks principais (IDF-BR e Ciere) tocam vídeo —
   o resto não leva `<video>`, porque o render já mostra a tela. `.mk__screen`
   reaproveita a classe `.device-screen` e os mesmos `data-device-video`/
   `-poster`, sem mudar `assets/js/device-media.js` além do `ResizeObserver`.
+- **Entrada e hover (issue #92):** a entrada ao rolar (`device-enter`/
+  `device-enter-pose` da #90, e o parelelismo de profundidade `corte9-
+  profundidade` da #21) saiu junto com as figuras separadas que animava.
+  `assets/css/mk-entrada.css` e `assets/js/mk-entrada.js` assumem a entrada via
+  `[data-mk-colagem]`/`[data-mk-papel]`; o `index.html` só marca os atributos,
+  nunca escreve `transform` nos `.mk`. O hover (`translateY` → `translate`,
+  para não brigar com esse transform) migrou do `.mk` individual para o
+  invólucro `[data-mk-colagem]` inteiro.
 - **Validação:** `docs/design/mokker-validacao.html` (fora do `index.html` e
-  do CI publicado) mostra os 4 ângulos com `?teste=1` trocando o vídeo por uma
+  do CI publicado) mostra os 5 ângulos com `?teste=1` trocando o vídeo por uma
   caixa magenta no mesmo quadrilátero, para medir vazamento e cobertura por
   pixel.
 
@@ -610,10 +630,11 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   5. *Inversão cromática de primeiro plano/fundo (`.footer-top`), em 0s:* a troca simultânea de texto e fundo (`--ink` ↔ `--surface`) ocorre em 0s, e não nos 0,3s do deslocamento associado. Razão medida no `PLANO-MOVIMENTO.md` (E4): interpolando as duas cores em sRGB e aplicando a fórmula de contraste do WCAG 2.1 ao longo da transição simultânea, o contraste cai abaixo de 4,5:1 entre t≈0,26 e t≈0,74 (mínimo de 1,00:1 em t=0,50) — cerca de 48% do percurso esconderia o texto. A recomendação geral de `color 0.3s` cobre mudança simples de cor, não essa inversão de papéis entre duas cores.
   6. *Barra de Progresso de Leitura (Corte 9, issue #21):* linha de 2px fixa no topo, `var(--forest)`, `transform-origin: left` e `scaleX(0 → 1)` por `animation-timeline: scroll(root)`, contida em `@supports`; sem suporte ao recurso, fica `display: none` e não reserva espaço. `aria-hidden="true"`.
   7. *Seção Ativa na Nav (Corte 9, issue #21):* um `IntersectionObserver` (≤ 25 linhas de JS) marca `aria-current="true"` no link de Trabalhos (IDF-BR a Quantum), Experiência (Vivências) ou Sobre, conforme a seção visível; a cor usa o par `--ink`/`--muted` já existente, na mesma `--motion-nav` (0,18s). Sem JS, a nav continua como está.
-  8. *Profundidade nas Telas Sobrepostas (Corte 9, issue #21):* a partir de 900px, a imagem de cima do IDF-BR (a tela do futuro) e da Ciere (o celular) desloca de `translateY(24px)` a `translateY(-24px)` enquanto a composição atravessa a tela, via `animation-timeline: view()` e `animation-range: cover`. A imagem de baixo não se move por essa timeline. O hover já existente nesses dois elementos passou de `transform` para `translate` — propriedade separada — para não brigar com a linha do tempo de rolagem.
+  8. *Profundidade nas Telas Sobrepostas (Corte 9, issue #21):* a partir de 900px, a imagem de cima do IDF-BR (a tela do futuro) e da Ciere (o celular) desloca de `translateY(24px)` a `translateY(-24px)` enquanto a composição atravessa a tela, via `animation-timeline: view()` e `animation-range: cover`. A imagem de baixo não se move por essa timeline. O hover já existente nesses dois elementos passou de `transform` para `translate` — propriedade separada — para não brigar com a linha do tempo de rolagem. **Aposentado na issue #92:** as figuras independentes que animava (`.idf-screen-future`, `.ciere-shot-mobile`) saíram na colagem única; o `corte9-profundidade` foi removido do CSS.
   9. *Montagem da Fórmula do Quantum (Corte 9, issue #21):* ao entrar na tela (`animation-timeline: view()`, `animation-range: entry 0%–60%` por termo, com ~6% de atraso por termo), cada cartão anima `translateY(16px) → 0` e cada operador (+, =) `scale(0.6) → 1`. Opacidade constante em 1: as figuras são dado e nunca somem. O hover já existente no cartão passou de `transform` para `translate` pelo mesmo motivo do item 8.
   10. *Entrada das Fotos de Vivências (issue #86):* `.viv-photo > .viv-photo-motion > .viv-photo-card > picture > img` separa posição, movimento e pose. Dentro de `@supports (animation-timeline: view())` e `prefers-reduced-motion: no-preference`, o wrapper anima `translateY(12px → 0)` pela rolagem: atrás em `entry 0%–60%`, à frente em `entry 8%–68%`. A defasagem é 8% de progresso, não 100ms; a duração nominal da animação não representa tempo decorrido em `view()`. Foto e moldura movem juntas, com opacidade constante em 1. Hover apenas com ponteiro fino usa `translate: 0 -4px` no mesmo wrapper, em `--motion-base` (0,3s) / `--motion-enter`, separado do `transform` da timeline. Sem suporte ou sem JS, a pose final estática permanece visível; `reduce` neutraliza animação e translação do wrapper, preservando a rotação estrutural do card. Não há loop, escala flutuante ou movimento do texto.
-  11. *Entrada dos Dispositivos (issue #90):* um `.device-enter` novo — o invólucro, nunca o `.laptop3d`/`.phone3d` que já recebe o `transform` do hover, nem o `.laptop3d-assembly`/`.laptop3d-apple` que já tem a rotação 3D da câmera — envolve cada notebook e iPhone (IDF-BR, DVO e Ciere). Dentro de `@supports (animation-timeline: view())` e `prefers-reduced-motion: no-preference`, anima `translateY(24px) rotateX(10deg) → translateY(0) rotateX(0deg)` em 0,6s `var(--motion-enter)`, com `animation-timeline: view()` e `animation-range: entry 0% entry 40%` — a pose final é o estado normal, sem animação. O iPhone de cada seção entra 80ms depois do notebook (`.device-enter--phone { animation-delay: 80ms }`). Só `transform`; opacidade constante em 1 (a captura e o vídeo nunca somem). Sem suporte ou com `reduce`, a pose final estática aparece direto. Não briga com os hovers 3D existentes (item 8) nem com o fade do pôster do vídeo (acima): são elementos e propriedades diferentes.
+  11. *Entrada dos Dispositivos (issue #90):* um `.device-enter` novo — o invólucro, nunca o `.laptop3d`/`.phone3d` que já recebe o `transform` do hover, nem o `.laptop3d-assembly`/`.laptop3d-apple` que já tem a rotação 3D da câmera — envolve cada notebook e iPhone (IDF-BR, DVO e Ciere). Dentro de `@supports (animation-timeline: view())` e `prefers-reduced-motion: no-preference`, anima `translateY(24px) rotateX(10deg) → translateY(0) rotateX(0deg)` em 0,6s `var(--motion-enter)`, com `animation-timeline: view()` e `animation-range: entry 0% entry 40%` — a pose final é o estado normal, sem animação. O iPhone de cada seção entra 80ms depois do notebook (`.device-enter--phone { animation-delay: 80ms }`). Só `transform`; opacidade constante em 1 (a captura e o vídeo nunca somem). Sem suporte ou com `reduce`, a pose final estática aparece direto. Não briga com os hovers 3D existentes (item 8) nem com o fade do pôster do vídeo (acima): são elementos e propriedades diferentes. **Substituído na issue #92** pelo item 12 — o `.device-enter` saiu do `index.html`.
+  12. *Entrada da Colagem do Mokker (issue #92):* substitui o item 11. `assets/css/mk-entrada.css` e `assets/js/mk-entrada.js` animam `[data-mk-colagem]`/`[data-mk-papel="notebook"|"celular"]` — o `index.html` só marca os atributos, nunca escreve `transform` nos `.mk`. O hover por ponteiro fino migrou do `.mk` individual para o invólucro `[data-mk-colagem]` inteiro, em `translate` (não `transform`), para não brigar com essa entrada.
 - **Acessibilidade (`prefers-reduced-motion: reduce`):** Neutralização total de durações temporais, timelines e translações espaciais. O conteúdo essencial permanece imediatamente visível em seu estado renderizado final, caminhos vetoriais estabelecidos em repouso definitivo e `scroll-behavior: auto`. Veda-se a aplicação genérica de `opacity: 1` indiscriminado ou abertura forçada de painéis colapsados.
 - **Proibições Estruturais:**
   - Veto absoluto a `transition: all`. Todas as propriedades em transição devem ser declaradas nominalmente.

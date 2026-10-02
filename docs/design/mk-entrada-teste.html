@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teste da entrada da colagem Mokker (#92)</title>
+<!-- Página descartável de teste, fora do CI publicado. Duas colagens com .mk
+     simulados por <div> coloridos, proporções 831x796 (notebook) e 303x616
+     (celular), usando o contrato real de mk-entrada.css/js. -->
+<link rel="stylesheet" href="../../assets/css/mk-entrada.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, sans-serif; background: #f4f4f2; }
+  .espaco { height: 140vh; display: flex; align-items: center; justify-content: center; color: #777; }
+  .colagem-area { height: 100vh; display: flex; align-items: center; justify-content: center; }
+  [data-mk-colagem] { position: relative; width: 900px; height: 700px; }
+  .mk { position: absolute; }
+  .mk[data-mk-papel="notebook"] { left: 20px; top: 40px; width: 554px; height: 531px; background: #2b6cb0; }
+  .mk[data-mk-papel="celular"] { left: 600px; top: 160px; width: 160px; height: 326px; background: #c05621; }
+  .mk { color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .espaco:last-child { height: 140vh; }
+</style>
+<script>
+  // ?forcar=1: simula ausência de animation-timeline:view() só para este teste
+  // (ver item 1 do aceite em corte92c.md). Não faz parte da entrega.
+  if (new URLSearchParams(location.search).get('forcar') === '1') {
+    document.write(
+      '<style>[data-mk-colagem] .mk[data-mk-papel="notebook"]{' +
+      'animation:none;translate:0 32px;rotate:3deg;' +
+      'transition:translate 700ms cubic-bezier(.16,1,.3,1),rotate 700ms cubic-bezier(.16,1,.3,1);}' +
+      '[data-mk-colagem] .mk[data-mk-papel="celular"]{' +
+      'animation:none;translate:-6px 44px;rotate:2deg;' +
+      'transition:translate 650ms cubic-bezier(.34,1.56,.64,1) 110ms,rotate 650ms cubic-bezier(.34,1.56,.64,1) 110ms;}' +
+      '[data-mk-colagem].is-in .mk[data-mk-papel="notebook"],' +
+      '[data-mk-colagem].is-in .mk[data-mk-papel="celular"]{translate:0 0;rotate:0deg;}</style>'
+    );
+    window.CSS = Object.assign(Object.create(CSS), {
+      supports: (a, b) => (a === 'animation-timeline' && b === 'view()') ? false : CSS.supports(a, b),
+    });
+  }
+</script>
+</head>
+<body>
+  <div class="espaco">role para ver a colagem</div>
+  <div class="colagem-area">
+    <div data-mk-colagem>
+      <div class="mk" data-mk-papel="notebook">notebook 831×796</div>
+      <div class="mk" data-mk-papel="celular">celular 303×616</div>
+    </div>
+  </div>
+  <div class="espaco">fim</div>
+  <script src="../../assets/js/mk-entrada.js"></script>
+</body>
+</html>
