@@ -249,176 +249,53 @@
   .real-shot { margin: 0; min-width: 0; }
   .real-shot img { display: block; width: 100%; height: auto; }
 
-  /* #85: notebook aberto; perspectiva fora do conjunto preserve-3d. */
-  .laptop3d {
-    position: relative; width: 100%; max-width: 100%; aspect-ratio: 1.1;
-    container-type: inline-size; perspective: 2200px;
-    --camera-x: 14deg; --camera-y: -22deg; --assembly-left: 20%;
-    --lid-angle: -12deg; --deck-angle: 60deg; --bezel: 1.4cqw; --chin: 1.4cqw;
-    --lid-radius: 1.8cqw; --lid-depth: -.5cqw; --deck-top: 48.55cqw;
-    --frame-color: #1f2022; --edge-color: #c9cbd0; --reflection-angle: 125deg;
-    --deck-image: url("assets/mockups/deck.svg");
-    filter: drop-shadow(0 40px 40px rgba(0, 0, 0, .35));
+  /* #90 rodada 2: aparelho do Mokker — render real (MacBook/iPhone) com a
+     captura embutida na tela, que serve de fallback e de poster; o video
+     (so nos dois notebooks principais) entra por cima, deformado pelo
+     matrix3d do angulo ate o quadrilatero exato da tela fotografada. */
+  .mk {
+    position: relative; width: 100%; aspect-ratio: var(--w) / var(--h);
+    container-type: inline-size;
+    filter: drop-shadow(0 32px 28px rgba(0, 0, 0, .3));
   }
-  .laptop3d-assembly {
-    position: absolute; left: var(--assembly-left); top: 5%; width: 76%; height: 54%;
-    transform-style: preserve-3d; transform-origin: center bottom;
-    transform: rotateX(var(--camera-x)) rotateY(var(--camera-y));
+  .mk__render { display: block; width: 100%; height: 100%; }
+  .mk__stage {
+    position: absolute; left: 0; top: 0; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px);
+    transform-origin: 0 0; transform: scale(var(--k, 1));
   }
-  .laptop3d-lid {
-    position: relative; width: 100%; padding: var(--bezel) var(--bezel) var(--chin);
-    border-radius: var(--lid-radius); background: var(--frame-color);
-    transform-style: preserve-3d; transform: rotateX(var(--lid-angle));
-    transform-origin: center bottom;
+  .mk__screen {
+    position: absolute; left: 0; top: 0; width: calc(var(--cw) * 1px); height: calc(var(--ch) * 1px);
+    transform-origin: 0 0; overflow: hidden; border-radius: calc(var(--raio) * 1px);
   }
-  .laptop3d-lid::before {
-    content: ""; position: absolute; inset: -.3cqw; border-radius: calc(var(--lid-radius) + .2cqw);
-    background: linear-gradient(90deg, #3a3b3f, #2a2b2e);
-    transform: translateZ(var(--lid-depth));
+  .mk__screen video,
+  .mk__screen .device-video-poster {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;
+    pointer-events: none;
   }
-  .laptop3d-lid::after {
-    content: ""; position: absolute; inset: 0 0 auto; height: .4cqw;
-    background: linear-gradient(#3a3b3f, #2a2b2e); border-radius: var(--lid-radius) var(--lid-radius) 0 0;
-    transform: rotateX(90deg); transform-origin: center top;
-  }
-  .laptop3d-screen { position: relative; aspect-ratio: 1.6; background: var(--ink); }
-  .laptop3d-screen picture { display: block; width: 100%; height: 100%; }
-  .laptop3d-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-  .laptop3d-screen::after {
-    content: ""; position: absolute; inset: 0; pointer-events: none;
-    background: linear-gradient(var(--reflection-angle), rgba(255, 255, 255, .06) 0 35%, transparent 35%),
-      radial-gradient(ellipse at center, transparent 65%, rgba(0, 0, 0, .08));
-  }
-  .laptop3d-camera {
-    position: absolute; left: 46%; top: 0; width: 8%; height: 1.8cqw;
-    border-radius: 0 0 .5cqw .5cqw; background: #1f2022;
-  }
-  .laptop3d-camera::after {
-    content: ""; position: absolute; left: 45%; top: 30%; width: .35cqw;
-    aspect-ratio: 1; border-radius: 50%; background: #3a3b3f;
-  }
-  .laptop3d-deck {
-    position: absolute; left: 0; top: var(--deck-top); width: 100%; aspect-ratio: 1200 / 780;
-    background: var(--deck-image) center / 100% 100% no-repeat;
-    border-radius: var(--lid-radius); transform: rotateX(var(--deck-angle)); transform-origin: center top;
-    transform-style: preserve-3d;
-  }
-  .laptop3d-deck::after {
-    content: ""; position: absolute; inset: auto 0 0; height: .6cqw;
-    border-radius: 0 0 var(--lid-radius) var(--lid-radius); background: var(--edge-color);
-    transform: rotateX(-90deg); transform-origin: center bottom;
-  }
-  .laptop3d--tres-quartos-dir { --camera-x: 14deg; --camera-y: -22deg; }
-  .laptop3d--tres-quartos-esq {
-    --camera-x: 14deg; --camera-y: 22deg; --assembly-left: 4%; --reflection-angle: 235deg;
-  }
-  .laptop3d--frontal {
-    --camera-x: 6deg; --camera-y: 0deg; --assembly-left: 12%;
-    --lid-angle: -6deg; --deck-angle: 82deg;
-  }
-  .laptop3d--alto {
-    --camera-x: 32deg; --camera-y: -12deg; --assembly-left: 15%; --deck-angle: 40deg;
-  }
-  .laptop3d--aluminio { --deck-image: url("assets/mockups/deck.svg"); }
-  .laptop3d--grafite {
-    --deck-image: url("assets/mockups/deck-grafite.svg"); --frame-color: #16181b;
-    --bezel: 1.8cqw; --chin: 3cqw; --lid-radius: .6cqw; --lid-depth: -.9cqw;
-    --deck-top: 50.05cqw; --edge-color: #16181b;
-  }
-  .laptop3d--grafite .laptop3d-camera {
-    left: calc(50% - .225cqw); top: .6cqw; width: .45cqw; height: .45cqw;
-    border-radius: 50%; background: #3a3b3f;
-  }
-  .laptop3d--grafite .laptop3d-camera::after {
-    inset: 25%; width: 50%; background: #111;
-  }
-  .laptop3d--grafite .laptop3d-deck::before {
-    content: ""; position: absolute; left: 7%; top: -.7cqw; width: 86%; height: 1cqw;
-    border-radius: .2cqw; background: linear-gradient(#45484e, #16181b);
-    transform: translateZ(.2cqw);
-  }
-  .laptop3d--frontal .laptop3d-ground { bottom: 31%; transform: none; }
-  .laptop3d--alto .laptop3d-ground { bottom: 10%; }
-  .laptop3d--tres-quartos-esq .laptop3d-ground { transform: rotate(4deg); }
-  .laptop3d-ground {
-    position: absolute; left: 12%; bottom: 20%; width: 76%; height: 7%;
-    border-radius: 50%; background: rgba(0, 0, 0, .25); filter: blur(2cqw);
-    transform: rotate(-4deg);
-  }
-  /* #85: imagem Apple transparente sobre a captura, no mesmo plano. */
-  .laptop3d--apple-air { --screen-left: 12.835%; --screen-top: 8.696%; --screen-width: 74.227%; --screen-height: 78.261%; }
-  .laptop3d--apple-pro14 { --screen-left: 11.663%; --screen-top: 11.7%; --screen-width: 76.673%; --screen-height: 76.599%; }
-  .laptop3d--apple-pro16 { --screen-left: 10.184%; --screen-top: 10.979%; --screen-width: 79.631%; --screen-height: 78.112%; }
-  .laptop3d--apple-imac { --screen-left: 2.941%; --screen-top: 3.96%; --screen-width: 94.118%; --screen-height: 62.376%; }
-  .laptop3d--tres-quartos-dir { --apple-y: -44deg; }
-  .laptop3d--tres-quartos-esq { --apple-y: 44deg; }
-  .laptop3d-apple {
-    position: absolute; left: 0; top: 5%; width: 100%;
-    transform: rotateY(var(--apple-y, 0deg)); transform-origin: center;
-  }
-  .laptop3d-apple .device-screen {
-    display: block; position: absolute; left: var(--screen-left); top: var(--screen-top);
-    width: var(--screen-width); height: var(--screen-height); overflow: hidden;
-  }
-  .laptop3d-apple picture img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-  .laptop3d-apple-frame { display: block; position: relative; width: 100%; height: auto; pointer-events: none; }
-  .laptop3d:where(:has(.laptop3d-apple)) .laptop3d-ground { bottom: 23%; transform: none; }
-  .laptop3d--apple-air .laptop3d-ground { bottom: 28%; }
-  .laptop3d--apple-imac .laptop3d-ground { bottom: 1%; }
-  @media (max-width: 899px) {
-    .laptop3d--tres-quartos-dir { --apple-y: -14deg; }
-    .laptop3d--tres-quartos-esq { --apple-y: 14deg; }
-  }
-
-  /* Tampa real sobre a base 3D: recortes medidos pelo salto da largura do alfa. */
-  .laptop3d--apple-aberto { --camera-x: 12deg; --camera-y: -44deg; }
-  .laptop3d--apple-aberto.laptop3d--tres-quartos-esq { --camera-y: 44deg; }
-  /* pro14: corte y=1192; imagem 1567×1070; tela left/top/width/height em %. */
-  .laptop3d--apple-aberto.laptop3d--apple-pro14 {
-    --screen-left: 1.786854%; --screen-top: 2.616822%; --screen-width: 96.490108%; --screen-height: 91.775701%;
-    --deck-top: 51.895341cqw;
-  }
-  /* pro16: corte y=1334; imagem 1784×1206; tela left/top/width/height em %. */
-  .laptop3d--apple-aberto.laptop3d--apple-pro16 {
-    --screen-left: 1.569507%; --screen-top: 2.404643%; --screen-width: 96.860987%; --screen-height: 92.620232%;
-    --deck-top: 51.376682cqw;
-  }
-  .laptop3d-real-lid {
-    position: relative; width: 100%; transform: rotateX(-12deg); transform-origin: center bottom;
-  }
-  .laptop3d-real-lid .device-screen {
-    display: block; position: absolute; left: var(--screen-left); top: var(--screen-top);
-    width: var(--screen-width); height: var(--screen-height); overflow: hidden;
-  }
-  .laptop3d-real-lid picture img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
-  .laptop3d-real-lid .laptop3d-apple-frame { width: 100%; height: auto; }
-  @media (max-width: 899px) {
-    .laptop3d.laptop3d--apple-aberto { --camera-x: 8deg; --camera-y: -14deg; }
-    .laptop3d--apple-aberto.laptop3d--tres-quartos-esq { --camera-y: 14deg; }
-  }
-
-  /* Slot de mídia: picture ou vídeo compartilham a mesma abertura do aparelho. */
-  .device-screen { position: relative; width: 100%; height: 100%; overflow: hidden; }
-  .device-screen picture { display: block; position: relative; width: 100%; height: 100%; }
-  .device-screen video {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    object-position: top left; pointer-events: none;
-  }
-  /* O poster (img) fica por cima do video e so some com fade quando o
-     video dispara "playing" (adendo do coordenador): evita o salto de
-     textura do poster nativo para o primeiro quadro decodificado. */
-  .device-video-poster {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
-    object-position: top left; pointer-events: none;
-    transition: opacity 300ms var(--motion-enter);
-  }
+  .device-video-poster { transition: opacity 300ms var(--motion-enter); }
   .device-screen--playing .device-video-poster { opacity: 0; }
-  .phone3d .device-screen video,
-  .phone3d .device-screen .device-video-poster { object-fit: contain; object-position: top; }
-  @media (prefers-reduced-motion: reduce) { .device-screen video { visibility: hidden; } }
+  .mk__notch { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { .mk__screen video { visibility: hidden; } }
+
+  /* Os 4 angulos fixos do Mokker (assets/mokker/angulos.json): tamanho do
+     render, tamanho/raio da tela e o matrix3d + notch de cada um. Sem estilo
+     inline — só `data-mk` identifica o ângulo de cada instância. */
+  .mk[data-mk="macbook-esq"], .mk[data-mk="macbook-dir"] { --w: 1255; --h: 1141; }
+  .mk[data-mk="iphone-esq"] { --w: 339; --h: 798; }
+  .mk[data-mk="iphone-dir"] { --w: 340; --h: 798; }
+  .mk[data-mk="macbook-esq"] .mk__screen, .mk[data-mk="macbook-dir"] .mk__screen { --cw: 1440; --ch: 900; --raio: 8.64; }
+  .mk[data-mk="iphone-esq"] .mk__screen, .mk[data-mk="iphone-dir"] .mk__screen { --cw: 390; --ch: 844; --raio: 52.65; }
+  .mk[data-mk="macbook-esq"] .mk__screen { transform: matrix3d(0.522657865,-0.153859062,0,7.39206382e-05,0.167071542,0.639809486,0,3.77093713e-05,0,0,1,0,23.6716396,244.67951,0,1); }
+  .mk[data-mk="macbook-dir"] .mk__screen { transform: matrix3d(0.38576995,0.138578583,0,-6.82537561e-05,-0.110642612,0.578526492,0,3.15103589e-05,0,0,1,0,553.950166,20.1303284,0,1); }
+  .mk[data-mk="iphone-esq"] .mk__screen { transform: matrix3d(0.675535135,0.0242745912,0,-0.000175904395,0.0146397629,0.87960513,0,6.62816816e-05,0,0,1,0,13.1664233,22.036475,0,1); }
+  .mk[data-mk="iphone-dir"] .mk__screen { transform: matrix3d(0.796537128,-0.0253457907,0,0.000211741162,0.00990027529,0.955221962,0,7.5684047e-05,0,0,1,0,40.9250727,33.6487636,0,1); }
+  .mk[data-mk="macbook-esq"] .mk__notch { clip-path: polygon(27.81% 13.45%, 27.21% 13.32%, 27.05% 12.88%, 27.17% 12.40%, 33.59% 10.17%, 33.75% 11.04%, 33.39% 11.44%); }
+  .mk[data-mk="macbook-dir"] .mk__notch { clip-path: polygon(72.59% 13.45%, 72.11% 13.45%, 66.53% 11.44%, 66.18% 11.04%, 66.25% 10.25%, 66.61% 10.04%, 72.67% 12.23%, 72.95% 12.62%); }
+  .mk[data-mk="iphone-esq"] .mk__notch { clip-path: polygon(54.57% 8.33%, 35.69% 7.96%, 32.89% 7.02%, 32.60% 5.51%, 34.81% 4.32%, 54.28% 4.70%, 56.78% 5.89%, 56.78% 7.27%); }
+  .mk[data-mk="iphone-dir"] .mk__notch { clip-path: polygon(52.94% 8.33%, 45.00% 8.33%, 42.79% 7.02%, 43.09% 5.64%, 45.59% 4.70%, 56.76% 4.32%, 64.71% 4.32%, 66.91% 5.26%, 66.91% 6.77%, 64.71% 7.83%); }
 
   /* Entrada animada dos aparelhos ao rolar ate eles (issue #90): o
-     involucro (nunca o elemento que ja tem transform de hover/3D) sobe
+     involucro (nunca o .mk, que ja recebe o transform do hover) sobe
      24px e se endireita. So transform; opacidade sempre 1. */
   .device-enter { display: block; }
   @supports (animation-timeline: view()) {
@@ -436,48 +313,16 @@
     to   { transform: translateY(0) rotateX(0deg); }
   }
 
-  .phone3d {
-    position: relative; width: 100%; aspect-ratio: 800 / 1543; perspective: 1600px;
-    --phone-x: 0deg; --phone-y: 0deg;
-    filter: drop-shadow(0 24px 24px rgba(0, 0, 0, .3));
-  }
-  .phone3d--esq { --phone-x: 6deg; --phone-y: 32deg; }
-  .phone3d--dir { --phone-x: 6deg; --phone-y: -32deg; }
-  .phone3d-device { position: relative; width: 100%; transform: rotateX(var(--phone-x)) rotateY(var(--phone-y)); }
-  .phone3d .device-screen {
-    display: block; position: absolute; left: 8.143%; top: 3.111%;
-    width: 83.571%; height: 93.769%; overflow: hidden; background: var(--ink);
-    border-radius: 12% / 5.5%;
-  }
-  .phone3d picture img { width: 100%; height: 100%; object-fit: contain; object-position: top; }
-  .phone3d-frame { display: block; position: relative; width: 100%; height: auto; pointer-events: none; }
-  .idf-shot-mobile { position: absolute; left: 78%; top: 3%; width: 20%; }
-  .dvo-shot { position: relative; }
-  .dvo-shot-phone { position: absolute; right: 0; bottom: 8%; width: 23%; }
-  @media (max-width: 899px) {
-    .phone3d--esq { --phone-x: 4deg; --phone-y: 14deg; }
-    .phone3d--dir { --phone-x: 4deg; --phone-y: -14deg; }
-  }
-  @media (max-width: 767px) {
-    .idf-shot-mobile { left: 74%; top: 2%; width: 24%; }
-    .dvo-shot-phone { width: 27%; bottom: 3%; }
-  }
-  @media (max-width: 899px) {
-    .laptop3d { --camera-x: 8deg; --camera-y: -8deg; }
-    .laptop3d--tres-quartos-esq { --camera-y: 8deg; }
-    .laptop3d--frontal { --camera-x: 0deg; --camera-y: 0deg; --lid-angle: 0deg; }
-    .laptop3d--alto { --camera-x: 12deg; --camera-y: -6deg; --deck-angle: 42deg; }
-  }
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .idf-screen-future .laptop3d, .ciere-shot-desktop .laptop3d, .ciere-shot-mobile .phone3d {
+    .idf-screen-future .mk, .ciere-shot-desktop .mk, .ciere-shot-mobile .mk {
       transition: transform var(--motion-base) var(--motion-enter);
     }
-    .idf-screen-future:hover .laptop3d { transform: translateY(-4px); }
-    .ciere-shot-desktop:hover .laptop3d { transform: translateY(-3px); }
-    .ciere-shot-mobile:hover .phone3d { transform: translateY(-6px); }
+    .idf-screen-future:hover .mk { transform: translateY(-4px); }
+    .ciere-shot-desktop:hover .mk { transform: translateY(-3px); }
+    .ciere-shot-mobile:hover .mk { transform: translateY(-6px); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .laptop3d, .phone3d, .ciere-shot-desktop { transform: none !important; }
+    .mk { transform: none !important; }
   }
 
   /* IDF-BR — papel, numeros com fonte e telas reais (Corte 2, issue #10) */
@@ -505,10 +350,12 @@
   }
   .idf-number-label { margin: 0; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
 
-  /* Cascata E2: aparelhos sobrepostos, todas as peças dentro do container. */
-  .idf-screens { position: relative; width: 100%; aspect-ratio: 1.1; margin-top: 64px; }
-  .idf-screen-main { position: absolute; top: 0; left: 1%; width: 84%; }
-  .idf-screen-future { position: absolute; top: 35%; left: 35%; width: 64%; }
+  /* Composicao Mokker (issue #90, rodada 2): MacBook principal (com video)
+     e MacBook secundario levemente sobrepostos, iPhone a frente no canto. */
+  .idf-screens { position: relative; width: 100%; aspect-ratio: 1.5; margin-top: 64px; }
+  .idf-screen-main { position: absolute; top: 0; left: 0; width: 48%; z-index: 2; }
+  .idf-screen-future { position: absolute; top: 26%; left: 39%; width: 48%; z-index: 1; }
+  .idf-shot-mobile { position: absolute; right: 2%; bottom: 2%; width: 19%; z-index: 3; }
 
   /* Profundidade na tela sobreposta do IDF-BR (#21, Corte 9): a tela do
      futuro (de cima) desloca enquanto a composicao atravessa a tela. */
@@ -537,11 +384,13 @@
     .idf-numbers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   }
 
-  /* Quadro 390 do Figma (165:2) */
-  @media (max-width: 767px) {
-    .idf-screens { aspect-ratio: 1; }
-    .idf-screen-main { width: 92%; left: 0; }
-    .idf-screen-future { width: 72%; left: 27%; top: 37%; }
+  /* Abaixo de 900px: empilha — MacBook principal em 100%, secundario some,
+     iPhone sobreposto no canto (issue #90, rodada 2). */
+  @media (max-width: 899px) {
+    .idf-screens { aspect-ratio: 1255 / 1141; }
+    .idf-screen-main { position: relative; width: 100%; left: 0; top: 0; }
+    .idf-screen-future { display: none; }
+    .idf-shot-mobile { left: auto; right: 1%; top: auto; bottom: 1%; width: 28%; }
   }
 
   /* DVO — credito ao squad, papel de coordenacao (Corte 3, issue #11) */
@@ -567,7 +416,15 @@
   .dvo-track-item--squad { background: var(--leaf); font-weight: 600; }
 
   .dvo-aside { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
-  .dvo-shot { width: 100%; }
+  /* Composicao Mokker (issue #90, rodada 2): iPhone a esquerda, MacBook a direita. */
+  .dvo-shot { position: relative; width: 100%; aspect-ratio: 1.9; }
+  .dvo-shot-phone { position: absolute; left: 0; top: 10%; width: 19%; z-index: 2; }
+  .dvo-shot-laptop { position: absolute; right: 0; top: 0; width: 48%; z-index: 1; }
+  @media (max-width: 899px) {
+    .dvo-shot { aspect-ratio: 1255 / 1141; }
+    .dvo-shot-laptop { position: relative; width: 100%; right: 0; top: 0; }
+    .dvo-shot-phone { left: auto; right: 1%; top: auto; bottom: 1%; width: 28%; }
+  }
 
   .dvo-config-head { display: block; font-family: var(--f-display); font-weight: 600; font-size: 18px; color: var(--ink); margin: 0 0 12px; }
   .dvo-config-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -579,8 +436,8 @@
   .dvo-config-act { font-family: var(--f-body); font-weight: 400; font-size: 16px; color: var(--muted); }
 
   @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .dvo-shot { transition: transform var(--motion-base) var(--motion-enter); }
-    .dvo-shot:hover { transform: translateY(-4px); }
+    .dvo-shot-laptop .mk { transition: transform var(--motion-base) var(--motion-enter); }
+    .dvo-shot-laptop:hover .mk { transform: translateY(-4px); }
   }
 
   @media (max-width: 900px) {
@@ -613,9 +470,11 @@
   }
   .ciere-visibility p { margin: 12px 0 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--ink); max-width: 65ch; }
 
-  .ciere-screens { position: relative; width: 100%; aspect-ratio: 1.4; margin-top: 64px; }
-  .ciere-shot-desktop { position: absolute; top: 0; left: 1%; width: 91%; }
-  .ciere-shot-mobile { position: absolute; left: 75%; top: 23%; width: 21%; }
+  /* Composicao Mokker (issue #90, rodada 2): MacBook (com video) a esquerda,
+     iPhone a direita, levemente sobreposto no canto. */
+  .ciere-screens { position: relative; width: 100%; aspect-ratio: 1.7; margin-top: 64px; }
+  .ciere-shot-desktop { position: absolute; top: 0; left: 0; width: 48%; z-index: 1; }
+  .ciere-shot-mobile { position: absolute; left: 60%; top: 18%; width: 19%; z-index: 2; }
 
   /* Profundidade na tela sobreposta da Ciere (#21, Corte 9): o celular (de
      cima) desloca enquanto a composicao atravessa a tela; o desktop nao. */
@@ -631,10 +490,10 @@
     }
   }
 
-  @media (max-width: 767px) {
-    .ciere-screens { aspect-ratio: 1; }
-    .ciere-shot-desktop { width: 96%; left: 0; }
-    .ciere-shot-mobile { width: 29%; left: 69%; top: 30%; }
+  @media (max-width: 899px) {
+    .ciere-screens { aspect-ratio: 1255 / 1141; }
+    .ciere-shot-desktop { position: relative; width: 100%; left: 0; top: 0; }
+    .ciere-shot-mobile { left: auto; right: 1%; top: auto; bottom: 1%; width: 28%; }
   }
 
   .ciere-bottom {
@@ -1382,39 +1241,32 @@
 
     <div class="idf-screens">
       <figure class="real-shot idf-screen-main"><div class="device-enter">
-        <div class="laptop3d laptop3d--apple-aberto laptop3d--apple-pro16 laptop3d--tres-quartos-dir">
-          <div class="laptop3d-ground" aria-hidden="true"></div>
-          <div class="laptop3d-assembly">
-            <div class="laptop3d-real-lid"><div class="device-screen" data-device-video="assets/video/idf-desktop.mp4" data-device-video-mobile="assets/video/idf-mobile.mp4" data-device-poster="assets/img/video/idf-poster-1280.webp" data-device-poster-mobile="assets/img/video/idf-poster-640.webp"><picture>
-          <source type="image/webp" srcset="assets/img/idf-br-ferramenta-480.webp 480w, assets/img/idf-br-ferramenta-820.webp 820w, assets/img/idf-br-ferramenta-1440.webp 1440w" sizes="(max-width: 767px) 65vw, (max-width: 1439px) 58vw, 770px">
-          <img src="assets/img/idf-br-ferramenta-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados">
-        </picture></div>
-              <img class="laptop3d-apple-frame" src="assets/mockups/apple/pro16-tampa.webp" width="1784" height="1206" loading="lazy" decoding="async" alt="" aria-hidden="true">
-            </div>
-            <div class="laptop3d-deck" aria-hidden="true"></div>
+        <div class="mk" data-mk="macbook-esq">
+          <img class="mk__render" src="assets/mokker/idf-br-macbook-esquerda-m.webp" srcset="assets/mokker/idf-br-macbook-esquerda-m.webp 627w, assets/mokker/idf-br-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados" loading="lazy" decoding="async">
+          <div class="mk__stage" aria-hidden="true">
+            <div class="mk__screen device-screen" data-device-video="assets/video/idf-desktop.mp4" data-device-video-mobile="assets/video/idf-mobile.mp4" data-device-poster="assets/img/video/idf-poster-1280.webp" data-device-poster-mobile="assets/img/video/idf-poster-640.webp"></div>
           </div>
+          <img class="mk__notch" aria-hidden="true" src="assets/mokker/idf-br-macbook-esquerda-m.webp" srcset="assets/mokker/idf-br-macbook-esquerda-m.webp 627w, assets/mokker/idf-br-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
         </div>
       </div></figure>
       <figure class="real-shot idf-screen-future"><div class="device-enter">
-        <div class="laptop3d laptop3d--apple-aberto laptop3d--apple-pro14 laptop3d--tres-quartos-esq">
-          <div class="laptop3d-ground" aria-hidden="true"></div>
-          <div class="laptop3d-assembly">
-            <div class="laptop3d-real-lid"><div class="device-screen"><picture>
-          <source type="image/webp" srcset="assets/img/idf-br-futuro-600.webp 600w, assets/img/idf-br-futuro-1200.webp 1200w" sizes="(max-width: 767px) 51vw, (max-width: 1439px) 45vw, 590px">
-          <img src="assets/img/idf-br-futuro-1200.png" width="1200" height="750" loading="lazy" decoding="async" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados">
-        </picture></div>
-              <img class="laptop3d-apple-frame" src="assets/mockups/apple/pro14-tampa.webp" width="1567" height="1070" loading="lazy" decoding="async" alt="" aria-hidden="true">
-            </div>
-            <div class="laptop3d-deck" aria-hidden="true"></div>
+        <div class="mk" data-mk="macbook-dir">
+          <img class="mk__render" src="assets/mokker/idf-br-macbook-direita-m.webp" srcset="assets/mokker/idf-br-macbook-direita-m.webp 627w, assets/mokker/idf-br-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados" loading="lazy" decoding="async">
+          <div class="mk__stage" aria-hidden="true">
+            <div class="mk__screen device-screen"></div>
           </div>
+          <img class="mk__notch" aria-hidden="true" src="assets/mokker/idf-br-macbook-direita-m.webp" srcset="assets/mokker/idf-br-macbook-direita-m.webp 627w, assets/mokker/idf-br-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
         </div>
       </div></figure>
-      <figure class="real-shot idf-shot-mobile"><div class="device-enter device-enter--phone"><div class="phone3d phone3d--dir"><div class="phone3d-device"><div class="device-screen"><picture>
-            <source type="image/webp" srcset="assets/img/celulares/idf-celular-230.webp 230w, assets/img/celulares/idf-celular-390.webp 390w, assets/img/celulares/idf-celular-780.webp 780w" sizes="(max-width: 899px) 24vw, 230px">
-            <img src="assets/img/celulares/idf-celular-780.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="IDF-BR no celular, com menu e introdução da ferramenta">
-          </picture></div>
-          <img class="phone3d-frame" src="assets/mockups/apple/iphone13-leve.webp" width="800" height="1543" loading="lazy" decoding="async" alt="" aria-hidden="true">
-        </div></div></div></figure>
+      <figure class="real-shot idf-shot-mobile"><div class="device-enter device-enter--phone">
+        <div class="mk" data-mk="iphone-esq">
+          <img class="mk__render" src="assets/mokker/idf-br-iphone-esquerda-m.webp" srcset="assets/mokker/idf-br-iphone-esquerda-m.webp 169w, assets/mokker/idf-br-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" width="339" height="798" alt="IDF-BR no celular, com menu e introdução da ferramenta" loading="lazy" decoding="async">
+          <div class="mk__stage" aria-hidden="true">
+            <div class="mk__screen device-screen"></div>
+          </div>
+          <img class="mk__notch" aria-hidden="true" src="assets/mokker/idf-br-iphone-esquerda-m.webp" srcset="assets/mokker/idf-br-iphone-esquerda-m.webp 169w, assets/mokker/idf-br-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" alt="">
+        </div>
+      </div></figure>
     </div>
   </div>
 </section>
@@ -1447,24 +1299,25 @@
 
       <div class="dvo-aside">
         <figure class="real-shot dvo-shot">
-        <div class="device-enter">
-        <div class="laptop3d laptop3d--apple-pro14 laptop3d--frontal">
-          <div class="laptop3d-ground" aria-hidden="true"></div>
-          <div class="laptop3d-apple"><div class="device-screen"><picture>
-            <source type="image/webp" srcset="assets/img/dvo-480.webp 480w, assets/img/dvo-760.webp 760w, assets/img/dvo-1440.webp 1440w" sizes="(max-width: 767px) 70vw, (max-width: 900px) 60vw, (max-width: 1439px) 40vw, 570px">
-            <img src="assets/img/dvo-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica">
-          </picture></div>
-            <img class="laptop3d-apple-frame" src="assets/mockups/apple/pro14-leve.webp" width="1972" height="1282" loading="lazy" decoding="async" alt="" aria-hidden="true">
-          </div>
-        </div>
-        </div>
-      <div class="dvo-shot-phone"><div class="device-enter device-enter--phone"><div class="phone3d phone3d--esq"><div class="phone3d-device"><div class="device-screen"><picture>
-            <source type="image/webp" srcset="assets/img/celulares/dvo-celular-230.webp 230w, assets/img/celulares/dvo-celular-390.webp 390w, assets/img/celulares/dvo-celular-780.webp 780w" sizes="(max-width: 899px) 24vw, 230px">
-            <img src="assets/img/celulares/dvo-celular-780.jpg" width="780" height="1688" loading="lazy" decoding="async" alt="DVO no celular, com os campos de e-mail, senha e botão de entrar">
-          </picture></div>
-          <img class="phone3d-frame" src="assets/mockups/apple/iphone13-leve.webp" width="800" height="1543" loading="lazy" decoding="async" alt="" aria-hidden="true">
-        </div></div></div></div>
-      </figure>
+          <div class="dvo-shot-phone"><div class="device-enter device-enter--phone">
+            <div class="mk" data-mk="iphone-dir">
+              <img class="mk__render" src="assets/mokker/dvo-iphone-direita-m.webp" srcset="assets/mokker/dvo-iphone-direita-m.webp 170w, assets/mokker/dvo-iphone-direita.webp 340w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" width="340" height="798" alt="DVO no celular, com os campos de e-mail, senha e botão de entrar" loading="lazy" decoding="async">
+              <div class="mk__stage" aria-hidden="true">
+                <div class="mk__screen device-screen"></div>
+              </div>
+              <img class="mk__notch" aria-hidden="true" src="assets/mokker/dvo-iphone-direita-m.webp" srcset="assets/mokker/dvo-iphone-direita-m.webp 170w, assets/mokker/dvo-iphone-direita.webp 340w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" alt="">
+            </div>
+          </div></div>
+          <div class="dvo-shot-laptop"><div class="device-enter">
+            <div class="mk" data-mk="macbook-dir">
+              <img class="mk__render" src="assets/mokker/dvo-macbook-direita-m.webp" srcset="assets/mokker/dvo-macbook-direita-m.webp 627w, assets/mokker/dvo-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica" loading="lazy" decoding="async">
+              <div class="mk__stage" aria-hidden="true">
+                <div class="mk__screen device-screen"></div>
+              </div>
+              <img class="mk__notch" aria-hidden="true" src="assets/mokker/dvo-macbook-direita-m.webp" srcset="assets/mokker/dvo-macbook-direita-m.webp 627w, assets/mokker/dvo-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
+            </div>
+          </div></div>
+        </figure>
 
         <div class="dvo-config">
           <span class="i18n dvo-config-head" lang="pt">Coordenação e configuração</span>
@@ -1520,29 +1373,22 @@
 
     <div class="ciere-screens">
       <figure class="real-shot ciere-shot-desktop"><div class="device-enter">
-        <div class="laptop3d laptop3d--grafite laptop3d--alto">
-          <div class="laptop3d-ground" aria-hidden="true"></div>
-          <div class="laptop3d-assembly">
-            <div class="laptop3d-lid">
-              <div class="laptop3d-screen">
-                <div class="device-screen" data-device-video="assets/video/advocacia-desktop.mp4" data-device-video-mobile="assets/video/advocacia-mobile.mp4" data-device-poster="assets/img/video/advocacia-poster-1280.webp" data-device-poster-mobile="assets/img/video/advocacia-poster-640.webp"><picture>
-          <source type="image/webp" srcset="assets/img/ciere-960.webp 960w, assets/img/ciere-1440.webp 1440w" sizes="(max-width: 767px) 68vw, (max-width: 1439px) 63vw, 835px">
-          <img src="assets/img/ciere-1440.png" width="1440" height="900" loading="lazy" decoding="async" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança">
-        </picture></div>
-              </div>
-              <div class="laptop3d-camera" aria-hidden="true"></div>
-            </div>
-            <div class="laptop3d-deck" aria-hidden="true"></div>
+        <div class="mk" data-mk="macbook-esq">
+          <img class="mk__render" src="assets/mokker/ciere-macbook-esquerda-m.webp" srcset="assets/mokker/ciere-macbook-esquerda-m.webp 627w, assets/mokker/ciere-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança" loading="lazy" decoding="async">
+          <div class="mk__stage" aria-hidden="true">
+            <div class="mk__screen device-screen" data-device-video="assets/video/advocacia-desktop.mp4" data-device-video-mobile="assets/video/advocacia-mobile.mp4" data-device-poster="assets/img/video/advocacia-poster-1280.webp" data-device-poster-mobile="assets/img/video/advocacia-poster-640.webp"></div>
           </div>
+          <img class="mk__notch" aria-hidden="true" src="assets/mokker/ciere-macbook-esquerda-m.webp" srcset="assets/mokker/ciere-macbook-esquerda-m.webp 627w, assets/mokker/ciere-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
         </div>
       </div></figure>
       <figure class="real-shot ciere-shot-mobile"><div class="device-enter device-enter--phone">
-        <div class="phone3d phone3d--frontal"><div class="phone3d-device"><div class="device-screen"><picture>
-          <source type="image/webp" srcset="assets/img/ciere-mobile-230.webp 230w, assets/img/ciere-mobile-460.webp 460w" sizes="(max-width: 767px) 25vw, (max-width: 1439px) 19vw, 228px">
-          <img src="assets/img/ciere-mobile-460.png" width="460" height="995" loading="lazy" decoding="async" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp">
-        </picture></div>
-          <img class="phone3d-frame" src="assets/mockups/apple/iphone13-leve.webp" width="800" height="1543" loading="lazy" decoding="async" alt="" aria-hidden="true">
-        </div></div>
+        <div class="mk" data-mk="iphone-esq">
+          <img class="mk__render" src="assets/mokker/ciere-iphone-esquerda-m.webp" srcset="assets/mokker/ciere-iphone-esquerda-m.webp 169w, assets/mokker/ciere-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" width="339" height="798" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp" loading="lazy" decoding="async">
+          <div class="mk__stage" aria-hidden="true">
+            <div class="mk__screen device-screen"></div>
+          </div>
+          <img class="mk__notch" aria-hidden="true" src="assets/mokker/ciere-iphone-esquerda-m.webp" srcset="assets/mokker/ciere-iphone-esquerda-m.webp 169w, assets/mokker/ciere-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" alt="">
+        </div>
       </div></figure>
     </div>
 

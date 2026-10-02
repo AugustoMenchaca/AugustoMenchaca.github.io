@@ -560,6 +560,44 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 - **Referência:** quatro MacBooks abertos (Pro 14/16, esquerda/direita) e três
   vistas do iPhone junto das dezesseis combinações anteriores.
 
+### Aparelhos do Mokker — issue #90, rodada 2
+
+- **Substituição:** todo o CSS 3D anterior (`.laptop3d`/`.phone3d` e variantes,
+  seções acima) e `assets/mockups/` saíram. Os aparelhos agora são **renders
+  reais do plugin Mokker** (Figma): MacBook Pro e iPhone 17 Pro, em perspectiva
+  lateral, com a captura real do site já embutida na tela de cada render —
+  ela serve de fallback e de poster, e o vídeo vai por cima.
+- **Componente `.mk`:** `.mk__render` (o render, fundo) + `.mk__stage`
+  (caixa de largura nativa do render, escalada por `--k` via `ResizeObserver`
+  em `assets/js/device-media.js`) + `.mk__screen` (do tamanho da captura,
+  `matrix3d` do ângulo, `border-radius` em `%` da própria largura) + vídeo/
+  pôster dentro + `.mk__notch` (o mesmo render, só o notch/ilha, por cima do
+  vídeo via `clip-path: polygon()`). `aspect-ratio: var(--w) / var(--h))`
+  sem CLS.
+- **4 ângulos fixos:** `macbook-esq`, `macbook-dir`, `iphone-esq`,
+  `iphone-dir`, cada um com `matrix3d`, `raio_pct` (em px, fração da largura
+  da captura — **não** `border-radius: N%` puro, que usaria `%` da largura no
+  raio horizontal e `%` da altura no vertical, cortando demais numa tela não
+  quadrada) e `notch_poligono` medidos em `assets/mokker/angulos.json`. Um
+  ângulo novo nunca nasce de transformação CSS de um render existente —
+  sempre de um render novo do Mokker, validado por uma ferramenta própria
+  (fluxo e script entregues à parte).
+- **Composições:** IDF-BR — MacBook esquerdo (ferramenta, com vídeo) e direito
+  (clima futuro) levemente sobrepostos, iPhone esquerdo à frente no canto; DVO
+  — iPhone direito à esquerda, MacBook direito à direita; Ciere — MacBook
+  esquerdo (com vídeo) à esquerda, iPhone esquerdo à direita. Larguras de
+  referência a 1440: MacBook 46–50%, iPhone 17–20%. Abaixo de 900px, empilha:
+  o MacBook principal em 100%, o iPhone sobreposto no canto, e o MacBook
+  secundário do IDF-BR some (só aparece ≥ 900px, `loading="lazy"`).
+- **Vídeo:** só os dois notebooks principais (IDF-BR e Ciere) tocam vídeo —
+  o resto não leva `<video>`, porque o render já mostra a tela. `.mk__screen`
+  reaproveita a classe `.device-screen` e os mesmos `data-device-video`/
+  `-poster`, sem mudar `assets/js/device-media.js` além do `ResizeObserver`.
+- **Validação:** `docs/design/mokker-validacao.html` (fora do `index.html` e
+  do CI publicado) mostra os 4 ângulos com `?teste=1` trocando o vídeo por uma
+  caixa magenta no mesmo quadrilátero, para medir vazamento e cobertura por
+  pixel.
+
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
 - **Duração Base:** **0,3s** (`--motion-base`) como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).

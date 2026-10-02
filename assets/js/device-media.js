@@ -60,4 +60,13 @@
   const refresh = () => states.forEach(update);
   reduceMotion.addEventListener('change', refresh);
   document.addEventListener('visibilitychange', refresh);
+
+  // Mokker (#90): escala o palco (.mk__stage) para o tamanho renderizado do .mk.
+  const mkScale = new ResizeObserver((entries) => {
+    for (const { target, contentRect } of entries) {
+      const w = parseFloat(getComputedStyle(target).getPropertyValue('--w'));
+      target.style.setProperty('--k', contentRect.width / w);
+    }
+  });
+  document.querySelectorAll('.mk').forEach((mk) => mkScale.observe(mk));
 })();

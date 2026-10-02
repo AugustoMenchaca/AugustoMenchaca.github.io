@@ -1,17 +1,24 @@
 # Mídia nas telas dos aparelhos
 
-Cada `.device-screen` mantém sua captura estática (`<picture>`, com `alt`) e
-pode receber vídeo, independentemente dos outros aparelhos:
+Desde a issue #90 (rodada 2), o aparelho é o componente `.mk` (render real do
+Mokker, com ângulo fixo em `assets/mokker/angulos.json`), e o slot de mídia é o `.mk__screen`
+dentro dele, que **também leva a classe `.device-screen`** para reaproveitar
+este mecanismo sem alterações:
 
 ```html
-<div class="device-screen"
+<div class="mk__screen device-screen"
+     style="--cw:1440;--ch:900;--raio:0.6%;transform:matrix3d(…)"
      data-device-video="assets/video/idf-desktop.mp4"
      data-device-video-mobile="assets/video/idf-mobile.mp4"
      data-device-poster="assets/img/video/idf-poster-1280.webp"
      data-device-poster-mobile="assets/img/video/idf-poster-640.webp">
-  <picture><!-- captura atual, com sources e alt --></picture>
 </div>
 ```
+
+Sem `data-device-video`, o `.mk__screen` fica vazio — o render do Mokker por
+baixo já mostra a captura embutida na tela, servindo de fallback. Só os dois
+notebooks principais (IDF-BR e Ciere) têm vídeo; o resto do slot nunca recebe
+`data-device-video`, e nenhum `<picture>` é necessário dentro do slot.
 
 Sem `data-device-video`, nada é criado e nenhuma mídia extra é baixada. Com o
 atributo, `assets/js/device-media.js` cria um `<video>` (`muted loop
