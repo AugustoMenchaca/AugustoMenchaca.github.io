@@ -463,6 +463,93 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
 ### Faixas Estruturais (`.slab`)
 - Seções de sangria total com preenchimento vertical de `clamp(34px, 4.4vw, 60px) 0`, contendo o alinhamento da grade via contêiner central.
 
+### Aparelhos do portfólio — issue #85, rodada 3
+
+- **Fonte e composição:** cinco capturas reais, textos alternativos, proporções
+  e posições dos grupos preservados; cascata E2 e sobreposições da rodada 2.
+  Desktop usa tela 16:10 e celular mantém 460×995. Não recortar nem recolorir.
+- **Componente:** `.laptop3d`, perspectiva de 2200px, geometria proporcional em
+  unidades de container. Modificadores de câmera e arquitetura combináveis.
+- **Câmeras:** `--tres-quartos-dir` usa X14°/Y−22°; `--tres-quartos-esq`,
+  X14°/Y22° e reflexo espelhado; `--frontal`, X6°/Y0°, tampa compensada em −6°
+  e base em 82° para mostrar a faixa frontal; `--alto`, X32°/Y−12° e base em
+  40° para expor teclado e trackpad. Os ajustes são internos ao aparelho.
+- **Alumínio:** `deck.svg`, bezel proporcional de 14px, tampa arredondada em
+  18px, câmera com notch, moldura `#1f2022`, arestas `#3a3b3f` → `#2a2b2e`.
+- **Grafite:** `deck-grafite.svg`, bezel de 18px e queixo de 30px, cantos em
+  6px, moldura `#16181b`, tampa mais espessa, câmera pontual sem notch e
+  dobradiça aparente. As medidas nominais escalam com o container de 1000px.
+- **Aplicação:** IDF principal alumínio/direita; futuro grafite/esquerda;
+  DVO alumínio/frontal; Ciere grafite/alto. O celular aprovado fica como está.
+- **Tela e sombra:** reflexo branco de 6% e vinheta suave, sem alterar o asset;
+  sombra `drop-shadow(0 40px 40px rgba(0,0,0,.35))` e sombra de chão contida.
+- **Responsividade:** abaixo de 900px, X8°/Y±8° nos três quartos, X12°/Y−6°
+  na vista alta e frontal reto (X0°/Y0°), inclusive a tampa frontal.
+- **Movimento:** hovers aprovados só por transform; timelines preservadas;
+  `prefers-reduced-motion` elimina deslocamentos e mantém a geometria estática.
+- **Referência:** `docs/design/mockups-variantes.html` compara oito combinações
+  com a mesma captura. CSS do componente reproduzido da LP para inspeção.
+- **Verificação:** nove larguras sem estouro, sonda sem violações, página rolada
+  abaixo de 1,2MB, seis capturas em 390/1440px e referência em 1440px.
+
+### Aparelhos Apple do Figma — issue #85, rodada 4
+
+- **Origem:** exportações fornecidas pelo Augusto dos arquivos Figma Community
+  "Device Mockups (Community)" e "Apple Device Mockups – iPhone, Mac, iPad,
+  Apple Watch (Community)". **A licença precisa ser conferida pelo Augusto antes
+  de publicar.** Esta rodada prepara o PR para develop; não autoriza publicação.
+- **Assets:** `assets/mockups/apple/{air13,pro14,pro16,imac24}.webp`, copiados
+  integralmente, com tela transparente. O Air contém "MacBook Air" no queixo.
+  Não usar `imac27`, que não integra os arquivos desta rodada.
+- **Arquiteturas:** `--apple-air`, `--apple-pro14`, `--apple-pro16`, `--apple-imac`.
+  Imagem decorativa sobre a captura, ambas no mesmo conjunto com perspectiva
+  de 2200px. Frontal em Y0°; três quartos em Y±20°, reduzidos para ±8° abaixo
+  de 900px. Sombra de chão contida, sem mudar composição ou aparelhos restantes.
+- **Aberturas (% left/top/width/height):** Air 12.835/8.696/74.227/78.261;
+  Pro 14 11.663/11.7/76.673/76.599; Pro 16 10.184/10.979/79.631/78.112;
+  iMac 2.941/3.96/94.118/62.376. Capturas originais atrás da abertura, com
+  `object-fit: cover` e `object-position: top left`, sem recolorir o arquivo.
+  A diferença de proporção limita a faixa direita dos Pro (~3–4%) e a faixa
+  inferior do iMac (~10%); conferir conteúdo importante e bordas nas capturas.
+- **Aplicação:** DVO Pro 14 frontal; clima futuro Air à esquerda. Principal do
+  IDF, Ciere grafite e celular continuam iguais. Hovers e reduced-motion iguais.
+- **Referência:** oito combinações Apple (quatro frontais e quatro três quartos)
+  junto das oito da rodada 3, fora do alvo publicado dos checks.
+
+### MacBooks abertos e iPhones reais — issue #85, rodada 5
+
+- **Direção:** montagem 3D aberta aprovada com tampa real dos Pro 14/16 e base
+  de alumínio `deck.svg`. Câmera X12°/Y±44°, perspectiva 2200px; as arquiteturas
+  Apple frontais também aceitam Y±44°. Abaixo de 900px, Y±14° e X8°.
+- **Recorte medido:** a base começa na linha 1192 do Pro 14 e 1334 do Pro 16,
+  onde a largura opaca salta para mais de 90% da imagem. As tampas são recortadas
+  em [202,122,1769,1192] e [193,128,1977,1334], preservando transparência e notch.
+  `docs/design/recortar-tampas.py` reproduz os assets; o CSS registra as aberturas.
+- **Composição:** principal do IDF Pro 16 aberto à direita; futuro Pro 14 aberto
+  à esquerda, na cascata E2; DVO mantém Pro 14 frontal. Ciere mantém grafite/alto.
+  Cada seção ganha um iPhone com a captura real correspondente; no DVO, ele
+  sobrepõe a fotografia de oficina e mantém o formulário de login visível.
+- **iPhone:** `iphone13.webp`, exportação real 800×1543. Abertura em
+  8.143/3.111/83.571/93.769% (left/top/width/height). Capturas móveis IDF e DVO
+  fornecidas em 780×1688; candidatos menores preservam proporção e todo o conteúdo.
+  Ciere mantém sua captura 460×995 inteira, sem cortar, com ajuste subpixel na
+  abertura. Câmeras frontal e X6°/Y±32°; abaixo de 900px, X4°/Y±14°.
+- **Peso:** originais Apple preservados; molduras leves e capturas mobile em
+  230/390/780px, com enquadramento completo. `docs/design/prepare-devices.py`
+  reproduz recortes e variantes a partir dos originais, usando Pillow.
+- **Movimento:** hovers aceitos preservados; reduced-motion mantém geometria
+  estrutural estática, sem translações ou animações. Nenhum texto da LP muda.
+- **Vídeo por aparelho:** `.device-screen` mantém a abertura e aceita picture ou
+  vídeo. `data-device-video="assets/videos/projeto.webm"` ativa só aquele slot;
+  a captura existente permanece como pôster/fallback. O arquivo só carrega perto
+  da viewport; reprodução muda para pôster ao sair ou com reduced-motion.
+  Sem vídeo configurado, permanece a captura sem download de mídia adicional.
+- **Licença:** o iPhone 13 também vem de "Apple Device Mockups – iPhone, Mac,
+  iPad, Apple Watch (Community)". Augusto precisa conferir a licença dos aparelhos
+  antes de publicar; esta rodada prepara a mesma branch e o PR para develop.
+- **Referência:** quatro MacBooks abertos (Pro 14/16, esquerda/direita) e três
+  vistas do iPhone junto das dezesseis combinações anteriores.
+
 ### Sistema de Movimento Integrado (Pesquisa #37, implementado na #21)
 
 - **Duração Base:** **0,3s** (`--motion-base`) como valor heurístico padrão para transições temporais de interface (presente em 5 de 5 referências aprovadas e dominante em 3).
