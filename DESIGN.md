@@ -539,11 +539,21 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   reproduz recortes e variantes a partir dos originais, usando Pillow.
 - **Movimento:** hovers aceitos preservados; reduced-motion mantém geometria
   estrutural estática, sem translações ou animações. Nenhum texto da LP muda.
-- **Vídeo por aparelho:** `.device-screen` mantém a abertura e aceita picture ou
-  vídeo. `data-device-video="assets/videos/projeto.webm"` ativa só aquele slot;
-  a captura existente permanece como pôster/fallback. O arquivo só carrega perto
-  da viewport; reprodução muda para pôster ao sair ou com reduced-motion.
-  Sem vídeo configurado, permanece a captura sem download de mídia adicional.
+- **Vídeo por aparelho (issue #90):** só o notebook principal do IDF-BR e o
+  notebook da Ciere tocam vídeo (`assets/video/idf-*.mp4`,
+  `assets/video/advocacia-*.mp4`, H.264 60 fps, `-an`, `+faststart`, sem
+  reduzir o frame rate); o DVO e os dois iPhones continuam só com a captura
+  estática. `data-device-video`/`-mobile` e `data-device-poster`/`-mobile`
+  no `.device-screen` escolhem a fonte certa via `matchMedia('(max-width:
+  899px)')`. O `<video>` (`preload="none"`) só recebe `src` quando o slot
+  entra no `IntersectionObserver` (`rootMargin: 300px`); pausa ao sair e
+  nunca carrega com `prefers-reduced-motion: reduce`, `saveData` ou
+  `effectiveType` `2g`/`slow-2g` — nesses casos fica só o pôster. Um `<img
+  class="device-video-poster">` (WebP) fica sobreposto ao vídeo e só some
+  com fade de **300ms, só `opacity`**, quando o vídeo dispara `playing` —
+  evita o salto do pôster nativo para o primeiro quadro decodificado
+  (adendo do coordenador). Erro de carregamento ou bloqueio de autoplay
+  mantém o pôster em silêncio.
 - **Licença:** o iPhone 13 também vem de "Apple Device Mockups – iPhone, Mac,
   iPad, Apple Watch (Community)". Augusto precisa conferir a licença dos aparelhos
   antes de publicar; esta rodada prepara a mesma branch e o PR para develop.
@@ -565,6 +575,7 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   8. *Profundidade nas Telas Sobrepostas (Corte 9, issue #21):* a partir de 900px, a imagem de cima do IDF-BR (a tela do futuro) e da Ciere (o celular) desloca de `translateY(24px)` a `translateY(-24px)` enquanto a composição atravessa a tela, via `animation-timeline: view()` e `animation-range: cover`. A imagem de baixo não se move por essa timeline. O hover já existente nesses dois elementos passou de `transform` para `translate` — propriedade separada — para não brigar com a linha do tempo de rolagem.
   9. *Montagem da Fórmula do Quantum (Corte 9, issue #21):* ao entrar na tela (`animation-timeline: view()`, `animation-range: entry 0%–60%` por termo, com ~6% de atraso por termo), cada cartão anima `translateY(16px) → 0` e cada operador (+, =) `scale(0.6) → 1`. Opacidade constante em 1: as figuras são dado e nunca somem. O hover já existente no cartão passou de `transform` para `translate` pelo mesmo motivo do item 8.
   10. *Entrada das Fotos de Vivências (issue #86):* `.viv-photo > .viv-photo-motion > .viv-photo-card > picture > img` separa posição, movimento e pose. Dentro de `@supports (animation-timeline: view())` e `prefers-reduced-motion: no-preference`, o wrapper anima `translateY(12px → 0)` pela rolagem: atrás em `entry 0%–60%`, à frente em `entry 8%–68%`. A defasagem é 8% de progresso, não 100ms; a duração nominal da animação não representa tempo decorrido em `view()`. Foto e moldura movem juntas, com opacidade constante em 1. Hover apenas com ponteiro fino usa `translate: 0 -4px` no mesmo wrapper, em `--motion-base` (0,3s) / `--motion-enter`, separado do `transform` da timeline. Sem suporte ou sem JS, a pose final estática permanece visível; `reduce` neutraliza animação e translação do wrapper, preservando a rotação estrutural do card. Não há loop, escala flutuante ou movimento do texto.
+  11. *Entrada dos Dispositivos (issue #90):* um `.device-enter` novo — o invólucro, nunca o `.laptop3d`/`.phone3d` que já recebe o `transform` do hover, nem o `.laptop3d-assembly`/`.laptop3d-apple` que já tem a rotação 3D da câmera — envolve cada notebook e iPhone (IDF-BR, DVO e Ciere). Dentro de `@supports (animation-timeline: view())` e `prefers-reduced-motion: no-preference`, anima `translateY(24px) rotateX(10deg) → translateY(0) rotateX(0deg)` em 0,6s `var(--motion-enter)`, com `animation-timeline: view()` e `animation-range: entry 0% entry 40%` — a pose final é o estado normal, sem animação. O iPhone de cada seção entra 80ms depois do notebook (`.device-enter--phone { animation-delay: 80ms }`). Só `transform`; opacidade constante em 1 (a captura e o vídeo nunca somem). Sem suporte ou com `reduce`, a pose final estática aparece direto. Não briga com os hovers 3D existentes (item 8) nem com o fade do pôster do vídeo (acima): são elementos e propriedades diferentes.
 - **Acessibilidade (`prefers-reduced-motion: reduce`):** Neutralização total de durações temporais, timelines e translações espaciais. O conteúdo essencial permanece imediatamente visível em seu estado renderizado final, caminhos vetoriais estabelecidos em repouso definitivo e `scroll-behavior: auto`. Veda-se a aplicação genérica de `opacity: 1` indiscriminado ou abertura forçada de painéis colapsados.
 - **Proibições Estruturais:**
   - Veto absoluto a `transition: all`. Todas as propriedades em transição devem ser declaradas nominalmente.
