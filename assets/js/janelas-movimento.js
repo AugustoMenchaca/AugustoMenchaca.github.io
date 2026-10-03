@@ -56,7 +56,7 @@
       });
     }, { threshold: 0.2 });
     
-    document.querySelectorAll('.win-rise, .rise, .nums > *, .clist li, .track li').forEach(el => {
+    document.querySelectorAll('.win-rise, .rise, .nums > *, .clist li, .track li, .qml-cols > *, .qml-formula-caption, .viv-col, .viv-divider, .viv-period, .about-copy p, .contact-links .btn-b3b, .footer-grid > *').forEach(el => {
       fallbackObs.observe(el);
     });
   }
