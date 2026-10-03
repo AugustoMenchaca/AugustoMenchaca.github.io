@@ -97,7 +97,7 @@ Retrato do Augusto — é um dos quatro assets que só ele pode fornecer. Enquan
 Fechamento da página.
 
 **Fazer**
-- E-mail `adcmenchaca@inf.ufpel.edu.br`, telefone `(53) 99901-1310`, LinkedIn, GitHub.
+- E-mail `adcmenchaca@inf.ufpel.edu.br`, telefone (no CV), LinkedIn, GitHub.
 - Substituir os **10 `href="#"`** por destinos reais.
 - Link para o CV, que já existe compilado em `curriculo/augusto-menchaca-cv.pdf`.
 
