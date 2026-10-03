@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Validação dos ângulos do Mokker</title>
 <!-- Página de validação (issue #92) — fora do index.html e fora do
-     CI publicado. Os 5 ângulos do Mokker lado a lado; com ?teste=1, uma caixa
+     CI publicado. Os 4 ângulos do Mokker lado a lado; com ?teste=1, uma caixa
      magenta substitui o vídeo, no mesmo quadrilátero do matrix3d, para medir
      vazamento (fora do quadrilátero) e cobertura (dentro dele) por pixel. -->
 <style>
@@ -40,7 +40,7 @@
 </style>
 </head>
 <body>
-  <h1>Validação dos 5 ângulos do Mokker</h1>
+  <h1>Validação dos 4 ângulos do Mokker</h1>
   <p class="sub">Com <code>?teste=1</code>, uma caixa magenta substitui o vídeo no mesmo quadrilátero do <code>matrix3d</code> — mede vazamento (fora) e cobertura (dentro) por pixel. Não entra no CI publicado.</p>
   <div class="grade">
 
@@ -59,28 +59,15 @@
 
     <figure>
       <div class="mk" data-mk="macbook-cima-dir" style="--w:831;--h:796">
-        <img class="mk__render" src="../../assets/mokker/dvo-macbook-cima-dir-m.webp" width="831" height="796" alt="" loading="lazy" decoding="async">
+        <img class="mk__render" src="../../assets/mokker/ciere-macbook-cima-dir-m.webp" width="831" height="796" alt="" loading="lazy" decoding="async">
         <div class="mk__stage" aria-hidden="true">
           <div class="mk__screen" style="--cw:1440;--ch:900;--raio:8.64;transform:matrix3d(0.276257494,0.0400873015,0,-0.000101730605,-0.0306168197,0.380500251,0,5.58306129e-05,0,0,1,0,295.446546,17.0542739,0,1)">
             <div class="mk__test"></div>
           </div>
         </div>
-        <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/dvo-macbook-cima-dir-m.webp" alt="" style="clip-path: polygon(67.51% 7.98%, 60.89% 7.10%, 60.23% 6.66%, 60.23% 6.16%, 60.41% 5.72%, 60.89% 5.72%, 67.63% 6.72%, 67.93% 7.29%)">
+        <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/ciere-macbook-cima-dir-m.webp" alt="" style="clip-path: polygon(67.51% 7.98%, 60.89% 7.10%, 60.23% 6.66%, 60.23% 6.16%, 60.41% 5.72%, 60.89% 5.72%, 67.63% 6.72%, 67.93% 7.29%)">
       </div>
       <figcaption>macbook-cima-dir</figcaption>
-    </figure>
-
-    <figure>
-      <div class="mk" data-mk="macbook-baixo-esq" style="--w:852;--h:609">
-        <img class="mk__render" src="../../assets/mokker/ciere-macbook-baixo-esq-m.webp" width="852" height="609" alt="" loading="lazy" decoding="async">
-        <div class="mk__stage" aria-hidden="true">
-          <div class="mk__screen" style="--cw:1440;--ch:900;--raio:8.64;transform:matrix3d(0.405605717,0.00121213424,0,0.00015220574,0.0535062821,0.401543542,0,-4.51784359e-05,0,0,1,0,19.2298853,17.9833097,0,1)">
-            <div class="mk__test"></div>
-          </div>
-        </div>
-        <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/ciere-macbook-baixo-esq-m.webp" alt="" style="clip-path: polygon(36.15% 4.19%, 29.81% 4.19%, 29.52% 3.78%, 29.52% 2.96%, 36.15% 2.87%)">
-      </div>
-      <figcaption>macbook-baixo-esq</figcaption>
     </figure>
 
     <figure>

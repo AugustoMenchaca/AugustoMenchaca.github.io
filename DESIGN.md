@@ -586,21 +586,43 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   nasce de transformação CSS de um render existente — sempre de um render novo
   do Mokker, validado por uma ferramenta própria (fluxo e script entregues à
   parte). Os 4 ângulos anteriores (`macbook-esq`/`-dir`, `iphone-esq`/`-dir`)
-  saíram do `angulos.json` e do `index.html` na #92.
-- **Colagem única por seção (issue #92):** cada case passa a ser **um bloco só**
-  (`.mk-colagem`, com `data-mk-colagem`), não mais 2–3 figuras soltas lado a
-  lado. Notebook atrás (`data-mk-papel="notebook"`, 86% da largura do bloco,
-  ancorado num canto) e celular à frente (`data-mk-papel="celular"`, 34%,
-  ancorado no canto oposto, `z-index` acima), sobrepondo ~58% da própria
-  largura do celular sobre a base do notebook. IDF-BR — `macbook-cima-esq`
-  (com vídeo) + `iphone-frontal` à direita; o MacBook secundário do clima
-  futuro saiu. DVO — `macbook-cima-dir` + `iphone-cima-dir` à esquerda. Ciere
-  — `macbook-baixo-esq` (com vídeo) + `iphone-frontal` à direita. O bloco é
-  fluido (`%`, `aspect-ratio`, nunca px do quadro): ≤ 46% do `.container` e
-  ≤ 420px de altura a 1440px: IDF-BR e DVO usam `aspect-ratio: 1.214` (ângulo
-  "cima", mais quadrado), Ciere `1.627` (ângulo "baixo", mais deitado). Abaixo
-  de 900px, o bloco vira 100% da largura útil mantendo a mesma colagem — não
-  empilha mais em figuras separadas.
+  saíram do `angulos.json` e do `index.html` na #92; `macbook-baixo-esq`
+  (só a Ciere) saiu no corte 2, substituído por `macbook-cima-dir` (mesmo
+  ângulo do DVO, nova captura).
+- **Colagem copiada de produto real (issue #92, corte 2):** o teto antigo de
+  "≤ 46% do container, ≤ 420px" saiu — veio de leitura errada de "muito
+  grandes" (ver memória `copiar-referencias-reais-mockups`); Augusto queria o
+  oposto, **maior e mais perto do leitor**, copiado de produto real
+  (`specs/corte92ref/receitas.md`), não inventado. Teto novo é só a
+  **altura** — `height: min(80vh, 900px)` — a largura é a que essa altura
+  permitir (sem teto de `%`, exceto `max-width: 94%` de segurança). IDF-BR e
+  Ciere usam `aspect-ratio: 1.0652` (notebook a 94-98% da largura do bloco).
+  - **IDF-BR** (de ramp.com): `macbook-cima-esq` (com vídeo) quase full-bleed
+    + `iphone-frontal` colado no canto inferior-direito, sobre a base/teclado
+    (nunca a tela), vazando a própria altura para baixo do notebook.
+    `.idf-numbers` passou a vir **depois** do bloco (só ordem/DOM, texto
+    idêntico).
+  - **Ciere** (de rippling.com): voltou a **um aparelho só**,
+    `macbook-cima-dir` (com vídeo) — nova captura
+    `ciere-macbook-cima-dir(.webp|-m.webp)`, gerada com
+    `docs/design/tools/mokker-compoe.py` sobre o WebP já composto do DVO
+    (reaproveita o render, troca só a tela). Chips (`.ciere-chips`, 4 de 6
+    itens de `.ciere-activities`, que ficou só com os outros 2) ancorados à
+    esquerda, na altura da tela — texto que já existia.
+  - **DVO** (de dayoneapp.com, seção secundária): perdeu o notebook — só
+    `iphone-cima-dir`, pequeno (`width: min(21vw, 300px, 29vh)`), ao lado do
+    texto que já existia, reaproveitando a curva de entrada do "notebook"
+    (`data-mk-papel="notebook"` num `.mk` que é um iPhone — só a curva).
+  - Todo aparelho mantém folga de 3-6% no lado ancorado (nunca 0) para o
+    `rotate()`/`translate()` de entrada não furar a borda do bloco.
+  - **Conhecido abaixo da meta:** o corte lateral da Ciere (receita pedia
+    "cortado pela borda do container") não entrou — um elemento maior que o
+    invólucro, mesmo com `overflow: hidden`, continua sendo reportado pelo
+    `estouro.mjs` (mede `getBoundingClientRect` do descendente, que
+    `overflow` não encolhe). Peso da carga inicial (240 KB) também passou do
+    teto de 160 KB: os mesmos WebP aparecem bem maiores, exigindo o arquivo
+    cheio em vez do `-m`. Tensão direta com "maior e mais perto", registrada
+    para o próximo corte decidir.
 - **Vídeo:** só os dois notebooks principais (IDF-BR e Ciere) tocam vídeo —
   o resto não leva `<video>`, porque o render já mostra a tela. `.mk__screen`
   reaproveita a classe `.device-screen` e os mesmos `data-device-video`/
