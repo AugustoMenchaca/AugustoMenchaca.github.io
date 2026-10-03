@@ -96,7 +96,7 @@
       to { transform: none; }
     }
     @keyframes step {
-      from { color: rgba(183,214,146,.38); }
+      from { color: #A2C186; }
       to { color: #B7D692; }
     }
     @keyframes win-rise {
@@ -112,7 +112,7 @@
       to { transform: scaleY(1); }
     }
     @keyframes ink {
-      from { color: #8A8E93; transform: translateX(-6px); }
+      from { color: #6B6F74; transform: translateX(-6px); }
       to { color: #111111; transform: none; }
     }
     @keyframes wipe {
@@ -139,5 +139,5 @@
   html.sem-view .rise:not(.is-in),
   html.sem-view .nums > *:not(.is-in) { transform: translateY(36px); }
   html.sem-view .clist li:not(.is-in) { transform: translateX(-14px); }
-  html.sem-view .track li:not(.is-in) { color: #8A8E93; transform: translateX(-6px); }
+  html.sem-view .track li:not(.is-in) { color: #6B6F74; transform: translateX(-6px); }
 }
