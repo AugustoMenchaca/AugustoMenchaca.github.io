@@ -255,14 +255,17 @@
      matrix3d do angulo ate o quadrilatero exato da tela fotografada. */
   .mk {
     position: relative; width: 100%; aspect-ratio: var(--w) / var(--h);
-    container-type: inline-size;
+    container-type: inline-size; isolation: isolate;
   }
-  /* Sombra de chao (issue #92, corte 4): nunca box-shadow/drop-shadow numa
+  /* Sombra de chao (issue #92, corte 4/5): nunca box-shadow/drop-shadow numa
      caixa retangular (vira retangulo visivel nos cantos) — uma elipse
-     separada, por baixo do aparelho, dentro do invólucro. */
+     separada, rente a base do aparelho (nunca o topo — corte 5), por baixo
+     da imagem (z-index negativo; o .mk isola o contexto de empilhamento
+     para a sombra nao ir atras do fundo da secao) e dentro do invólucro. */
   .mk-sombra {
-    position: absolute; left: 50%; translate: -50% 0; width: 85%; aspect-ratio: 1 / 0.16;
-    background: radial-gradient(closest-side, rgba(0, 0, 0, .22), transparent); z-index: 0; pointer-events: none;
+    position: absolute; left: 50%; bottom: -4%; top: auto; translate: -50% 0;
+    width: 85%; aspect-ratio: 1 / 0.16;
+    background: radial-gradient(closest-side, rgba(0, 0, 0, .22), transparent); z-index: -1; pointer-events: none;
   }
   .mk__render { display: block; width: 100%; height: 100%; }
   .mk__stage {
@@ -300,9 +303,13 @@
 
   /* Mascara do iPhone (issue #92): raio em `%` da própria caixa do render —
      fecha o vazamento de pixel nos cantos do PNG do Mokker, distinto do raio
-     da tela (acima, em px da captura). */
-  .mk[data-mk="iphone-frontal"] {
-    --mascara: 13.5; border-radius: calc(var(--mascara) * 1%); overflow: hidden;
+     da tela (acima, em px da captura). Aplicada so no render/notch (nunca no
+     .mk inteiro — corte 5: isso cortava a sombra, que agora mora dentro do
+     .mk e vaza um pouco abaixo da base dele de propósito). */
+  .mk[data-mk="iphone-frontal"] { --mascara: 13.5; }
+  .mk[data-mk="iphone-frontal"] .mk__render,
+  .mk[data-mk="iphone-frontal"] .mk__notch {
+    border-radius: calc(var(--mascara) * 1%); overflow: hidden;
   }
 
   /* Entrada dos aparelhos (issue #92): animada por C em mk-entrada.css/js,
@@ -444,15 +451,15 @@
     position: absolute; left: 2%; right: 58.2%; top: 28%; bottom: 36%; overflow: hidden;
     list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; justify-content: space-between;
   }
-  .ciere-chips li { position: relative; display: flex; align-items: center; }
-  .ciere-chips li::after {
-    content: ''; position: absolute; left: 100%; top: 50%; margin-left: 8px;
-    width: 100vw; height: 1px; background: rgba(17, 17, 17, .3);
-  }
+  .ciere-chips li { display: flex; align-items: center; align-self: flex-start; }
   .ciere-chip {
-    font-family: var(--f-body); font-weight: 600; font-size: 14px; color: var(--ink);
+    position: relative; font-family: var(--f-body); font-weight: 600; font-size: 14px; color: var(--ink);
     background: var(--surface); padding: 8px 16px; border-radius: 999px; white-space: nowrap;
     box-shadow: 0 4px 10px rgba(0, 0, 0, .12); z-index: 1;
+  }
+  .ciere-chip::after {
+    content: ''; position: absolute; left: 100%; top: 50%; margin-left: 8px;
+    width: 100vw; height: 1px; background: color-mix(in srgb, currentColor 40%, transparent);
   }
 
   .ciere-bottom {
