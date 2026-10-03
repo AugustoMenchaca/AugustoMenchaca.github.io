@@ -1,0 +1,143 @@
+@media (prefers-reduced-motion: no-preference) {
+  html.js-janelas .live-dot {
+    animation: live 2.4s ease-out infinite;
+  }
+  @keyframes live {
+    0% { box-shadow: 0 0 0 0 rgba(44,76,69,.55); }
+    70% { box-shadow: 0 0 0 7px rgba(44,76,69,0); }
+    100% { box-shadow: 0 0 0 0 rgba(44,76,69,0); }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.js-janelas .rise {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+
+    html.js-janelas .pipe { view-timeline: --pipe block; }
+    html.js-janelas .pipe .step {
+      animation: step linear both;
+      animation-timeline: --pipe;
+    }
+    html.js-janelas .pipe .step:nth-of-type(1) { animation-range: cover 4% cover 10%; }
+    html.js-janelas .pipe .step:nth-of-type(2) { animation-range: cover 10% cover 16%; }
+    html.js-janelas .pipe .step:nth-of-type(3) { animation-range: cover 16% cover 22%; }
+    html.js-janelas .pipe .step:nth-of-type(4) { animation-range: cover 22% cover 28%; }
+    html.js-janelas .pipe .step:nth-of-type(5) { animation-range: cover 28% cover 34%; }
+
+    html.js-janelas .nums > * {
+      animation: rise linear both;
+      animation-timeline: view();
+    }
+    html.js-janelas .nums > *:nth-child(1) { animation-range: entry 0% entry 70%; }
+    html.js-janelas .nums > *:nth-child(2) { animation-range: entry 8% entry 78%; }
+    html.js-janelas .nums > *:nth-child(3) { animation-range: entry 16% entry 86%; }
+    html.js-janelas .nums > *:nth-child(4) { animation-range: entry 24% entry 94%; }
+
+    html.js-janelas .win-rise {
+      animation: win-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+    html.js-janelas .parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    html.js-janelas .track {
+      position: relative;
+      view-timeline: --track block;
+    }
+    html.js-janelas .track::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #111111;
+      transform-origin: top;
+      z-index: 1;
+      animation: draw linear both;
+      animation-timeline: --track;
+      animation-range: cover 18% cover 58%;
+    }
+    html.js-janelas .track li {
+      animation: ink linear both;
+      animation-timeline: --track;
+    }
+    html.js-janelas .track li:nth-child(1) { animation-range: cover 18% cover 23%; }
+    html.js-janelas .track li:nth-child(2) { animation-range: cover 23% cover 28%; }
+    html.js-janelas .track li:nth-child(3) { animation-range: cover 28% cover 33%; }
+    html.js-janelas .track li:nth-child(4) { animation-range: cover 33% cover 38%; }
+    html.js-janelas .track li:nth-child(5) { animation-name: ink, wipe; animation-range: cover 38% cover 43%; }
+    html.js-janelas .track li:nth-child(6) { animation-range: cover 43% cover 48%; }
+    html.js-janelas .track li:nth-child(7) { animation-range: cover 48% cover 53%; }
+    html.js-janelas .track li:nth-child(8) { animation-range: cover 53% cover 58%; }
+
+    html.js-janelas .clist { view-timeline: --clist block; }
+    html.js-janelas .clist li {
+      animation: slide linear both;
+      animation-timeline: --clist;
+    }
+    html.js-janelas .clist li:nth-child(1) { animation-range: entry 30% cover 30%; }
+    html.js-janelas .clist li:nth-child(2) { animation-range: entry 40% cover 33%; }
+    html.js-janelas .clist li:nth-child(3) { animation-range: entry 50% cover 36%; }
+    html.js-janelas .clist li:nth-child(4) { animation-range: entry 60% cover 39%; }
+    html.js-janelas .clist li:nth-child(5) { animation-range: entry 70% cover 42%; }
+    html.js-janelas .clist li:nth-child(6) { animation-name: slide, wipe; animation-range: entry 80% cover 48%; }
+
+    @keyframes rise {
+      from { transform: translateY(36px); }
+      to { transform: none; }
+    }
+    @keyframes step {
+      from { color: rgba(183,214,146,.38); }
+      to { color: #B7D692; }
+    }
+    @keyframes win-rise {
+      from { transform: translateY(72px) scale(.965); }
+      to { transform: none; }
+    }
+    @keyframes parallax {
+      from { transform: translateY(80px); }
+      to { transform: translateY(-80px); }
+    }
+    @keyframes draw {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+    @keyframes ink {
+      from { color: #8A8E93; transform: translateX(-6px); }
+      to { color: #111111; transform: none; }
+    }
+    @keyframes wipe {
+      from { background-size: 0% 100%; }
+      to { background-size: 100% 100%; }
+    }
+    @keyframes slide {
+      from { transform: translateX(-14px); }
+      to { transform: none; }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.sem-view .win-rise,
+  html.sem-view .rise,
+  html.sem-view .nums > *,
+  html.sem-view .clist li,
+  html.sem-view .track li {
+    transition: transform 600ms cubic-bezier(.2,.75,.15,1), color 600ms cubic-bezier(.2,.75,.15,1);
+  }
+
+  html.sem-view .win-rise:not(.is-in) { transform: translateY(72px) scale(.965); }
+  html.sem-view .rise:not(.is-in),
+  html.sem-view .nums > *:not(.is-in) { transform: translateY(36px); }
+  html.sem-view .clist li:not(.is-in) { transform: translateX(-14px); }
+  html.sem-view .track li:not(.is-in) { color: #8A8E93; transform: translateX(-6px); }
+}

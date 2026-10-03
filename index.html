@@ -246,269 +246,92 @@
   .slab-dark .slab-headline { color: var(--surface); }
   .slab-stone .slab-headline { color: var(--ink); max-width: 20ch; }
 
-  .real-shot { margin: 0; min-width: 0; }
-  .real-shot img { display: block; width: 100%; height: auto; }
-
-  /* #90 rodada 2: aparelho do Mokker — render real (MacBook/iPhone) com a
-     captura embutida na tela, que serve de fallback e de poster; o video
-     (so nos dois notebooks principais) entra por cima, deformado pelo
-     matrix3d do angulo ate o quadrilatero exato da tela fotografada. */
-  .mk {
-    position: relative; width: 100%; aspect-ratio: var(--w) / var(--h);
-    container-type: inline-size;
-    filter: drop-shadow(0 32px 28px rgba(0, 0, 0, .3));
-  }
-  .mk__render { display: block; width: 100%; height: 100%; }
-  .mk__stage {
-    position: absolute; left: 0; top: 0; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px);
-    transform-origin: 0 0; transform: scale(var(--k, 1));
-  }
-  .mk__screen {
-    position: absolute; left: 0; top: 0; width: calc(var(--cw) * 1px); height: calc(var(--ch) * 1px);
-    transform-origin: 0 0; overflow: hidden; border-radius: calc(var(--raio) * 1px);
-  }
-  .mk__screen video,
-  .mk__screen .device-video-poster {
-    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;
-    pointer-events: none;
-  }
-  .device-video-poster { transition: opacity 300ms var(--motion-enter); }
-  .device-screen--playing .device-video-poster { opacity: 0; }
-  .mk__notch { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-  @media (prefers-reduced-motion: reduce) { .mk__screen video { visibility: hidden; } }
-
-  /* Os 4 angulos fixos do Mokker (assets/mokker/angulos.json): tamanho do
-     render, tamanho/raio da tela e o matrix3d + notch de cada um. Sem estilo
-     inline — só `data-mk` identifica o ângulo de cada instância. */
-  .mk[data-mk="macbook-esq"], .mk[data-mk="macbook-dir"] { --w: 1255; --h: 1141; }
-  .mk[data-mk="iphone-esq"] { --w: 339; --h: 798; }
-  .mk[data-mk="iphone-dir"] { --w: 340; --h: 798; }
-  .mk[data-mk="macbook-esq"] .mk__screen, .mk[data-mk="macbook-dir"] .mk__screen { --cw: 1440; --ch: 900; --raio: 8.64; }
-  .mk[data-mk="iphone-esq"] .mk__screen, .mk[data-mk="iphone-dir"] .mk__screen { --cw: 390; --ch: 844; --raio: 52.65; }
-  .mk[data-mk="macbook-esq"] .mk__screen { transform: matrix3d(0.522657865,-0.153859062,0,7.39206382e-05,0.167071542,0.639809486,0,3.77093713e-05,0,0,1,0,23.6716396,244.67951,0,1); }
-  .mk[data-mk="macbook-dir"] .mk__screen { transform: matrix3d(0.38576995,0.138578583,0,-6.82537561e-05,-0.110642612,0.578526492,0,3.15103589e-05,0,0,1,0,553.950166,20.1303284,0,1); }
-  .mk[data-mk="iphone-esq"] .mk__screen { transform: matrix3d(0.675535135,0.0242745912,0,-0.000175904395,0.0146397629,0.87960513,0,6.62816816e-05,0,0,1,0,13.1664233,22.036475,0,1); }
-  .mk[data-mk="iphone-dir"] .mk__screen { transform: matrix3d(0.796537128,-0.0253457907,0,0.000211741162,0.00990027529,0.955221962,0,7.5684047e-05,0,0,1,0,40.9250727,33.6487636,0,1); }
-  .mk[data-mk="macbook-esq"] .mk__notch { clip-path: polygon(27.81% 13.45%, 27.21% 13.32%, 27.05% 12.88%, 27.17% 12.40%, 33.59% 10.17%, 33.75% 11.04%, 33.39% 11.44%); }
-  .mk[data-mk="macbook-dir"] .mk__notch { clip-path: polygon(72.59% 13.45%, 72.11% 13.45%, 66.53% 11.44%, 66.18% 11.04%, 66.25% 10.25%, 66.61% 10.04%, 72.67% 12.23%, 72.95% 12.62%); }
-  .mk[data-mk="iphone-esq"] .mk__notch { clip-path: polygon(54.57% 8.33%, 35.69% 7.96%, 32.89% 7.02%, 32.60% 5.51%, 34.81% 4.32%, 54.28% 4.70%, 56.78% 5.89%, 56.78% 7.27%); }
-  .mk[data-mk="iphone-dir"] .mk__notch { clip-path: polygon(52.94% 8.33%, 45.00% 8.33%, 42.79% 7.02%, 43.09% 5.64%, 45.59% 4.70%, 56.76% 4.32%, 64.71% 4.32%, 66.91% 5.26%, 66.91% 6.77%, 64.71% 7.83%); }
-
-  /* Entrada animada dos aparelhos ao rolar ate eles (issue #90): o
-     involucro (nunca o .mk, que ja recebe o transform do hover) sobe
-     24px e se endireita. So transform; opacidade sempre 1. */
-  .device-enter { display: block; }
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .device-enter {
-        animation: device-enter-pose 0.6s var(--motion-enter) both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 40%;
-      }
-      .device-enter--phone { animation-delay: 80ms; }
-    }
-  }
-  @keyframes device-enter-pose {
-    from { transform: translateY(24px) rotateX(10deg); }
-    to   { transform: translateY(0) rotateX(0deg); }
-  }
-
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .idf-screen-future .mk, .ciere-shot-desktop .mk, .ciere-shot-mobile .mk {
-      transition: transform var(--motion-base) var(--motion-enter);
-    }
-    .idf-screen-future:hover .mk { transform: translateY(-4px); }
-    .ciere-shot-desktop:hover .mk { transform: translateY(-3px); }
-    .ciere-shot-mobile:hover .mk { transform: translateY(-6px); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .mk { transform: none !important; }
-  }
-
-  /* IDF-BR — papel, numeros com fonte e telas reais (Corte 2, issue #10) */
-  #idf { padding: 120px 100px; }
-  #idf .container { max-width: 1240px; padding-inline: 0; }
-
-  .idf-top {
-    display: grid; grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
-    gap: clamp(32px, 4vw, 80px); align-items: start;
-  }
-  .idf-title { display: flex; flex-direction: column; gap: 20px; }
-  #idf .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
-  .idf-copy { display: flex; flex-direction: column; gap: 20px; padding-top: 14px; }
-  .idf-lede { margin: 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--surface); max-width: 65ch; }
-  .idf-pipeline { margin: 0; font-family: var(--f-body); font-weight: 500; font-size: 0.875rem; line-height: 1.5; color: var(--leaf); }
-
-  .idf-numbers {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;
-    margin-top: 64px; padding-top: 28px; border-top: 1px solid rgba(183, 214, 146, .5);
-  }
+  /* Janelas planas de produto — design #94. */
+  #idf { padding: clamp(64px, 8.4vw, 120px) clamp(20px, 6.95vw, 100px) clamp(40px, 4.4vw, 64px); }
+  #idf .container, #dvo .container, #ciere .container { max-width: 1240px; padding-inline: 0; }
+  .idf-top { display: flex; flex-wrap: wrap; gap: clamp(32px, 5.5vw, 80px); align-items: flex-start; }
+  .idf-title { flex: 1.9 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  .idf-title .live-link, .dvo-title .live-link, .ciere-top-left .live-link { margin: 0; }
+  #idf .slab-headline, #dvo .slab-headline, #ciere .slab-headline { font-size: clamp(36px, 5vw, 72px); line-height: 1.05; letter-spacing: -.02em; margin: 0; max-width: none; }
+  .idf-copy { flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px; padding-top: 14px; }
+  .idf-lede { margin: 0; font-size: 1.125rem; line-height: 1.6; color: var(--surface); text-wrap: pretty; }
+  .idf-pipeline { margin: 0; font-weight: 500; font-size: .875rem; line-height: 1.5; color: var(--leaf); }
+  .idf-numbers { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 32px 40px; margin-top: clamp(40px, 4.4vw, 64px); padding-top: 28px; border-top: 1px solid rgba(183,214,146,.5); }
   .idf-number { display: flex; flex-direction: column; gap: 10px; }
-  .idf-number-value {
-    margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(2rem, 4vw, 4rem);
-    line-height: 1; letter-spacing: -0.03em; color: var(--leaf);
-  }
-  .idf-number-label { margin: 0; font-family: var(--f-body); font-size: 15px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
-
-  /* Composicao Mokker (issue #90, rodada 2): MacBook principal (com video)
-     e MacBook secundario levemente sobrepostos, iPhone a frente no canto. */
-  .idf-screens { position: relative; width: 100%; aspect-ratio: 1.5; margin-top: 64px; }
-  .idf-screen-main { position: absolute; top: 0; left: 0; width: 48%; z-index: 2; }
-  .idf-screen-future { position: absolute; top: 26%; left: 39%; width: 48%; z-index: 1; }
-  .idf-shot-mobile { position: absolute; right: 2%; bottom: 2%; width: 19%; z-index: 3; }
-
-  /* Profundidade na tela sobreposta do IDF-BR (#21, Corte 9): a tela do
-     futuro (de cima) desloca enquanto a composicao atravessa a tela. */
-  @media (min-width: 900px) {
-    @supports (animation-timeline: view()) {
-      .idf-screen-future {
-        animation-name: corte9-profundidade;
-        animation-timeline: view();
-        animation-range: cover;
-        animation-fill-mode: both;
-        animation-timing-function: linear;
-      }
-    }
-  }
-
-  @keyframes corte9-profundidade {
-    from { transform: translateY(24px); }
-    to   { transform: translateY(-24px); }
-  }
-
-  @media (max-width: 1199px) {
-    .idf-top { grid-template-columns: 1fr; }
-  }
-
-  @media (min-width: 1024px) {
-    .idf-numbers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  }
-
-  /* Abaixo de 900px: empilha — MacBook principal em 100%, secundario some,
-     iPhone sobreposto no canto (issue #90, rodada 2). */
-  @media (max-width: 899px) {
-    .idf-screens { aspect-ratio: 1255 / 1141; }
-    .idf-screen-main { position: relative; width: 100%; left: 0; top: 0; }
-    .idf-screen-future { display: none; }
-    .idf-shot-mobile { left: auto; right: 1%; top: auto; bottom: 1%; width: 28%; }
-  }
-
-  /* DVO — credito ao squad, papel de coordenacao (Corte 3, issue #11) */
-  #dvo { padding: 120px 100px; background: var(--surface); color: var(--ink); margin-inline: 0; }
-  #dvo .container { max-width: 1240px; padding-inline: 0; }
-
-  .dvo-title { display: flex; flex-direction: column; gap: 20px; max-width: 900px; }
-  #dvo .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: none; }
-
-  .dvo-body {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr);
-    gap: clamp(32px, 4vw, 80px); align-items: start; margin-top: 56px;
-  }
-
-  .dvo-role { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
-  .dvo-disclaimer { margin: 0; font-size: 1.375rem; line-height: 1.5; color: var(--ink); }
-
-  .dvo-track-list { list-style: none; margin: 0; padding: 0; }
-  .dvo-track-list li {
-    font-family: var(--f-body); font-weight: 500; font-size: 16px;
-    padding: 11px 12px; border-top: 1px solid rgba(17, 17, 17, .12); color: var(--ink);
-  }
-  .dvo-track-item--squad { background: var(--leaf); font-weight: 600; }
-
-  .dvo-aside { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
-  /* Composicao Mokker (issue #90, rodada 2): iPhone a esquerda, MacBook a direita. */
-  .dvo-shot { position: relative; width: 100%; aspect-ratio: 1.9; }
-  .dvo-shot-phone { position: absolute; left: 0; top: 10%; width: 19%; z-index: 2; }
-  .dvo-shot-laptop { position: absolute; right: 0; top: 0; width: 48%; z-index: 1; }
-  @media (max-width: 899px) {
-    .dvo-shot { aspect-ratio: 1255 / 1141; }
-    .dvo-shot-laptop { position: relative; width: 100%; right: 0; top: 0; }
-    .dvo-shot-phone { left: auto; right: 1%; top: auto; bottom: 1%; width: 28%; }
-  }
-
-  .dvo-config-head { display: block; font-family: var(--f-display); font-weight: 600; font-size: 18px; color: var(--ink); margin: 0 0 12px; }
-  .dvo-config-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .dvo-config-item {
-    display: flex; align-items: baseline; gap: 8px;
-    padding: 11px 12px; border-top: 1px solid rgba(17, 17, 17, .12);
-  }
-  .dvo-config-term { font-family: var(--f-body); font-weight: 500; font-size: 16px; color: var(--ink); }
-  .dvo-config-act { font-family: var(--f-body); font-weight: 400; font-size: 16px; color: var(--muted); }
-
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .dvo-shot-laptop .mk { transition: transform var(--motion-base) var(--motion-enter); }
-    .dvo-shot-laptop:hover .mk { transform: translateY(-4px); }
-  }
-
-  @media (max-width: 900px) {
-    .dvo-body { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 600px) {
-    .dvo-config-grid { grid-template-columns: 1fr; }
-  }
-
-
-
-  /* CIERE — visibilidade SEO/GEO, telas sobrepostas e ponte (Corte 4, issue #12) */
-  #ciere { padding: 120px 100px; background: var(--leaf); color: var(--ink); margin-inline: 0; }
-  #ciere .container { max-width: 1240px; padding-inline: 0; }
-
-  .ciere-top {
-    display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    gap: clamp(32px, 4vw, 80px); align-items: start;
-  }
-  .ciere-top-left { min-width: 0; }
-  #ciere .slab-headline { font-size: clamp(40px, 5vw, 72px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; max-width: 26ch; }
+  .idf-number-value { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(36px, 4vw, 60px); line-height: 1; letter-spacing: -.03em; font-variant-numeric: tabular-nums; color: var(--leaf); }
+  .idf-number-label { margin: 0; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.85); }
+  .idf-bridge { position: relative; background: var(--surface); padding-inline: clamp(20px, 6.95vw, 100px); }
+  .idf-bridge__green { position: absolute; inset: 0 0 auto; height: 58%; background: var(--forest); }
+  .idf-bridge__figure { position: relative; max-width: 1240px; margin: 0 auto; padding-bottom: clamp(40px, 6.1vw, 88px); container-type: inline-size; }
+  .idf-bridge .win { width: 76%; }
+  .idf-phone { position: absolute; z-index: 2; right: 0; bottom: 0; width: 20%; max-width: 250px; padding: clamp(3px, .56cqw, 7px); background: var(--ink); border-radius: clamp(14px, 2.9cqw, 36px); }
+  .idf-phone__screen { position: relative; aspect-ratio: 390 / 844; overflow: hidden; border-radius: clamp(11px, 2.35cqw, 29px); background: var(--surface); }
+  .idf-phone__screen img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  .win { --win-bar-scale: 5.2; --win-pad-scale: 1.8; position: relative; background: var(--surface); border: 1px solid var(--ink); border-radius: 10px; overflow: hidden; }
+  .win--idf { --win-bar-scale: 3.2; --win-pad-scale: 1.15; }
+  .win--ciere { --win-bar-scale: 5.6; --win-pad-scale: 2; }
+  .win__bar { display: flex; align-items: center; gap: 12px; height: clamp(26px, calc(var(--win-bar-scale) * 1cqw), 40px); padding-inline: clamp(10px, calc(var(--win-pad-scale) * 1cqw), 14px); background: #F3F3F1; border-bottom: 1px solid var(--hair); position: relative; z-index: 1; }
+  .win__dots { flex: 1 1 0; display: flex; gap: clamp(4px, .5cqw, 6px); }
+  .win__dots span { width: clamp(6px, .73cqw, 9px); height: clamp(6px, .73cqw, 9px); border-radius: 50%; border: 1px solid rgba(17,17,17,.4); }
+  .win__url, .win__status { font-family: var(--f-mono); font-size: clamp(8px, 1.45cqw, 11px); font-weight: 500; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+  .win--idf .win__url, .win--idf .win__status { font-size: clamp(8px, .9cqw, 11px); }
+  .win--ciere .win__url, .win--ciere .win__status { font-size: clamp(8px, 1.55cqw, 11px); }
+  .win__url { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--ink); text-decoration: none; }
+  .win__status { flex: 1 1 0; display: flex; justify-content: flex-end; align-items: center; gap: 6px; color: var(--muted); }
+  .live-dot { flex: none; width: 7px; height: 7px; border-radius: 50%; background: var(--forest); }
+  .win__screen { position: relative; aspect-ratio: 1440 / 900; overflow: hidden; background: #E3E3E3; }
+  .win--ciere .win__screen { background: #F3EDDE; }
+  .win__screen video, .win__screen .device-video-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+  .win__screen video { z-index: 1; }
+  .win__screen .device-video-poster { z-index: 2; transition: opacity 300ms var(--motion-enter); }
+  .win__screen.device-screen--playing .device-video-poster { opacity: 0; }
+  .win__shot { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  @media (prefers-reduced-motion: reduce) { .win__screen video { visibility: hidden; } }
+  #dvo { padding: clamp(56px, 7vw, 104px) clamp(20px, 6.95vw, 100px) clamp(64px, 8.4vw, 120px); background: var(--surface); color: var(--ink); margin-inline: 0; }
+  .dvo-title { display: flex; flex-direction: column; gap: 20px; max-width: 900px; align-items: flex-start; }
+  .section-dvo .live-link { font-size: 1rem; }
+  .dvo-body { display: flex; flex-wrap: wrap; gap: clamp(32px, 5.5vw, 80px); align-items: flex-start; margin-top: clamp(32px, 3.9vw, 56px); }
+  .dvo-role { flex: 1 1 320px; min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+  .dvo-disclaimer { margin: 0; font-size: clamp(18px, 1.55vw, 22px); line-height: 1.5; text-wrap: pretty; }
+  .dvo-track-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .dvo-track-list li { font-weight: 500; font-size: 16px; padding: 11px 12px 11px 16px; border-top: 1px solid rgba(17,17,17,.12); }
+  .dvo-track-list li:last-child { border-bottom: 1px solid rgba(17,17,17,.12); }
+  .dvo-track-item--squad { background: linear-gradient(var(--leaf), var(--leaf)) no-repeat 0 0 / 100% 100%; font-weight: 600; }
+  .dvo-aside { flex: 1.9 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 36px; }
+  .dvo-shot { margin: 0; container-type: inline-size; }
+  .dvo-config-head { display: block; font-family: var(--f-display); font-weight: 600; font-size: 18px; margin-bottom: 12px; }
+  .dvo-config-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); }
+  .dvo-config-item { display: flex; align-items: baseline; gap: 8px; padding: 11px 12px; border-top: 1px solid rgba(17,17,17,.12); white-space: nowrap; }
+  .dvo-config-term { font-weight: 500; font-size: 16px; }
+  .dvo-config-act { font-size: 16px; color: var(--muted); }
+  #ciere { padding: clamp(64px, 8.4vw, 120px) clamp(20px, 6.95vw, 100px); background: var(--leaf); color: var(--ink); margin-inline: 0; }
+  @media (min-width: 900px) { #ciere { padding-bottom: clamp(88px, 10.6vw, 152px); } }
+  @media (min-width: 900px) and (max-width: 1100px) { #ciere { padding-bottom: calc(clamp(64px, 8.4vw, 120px) + 40px); } }
+  .ciere-top { display: flex; flex-wrap: wrap; gap: clamp(32px, 5.5vw, 80px); align-items: flex-start; }
+  .ciere-top-left { flex: 1.5 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
+  #ciere .slab-headline { max-width: 26ch; }
   .lang-toggle { display: inline-flex; align-items: center; gap: 4px; }
-  .lang-sep { color: var(--muted); font-size: 0.7rem; font-family: var(--f-mono); }
-
-  .ciere-visibility { min-width: 0; }
-  .ciere-visibility .meta-label {
-    display: block; font-family: var(--f-display); font-weight: 600; font-size: 22px;
-    letter-spacing: normal; text-transform: none; color: var(--ink);
-  }
-  .ciere-visibility p { margin: 12px 0 0; font-family: var(--f-body); font-size: 1.125rem; line-height: 1.6; color: var(--ink); max-width: 65ch; }
-
-  /* Composicao Mokker (issue #90, rodada 2): MacBook (com video) a esquerda,
-     iPhone a direita, levemente sobreposto no canto. */
-  .ciere-screens { position: relative; width: 100%; aspect-ratio: 1.7; margin-top: 64px; }
-  .ciere-shot-desktop { position: absolute; top: 0; left: 0; width: 48%; z-index: 1; }
-  .ciere-shot-mobile { position: absolute; left: 60%; top: 18%; width: 19%; z-index: 2; }
-
-  /* Profundidade na tela sobreposta da Ciere (#21, Corte 9): o celular (de
-     cima) desloca enquanto a composicao atravessa a tela; o desktop nao. */
-  @media (min-width: 900px) {
-    @supports (animation-timeline: view()) {
-      .ciere-shot-mobile {
-        animation-name: corte9-profundidade;
-        animation-timeline: view();
-        animation-range: cover;
-        animation-fill-mode: both;
-        animation-timing-function: linear;
-      }
-    }
-  }
-
+  .lang-sep { color: var(--muted); font-size: .7rem; font-family: var(--f-mono); }
+  .ciere-visibility { flex: 1 1 340px; min-width: 0; }
+  .ciere-visibility .meta-label { display: block; font-family: var(--f-display); font-weight: 600; font-size: 22px; letter-spacing: normal; text-transform: none; color: var(--ink); }
+  .ciere-visibility p { margin: 12px 0 0; font-size: 1.125rem; line-height: 1.6; text-wrap: pretty; }
+  .ciere-body { display: flex; flex-wrap: wrap; gap: clamp(32px, 5.5vw, 80px); align-items: flex-start; margin-top: clamp(32px, 3.9vw, 56px); }
+  .ciere-shot { flex: 1.9 1 520px; min-width: 0; margin: 0; container-type: inline-size; }
+  .ciere-bottom { flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+  .ciere-bridge { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.3; }
+  .ciere-activities { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+  .ciere-activities li { font-weight: 500; font-size: 16px; padding: 11px 12px; border-top: 1px solid rgba(17,17,17,.2); }
+  .ciere-activities li:last-child { border-bottom: 1px solid rgba(17,17,17,.2); background: linear-gradient(var(--surface), var(--surface)) no-repeat 0 0 / 100% 100%; font-weight: 600; }
   @media (max-width: 899px) {
-    .ciere-screens { aspect-ratio: 1255 / 1141; }
-    .ciere-shot-desktop { position: relative; width: 100%; left: 0; top: 0; }
-    .ciere-shot-mobile { left: auto; right: 1%; top: auto; bottom: 1%; width: 28%; }
-  }
-
-  .ciere-bottom {
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: clamp(32px, 4vw, 80px); align-items: start; margin-top: 56px;
-  }
-  .ciere-bridge { margin: 0; min-width: 0; font-family: var(--f-display); font-weight: 600; font-size: 24px; color: var(--ink); }
-  .ciere-activities { margin: 0; min-width: 0; font-family: var(--f-body); font-weight: 500; font-size: 16px; line-height: 1.6; color: var(--ink); }
-
-  @media (max-width: 1199px) {
-    .ciere-top { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 900px) {
-    .ciere-bottom { grid-template-columns: 1fr; gap: 24px; }
+    .idf-bridge .win { width: 100%; }
+    .idf-phone { width: 30%; }
+    .dvo-body { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .dvo-aside { display: contents; }
+    .dvo-shot { grid-row: 1; }
+    .dvo-role { grid-row: 2; }
+    .dvo-config { grid-row: 3; }
+    .ciere-body { flex-direction: column; }
+    .ciere-shot, .ciere-bottom { width: 100%; flex-basis: auto; }
   }
 
   /* QUANTUM ML — formula com fotos reais do experimento (Corte 5, issue #13) */
@@ -845,7 +668,6 @@
     :is([data-motion="load"], [data-motion="evidence"],
         .live-link, .footer-top, .lang-btn,
         .btn-b3b, .btn-b3b__circulo, .btn-b3b__rotulo, .btn-b3b__seta,
-        .idf-screen-future, .ciere-shot-mobile,
         .qml-formula-card, .qml-formula-op,
         .viv-photo-motion,
         details.motion-details > summary,
@@ -914,7 +736,7 @@
 
     .slab-headline, .slab-stone .slab-headline { max-width: none; }
 
-    #idf { padding: 64px 20px; }
+    #idf { padding: 64px clamp(20px, 6.95vw, 100px) 40px; }
     #idf .container { max-width: none; }
     .idf-top { gap: 32px; }
     .idf-copy { padding-top: 0; gap: 32px; }
@@ -928,19 +750,16 @@
     .idf-number-value { font-size: 40px; }
     .idf-number-label { font-size: 13px; }
 
-    .idf-screens { margin-top: 32px; }
 
-    #dvo { padding: 64px 20px; }
+    #dvo { padding: 64px clamp(20px, 6.95vw, 100px); }
     #dvo .container { max-width: none; }
     .dvo-title { max-width: none; }
     .dvo-body { margin-top: 32px; }
     .dvo-disclaimer { font-size: 1.125rem; }
 
-    #ciere { padding: 64px 20px; }
+    #ciere { padding: 64px clamp(20px, 6.95vw, 100px); }
     #ciere .container { max-width: none; }
     .ciere-top { gap: 32px; }
-    .ciere-screens { margin-top: 32px; }
-    .ciere-bottom { margin-top: 32px; }
     .ciere-bridge { font-size: 20px; }
 
     #quantum { padding: 64px 20px; }
@@ -1125,6 +944,7 @@
      largura para preservar a proporcao. A proporcao na legenda continua sendo
      a especificacao do asset real; a moldura recorta com object-fit: cover. */
 </style>
+<link rel="stylesheet" href="assets/css/janelas-movimento.css">
 </head>
 <body>
 
@@ -1200,83 +1020,75 @@
   <div class="container">
     <div class="idf-top">
       <div class="idf-title">
-        <h2 class="i18n slab-headline" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
-<h2 class="i18n slab-headline" lang="en">Turning nationwide hydrological research into a usable digital tool.</h2>
+        <h2 class="i18n slab-headline rise" lang="pt">Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.</h2>
+<h2 class="i18n slab-headline rise" lang="en">Turning nationwide hydrological research into a usable digital tool.</h2>
         <a class="live-link" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br ↗</a>
       </div>
       <div class="idf-copy">
         <p class="i18n idf-lede" lang="pt">O time científico definiu os dados, as equações e os resultados esperados. Eu respondi pela camada de software: escolhi as ferramentas, tomei as decisões técnicas, desenhei a arquitetura, a estrutura da aplicação, o fluxo e a interface, converti o acervo de planilhas em dados estruturados e fiz o deploy.</p>
 <p class="i18n idf-lede" lang="en">The scientific team defined the data, equations, and expected results. I was responsible for the software layer: I chose the tools, made technical decisions, designed the architecture, application structure, flow, and interface, converted the collection of spreadsheets into structured data, and deployed it.</p>
-        <p class="i18n idf-pipeline" lang="pt">Pesquisa científica → dados brutos → dados estruturados → software → produto utilizável</p>
-<p class="i18n idf-pipeline" lang="en">Scientific research → raw data → structured data → software → usable product</p>
+        <p class="i18n idf-pipeline pipe" lang="pt"><span class="step">Pesquisa científica</span> → <span class="step">dados brutos</span> → <span class="step">dados estruturados</span> → <span class="step">software</span> → <span class="step">produto utilizável</span></p>
+<p class="i18n idf-pipeline pipe" lang="en"><span class="step">Scientific research</span> → <span class="step">raw data</span> → <span class="step">structured data</span> → <span class="step">software</span> → <span class="step">usable product</span></p>
       </div>
     </div>
 
-    <div class="idf-numbers">
+    <div class="idf-numbers nums">
       <div class="idf-number">
-        <p class="i18n idf-number-value" lang="pt">1.543</p>
-<p class="i18n idf-number-value" lang="en">1,543</p>
+        <p class="i18n idf-number-value" lang="pt" data-count-to="1543">1.543</p>
+<p class="i18n idf-number-value" lang="en" data-count-to="1543">1,543</p>
         <p class="i18n idf-number-label" lang="pt">usuários ativos no primeiro mês no ar (28 dias)</p>
 <p class="i18n idf-number-label" lang="en">active users in the first month live (28 days)</p>
       </div>
       <div class="idf-number">
-        <p class="i18n idf-number-value" lang="pt">+2.000</p>
-<p class="i18n idf-number-value" lang="en">2,000+</p>
+        <p class="i18n idf-number-value" lang="pt" data-count-to="2000" data-count-prefix="+">+2.000</p>
+<p class="i18n idf-number-value" lang="en" data-count-to="2000" data-count-prefix="+">2,000+</p>
         <p class="i18n idf-number-label" lang="pt">acessos de 16 países no primeiro mês no ar (28 dias)</p>
 <p class="i18n idf-number-label" lang="en">visits from 16 countries in the first month live (28 days)</p>
       </div>
       <div class="idf-number">
-        <p class="i18n idf-number-value" lang="pt">3.225</p>
-<p class="i18n idf-number-value" lang="en">3,225</p>
+        <p class="i18n idf-number-value" lang="pt" data-count-to="3225">3.225</p>
+<p class="i18n idf-number-value" lang="en" data-count-to="3225">3,225</p>
         <p class="i18n idf-number-label" lang="pt">estações Hidroweb, em 2.062 municípios das 27 UFs</p>
 <p class="i18n idf-number-label" lang="en">Hidroweb stations, in 2,062 municipalities across all 27 federative units</p>
       </div>
       <div class="idf-number">
-        <p class="i18n idf-number-value" lang="pt">475.928</p>
-<p class="i18n idf-number-value" lang="en">475,928</p>
+        <p class="i18n idf-number-value" lang="pt" data-count-to="475928">475.928</p>
+<p class="i18n idf-number-value" lang="en" data-count-to="475928">475,928</p>
         <p class="i18n idf-number-label" lang="pt">equações IDF no total</p>
 <p class="i18n idf-number-label" lang="en">IDF equations in total</p>
       </div>
     </div>
 
-    <div class="idf-screens">
-      <figure class="real-shot idf-screen-main"><div class="device-enter">
-        <div class="mk" data-mk="macbook-esq">
-          <img class="mk__render" src="assets/mokker/idf-br-macbook-esquerda-m.webp" srcset="assets/mokker/idf-br-macbook-esquerda-m.webp 627w, assets/mokker/idf-br-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados" loading="lazy" decoding="async">
-          <div class="mk__stage" aria-hidden="true">
-            <div class="mk__screen device-screen" data-device-video="assets/video/idf-desktop.mp4" data-device-video-mobile="assets/video/idf-mobile.mp4" data-device-poster="assets/img/video/idf-poster-1280.webp" data-device-poster-mobile="assets/img/video/idf-poster-640.webp"></div>
-          </div>
-          <img class="mk__notch" aria-hidden="true" src="assets/mokker/idf-br-macbook-esquerda-m.webp" srcset="assets/mokker/idf-br-macbook-esquerda-m.webp 627w, assets/mokker/idf-br-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
-        </div>
-      </div></figure>
-      <figure class="real-shot idf-screen-future"><div class="device-enter">
-        <div class="mk" data-mk="macbook-dir">
-          <img class="mk__render" src="assets/mokker/idf-br-macbook-direita-m.webp" srcset="assets/mokker/idf-br-macbook-direita-m.webp 627w, assets/mokker/idf-br-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Interface do IDF-BR com modelos e cenários do clima futuro, mapa e tabela de resultados" loading="lazy" decoding="async">
-          <div class="mk__stage" aria-hidden="true">
-            <div class="mk__screen device-screen"></div>
-          </div>
-          <img class="mk__notch" aria-hidden="true" src="assets/mokker/idf-br-macbook-direita-m.webp" srcset="assets/mokker/idf-br-macbook-direita-m.webp 627w, assets/mokker/idf-br-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
-        </div>
-      </div></figure>
-      <figure class="real-shot idf-shot-mobile"><div class="device-enter device-enter--phone">
-        <div class="mk" data-mk="iphone-esq">
-          <img class="mk__render" src="assets/mokker/idf-br-iphone-esquerda-m.webp" srcset="assets/mokker/idf-br-iphone-esquerda-m.webp 169w, assets/mokker/idf-br-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" width="339" height="798" alt="IDF-BR no celular, com menu e introdução da ferramenta" loading="lazy" decoding="async">
-          <div class="mk__stage" aria-hidden="true">
-            <div class="mk__screen device-screen"></div>
-          </div>
-          <img class="mk__notch" aria-hidden="true" src="assets/mokker/idf-br-iphone-esquerda-m.webp" srcset="assets/mokker/idf-br-iphone-esquerda-m.webp 169w, assets/mokker/idf-br-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" alt="">
-        </div>
-      </div></figure>
-    </div>
   </div>
 </section>
+
+<!-- Ponte da janela IDF-BR para a próxima seção -->
+<div class="idf-bridge">
+  <div class="idf-bridge__green" aria-hidden="true"></div>
+  <figure class="idf-bridge__figure win-rise">
+    <div class="win win--idf win-rise">
+          <div class="win__bar">
+            <div class="win__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <a class="win__url" href="https://www.idf-br.com.br/home/index.html" target="_blank" rel="noopener noreferrer">idf-br.com.br</a>
+            <div class="win__status"><span class="live-dot" aria-hidden="true"></span><span class="i18n" lang="pt">No ar</span><span class="i18n" lang="en">Live</span></div>
+          </div>
+          <div class="win__screen device-screen" data-device-video="assets/video/idf-desktop.mp4" data-device-video-mobile="assets/video/idf-mobile.mp4" data-device-poster="assets/img/video/idf-poster-1280.webp" data-device-poster-mobile="assets/img/video/idf-poster-640.webp">
+            <img class="win__shot i18n" lang="pt" src="assets/img/janelas/idf-tela-1440.webp" width="1440" height="900" alt="Interface do IDF-BR com opções de intensidade de chuva, mapa do Brasil e tabela de resultados" loading="lazy" decoding="async">
+            <img class="win__shot i18n" lang="en" src="assets/img/janelas/idf-tela-1440.webp" width="1440" height="900" alt="IDF-BR interface with rainfall intensity options, Brazil map, and results table" loading="lazy" decoding="async">
+          </div>
+        </div>
+    <div class="idf-phone parallax">
+      <div class="idf-phone__screen"><img class="i18n" lang="pt" src="assets/img/janelas/idf-celular-390.webp" width="390" height="858" alt="IDF-BR no celular, com menu e introdução da ferramenta" loading="lazy" decoding="async"><img class="i18n" lang="en" src="assets/img/janelas/idf-celular-390.webp" width="390" height="858" alt="IDF-BR on mobile, with menu and tool introduction" loading="lazy" decoding="async"></div>
+    </div>
+  </figure>
+</div>
 
 <!-- DVO -->
 <section class="section-dvo" id="dvo">
   <div class="container">
     <div class="dvo-title">
-      <h2 class="i18n slab-headline" lang="pt">Levando um projeto de cliente dos requisitos à produção.</h2>
-<h2 class="i18n slab-headline" lang="en">Taking a client project from requirements to production.</h2>
+      <h2 class="i18n slab-headline rise" lang="pt">Levando um projeto de cliente dos requisitos à produção.</h2>
+<h2 class="i18n slab-headline rise" lang="en">Taking a client project from requirements to production.</h2>
       <a class="live-link" href="https://dvopelotas.com.br/" target="_blank" rel="noopener noreferrer">dvopelotas.com.br ↗</a>
     </div>
 
@@ -1285,38 +1097,31 @@
         <p class="i18n dvo-disclaimer" lang="pt">O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.</p>
 <p class="i18n dvo-disclaimer" lang="en">The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.</p>
 
-        <ol class="dvo-track-list">
-          <li class="i18n" lang="pt">Cliente</li>
-<li class="i18n" lang="en">Client</li><li class="i18n" lang="pt">Requisitos</li>
-<li class="i18n" lang="en">Requirements</li><li class="i18n" lang="pt">Escopo</li>
-<li class="i18n" lang="en">Scope</li><li class="i18n" lang="pt">Precificação</li>
-<li class="i18n" lang="en">Pricing</li>
-          <li class="dvo-track-item--squad">Squad</li><li>QA</li><li class="i18n" lang="pt">Infraestrutura</li>
-<li class="i18n" lang="en">Infrastructure</li><li class="i18n" lang="pt">Produção</li>
-<li class="i18n" lang="en">Production</li>
+        <ol class="dvo-track-list track">
+          <li><span class="i18n" lang="pt">Cliente</span><span class="i18n" lang="en">Client</span></li>
+          <li><span class="i18n" lang="pt">Requisitos</span><span class="i18n" lang="en">Requirements</span></li>
+          <li><span class="i18n" lang="pt">Escopo</span><span class="i18n" lang="en">Scope</span></li>
+          <li><span class="i18n" lang="pt">Precificação</span><span class="i18n" lang="en">Pricing</span></li>
+          <li class="dvo-track-item--squad">Squad</li>
+          <li>QA</li>
+          <li><span class="i18n" lang="pt">Infraestrutura</span><span class="i18n" lang="en">Infrastructure</span></li>
+          <li><span class="i18n" lang="pt">Produção</span><span class="i18n" lang="en">Production</span></li>
         </ol>
       </div>
 
       <div class="dvo-aside">
-        <figure class="real-shot dvo-shot">
-          <div class="dvo-shot-phone"><div class="device-enter device-enter--phone">
-            <div class="mk" data-mk="iphone-dir">
-              <img class="mk__render" src="assets/mokker/dvo-iphone-direita-m.webp" srcset="assets/mokker/dvo-iphone-direita-m.webp 170w, assets/mokker/dvo-iphone-direita.webp 340w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" width="340" height="798" alt="DVO no celular, com os campos de e-mail, senha e botão de entrar" loading="lazy" decoding="async">
-              <div class="mk__stage" aria-hidden="true">
-                <div class="mk__screen device-screen"></div>
-              </div>
-              <img class="mk__notch" aria-hidden="true" src="assets/mokker/dvo-iphone-direita-m.webp" srcset="assets/mokker/dvo-iphone-direita-m.webp 170w, assets/mokker/dvo-iphone-direita.webp 340w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" alt="">
-            </div>
-          </div></div>
-          <div class="dvo-shot-laptop"><div class="device-enter">
-            <div class="mk" data-mk="macbook-dir">
-              <img class="mk__render" src="assets/mokker/dvo-macbook-direita-m.webp" srcset="assets/mokker/dvo-macbook-direita-m.webp 627w, assets/mokker/dvo-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica" loading="lazy" decoding="async">
-              <div class="mk__stage" aria-hidden="true">
-                <div class="mk__screen device-screen"></div>
-              </div>
-              <img class="mk__notch" aria-hidden="true" src="assets/mokker/dvo-macbook-direita-m.webp" srcset="assets/mokker/dvo-macbook-direita-m.webp 627w, assets/mokker/dvo-macbook-direita.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
-            </div>
-          </div></div>
+        <figure class="dvo-shot win-rise">
+        <div class="win win--dvo win-rise">
+          <div class="win__bar">
+            <div class="win__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <a class="win__url" href="https://dvopelotas.com.br/" target="_blank" rel="noopener noreferrer">dvopelotas.com.br</a>
+            <div class="win__status"><span class="live-dot" aria-hidden="true"></span><span class="i18n" lang="pt">Em produção</span><span class="i18n" lang="en">In production</span></div>
+          </div>
+          <div class="win__screen">
+            <img class="win__shot i18n" lang="pt" src="assets/img/janelas/dvo-tela-1440.webp" width="1440" height="900" alt="Tela de acesso do DVO com formulário de login ao lado de fotografia de uma oficina mecânica" loading="lazy" decoding="async">
+            <img class="win__shot i18n" lang="en" src="assets/img/janelas/dvo-tela-1440.webp" width="1440" height="900" alt="DVO sign-in screen with login form beside a workshop photograph" loading="lazy" decoding="async">
+          </div>
+        </div>
         </figure>
 
         <div class="dvo-config">
@@ -1359,8 +1164,8 @@
   <div class="container">
     <div class="ciere-top">
       <div class="ciere-top-left">
-        <h2 class="i18n slab-headline" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
-<h2 class="i18n slab-headline" lang="en">Connecting client needs, design decisions and development.</h2>
+        <h2 class="i18n slab-headline rise" lang="pt">Conectando necessidades do cliente, decisões de design e desenvolvimento.</h2>
+<h2 class="i18n slab-headline rise" lang="en">Connecting client needs, design decisions and development.</h2>
 <a class="live-link" href="https://advocaciacieredarosa.com.br/" target="_blank" rel="noopener noreferrer">advocaciacieredarosa.com.br ↗</a>
       </div>
       <div class="ciere-visibility">
@@ -1371,30 +1176,31 @@
       </div>
     </div>
 
-    <div class="ciere-screens">
-      <figure class="real-shot ciere-shot-desktop"><div class="device-enter">
-        <div class="mk" data-mk="macbook-esq">
-          <img class="mk__render" src="assets/mokker/ciere-macbook-esquerda-m.webp" srcset="assets/mokker/ciere-macbook-esquerda-m.webp 627w, assets/mokker/ciere-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" width="1255" height="1141" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança" loading="lazy" decoding="async">
-          <div class="mk__stage" aria-hidden="true">
-            <div class="mk__screen device-screen" data-device-video="assets/video/advocacia-desktop.mp4" data-device-video-mobile="assets/video/advocacia-mobile.mp4" data-device-poster="assets/img/video/advocacia-poster-1280.webp" data-device-poster-mobile="assets/img/video/advocacia-poster-640.webp"></div>
+    <div class="ciere-body">
+      <figure class="ciere-shot win-rise">
+        <div class="win win--ciere win-rise">
+          <div class="win__bar">
+            <div class="win__dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <a class="win__url" href="https://advocaciacieredarosa.com.br/" target="_blank" rel="noopener noreferrer">advocaciacieredarosa.com.br</a>
+            <div class="win__status"><span class="live-dot" aria-hidden="true"></span><span class="i18n" lang="pt">No ar</span><span class="i18n" lang="en">Live</span></div>
           </div>
-          <img class="mk__notch" aria-hidden="true" src="assets/mokker/ciere-macbook-esquerda-m.webp" srcset="assets/mokker/ciere-macbook-esquerda-m.webp 627w, assets/mokker/ciere-macbook-esquerda.webp 1255w" sizes="(max-width: 899px) 95vw, (max-width: 1239px) 48vw, 600px" alt="">
-        </div>
-      </div></figure>
-      <figure class="real-shot ciere-shot-mobile"><div class="device-enter device-enter--phone">
-        <div class="mk" data-mk="iphone-esq">
-          <img class="mk__render" src="assets/mokker/ciere-iphone-esquerda-m.webp" srcset="assets/mokker/ciere-iphone-esquerda-m.webp 169w, assets/mokker/ciere-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" width="339" height="798" alt="Página inicial móvel da Ciere da Rosa Advocacia com apresentação, balança e botão de WhatsApp" loading="lazy" decoding="async">
-          <div class="mk__stage" aria-hidden="true">
-            <div class="mk__screen device-screen"></div>
+          <div class="win__screen device-screen" data-device-video="assets/video/advocacia-desktop.mp4" data-device-video-mobile="assets/video/advocacia-mobile.mp4" data-device-poster="assets/img/video/advocacia-poster-1280.webp" data-device-poster-mobile="assets/img/video/advocacia-poster-640.webp">
+            <img class="win__shot i18n" lang="pt" src="assets/img/janelas/ciere-tela-1056.webp" width="1056" height="660" alt="Página inicial desktop da Ciere da Rosa Advocacia com apresentação e ilustração de balança" loading="lazy" decoding="async">
+            <img class="win__shot i18n" lang="en" src="assets/img/janelas/ciere-tela-1056.webp" width="1056" height="660" alt="Ciere da Rosa Advocacia desktop homepage with an introduction and scales illustration" loading="lazy" decoding="async">
           </div>
-          <img class="mk__notch" aria-hidden="true" src="assets/mokker/ciere-iphone-esquerda-m.webp" srcset="assets/mokker/ciere-iphone-esquerda-m.webp 169w, assets/mokker/ciere-iphone-esquerda.webp 339w" sizes="(max-width: 899px) 28vw, (max-width: 1239px) 19vw, 236px" alt="">
         </div>
-      </div></figure>
-    </div>
-
-    <div class="ciere-bottom">
-      <p class="ciere-bridge"><span class="i18n" lang="pt">Cliente</span><span class="i18n" lang="en">Client</span> ⟷ <span>Augusto</span> ⟷ <span>Design</span> / <span>Dev</span></p>
-      <p class="ciere-activities"><span class="i18n" lang="pt">Requisitos</span><span class="i18n" lang="en">Requirements</span> · <span class="i18n" lang="pt">Escopo</span><span class="i18n" lang="en">Scoping</span> · <span class="i18n" lang="pt">Comunicação com cliente</span><span class="i18n" lang="en">Client Comms</span> · <span class="i18n" lang="pt">Ponte com design</span><span class="i18n" lang="en">Design Bridge</span> · <span class="i18n" lang="pt">QA e deploy</span><span class="i18n" lang="en">QA &amp; Deploy</span> · <span class="i18n" lang="pt">SEO e GEO</span><span class="i18n" lang="en">SEO &amp; GEO</span></p>
+      </figure>
+      <div class="ciere-bottom">
+        <p class="ciere-bridge"><span class="i18n" lang="pt">Cliente</span><span class="i18n" lang="en">Client</span> ⟷ <span>Augusto</span> ⟷ <span>Design</span> / <span>Dev</span></p>
+        <ul class="ciere-activities clist">
+          <li><span class="i18n" lang="pt">Requisitos</span><span class="i18n" lang="en">Requirements</span></li>
+          <li><span class="i18n" lang="pt">Escopo</span><span class="i18n" lang="en">Scoping</span></li>
+          <li><span class="i18n" lang="pt">Comunicação com cliente</span><span class="i18n" lang="en">Client Comms</span></li>
+          <li><span class="i18n" lang="pt">Ponte com design</span><span class="i18n" lang="en">Design Bridge</span></li>
+          <li><span class="i18n" lang="pt">QA e deploy</span><span class="i18n" lang="en">QA &amp; Deploy</span></li>
+          <li><span class="i18n" lang="pt">SEO e GEO</span><span class="i18n" lang="en">SEO &amp; GEO</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -1743,5 +1549,6 @@ try {
 })();
 </script>
 <script src="assets/js/device-media.js" defer></script>
+<script defer src="assets/js/janelas-movimento.js"></script>
 </body>
 </html>
