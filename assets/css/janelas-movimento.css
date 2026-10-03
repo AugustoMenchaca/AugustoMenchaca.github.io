@@ -27,6 +27,8 @@
     html.js-janelas .pipe .step:nth-of-type(3) { animation-range: cover 16% cover 22%; }
     html.js-janelas .pipe .step:nth-of-type(4) { animation-range: cover 22% cover 28%; }
     html.js-janelas .pipe .step:nth-of-type(5) { animation-range: cover 28% cover 34%; }
+    /* #quantum e branco: ali o "acender" vai do cinza ao texto (ink); o verde claro do step some no branco (1,6:1). */
+    html.js-janelas .qml-formula .step { animation-name: ink; }
 
     html.js-janelas .nums > * {
       animation: rise linear both;
@@ -115,6 +117,11 @@
       from { color: #6B6F74; transform: translateX(-6px); }
       to { color: #111111; transform: none; }
     }
+    /* Período das vivências: o rótulo é amarelo (--sun) sobre o fundo escuro (--earth); parte de 5,0:1 e termina no amarelo cheio. */
+    @keyframes periodo {
+      from { color: #C4B85D; transform: translateX(-6px); }
+      to { color: #F6ED6C; transform: none; }
+    }
     @keyframes wipe {
       from { background-size: 0% 100%; }
       to { background-size: 100% 100%; }
@@ -164,7 +171,7 @@
 
     html.js-janelas .viv-period {
       display: inline-block;
-      animation: ink linear both;
+      animation: periodo linear both;
       animation-timeline: view();
       animation-range: entry 20% cover 30%;
     }
@@ -258,7 +265,7 @@
   html.sem-view .viv-divider { border-top: 1px solid rgba(255, 255, 255, 0.16); transform-origin: left; }
   html.sem-view .viv-divider:not(.is-in) { transform: scaleX(0); }
   html.sem-view .viv-period { display: inline-block; }
-  html.sem-view .viv-period:not(.is-in) { color: #6B6F74; transform: translateX(-6px); }
+  html.sem-view .viv-period:not(.is-in) { color: #C4B85D; transform: translateX(-6px); }
   html.sem-view .track li:not(.is-in) { color: #6B6F74; transform: translateX(-6px); }
   html.sem-view .footer-grid > *:not(.is-in) { transform: translateX(-10px); }
 }
