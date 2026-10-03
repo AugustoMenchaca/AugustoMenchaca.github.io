@@ -2,8 +2,10 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const isMobile = window.matchMedia('(max-width: 899px)');
-  const conn = navigator.connection;
-  const slowConn = () => !!conn && (conn.saveData || ['2g', 'slow-2g'].includes(conn.effectiveType));
+  const slowConn = () => {
+    const c = navigator.connection;
+    return !!c && (Boolean(c.saveData) || ['2g', 'slow-2g'].includes(c.effectiveType));
+  };
   const states = new Map();
 
   function pick(slot, key) {
@@ -19,6 +21,10 @@
     }
     if (!state.visible || reduceMotion.matches || slowConn() || document.hidden || state.failed) {
       video.pause();
+      if (!state.visible && video.hasAttribute('src')) {
+        video.removeAttribute('src');
+        video.load();
+      }
       return;
     }
     if (!video.hasAttribute('src')) video.src = pick(slot, 'Video');
@@ -41,6 +47,10 @@
     video.preload = 'none';
     video.disablePictureInPicture = true;
     video.setAttribute('aria-hidden', 'true');
+    video.style.width = '100%';
+    video.style.height = '100%';
+    video.style.objectFit = 'cover';
+    video.style.objectPosition = 'top';
     const poster = document.createElement('img');
     poster.className = 'device-video-poster';
     poster.alt = '';
@@ -60,13 +70,4 @@
   const refresh = () => states.forEach(update);
   reduceMotion.addEventListener('change', refresh);
   document.addEventListener('visibilitychange', refresh);
-
-  // Mokker (#90): escala o palco (.mk__stage) para o tamanho renderizado do .mk.
-  const mkScale = new ResizeObserver((entries) => {
-    for (const { target, contentRect } of entries) {
-      const w = parseFloat(getComputedStyle(target).getPropertyValue('--w'));
-      target.style.setProperty('--k', contentRect.width / w);
-    }
-  });
-  document.querySelectorAll('.mk').forEach((mk) => mkScale.observe(mk));
 })();

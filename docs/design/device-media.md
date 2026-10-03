@@ -1,30 +1,28 @@
 # Mídia nas telas dos aparelhos
 
-Desde a issue #90 (rodada 2), o aparelho é o componente `.mk` (render real do
-Mokker, com ângulo fixo em `assets/mokker/angulos.json`), e o slot de mídia é o `.mk__screen`
-dentro dele, que **também leva a classe `.device-screen`** para reaproveitar
-este mecanismo sem alterações:
+Desde a issue #94, a janela plana `.win` contém a tela `.win__screen.device-screen`.
+IDF-BR e Ciere preservam o mecanismo de vídeo; a DVO e o celular do IDF-BR
+usam somente a captura WebP. O site atual não usa aparelhos 3D.
 
 ```html
-<div class="mk__screen device-screen"
-     style="--cw:1440;--ch:900;--raio:0.6%;transform:matrix3d(…)"
+<div class="win__screen device-screen"
      data-device-video="assets/video/idf-desktop.mp4"
      data-device-video-mobile="assets/video/idf-mobile.mp4"
      data-device-poster="assets/img/video/idf-poster-1280.webp"
      data-device-poster-mobile="assets/img/video/idf-poster-640.webp">
+  <img class="win__shot" src="assets/img/janelas/idf-tela-1440.webp"
+       width="1440" height="900" alt="Interface do IDF-BR…">
 </div>
 ```
 
-Sem `data-device-video`, o `.mk__screen` fica vazio — o render do Mokker por
-baixo já mostra a captura embutida na tela, servindo de fallback. Só os dois
-notebooks principais (IDF-BR e Ciere) têm vídeo; o resto do slot nunca recebe
-`data-device-video`, e nenhum `<picture>` é necessário dentro do slot.
+Sem `data-device-video`, a imagem `.win__shot` permanece como tela. Com o
+atributo, a imagem é o fallback estático e o vídeo e pôster são sobrepostos.
 
 Sem `data-device-video`, nada é criado e nenhuma mídia extra é baixada. Com o
 atributo, `assets/js/device-media.js` cria um `<video>` (`muted loop
 playsinline preload="none" disablepictureinpicture aria-hidden="true"`) e,
 sobre ele, um `<img class="device-video-poster">` (WebP, `alt=""`,
-`aria-hidden="true"`) — ambos aria-hidden porque a captura vizinha já tem
+`aria-hidden="true"`) — ambos aria-hidden porque a captura fallback já tem
 `alt`.
 
 ## Quando cada coisa carrega
@@ -54,8 +52,6 @@ nunca some.
 
 ## Espaço reservado
 
-`.device-screen` já tem dimensão própria (dentro do recorte do aparelho,
-`position: absolute` com `width`/`height` relativos a um ancestral de
-`aspect-ratio` fixo). O `<video>` e o pôster herdam `position: absolute;
+`.device-screen` tem `aspect-ratio: 1440 / 900` dentro da janela. O `<video>` e o pôster herdam `position: absolute;
 inset: 0; width: 100%; height: 100%`, no mesmo retângulo da captura — não há
 mudança de layout (CLS) quando um ou outro aparece.
