@@ -31,7 +31,7 @@
       state.visible = entry.isIntersecting;
       update(state);
     }
-  }, { rootMargin: '300px' });
+  }, { rootMargin: '100px' });
 
   document.querySelectorAll('.device-screen[data-device-video]').forEach(slot => {
     const video = document.createElement('video');
@@ -53,8 +53,13 @@
       slot.classList.remove('device-screen--playing');
     });
     slot.append(video, poster);
-    states.set(slot, state);
-    observer.observe(slot);
+    // #92 corte 3: observa o .mk (caixa de layout), nunca o .mk__screen — o
+    // palco (.mk__stage) renderiza no tamanho nativo ate o ResizeObserver
+    // fixar --k, e um .mk__screen de 1440px pode entrar no rootMargin antes
+    // da escala real ser aplicada.
+    const mk = slot.closest('.mk') || slot;
+    states.set(mk, state);
+    observer.observe(mk);
   });
 
   const refresh = () => states.forEach(update);

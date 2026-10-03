@@ -435,10 +435,17 @@
      tela fica >=85% a mostra. Chips (texto que ja existia em
      .ciere-activities) ancorados a esquerda, na altura da tela. */
   .ciere-stage { position: relative; margin-top: 56px; height: min(80vh, 900px); }
-  .ciere-screens { height: 100%; width: auto; aspect-ratio: 1.0652; margin-left: auto; overflow: hidden; }
-  .ciere-screens .mk[data-mk-papel] { top: 0; left: 0; width: 100%; }
+  /* #92 corte 3: overflow-x:clip so no invólucro (estouro.mjs corrigido
+     ignora descendente cujo ancestral com overflow clip/hidden fica dentro
+     do container). Padding nos 3 lados sem corte (nunca a direita) da folga
+     para a sombra (drop-shadow do .mk) nao ficar com borda reta. */
+  .ciere-screens {
+    height: 100%; width: auto; aspect-ratio: 1.0652; margin-left: auto;
+    overflow: hidden; padding: 36px 0 64px 36px;
+  }
+  .ciere-screens .mk[data-mk-papel] { top: 0; left: 0; width: 112%; }
   .ciere-chips {
-    position: absolute; top: 50%; left: 0; translate: 0 -50%; z-index: 2;
+    position: absolute; top: 50%; left: 30%; translate: 0 -50%; z-index: 2;
     list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px;
   }
   .ciere-chips li {
@@ -469,11 +476,11 @@
     .idf-screens { height: auto; width: 100%; max-width: 100%; aspect-ratio: 1.0652; margin-inline: 0; }
     .idf-screens .mk[data-mk-papel="celular"] { width: 28%; right: 0; bottom: 0; }
 
-    .ciere-stage { height: auto; }
-    .ciere-screens { height: auto; width: 100%; aspect-ratio: 1.0652; margin-left: 0; overflow: visible; }
+    .ciere-stage { height: auto; padding-bottom: 104px; }
+    .ciere-screens { height: auto; width: 100%; aspect-ratio: 1.0652; margin-left: 0; overflow: visible; padding: 0; }
     .ciere-screens .mk[data-mk-papel] { width: 94%; left: 3%; }
     .ciere-chips {
-      position: static; translate: none; margin-top: 20px;
+      top: 100%; left: 0; translate: none; margin-top: 16px;
       flex-direction: row; flex-wrap: wrap;
     }
 
@@ -1326,13 +1333,13 @@
           </div>
           <img class="mk__notch" aria-hidden="true" src="assets/mokker/ciere-macbook-cima-dir-m.webp" srcset="assets/mokker/ciere-macbook-cima-dir-m.webp 415w, assets/mokker/ciere-macbook-cima-dir.webp 831w" sizes="(max-width: 899px) 100vw, 85vh" alt="">
         </div>
+        <ul class="ciere-chips">
+          <li class="i18n" lang="pt">Requisitos</li><li class="i18n" lang="en">Requirements</li>
+          <li class="i18n" lang="pt">Escopo</li><li class="i18n" lang="en">Scoping</li>
+          <li class="i18n" lang="pt">Ponte com design</li><li class="i18n" lang="en">Design Bridge</li>
+          <li class="i18n" lang="pt">SEO e GEO</li><li class="i18n" lang="en">SEO &amp; GEO</li>
+        </ul>
       </figure>
-      <ul class="ciere-chips">
-        <li class="i18n" lang="pt">Requisitos</li><li class="i18n" lang="en">Requirements</li>
-        <li class="i18n" lang="pt">Escopo</li><li class="i18n" lang="en">Scoping</li>
-        <li class="i18n" lang="pt">Ponte com design</li><li class="i18n" lang="en">Design Bridge</li>
-        <li class="i18n" lang="pt">SEO e GEO</li><li class="i18n" lang="en">SEO &amp; GEO</li>
-      </ul>
     </div>
 
     <div class="ciere-bottom">
