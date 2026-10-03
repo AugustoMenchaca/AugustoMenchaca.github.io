@@ -574,55 +574,57 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   pôster dentro + `.mk__notch` (o mesmo render, só o notch/ilha, por cima do
   vídeo via `clip-path: polygon()`). `aspect-ratio: var(--w) / var(--h))`
   sem CLS.
-- **5 ângulos fixos (issue #92):** `macbook-cima-esq`, `macbook-cima-dir`,
-  `macbook-baixo-esq`, `iphone-frontal`, `iphone-cima-dir` — ângulos retos, de
-  cima, aparelhos brancos — cada um com `matrix3d`, `raio_pct` (em px, fração
-  da largura da captura — **não** `border-radius: N%` puro, que usaria `%` da
+- **3 ângulos fixos em uso (issue #92, corte 4):** `macbook-cima-esq` (IDF-BR,
+  3/4 visto de cima), `macbook-frontal` (Ciere, reto) e `iphone-frontal`
+  (IDF-BR e DVO, reto) — cada um com `matrix3d`, `raio_pct` (em px, fração da
+  largura da captura — **não** `border-radius: N%` puro, que usaria `%` da
   largura no raio horizontal e `%` da altura no vertical, cortando demais numa
   tela não quadrada) e `notch_poligono` medidos em `assets/mokker/angulos.json`.
-  Os dois iPhones também trazem `mascara_pct`: um `border-radius` em `%` da
-  própria caixa do `.mk` (não da captura), que fecha o vazamento de pixel nos
-  cantos do PNG do Mokker — distinto do raio da tela. Um ângulo novo nunca
-  nasce de transformação CSS de um render existente — sempre de um render novo
-  do Mokker, validado por uma ferramenta própria (fluxo e script entregues à
-  parte). Os 4 ângulos anteriores (`macbook-esq`/`-dir`, `iphone-esq`/`-dir`)
-  saíram do `angulos.json` e do `index.html` na #92; `macbook-baixo-esq`
-  (só a Ciere) saiu no corte 2, substituído por `macbook-cima-dir` (mesmo
-  ângulo do DVO, nova captura).
-- **Colagem copiada de produto real (issue #92, corte 2):** o teto antigo de
-  "≤ 46% do container, ≤ 420px" saiu — veio de leitura errada de "muito
-  grandes" (ver memória `copiar-referencias-reais-mockups`); Augusto queria o
-  oposto, **maior e mais perto do leitor**, copiado de produto real
-  (`specs/corte92ref/receitas.md`), não inventado. Teto novo é só a
-  **altura** — `height: min(80vh, 900px)` — a largura é a que essa altura
-  permitir (sem teto de `%`, exceto `max-width: 94%` de segurança). IDF-BR e
-  Ciere usam `aspect-ratio: 1.0652` (notebook a 94-98% da largura do bloco).
-  - **IDF-BR** (de ramp.com): `macbook-cima-esq` (com vídeo) quase full-bleed
-    + `iphone-frontal` colado no canto inferior-direito, sobre a base/teclado
-    (nunca a tela), vazando a própria altura para baixo do notebook.
-    `.idf-numbers` passou a vir **depois** do bloco (só ordem/DOM, texto
-    idêntico).
-  - **Ciere** (de rippling.com): voltou a **um aparelho só**,
-    `macbook-cima-dir` (com vídeo) — nova captura
-    `ciere-macbook-cima-dir(.webp|-m.webp)`, gerada com
-    `docs/design/tools/mokker-compoe.py` sobre o WebP já composto do DVO
-    (reaproveita o render, troca só a tela). Chips (`.ciere-chips`, 4 de 6
-    itens de `.ciere-activities`, que ficou só com os outros 2) ancorados à
-    esquerda, na altura da tela — texto que já existia.
-  - **DVO** (de dayoneapp.com, seção secundária): perdeu o notebook — só
-    `iphone-cima-dir`, pequeno (`width: min(21vw, 300px, 29vh)`), ao lado do
-    texto que já existia, reaproveitando a curva de entrada do "notebook"
+  O iPhone também traz `mascara_pct`: um `border-radius` em `%` da própria
+  caixa do `.mk` (não da captura), que fecha o vazamento de pixel nos cantos
+  do PNG do Mokker — distinto do raio da tela. Um ângulo novo nunca nasce de
+  transformação CSS de um render existente — sempre de um render novo do
+  Mokker, validado por uma ferramenta própria. Ângulos descartados ao longo da
+  #92: `macbook-esq`/`-dir`, `iphone-esq`/`-dir` (corte 1), `macbook-baixo-esq`
+  (corte 2), `macbook-cima-dir`/`iphone-cima-dir` (corte 4 — substituídos pelo
+  `macbook-frontal`/`iphone-frontal` do protótipo).
+- **Colagem copiada do protótipo aprovado no Figma (issue #92, corte 4):**
+  depois de três reprovações de composições feitas **sem** protótipo (ver
+  memória `copiar-referencias-reais-mockups`), o Augusto aprovou o protótipo
+  v5 no Figma (arquivo `0NZizUgSb9ZH7ZIDWexxSJ`) e as medidas viraram a fonte
+  da verdade — sem inventar ângulo, posição ou sobreposição. Tudo abaixo é
+  medido do protótipo e convertido para `%` do grupo/container (nunca `px`
+  copiado do frame).
+  - **IDF-BR** (variante B): grupo de 920×677 = 74,2% do container,
+    centralizado. `macbook-cima-esq` (com vídeo) **na frente**, 76,74% do
+    grupo; `iphone-frontal` **atrás, à direita**, 28,04% do grupo, base
+    alinhada com o notebook (mesmo `bottom`), sobrepondo a borda direita dele
+    em ≈44px (4,8% do grupo). `.idf-numbers` fica **depois** do bloco no DOM
+    (só ordem, texto idêntico).
+  - **Ciere**: voltou a **um aparelho só**, `macbook-frontal` (com vídeo),
+    55,97% do container, encostado à direita — **sem corte lateral** (o
+    `overflow:hidden`/`clip` tentado no corte 3 só escondia visualmente; o
+    `estouro.mjs` mede `getBoundingClientRect` do descendente, que `overflow`
+    não encolhe, então continuava sendo reportado — removido). Os 4 chips
+    (`.ciere-chips`, texto de `.ciere-activities`, que mantém as 6 frases
+    completas abaixo) ficam fora da tela, à esquerda, cada um com uma
+    linha-guia (`::after` do `<li>`, `width:100vw` cortada pelo
+    `overflow:hidden` do `.ciere-chips` no ponto exato — sem medir largura de
+    texto em JS) convergindo na borda esquerda do notebook.
+  - **DVO**: só `iphone-frontal`, reto (sem a inclinação 3/4 do
+    `iphone-cima-dir` anterior), 24,2% do container (expresso como 38,8% de
+    `.dvo-aside`, a coluna onde ele mora), centrado no quadrante à direita da
+    lista — reaproveita a curva de entrada do "notebook"
     (`data-mk-papel="notebook"` num `.mk` que é um iPhone — só a curva).
   - Todo aparelho mantém folga de 3-6% no lado ancorado (nunca 0) para o
     `rotate()`/`translate()` de entrada não furar a borda do bloco.
-  - **Conhecido abaixo da meta:** o corte lateral da Ciere (receita pedia
-    "cortado pela borda do container") não entrou — um elemento maior que o
-    invólucro, mesmo com `overflow: hidden`, continua sendo reportado pelo
-    `estouro.mjs` (mede `getBoundingClientRect` do descendente, que
-    `overflow` não encolhe). Peso da carga inicial (240 KB) também passou do
-    teto de 160 KB: os mesmos WebP aparecem bem maiores, exigindo o arquivo
-    cheio em vez do `-m`. Tensão direta com "maior e mais perto", registrada
-    para o próximo corte decidir.
+- **Sombra de chão — nunca retângulo:** `box-shadow` e `filter: drop-shadow`
+  **saíram** de qualquer wrapper retangular (era a causa do retângulo escuro
+  que o Augusto mais odiou — o WebP em si não tem sombra, alfa só 0 ou 255).
+  A sombra agora é `.mk-sombra`, um `<span aria-hidden>` por aparelho, **por
+  baixo** dele (`z-index:0`) e **dentro do invólucro** (nunca cortado):
+  elipse via `radial-gradient(closest-side, rgba(0,0,0,.22), transparent)`,
+  85% da largura do aparelho, `aspect-ratio: 1/0.16`.
 - **Vídeo:** só os dois notebooks principais (IDF-BR e Ciere) tocam vídeo —
   o resto não leva `<video>`, porque o render já mostra a tela. `.mk__screen`
   reaproveita a classe `.device-screen` e os mesmos `data-device-video`/
@@ -636,7 +638,7 @@ Bloco `var(--forest)`, texto `var(--surface)`. A marca ("Augusto Menchaca") sobe
   para não brigar com esse transform) migrou do `.mk` individual para o
   invólucro `[data-mk-colagem]` inteiro.
 - **Validação:** `docs/design/mokker-validacao.html` (fora do `index.html` e
-  do CI publicado) mostra os 5 ângulos com `?teste=1` trocando o vídeo por uma
+  do CI publicado) mostra os 3 ângulos com `?teste=1` trocando o vídeo por uma
   caixa magenta no mesmo quadrilátero, para medir vazamento e cobertura por
   pixel.
 

@@ -29,9 +29,13 @@ sobre ele, um `<img class="device-video-poster">` (WebP, `alt=""`,
 
 ## Quando cada coisa carrega
 
-- **Pôster:** `.src` só é atribuído quando o `.device-screen` entra no
-  `IntersectionObserver` (`rootMargin: 300px`) — pela primeira vez, fica
-  valendo para sempre (não troca se o viewport mudar depois).
+- **Pôster:** `.src` só é atribuído quando o **invólucro `.mk`** (nunca o
+  `.mk__screen`/palco, que renderiza no tamanho nativo até o `ResizeObserver`
+  fixar `--k` e pode entrar no raio antes da escala real) entra no
+  `IntersectionObserver` (`rootMargin: 100px`, issue #92 corte 3 — caiu de
+  300px porque os blocos maiores do protótipo ficaram perto da dobra) — pela
+  primeira vez, fica valendo para sempre (não troca se o viewport mudar
+  depois).
 - **Vídeo:** mesma proximidade, **e só se** não houver
   `prefers-reduced-motion: reduce`, `navigator.connection.saveData` nem
   `effectiveType` `2g`/`slow-2g`. Fora dessas condições, carrega só o

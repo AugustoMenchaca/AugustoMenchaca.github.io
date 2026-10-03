@@ -5,19 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Validação dos ângulos do Mokker</title>
 <!-- Página de validação (issue #92) — fora do index.html e fora do
-     CI publicado. Os 4 ângulos do Mokker lado a lado; com ?teste=1, uma caixa
-     magenta substitui o vídeo, no mesmo quadrilátero do matrix3d, para medir
-     vazamento (fora do quadrilátero) e cobertura (dentro dele) por pixel. -->
+     CI publicado. Os 3 ângulos do Mokker em uso lado a lado; com ?teste=1,
+     uma caixa magenta substitui o vídeo, no mesmo quadrilátero do matrix3d,
+     para medir vazamento (fora do quadrilátero) e cobertura (dentro dele)
+     por pixel. -->
 <style>
   * { box-sizing: border-box; }
-  /* padding-bottom generoso: o medidor usa scrollIntoView(block:'center') no
-     ultimo angulo da grade (390px vira coluna unica, bem mais alta) — sem
-     essa folga, o fim do documento nao deixa centralizar o item e ele sai do
-     viewport medido. */
-  body { margin: 0; padding: 32px; padding-bottom: 50vh; background: #f4f4f2; font-family: system-ui, sans-serif; color: #111; }
+  body { margin: 0; padding: 8px; background: #f4f4f2; font-family: system-ui, sans-serif; color: #111; }
   h1 { font-size: 20px; margin: 0 0 8px; }
   p.sub { margin: 0 0 32px; color: #555; font-size: 14px; }
-  .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 24px; }
+  .grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  @media (min-width: 900px) { .grade { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1300px) { .grade { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (min-width: 2000px) { .grade { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
   figure { margin: 0; }
   figcaption { margin-top: 8px; font-size: 13px; color: #555; text-align: center; }
 
@@ -40,13 +40,26 @@
 </style>
 </head>
 <body>
-  <h1>Validação dos 4 ângulos do Mokker</h1>
+  <h1>Validação dos 3 ângulos do Mokker</h1>
   <p class="sub">Com <code>?teste=1</code>, uma caixa magenta substitui o vídeo no mesmo quadrilátero do <code>matrix3d</code> — mede vazamento (fora) e cobertura (dentro) por pixel. Não entra no CI publicado.</p>
   <div class="grade">
 
     <figure>
+      <div class="mk" data-mk="macbook-frontal" style="--w:791;--h:547">
+        <img class="mk__render" src="../../assets/mokker/ciere-macbook-frontal-m.webp" width="791" height="547" alt="" loading="eager" decoding="async">
+        <div class="mk__stage" aria-hidden="true">
+          <div class="mk__screen" style="--cw:1440;--ch:900;--raio:8.64;transform:matrix3d(0.349333756,1.2553292e-05,0,-3.78787888e-07,-0.0205181347,0.352888893,0,-5.14745187e-05,0,0,1,0,143.824352,16.7657551,0,1)"><div class="mk__test"></div></div>
+        </div>
+        <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/ciere-macbook-frontal-m.webp" alt="" style="clip-path: polygon(45.95% 2.65%, 54.05% 2.65%, 54.05% 4.48%, 53.79% 5.03%, 46.21% 5.03%, 45.95% 4.48%)">
+      </div>
+      <figcaption>macbook-frontal</figcaption>
+    </figure>
+
+
+
+    <figure>
       <div class="mk" data-mk="macbook-cima-esq" style="--w:831;--h:796">
-        <img class="mk__render" src="../../assets/mokker/idf-macbook-cima-esq-m.webp" width="831" height="796" alt="" loading="lazy" decoding="async">
+        <img class="mk__render" src="../../assets/mokker/idf-macbook-cima-esq-m.webp" width="831" height="796" alt="" loading="eager" decoding="async">
         <div class="mk__stage" aria-hidden="true">
           <div class="mk__screen" style="--cw:1440;--ch:900;--raio:8.64;transform:matrix3d(0.420368976,-0.047334709,0,0.000116421309,0.0895421434,0.44472808,0,6.31784075e-05,0,0,1,0,19.46555,87.747359,0,1)">
             <div class="mk__test"></div>
@@ -58,21 +71,8 @@
     </figure>
 
     <figure>
-      <div class="mk" data-mk="macbook-cima-dir" style="--w:831;--h:796">
-        <img class="mk__render" src="../../assets/mokker/ciere-macbook-cima-dir-m.webp" width="831" height="796" alt="" loading="lazy" decoding="async">
-        <div class="mk__stage" aria-hidden="true">
-          <div class="mk__screen" style="--cw:1440;--ch:900;--raio:8.64;transform:matrix3d(0.276257494,0.0400873015,0,-0.000101730605,-0.0306168197,0.380500251,0,5.58306129e-05,0,0,1,0,295.446546,17.0542739,0,1)">
-            <div class="mk__test"></div>
-          </div>
-        </div>
-        <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/ciere-macbook-cima-dir-m.webp" alt="" style="clip-path: polygon(67.51% 7.98%, 60.89% 7.10%, 60.23% 6.66%, 60.23% 6.16%, 60.41% 5.72%, 60.89% 5.72%, 67.63% 6.72%, 67.93% 7.29%)">
-      </div>
-      <figcaption>macbook-cima-dir</figcaption>
-    </figure>
-
-    <figure>
       <div class="mk" data-mk="iphone-frontal" style="--w:303;--h:616">
-        <img class="mk__render" src="../../assets/mokker/idf-iphone-frontal-m.webp" width="303" height="616" alt="" loading="lazy" decoding="async">
+        <img class="mk__render" src="../../assets/mokker/idf-iphone-frontal-m.webp" width="303" height="616" alt="" loading="eager" decoding="async">
         <div class="mk__stage" aria-hidden="true">
           <div class="mk__screen" style="--cw:390;--ch:844;--raio:52.65;transform:matrix3d(0.681686098,-0.00012895991,0,-5.38315468e-07,0.000399328032,0.688622591,0,1.45979486e-06,0,0,1,0,18.297414,17.2236598,0,1)">
             <div class="mk__test"></div>
@@ -81,19 +81,6 @@
         <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/idf-iphone-frontal-m.webp" alt="" style="clip-path: polygon(60.40% 7.22%, 39.27% 7.22%, 37.13% 6.01%, 37.13% 5.03%, 38.94% 3.98%, 40.59% 3.65%, 59.08% 3.65%, 60.73% 3.98%, 62.54% 5.19%, 62.21% 6.33%)">
       </div>
       <figcaption>iphone-frontal</figcaption>
-    </figure>
-
-    <figure>
-      <div class="mk" data-mk="iphone-cima-dir" style="--w:300;--h:610">
-        <img class="mk__render" src="../../assets/mokker/dvo-iphone-cima-dir-m.webp" width="300" height="610" alt="" loading="lazy" decoding="async">
-        <div class="mk__stage" aria-hidden="true">
-          <div class="mk__screen" style="--cw:390;--ch:844;--raio:52.65;transform:matrix3d(0.606189713,0.0333121398,0,-0.000218620718,0.0273240755,0.726034026,0,0.00018632615,0,0,1,0,13.0949841,19.7205681,0,1)">
-            <div class="mk__test"></div>
-          </div>
-        </div>
-        <img class="mk__notch" aria-hidden="true" src="../../assets/mokker/dvo-iphone-cima-dir-m.webp" alt="" style="clip-path: polygon(55.67% 9.75%, 36.00% 9.10%, 33.50% 7.87%, 33.50% 6.23%, 35.33% 5.33%, 55.67% 5.82%, 58.17% 7.21%, 58.17% 8.52%)">
-      </div>
-      <figcaption>iphone-cima-dir</figcaption>
     </figure>
 
   </div>
