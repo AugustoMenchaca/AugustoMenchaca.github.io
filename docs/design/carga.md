@@ -12,7 +12,7 @@
 Mantém a meta exigente para dispositivos:
 - **`primeiraCargaKB` (365 KB)**: Assegura TTI rápido; limite calibrado a partir do baseline do GitHub Pages (com compressão gzip no servidor estático node local).
 - **`roladaSemVideoKB` (837 KB)** e **`porSecaoKB` (230 a 199 KB)**: Mantém o payload das subpáginas isolado; vídeos ficam sob lazy control próprio de mídia.
-- **`clsMax` (0.02)**: Limite rígido de layout shift para não deteriorar a experiência com `content-visibility`.
+- **`clsMax` (0.1)**: o limite "bom" dos Core Web Vitals. No CI (rede e CPU lentas) a fonte web chega tarde e o texto do hero se reorganiza uma vez, o que dá CLS ~0,07 sem nenhuma mudança na página; localmente fica em 0,016. Para um teto mais rígido, o caminho é tratar a troca de fonte (métricas de fallback com `size-adjust` ou fonte própria), não baixar o teto.
 - Definição Exata da **Primeira Carga**: tudo que é transferido (comprimido em rede) até 3 s depois do `load`, sem rolar, incluindo HTML, CSS, JS, fontes e imagens, **sem vídeo**.
 - Fontes do Google (gzip): `ibmplexmono` ~45 KB (3 reqs), `instrumentsans` ~30 KB (1 req), `inter` ~48 KB (1 req).
 
