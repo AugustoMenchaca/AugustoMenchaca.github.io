@@ -1,4 +1,4 @@
-/* WhatsApp sem numero no HTML (issues #97 e #101): o href publicado e https://wa.me/ e o
+/* Contato sem numero nem e-mail no HTML (issues #97, #101 e #103): o href publicado e https://wa.me/ e o
    endereco com o numero e montado na primeira interacao (mouse, foco, toque ou clique).
    As partes ficam invertidas e em base64 nos data-*. */
 (() => {
@@ -10,4 +10,13 @@
   };
   ['pointerenter', 'focus', 'touchstart'].forEach((tipo) => link.addEventListener(tipo, montar, { once: true, passive: true }));
   link.addEventListener('click', montar, { capture: true });
+
+  // E-mail (issue #103): o href publicado e "mailto:" vazio; o endereco e montado na primeira interacao.
+  const M = ['YWNhaGNuZW1jZGE=', 'QA==', 'LmZuaQ==', 'LmxlcGZ1', 'cmIudWRl'];
+  const endereco = () => M.map((p) => atob(p).split('').reverse().join('')).join('');
+  document.querySelectorAll('.mail-link').forEach((a) => {
+    const montar = () => { a.href = 'mailto:' + endereco(); };
+    ['pointerenter', 'focus', 'touchstart'].forEach((tipo) => a.addEventListener(tipo, montar, { once: true, passive: true }));
+    a.addEventListener('click', montar, { capture: true });
+  });
 })();

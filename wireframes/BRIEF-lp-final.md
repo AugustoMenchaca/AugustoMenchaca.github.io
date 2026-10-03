@@ -220,7 +220,7 @@ Itens: IDF-BR · HUT 8 JR. · QUANTUM ML · NIP · UFPEL · DVO PELOTAS · CIERE
 - H2: `Have a problem worth building around?`
 - Copy: `I'm open to conversations about software, applied AI, research, technology projects and new opportunities.`
 - Ações: EMAIL (acid, primária) · LINKEDIN · GITHUB · CV.
-- E-mail real: `adcmenchaca@inf.ufpel.edu.br`. LinkedIn/GitHub/CV → `href="#"` com
+- E-mail real: o do Augusto (fora do repositório; o site o monta no clique). LinkedIn/GitHub/CV → `href="#"` com
   comentário `<!-- URL a confirmar -->`. Não inventar URLs de perfil.
 
 ### 09 — FOOTER
