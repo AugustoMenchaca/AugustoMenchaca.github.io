@@ -893,14 +893,6 @@
     transition: border-color var(--motion-base) var(--motion-state);
     padding-block: 4px; margin-block: -4px; min-height: 24px; min-width: 24px;
   }
-  /* Telefone: so aparece depois do clique (issue #97); o HTML nao traz o numero. */
-  .footer-col .tel-reveal {
-    display: inline-flex; align-items: center; font: inherit; font-size: 0.85rem; color: var(--surface);
-    background: none; border: 0; border-bottom: 1px solid transparent; border-radius: 0; cursor: pointer;
-    transition: border-color var(--motion-base) var(--motion-state);
-    padding: 4px 0; margin-block: -4px; min-height: 24px; min-width: 24px; text-align: left;
-  }
-  .footer-col .tel-reveal:hover, .footer-col .tel-reveal:focus-visible { border-bottom-color: var(--surface); }
   .footer-top {
     display: inline-flex; align-items: center; gap: 6px;
     font-family: var(--f-body); font-size: 0.875rem; font-weight: 500;
@@ -1410,7 +1402,7 @@
       <p class="i18n contact-lede" lang="pt">Estou aberto a conversas sobre software, IA aplicada, pesquisa, projetos de tecnologia e novas oportunidades.</p>
       <p class="i18n contact-lede" lang="en">I'm open to conversations about software, applied AI, research, technology projects and new opportunities.</p>
       <div class="contact-links">
-        <a class="btn-b3b btn-b3b--escuro" href="mailto:adcmenchaca@inf.ufpel.edu.br"><span class="btn-b3b__rotulo"><span class="i18n" lang="pt">E-mail</span><span class="i18n" lang="en">Email</span></span><span class="btn-b3b__circulo" aria-hidden="true"><span class="btn-b3b__seta">↗</span></span></a>
+        <a class="btn-b3b btn-b3b--escuro mail-link" href="mailto:"><span class="btn-b3b__rotulo"><span class="i18n" lang="pt">E-mail</span><span class="i18n" lang="en">Email</span></span><span class="btn-b3b__circulo" aria-hidden="true"><span class="btn-b3b__seta">↗</span></span></a>
         <a class="btn-b3b btn-b3b--secundario btn-b3b--externo" href="https://linkedin.com/in/augusto-menchaca-078469330" target="_blank" rel="noopener noreferrer"><span class="btn-b3b__rotulo">LinkedIn</span><span class="btn-b3b__circulo" aria-hidden="true"><span class="btn-b3b__seta">↗</span></span></a>
         <a class="btn-b3b btn-b3b--secundario btn-b3b--externo" href="https://github.com/AugustoMenchaca" target="_blank" rel="noopener noreferrer"><span class="btn-b3b__rotulo">GitHub</span><span class="btn-b3b__circulo" aria-hidden="true"><span class="btn-b3b__seta">↗</span></span></a>
         <a class="btn-b3b btn-b3b--secundario btn-b3b--externo" href="curriculo/augusto-menchaca-cv.pdf" download><span class="btn-b3b__rotulo">CV</span><span class="btn-b3b__circulo" aria-hidden="true"><span class="btn-b3b__seta">↗</span></span></a>
@@ -1440,8 +1432,8 @@
       <div class="footer-col">
         <h3 class="i18n" lang="pt">Contato</h3><h3 class="i18n" lang="en">Contact</h3>
         <ul>
-          <li><a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="i18n" lang="pt">E-mail</a><a href="mailto:adcmenchaca@inf.ufpel.edu.br" class="i18n" lang="en">Email</a></li>
-          <li aria-live="polite"><button type="button" class="tel-reveal" data-p0="NTU=" data-p1="MzU=" data-p2="MTA5OTk=" data-p3="MDEzMQ=="><span class="i18n" lang="pt">Mostrar telefone</span><span class="i18n" lang="en">Show phone</span></button></li>
+          <li><a href="mailto:" class="i18n mail-link" lang="pt">E-mail</a><a href="mailto:" class="i18n mail-link" lang="en">Email</a></li>
+          <li><a class="wa-link" href="https://wa.me/" data-p0="NTU=" data-p1="MzU=" data-p2="MTA5OTk=" data-p3="MDEzMQ==" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
           <li><a href="https://linkedin.com/in/augusto-menchaca-078469330" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
           <li><a href="https://github.com/AugustoMenchaca" target="_blank" rel="noopener noreferrer">GitHub</a></li>
           <li><a href="curriculo/augusto-menchaca-cv.pdf" download>CV</a></li>

@@ -1,15 +1,22 @@
-/* Telefone sob clique (issue #97): o HTML publicado nao traz o numero em texto.
-   As partes ficam invertidas e em base64 nos data-*, e so viram o link tel: no clique. */
+/* Contato sem numero nem e-mail no HTML (issues #97, #101 e #103): o href publicado e https://wa.me/ e o
+   endereco com o numero e montado na primeira interacao (mouse, foco, toque ou clique).
+   As partes ficam invertidas e em base64 nos data-*. */
 (() => {
-  const botao = document.querySelector('.tel-reveal');
-  if (!botao) return;
-  const parte = (k) => atob(botao.dataset[k]).split('').reverse().join('');
-  botao.addEventListener('click', () => {
-    const n = parte('p0') + parte('p1') + parte('p2') + parte('p3');
-    const link = document.createElement('a');
-    link.href = 'tel:+' + n;
-    link.textContent = '(' + n.slice(2, 4) + ')\u00a0' + n.slice(4, 9) + '\u2011' + n.slice(9);
-    botao.replaceWith(link);
-    link.focus();
-  }, { once: true });
+  const link = document.querySelector('.wa-link');
+  if (!link) return;
+  const parte = (k) => atob(link.dataset[k]).split('').reverse().join('');
+  const montar = () => {
+    link.href = 'https://wa.me/' + parte('p0') + parte('p1') + parte('p2') + parte('p3');
+  };
+  ['pointerenter', 'focus', 'touchstart'].forEach((tipo) => link.addEventListener(tipo, montar, { once: true, passive: true }));
+  link.addEventListener('click', montar, { capture: true });
+
+  // E-mail (issue #103): o href publicado e "mailto:" vazio; o endereco e montado na primeira interacao.
+  const M = ['YWNhaGNuZW1jZGE=', 'QA==', 'LmZuaQ==', 'LmxlcGZ1', 'cmIudWRl'];
+  const endereco = () => M.map((p) => atob(p).split('').reverse().join('')).join('');
+  document.querySelectorAll('.mail-link').forEach((a) => {
+    const montar = () => { a.href = 'mailto:' + endereco(); };
+    ['pointerenter', 'focus', 'touchstart'].forEach((tipo) => a.addEventListener(tipo, montar, { once: true, passive: true }));
+    a.addEventListener('click', montar, { capture: true });
+  });
 })();
