@@ -1,0 +1,41 @@
+{
+  "status": "OK",
+  "nome": "nextfive",
+  "url": "https://nextfive.xyz",
+  "preScrollData": {
+    "altura": 2915,
+    "imgs": 8,
+    "carregadas": 8
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 2817588.3125,
+    "qtdTonsEscurosDistintos": 4,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(39, 46, 51)",
+        "L": 0.296,
+        "area_px": 2268225,
+        "pct_area": 80.5
+      },
+      {
+        "rgb": "rgb(7, 54, 66)",
+        "L": 0.309,
+        "area_px": 526359.375,
+        "pct_area": 18.68
+      },
+      {
+        "rgb": "rgb(26, 30, 36)",
+        "L": 0.234,
+        "area_px": 18400,
+        "pct_area": 0.65
+      },
+      {
+        "rgb": "rgb(45, 51, 59)",
+        "L": 0.319,
+        "area_px": 4603.9375,
+        "pct_area": 0.16
+      }
+    ]
+  }
+}

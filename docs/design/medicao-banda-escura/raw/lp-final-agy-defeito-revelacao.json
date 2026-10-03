@@ -1,0 +1,53 @@
+{
+  "peca": "lp-final",
+  "status": "OK",
+  "url": "file:///C:/Users/augus/orca/workspaces/landing-page-pessoal/pesquisa-paleta-restricao-nao-diferencial-cor-na/wireframes/lp-final.html",
+  "carregadas_por_imgs": "0/0",
+  "altura_css": 8374,
+  "M1": {
+    "areaTotalConsiderada": 22313333.193159103,
+    "qtdTonsEscurosDistintos": 4,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(17, 18, 19)",
+        "L": 0.182,
+        "area_px": 1702355.48828125,
+        "pct_area": 7.63
+      },
+      {
+        "rgb": "rgb(11, 11, 11)",
+        "L": 0.15,
+        "area_px": 1342421.15625,
+        "pct_area": 6.02
+      },
+      {
+        "rgb": "rgb(107, 15, 156)",
+        "L": 0.416,
+        "area_px": 15563.060546875,
+        "pct_area": 0.07
+      },
+      {
+        "rgb": "rgb(90, 34, 50)",
+        "L": 0.339,
+        "area_px": 9073.421875,
+        "pct_area": 0.04
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 1,
+    "altura_total_escura_px": 940,
+    "fracao_escura": 0.1123,
+    "intervalos_bandas_y": [
+      [
+        959,
+        1898
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 2,
+    "transicoes_escuro_claro": 2
+  }
+}

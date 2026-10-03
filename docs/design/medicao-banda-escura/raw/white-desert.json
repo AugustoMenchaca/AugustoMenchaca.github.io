@@ -1,0 +1,45 @@
+{
+  "peca": "white-desert",
+  "status": "OK",
+  "url": "https://white-desert.com",
+  "carregadas_por_imgs": "27/29",
+  "altura_css": 20787,
+  "M1": {
+    "areaTotalConsiderada": 48330442.405151844,
+    "qtdTonsEscurosDistintos": 2,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(9, 11, 16)",
+        "L": 0.15,
+        "area_px": 6606652.5,
+        "pct_area": 13.67
+      },
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 1296000,
+        "pct_area": 2.68
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 2,
+    "altura_total_escura_px": 1408,
+    "fracao_escura": 0.0677,
+    "intervalos_bandas_y": [
+      [
+        17220,
+        18001
+      ],
+      [
+        18314,
+        18939
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 1
+  },
+  "M3": {
+    "transicoes_claro_escuro": 6,
+    "transicoes_escuro_claro": 6
+  }
+}

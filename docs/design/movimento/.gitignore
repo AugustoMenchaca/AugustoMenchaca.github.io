@@ -1,0 +1,4 @@
+# Full intermediate dumps stay local; lossless gzip evidence is versioned.
+*.json
+*.png
+!*-load.png

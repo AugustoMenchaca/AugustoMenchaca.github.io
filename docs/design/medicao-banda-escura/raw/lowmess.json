@@ -1,0 +1,35 @@
+{
+  "peca": "lowmess",
+  "status": "OK",
+  "url": "https://lowmess.com",
+  "carregadas_por_imgs": "0/0",
+  "altura_css": 1234,
+  "M1": {
+    "areaTotalConsiderada": 1681,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(59, 59, 59)",
+        "L": 0.352,
+        "area_px": 1681,
+        "pct_area": 100
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 1,
+    "altura_total_escura_px": 1234,
+    "fracao_escura": 1.0,
+    "intervalos_bandas_y": [
+      [
+        0,
+        1233
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 0,
+    "transicoes_escuro_claro": 0
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "status": "OK",
+  "nome": "paulfragara",
+  "url": "https://paul.fragara.com",
+  "preScrollData": {
+    "altura": 1431,
+    "imgs": 14,
+    "carregadas": 14
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 3500467.25,
+    "qtdTonsEscurosDistintos": 1,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(0, 119, 0)",
+        "L": 0.493,
+        "area_px": 7744,
+        "pct_area": 0.22
+      }
+    ]
+  }
+}

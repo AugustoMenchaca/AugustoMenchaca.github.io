@@ -1,0 +1,24 @@
+{
+  "status": "OK",
+  "peca": "cassidoo",
+  "grupo": "rejeitado",
+  "url": "https://cassidoo.co",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 1654,
+    "imgs": 1,
+    "carregadas": 1
+  },
+  "areaTotalFundo": 2276588,
+  "fundosDistintos": 1,
+  "fundos": [
+    {
+      "cor": "rgb(37, 37, 37)",
+      "pct": 100,
+      "L": 0.264,
+      "C": 0,
+      "H": 90
+    }
+  ]
+}

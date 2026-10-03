@@ -1,0 +1,59 @@
+{
+  "status": "OK",
+  "peca": "paulfragara",
+  "grupo": "rejeitado",
+  "url": "https://paul.fragara.com",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 1431,
+    "imgs": 14,
+    "carregadas": 14
+  },
+  "areaTotalFundo": 3500467,
+  "fundosDistintos": 6,
+  "fundos": [
+    {
+      "cor": "rgb(240, 255, 240)",
+      "pct": 57.6,
+      "L": 0.985,
+      "C": 0.025,
+      "H": 145
+    },
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 41.2,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(248, 233, 0)",
+      "pct": 0.5,
+      "L": 0.917,
+      "C": 0.194,
+      "H": 105
+    },
+    {
+      "cor": "rgb(102, 102, 102)",
+      "pct": 0.4,
+      "L": 0.51,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(0, 119, 0)",
+      "pct": 0.2,
+      "L": 0.493,
+      "C": 0.168,
+      "H": 142
+    },
+    {
+      "cor": "rgb(227, 232, 227)",
+      "pct": 0.2,
+      "L": 0.926,
+      "C": 0.009,
+      "H": 146
+    }
+  ]
+}

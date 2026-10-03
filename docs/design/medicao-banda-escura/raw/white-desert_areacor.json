@@ -1,0 +1,73 @@
+{
+  "status": "OK",
+  "peca": "white-desert",
+  "grupo": "aprovado",
+  "url": "https://white-desert.com",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 20787,
+    "imgs": 29,
+    "carregadas": 27
+  },
+  "areaTotalFundo": 48330442,
+  "fundosDistintos": 8,
+  "fundos": [
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 78.7,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(9, 11, 16)",
+      "pct": 13.7,
+      "L": 0.15,
+      "C": 0.011,
+      "H": 268
+    },
+    {
+      "cor": "rgb(233, 231, 225)",
+      "pct": 3.1,
+      "L": 0.928,
+      "C": 0.008,
+      "H": 91
+    },
+    {
+      "cor": "rgb(0, 0, 0)",
+      "pct": 2.7,
+      "L": 0,
+      "C": 0,
+      "H": 0
+    },
+    {
+      "cor": "rgb(245, 245, 245)",
+      "pct": 1.4,
+      "L": 0.97,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(243, 241, 236)",
+      "pct": 0.3,
+      "L": 0.958,
+      "C": 0.007,
+      "H": 89
+    },
+    {
+      "cor": "rgb(240, 240, 240)",
+      "pct": 0.2,
+      "L": 0.955,
+      "C": 0,
+      "H": 90
+    },
+    {
+      "cor": "rgb(255, 126, 21)",
+      "pct": 0,
+      "L": 0.729,
+      "C": 0.185,
+      "H": 51
+    }
+  ]
+}

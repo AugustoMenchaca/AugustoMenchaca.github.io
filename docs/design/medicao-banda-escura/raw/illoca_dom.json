@@ -1,0 +1,29 @@
+{
+  "status": "OK",
+  "nome": "illoca",
+  "url": "https://illoca.unseen.co",
+  "preScrollData": {
+    "altura": 900,
+    "imgs": 0,
+    "carregadas": 0
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 7304128.1438239515,
+    "qtdTonsEscurosDistintos": 2,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(40, 63, 125)",
+        "L": 0.385,
+        "area_px": 729286.83842659,
+        "pct_area": 9.98
+      },
+      {
+        "rgb": "rgb(91, 91, 91)",
+        "L": 0.471,
+        "area_px": 2456.156383007765,
+        "pct_area": 0.03
+      }
+    ]
+  }
+}

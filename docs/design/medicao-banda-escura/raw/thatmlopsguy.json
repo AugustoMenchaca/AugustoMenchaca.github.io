@@ -1,0 +1,47 @@
+{
+  "peca": "thatmlopsguy",
+  "status": "OK",
+  "url": "https://thatmlopsguy.github.io",
+  "carregadas_por_imgs": "5/5",
+  "altura_css": 3602,
+  "M1": {
+    "areaTotalConsiderada": 9029381.856689453,
+    "qtdTonsEscurosDistintos": 3,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(10, 15, 26)",
+        "L": 0.169,
+        "area_px": 6961993.125,
+        "pct_area": 77.1
+      },
+      {
+        "rgb": "rgb(15, 23, 42)",
+        "L": 0.208,
+        "area_px": 2026269,
+        "pct_area": 22.44
+      },
+      {
+        "rgb": "rgb(30, 41, 59)",
+        "L": 0.279,
+        "area_px": 15203.623291015625,
+        "pct_area": 0.17
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 1,
+    "altura_total_escura_px": 3602,
+    "fracao_escura": 1.0,
+    "intervalos_bandas_y": [
+      [
+        0,
+        3601
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 0
+  },
+  "M3": {
+    "transicoes_claro_escuro": 0,
+    "transicoes_escuro_claro": 0
+  }
+}

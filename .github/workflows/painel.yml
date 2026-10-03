@@ -167,6 +167,10 @@ jobs:
             --jq "[.[] | select(.title == env.TITULO)][0].number // empty")
           if [ -n "$existente" ]; then
             gh issue edit "$existente" --repo "$REPO" --body-file painel.md
+            # Reabrir e refixar: se o painel for fechado por engano, o workflow
+            # continua atualizando o corpo de uma issue invisivel. Ja aconteceu.
+            gh issue reopen "$existente" --repo "$REPO" 2>/dev/null || true
+            gh issue pin "$existente" --repo "$REPO" 2>/dev/null || true
             echo "painel atualizado: #$existente"
           else
             url=$(gh issue create --repo "$REPO" --title "$TITULO" --body-file painel.md)

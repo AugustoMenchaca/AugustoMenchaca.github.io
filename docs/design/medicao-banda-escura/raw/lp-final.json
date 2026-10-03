@@ -1,0 +1,66 @@
+{
+  "peca": "lp-final",
+  "status": "OK",
+  "url": "file:///.../wireframes/lp-final.html",
+  "PROCEDENCIA": "Remedido nesta sessao. A medicao do agy esta preservada em lp-final-agy-defeito-revelacao.json e esta ERRADA: a section slab-hut8 tem data-reveal e foi capturada em opacity:0, deixando o --paper aparecer por baixo. Ela media 1 banda e fracao 0.1123. Ver provenance.md P-012.",
+  "pre_scroll": "400px / 120ms / 2 passadas — o da §8.1 (700px/90ms) deixa 20 de 25 [data-reveal] em opacity:0",
+  "viewport": "1440x900x1",
+  "carregadas_por_imgs": "0/0",
+  "altura_css": 8336,
+  "escala_captura": 1.0,
+  "data_reveal_ainda_nao_revelados": 2,
+  "nota_nao_revelados": "os 2 restantes sao duplicatas de idioma em display:none, que o IntersectionObserver nunca ve",
+  "M1": {
+    "areaTotalConsiderada": 21981454,
+    "qtdTonsEscurosDistintos": 4,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(17, 18, 19)",
+        "L": 0.182,
+        "area_px": 1684015,
+        "pct_area": 7.66
+      },
+      {
+        "rgb": "rgb(11, 11, 11)",
+        "L": 0.15,
+        "area_px": 1328020,
+        "pct_area": 6.04
+      },
+      {
+        "rgb": "rgb(107, 15, 156)",
+        "L": 0.416,
+        "area_px": 15567,
+        "pct_area": 0.07
+      },
+      {
+        "rgb": "rgb(90, 34, 50)",
+        "L": 0.339,
+        "area_px": 9076,
+        "pct_area": 0.04
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 2,
+    "altura_total_escura_px": 1809,
+    "fracao_escura": 0.217,
+    "intervalos_bandas_y": [
+      [
+        955,
+        1893
+      ],
+      [
+        5361,
+        6230
+      ]
+    ],
+    "corridas_escuras_50_a_299_px": 0,
+    "corridas_escuras_sub_50_px": 2,
+    "confirmacao_independente": "medicao de DOM: .slab-dark y=955 h=938 · .slab-hut8 y=5362 h=870"
+  },
+  "M3": {
+    "transicoes_claro_escuro": 2,
+    "transicoes_escuro_claro": 2,
+    "nivel": "banda (>=300px), nao corrida qualquer"
+  }
+}

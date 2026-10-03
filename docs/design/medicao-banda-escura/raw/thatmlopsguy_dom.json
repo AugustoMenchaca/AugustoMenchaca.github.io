@@ -1,0 +1,35 @@
+{
+  "status": "OK",
+  "nome": "thatmlopsguy",
+  "url": "https://thatmlopsguy.github.io",
+  "preScrollData": {
+    "altura": 3602,
+    "imgs": 5,
+    "carregadas": 5
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 9029381.856689453,
+    "qtdTonsEscurosDistintos": 3,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(10, 15, 26)",
+        "L": 0.169,
+        "area_px": 6961993.125,
+        "pct_area": 77.1
+      },
+      {
+        "rgb": "rgb(15, 23, 42)",
+        "L": 0.208,
+        "area_px": 2026269,
+        "pct_area": 22.44
+      },
+      {
+        "rgb": "rgb(30, 41, 59)",
+        "L": 0.279,
+        "area_px": 15203.623291015625,
+        "pct_area": 0.17
+      }
+    ]
+  }
+}

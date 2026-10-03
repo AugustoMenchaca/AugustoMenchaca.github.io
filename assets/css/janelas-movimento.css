@@ -1,0 +1,271 @@
+@media (prefers-reduced-motion: no-preference) {
+  html.js-janelas .live-dot {
+    animation: live 2.4s ease-out infinite;
+  }
+  @keyframes live {
+    0% { box-shadow: 0 0 0 0 rgba(44,76,69,.55); }
+    70% { box-shadow: 0 0 0 7px rgba(44,76,69,0); }
+    100% { box-shadow: 0 0 0 0 rgba(44,76,69,0); }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.js-janelas .rise {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+
+    html.js-janelas .pipe { view-timeline: --pipe block; }
+    html.js-janelas .pipe .step {
+      animation: step linear both;
+      animation-timeline: --pipe;
+    }
+    html.js-janelas .pipe .step:nth-of-type(1) { animation-range: cover 4% cover 10%; }
+    html.js-janelas .pipe .step:nth-of-type(2) { animation-range: cover 10% cover 16%; }
+    html.js-janelas .pipe .step:nth-of-type(3) { animation-range: cover 16% cover 22%; }
+    html.js-janelas .pipe .step:nth-of-type(4) { animation-range: cover 22% cover 28%; }
+    html.js-janelas .pipe .step:nth-of-type(5) { animation-range: cover 28% cover 34%; }
+    /* #quantum e branco: ali o "acender" vai do cinza ao texto (ink); o verde claro do step some no branco (1,6:1). */
+    html.js-janelas .qml-formula .step { animation-name: ink; }
+
+    html.js-janelas .nums > * {
+      animation: rise linear both;
+      animation-timeline: view();
+    }
+    html.js-janelas .nums > *:nth-child(1) { animation-range: entry 0% entry 70%; }
+    html.js-janelas .nums > *:nth-child(2) { animation-range: entry 8% entry 78%; }
+    html.js-janelas .nums > *:nth-child(3) { animation-range: entry 16% entry 86%; }
+    html.js-janelas .nums > *:nth-child(4) { animation-range: entry 24% entry 94%; }
+
+    html.js-janelas .win-rise {
+      animation: win-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 38%;
+    }
+    html.js-janelas .parallax {
+      animation: parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    html.js-janelas .track {
+      position: relative;
+      view-timeline: --track block;
+    }
+    html.js-janelas .track::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #111111;
+      transform-origin: top;
+      z-index: 1;
+      animation: draw linear both;
+      animation-timeline: --track;
+      animation-range: cover 18% cover 58%;
+    }
+    html.js-janelas .track li {
+      animation: ink linear both;
+      animation-timeline: --track;
+    }
+    html.js-janelas .track li:nth-child(1) { animation-range: cover 18% cover 23%; }
+    html.js-janelas .track li:nth-child(2) { animation-range: cover 23% cover 28%; }
+    html.js-janelas .track li:nth-child(3) { animation-range: cover 28% cover 33%; }
+    html.js-janelas .track li:nth-child(4) { animation-range: cover 33% cover 38%; }
+    html.js-janelas .track li:nth-child(5) { animation-name: ink, wipe; animation-range: cover 38% cover 43%; }
+    html.js-janelas .track li:nth-child(6) { animation-range: cover 43% cover 48%; }
+    html.js-janelas .track li:nth-child(7) { animation-range: cover 48% cover 53%; }
+    html.js-janelas .track li:nth-child(8) { animation-range: cover 53% cover 58%; }
+
+    html.js-janelas .clist { view-timeline: --clist block; }
+    html.js-janelas .clist li {
+      animation: slide linear both;
+      animation-timeline: --clist;
+    }
+    html.js-janelas .clist li:nth-child(1) { animation-range: entry 30% cover 30%; }
+    html.js-janelas .clist li:nth-child(2) { animation-range: entry 40% cover 33%; }
+    html.js-janelas .clist li:nth-child(3) { animation-range: entry 50% cover 36%; }
+    html.js-janelas .clist li:nth-child(4) { animation-range: entry 60% cover 39%; }
+    html.js-janelas .clist li:nth-child(5) { animation-range: entry 70% cover 42%; }
+    html.js-janelas .clist li:nth-child(6) { animation-name: slide, wipe; animation-range: entry 80% cover 48%; }
+
+    @keyframes rise {
+      from { transform: translateY(36px); }
+      to { transform: none; }
+    }
+    @keyframes step {
+      from { color: #A2C186; }
+      to { color: #B7D692; }
+    }
+    @keyframes win-rise {
+      from { transform: translateY(72px) scale(.965); }
+      to { transform: none; }
+    }
+    @keyframes parallax {
+      from { transform: translateY(80px); }
+      to { transform: translateY(-80px); }
+    }
+    @keyframes draw {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+    @keyframes ink {
+      from { color: #6B6F74; transform: translateX(-6px); }
+      to { color: #111111; transform: none; }
+    }
+    /* Período das vivências: o rótulo é amarelo (--sun) sobre o fundo escuro (--earth); parte de 5,0:1 e termina no amarelo cheio. */
+    @keyframes periodo {
+      from { color: #C4B85D; transform: translateX(-6px); }
+      to { color: #F6ED6C; transform: none; }
+    }
+    @keyframes wipe {
+      from { background-size: 0% 100%; }
+      to { background-size: 100% 100%; }
+    }
+    @keyframes slide {
+      from { transform: translateX(-14px); }
+      to { transform: none; }
+    }
+
+    /* #96: Secoes restantes (Quantum, Vivencias, Sobre, Contato, Rodape) */
+    html.js-janelas .qml-cols > * {
+      animation: rise linear both;
+      animation-timeline: view();
+    }
+    html.js-janelas .qml-cols > *:nth-child(1) { animation-range: entry 0% entry 70%; }
+    html.js-janelas .qml-cols > *:nth-child(2) { animation-range: entry 8% entry 78%; }
+    html.js-janelas .qml-cols > *:nth-child(3) { animation-range: entry 16% entry 86%; }
+
+    html.js-janelas .qml-formula-caption {
+      animation: slide linear both;
+      animation-timeline: view();
+      animation-range: entry 10% entry 80%;
+    }
+
+    html.js-janelas .viv-text { view-timeline: --viv-text block; }
+    html.js-janelas .viv-col {
+      animation: slide linear both;
+      animation-timeline: --viv-text;
+    }
+    html.js-janelas .viv-col:nth-child(1) { animation-range: entry 30% cover 30%; }
+    html.js-janelas .viv-col:nth-child(2) { animation-range: entry 40% cover 33%; }
+    html.js-janelas .viv-col:nth-child(3) { animation-range: entry 50% cover 36%; }
+
+    html.js-janelas .parallax-lento {
+      animation: parallax-lento linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+
+    html.js-janelas .viv-divider {
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
+      transform-origin: left;
+      animation: draw-x linear both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
+    }
+
+    html.js-janelas .viv-period {
+      display: inline-block;
+      animation: periodo linear both;
+      animation-timeline: view();
+      animation-range: entry 20% cover 30%;
+    }
+
+    html.js-janelas .about-copy p {
+      animation: rise linear both;
+      animation-timeline: view();
+    }
+    html.js-janelas .about-copy p:nth-child(1),
+    html.js-janelas .about-copy p:nth-child(2) { animation-range: entry 0% entry 70%; }
+    html.js-janelas .about-copy p:nth-child(3),
+    html.js-janelas .about-copy p:nth-child(4) { animation-range: entry 8% entry 78%; }
+    html.js-janelas .about-copy p:nth-child(5),
+    html.js-janelas .about-copy p:nth-child(6) { animation-range: entry 16% entry 86%; }
+    html.js-janelas .about-copy p:nth-child(7),
+    html.js-janelas .about-copy p:nth-child(8) { animation-range: entry 24% entry 94%; }
+
+    html.js-janelas .contact-links { view-timeline: --contact-links block; }
+    html.js-janelas .contact-links .btn-b3b {
+      animation: slide linear both;
+      animation-timeline: --contact-links;
+    }
+    html.js-janelas .contact-links .btn-b3b:nth-child(1) { animation-range: entry 20% cover 25%; }
+    html.js-janelas .contact-links .btn-b3b:nth-child(2) { animation-range: entry 25% cover 30%; }
+    html.js-janelas .contact-links .btn-b3b:nth-child(3) { animation-range: entry 30% cover 35%; }
+    html.js-janelas .contact-links .btn-b3b:nth-child(4) { animation-range: entry 35% cover 40%; }
+
+    html.js-janelas .footer-grid { view-timeline: --footer-grid block; }
+    html.js-janelas .footer-grid > * {
+      animation: slide-curto linear both;
+      animation-timeline: --footer-grid;
+    }
+    html.js-janelas .footer-grid > *:nth-child(1) { animation-range: entry 5% entry 60%; }
+    html.js-janelas .footer-grid > *:nth-child(2) { animation-range: entry 12% entry 75%; }
+    html.js-janelas .footer-grid > *:nth-child(3) { animation-range: entry 20% entry 90%; }
+
+    @media (max-width: 600px) {
+      html.js-janelas .parallax { animation-name: parallax-m; }
+      html.js-janelas .parallax-lento { animation-name: parallax-lento-m; }
+    }
+
+    @keyframes parallax-lento {
+      from { transform: translateY(40px); }
+      to { transform: translateY(-40px); }
+    }
+    @keyframes parallax-lento-m {
+      from { transform: translateY(16px); }
+      to { transform: translateY(-16px); }
+    }
+    @keyframes parallax-m {
+      from { transform: translateY(30px); }
+      to { transform: translateY(-30px); }
+    }
+    @keyframes draw-x {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    @keyframes slide-curto {
+      from { transform: translateX(-10px); }
+      to { transform: none; }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.sem-view .win-rise,
+  html.sem-view .rise,
+  html.sem-view .nums > *,
+  html.sem-view .clist li,
+  html.sem-view .track li,
+  html.sem-view .qml-cols > *,
+  html.sem-view .qml-formula-caption,
+  html.sem-view .viv-col,
+  html.sem-view .viv-divider,
+  html.sem-view .viv-period,
+  html.sem-view .about-copy p,
+  html.sem-view .contact-links .btn-b3b,
+  html.sem-view .footer-grid > * {
+    transition: transform 600ms cubic-bezier(.2,.75,.15,1), color 600ms cubic-bezier(.2,.75,.15,1);
+  }
+
+  html.sem-view .win-rise:not(.is-in) { transform: translateY(72px) scale(.965); }
+  html.sem-view .rise:not(.is-in),
+  html.sem-view .nums > *:not(.is-in),
+  html.sem-view .qml-cols > *:not(.is-in),
+  html.sem-view .about-copy p:not(.is-in) { transform: translateY(36px); }
+  html.sem-view .clist li:not(.is-in),
+  html.sem-view .qml-formula-caption:not(.is-in),
+  html.sem-view .viv-col:not(.is-in),
+  html.sem-view .contact-links .btn-b3b:not(.is-in) { transform: translateX(-14px); }
+  html.sem-view .viv-divider { border-top: 1px solid rgba(255, 255, 255, 0.16); transform-origin: left; }
+  html.sem-view .viv-divider:not(.is-in) { transform: scaleX(0); }
+  html.sem-view .viv-period { display: inline-block; }
+  html.sem-view .viv-period:not(.is-in) { color: #C4B85D; transform: translateX(-6px); }
+  html.sem-view .track li:not(.is-in) { color: #6B6F74; transform: translateX(-6px); }
+  html.sem-view .footer-grid > *:not(.is-in) { transform: translateX(-10px); }
+}

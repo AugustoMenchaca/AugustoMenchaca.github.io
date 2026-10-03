@@ -1,0 +1,24 @@
+{
+  "status": "OK",
+  "peca": "simonbetton",
+  "grupo": "rejeitado",
+  "url": "https://simonbetton.com",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 9277,
+    "imgs": 14,
+    "carregadas": 14
+  },
+  "areaTotalFundo": 2540,
+  "fundosDistintos": 1,
+  "fundos": [
+    {
+      "cor": "rgb(255, 255, 255)",
+      "pct": 100,
+      "L": 1,
+      "C": 0,
+      "H": 90
+    }
+  ]
+}

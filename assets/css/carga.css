@@ -1,0 +1,26 @@
+/* 
+ * Otimização de renderização (Issue #96)
+ * sections: #quantum, #vivencias, #about, #contact, .site-footer
+ * 
+ * Não aplicamos em #idf, #dvo, #ciere ou hero porque
+ * o movimento por view() e o lazy load de vídeo dependem da 
+ * altura e do bounding client rect exato durante o scroll.
+ */
+
+@media (min-width: 1100px) {
+  #about { content-visibility: auto; contain-intrinsic-size: auto 907px; }
+  #contact { content-visibility: auto; contain-intrinsic-size: auto 640px; }
+  .site-footer { content-visibility: auto; contain-intrinsic-size: auto 394px; }
+}
+
+@media (min-width: 600px) and (max-width: 1099px) {
+  #about { content-visibility: auto; contain-intrinsic-size: auto 974px; }
+  #contact { content-visibility: auto; contain-intrinsic-size: auto 496px; }
+  .site-footer { content-visibility: auto; contain-intrinsic-size: auto 540px; }
+}
+
+@media (max-width: 599px) {
+  #about { content-visibility: auto; contain-intrinsic-size: auto 1297px; }
+  #contact { content-visibility: auto; contain-intrinsic-size: auto 717px; }
+  .site-footer { content-visibility: auto; contain-intrinsic-size: auto 539px; }
+}

@@ -1,0 +1,35 @@
+{
+  "status": "OK",
+  "nome": "aelixa",
+  "url": "https://aelixa.webflow.io",
+  "preScrollData": {
+    "altura": 17502,
+    "imgs": 81,
+    "carregadas": 57
+  },
+  "scaleFactor": 0.5,
+  "domData": {
+    "areaTotalConsiderada": 39731255.9142431,
+    "qtdTonsEscurosDistintos": 3,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(36, 36, 36)",
+        "L": 0.26,
+        "area_px": 4222318.6148046255,
+        "pct_area": 10.63
+      },
+      {
+        "rgb": "rgb(51, 51, 51)",
+        "L": 0.321,
+        "area_px": 125279.03125,
+        "pct_area": 0.32
+      },
+      {
+        "rgb": "rgb(35, 35, 35)",
+        "L": 0.256,
+        "area_px": 8976,
+        "pct_area": 0.02
+      }
+    ]
+  }
+}

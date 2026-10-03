@@ -1,0 +1,37 @@
+name: carga
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  orcamento:
+    name: Orçamento de carga
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sobe servidor local
+        run: |
+          node docs/design/tools/servir.mjs 8080 &
+          curl --retry 5 --retry-all-errors --retry-delay 1 -sI http://127.0.0.1:8080/ > /dev/null
+      - name: Roda auditoria de carga
+        run: |
+          export CHROME_PATH=$(which google-chrome)
+          node docs/design/tools/auditar-carga.mjs http://127.0.0.1:8080/ \
+            --orcamento docs/design/orcamento-carga.json \
+            --saida carga-relatorio
+      - name: Publica sumário e artefatos
+        if: always()
+        run: |
+          if [ -f carga-relatorio/carga-1440.md ]; then
+            cat carga-relatorio/carga-1440.md >> $GITHUB_STEP_SUMMARY
+          fi
+      - name: Upload JSON report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relatorio-carga
+          path: carga-relatorio/*.json

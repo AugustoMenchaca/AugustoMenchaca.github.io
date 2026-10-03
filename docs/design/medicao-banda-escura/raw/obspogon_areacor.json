@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "peca": "obspogon",
+  "grupo": "rejeitado",
+  "url": "https://obspogon.neocities.org",
+  "viewport": "1440x900x1",
+  "preScroll": "400px / 120ms / 2 passadas",
+  "preScrollData": {
+    "altura": 3061,
+    "imgs": 33,
+    "carregadas": 31
+  },
+  "areaTotalFundo": 5885428,
+  "fundosDistintos": 5,
+  "fundos": [
+    {
+      "cor": "rgb(0, 0, 0)",
+      "pct": 96.6,
+      "L": 0,
+      "C": 0,
+      "H": 0
+    },
+    {
+      "cor": "rgb(255, 252, 223)",
+      "pct": 1.7,
+      "L": 0.986,
+      "C": 0.038,
+      "H": 102
+    },
+    {
+      "cor": "rgb(121, 190, 242)",
+      "pct": 0.8,
+      "L": 0.776,
+      "C": 0.102,
+      "H": 242
+    },
+    {
+      "cor": "rgb(0, 128, 0)",
+      "pct": 0.7,
+      "L": 0.52,
+      "C": 0.177,
+      "H": 142
+    },
+    {
+      "cor": "rgb(189, 105, 91)",
+      "pct": 0.2,
+      "L": 0.613,
+      "C": 0.11,
+      "H": 31
+    }
+  ]
+}

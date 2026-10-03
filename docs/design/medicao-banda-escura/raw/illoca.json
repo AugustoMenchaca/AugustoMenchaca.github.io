@@ -1,0 +1,36 @@
+{
+  "peca": "illoca",
+  "status": "OK",
+  "url": "https://illoca.unseen.co",
+  "carregadas_por_imgs": "0/0",
+  "altura_css": 900,
+  "M1": {
+    "areaTotalConsiderada": 7304128.1438239515,
+    "qtdTonsEscurosDistintos": 2,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(40, 63, 125)",
+        "L": 0.385,
+        "area_px": 729286.83842659,
+        "pct_area": 9.98
+      },
+      {
+        "rgb": "rgb(91, 91, 91)",
+        "L": 0.471,
+        "area_px": 2456.156383007765,
+        "pct_area": 0.03
+      }
+    ]
+  },
+  "M2": {
+    "numero_bandas": 0,
+    "altura_total_escura_px": 0,
+    "fracao_escura": 0.0,
+    "intervalos_bandas_y": [],
+    "corridas_escuras_50_a_299_px": 2
+  },
+  "M3": {
+    "transicoes_claro_escuro": 7,
+    "transicoes_escuro_claro": 7
+  }
+}

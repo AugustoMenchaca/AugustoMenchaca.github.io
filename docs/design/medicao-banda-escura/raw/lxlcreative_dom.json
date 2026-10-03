@@ -1,0 +1,29 @@
+{
+  "status": "OK",
+  "nome": "lxlcreative",
+  "url": "https://lxlcreative.co.uk",
+  "preScrollData": {
+    "altura": 15323,
+    "imgs": 39,
+    "carregadas": 38
+  },
+  "scaleFactor": 1,
+  "domData": {
+    "areaTotalConsiderada": 59779272.8881824,
+    "qtdTonsEscurosDistintos": 2,
+    "tonsEscuros": [
+      {
+        "rgb": "rgb(39, 32, 29)",
+        "L": 0.251,
+        "area_px": 58947862.5,
+        "pct_area": 98.61
+      },
+      {
+        "rgb": "rgb(0, 0, 0)",
+        "L": 0,
+        "area_px": 243599,
+        "pct_area": 0.41
+      }
+    ]
+  }
+}
