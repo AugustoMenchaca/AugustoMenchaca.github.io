@@ -1,0 +1,10 @@
+{
+  "primeiraCargaKB": 365,
+  "roladaSemVideoKB": 837,
+  "porSecaoKB": {
+    "padrao": 230,
+    "vivencias": 199
+  },
+  "clsMax": 0.1,
+  "mp4AntesDeRolar": 0
+}

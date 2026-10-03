@@ -7,3 +7,4 @@ node_modules/
 # estas sao regeneraveis pelo instrumento em docs/design/medicao-banda-escura/.
 # O que precisa ser auditavel — os numeros — esta nos raw/*.json, que ficam.
 docs/design/medicao-banda-escura/raw/*.png
+__pycache__/
