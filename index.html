@@ -1665,6 +1665,7 @@ try {
   alvos.forEach(function (el) { io.observe(el); });
 })();
 </script>
+<script>if(/[?&]diag\b/.test(location.search)){var dm=HTMLMediaElement.prototype,dp=dm.play;window.__diagPlay=[];dm.play=function(){var s=(this.getAttribute('src')||'').split('/').pop(),r=dp.apply(this,arguments);if(r&&r.then)r.then(function(){__diagPlay.push(s+': ok')},function(e){__diagPlay.push(s+': '+e.name)});return r};var ds=document.createElement('script');ds.src='assets/js/diag.js';document.body.appendChild(ds)}</script>
 <script src="assets/js/device-media.js" defer></script>
 <script src="assets/js/contato.js" defer></script>
 <script defer src="assets/js/janelas-movimento.js"></script>
