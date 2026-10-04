@@ -1,0 +1,211 @@
+# Augusto Menchaca
+> Augusto Menchaca — estudante de Ciência da Computação na UFPel. Software científico, coordenação de projetos de cliente e pesquisa em IA aplicada a recursos hídricos.
+
+## Português
+
+### IDF-BR
+
+Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.
+
+O time científico definiu os dados, as equações e os resultados esperados. Eu respondi pela camada de software: escolhi as ferramentas, tomei as decisões técnicas, desenhei a arquitetura, a estrutura da aplicação, o fluxo e a interface, converti o acervo de planilhas em dados estruturados e fiz o deploy.
+
+Pesquisa científica → dados brutos → dados estruturados → software → produto utilizável
+
+1.543
+
+usuários ativos no primeiro mês no ar (28 dias)
+
++2.000
+
+acessos de 16 países no primeiro mês no ar (28 dias)
+
+3.225
+
+estações Hidroweb, em 2.062 municípios das 27 UFs
+
+475.928
+
+equações IDF no total
+
+### DVO
+
+Levando um projeto de cliente dos requisitos à produção.
+
+O sistema foi construído pelo squad da Hut 8. Meu papel foi coordenação, escopo e apoio à entrega.
+
+- Cliente
+- Requisitos
+- Escopo
+- Precificação
+- Squad
+- QA
+- Infraestrutura
+- Produção
+
+### Ciere da Rosa
+
+Conectando necessidades do cliente, decisões de design e desenvolvimento.
+
+Para um escritório de advocacia, ser encontrado é parte do produto. Além do SEO clássico, o projeto exigiu atenção a GEO: como o escritório é descrito, citado e recuperado por modelos de linguagem, e não só por buscadores. Isso mudou decisões de estrutura de conteúdo, nomenclatura das páginas e dados estruturados.
+
+Cliente ⟷ Augusto ⟷ Design / Dev
+
+- Requisitos
+- Escopo
+- Comunicação com cliente
+- Ponte com design
+- QA e deploy
+- SEO e GEO
+
+### Quantum ML
+
+Testando quando machine learning quântico realmente faz diferença.
+
+Pergunta
+
+O QML tem desempenho melhor simplesmente por usar representações quânticas, ou o desempenho depende do alinhamento entre dados, feature maps e kernels?
+
+Dados reais (Breast Cancer Wisconsin)
+
+O SVM clássico e a configuração quântica alcançaram resultados comparáveis na representação controlada. Sem vantagem quântica clara.
+
+Dados sintéticos (Qiskit ad_hoc_data)
+
+O modelo quântico teve desempenho excelente, mas o conjunto de dados foi desenhado em torno de uma representação quântica compatível.
+
+Projeto de disciplina, não publicado.
+
+### Vivências
+
+#### Hut 8
+
+nov/2024 até hoje · Hut 8 · Diretor de Projetos desde jun/2025
+
+Assumi a diretoria de projetos num período em que a continuidade da operação estava ameaçada. Coordeno cerca de 20 membros, de designers a desenvolvedores.
+
+Cuido do caminho inteiro de um projeto: entrada do cliente, requisitos, escopo e preço, formação dos squads, coordenação entre design e desenvolvimento, QA, infraestrutura e entrega.
+
+#### NIP
+
+set/2025 até hoje · NIP, Núcleo Integrado de Previsão, UFPel · Bolsista de iniciação científica
+
+Pesquisa em recursos hídricos, depois das enchentes que atingiram Pelotas. Uma entrega anterior foi o software do IDF-BR.
+
+Em jan/2026, a escola de verão HydroUAI, na UFMG. Depois dela, a passagem para experimentação em machine learning e escrita acadêmica. Em set/2026, o IDF-BR foi apresentado em pôster no II CONABREH, na UFPel, em coautoria. A pesquisa segue em andamento.
+
+### Sobre
+
+Me interessa o que acontece entre "temos um problema" e "isso realmente funciona".
+
+Sou estudante de Ciência da Computação na UFPel, e a maior parte do que moldou meu jeito de trabalhar aconteceu quando a tecnologia precisou encontrar um problema real.
+
+No NIP, isso significa transformar pesquisa em software e estudar IA aplicada. Na Hut 8, significa transformar necessidades de clientes em projetos que times conseguem de fato entregar.
+
+O contexto muda, mas a parte de que gosto continua a mesma: entender um problema pouco claro e, aos poucos, transformá-lo em algo útil.
+
+Ainda estou no começo da carreira, e quero seguir aprofundando minha base técnica enquanto melhoro em tomar decisões, comunicar com clareza e ajudar pessoas a construir juntas.
+
+## English
+
+### IDF-BR
+
+Turning nationwide hydrological research into a usable digital tool.
+
+The scientific team defined the data, equations, and expected results. I was responsible for the software layer: I chose the tools, made technical decisions, designed the architecture, application structure, flow, and interface, converted the collection of spreadsheets into structured data, and deployed it.
+
+Scientific research → raw data → structured data → software → usable product
+
+1,543
+
+active users in the first month live (28 days)
+
+2,000+
+
+visits from 16 countries in the first month live (28 days)
+
+3,225
+
+Hidroweb stations, in 2,062 municipalities across all 27 federative units
+
+475,928
+
+IDF equations in total
+
+### DVO
+
+Taking a client project from requirements to production.
+
+The system was built by the Hut 8 squad. My role was coordination, scoping and delivery support.
+
+- Client
+- Requirements
+- Scope
+- Pricing
+- Squad
+- QA
+- Infrastructure
+- Production
+
+### Ciere da Rosa
+
+Connecting client needs, design decisions and development.
+
+For a law firm, being found is part of the product. Beyond classic SEO, the project required attention to GEO: how the firm is described, cited and retrieved by language models, not only by search engines. That shaped decisions about content structure, page naming and structured data.
+
+Client ⟷ Augusto ⟷ Design / Dev
+
+- Requirements
+- Scoping
+- Client Comms
+- Design Bridge
+- QA & Deploy
+- SEO & GEO
+
+### Quantum ML
+
+Testing when quantum machine learning actually makes a difference.
+
+Question
+
+Does QML perform better simply because it uses quantum representations, or does performance depend on the alignment between data, feature maps and kernels?
+
+Real data (Breast Cancer Wisconsin)
+
+Classical SVM and the quantum configuration achieved comparable results in the controlled representation. No clear quantum advantage.
+
+Synthetic data (Qiskit ad_hoc_data)
+
+The quantum model performed extremely well, but the dataset was designed around a compatible quantum representation.
+
+Course project, not published.
+
+### Vivências
+
+#### Hut 8
+
+Nov 2024 – present · Hut 8 · Director of Projects since Jun 2025
+
+I took over as Director of Projects during a period when operational continuity was threatened. I coordinate about 20 members, from designers to developers.
+
+I oversee the entire path of a project: client intake, requirements, scope and pricing, squad formation, coordination between design and development, QA, infrastructure, and delivery.
+
+#### NIP
+
+Sep 2025 – present · NIP, Núcleo Integrado de Previsão, UFPel · Undergraduate Researcher
+
+Water resources research, following the floods that hit Pelotas. An earlier delivery was the IDF-BR software.
+
+In Jan 2026, the HydroUAI summer school at UFMG. After that, the transition to experimentation in machine learning and academic writing. In Sep 2026, IDF-BR was presented as a co-authored poster at II CONABREH, at UFPel. The research is ongoing.
+
+### Sobre
+
+I'm interested in what happens between "we have a problem" and "this actually works."
+
+I'm a Computer Science student at UFPel, and most of what has shaped the way I work has happened when technology had to meet a real problem.
+
+At NIP, that means turning research into software and studying applied AI. At Hut 8, it means turning client needs into projects that teams can actually deliver.
+
+The context changes, but the part I enjoy remains the same: understanding an unclear problem and gradually turning it into something useful.
+
+I'm still early in my career, and I want to keep deepening my technical foundation while becoming better at making decisions, communicating clearly and helping people build together.
+
