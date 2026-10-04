@@ -1,0 +1,25 @@
+# Augusto Menchaca
+> Augusto Menchaca — estudante de Ciência da Computação na UFPel. Software científico, coordenação de projetos de cliente e pesquisa em IA aplicada a recursos hídricos.
+
+Da pesquisa ao produto.
+
+Estudante de Ciência da Computação na UFPel. Lidero projetos na Hut 8 e pesquiso no NIP.
+
+## Projetos
+- [IDF-BR](https://www.idf-br.com.br/home/index.html): Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.
+- [DVO](https://dvopelotas.com.br/): Levando um projeto de cliente dos requisitos à produção.
+- [Ciere da Rosa](https://advocaciacieredarosa.com.br/): Conectando necessidades do cliente, decisões de design e desenvolvimento.
+- [Quantum ML](https://augustomenchaca.github.io/#quantum): Testando quando machine learning quântico realmente faz diferença.
+
+## Experiência
+- [Hut 8](https://augustomenchaca.github.io/#hut8): Assumi a diretoria de projetos num período em que a continuidade da operação estava ameaçada.
+- [NIP](https://augustomenchaca.github.io/#nip): Pesquisa em recursos hídricos, depois das enchentes que atingiram Pelotas.
+
+## Sobre
+- [Sobre](https://augustomenchaca.github.io/#about): Me interessa o que acontece entre "temos um problema" e "isso realmente funciona".
+
+## Optional
+- [LinkedIn](https://linkedin.com/in/augusto-menchaca-078469330)
+- [GitHub](https://github.com/AugustoMenchaca)
+- [llms-full.txt](https://augustomenchaca.github.io/llms-full.txt)
+- [llms-en.txt](https://augustomenchaca.github.io/llms-en.txt)
