@@ -1,0 +1,25 @@
+name: SEO e GEO
+
+on:
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  seo:
+    name: SEO e GEO
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: llms.txt gerado do HTML esta em dia
+        run: python docs/design/tools/gerar-llms.py --check
+      - name: Sobe servidor local e roda auditoria
+        run: |
+          node docs/design/tools/servir.mjs 8080 &
+          curl --retry 5 --retry-all-errors --retry-delay 1 -sI http://127.0.0.1:8080/ > /dev/null
+          node docs/design/tools/auditar-seo.mjs http://127.0.0.1:8080/

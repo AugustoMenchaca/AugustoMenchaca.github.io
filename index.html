@@ -12,11 +12,27 @@
 <meta property="og:url" content="https://augustomenchaca.github.io/">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Augusto Menchaca">
 <meta property="og:image" content="https://augustomenchaca.github.io/assets/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia">
 <meta name="twitter:card" content="summary_large_image">
-<!-- Favicon como data URI: sem requisicao extra, e sem o 404 de
-     /favicon.ico que derrubava best-practices para 96 (issue #28). -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23111111'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23F6ED6C'/%3E%3C/svg%3E">
+<meta name="twitter:title" content="Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia">
+<meta name="twitter:description" content="Augusto Menchaca — estudante de Ciência da Computação na UFPel. Software científico, coordenação de projetos de cliente e pesquisa em IA aplicada a recursos hídricos.">
+<meta name="twitter:image" content="https://augustomenchaca.github.io/assets/og-image.png">
+<meta name="twitter:image:alt" content="Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia">
+<meta name="author" content="Augusto Menchaca">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<link rel="me" href="https://linkedin.com/in/augusto-menchaca-078469330">
+<link rel="me" href="https://github.com/AugustoMenchaca">
+<link rel="alternate" type="text/markdown" href="https://augustomenchaca.github.io/llms.txt" title="llms.txt (PT)">
+<link rel="alternate" type="text/markdown" hreflang="en" href="https://augustomenchaca.github.io/llms-en.txt" title="llms.txt (EN)">
+<!-- Favicon: arquivos reais em / (o Google exige um icone rastreavel; antes era data URI, issue #28). -->
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,19 +40,119 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Augusto Menchaca",
-  "url": "https://augustomenchaca.github.io/",
-  "sameAs": [
-    "https://linkedin.com/in/augusto-menchaca-078469330",
-    "https://github.com/AugustoMenchaca"
-  ],
-  "affiliation": [
-    "Universidade Federal de Pelotas",
-    "Hut 8",
-    "Núcleo Integrado de Previsão (NIP)"
-  ],
-  "jobTitle": "Diretor de Projetos"
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://augustomenchaca.github.io/#website",
+      "url": "https://augustomenchaca.github.io/",
+      "name": "Augusto Menchaca",
+      "inLanguage": [
+        "pt-BR",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://augustomenchaca.github.io/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://augustomenchaca.github.io/#person",
+      "name": "Augusto Menchaca",
+      "alternateName": "Augusto de Castro Menchaca",
+      "url": "https://augustomenchaca.github.io/",
+      "image": "https://augustomenchaca.github.io/assets/img/sobre/retrato-384.jpg",
+      "description": "Augusto Menchaca — estudante de Ciência da Computação na UFPel. Software científico, coordenação de projetos de cliente e pesquisa em IA aplicada a recursos hídricos.",
+      "jobTitle": "Diretor de Projetos",
+      "sameAs": [
+        "https://linkedin.com/in/augusto-menchaca-078469330",
+        "https://github.com/AugustoMenchaca"
+      ],
+      "affiliation": [
+        {
+          "@type": "Organization",
+          "name": "Hut 8"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "Universidade Federal de Pelotas"
+        },
+        {
+          "@type": "Organization",
+          "name": "Núcleo Integrado de Previsão (NIP)"
+        }
+      ],
+      "knowsAbout": [
+        "Software científico",
+        "Coordenação de projetos de cliente",
+        "IA aplicada a recursos hídricos",
+        "Machine learning quântico"
+      ]
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://augustomenchaca.github.io/#profilepage",
+      "url": "https://augustomenchaca.github.io/",
+      "name": "Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia",
+      "inLanguage": "pt-BR",
+      "isPartOf": {
+        "@id": "https://augustomenchaca.github.io/#website"
+      },
+      "mainEntity": {
+        "@id": "https://augustomenchaca.github.io/#person"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://augustomenchaca.github.io/#projetos",
+      "name": "Projetos",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "IDF-BR",
+            "url": "https://www.idf-br.com.br/home/index.html",
+            "description": "Transformando pesquisa hidrológica nacional em uma ferramenta digital utilizável.",
+            "inLanguage": "pt-BR"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "DVO",
+            "url": "https://dvopelotas.com.br/",
+            "description": "Levando um projeto de cliente dos requisitos à produção.",
+            "inLanguage": "pt-BR"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Ciere da Rosa Advocacia",
+            "url": "https://advocaciacieredarosa.com.br/",
+            "description": "Conectando necessidades do cliente, decisões de design e desenvolvimento.",
+            "inLanguage": "pt-BR"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "CreativeWork",
+            "name": "Quantum ML",
+            "url": "https://augustomenchaca.github.io/#quantum",
+            "description": "Testando quando machine learning quântico realmente faz diferença.",
+            "inLanguage": "pt-BR"
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
 <style>

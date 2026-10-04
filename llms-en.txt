@@ -1,0 +1,25 @@
+# Augusto Menchaca
+> Computer Science student at UFPel. I lead projects at Hut 8 and research at NIP.
+
+From research to product.
+
+Computer Science student at UFPel. I lead projects at Hut 8 and research at NIP.
+
+## Projects
+- [IDF-BR](https://www.idf-br.com.br/home/index.html): Turning nationwide hydrological research into a usable digital tool.
+- [DVO](https://dvopelotas.com.br/): Taking a client project from requirements to production.
+- [Ciere da Rosa](https://advocaciacieredarosa.com.br/): Connecting client needs, design decisions and development.
+- [Quantum ML](https://augustomenchaca.github.io/#quantum): Testing when quantum machine learning actually makes a difference.
+
+## Experience
+- [Hut 8](https://augustomenchaca.github.io/#hut8): I took over as Director of Projects during a period when operational continuity was threatened.
+- [NIP](https://augustomenchaca.github.io/#nip): Water resources research, following the floods that hit Pelotas.
+
+## About
+- [About](https://augustomenchaca.github.io/#about): I'm interested in what happens between "we have a problem" and "this actually works."
+
+## Optional
+- [LinkedIn](https://linkedin.com/in/augusto-menchaca-078469330)
+- [GitHub](https://github.com/AugustoMenchaca)
+- [llms-full.txt](https://augustomenchaca.github.io/llms-full.txt)
+- [llms.txt](https://augustomenchaca.github.io/llms.txt)

@@ -1,4 +1,29 @@
+# Politica do site (issue #106): um portfolio quer ser encontrado e citado por
+# buscadores e por IAs. Todos os robos de busca e de IA sao liberados; so os
+# materiais internos (docs/ e wireframes/) ficam fora.
+
 User-agent: *
 Allow: /
+Disallow: /docs/
+Disallow: /wireframes/
+
+# Robos de IA: liberados (busca, resposta ao usuario e treino).
+# Cada grupo repete os Disallow porque um robo com grupo proprio ignora o "*".
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+User-agent: Bytespider
+User-agent: Amazonbot
+Allow: /
+Disallow: /docs/
+Disallow: /wireframes/
 
 Sitemap: https://augustomenchaca.github.io/sitemap.xml
