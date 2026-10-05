@@ -6,13 +6,21 @@
 
   const nums = document.querySelector('.nums');
   if (nums) {
+    // Um formatador por idioma, criado em tempo ocioso: toLocaleString() a cada quadro recria o formatador
+    // e a primeira chamada carrega os dados do idioma, o que travava a rolagem ao chegar nos números.
+    const formatos = {};
+    const formato = (lang) => formatos[lang] || (formatos[lang] = new Intl.NumberFormat(lang));
+    const aquecer = () => { formato('pt-BR').format(0); formato('en-US').format(0); };
+    if (window.requestIdleCallback) requestIdleCallback(aquecer, { timeout: 2000 });
+    else setTimeout(aquecer, 800);
+
     const obs = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         obs.disconnect();
         
         const start = performance.now();
         const dur = 1600;
-        const targets = Array.from(nums.querySelectorAll('[data-count-to]')).map(el => {
+        const targets = Array.from(nums.querySelectorAll('[data-count-to]')).filter(el => el.getClientRects().length).map(el => {
           const orig = el.textContent;
           const isSuffix = orig.trim().endsWith('+');
           return {
@@ -32,7 +40,7 @@
           if (k < 1) {
             targets.forEach(t => {
               const val = Math.round(t.to * ease);
-              t.el.textContent = t.prefix + val.toLocaleString(t.lang) + t.suffix;
+              t.el.textContent = t.prefix + formato(t.lang).format(val) + t.suffix;
             });
             requestAnimationFrame(tick);
           } else {
