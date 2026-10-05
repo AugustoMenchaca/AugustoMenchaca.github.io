@@ -8,6 +8,20 @@
   };
   const states = new Map();
 
+  /* Modo de Baixo Consumo (iPhone) e políticas de autoplay recusam play() até o primeiro toque: tenta de novo nele. */
+  const gestos = ['touchend', 'pointerup', 'click', 'keydown'];
+  let armado = false;
+  function armGesture() {
+    if (armado) return;
+    armado = true;
+    const retry = () => {
+      armado = false;
+      gestos.forEach(g => document.removeEventListener(g, retry, true));
+      states.forEach(update);
+    };
+    gestos.forEach(g => document.addEventListener(g, retry, { capture: true, passive: true }));
+  }
+
   function pick(slot, key) {
     const variant = isMobile.matches && slot.dataset[`device${key}Mobile`];
     return variant || slot.dataset[`device${key}`] || '';
@@ -28,7 +42,9 @@
       return;
     }
     if (!video.hasAttribute('src')) video.src = pick(slot, 'Video');
-    video.play().catch(() => {});
+    video.play().catch(err => {
+      if (err && err.name === 'NotAllowedError') armGesture();
+    });
   }
 
   const observer = new IntersectionObserver(entries => {

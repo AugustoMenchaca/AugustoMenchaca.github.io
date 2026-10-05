@@ -16,7 +16,7 @@ for (let i = 1; i < args.length; i++) {
 }
 
 const CH = process.env.CHROME_PATH || (process.platform === 'win32' ? 'C:/Program Files/Google/Chrome/Application/chrome.exe' : 'google-chrome');
-const PORT = 9333;
+const PORT = Number(process.env.CDP_PORT) || 9333; // CDP_PORT permite rodar duas auditorias ao mesmo tempo
 const prof = mkdtempSync(join(tmpdir(), 'cdpa-'));
 const chrome = spawn(CH, ['--headless=new', '--no-sandbox', '--disable-gpu', '--hide-scrollbars', `--remote-debugging-port=${PORT}`, `--user-data-dir=${prof}`, 'about:blank'], { stdio: 'ignore' });
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));

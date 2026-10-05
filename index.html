@@ -34,9 +34,6 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Augusto Menchaca — Produtos Digitais e Projetos de Tecnologia</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -156,6 +153,13 @@
 }
 </script>
 <style>
+  /* Fontes proprias (OFL), subconjunto latin; os avisos de licenca estao em assets/fonts/LICENSES.txt.
+     Sem preload e sem fallback com metrica: os dois foram medidos e pioraram o LCP (docs/design/fontes.md). */
+  @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/ibm-plex-mono-latin-400.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 500; font-display: swap; src: url('/assets/fonts/ibm-plex-mono-latin-500.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 600; font-display: swap; src: url('/assets/fonts/ibm-plex-mono-latin-600.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Instrument Sans'; font-style: normal; font-weight: 400 700; font-display: swap; src: url('/assets/fonts/instrument-sans-latin-var.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400 600; font-display: swap; src: url('/assets/fonts/inter-latin-var.woff2') format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
   :root {
     /* Superficies */
     --surface:      #FFFFFF;
@@ -426,6 +430,8 @@
   .ciere-top { display: flex; flex-wrap: wrap; gap: clamp(32px, 5.5vw, 80px); align-items: flex-start; }
   .ciere-top-left { flex: 1.5 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
   #ciere .slab-headline { max-width: 26ch; }
+  /* 320 px: com o piso de 36px, "desenvolvimento." (~290px) passa dos 276px da coluna. */
+  @media (max-width: 340px) { #ciere .slab-headline { font-size: 32px; } }
   .lang-toggle { display: inline-flex; align-items: center; gap: 4px; }
   .lang-sep { color: var(--muted); font-size: .7rem; font-family: var(--f-mono); }
   .ciere-visibility { flex: 1 1 340px; min-width: 0; }
@@ -1665,6 +1671,7 @@ try {
   alvos.forEach(function (el) { io.observe(el); });
 })();
 </script>
+<script>if(/[?&]diag\b/.test(location.search)){var dm=HTMLMediaElement.prototype,dp=dm.play;window.__diagPlay=[];dm.play=function(){var s=(this.getAttribute('src')||'').split('/').pop(),r=dp.apply(this,arguments);if(r&&r.then)r.then(function(){__diagPlay.push(s+': ok')},function(e){__diagPlay.push(s+': '+e.name)});return r};var ds=document.createElement('script');ds.src='assets/js/diag.js';document.body.appendChild(ds)}</script>
 <script src="assets/js/device-media.js" defer></script>
 <script src="assets/js/contato.js" defer></script>
 <script defer src="assets/js/janelas-movimento.js"></script>

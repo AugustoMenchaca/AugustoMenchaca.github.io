@@ -47,3 +47,13 @@
 3. **Contagem:** Desça até o IDF-BR. O valor deve animar até o final em ~1.6s e reverter exatamente à string textual idêntica configurada no HTML.
 4. **Fallback:** Em um navegador sem suporte a `view()` (ex: Firefox), os elementos devem entrar na tela usando as transições fallback de 600ms configuradas em `janelas-movimento.js`.
 5. **Vídeo e Memória:** Role lentamente. O script `device-media.js` deve carregar vídeos apenas próximos da view e limpar os buffers caso a janela afaste, minimizando o impacto.
+
+## Diagnóstico no aparelho (`?diag`, #109)
+
+Abrir `https://augustomenchaca.github.io/?diag=1` no celular mostra um painel fixo no rodapé da tela. O topo traz o veredito e abaixo vêm os valores que o site realmente consulta:
+
+- **O que desliga vídeo e animação de propósito:** `prefers-reduced-motion: reduce` (desliga os dois), `Save-Data` ou rede 2g (só o vídeo), aba oculta (só o vídeo).
+- **Por que o vídeo pode ficar só no pôster sem nenhuma dessas condições:** o navegador recusou `play()`. O `device-media.js` ignorava a recusa; hoje ele tenta de novo no primeiro toque (`touchend`, `pointerup`, `click` ou `keydown`). O painel lista cada `play()` com `ok` ou o nome do erro (`NotAllowedError` é política de autoplay, típico de Modo de Baixo Consumo no iPhone; `NotSupportedError` é arquivo ou codec).
+- Por janela de vídeo: `src` carregado, `pausado`, `readyState`, `networkState`, tempo e se está tocando. O botão "tocar vídeos" chama `play()` num toque do usuário.
+
+Sem `?diag`, nada do painel é carregado nem requisitado, e nenhum dado sai do aparelho. O carregador é o `<script>` inline antes do `device-media.js` no `index.html`; ele embrulha `HTMLMediaElement.play` para registrar os resultados.
