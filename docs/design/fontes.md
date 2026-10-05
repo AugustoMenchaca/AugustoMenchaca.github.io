@@ -32,3 +32,9 @@ Se um dia o CLS precisar baixar, o caminho é encurtar o primeiro frame (por exe
 ## Ganho real da mudança
 
 Sem dependência de terceiro: nenhum acesso ao Google ao abrir o site (o Google Fonts expõe o IP do visitante), duas origens a menos para resolver DNS e TLS, e o site continua igual se o Google Fonts cair. O laboratório não mede o custo de DNS e TLS da origem externa (a latência simulada é igual para todas as requisições), então esse ganho é esperado e não medido.
+
+## Em velocidade normal (medido depois do merge)
+
+Comparei o `auditar-carga.mjs`, sem limitar rede nem CPU, em 8 rodadas alternadas: o `develop` de antes (Google Fonts) contra o de depois (fontes próprias). O CLS fica entre 0,005 e 0,018 na maior parte das rodadas e sobe para ~0,075 quando a troca de fonte acontece depois do primeiro paint. Antes isso apareceu em 1 de 8 rodadas (0,0736); depois, em 4 de 8 (0,0756).
+
+A amostra é pequena e a diferença não é estatisticamente firme, mas a direção bate com o mecanismo: sem o CSS do Google, que bloqueava a primeira renderização, o primeiro paint vem mais cedo, antes de a fonte chegar. O pior valor medido continua abaixo do limite de 0,1. Se isso importar, a medição a fazer é o `preload` em velocidade normal; com a CPU 4× mais lenta ele piorou o LCP (tabela acima).
