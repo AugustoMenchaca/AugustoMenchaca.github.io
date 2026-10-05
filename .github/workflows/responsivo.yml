@@ -1,0 +1,35 @@
+name: Responsivo 320–3440
+
+on:
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  responsivo:
+    name: Responsivo 320–3440
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Sobe servidor local
+        run: |
+          node docs/design/tools/servir.mjs 8080 &
+          curl --retry 5 --retry-all-errors --retry-delay 1 -sI http://127.0.0.1:8080/ > /dev/null
+      - name: Roda auditor de responsivo
+        run: |
+          export CHROME_PATH=$(which google-chrome)
+          node docs/design/tools/auditar-responsivo.mjs http://127.0.0.1:8080/ \
+            --json relatorio-responsivo/relatorio.json \
+            --capturas relatorio-responsivo
+      - name: Upload Artefatos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: relatorio-responsivo
+          path: relatorio-responsivo/*

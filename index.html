@@ -430,6 +430,8 @@
   .ciere-top { display: flex; flex-wrap: wrap; gap: clamp(32px, 5.5vw, 80px); align-items: flex-start; }
   .ciere-top-left { flex: 1.5 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 20px; align-items: flex-start; }
   #ciere .slab-headline { max-width: 26ch; }
+  /* 320 px: com o piso de 36px, "desenvolvimento." (~290px) passa dos 276px da coluna. */
+  @media (max-width: 340px) { #ciere .slab-headline { font-size: 32px; } }
   .lang-toggle { display: inline-flex; align-items: center; gap: 4px; }
   .lang-sep { color: var(--muted); font-size: .7rem; font-family: var(--f-mono); }
   .ciere-visibility { flex: 1 1 340px; min-width: 0; }
