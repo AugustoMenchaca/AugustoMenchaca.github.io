@@ -57,3 +57,12 @@ Abrir `https://augustomenchaca.github.io/?diag=1` no celular mostra um painel fi
 - Por janela de vídeo: `src` carregado, `pausado`, `readyState`, `networkState`, tempo e se está tocando. O botão "tocar vídeos" chama `play()` num toque do usuário.
 
 Sem `?diag`, nada do painel é carregado nem requisitado, e nenhum dado sai do aparelho. O carregador é o `<script>` inline antes do `device-media.js` no `index.html`; ele embrulha `HTMLMediaElement.play` para registrar os resultados.
+
+## Rolagem com vídeo (#120)
+
+Medido com a roda do mouse simulada em Chrome com janela e GPU real (a rolagem por script não mostra o problema): a página tinha quadros de 50 a 100 ms ao atravessar o IDF-BR. Sumiam com o vídeo bloqueado ou com as animações desligadas.
+
+- **O vídeo pausa enquanto a página rola** e retoma 140 ms depois que a rolagem para (`device-media.js`). Vídeo tocando durante a rolagem obriga a GPU a recompor o vídeo dentro da janela de cantos arredondados a cada quadro rolado. Quadros acima de 50 ms por rodada: 4,2 antes, 1,2 depois (6 rodadas alternadas cada).
+- **Os números do IDF-BR usam um `Intl.NumberFormat` por idioma**, criado em tempo ocioso, e animam só o idioma visível (`janelas-movimento.js`). Antes chamava `toLocaleString()` a cada quadro para os 8 elementos.
+- **Tentado e descartado:** adiar o início do vídeo até a rolagem parar. Não mudou nada (3,2 contra 3,3 quadros longos por rodada).
+- Sobra ~1 quadro de 65 a 90 ms por rodada, sem script, ainda sem causa identificada.
