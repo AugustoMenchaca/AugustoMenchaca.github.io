@@ -1,5 +1,5 @@
 import { createServer } from 'node:http';
-import { readFileSync, statSync } from 'node:fs';
+import { readFileSync, statSync, openSync, readSync, closeSync } from 'node:fs';
 import { join, extname } from 'node:path';
 import { gzipSync } from 'node:zlib';
 
@@ -68,17 +68,28 @@ createServer((req, res) => {
     if (isMp4) {
       const range = req.headers.range;
       if (range) {
-        const parts = range.replace(/bytes=/, "").split("-");
-        const start = parseInt(parts[0], 10);
-        const end = parts[1] ? parseInt(parts[1], 10) : stats.size - 1;
+        // "bytes=a-b", "bytes=a-" e "bytes=-n" (os ultimos n bytes)
+        const m = /^bytes=(\d*)-(\d*)$/.exec(range);
+        let start = 0;
+        let end = stats.size - 1;
+        if (m && m[1] === '' && m[2] !== '') {
+          start = Math.max(0, stats.size - parseInt(m[2], 10));
+        } else if (m && m[1] !== '') {
+          start = parseInt(m[1], 10);
+          if (m[2] !== '') end = Math.min(parseInt(m[2], 10), stats.size - 1);
+        }
+        if (!m || start > end || start >= stats.size) {
+          res.writeHead(416, { 'Content-Range': `bytes */${stats.size}` });
+          return res.end();
+        }
         const chunksize = (end - start) + 1;
-        
+
         // No caching for ranges for simplicity
-        const fd = require('node:fs').openSync(filePath, 'r');
+        const fd = openSync(filePath, 'r');
         const buffer = Buffer.alloc(chunksize);
-        require('node:fs').readSync(fd, buffer, 0, chunksize, start);
-        require('node:fs').closeSync(fd);
-        
+        readSync(fd, buffer, 0, chunksize, start);
+        closeSync(fd);
+
         res.writeHead(206, {
           'Content-Range': `bytes ${start}-${end}/${stats.size}`,
           'Accept-Ranges': 'bytes',
