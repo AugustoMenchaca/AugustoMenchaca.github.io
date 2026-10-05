@@ -83,6 +83,19 @@
     observer.observe(slot);
   });
 
+  /* Vídeo tocando enquanto a página rola obriga a GPU a recompor o vídeo dentro da janela de cantos
+     arredondados a cada quadro rolado, e a rolagem trava. Pausa ao rolar; retoma 140 ms depois que parar. */
+  let timerRolagem = 0;
+  addEventListener('scroll', () => {
+    states.forEach(st => {
+      if (!st.video.paused) { st.video.pause(); st.retomar = true; }
+    });
+    clearTimeout(timerRolagem);
+    timerRolagem = setTimeout(() => states.forEach(st => {
+      if (st.retomar) { st.retomar = false; update(st); }
+    }), 140);
+  }, { passive: true });
+
   const refresh = () => states.forEach(update);
   reduceMotion.addEventListener('change', refresh);
   document.addEventListener('visibilitychange', refresh);
